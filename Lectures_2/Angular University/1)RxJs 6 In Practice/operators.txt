@@ -1,0 +1,62 @@
+Observable creation-
+1)interval(1000)
+2)timer(500,1000)
+3)fromEvent(document,'click')
+4)create
+5)of
+6)fromPromise
+
+operators-
+1)map,mapTo
+2)shareReplay, share
+3)tap
+4)filter
+5)concatMap(one after another)(autosave logic)
+6)mergeMap(all at same time)
+7)exhaustMap(ignore values)(save logic)
+8)debounceTime
+9)distictuntilChanges
+10)switchMap(switches to new value and cancels the last observable)(serachLogic)
+11)catchError
+12)throwError
+13)finalize
+14)take(3),(take first 3 values) 
+takeUntil,(take values until second observable emits value)
+takeWhile(take while condiiton is true)
+15)scan(accumulator logic)
+16)withLatestFrom(combne 2 observables)
+17)retry
+18)retryWhen
+19)delay
+20)delayWhen
+22)
+
+
+methods-
+1)concat
+2)fromPromise
+3)merge
+4)forkJoin-(gives vaues of all observables only when they all complete)
+5)zip(gives value of multiple observable as long as they emit values, but when even one observable completes,whole stream stops giving values.one one observable emits value, resultant field will only emits values when all observbles have emitted thier first vallues and so on)
+
+
+subjects-
+1)subject
+2)behaviour subject
+3)Async Subject
+4)replay subject
+
+imports-
+1)operators-
+import { debounceTime, map} from 'rxjs/operators';
+
+2)methods-
+import {merge, concat} from 'rxjs';
+
+3)definations-
+import {Observable} from 'rxjs';
+
+
+question-
+1)catchError block is executed 2 times
+2)delayWhen not behaving right

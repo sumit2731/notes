@@ -1,0 +1,22 @@
+Almost identical to Singly Linked Lists, except every node has another pointer, to the previous node.
+    see figure 1. so these operations are more efficient in doubly link list-
+
+        1)pop
+        2)print elements backwards
+        3)Searching a node from list(as we can also tranverse backwards into list, so in some cases it decreases the iterations)
+
+but doubly link list takes more memory than singly linked list.so there is trade off. see figure 2
+
+Complexities of doubly LinkedList-
+
+    Insertion(push and unshift)- O(1)
+    Removal -
+        from Head - O(1)
+        from tail - O(1)
+        from anywhere else - o(n)
+
+    searching- O(n), its n/2
+
+    access - o(n)
+
+Some tasks lie tranversin the ist backawards is easier in doubly linked list . it comes at the cost of memory

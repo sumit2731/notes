@@ -1,0 +1,58 @@
+Big O Notation-
+    It is way of comparing code in terms of number of operations computer takes.
+    
+    we can see in files 1)operations and 2)operations that same problem is solved in 
+    diffrent solution, so we count the number of operations. but in 2)oprtaions there 
+    can be either 2n or 5n+2 operations.it depends upon what we count as opeartion.
+    it doesn't really matter because regardless of the exact number, we care about general
+    trend.we focus on big picture and this is what we're going to see a lot with big-O.
+    
+    So in this case of 2)operations.PNG as n grows the number of operations grow roughly in proportion with n.
+    while in case of 1)operations.PNG, operations are constant.
+
+    it allows us to talk formally about how the runtime of an algorithm grows as inputs grow. refer to figure 3.
+    when we talk about big o, we are talking about worst case scanerio. so we are talking about basically
+    the upper bound for runtime.
+
+    so first image has big O of 1, i.e - O(1)
+    second image has big O of n, i.e - O(n). see figure - 5)
+    we are going to talk about rules for simplifying these expressions.
+
+    in figurw 6), we calculared big O of another operation.In figure 7) we have O(n*n).
+    see figure 8, we are intersted in general trend.
+
+Rules for Simplifying Big O Expressions-
+
+    a)constants does'nt matter(figure 9)
+    b)smaller terms dnt matter(figure 10), here in third equation, for very large numbers, if we plot graph
+        then 5n+10 is meaning if front of n*n
+
+Big O Shortands -
+    Refre figure 11,
+    point1- Computer takes same time to multiply 10*10 as it do for 10000*10000
+    point2- compyter take ssame time for x =100 as it takes for x =1000000
+
+see slide 12.
+
+This was all about Time Complexity
+
+---------------------------------------------------------------------------------------------------------------------
+
+Lets talk about space Complexity
+
+    It means how space will increase if we increase n. we can big on notation to 
+    represent same. see slides in folder 4)space compelxity
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+Some times space complexity involves log. so lets see log. refer slide 18, to undertsand what is log.
+
+so we have base of log. however we are concerned with big picture, wo we are going to omit the base. we
+will say just log. it does'nt matter because we are comparing the graph of constant time ,quadratic time
+and log n time. so it really does'nt matter if it is log with base 2,10 or 100.it is oing to be general trend
+that we care about. see slides of log
+
+---------------------------------------------------------------------------------------------------------------------
+
+see slide 23 for summary

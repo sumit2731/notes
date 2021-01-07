@@ -1,0 +1,4 @@
+I was not able to solve 4.
+    1)In solution of 4 see, how can we combine retun values from multiple function calls
+    2)in course solution of 5, see that we can also use push to combine output of multiple function calls
+    3)In solution 6,see how we combines returned values of multiple functon calls

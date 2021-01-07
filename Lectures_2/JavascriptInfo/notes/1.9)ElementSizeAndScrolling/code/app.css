@@ -1,0 +1,33 @@
+#parent1 {
+    background-color: blue;
+    height: 500px;
+    width: 500px;
+    /* padding: 100px; */
+    overflow-y: auto;
+}
+#child1 {
+    background-color: red;
+    height: 1000px;
+    width: 501px;
+}
+#child2 {
+    background-color: yellow;
+    height: 1000px;
+    width: 501px;
+}
+#span1{
+    width: 300px;
+    background: yellow;
+}
+
+/* #myDIV {
+  height: 250px;
+  width: 250px;
+  overflow: auto;
+}
+
+#content {
+  height: 800px;
+  width: 2000px;
+  background-color: coral;
+} */

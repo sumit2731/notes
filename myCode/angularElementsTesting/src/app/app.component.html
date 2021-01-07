@@ -1,0 +1,9 @@
+<h1>App Compoent Loaded</h1>
+<button (click)="toggleCustomeElement()">Toggle Custome Element</button>
+<button [routerLink]="['/cmp1',1]" >Cmp1</button>
+<button [routerLink]="['/cmp2',2]">Cmp2</button>
+<button [routerLink]="['/cmp3',3]">Cmp3</button>
+<router-outlet></router-outlet>
+
+
+<custom-a *ngIf="showCustomElement"></custom-a>

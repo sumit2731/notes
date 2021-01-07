@@ -1,0 +1,12 @@
+by default(if we do not have webpack-config file) entry point for webpack is index.js. lets run webpack command.
+
+we will get strange error, but error is about it is not able to find index.js file in .src folder. why we get
+error it is some node thing, check lecture for same. lets crete a index.js file in src folder. write a simple alert
+statement in it. now again run webpack command.
+
+lets create a emprty file called index.js in source folder. if we run npm satrt, now it saying
+something about main.js. it built our code into main.js. then there is a warning that we did not set
+the mode option, by default it used prod mode.
+
+you can see there is file in dist fodler called main.js, it file spitted out by webapck, but we wrote a simple statement
+and webpack didi some magic, this statement is nested around (), {} etc.

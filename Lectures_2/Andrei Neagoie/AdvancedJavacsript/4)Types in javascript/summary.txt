@@ -1,0 +1,15 @@
+1)symbol in new type in js. it is es6.
+2)typeof for null gives object, it is mistake in js.
+3)type of function give "function". but under the hood it is object. both array and function are of type
+    object.see code snippet1, here we have added a proeprty to function just like we do in object.
+4)In js all types other than object are primitive types. object is non primitive. primitive means it is single value
+     variable directly contains that value. non-primituve typr does'nt actually contains actual value,
+     it contains refrence like pointer to some where in memory where actual value is stored.
+5)Everything in js is object. even for primitive types we have  object wrappers. see link to built in objects in js,
+    here you can see that we have objects for primitives types also. when we try to access some function on
+    primitive type then it is implicitly converted into object by js. this is what happens-
+    true.toString() => Boolean.toString()
+6)Primitive types are immutable
+7)Pass by value and Pass and Refrence - see code snippet2
+8)Type coercion - Javascript has heavy type coercion nature , because it is dynamically type language.
+9)Statically typed vs Dynamicaly typed languages and strongly typed vs weekly typed

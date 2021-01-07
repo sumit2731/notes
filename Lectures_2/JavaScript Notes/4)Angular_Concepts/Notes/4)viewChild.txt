@@ -1,0 +1,67 @@
+This decorator allows us to inject into a component class references to elements used inside its template.Using @ViewChild
+    we can easily inject components, directives or plain DOM elements. We can even override the defaults of @ViewChild and
+    specify exactly we need to inject, in case that multiple options are available.
+
+syntax -
+    1)
+        html - 
+            <color-sample [color]="primary" #primaryColorSample></color-sample>
+        ts -
+            @ViewChild(ColorSampleComponent) primarySampleComponent: ColorSampleComponent;
+
+        here we get instance of ColorSampleComponent.
+    2)
+        html- 
+            <h2 #title>Choose Brand Colors:</h2>    
+        ts- 
+            @ViewChild('title') title: ElementRef;
+            console.log("title:", this.title.nativeElement);
+
+        Because h2 is a plain HTML element and not an Angular component, what we get injected this time is a wrapped 
+        reference to the native DOM element of the h2 tag.ElementRef simply wraps the native DOM element, and we can 
+        retrieve it by accessing the nativeElement property.
+
+    3)
+        html -
+            <color-sample [color]="primary" #primaryColorSample(click)="open()">
+            </color-sample>
+
+        ts-
+            @ViewChild('primaryColorSample')sample: ColorSampleComponent;
+
+        here we get the instance of ColorSampleComponent
+
+    
+    Default behaviour of @ViewChild injection by template reference-
+        a)when injecting a reference applied to a component, we get back the component instance
+        b)when injecting a reference to a plain HTML element, we get back the corresponding wrapped DOM element
+    
+    4)
+        html-
+            <color-sample [color]="primary" #primaryColorSample(click)="open()">
+            </color-sample>
+        ts-
+            @ViewChild('primaryColorSample', {read: ElementRef}) sample: ElementRef;
+
+        This read property will specify exactly what we are trying to inject, in case that there are multiple possible 
+        injectables available.
+
+    5)
+        html-
+            <input matInput #primaryInput [(colorPicker)]="primary" [(ngModel)]="primary"/>
+
+        ts-
+            <color-sample [color]="primary" #primaryColorSample (click)="primaryInput.openDialog()">
+            </color-sample>
+
+        In this case, the template reference #primaryInput points to the DOM element <input>, and not to the 
+        colorPicker directive applied to that same element.This occurs because, by default, the template reference 
+        primaryInput points to the input box DOM element, and not to the colorPicker directive.
+
+
+Using @ViewChild to inject Directives - 
+
+    As we can see, this is not the way to get a reference to a directive, especially in a situation when multiple 
+    directives are applied to the same plain HTML element or Angular component. solution to above problem is-
+
+     @ViewChild('primaryInput', {read: ColorPickerDirective}) colorPicker: ColorPickerDirective;

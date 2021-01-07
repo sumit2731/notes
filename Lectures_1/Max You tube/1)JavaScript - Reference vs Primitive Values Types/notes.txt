@@ -1,0 +1,47 @@
+2 Tupes of Data Types in js-
+
+1)Primitive Types
+    a)Primitive values are copied by value
+    b)Data is stored in stack.Stack is stack of data in your memory. Stack memory can be accesses really quick. 
+        It is very limited(see 1)
+2)refrence Types
+    a)Refrence types are Copied by refrence
+    b) they are stored in Heap. Heap takes relativetly longer type to access. It has lot more space. this type
+        of memory is suitale for storing bigger amounts of data or data which changes very frequently.
+        this because of stack and heap which dicates kind of behaviour, that happens when we  copy values..
+
+
+Stack memory-Stack is stack of data in your memory(see figure 2)
+    1)Stack memory can be accesses really quick
+    2)It is very limited
+    lets say we alareday have some data in stack. ten create variable firstName. so we store this variable somewhere
+    in memory, not somewehere actually, we store it in top of stack. figure 2. we know that this variable is accesisng
+    this part of stack.we cerate new variable fullNamde, then a new entry is pushed to top of stack.
+    now we know that this variable is refering to top most entry of stack now. this is how data is managed in stack,we
+    have different Data Pieces and our variables know which positions of stack they refer to. Stack is limited in sapce, 
+    therefore is perfect for primitive values which do not take much space.(Figure 2) 
+
+Heap Memory - 
+    1)Heap takes relativetly longer type to access
+    2)It has lot more space
+    3)this type of memory is suitale for storing bigger amounts of data or data which changes very frequently
+    It is not managed like stack i.e elemenst are stored on top of each other. it is managed randormly. therefore
+    each element has its address.and we still have stack ofcourse, its not either or soltuion. we have diffrent 
+    types of memory whch are able to work togather as you will. when we carte a anew object follwoing happens
+    (figure 3).
+
+    a element is created in heap which stores the actual object, but we have a pointer on the stack which store the
+    refrence, the adress of this object in a heap. and variable simply holds the pointer. the variable does'nt know 
+    the address of the place in memeory where our object is stored. that is difference to previous appraoch. 
+    but variable knows where the pointer lies on the stack.it knows the psotiton of pointer on stack, and pointer
+    simply stores the adress of object in the heap.
+    now we create new object employee2 and store employee1 as value.this creates a new pointer (figure 4) in the stack
+    and that pointer points to same position in heap memory as the first pointer did. 
+    
+    so unlike previous exmaples where we managed primitive types on stack, if we assign the value to new variable,
+    the actual value, the object here is not copied. object still is same, it's only one place in memory but we do
+    get a new pointer, pointing to same place. so these are 2 different pointers stored in 2 variables, but pointing
+    to same value.
+
+    so unlike primitive type, here
+    object is not copied, it is still in same place in memory.

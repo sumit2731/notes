@@ -1,0 +1,20 @@
+Container Components-
+    1)These components know how to retrieve data from the service layer. 
+    2)Note that the top-level component of a route is usually a Container Component, and that is why this type of 
+        components where originally named like that
+
+Presentational Components -
+    1)these components simply take data as input and know how to display it on the screen.
+    2)They also can emit custom events
+    3)This component does not have dependencies with the service layer of the application, instead, it receives its
+        data via inputs.
+
+
+Disadvantages of not using this approach-
+    1)It looks like we are passing inputs like firstName over the local component tree, in order for leaf components like 
+        the newsletter component to use them. But the intermediate components themselves are not using the inputs, they 
+        are just passing them to their child components.
+    
+    2)more importantly: if we are using third-party widget libraries and we use some of those components as intermediate 
+        components, we might have trouble passing all the necessary data through the component tree, depending on how the 
+        libraries are designed.

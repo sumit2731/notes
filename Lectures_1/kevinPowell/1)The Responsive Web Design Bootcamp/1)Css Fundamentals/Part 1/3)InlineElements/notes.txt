@@ -1,0 +1,6 @@
+span is very useful inline elements.
+
+    1)we use it to style text. but it has no default styling and semantic meaning. so span tag does not add any 
+        value or meaning. it just used to change how something looks like.
+    2)Span by itself is little useless, normally we use a class on them to make it easy to target with css.
+    3) In code we use it to chnage color of text.

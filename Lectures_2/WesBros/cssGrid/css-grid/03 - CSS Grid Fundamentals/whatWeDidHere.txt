@@ -1,0 +1,67 @@
+Columns and rows inside grid are collectively called as tracks. here we saw that how we can
+dice up grid into rows and columns using properties grid-template-columns and grid-template-rows.
+
+If a column has fixed width and content size is greater than column size then item will flow out
+from column into surrouding columns or even outisde the container, but it will be below surrounding 
+elements(z-index wise). if columns has width and container is not having some width then width of container 
+will be adjusted in order to accomodate column(inlibe-grid).but if columns has fixed width, and container is
+small then columns will move outside the cotianer.
+
+If we have not defined columns then by default we will have 1 column. first item will be there in that column.
+ second item will be moved to second row. width of that column will be equlal to width of container, if container
+ has fixed width. if container has no fixed width then width of container will depend upon item.we can change this behaviour
+ and make width of column just equal to width of content. see txt file of lecture 17(point 2)
+
+Same behviour is for height, if we have'nt defined any rows, then height of items will be such that they cover
+ the full height of container, if container has fixed width. if container has no fixed height, then its
+ height will depend upon height of items.again this behaviour can be changed as explained above see notes
+ of lecture 17.
+
+Here we saw that we can give track size in px,%,rem,auto and fr. In case of auto, The size of the columns 
+is determined by the size of the container and on the size of the content of the items in the column.
+
+What it means is, lets say we have 3 columns- 100px, auto,auto.Then first 100px will be allocated to
+    column1, then column2 and column3 will have width according to their content and width of container. 
+    lets say width of content in column2 and 3 is 200px and 300px. so these columns will have these width, plus 
+    remaining width will be equally distributed to both of them.so total width will be
+        1)Second column- 200px plus remaning width divided by 2
+        2)Third column- 300px plus remaning Width divided by 2. 
+    lets say width of container will be 1000px, so remaining space will be 1000-100(column1)-200(column2)-300(column3)
+    = 400.width of column2 = 200 + (400/2) = 400 and width of column3= 300 + (400/2) = 500. but point to be noted is that
+    min width of column2 and 3 will be 100px and 300px.if container dnt have enough width, columns will move out 
+    from container,if screen width is not enough, we will have scroll bar.
+
+Also sometimes we do not give width to grid-items,but we have text inside of them in that case, width will be 
+    equal to width of text.lets say column 2 has some long txt then, then before having extra space, column 2 will
+    have width to accomodate this text in single line(this is how auto works). even if text has some spaces.
+    first preference will be to acomodate that text in single line.(THis preference is main difference between auto 
+    and fr units. see in folder 7 how fr units behaves in case we have text with spaces.later in this file, see how 
+    combination of fr and auto behaves in case of text with spaces). but if text do not have spaces then there is no 
+    choice,column needs to have that much minimum width which allows coninous text into single line, even if it leads 
+    to columns moving outside container. if we do not have enough space on screen then we will have scroll bar.
+
+    lets say insted of text we some inline-block elements inside grid-item, now these will be treated as text.
+    that is each item will be treated as text without spaces.This concept of treating each item as word in not specific to
+    auto.it is generalized.In fr also same concept is applied.
+
+lets say after allocating free space to all other columns reaming space is not enough that text inside
+column with auto can be accomodated, in that case non continues text will be moved to next line to prevent
+content to breakout from container.but continues text will remain as it is, our item will break out from
+container if space is not enough.if screen is not enough, then we will have scroll bar.
+
+Combination of auto and fr-
+    1)Let's say columns are - 1fr auto auto. 2nd and third columns has grid items with width 100 and 200px.
+     2nd and 3rd column will have width of 100px and 200px, rest all space will be allocated to column 1.so 
+     here auto will not have any free space as all free space has been allocated to fr, so nothing is left for 
+     auto. but now cosider this case.
+
+    2)Lets say we have 3 columns - 1fr auto auto. now lets say 1st and 2nd columns has very large text with spaces.
+     lets say text is same in both columns.3rd column has some small text without spaces. now width of second column
+      will be such that all text(with spaces appear) in single line. 3rd column will have width to accomodate its text. 
+      now first columns that has length in fr, it will width that is left after allocating  all other width.so its text
+      will appear in multiple lines, this is how fr units treats texts with spaces. so see how auto and fr units treats 
+      large text with spaces differently.
+
+    3)Now lets say width of columns are - 500px auto auto. now 2nd columns will move its large text with spaces to
+     multiple rows, if space is not enough.if text do not have space, then columns needs to have some minimum width
+     and columns will move out from container.

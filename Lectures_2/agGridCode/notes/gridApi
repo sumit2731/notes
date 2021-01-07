@@ -1,0 +1,33 @@
+Columns-
+1)sizeColumnsToFit() - Gets columns to adjust in size to fit the grid horizontally. if you want
+    specific column to remain untouched by his use - suppressSizeToFit: true in colDefination.
+    note that ratio of columns size is maintained, which means all columns are not of same size
+    after calling this.
+2)setColumnDefs(colDefs) -Call to set new column definitions into the grid. 
+    The grid will redraw all the column headers, and then redraw all of the rows.
+
+Sort & Filter
+
+1)isQuickFilterPresent()-	Returns true if the quick filter is set, otherwise false.
+2)isColumnFilterPresent()-	Returns true if any column filter is set, otherwise false.
+3)isAnyFilterPresent()-	Returns true if any filter is set. This includes quick filter, advanced filter or external filter.
+4)getFilterInstance(col)- used like this- this.gridApi.getFilterInstance('athlete'), Returns the filter component instance
+ for the column. Either provide the colDef (matches on object reference) or the column field attribute (matches on string 
+ comparison). Matching by field is normal. Matching by colDef is useful when field is missing or not unique.
+5)getFilterModel()-	Gets the current state of all the advanced filters. Used for saving filter state.
+    age:
+        filter: 23
+        filterTo: null
+        filterType: "number"
+        type: "equals"
+
+    athlete:
+        filter: "phelps"
+        filterType: "text"
+        type: "contains"
+
+6)setFilterModel(model)-Sets the state of all the advanced filters. Provide it with what you get from getFilterModel() 
+    to restore filter state.
+7)onFilterChanged() -	Informs the grid that a filter has changed. This is typically called after a filter change through
+ one of the filter APIs.lets say we have set the filter model by api. then we need to call this to do filtering.
+8)destroyFilter(columnsId) -Destroys a filter, useful to create get a particular filter created from scratch again.

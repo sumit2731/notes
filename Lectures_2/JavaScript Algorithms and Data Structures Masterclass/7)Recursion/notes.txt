@@ -1,0 +1,10 @@
+Reccursion is used in-
+    1)JSON.parse and JSON.stringify
+    2)DOM transversal
+    3)Object Transversal
+    4) to transverse advance data structure likes trees and graphs
+    5)It's sometimes a cleaner alternative to iteration
+
+2 Things to do in reccursion -
+    1)Calling fucntion again with diffrent argument
+    2)Breaking Condition

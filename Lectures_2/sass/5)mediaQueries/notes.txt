@@ -1,0 +1,55 @@
+1)In scss we can use nesting, so we can have nested media queries in scss. like this-
+
+    scss-
+
+        #main {
+            width: $content-width;
+            
+            @media only screen and (max-width: 960px) {
+                width: auto;
+                max-width: 960px;
+            }
+            
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    css - 
+
+        @media only screen and (max-width: 960px) {
+            #main {
+                width: auto;
+                max-width: 960px;
+            }
+        }
+
+2)we can combine media queries and mixins-
+ 
+    @mixin large-screens() {
+        @media only screen and (max-with:960px) {
+            @content;
+        }
+    }
+
+    we can use it like this -
+    
+    #main {
+        width: $content-width;
+
+        // @media only screen and (max-width: 960px) {
+        //   width: auto;
+        //   max-width: 960px;
+        // }
+        
+        @include large-screens {
+            width: auto;
+            max-width: 960;
+        }
+  
+     }
+
+    now we can change size(960px) at one place and it will reflect all over place.
+
+
+
+    

@@ -1,0 +1,45 @@
+1)Object fucntion-
+    
+    a)assign(to copy properties)
+    
+    c)is(behaves same as === bt can compare nan and -0& +0)
+    
+    d)https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+    
+    e)Object.getOwnPropertyDescriptor(obj, propertyName)
+        The returned value is a so-called “property descriptor” object-
+            {
+                "value": "John",
+                "writable": true,
+                "enumerable": true,
+                "configurable": true
+            }
+    
+    f)Object.defineProperty(obj, propertyName, descriptor)
+
+    g) Object.defineProperties(obj, descriptors)
+        
+        Object.defineProperties(obj, {
+            prop1: descriptor1,
+            prop2: descriptor2
+            // ...
+        });
+
+    h)Object.preventExtensions(obj1)
+        It prevents new properties from ever being added to an object but existing proeprties can be deleted.
+        and new proeprties can de added to prototype of object.This method makes the [[prototype]] of the target 
+        immutable; any [[prototype]] re-assignment will throw a TypeError. 
+
+    I)Object.seal(obj1)
+        The Object.seal() method seals an object, preventing new properties from being added to it and marking all
+            existing properties as non-configurable. Values of present properties can still be changed as long as they
+            are writable. but it does not prevent the values of data properties from being changed.Attempting to delete
+            or add properties to a sealed object, or to convert a data property to accessor or vice versa, will fail, either
+            silently or by throwing a TypeError.The prototype chain remains untouched. However, the __proto__ property is 
+            sealed as well.
+
+    j)Object.freeze(obj2)
+        freezes an object. A frozen object can no longer be changed; freezing an object prevents new properties from being
+            added to it, existing properties from being removed, prevents changing the enumerability, configurability, or 
+            writability of existing properties, and prevents the values of existing properties from being changed. In addition, 
+            freezing an object also prevents its prototype from being changed. freeze() returns the same object that was passed in.

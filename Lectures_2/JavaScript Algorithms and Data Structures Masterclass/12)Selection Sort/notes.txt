@@ -1,0 +1,13 @@
+Algorithm -
+    here we place smallest item in sorted position one at time. we are moving from begining
+    to end. but sorted data is accumulated from begining. we compare first value with every
+    other value in array and the we placed smallest in begining.so at the end of loop smallest element
+    is at begining. similarly we proceed till second last element.
+
+Time Coplexity - O(n*n)
+    i know in first loop loop we make n itemartions in second we make n-1. but that does'nt matter
+    in grand scheme of things we are still going with O(n*n).
+
+Excels at -
+    selection sort is better than bubble sort if you want to minimize the swaps that you are making. which is
+    not the case most of times.

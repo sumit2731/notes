@@ -1,0 +1,48 @@
+1)box-sizing(lecture 32)(non inheritable)
+content-box, border box
+2)dsiplay(lecture 32)
+block,inline,none,inline-block
+3)text-align(lecture 37)(important)
+left,right,center, justify,start,end
+4)text-decoration(lecture 39)inherited-yes
+underline,overline
+5)border-radius(lecture 45)
+circular and elipteracal radius
+6)box-shadow(lecture 60)
+inset 12px 12px 2px 1px rgba(0, 0, 255, .2)
+7)new method of defining color- rgba
+8)cursor(lecture 64)
+pointer
+9)outline(lecture 65)
+none
+10)margin:auto,(lecture 68, see question in notes) trick to center the element horizontally, vertically does not work
+margin-left:auto, see question of lecture 75 in notes
+
+11)float,clear(lecture 75, see notes, some strciles and videos on same)
+nowasays we use flexbox for the same. try to avoid for positioning elements.use it to have image around text.
+
+
+
+
+Important conepts
+1)to center text horiontally, you have 2 options-text-align: center and margin: 0 auto. when yo use which
+text-align- center(it is used to center inline-block, inline or text elements inisde block level element. so it is applied on block level element)
+margin:auto, used to center block level element, by giving it margin(but there are some specifications for it to work)
+for details see questions of lecture 68
+-https://www.udemy.com/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9474944#questions/5859524
+
+2)in lecture 73, we used some tags(block level) inside a tag. if we give padding to a it was not taking it(even 
+padding-left), it took padding when we set dipslay:block on a tag.see questions on note book 
+
+red - line boxes
+
+red-line height
+blue-baseline
+green- height of font
+
+
+Things to look into-
+
+
+vijaymathur@gmail.com
+comp12er

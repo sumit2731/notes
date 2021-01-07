@@ -1,0 +1,3 @@
+loadChildern
+forRoot,forChild
+loadingStrategy

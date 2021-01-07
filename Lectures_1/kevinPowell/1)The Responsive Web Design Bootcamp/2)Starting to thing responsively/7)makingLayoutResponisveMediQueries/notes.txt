@@ -1,0 +1,31 @@
+here we applied media query to chnage  flex-direction and width of cols. note that we have used media
+    query selector 2 times , like this-
+
+    @media (max-width: 600px) {
+        .columns {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .col-1, .col-2, .col-3 {
+            width: 100%;
+        }
+    }
+
+    one approach is to group these all under one selector and define them at end of stylesheet like this-
+
+        @media (max-width: 600px) {
+            
+            .columns {
+                flex-direction: column;
+            }
+
+            .col-1, .col-2, .col-3 {
+                width: 100%;
+            }
+        }
+
+    but kevins follows first approach, he defines a selector and just below that selecor kevin defines the media
+        query version of that selector. it help us to manage cod in better way. also there is a some test done on,
+        when you are repeating yourself a lot with media queries, how big is impact and it's really not that bad.

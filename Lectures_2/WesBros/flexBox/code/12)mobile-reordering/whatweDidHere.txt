@@ -1,0 +1,2 @@
+here we used the nav bar that we made in last lecture. we also had some other elements. main goal here was to
+reorder the things when we neter mobile, without chnaging the html.

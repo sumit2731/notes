@@ -1,0 +1,22 @@
+Now here we have buttons.they have font-size and padding. lets decreaase and increase their font size.
+    so in first row - left button has large font size, second one is normal one(which was before we changed
+    styles) and third one is smallest one. now you can see that for third one it lokks like padding is being 
+    too much. this is because padding on button remains same while we chnaged font size.so we have to adjust
+    padding also. this can be cumbersome now.
+
+There is one solution, i.e if you can give padding in em units. thing with em units is, if we use them in 
+    font-size, they refer to parent's font size. but if you mention them in any other property they refer 
+    to that element's font-size. in second row of buttons we do this thing. so when we change font size of
+    button, it's padding changes automatically.
+
+same is true for margins - 
+    
+    h1 {
+        font-size: 3rem;
+        margin-buttom: 1.5em;
+    }
+
+so we just need to chnage font-size, margin and padding will chnage automatically.
+
+we can also use percentages for setting font sizes but it will have same cascading effect as with em. so we dnt use
+    % for same reason we dnt em for setting up font size.so we will use % to set only width.

@@ -1,0 +1,2 @@
+#!/bin/sh
+ng build AngularPracticeCode --prod --output-hashing=none && cat dist/AngularPracticeCode/runtime.js dist/AngularPracticeCode/polyfills.js dist/AngularPracticeCode/scripts.js dist/AngularPracticeCode/main.js > preview/angularapp.js

@@ -1,0 +1,2 @@
+1)ng add ngx-build-plus
+2)ng build --prod --single-bundle

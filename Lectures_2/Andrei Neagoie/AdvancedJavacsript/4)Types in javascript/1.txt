@@ -1,0 +1,6 @@
+function a() {
+    return 5;
+}
+a.hi = 'h1';
+
+console.log(a.hi);

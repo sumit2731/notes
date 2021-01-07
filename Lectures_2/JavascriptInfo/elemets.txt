@@ -1,0 +1,39 @@
+1)tagName -gives tag name of element. it is always capital letter, like- BODY
+2)innerHtml - Gives everything inside tag. we can also
+    modify content.
+3)outerHtml - gives innerHtml + element itself. if we oevrwrite, it then we will replace
+ the whole element with new one. but js object is not updated. so if you make any
+ chnages in old object, it will not reflect in HTML.
+4)textContent- provides access to the text inside the element: only text, minus all <tags>.
+  Writing to textContent is much more useful, because it allows to write text the “safe way”.
+    
+    <div id="news">
+    <h1>Headline!</h1>
+    <p>Martians attack people!</p>
+    </div>
+
+    <script>
+    // Headline! Martians attack people!
+    alert(news.textContent);
+    </script>
+
+5)hidden - It is attribute and the DOM property specifies whether the element is visible or not.
+    so we can se it both as  a attribute as well as proeprty.Technically, hidden works the same
+    as style="display:none". But it’s shorter to write. so elemnt will remain in dom, but will
+    not be visible.it will not take any space
+
+    <div>Both divs below are hidden</div>
+
+    <div hidden>With the attribute "hidden"</div>
+
+    <div id="elem">JavaScript assigned the property "hidden"</div>
+
+    <script>
+    elem.hidden = true;
+    </script>
+6)value – the value for <input>, <select> and <textarea> (HTMLInputElement, HTMLSelectElement…).
+7)href – the “href” for <a href="..."> (HTMLAnchorElement).
+8)id – the value of “id” attribute, for all elements (HTMLElement).
+
+how to change color-
+1)link.style.color 

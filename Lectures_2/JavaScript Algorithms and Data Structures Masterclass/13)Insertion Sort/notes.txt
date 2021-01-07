@@ -1,0 +1,25 @@
+Insertion sort-
+    There are some things at which insertion sort is good at, so this is'nt one that is just good to know about.
+    it's not just a good challenge. there are situations where this algo does well.
+
+Algo-
+    Builds up the sort by gradually creating a larger half which is always sorted.instead of largest or
+    smallest element at a time,it takes each element and places it where, it should go in sorted half.
+
+    check figure(slide link- https://cs.slides.com/colt_steele/elementary-sorting-algorithms#/14). here green part 
+    is our sorted array.here we compare element which is to be placed with sorted array(green part). we compare it 
+    starting from last element of green array.
+
+
+Complexity -
+    Worst Case - O(n*n)
+
+Strength of Insertion Sort -
+    Insertion sort is good at is online algorithm which is an algorithm that can work as data is coming in, as it 
+    receives new data.it doesn't need to have entire array at once. like when peple can submit numbers online and
+    we want to sort them, with insertion sort because the way it works that we are keeping one side of array sorted
+    and we are inserting items one at a time, it does'nt matter what numbers  comes in, we can place it where it 
+    needs to go.
+
+    so because we keep one side of array sorted  and we insert things in appropriate place , it works well in 
+    situation where data is coming live or streaming and you need to insert it in moment's notice.

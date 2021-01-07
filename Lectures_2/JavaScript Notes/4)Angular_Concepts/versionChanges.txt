@@ -1,0 +1,32 @@
+Angular 4 -
+    
+    1)new ngIf 'as' syntax .
+    
+    2)runGuardsAndResolvers options. so there 3 options-
+        always,paramsChange and paramsOrQueryParamsChange
+        default option is paramsChange
+    
+    3)In some version we were able to provide object literal syntax for specifying the providers. link-
+        https://blog.thoughtram.io/angular/2016/05/13/angular-2-providers-using-map-literals.html
+
+3)Angular 5 -
+    1)Since version 5.0.0, ReflectiveInjector has been deprecated in favour of StaticInjector to not depend on 
+        reflection to get hold of dependencies
+
+4)Agular 6 -
+    a)Many of the improvements in Angular 6 were to Angular CLI. The one I have really been looking forward to is the integration
+     of Angular CLI with ng-packagr to generate and build Angular libraries. ng-packagr is a fantastic tool created by David 
+     Herges that transpiles your library to the Angular Package Format.
+
+    b)Angular CLI configuration file angular-cli.json has been replaced with angular.json.now we can see project property
+        in anglar.json, it means we can multiple projects under same workspace.
+
+
+4)Angular 7 -
+    1)CanLoad is newly introduced in Angular-7.
+    2)Angular v7 introduced a couple of new options to the runGuardsAndResolvers - 
+        pathParamsChange, pathParamsOrQueryParamsChange and it’s now even possible to pass a function to the 
+            runGuardsAndResolvers that will be invoked by the framework, passing the current and future 
+            ActivatedRouteSnapshot. That gives you full flexibility to inspect the current router state and decide 
+            accordingly.
+    3)We can pass state while doing navigation, and thenw ecan acess it in window.history.state 

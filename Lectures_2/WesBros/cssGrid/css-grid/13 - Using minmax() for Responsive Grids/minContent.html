@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Using minmax() for Responsive Grids!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box box-1">
+          <img src="https://hongkiat.github.io/demo-img/codepen/beach.png" alt="Beach">
+        </div>
+        <div class="box box-2">2.</div>
+        <div class="box box-3">3.</div>
+        <div class="box box-4">4.</div>
+        <div class="box box-5">5.</div>
+        <div class="box box-6">6.</div>
+        <div class="box box-7">7.</div>
+        <div class="box box-8">8.</div>
+        <div class="box box-9">9.</div>
+    </div>
+
+    <style>
+     * {
+  box-sizing: border-box;
+}
+.container {
+  display: grid;
+  grid-template-columns: minmax(auto , auto) 200px 200px;
+  grid-template-columns: minmax(min-content , max-content) 200px 200px;
+  grid-gap: 10px;
+  padding: 25px;
+}
+img {
+  max-width: 100%; /* for image responsivity */
+}
+.box {
+  font-family: sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  line-height: 2;
+  padding: 20px;
+}
+.box-1 {
+  background-color: limegreen;
+  padding: 0;
+}
+.box-2 {
+  background-color: crimson;
+}
+.box-3 {
+  background-color: cornflowerblue;
+}
+.box-4 {
+  background-color: orange;
+}
+.box-5 {
+  background-color: mediumseagreen;
+}
+.box-6 {
+  background-color: hotpink;
+}
+.box-7 {
+  background-color: orchid;
+}
+.box-8 {
+  background-color: indianred;
+}
+.box-9 {
+  background-color: darkturquoise;
+}
+
+    </style>
+</body>
+
+</html>

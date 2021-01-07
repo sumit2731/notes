@@ -1,0 +1,23 @@
+1)testing Presentational Component
+    here we started with presentational component testing. presentational
+    components simply take some input data and just show it on screen. courses-card-list.component
+    is such kind of componenet.generally we follow not to test these kind of components and chose
+    to test complex components.
+    but here we will test them, because of 2 reaons-
+        1)sometimes you have to test them because of test coverage requirements
+        2)we will show how angular unit testing can validate the content of DOM if needed.
+
+    As you can see courses-card-list.component does'nt need any services to get data, it receives data as
+    parameters. It uses a service just to open dialog box when user clicks on edit.see spec file of it to
+    see how we can test these type of components.here we test courses-card-list.component which is presentational
+    type of component.
+
+2)Testing smart or container component
+    these types of components genrally get their data from observable based service and not froma @input.
+    HomeCompoent is such tpe of component. it gets it data from courses service which we have tested before.
+    In this section we try to test home component but we run into a problem. that problem is solved in scetion 4.
+
+
+Doubts -
+1)diffrence betwwen component isntace and component refrence
+2)hostViw vs embedd view

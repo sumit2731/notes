@@ -1,0 +1,52 @@
+both stack and queue are abstract data structure. Only rule for stack is-
+    
+    Stack-
+
+        stack is collection of data an dit needs to abide by this rule- LIFO(last in first out).
+        stack can be implemented in various ways. we will see that. uses of stacks-
+
+         1)see figure 2
+         2)In this course we will use stacks in our own algorithms, when we get to tree and graphs,
+            we will use stack and queue to history of things, things that we want to come back to.
+
+        You can implement stack without writing any new code. we dnt have to create our own data
+        structure.There's more than way to implement a stack. It's a abstract concept. we will start
+        by using built in arrays to implement stack. Then we will do a more offical linked list 
+        implementation where we write some code.
+
+    Array Implemetation of stack-
+
+        Stack is just a concept that says that,ok you need to be able to store data in such a way
+        that the last thing added in , is the first thing removed.
+
+        we saw that we can implement stack on arrays either by uisng (push and pop) or (shift and unshift).
+        but we know unshift and shift operation have complexity of O(n), so we will use push or pop.
+        frankly speaking if you want efficienty then arrays should'nt be used to implement stacks. if
+        we have ton of data in there and all you ned is this last in ,first out capability. we should
+        use our second implementation , where we use linke list. there is no need to maintain indexs,
+        if we dnt access data using indexes.
+
+
+    Linked List Implemetation-
+
+        This one is efficient. laster in course sometimes we will use array implementation of stack. that does not 
+        mean array implementation is better. we are just trying to save time there. but as this is section dedicated
+        to stacks and queue, here we will use linked list implementation.
+
+        When we implemented linked list we had diffrent methods, you can say lets remove other methods and leave
+        push and pop. it will work but in stack push and pop are supposed to have O(1). but in singly link list
+        pop had O(1). so what we can do is we can do shift and unshift. this is were Singly List has O(1).
+
+        if we use doubly,linked list then we can also use push and pop.
+
+
+        Big O of stacks-
+
+            Insertion - O(1)
+            Removal - O(1)
+            Searching - O(N)
+            Access - O(N)
+
+            Pushing and popping should be constant in stack, that is one thing that you need to keep in mind while
+            implementing the stack. Searching and acces(using index or position)s is not important at all. if it 
+            is then you should use some other data structure,like array which will give you faster access.

@@ -1,0 +1,21 @@
+:host {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10%;
+    //width: 40%;
+    //height: 200px;
+    padding: 10px;
+}
+
+
+
+.header-container {
+    display: grid;
+    grid-template-columns: 100px 1fr 10px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+

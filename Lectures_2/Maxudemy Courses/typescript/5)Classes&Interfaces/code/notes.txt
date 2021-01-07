@@ -1,0 +1,27 @@
+what we learnt-
+
+1)class syntax
+1)Access Modifiers - public, private and protected
+2)readonly properties
+3)inheritance- we han inherit from only 1 class and it is mandatory to call constructor of parent class
+4)Accessors - getters and setters
+5)staticproperties and methods
+6)absctract methods and abstract class. abstract method cannot have definantion
+7)singletonAndPrivateConstructors
+8)interfaces - 
+    a)can be used as type
+    b)class can implemente it. 
+    c)when to use interface
+    d)inheritance in interfaces
+    e)interface as replacement of function type
+    d)optional properties and functions in interface
+
+9)optional proeprties in interface & class, optional parameters in functions 
+
+
+
+
+
+Decorators -
+
+https://www.logicbig.com/tutorials/misc/typescript/accessor-decorators.html

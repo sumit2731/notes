@@ -1,0 +1,29 @@
+1)emmet
+   
+2)live server - right click -> open with live server
+
+3)CSS Peek
+    Peek: load the css file inline and make quick edits right there. (Ctrl+Shift+F12)
+    Go To: jump directly to the css file or open it in a new editor (F12)
+    Hover: show the definition in a hover over the symbol (Ctrl+hover)  
+
+4)Bracket Pair Colorizer 2
+
+5)prettier now
+
+6)JSON 2 TS-
+    a)copy json, press - ctrl+alt+v
+
+7)angular switcher -
+    html- ctrl + o
+    css - ctrl + i
+    ts - ctrl + u
+
+8)Numbered Bookmarks-
+    1)To mark a line with bookmark - ctrl + shift + #
+    2)Jump to Bookmark - Ctrl + #
+     ctrl+shift+p , search-> numbered-
+    3)numbered bookmarks - Numbered Bookmarks:List(list of all bookmarks)
+    4)numbered bookmarks clr - Numbered Bookmarks:Clear(Clears all Bookmarls from page)
+    5)Numbered Bookmarks:Clear from All Files
+    6)Numbered Bookmarks:List from All Files

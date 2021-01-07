@@ -1,0 +1,2 @@
+1)forRoot
+2)about where components that are loaded through routing should be defined

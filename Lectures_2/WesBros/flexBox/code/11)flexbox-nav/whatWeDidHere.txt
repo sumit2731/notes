@@ -1,0 +1,2 @@
+here we build a simple navigation using flexbox. gola was to teach, how to build layouts
+using flexbox. then we chnaged the items by using flex properties for diffrent screen resolution

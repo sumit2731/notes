@@ -1,0 +1,19 @@
+<div class="header-container">
+    <h1 class="heading">Games Arena</h1>
+</div>
+
+<div class="input-container">
+    <input type="text" [(ngModel)]="gameName" class="filter-input">
+    
+    <ng-container [ngSwitch]="sortByScore" class="sort-container">
+        <button *ngSwitchCase="false" (click)="sortByScore = true">Sort by Score</button>
+        <button *ngSwitchCase="true" (click)="sortByScore = false">Remove Sort</button>
+    </ng-container>
+
+</div>
+
+<div class="games-container" *ngIf="(games$ |async) as games">
+    <ng-container *ngFor="let game of games | filter : 'title' : gameName | sort : 'score' :sortByScore">
+        <app-game [game]="game"></app-game>
+    </ng-container>
+</div>

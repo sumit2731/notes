@@ -1,0 +1,31 @@
+1) { provide: Engine, useClass: OtherEngine }
+
+    This is super powerful, because this allows us not only to prevent name collisions, we can also create a type as 
+     interface and bind it to a concrete implementation.In addition to that, we can swap out the actual dependency for
+     a token in a single place without touching any other code.
+
+2)Providing values
+    { provide: 'some value', useValue: 'Hello World' }
+
+3)Providing aliases  
+
+    { provide: Engine, useClass: Engine }
+    { provide: V8, useExisting: Engine }
+
+4)Providing factories 
+
+    { provide: Engine, useFactory: () => {
+                if (IS_V8) {
+                return new V8Engine();
+                } else {
+                return new V6Engine();
+                }
+            }
+    }
+
+5)Factories with dependencies-
+    { provide: Engine, useFactory: (car, engine) => {
+
+        },
+    deps: [Car, Engine]
+    }

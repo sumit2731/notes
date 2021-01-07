@@ -1,0 +1,134 @@
+1)Creating Elements-
+    1)document.createElement('div');
+    2)document.createTextNode('Here I am');
+    3)elem.cloneNode(deep) – clones the element, if deep==true then with all descendants.
+----------------------------------------------------------------------------
+
+2)Adding content-
+    1)div.className = "alert";
+    2)div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+-------------------------------------------------------------------------------
+3)method to attach elements-
+    1)document.body.append(div);
+
+    1)node.append(...nodes or strings) – append nodes or strings at the end of node,
+    2)node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+    3)node.before(...nodes or strings) –- insert nodes or strings before node,
+    4)node.after(...nodes or strings) –- insert nodes or strings after node,
+    5)node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+    6)parentElem.insertBefore(node, nextSibling) - Inserts node before nextSibling into parentElem(older api , do not use it)
+    notes about these methods- 
+
+        1)text is not inserted as html. it means-
+ 
+            node.append('<h1>THis is h1</h1>');
+            it will not html element, it will add simple string.In other words, strings are inserted in
+            a safe way, like elem.textContent does it.
+
+        2)These methods can insert multiple lists of nodes and text pieces in a single call.
+
+            <div id="div"></div>
+            <script>
+            div.before('<p>Hello</p>', document.createElement('hr'));
+            </script>
+
+But what if we want to insert HTML “as html”, with all tags and stuff working, like elem.innerHTML?
+--------------------------------------------------
+4)methids to attach  text as html-
+    elem.insertAdjacentHTML(where, html), = inserts text as html. where can have following values-
+
+        The first parameter is a code word, specifying where to insert relative to elem. 
+        Must be one of the following:
+
+        "beforebegin" – insert html immediately before elem,
+        "afterbegin" – insert html into elem, at the beginning,
+        "beforeend" – insert html into elem, at the end,
+        "afterend" – insert html immediately after elem.
+        The second parameter is an HTML string, that is inserted “as HTML”.
+
+    The method has two brothers:
+
+    elem.insertAdjacentText(where, text) – the same syntax, but a string of text is inserted “as text” instead of HTML.
+    elem.insertAdjacentElement(where, elem) – the same syntax, but inserts an element.
+
+    These 2 brothers are used rarely because we have methods mentioned in point 3 to do these things
+
+----------------------------------------------------------------------------------------
+
+5)Node Removal-
+    node.remove()
+    Please Note: if we want to move an element to another place – there’s no need to remove it from the old one.
+    All insertion methods automatically remove the node from the old place. for ex-
+
+        <div id="first">First</div>
+        <div id="second">Second</div>
+        <script>
+        // no need to call remove
+        second.after(first); // take #second and after it insert #first
+        </script>
+
+6)Cloning Nodes-
+
+    How to insert one more similar message?
+    We could make a function and put the code there. But the alternative way would be to clone the existing 
+    div and modify the text inside it (if needed).Sometimes when we have a big element, that may be faster 
+    and simpler.
+
+    The call elem.cloneNode(true) creates a “deep” clone of the element – with all attributes and subelements. 
+    If we call elem.cloneNode(false), then the clone is made without child elements.
+
+7)Document Fragment
+    DocumentFragment is a special DOM node that serves as a wrapper to pass around lists of nodes.
+    We can append other nodes to it, but when we insert it somewhere, then its content is 
+    inserted instead. code-
+
+        <ul id="ul"></ul>
+
+        <script>
+        function getListContent() {
+        let fragment = new DocumentFragment(); // or document.createDocumentFragment();
+
+        for(let i=1; i<=3; i++) {
+            let li = document.createElement('li');
+            li.append(i);
+            fragment.append(li);
+        }
+
+        return fragment;
+        }
+
+        ul.append(getListContent()); // (*)
+        </script>
+
+    DocumentFragment is rarely used explicitly. Why append to a special kind of node, if we can 
+    return an array of nodes instead? Rewritten example:
+
+        function getListContent() {
+        let result = [];
+
+        for(let i=1; i<=3; i++) {
+            let li = document.createElement('li');
+            li.append(i);
+            result.push(li);
+        }
+
+        return result;
+        }
+
+        ul.append(...getListContent()); // append + "..." operator = friends!
+
+    We mention DocumentFragment mainly because there are some concepts on top of it, like 
+    template element, that we’ll cover much later.
+----------------------------------------------------------------------------------
+
+8)document.write
+    check this link- https://javascript.info/modifying-document#a-word-about-document-write
+
+
+
+
+6)adding Classes-
+    1)Add single Class-
+        div.className = "alert";
+        if we use this method , then it will overwrite all existing classes. now our element has only one classe
+        alert.

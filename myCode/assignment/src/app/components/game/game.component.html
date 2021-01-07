@@ -1,0 +1,25 @@
+<div class="games-Container">
+    <div class="header-container">
+        
+        <div class=" image-container">
+        
+        </div>
+        
+        <div class="title-container">
+            <h1>{{game.title}}</h1>
+            <p>{{game.platform}}</p>
+        </div>
+        
+        <div class="editor_choice-container" *ngIf="game.editors_choice == 'Y'">
+            <p>*</p>
+        </div>
+    
+    </div>
+
+    <hr>
+
+    <div class="footer-container">
+        <span>Genre: {{game.genre}}</span>
+        <span>{{game.score}}</span>
+    </div>
+</div>

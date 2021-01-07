@@ -1,0 +1,19 @@
+Module Resolution in node-
+
+    1)Relative paths-
+        file located at /root/src/moduleA.js
+
+        var x = require("./moduleB");
+
+
+        Resolution -
+            a) /root/src/moduleB.js
+            b) /root/src/moduleB if it contains a file named package.json that specifies a "main" module.
+                { "main": "lib/mainModule.js" }, then Node.js will refer to /root/src/moduleB/lib/mainModule.js.
+
+            c)/root/src/moduleB if it contains a file named index.js. That file is implicitly considered that folder’s
+                “main” module.
+
+    2)Absolute Paths-
+
+        

@@ -1,0 +1,27 @@
+1)gird-areas(areas-FINISHED.html)-
+    in lectures 9, 10 we saw how we can size and place our grid items.there are other ways
+    in which we can size and span our items, this by using grid templates areas.
+    it is giving spefic names to areas on your grid.
+
+Properties used -
+  1)Grid-properties-
+    a)grid-template-areas
+  2)grid-items-property-
+    a)grid-area
+
+Using grid-area property we can place our item inside the grid. But actually grid area is shorthand for these proeprties-
+    grid-column-start, grid-columns-end, grid-row-start, grid-row-end
+    all these propeties have value that we have given to grid-area.
+You can expnad grid-area in dev tools and see. here thing to be noted is when we create a grid area,
+all lines surrouding that area are named of same name as grid.
+    
+
+2)lines names with grid areas(area-line-names-FINISHED.html)-
+    when we create grid areas, we get lines names for free. that is something we already discuused in point 1.
+    Here we saw that how we can specifically mention start and end lines of grid. we did this-
+      grid-column: poop-start / poop-end;
+    in code we crated a grid, just by defining grid-area ,without defining any columns or rows.then we assigned
+    whole gird area to item 3. rest items occupy rest grid. but we run out of space, then
+    implicit grid is created. then we saw how can we use start and end lines of area to
+    position our items. here we saw that we specifically mention start and end lines of area.
+    it means you dnt always have to use line numbers for positioning,you can use areas for positioning.

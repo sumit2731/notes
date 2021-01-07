@@ -1,0 +1,80 @@
+Important Properties of Event Object-
+
+1)Event.bubbles(Read only) - A boolean indicating whether or not the event bubbles up through the DOM.There are two types of 
+    events, one propagates up the DOM hierarchy, the other does not. For example the onclick event bubbles up the 
+    DOM hierarchy, the onfocus event does not.Therefore the bubbles property returns true in case of the onclick 
+    event and returns false when an onfocus event happened.
+
+2)Event.cancelBubble -When an event can bubble up(you can check that by bubles proeprty), you can stop its propagation with 
+    the cancelBubble property or the stopPropagation method. Use the stopPropagation method in Firefox, Opera, Google Chrome
+     and Safari, because the cancelBubble property is deprecated in those browsers. Internet Explorer also supports the 
+     stopPropagation method from version 9. In Internet Explorer before version 9, use the cancelBubble property, because 
+     the stopPropagation method is not supported.With the cancelBubble property, you cannot allow the propagation of events
+      that cannot bubble up, you can only prevent the propagation of events that can. Note that the use of the stopPropagation 
+      method or the cancelBubble property on an event that cannot propagate does not cause an error.
+
+3)Event.cancelable(Read only) - Returns a Boolean value that indicates whether the current event can be canceled or not.
+    If an event is cancelable, you can use the preventDefault method and the returnValue property to cancel the event. 
+    When an event is canceled, the default action that belongs to the event will not be executed. For example, when the 
+    onclick event (the onclick event is cancelable) is canceled for a checkbox, then clicking on the checkbox does not 
+    change its checked state.
+
+    Note that the use of the preventDefault method and the returnValue property on a non-cancelable event does not cause 
+    an error. When an event handler returns false, the event will be canceled. You can use it instead of the preventDefault 
+    method and the returnValue property.
+
+Link(good one) -
+    http://help.dottoro.com/ljtdqwlx.php
+
+    Element Related Properties - currentTarget,explicitOriginalTarget,originalTarget,fromElement property,toElement
+        relatedTarget
+
+    Event information properties - bubbles, cancelable,cancelBubble, eventPhase, isTrusted
+
+
+
+THings to be covered -
+    1)EventTarget.dispatchEvent()
+    2)Event.createEvent()
+    3)Event.composedPath()
+    4)Event.initEvent()
+
+    5)examples of  1st lectre of javascriptinfo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Doubts-
+
+1) An event is a signal that something has happened. All DOM nodes generate such signals (but events are not 
+        limited to DOM).
+
+    question - what is node?
+
+2)element.addEventListener(event, handler, [options]);
+
+    options argument.

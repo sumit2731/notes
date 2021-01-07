@@ -1,0 +1,50 @@
+Cold Observable-
+    a)Producer is created by observable itself
+    b)Data is created from within Observable itself
+    c)There truly is not data being produced until the observable is subscribed to.
+    d)When a cold observable has multiple subscribers, the whole data stream is re-emitted
+        for each subscriber. Each subscriber becomes independent and gets its own stream of 
+        data.
+    e)observables created using the of, from, range, interval and timer operators will be cold
+    f)unicast
+
+Hot Observables-
+    a)Their data producer is outside the observable itself,These observables are closing over external data producers
+    b)observables created with the fromEvent operator for either user events (clicks, mouse moves,…) or WebSocket 
+        events are hot observables
+    c)The data is being produced regardless of if there’s a subscriber or not.If there’s no subscriber when the data is 
+        being produced, the data is simply lost.
+
+Hot vs Cold Observables-
+
+
+1)Cold Observable- 
+    An observable is “cold” if its underlying producer is created and 
+        activated during subscription. This means, that if observables are functions, 
+        then the producer is created and activated by calling that function.
+
+    a)creates the producer
+    b)activates the producer
+    c)starts listening to the producer
+    d)unicast
+
+
+2)Hot Observable- 
+    An observable is “hot” if its underlying producer is either created or activated outside of 
+        subscription.
+
+    a)shares a reference to a producer
+    b)starts listening to the producer
+    c)multicast (usually²)
+
+
+Artcles-
+1)ben lash(Hot vs Cold Observables) - https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339
+2)subject - https://medium.com/@benlesh/on-the-subject-of-subjects-in-rxjs-2b08b7198b93
+
+
+To be read -
+https://ncjamieson.com/understanding-publish-and-share/
+https://ncjamieson.com/calling-publish-with-a-selector/
+https://ncjamieson.com/multicasts-secret/
+https://itnext.io/the-magic-of-rxjs-sharing-operators-and-their-differences-3a03d699d255

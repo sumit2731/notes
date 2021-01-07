@@ -1,0 +1,56 @@
+Intro-
+
+    Here we will see how we can trnaverse any tyoe of tree.THis is classical computer promlem, there are many ways of 
+        doing it. here we will focus on 4 very commonly used approaches. In this section we will take advantage of reccursion
+        more than any section. 2 main approaches are -
+            
+            a)Breadth-First(Figure 1)
+            b)Depth- First(there are 3 main orders for depth first serach). these are-
+                1)In Order(Figure 2)
+                2)Pre Order(Figure 3)
+                3)Post Order(Figure 4)
+
+    it really depends on what you're trying to do and I'll have a video where I address that.There are certain situations where 
+    you might want to use one versus the other. we talk about this in last section, once you know about all of them.
+    we might be working with a tree that is super super deep and narrow or something it's really wide.
+
+    And so these different approaches these different strategies actually have an impact depending on what the tree looks like,
+    how the data is distributed.
+
+
+Big o-
+    BFS -
+        Time Complexity - O(n) As each Node is visisted once
+        Space Compexity - O(K), where in worst case , k can be eqaul to n
+    Pre Order-
+        Recursive -
+            Time Compelxity - O(n) As we visit Each Node exactly Once
+            Space Complexity - O(1)
+        Iterative -
+            Time Compelxity - O(n) As we visit Each Node exactly Once
+            Space Complexity - O(h), h is height of binary tree. in worst, height can be O(n)
+
+When to which one(see lectuer)-
+
+    BFS vs DFS- It depends upon tree. Time complexity is same in both because we are visiting each node exactly once.
+        so comparing them by time compelxity is irrelevent.
+    
+    If you have a tree that is fully fleshed out like this tree(figure 6) it's as wide as it can be 
+        the entire way down. In this case if we ue BFS then it will take lot of space. because we put all childern in Queue. so here
+        BFS is not reccommended. here we can use DFS, there we dnt need to store all childerns at a time. there We only have to keep 
+        track of the nodes in a in a given branch all the way down to the end.
+
+        So in this sort of tree where it's a lot wider than it is deep then depth first search would use less space.
+
+        if our tree is larger length wise(figure 7) then its better to BFS. because our queue will have one item at a time.
+        because at a  time we are keeping track of only 1 child.if we use DFS then we have to keep all upper levels in memory, 
+        which will take lot of space, if tree is really deep.
+
+        Most of the time trees will look like figure 6. so to suumarize time complexity is same for BFS and DFS,it spac ecomplexity
+        that differs. 
+
+    InOrder vs PreOrder vs PostOrder -
+        InOrder - If we use that on binary tree, then result is in sorted order.
+        Pre Order - this can be useful if you're trying to clone or duplicate a tree or you want to store it you want
+            to like flatten it out so you can store it in a file or a database or something and then recreate it
+            from that serialized structure

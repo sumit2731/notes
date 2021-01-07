@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <title>CSS | fit-content Propety</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,  
+                   initial-scale=1,  
+                   shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<style>
+    .box {
+	width: 50px;
+	height: 50px;
+	background-color: DarkSeaGreen;
+	padding: 10px;
+	margin: 20px;
+	float: left;
+}
+/* .box {
+	background-color: DarkSeaGreen;
+	padding: 10px;
+	margin: 20px;
+	float: left;
+} */
+</style>
+
+<body>
+    <div class="box">
+        Box 1 - Default
+    </div>
+    
+    <div class="box" style="min-height: 80px; min-width: 80px;">
+        Box 2 - Minimum height and width
+    </div>
+    
+    <div class="box" style="min-height: 80px; min-width: 80px;">
+        Box 3 - Minimum height and width. Only expands to 80px.
+    </div>
+    
+    <div class="box" style="min-height: 80px; min-width: 80px; height: auto;">
+        Box 4 - Minimum height and width. Only expands to 80px, unless no max-height/height have been specified (auto)
+    </div>
+
+    <!-- <div class="box">
+        Box 1 - Default
+    </div>
+    
+    <div class="box" style="max-height: 100px; max-width: 100px;">
+        Box 2 - Maximum height and width
+    </div>
+    
+    <div class="box" style="max-height: 100px; max-width: 100px;">
+        Box 3 - Maximum height and width, this time with more content
+    </div> -->
+</body>
+
+</html>

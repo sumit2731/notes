@@ -1,0 +1,68 @@
+1)em - it is relative to font size of parent. 2em means 2 times font-size of parent. it has cascading effect.
+    html {
+        16px;
+    }
+    parent {
+        font-size: 2em; // 16*2 = 32;
+    }
+    
+    child {
+        font-size: 2em; // 32*2 = 64
+    }
+    
+    grandChild {
+        font-size: 2em; // 32*2*2 = 128
+    }
+
+    if we change font size of parent to 4em, then font size of grandchild is also affected.
+    in code if we chnage font-size of .col--em, size of h1 and p tags inside it adjust 
+    automatically they are using em units. to see compounding problem, set the font-size
+    of .grid and .col--em in em. if you chnage font-size of grid, you can see that cascading 
+    effect, on h1 and p tags inside  col-em. so be careful with em's.
+
+    Instead of setting using em and rem for setting font size we can use them to set width, height,padidng and margin.
+
+    when we use em to set margin, padidng, width(or anything ther than font-size), then it is going to look at font-size of 
+        that element only.
+
+        {
+            font-size: 2em; // 3 times font size of parent 2*16 = 32;
+            margin-botom: 2em; // 2 times font-size of this element, 2*32 = 64
+        }
+     This is very useful.In code we used we used em to set margin-bottom on col--rem h1. now margin of it adjusts automatically 
+     according to it's font-size.this is very useful. In code we have call-to-action--small section. there on button we used em
+     units for setting padding.there we have button for diffrent size, we only chnage font-size all other things are taken care
+     by em units. so we get buttons of diffrent sizes only by chnaging font-size. if we use rem for padding then this wnt be 
+     possible.as rem will keep padding fixed.
+
+     but we can use rem to set margin-lef and margin-right because we want that to be consistent, irrespective of font-size.
+
+     why to us rem and em. it is because they make our life lot easier when it comes to media queries or just making things 
+        more scalable.
+
+     so go to call-to-action--small, there if you adjust font-size, padidng of call-to-action--small will adjust(it is using em).
+      also font-size of h1 is in em,it will also adjust depending upon font-size of call-to-action--small. margin-bottom of h1 
+      will also adjust(its in em).btn class takes font-size from call-to-action--small,and padding of btn is in em. so just changing
+      font-size of  .call-to-action--small, chnages all this.
+
+     this adpatation can go further if you start using media queriees. in code we re using one emdia query, there we chnage the 
+        fonrt-size of html. both and em and rem reach out to it, so just chnaging that chnages lot of things in your code.
+
+     so with ne media query i can chnage font-size of my entire site so easily. if i would have used px, then i would need font-size on 
+     induival elemnets.here one fixed solution will not work properly for entire site, that's really wishful thinking, but it can push your 
+     site into right direction, gives you lot less in trms of media queries to build out later on.
+
+2)rem - They were invented to fix that compounding problem with em.it is relative of font size of root element i.e html tag not body. 
+    or you can define font-size on ::root, it will be relative to that.in code if you chnage font-size of col--rem, then the h1 and p 
+    tags inside it are unaffected, becuase they are using rem units
+
+    rem is also fixed. so we can use it to set margin-left, margin-right on elemnts. because we want that to be fixed.
+    if we set it using em then for buttons which have unequal size will have unequal margin. so if you want equal spacing
+    then use rem for margin.
+
+why would be we use em and rem instead  of using px units(which are always consistent). it is because when we use media 
+    queries, we just need to change font-size and everything else will adjust automatically.
+
+    
+    
+

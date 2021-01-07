@@ -1,0 +1,19 @@
+.container {
+    margin: 0 auto;
+    width: 700px;
+    border: 1px solid blue;
+}
+
+.img {
+    background: red;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin: 10px 10px;
+}
+.bigger {
+    height: 300px;
+}
+.right {
+    float: right;
+}

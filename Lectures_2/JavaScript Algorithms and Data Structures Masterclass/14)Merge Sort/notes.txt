@@ -1,0 +1,35 @@
+Intermediate Algorithms-
+
+    This is part 2 of soting algorithms, these are intermediate algo. They are little dificult, but there complexity is also less.
+        they are little less intuitive. so this section is more about walking through the code and understand it. Ot's okay if you 
+        are not able to write code yourself from pseudo code. here we will implement merge sort, quick sort and radix sort.
+
+
+    sorting algo that we learnt (bubble, select and insertion) they do not scal well. for about 100 items they take nticable time.
+
+Merge Sort -
+
+    See figures 1,2 and 3. So we keep splititng array until we have 1 element in each. then we merge them back by merging sorted
+        arrays.merge sort works on principle that merging 2 sorted array is easier as compared to merging 2 unsorted arrays.
+        so break array until they have only 1 element,in this state they are already sorted. then we start merging these sorted
+        array back by comparing them.
+
+Merge Sort Implementation-
+
+    first we implement a function that merges 2 sorted array. rest is easy. this function is implemented in file1. then we
+    use recursion to break array into smaller parts and then we use function defined in path one to merge these arrays.
+
+Big O of Merge Sort -
+    
+    Time Complexity(No Matter What type of data is, complexity remains same)-
+        Best,Average and worst - O(n Log n)
+    Space Complexity-
+        O(n)
+
+    O(n LOg(n)) is best we can get for sorting algorithm unless algorithm take advantages of some weird quirk in data.
+        there is algo called radix sort that takes advantage of particular quirk of numbers, it wnt work to sort
+        anything else. so if we want data agostic algorithm, then best we can do is O(n Log n)so merge sort is doing 
+        great.
+
+    Regarding space complexity, basic algorithms have constant space complexity. but here we have O(n).This is because we need
+     but additonal space for storing subarrays. most of times we care about time complexity only.

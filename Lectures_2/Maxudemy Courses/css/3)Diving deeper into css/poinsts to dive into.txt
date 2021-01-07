@@ -1,0 +1,17 @@
+1)pseudo classes and pseudo elements
+2)BEM naming convention
+3)this question-
+https://www.udemy.com/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9466098#questions/3959636
+
+
+css properties-
+1)box-sizing(lecture 32)(non inheritable)
+content-box, border box
+2)dsiplay(lecture 32)
+block,inline,none,inline-block
+3)text-align(lecture 37)
+left,right,center, justify,start,end
+4)text-decoration(lecture 39)
+underline,overline
+5)border-radius(lecture 45)
+circular and elipteracal radius

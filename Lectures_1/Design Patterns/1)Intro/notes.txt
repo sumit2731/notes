@@ -1,0 +1,12 @@
+Refer figure 1. first we discuss Solid Design principle, then we discuss
+
+Solid Design Principles-  solid design principles are principles of object oriented design that are often referenced
+    in design pattern literature and as a result it's worth discussing them before we jump into the design
+
+And then the course is split into three parts.We look at the 
+    a)creation of patterns
+    b)structure patterns
+    c)behavioral patterns
+
+Well the course mirrors the so-called Yaman categorization and generally lists all the same patterns
+as we have in the Gang of Four book.

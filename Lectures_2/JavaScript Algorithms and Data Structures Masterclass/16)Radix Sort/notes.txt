@@ -1,0 +1,10 @@
+see lecture
+
+
+Performance-
+    there is little controvery around  it and there is room for argument. but generally accepted notation is-
+
+    Time Complexity-
+        best,average,worst - O(kn), k is length of largest number and n is length of array
+
+    Space Complexity - O(n+k)

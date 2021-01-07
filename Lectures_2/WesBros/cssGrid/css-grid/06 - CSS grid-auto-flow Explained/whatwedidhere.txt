@@ -1,0 +1,35 @@
+Here we saw "grid-auto-flow". here we saw that it can have values of
+row(default),columns and dense(discussed later). THis proeprty does the following-
+
+1)First grid item will be placed in first row and first column. now where second grid item
+ will be placed is decided on basis of this proeprty.
+    
+    a)if we have "grid-auto-flow" equal to row(defualt) then new item will be placed on next
+     column(if next column is defined in grid-template-column, otherwise it will be placed on next row)
+
+    b)if we have "grid-auto-flow" equal to column then second item will be placed on next row(if next
+     row is defined in grid-auto-rows, otherwise it will be placed on next column)
+
+Next items will also be placed according to same rule
+
+2)This point is also covered in first point lets see it separately also.
+
+    depending upon value of this proeprty, items more than tracks will be accomodated in columns or rows.In Other
+    words it decides whther implicit rows will be created or implicit columns will be created. defult value is row, 
+    that means extra items will be acomodated in rows.
+
+3)Depending upon value of this property, grid-colun and grid-row will behave diffrently. see folder 10
+ for same.
+
+Next questions is what will be the size of these implicitly created rows and columns. extra
+coluns and rows are sized so that they fit inside container. if cotainer has no height or width.
+then by default block elemnts has width of 100%. so extra columns will have wdith so that they cover rest of container.
+IN case of rows, if cotainer is not haiving any given height , then it as height as long as it needs to be.
+so height of rows will be to fit its content. but if cotainer has some given height, then extra rows will be
+given height so as to fit cover rest of container.
+
+If we dnt want this setup then, then we can use "grid-auto-rows" and "grid-auto-columns" to size these
+extra rows and columns.Here we have used that in code.
+
+Properties-
+grid-auto-flow(see explanation in css tricks)

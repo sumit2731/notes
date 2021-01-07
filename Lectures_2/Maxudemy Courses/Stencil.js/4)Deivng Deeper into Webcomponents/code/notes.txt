@@ -1,0 +1,42 @@
+1)how to style slotted content-
+    ::slotted() {} -- you can pass selector to it
+
+    You can only select the slotted content itself.but you cannot select child in, i.e this-
+
+    ::slotted(span a) {}
+
+    you can only select top most element for styling. but styles of light DOM will have more specificity.
+
+2)how to style custom element from inside. you can use :host tag.
+    but by using this you cannot select elements that are inside shadow dom of custom elemnts.
+    you can also style your custome elemnts from outside, but not content of its shadow DOM.
+
+    to :host tag you can pass additional selectors, to select your host element conditionally.
+
+    .host(.important) {}
+
+    now style will be applied only if important clas is applied
+
+3)To apply a style to host element depending upon surrounding conditions around host element-
+
+    :host-context(p)
+    :host-context(p.hello)
+    :host-context(p .hello)
+
+4)how to pass css variables from outer html  to webcomponent
+    In Main css -
+
+    html {
+        --color-primary: #a4e6fc;
+    }
+    
+    In WebCmponent -
+    
+    :host(.important) {
+        // background: #ccc;
+        background: var(--color-primary,#ccc);
+    }
+
+5)observing attributr chnages - "Observed" attribute. then registering attributes as observed attributes.
+
+6)using disconnectedCallback

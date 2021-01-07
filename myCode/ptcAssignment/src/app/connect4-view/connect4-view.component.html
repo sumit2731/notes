@@ -1,0 +1,12 @@
+<button *ngFor="let column of gameArray[0];let i = index " (click)="columnClickedEvent(i)">Select Column</button>
+
+<div *ngFor="let squareArray of gameArray; let row = index">
+    
+    <ng-container *ngFor="let gameSquare of squareArray; let column = index">
+            <app-game-square [squareStatus]="gameSquare" [row]="row" [column]="column" >
+
+            </app-game-square>
+        
+    </ng-container>
+
+</div>

@@ -1,0 +1,35 @@
+Queue-
+    Implements first in ,first out. Implements only 2 operations, adding and removing.
+
+Where it is used-
+
+    1)When user wait to join a game
+    2)Background tasks in computer,uploading resources
+    3)Print Queue
+
+ImPlementation-
+    There are lot of diffrent ImPlementations only rules which governs it is, First in first out. rest ImPlementation
+    details are same as stack.
+
+Array Implementation-
+    we can imppelemnt it by  either using (push and shift) (entry from last and removeal from begining)
+        or
+    (pop and unshift) (entry from begining and removal from last of array)
+
+    so either we use shift or unshift. for array compelxity of doing that is O(n), so itnreally makes sense to
+        implement your own class if you are conceren about performance.
+
+Linked List Implementation -
+    Here we will add at end remove from begining, instead of removing from end and adding at end. becaue of complexity reasons
+    in linked list.
+
+Big O -
+    Insert - O(1)
+    removal - O(1)
+    Search- O(n)
+    Access- O(n)
+
+    Theory is same as stack.
+
+We will uses queses an stacks later in this course, they are foundation of more
+complex data strictures.

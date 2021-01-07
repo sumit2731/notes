@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h3>Password matching with FormGroup validation<br>(Reactive Form)</h3>
+
+  <form [formGroup]="exampleForm" (ngSubmit)="onSubmit()">
+
+    <div formGroupName="passwords" id="passwords">
+
+      <label for="control1">Your password:</label>
+      <input formControlName="control1" id="control1" type="password">
+      <div class="error1" *ngIf="control1.invalid && control1.touched">Password too short!</div>
+
+      <label for="control2">Password confirmation:</label>
+      <input formControlName="control2" id="control2" type="password">
+      <div class="error1" *ngIf="control2.invalid && control2.touched">Password too short!</div>
+
+      <div class="error2" *ngIf="control1.valid && control2.valid && formGroup.invalid">Passwords don't match!</div>
+
+    </div>
+
+    <button type="submit" [disabled]="exampleForm.invalid">
+      {{ exampleForm.valid ? 'Display values' : 'Not yet ready!' }}
+    </button>
+
+    <button type="button" (click)="resetExampleForm()">Reset</button>
+
+  </form>
+
+  <br>
+
+  <div *ngIf="showFormValue">
+    <p>Submitted values:</p>
+    <pre>{{ exampleForm.value | json }}</pre>
+  </div>
+
+</div>
