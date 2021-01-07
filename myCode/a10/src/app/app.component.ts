@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import {BehaviorSubject, interval, ReplaySubject} from 'rxjs';
-import { publishReplay, refCount,take,shareReplay, publish,share, publishBehavior, publishLast} from 'rxjs/operators'
+import { ajax } from 'rxjs/ajax';
+import {BehaviorSubject, interval,timer ,ReplaySubject, fromEvent, of,from, throwError, defer, bindCallback, Observable, concat, race,merge, ConnectableObservable, zip, forkJoin, combineLatest} from 'rxjs';
+import { delay, delayWhen, map, mapTo, concatMap, take,publish,mergeMap, startWith, endWith, withLatestFrom} from 'rxjs/operators'
+import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-root',
@@ -11,51 +13,27 @@ export class AppComponent {
   title = 'a10';
   source;
   constructor() {
-    this.source = interval(1000).pipe(
-      take(3),
-      //publish(),
-      //publishReplay(2),
-      //publishBehavior(100),
-      //publishLast(),
-      //share()
-      //shareReplay({refCount: true, bufferSize: 2}),
-      shareReplay(2)
-      //refCount()
-
+    let i = 0;
+    console.log(i);
+    let interval1 = setInterval(() => {
+      i++;
+      console.log(i);
+      if(i == 9) clearInterval(interval1);
+    }, 1000);
+    let interval1$ = interval(1000).pipe(
+      take(1)
     );
-    const sub1 = this.source.subscribe(x => console.log('sub 1', x), error => console.log("error"), () => console.log("Sub 1completed"));
-    //const sub2 = this.source.subscribe(x => console.log('sub 2', x), error => console.log("error"), () => console.log("Sub 2 completed"));
-    let sub3;
-
-    setTimeout(() => {
-      sub1.unsubscribe();
-      //sub2.unsubscribe();
-    }, 4000);
-
-
-    setTimeout(() => {
-      console.log("Third Subscription");
-      sub3 = this.source.subscribe(x => console.log('sub 3', x), error => console.log("error"), () => console.log("Sub 3 completed"));
-      // sub1.unsubscribe();
-      // sub2.unsubscribe();
-      // sub3.unsubscribe();
-
-    }, 5000);
-
-    setTimeout(() => {
-      //sub1.unsubscribe();
-      //sub2.unsubscribe();
-      sub3.unsubscribe();
-    }, 8000);
-    
-    //let b1 = new ReplaySubject<any>(2);
-    //let b1 = new BehaviorSubject<any>(2);
-    //b1.next(1);
-    // b1.next(2);
-    //b1.subscribe(x => console.log('sub 1', x), error => console.log("error"), () => console.log(" Sub 1 completed"));
-    //b1.next(3);
-    //b1.complete();
-    //b1.subscribe(x => console.log('sub 2', x), error => console.log("error"), () => console.log(" sub 2 completed"));
-    // b1.next(4);
+    let interval2$ = interval(2000).pipe(
+      take(6)
+    );
+    let interval3$ = interval(3000).pipe(take(3));
+    interval1$.pipe(withLatestFrom(interval2$)).subscribe(val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
+    //.subscribe(val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
   }
-}
+  createObservable(obs1$: Observable<any>,time: number, value: any) {
+    let obs2$ = of(value).pipe(
+      delay(time)
+    );
+    return race(obs1$,merge(obs1$,obs2$));
+  }
+}        

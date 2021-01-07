@@ -1,0 +1,11 @@
+1)debounceTime - Emits a value from the source Observable only after a particular time span has passed without 
+    another source emission.This operator keeps track of the most recent value from the source Observable, and 
+    emits that only when dueTime enough time has passed without any other value appearing on the source Observable. 
+    If a new value appears before dueTime silence occurs, the previous value will be dropped and will not be emitted
+    on the output Observable.
+
+2)throttleTime - Emits a value from the source Observable, then ignores subsequent source values for duration milliseconds, 
+    then repeats this process.
+
+    throttleTime<T>(duration: number, scheduler: SchedulerLike = async, config: ThrottleConfig = defaultThrottleConfig)
+        : MonoTypeOperatorFunction<T>
