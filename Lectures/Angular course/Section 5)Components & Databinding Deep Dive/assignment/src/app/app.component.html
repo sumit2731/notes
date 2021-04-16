@@ -1,0 +1,3 @@
+<app-game-control (numberEmittted)="eventReceived($event)"></app-game-control>
+<app-odd *ngFor="let odd of oddNumbers" [i]="odd"></app-odd>
+<app-even *ngFor="let even of evenNumbers" [i]="even"></app-even>

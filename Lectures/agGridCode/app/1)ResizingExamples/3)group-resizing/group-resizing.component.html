@@ -1,0 +1,14 @@
+<div class="legend-bar">
+    <span class="legend-box resizable-header">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+    Resizable Column
+    &nbsp;&nbsp;&nbsp;&nbsp; <span class="legend-box fixed-size-header">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+    Fixed Width Column
+</div>
+<div class="grid-wrapper">
+    <ag-grid-angular #agGrid style="width: 100%; height: 100%;" id="myGrid" class="ag-theme-balham"
+        [columnDefs]="columnDefs" 
+        [defaultColDef]="defaultColDef" 
+        [rowData]="rowData" 
+        (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+</div>

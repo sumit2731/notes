@@ -1,0 +1,9 @@
+Here we saw most basic use of webpack. first we used webpack without any config file. 
+    there webpack assumed some defaults. then we provided a config file, there we saw bare minimum setup
+    required.
+
+
+Commnads used -
+
+    1)npm install webpack webpack-cli --save-dev
+    2)npx webpack

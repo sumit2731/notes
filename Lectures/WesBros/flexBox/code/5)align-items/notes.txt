@@ -1,0 +1,2 @@
+align-items adjusts the items along cross axis when there is single row. twhen there are mutiple rows, use align content property.
+    desfut value is strtech. In code we used baseline, which is very handy. it allows o align items so that baseline is same.

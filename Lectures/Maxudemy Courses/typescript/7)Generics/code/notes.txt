@@ -1,0 +1,11 @@
+what we earnt-
+
+1)What are generics and why would we use them
+    built in genetics - Array, Promises, Event Emitter
+2)generic functions - we can use generic types as type of arguments passed to function
+3)generic constraints - extends
+4) generic functions -we can use generic types in retrun type of function and more about extends constraint
+5)keyof
+6)Generic Utility types in ts which use generics-
+    a)Partial
+    b)readOnly

@@ -1,0 +1,158 @@
+import { interval } from 'rxjs';
+refrence links -
+    
+    https://www.learnrxjs.io/learn-rxjs/operators/creation/defer
+    https://rxjs.dev/api/index/function/defer
+
+1)interval - Emit numbers in sequence based on provided timeframe.
+
+    signature: interval(period: number, scheduler: Scheduler): Observable
+
+    //emit value in sequence every 1 second
+    const source = interval(1000);
+    //output: 0,1,2,3,4,5....
+    const subscribe = source.subscribe(val => console.log(val));
+
+2)timer - After a given duration, emit numbers in sequence every specified duration
+
+    signature - timer(initialDelay: number | Date, period: number, scheduler: Scheduler): Observable
+    if second argument is not provided then only one value(0) is emitted and then observable completes.
+
+
+    //emit 0 after 1 second then complete, since no second argument is supplied
+    const source = timer(1000);
+    /*
+    timer takes a second argument, how often to emit subsequent values
+    in this case we will emit first value after 1 second and subsequent
+    values every 2 seconds after
+    */
+    const source = timer(1000, 2000);
+    const subscribe = source.subscribe(val => console.log(val));
+
+3)of - It takes number of values, observable emits those values "synschrnously" and then completes.
+    synschrnously means value will be emitted one at a time , but they will be emitted before any other thing in
+        call stack.
+    
+    signature: of(...values, scheduler: Scheduler): Observable
+    
+    //emits values of any type
+    const source = of({ name: 'Brian' }, [1, 2, 3], 1);
+    //output: {name: 'Brian'}, [1,2,3], 1,"this is printed in last"
+    const subscribe = source.subscribe(val => console.log(val));
+    console.log("this is printed in last");
+
+4)from - Turn an array, promise, or iterable into an observable.
+    
+    This operator can be used to convert a promise to an observable!
+    For arrays and iterables, all contained values will be emitted as a sequence!
+    This operator can also be used to emit a string as a sequence of characters!
+
+    signature: from(ish: ObservableInput, mapFn: function, thisArg: any, scheduler: Scheduler): Observable
+    signature: from<T>(input: any, scheduler?: SchedulerLike): Observable<T>
+
+    Example of iterable types that can be transformed into observables using from are arrays, maps, sets, promises, 
+        DOM nodes, and generator functions.By default the from operator returns a synchronous observable.If you want 
+        however, you can make it asynchronous using an async scheduler.
+
+    https://www.digitalocean.com/community/tutorials/rxjs-from-operator
+
+    const source = from('Hello World');
+    //output: 'H','e','l','l','o',' ','W','o','r','l','d'
+    const subscribe = source.subscribe(val => console.log(val));
+    console.log("this is printed in last");
+
+5)throwError - Emit error on subscription
+
+    signature: throw(error: any, scheduler: Scheduler): Observable
+
+
+    const obs1$ = throwError('Error Message');
+    obs1$.subscribe(val => console.log(val), error => console.log("Error Occured", error), () => console.log("Completed"));
+
+    however if we want to emit error from observable use throw-
+
+    interval(1000).pipe(
+      map (val => {
+        if(val < 5) return 10*val;
+        //here throws error
+        else throw val;
+      })
+    ).subscribe(val => console.log(val), error => console.log("Error " +error), () => console.log("Completed"));
+
+    Observation - if we have somegthing like this-
+        throwError("sood").pipe(delay(5000))
+    
+    Here even if we are giving the delay.observable willl error out immediatly.
+
+6)fromEvent - Turn event into observable sequence.
+    signature: fromEvent(target: EventTargetLike, eventName: string, selector: function): Observable
+
+    https://rxjs.dev/api/index/function/fromEvent
+
+7)empty - Observable that immediately completes
+
+
+    const subscribe = empty().subscribe({
+        next: () => console.log('Next'),
+        complete: () => console.log('Complete!')
+    });
+
+8)defer - Creates an Observable that, on subscribe, calls an Observable factory to make an Observable for each new Observer.
+    
+    defer<R extends ObservableInput<any> | void>(observableFactory: () => R): Observable<ObservedValueOf<R>>
+    defer(observableFactory: function(): SubscribableOrPromise): Observable
+    
+    https://rxjs.dev/api/index/function/defer
+    http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-defer
+
+9)create - Creates a new Observable, that will execute the specified function when an Observer subscribes to it(called separately 
+    for each new subscription).Create custom Observable, that does whatever you like.
+
+    function passed to create can optionally return either a function or an object with unsubscribe method. In both cases function or method 
+    will be called when subscription to Observable is being cancelled and should be used to clean up all resources.
+
+    create(onSubscription: function(observer: Observer): TeardownLogic): Observable
+
+    http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#static-method-create
+    
+    const observable = Rx.Observable.create(observer => {
+        const id = setTimeout(() => observer.next('...'), 5000); // emit value after 5s
+        return () => { clearTimeout(id); console.log('cleared!'); };
+    });
+
+    const subscription = observable.subscribe(value => console.log(value));
+
+    setTimeout(() => subscription.unsubscribe(), 3000); // cancel subscription after 3s
+
+
+    Note -create function is deprecated , now directly use this-
+        
+        this.data$ = new Observable((observer: Observer) => {
+            observer.next();
+            observer.complete();
+        });
+
+10)range - Creates an Observable that emits a sequence of numbers within a specified range
+    
+    signature -range(start: number = 0, count?: number, scheduler?: SchedulerLike): Observable<number>
+
+    //emit 1-10 in sequence
+    const source = range(1, 10);
+    //output: 1,2,3,4,5,6,7,8,9,10
+    const example = source.subscribe(val => console.log(val));
+
+11)ajax - It creates an observable for an Ajax request with either a request object with url, headers, etc or a string for a URL. 
+
+    const obs$ = ajax(`https://api.github.com/users?per_page=5`).pipe(
+        map(userResponse => console.log('users: ', userResponse)),
+        catchError(error => {
+            console.log('error: ', error);
+            return of(error);
+        })
+    );
+    
+    https://rxjs-dev.firebaseapp.com/api/ajax/ajax
+
+
+to be lloked into -
+fromEventPattern, bindCallback ,bindNodeCallback

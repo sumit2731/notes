@@ -1,0 +1,18 @@
+1)Computed Tab - here you can see final style that is applied. if you want to see from where it is applied
+    click on arrow which is on style value.it will take you to style tab.
+
+2)Event Handlers Tab - This will show all event listener on this document and you can go to the code that is 
+    triggering it, i.e callback that is called.If you have like slow scroll performance and you want to see, what 
+    am I doing on scroll?Rather than looking through all the code, you can go to the event listeners. You can go 
+    to the scroll event and you can see how many you have and where they are. on clicking you will be taken to souces
+    tab , to the  callback (to be excuted on event).
+
+    here thing is it cannot detect event listener to elements which are added by js. It can only detect the callbacks
+        of static events.
+
+3)chnage color formats - press shift and click on color code in dev tools, you will see different formats.
+4)drag and drop nodes - you can drag and drop DOM nodes.
+5)css speccificity - in styles tab of elemnets, all selectors are shown in order of specificity and styles which
+    are overriden due to specificity are crossed out.
+6)pretty print source code- Any file opened in sources tab, in bottom left there is "{}". it will pretty print it.
+    it will just formatt it.build tools replace variable names with single letter in prod mode, it cannot recover that.

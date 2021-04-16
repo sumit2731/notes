@@ -1,0 +1,10 @@
+1)tap - Perform a side effect for every emission on the source Observable, but return an Observable that is identical to the 
+    source.
+
+    tap<T>(nextOrObserver?: NextObserver<T> | ErrorObserver<T> | CompletionObserver<T> | ((x: T) => void), error?: (e: any) => void, complete?: () => void)
+        : MonoTypeOperatorFunction<T>
+
+2)finalize -Returns an Observable that mirrors the source Observable, but will call a specified function when the source 
+    terminates on complete or error.
+
+    finalize<T>(callback: () => void): MonoTypeOperatorFunction<T>

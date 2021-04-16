@@ -1,0 +1,181 @@
+1)[routerLink] - it is directive that helps with navigation
+2)[routerLinkActive] - it attaches a class if current route is active
+3)[routerLinkActiveOptions]="{exact: true}" - decides how route should be matched for routerLInkActive
+4)How to navigate programmatically, router is insstance of Router service -
+    this.router.navigate(['servers'], {relativeTo: this.route});
+
+5)How to fetch variable part of route, in loaded compoeoent-
+    
+    constructor(private route: ActivatedRoute) { }
+
+        ngOnInit() {
+            this.user = {
+            id: this.route.snapshot.params['id'],
+            name: this.route.snapshot.params['name']
+            };
+        }
+
+6)how to fetch variable part of url reactively-
+    this.route.params.subscribe((params: Params) => {
+        this.user.id = params['id'];
+        this.user.name = params['name'];
+    });
+
+7)Passing query parameters using routerLink-
+    a)Using RouterLink
+        <a
+            [routerLink] ="['/servers',5,'edit']"
+            [queryParams] ="{allowEdit : '1'}"
+            [fragment] ="'loading'"
+        </a>
+    
+    b)passing them programmatically-
+        this.router.navigate(['/servers' , id, 'edit'], {queryParams: {allowEdit: 1}, fragment: 'loading'});
+
+8)retrievingQueryParameters-
+    1)Way 1-
+        
+        constructor(private serversService: ServersService, private route: ActivatedRoute) { }
+
+        ngOnInit() {
+            console.log(this.route.snapshot.queryParams);
+            console.log(this.route.snapshot.fragment);
+        }
+
+    2)Way 2-
+
+        constructor(private serversService: ServersService, private route: ActivatedRoute) { }
+
+        ngOnInit() {
+            this.route.queryParams.subscribe();
+        }
+
+9)defining child routes-
+    {path: 'servers', component: ServersComponent, children: [
+        {path: ':id', component: ServerComponent},
+        { path : ':id/edit' , component: EditServerComponent}
+    ]}
+
+10)Handling of QueryParams-
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+
+
+11)Path matching strategy, wildcards,redirecto-
+    { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }
+    {path: '**', redirectTo: 'not-found'}
+
+12)routeGuards-
+    
+    1)canActivate(lectre 134 in word notes)-
+        {path: 'servers', canActivate: [AuthGuardService] , component: ServersComponent, children: [
+                {path: ':id', component: ServerComponent},
+                { path : ':id/edit' , component: EditServerComponent}
+            ]
+        }
+
+    in ts file-
+    export class AuthGuardService implements CanActivate {
+ 
+        constructor(private authService: AuthService, private router: Router){}
+        canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {}
+
+    2)canActivateChild-
+
+    {path: 'servers',canActivateChild: [AuthGuardService],component: ServersComponent, children: [
+            {path: ':id', component: ServerComponent},
+            { path : ':id/edit' , component: EditServerComponent}
+        ]
+    }
+
+    3)canDeactivate -
+
+        export class CanDeactivateGuardService implements CanDeactivate<CanComponentDeactivate> {
+            canDeactivate(component: CanComponentDeactivate,currentRoute: ActivatedRouteSnapshot,currentState: RouterStateSnapshot,
+                nextState?: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+                    return component.canDeactivate();
+            }
+        }
+
+13)Passing StaticData to route-
+
+        {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page Not Found'}},
+
+    how to get that data-
+
+        constructor(private route: ActivatedRoute) { }
+
+        ngOnInit() {
+            this.errorMessage = this.route.snapshot.data['messsage'];
+            this.route.data.subscribe((data: Data) => {
+                this.errorMessage = data['message'];
+            });
+        }
+
+
+
+14)Passing Dynamic data(resolve guard)
+    The resolver will always render a component in the end but it will do some pre-loading you could say, it will fetch some data that component will 
+    need later on. Ofcourse alternative is to render the component or target page instantly and in OnInit method of this component, you could fetch 
+    the data and display some spinner when you are doing so. So that’s the alternative.But if you want to load it before actually displaying the route 
+    this is how you would add a resolver
+
+    code - 
+
+        Resolver Service-
+        
+            export class ServerResolverService implements Resolve<Server>  {
+
+                constructor(private serversService: ServersService) { }
+                
+                resolve (route: ActivatedRouteSnapshot , state: RouterStateSnapshot):Observable<Server> | Promise<Server> | Server {
+                    return this.serversService.getServer(+route.params['id']);
+                }
+
+            }
+
+        Route Object Confog -
+
+            {path: ':id', component: ServerComponent, resolve: {server: ServerResolverService}},
+
+        
+        Getting value in component-
+
+            constructor(private serversService: ServersService , private route: ActivatedRoute, private router: Router) { }
+
+            ngOnInit() {
+                this.route.data.subscribe((data: Data) => {
+                    this.server = data['server'];
+                });
+            }
+
+15)Classes related to routing -
+
+    1)ActivatedRoute - 
+        a)used to get- params ,queryParams, fragments from URL
+        b)used to get static data on route
+        c)used to get data from resolver service
+        d)It is used when we want to navigate relative to present router, programatically.
+            this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+
+    2)ActivatedRouteSnapshot - Passed as argument in canctivte and canDeactivateGard
+
+    3)RouterStateSnapshot - Passed as argument in canctivte and canDeactivateGard. in canDeactivate we get 
+        currentState as well as nextState
+
+    4)In Router service we have proeprty called routerState:RouterState. it has 2 important proeprties,Both are trees 
+    representing the current router state (components that have been routed to, along with URL segments and parameters).
+    but they differ in one key way,
+        
+        a)snapshot is a tree of ActivatedRouteSnapshot objects — which are static. type is (RouterStateSnapshot)
+        b)root is a tree of ActivatedRoute objects — which are dynamic. type is (ActivatedRoute) 
+
+        Note that a routerState can have multiple trees of ActivatedRoutes at once — one for each outlet.
+        When we say that the URL is just a serialization of the router state, this is what is meant.
+ 
+
+        RouterStateSnapshot
+
+
+16)Stacks used -
+    1)pushState call
+    2)history.state

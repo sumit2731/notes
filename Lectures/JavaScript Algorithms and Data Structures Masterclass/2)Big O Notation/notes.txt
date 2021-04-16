@@ -1,0 +1,19 @@
+Time Complexity -
+    
+    Big o means comparing diffrent algorithms by number of operations tht we have to perform.
+    in slide 1 numbers of operations are 3 in slide 2 operations are 5n +2.
+
+    we are concerned about very very high level overview(for very large inputs) of how operations grows if input chamges.
+
+
+    figure 3.2 - when we talk about big O we are talking about worst case scanerio, upper bound for run time.
+
+    if algo has O(n*n) it means as n grows the run time roughly grows at the rate of n*n.
+
+Space Complexity - How does  memeory taken by algo increases as input increases.
+
+3)logs -
+    for complexity we are not concerned with base of log. for trends we just need to know that trends follows log.
+    so in algo languag we just see log. figure 2 in logs shows how to calculate log roughly. for big O we calculate
+    it roughly only. slides 2 & 3 it is shown how approximation is done. in slide 3, actual calculation is not important,
+    

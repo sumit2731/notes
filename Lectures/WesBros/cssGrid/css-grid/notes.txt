@@ -1,0 +1,170 @@
+ tag with display: grid is called grid we divide it into rows and columns, these columns and rows 
+ collectively are called tracks. once we ave our tracks then we can lay, our elements anywhere inside
+ of grid i.e in columns and rows without using any positionsing properties. there is more to grid we 
+ also have idea of implicit and explicit grid. we will go into that later
+
+ implicit grid happens , lets say you have defined 2 rows but your content needs 4 rows. then
+ that extra 4 rows will be created. that is called implicit grid.
+
+ Line Meaning in Css -
+
+    solid Line- start and stop of explicit grid
+    dashed vertical lines - gap
+    dashed lines(Long one) - it is explicit tracks
+    dotted lines(short ones), they are more faint -it is implicit tracks
+
+ 
+ 1)grid-template-columns - it defines the columns in grid.
+    grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
+    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: repeat(3, 20px [col-start]);
+        accepted values are px,fr,rem and all css units.see txt file of folder7 to see about units we can use.
+        fr means free space. see css tricks link, it accepts more values like this.
+
+    note that width of grid remains unchaged by columns, its just about alligning items. if you give
+    grid a border and  2 columns of 200px , then you will see border covers whole screen. but items
+    are only in first 2 columns.
+    we ca also use repeat like this-
+    
+    grid-template-columns: repeat(5, 1fr 2fr);
+    it will create 10 rows. altering between 1fr and 2fr
+ 
+ 2)grid-template-rows - Same as 1 but it defines rows.
+ 
+ 3)grid-template-A shorthand for setting grid-template-rows, grid-template-columns, and grid-template-areas
+  in a single declaration. values -
+    .container {
+        grid-template: none | <grid-template-rows> / <grid-template-columns>;
+    }
+    .container {
+        grid-template:
+                    [row1-start] "header header header" 25px [row1-end]
+                    [row2-start] "footer footer footer" 25px [row2-end]
+                    / auto 50px auto;
+    }
+    
+    
+ 4)grid-column-gap, grid-row-gap - Specifies the size of the grid lines. You can think of it like setting the
+  width of the gutters between the columns/rows.
+    
+    .container {
+        grid-column-gap: <line-size>;
+        grid-row-gap: <line-size>;
+    }
+    .container {
+        grid-column-gap: 10px;
+        grid-row-gap: 15px;
+    }
+    The gutters are only created between the columns/rows, not on the outer edges
+
+5)grid-gap - A shorthand for grid-row-gap and grid-column-gap
+    .container {
+        grid-gap: <grid-row-gap> <grid-column-gap>;
+    }
+
+    If no grid-row-gap is specified, it's set to the same value as grid-column-gap
+    Note: The grid- prefix will be removed and grid-gap renamed to gap. The unprefixed 
+    property is already supported in Chrome 68+, Safari 11.2 Release 50+ and Opera 54+.
+
+6)grid-auto-rows - Specifies the size of any auto-generated grid tracks (aka implicit grid tracks). 
+    Implicit tracks get created when there are more grid items than cells in the grid or when a grid 
+    item is placed outside of the explicit grid. we can give it multiple values like-
+
+    grid-auto-rows : 100px
+
+    or
+    grid-auto-rows : 100px 200px
+
+    second means to implicit rows give height of 100 px , then to next implicit row give height of 200px,
+    and this goes on and on.
+
+7)grid-auto-coluns - same as 6 but question is how do youd define extra columns?by default extra elements are moved
+     to next row.see proprty 8 for that. if we are using grid-auto-flow: column and we do not specify
+     grid-auto-columns then extra columns take up whole space i.e they equally divide it. if width is exhausted
+     a scroll bar is added but we never move to next row.
+
+8)grid-auto-flow -If you have grid items that you don't explicitly place on the grid, the auto-placement 
+    algorithm kicks in to automatically place the items. This property controls how the auto-placement 
+    algorithm works.
+
+ Values:
+
+    row - tells the auto-placement algorithm to fill in each row in turn, adding new rows as necessary 
+        (default)
+    column - tells the auto-placement algorithm to fill in each column in turn, adding new 
+        columns as necessary 
+    dense(see code in filder 16) - tells the auto-placement algorithm to attempt to fill in holes earlier in 
+     the grid if smaller items come up later
+
+ when we set grid-auto-flow to column then first item is first column and first row, second item goes to
+ first column second row(instead of first row second column).
+
+ 9)auto-fill
+ grid-template-columns: repeat(auto-fill, 150px);
+    what we mean here is each column should be of size 150px, but number of columns should be equal to how many numbers
+    can fit on screen.
+    so we dnt tell it how many columns we want. we say figure it out, see how many content is in each one
+    and then figure out, hoew many you could possibily fit in screen.if we resize our screen, then number of
+    columns will change.number of columns is equal to how many can fit on screen.
+10)auto-fit
+    grid-template-columns: repeat(auto-fit, 150px);
+    same as auto-fill but difference comes when we dnt have enough items to fill up entire width or height of
+    the grid. lets say if we can accomodate 6 columns and we have only 4 items. if we use auto fill then,
+    explicit grid will end after creating 6 columns.as we increase screen width, it will keep adding new
+    new columns.
+
+    now if we use auto-fit then our explicit gird will end when do not have more items.so in above case, we
+    have only 4 items, so our explicit grid will end after 4 columns even though we have enough space for more
+    tracks. but it will still show us track numbers, they are kind of piled on each other.
+    see code in folder 12 to see diference.
+11)minmax - 
+    grid-template-columns: 200px minmax(200px , 5fr) minmax(200px , 1fr) 200px;
+    MinMax” is a common, built-in function of CSS grid. It is used to set a range of width(grid cell) or height(grid row). 
+    The function accepts two params, which represent, unsurprisingly, the minimum & maximum values.
+    see code in folder 13
+
+
+12)fr units- see code in filder 11
+13)minmax,fitContent,max-content,min-content - see code in folder 13
+14)justify-items, align-items, justify-content,align-content- see code in folder 17
+
+b)grid-items
+
+    1)grid-column-start,grid-column-end,grid-row-start,grid-row-end -
+        see txt of file of folder 9 and 10.
+        Values:
+
+        <line> - can be a number to refer to a numbered grid line, or a name to refer to a named grid line
+        span <number> - the item will span across the provided number of grid tracks
+        span <name> - the item will span across until it hits the next line with the provided name
+        auto - indicates auto-placement, an automatic span, or a default span of one
+
+            .item-b {
+                grid-column-start: 1;
+                grid-column-end: span col4-start;
+                grid-row-start: 2;
+                grid-row-end: span 2;
+            }
+    see css tricks for details.
+
+    2)grid-column,grid-row - Shorthand for grid-column-start + grid-column-end, and grid-row-start + grid-row-end, 
+    respectively.see txt of file of folder 9 and 10
+        Values:
+
+        <start-line> / <end-line> - each one accepts all the same values as the longhand version, including span
+        .item-c {
+            grid-column: 3 / span 2;
+            grid-row: third-line / 4;
+        }
+
+        see css tricks.
+
+    3)grid-area - It is used to place a item in a psecific grid area. see code in folder 14
+     grid-area: footer is shorthand for-
+        grid-row-start: footer;
+        grid-column-start: footer;
+        grid-row-end: footer;
+        grid-column-end: footer;
+    4)justify-slef,align-self
+    5)order, see folder 18

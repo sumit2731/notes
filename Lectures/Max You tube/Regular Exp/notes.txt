@@ -1,0 +1,104 @@
+const text = 'Hello there ll!';
+
+const regex = /ll/;
+//const regex = new RegExp('ll');
+
+//true
+// console.log(regex.test(regex));
+
+//  [ 'll', index: 1, input: '/ll/', groups: undefined ]
+//console.log(regex.exec(regex));
+
+//[ 'll', index: 2, input: 'Hello there!', groups: undefined ]
+//console.log(text.match(regex)); 
+
+// 2
+console.log(text.search(regex));
+
+
+
+
+
+2-
+
+//regex101.com
+//Flags- a)g- global- dnt stop after finding first match
+//b) i -insenstive - case insenstive search
+// a)(H|h)ello -match Hello or hello
+// b)(H|h)? ello - it means part prior to ?, is optional. it matches hello, Hello and ello. we create a
+// group by using (). we used ? before a group so that whole group is optional
+// c) (H|h)e?llo - here only e is optional, so only direct chracater before ? is made optional. if you want to make 
+// everything optional , you have to make a group like this- ((H|h) e)?llo
+
+
+3-
+
+// Ranges (Character Sets) and Quantifiers
+
+//Ranges
+// [ts] - It means look for t ans s induivally. dnt look for ts. here they are treated standalone
+// it says match all t, match all s. t and s dnt need to be connected
+//[a-z]= match all characters individually
+// [a-zA-Z0-9] - match all numbers and characters
+
+//Qunatifiesrs-
+//a+ - it means  one or more instances of a will be treated as single match. because of this, aaaa will be
+//one match otherwise if we use just a, they will be 4 diffrent matches
+
+//a? = 0 or 1 match. aa - it is 2 matches
+
+// a* - 0 or unlimited amount
+
+// any quantifier only applies to charaxxter or group before it
+//[a-zA-Z]+ - any number of characters coming after each other are treated as one match. AzzS is one match
+
+//[a,s,d]+
+// it means any number of characters that are either a ,s or d. when occur after each other they
+// will be treated as one match
+
+4-
+
+// from last lectures =, we kow what this means-
+//[a-z]+[0-9]+[A-Z]+! = abcdefghi797799WEER!
+// now problem is it will look for this patttern anywhere in string and it will match
+// if this pattern is present any where in string but we want our sting to start and end with this pattern
+//for that we have 2 special characters- * and $, lets us ethem-
+
+//^[a-z]+[0-9]+[A-Z]+!$
+//^ means word should start with this pattern, ^sumit, it means string should start with ^
+//$ means end of string should be this, sumit$ it means string should end with sumit
+//if we use them togather , then our whole string should be this in line no 7 we 
+// that our whole string should be this
+
+
+5-
+//  .In regular exp means any character, if you actually mean '.' then you have to use escape character
+// so use \. but inse range selector, . means ., so you dnt have to use escape character
+// '-' is only special character inside the range
+//this is my email regular expression-
+//([a-zA-Z)-9]|[\., \$])+@[a-z]+\.com
+// soution given in lecture- [a-zA-Z0-9!#$&_*?^{}~\.-]+@[a-z]+\.com
+//note that - should be used in end, otherwise it will be  interpreted as range selector
+// in above solution we onlly allow alphabets after @. lets also allow special character after that
+// so new expression is - [a-zA-Z0-9!#$&_*?^{}~\.-]+@[a-zA-Z0-9!#$&_*?^{}~\.-]+\.com
+//now we dnt want to allow email addresses starting with '.', what we want is,
+// email adress starting with any charcater other than ., then it may have '.', then it
+// may have '.' followed by any other character. '.' should not be in front of '@'
+// so '.' is only only allowed if it is proceeded and succees by some other character, that expression is-
+// [a-zA-Z0-9!#$&_*?^{}~-]+(\.)?[a-zA-Z0-9!#$&_*?^{}~-]+@[a-zA-Z0-9!#$&_*?^{}~\.-]+\.com
+// it works fine for this- sumeet.sood@sumeet_sood.com
+//what if we want to have more  than 1 ., for mail address like this-
+//sumeet.sood.kriti@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+

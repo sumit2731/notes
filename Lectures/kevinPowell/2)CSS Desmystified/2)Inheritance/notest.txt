@@ -1,0 +1,43 @@
+Not everything is inheritant but there is rule of thumb.Anything related to typography is inherired-
+    font-size
+    font-family
+    text-decoration
+    color
+    font-weight
+    line-height
+i.e is the rreason we place lot of typography rules on html or body.
+browser styles takes precendence over inherited styles i.e inherited styles have least precedence.
+
+Nothing related to layout is inherited, like -
+    margin
+    padding
+    height
+    width
+    position
+
+If you really want inherited values for some properties from parent, assign inherit value to that property.
+
+    a {
+        color: inherited;
+    }
+
+Some times some elements (button, text, select) have some browser defualts so that they do not inherit typography related 
+    things(browser defaults overwrites inheritance). but we want inheritance t take place, so in that case use inheritance 
+    value -
+        button,
+        input,
+        select,
+        textarea {
+            font-size: inherit;
+        }
+
+
+Extra Links-
+    1)
+
+Question - 
+    1)Regardig iheritance of text-decoration property -
+        https://stackoverflow.com/questions/4481318/css-text-decoration-property-cannot-be-overridden-by-child-element.
+
+    2)inherit vs initial vs unset vs reset -
+        

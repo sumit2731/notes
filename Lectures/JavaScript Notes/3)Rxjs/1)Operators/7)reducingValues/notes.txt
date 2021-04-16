@@ -1,0 +1,154 @@
+Refrence Sources -
+    https://www.learnrxjs.io/learn-rxjs/operators/filtering/debouncetime
+    https://rxjs.dev/api/operators/debounceTime
+
+1)debounce - debounce delays values emitted by the source Observable, but drops previous pending delayed emissions if a 
+    new value arrives on the source Observable. This operator keeps track of the most recent value from the source Observable, 
+    and spawns a duration Observable by calling the durationSelector function. The value is emitted only when the duration 
+    Observable emits a value or completes, and if no other value was emitted on the source Observable since the duration 
+    Observable was spawned. If a new value appears before the duration Observable emits, the previous value will be dropped and 
+    will not be emitted on the output Observable.
+
+    debounce<T>(durationSelector: (value: T) => SubscribableOrPromise<any>): MonoTypeOperatorFunction<T>
+
+2)debounceTime - Emits a value from the source Observable only after a particular time span has passed without 
+    another source emission.This operator keeps track of the most recent value from the source Observable, and 
+    emits that only when dueTime enough time has passed without any other value appearing on the source Observable. 
+    If a new value appears before dueTime silence occurs, the previous value will be dropped and will not be emitted
+    on the output Observable.
+
+    used in - Typeaheads. when we want to emit a vaue when user has stopped typing
+
+3)throttle - throttle emits the source Observable values on the output Observable when its internal timer is disabled, and 
+    ignores source values when the timer is enabled. Initially, the timer is disabled. As soon as the first source value 
+    arrives, it is forwarded to the output Observable, and then the timer is enabled by calling the durationSelector function 
+    with the source value, which returns the "duration" Observable. When the duration Observable emits a value or completes, 
+    the timer is disabled, and this process repeats for the next source value.
+    throttle<T>(durationSelector: (value: T) => SubscribableOrPromise<any>, config: ThrottleConfig = defaultThrottleConfig): MonoTypeOperatorFunction<T>
+
+4)throttleTime - Emits a value from the source Observable, then ignores subsequent source values for duration milliseconds, 
+    then repeats this process.Lets a value pass, then ignores source values for the next duration milliseconds.
+
+    throttleTime<T>(duration: number, scheduler: SchedulerLike = async, config: ThrottleConfig = defaultThrottleConfig)
+        : MonoTypeOperatorFunction<T>.
+
+    throttleConfigParameter -
+        https://stackoverflow.com/questions/57059666/how-does-throttletime-operators-config-parameter-work-throttleconfig
+
+5)take - take returns an Observable that emits only the first count values emitted by the source Observable. If the source 
+    emits fewer than count values then all of its values are emitted. After that, it completes, regardless if the source 
+    completes. If source observable errors before emitting required number of values, resutant observable also errors out.
+
+    take(count: number): Observable
+
+6)takeLast - takeLast<T>(count: number): MonoTypeOperatorFunction<T>
+    Emits last value from the stream. it emits valus when observable completes, the emits them in sequence.
+
+7)takeUntil - takeUntil<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T>
+
+8)takeWhile - takeWhile<T>(predicate: (value: T, index: number) => boolean, inclusive: boolean = false): MonoTypeOperatorFunction<T>
+    emits value until predicate return true. it is called for each value emitted by observable.
+
+    When the optional inclusive parameter is set to true it will also emit the first item that didn't pass the predicate.
+
+9)skip - Returns an Observable that skips the first count items emitted by the source Observable.
+
+    skip<T>(count: number): MonoTypeOperatorFunction<T>
+
+10)skipUntil - The skipUntil operator causes the observable stream to skip the emission of values ​​until the passed in 
+    observable emits the first value. This can be particularly useful in combination with user interactions, responses of 
+    http requests or waiting for specific times to pass by.
+    
+    skipUntil<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T>
+
+    Internally the skipUntil operator subscribes to the passed in observable (in the following called notifier) in order to 
+    recognize the emission of its first value. When this happens, the operator unsubscribes from the notifier and starts 
+    emitting the values of the source observable. It will never let the source observable emit any values if the notifier 
+    completes or throws an error without emitting a value before.
+
+11)skipWhile - Returns an Observable that skips all items emitted by the source Observable as long as a specified condition 
+    holds true, but emits all further source items as soon as the condition becomes false.
+
+    skipWhile<T>(predicate: (value: T, index: number) => boolean): MonoTypeOperatorFunction<T>
+
+    if source observable before, given function return false, resutant observable also completes, without emiting any value.
+
+12)distinct -If a keySelector function is provided, then it will project each value from the source observable into a new value 
+    that it will check for equality with previously projected values. If a keySelector function is not provided, it will use 
+    each value from the source observable directly with an equality check against previous values.
+
+    In JavaScript runtimes that support Set, this operator will use a Set to improve performance of the distinct value checking.
+
+    In other runtimes, this operator will use a minimal implementation of Set that relies on an Array and indexOf under the hood, 
+    so performance will degrade as more values are checked for distinction. Even in newer browsers, a long-running distinct use 
+    might result in memory leaks. To help alleviate this in some scenarios, an optional flushes parameter is also provided so 
+    that the internal Set can be "flushed", basically clearing it of values.
+
+    the second argument is a flush observable, distinct flushes its cache whenever that observable emits
+    
+    distinct<T, K>(keySelector?: (value: T) => K, flushes?: Observable<any>): MonoTypeOperatorFunction<T>
+
+13)distinctUntilChanged - Returns an Observable that emits all items emitted by the source Observable that are distinct by 
+    comparison from the previous item.If a comparator function is provided, then it will be called for each item to test for 
+    whether or not that value should be emitted.If a comparator function is not provided, an equality check is used by default.
+
+    distinctUntilChanged<T, K>(compare?: (x: K, y: K) => boolean, keySelector?: (x: T) => K): MonoTypeOperatorFunction<T>
+
+    for details about keySelector Function, refer - 
+        https://www.leonelngande.com/an-in-depth-look-at-rxjss-distinctuntilchanged-operator/
+
+14)distinctUntilKeyChanged - distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare?: (x: T[K], y: T[K]) => boolean): MonoTypeOperatorFunction<T>
+
+15)filter- Filter items emitted by the source Observable by only emitting those that satisfy a specified predicate.
+    filter<T>(predicate: (value: T, index: number) => boolean, thisArg?: any): MonoTypeOperatorFunction<T>.
+
+    predicate - A function that evaluates each value emitted by the source Observable. If it returns true, the value is emitted,
+     if false the value is not passed to the output Observable. The index parameter is the number i for the i-th source emission that has happened since the subscription, starting from the number 0.
+
+    thisArg	- Optional. Default is undefined. An optional argument to determine the value of this in the predicate function.
+
+16)find - Emits only the first value emitted by the source Observable that meets some condition.after emitting value 
+    resultant observable completes.
+
+    find<T>(predicate: (value: T, index: number, source: Observable<T>) => boolean, thisArg?: any)
+
+    Unlike first, the predicate is required in find, and does not emit an error if a valid value is not found. but observable will
+    never emit any value nor completes, even if source observable completes.
+
+17)first - Emits only the first value (or the first value that meets some condition) emitted by the source Observable.
+    first<T, D>(predicate?: (value: T, index: number, source: Observable<T>) => boolean, defaultValue?: D): OperatorFunction<T, T | D>
+
+18)last - same as first but works on last value.
+ last<T, D>(predicate?: (value: T, index: number, source: Observable<T>) => boolean, defaultValue?: D): OperatorFunction<T, T | D>
+
+19)sample - Whenever the notifier Observable emits a value or completes, sample looks at the source Observable and emits 
+    whichever value it has most recently emitted since the previous sampling, unless the source has not emitted anything
+     since the previous sampling. The notifier is subscribed to as soon as the output Observable is subscribed.
+
+     sample<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T>
+
+20) ignoreElements - ignoreElements(): OperatorFunction<any, never>
+    Ignores all items emitted by the source Observable and only passes calls of complete or error.
+
+21)Single - Returns an Observable that emits the single item emitted by the source Observable that matches a specified
+ predicate, if that Observable emits one such item. If the source Observable emits more than one such item or no items,
+ notify of an IllegalArgumentException or NoSuchElementException respectively. If the source Observable emits items but
+ none match the specified predicate then undefined is emitted.
+
+ single<T>(predicate?: (value: T, index: number, source: Observable<T>) => boolean): MonoTypeOperatorFunction<T>
+ 
+ Throws -
+ EmptyError Delivers an EmptyError to the Observer's error callback if the Observable completes before any next notification
+  was sent.
+
+22)audit
+
+23)auditTime
+
+Differences - 
+
+1) find vs first - 
+    1)Pradicate function is mandatory in find but in first it optional.If no pradicate is provided, then first just emits first value.
+    2)First takes a default value, in case source observable completes without emitting a value.
+    3)If source observable completes without emitting a valid value(if pradicate is provided) and no default value is provided then
+        it throws an error.

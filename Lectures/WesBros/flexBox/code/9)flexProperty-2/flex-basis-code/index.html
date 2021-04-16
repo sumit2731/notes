@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+    <h1>Without Inner Item height respects flex-shrink</h1>
+
+    <div class="container">
+    
+        <div class="container__item">
+            1
+        </div>
+    
+        <div class="container__item">
+            2
+        </div>
+    
+        <div class="container__item">
+            3
+        </div>
+    
+        <div class="container__item">
+           4
+        </div>
+    
+    </div>
+
+    <h1>Now as we inner item has height of 100%. in this case height does not respect flex-shrink.</h1>
+    <p>Instead of height use flex-shrink</p>
+    
+    <div class="container">
+    
+        <div class="container__item">
+            <div class="container__item--inner">
+                1
+            </div>
+        </div>
+    
+        <div class="container__item">
+            <div class="container__item--inner">
+                2
+            </div>
+        </div>
+    
+        <div class="container__item">
+            <div class="container__item--inner">
+                3
+            </div>
+        </div>
+    
+        <div class="container__item">
+            <div class="container__item--inner">
+                4
+            </div>
+        </div>
+    
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+Required link - https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block
+
+1)Width of block level elemnts are 100%. when we apply position-
+    1)Fixed,absolute - Just enought to hols the childern. if some hardcoded width is applied, then that will be taken. It is said that both block as well as inline 
+        element behave like inline-block element.
+    2)Relative, absolute - No Change.
+
+2)Containing Block -
+    a)static, relative, or sticky -  
+        1)content box is the nearest ancestor element that is either a block container (such as an inline-block, block, or 
+            list-item element) or establishes a formatting context (such as a table container, flex container, grid container,
+            or the block container itself).
+        2)They will take height,top,bottom value in percentage only if parent has explicit height
+
+    b)absolute -
+        1)a)If none of ancestors of element3 have positioning property applied then positioning context of element3 is viwport(lecture says it is html 
+             element). for details see this link-
+             https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#Positioning_contexts. this link says this-
+             the absolutely positioned element will be contained in the initial containing block. The initial containing block has the dimensions of the viewport, 
+             and is also the block that contains the <html> element.Simply put, the absolutely positioned element will be contained outside of the <html> element, 
+             and be positioned relative to the initial viewport. 
+        2)The containing block is formed by the edge of the padding box of the nearest ancestor element that has a 
+            position value other than static (fixed, absolute, relative, or sticky). 
+        3)even if you do not give explicit height to your parent, elemnt with position: absolute, can take percentage value 
+            for height,top and bottom.
+
+    c)fixed - the containing block is established by the viewport (in the case of continuous media) or the page area 
+        (in the case of paged media).
+
+3)Offset values(top, bottom, left and right) -
+
+    If we do not give off set to any element then all elements stay at there position.
+    a)Static - None are supported
+    b)relative -   
+        1)left and right - harcoded as well as percentage values are supported. 
+        b)Top and Bottom-Harcded for supported. percentages are supported only if fixed height is given to parent.This is because height of parent depends upon
+            height child.
+        so we can move the element around,but surrounding layout is not disturbed. lets say our element is having top and bototm margin. so when we start moving our
+            neighbouring element respect the margin of our elment. so our elment can move without disturbing the layout.
+    c)Fixed and Absolute - both absolute and fixed values supported
+
+4)Giving width using left, right and height by using top and bottom-
+
+    explicitly given height always takes precedence
+
+    a)absolute,fixed -Possible(with both percentages as well as fixed values)
+    b)relative,static,sticky - 
+        1)relative - if both left and right properties are given, only left is respct.
+        b)Sttaic- none of left,right,top and bottom are respected.
+
+5)Document Flow -
+    a)absolute, fixed - removed from document flow .ie others elements take it position. its like it is not in that layer.
+        giving margin to it does not change layout.
+    b)Static, relative - It remains in document flow.
+       Fixed is use like this - we assign posiion:relative to parent(any level) of element 3, now element3(position: absolute) can be position according to its parent, 
+         while parent is not taken out from document flow.
+
+
+e)Sticky(new,check browser suport)-(lecture 90)
+    1)Sticky positioning can be thought of as a hybrid of relative and fixed positioning. A stickily positioned element is treated as relatively positioned until
+        it crosses a specified threshold, at which point it is treated as fixed until it reaches the boundary of its parent
+    2)if we do this- #one { position: sticky; top: 10px; }, then-
+        would position the element with id one relatively until the viewport were scrolled such that the element would be less than 10 pixels from the top. 
+        Beyond that threshold, the element would be fixed to 10 pixels from the top.
+    3)You must specify a threshold with at least one of top, right, bottom, or left for sticky positioning to behave as expected. Otherwise, it will be 
+        indistinguishable from relative positioning.
+
+
+Links to refer - 
+    https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning
+    https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#Positioning_contexts

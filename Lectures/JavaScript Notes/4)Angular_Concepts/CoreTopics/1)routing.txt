@@ -1,0 +1,55 @@
+1)For each navigation ,router generates a navigation id. and we can pass a custom state object(to navigate method), 
+    using navigationEXtra.how to access these -
+    
+    a)In routes guard we can access it on  getCurrentNavigation() method on router service.
+    b)In component to which we navigated, we can access it using router service as explaied in point 1.
+       Please remember getCurrentNavigation only works in the constructor. 
+        It will return null if used elsewhere.
+    c)in component to which we navigated, we can access it using window.history.state.
+
+    d)we can access it using Navigation service.
+    
+    e)also wen we move back through browser back,this id and state can be found in NavigationStart event.
+
+    see this article on how to use this data -
+
+    https://www.tektutorialshub.com/angular/angular-pass-data-to-route/
+
+2)See this link to see what new navigationEXtra options do-
+    https://www.tektutorialshub.com/angular/angular-navigating-between-routes/
+
+2)while navigating programmatically(i.e by using using navigate and navigateByURL fucntion of router service),
+     we can pass additonal proeprties in form of objec itt. this object is of type  NavigationExtra's.
+     
+3)when is NavigationCancel event triggered -
+    https://dzhavat.github.io/2019/06/08/when-is-navigation-cancel-triggered.html
+
+4)Custom strategies are very useful when you only want to preload certain modules, or you want to conditionally preload a 
+    module or add a delay.
+
+5)Option passed to forRoots method-
+    RouterModule.forRoot(routes, { preloadingStrategy: NoPreloading })
+
+API -
+
+    1)NavigationExtra - this is objevt that we can pass to router.navigate method
+        https://angular.io/api/router/NavigationExtras#navigationextras
+
+        importnat properties are -
+            skipLocationChange?: boolean
+            replaceUrl?: boolean
+            state?: {...}
+    
+    2)NavigationStart event in router Events. see proeprties-
+    
+        navigationTrigger?: 'imperative' | 'popstate' | 'hashchange'
+        restoredState?: {...}
+
+    3)Router Service -
+        a)getCurrentNavigation
+        b)parseUrl()
+
+
+Topics to be covered -
+    a)dynamic routes
+    a)custom preloading

@@ -1,0 +1,44 @@
+Links to refer-
+    https://www.hongkiat.com/blog/css-grid-layout-minmax/
+    https://bitsofco.de/how-the-minmax-function-works/
+    https://medium.com/@elad/becoming-a-css-grid-ninja-f4c6db018cc1
+
+1)minmax(First see code in minmax-FINISHED.html, there we hace code comments which are explanatory)
+ this is specific to css grid
+        here wes bors said that when we use minmax with autofit and auto fill
+        then it can replace lot of media queries because it is responsive by nature. for example-
+        if we have grid-template-columns: repeat(auto-fill, 150px), then some content may spill out
+        from columns for this use - repeat(auto-fill, minmax(150px, 1fr))
+        then we saw how minmax workds with auto-fit and auto-fill. first see code notes.
+        then go through links. Important Points-
+            1)If max is smaller than min, then max is ignored and the function is treated as min. 
+            2)As a maximum, a <flex> value sets the track’s flex factor. It is invalid as a minimum.
+             docslink- https://developer.mozilla.org/en-US/docs/Web/CSS/minmax
+
+2)fit-content(code and notes in fitContent.html)
+ it works by this role-
+    min(maximum size, max(minimum size, argument))
+    see code notes, then go through mozilla docs, then links.
+
+3)max-content, min-content - see links
+    see links.there we have good explanation.
+    1)min-content-It represents the smallest possible size the cell can be that does not lead to an overflow.
+    2)max- content - It represents the largest spce that content of element can take.
+    lets see what we mean-
+        a)Lets grid item contains text i.e bunch of words. lets say these words has space between them.
+         now min-content is width of widest word i.e width of widest content that needs to be displayed in
+         single line. max-content is width required to display all content in single line.
+        b)lets say insted of text we some inline-block elements inside grid-item, now these will be treated as text.
+         that is each item will be treated as text without spaces.This concept of treating each item as word in not 
+         specific to this proeprty.it is generalized. same also is applied to auto and fr. so this is how
+         we calculate width when grid-template-column has value of max-content and min-content. 
+
+    Image exmaple for min-content in hongikat works like that in min-content.html exmaple because we have: max-width:100%.
+    so there content of 1st column depends upon size of coulumn. so ist column is sized based upon 5th and 7th column.
+    see min-content.html.
+    here point to be noted is lets say we have a column, we have a div which
+    has width of 400px. here minimum and maximum width that column needs
+    is 400px. so here you wnt see any difference in max-content or min-content.
+
+4)Tht's how you make grid responsive, you can use this-
+    minmax(min-content, max-content)(it is done in hongkiat link)

@@ -1,0 +1,21 @@
+1)Performance - It's a combination, so it used to have like profiling and timeline. Now, you have this Performance tab. 
+    So if I kind of like click the Record button on performance and scroll around the page and then I click Stop, you get
+     a lot of information.So we'll be covering this pretty in-depth, but basically, it does like everything that your CPU
+     is doing. So like all the JavaScript that gets parsed, what it's up to, where repaints happen, where JavaScript 
+     bottlenecks could be anything like that.
+2)Memory -so another kind of like confusing area is that for debugging memory leaks, you actually end up using the Performance
+    and the Memory tab a lot?So it's a little bit confusing but the performance is like your kind of best place to start.this 
+    Memory tab allows you to do these profiles, these snapshots basically where you can grab like a moment in time on the site
+    and it'll show you all the memory that's been allocated to your site, what it's for, why it got there, everything like that.
+
+3)Security - tells if site is having https or not.
+
+4)Lighthouse - replacement of audit
+    It's a great tool. The Audits panel, I always think about as like a very high level view. Something like the performance 
+    or the memory or network, those are like really low level. You're actually seeing your HTTP traffic or you're seeing your
+    JavaScript usage. The audits is a lot more like it runs your site through a suite of tests and it gives you back really 
+    actionable feedback, but it'll give you back things in plain English.So it'll give you back things like these images are 
+    too large. You have too much CSS that's not even being used, or this site doesn't look good on mobile. Things like that,
+    right?So it gives you this really actionable feedback. It's always where I like to start, and at the end of the workshop,
+    we'll do some live audits to people's sites.And the audit step is always where I start before diving into performance 
+    or network or anything like that

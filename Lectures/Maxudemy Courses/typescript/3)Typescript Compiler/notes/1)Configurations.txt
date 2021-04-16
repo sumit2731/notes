@@ -1,0 +1,20 @@
+1)watch mode
+    tsc app.ts --watch or tsc app.ts -w
+    now when ever we chnage ts file, it is automatically compiled to js.
+
+2)creating tsconfig file
+    navigate to folder, where you have your project,run this command- 
+     tsc --init
+    this will initilaize this project(where you run this command) as typescript project,
+    that means it will now basically tell typescript that everything in the folder, where
+    you run this command(therefore it is important that you navigate into right folder before
+    you run this command) is a typescript project.so thsi project is now managed by typescript.
+    It creates tsconfig.json file. this basically is indicator for ts that this project, in which this
+    file lies and all subfolders of this folder should be managed by typescript. now if you run-
+     tsc, 
+    then it will compile all ts files that it can find in this project into js files. 
+    we can also combine it with watch mode. so run
+        tsc --watch or tsc -w
+
+3)Deciding which files are be compiled
+    for this thing we have include,exclude and files options in tsconfig.josn. see file.

@@ -1,0 +1,14 @@
+Here we saw how we can use loaders to load diffrent types of files in js files through webpack. 
+we loaded these files-
+
+    1)jpeg(add-image.js)
+    2)css(hello-world-button.js)
+    3)scss((hello-world-button.js))
+    4)js(ES 6/7/8/9/10)
+
+Commands -
+    
+    1)npm install file-loader --save-dev
+    2)npm install style-loader css-loader --save-dev 
+    3)npm install sass-loader node-sass --save-dev
+    4)npm install @babel/core babel-loader @babel/preset-env babel-plugin-transform-class-properties --save-dev 

@@ -1,0 +1,38 @@
+Block Element-
+    1)They create new line of content,stacking on top of each other by default.block level elements-
+         p,h1,div,ul,li,main,fotter,header,section
+
+    2)Have default width of 100% and default height of 0, but they will grow in height according to
+        content that is inside them.
+
+    3)You can do everything with them like giving padding, margin, height etc. you can put anything inside of them.
+
+    4)You can use margin-left: auto and margin-right:auto trick only on block elements. it does'nt work in case of
+        inline or inline-block elements.
+    5)Even if you decreasw the width of inline element like by width: 50%, next element will start from next line.
+       
+Inline Elements-
+    1)These stay withon flow of what's around them.below are inline elements-
+        Links
+        strong
+        em
+        span
+        images(Sort of)
+    2)You can only nest other inline elements inside them.like you cannot put div inside span.Next time you're 
+        trying to style, say a span, and you're noticing that it just won't do what you want it to do, look and 
+        see if you've accidentally put a paragraph in there. While it might seem like a paragraph can go in a span,
+         since spans are sometimes used as containers, a paragraph is a block level element, so it doesn't belong in a 
+         span.If you need to have paragraphs in a container, why not try a div, which is a block level element. 
+        The one exception to the above rule is the anchor tag. Any element can be wrapped within an anchor tag
+    
+    3)they will respect padding,margin,border on left and right side but not on top and bottom. actually top and 
+     bottom padding is excepted by inline element but rest of elemnst around it behaves like there is no padding.
+     top and bottom margin is actually ignored i.e there is no effect.
+    4)you canot set width and height on inline elements. if you set it, it is simply ignored
+    5)margin-left:auto or margin-right: auto does not work on inline-block elements. they work only on
+        block elements.
+
+
+Inline-Block Elements -
+    1)It’s essentially the same thing as inline, except that you can set height and width values.
+    

@@ -1,0 +1,75 @@
+Algorithms - It is set of steps to accomplish a certain task. it is
+    foundation for being a successful prolem solving and developer.
+
+How to Improve Problem Solving-
+
+    a)Devise a plan for  solving problems-  how do you appraoch a problem,
+        strategies for breaking it down.
+    b)Master Common Problem solving patterns- Lot of interveiw problems can be broken into
+        diffrent categories and if you can identify some of those categories, there are some
+        steps you can take in your code.
+In this section we will talk about only point1.
+
+    1)Understand the problem - Here we saw that there can be lot of questions in simple problem like
+      adding 2 numbers. like type of numbers(int or float), size of numbers etc,return type of numbers
+      int or float
+
+      https://cs.slides.com/colt_steele/problem-solving-patterns#/10/0/4
+
+      for example see figure 1.
+    
+    2)Concrete Examples-  write 2-3 examples, i.e have input then output.
+        a)Start with simple examples
+        b)More complex examples
+        c)edge cases,empty inputs
+        d)invalid inputs
+
+        In course we did these steps on problem of calculating number of times a chracters present in
+        string.see at 06:13
+
+    3)Break it Down - take actual steps of problem and then write them down. it doesn't need to full 
+        pseudo code, just comments as a guide for the steps that are needed to take. lot of interviewer's
+        want you to communicate what you are thinking. so this is important.they dnt want you to just
+        start writing code. you do not need to exactly write each and every step, it is just rough idea
+        of steps that you will do.
+        
+        now refer to slides.
+        colte walks us through a exmaple, see vidoe from 03:05 to see it.
+
+    4)Solve or simplify -
+        you can silve problem if you are sure about all solution. but if there are 1-2 things you
+        are not sure about, then simplify comes in. That's why name is solve/simplify.
+        refer slides-
+
+        Solve the problem if you can otherwise solve the simpler problem. it means ignore the part
+        that is giving you hard time, in order to focus on everything else. why do that?
+            a)In Interview often you want to have something to show for yourself. so instead of
+                getting stuck on one difficult part of problrm and making zero progress at all
+                because you are putting all your eggs in one basket, of bring able to solve 100%
+                before you even write starting code, can look bad. so it is better to start writing code,
+                even if you know that you will stuck at some part, keeping in mind that you need to 
+                incorporate that harder part back in. After you are done with parts you know,(if you are 
+                like done with 90%) then may be you can ask your interviewer about suggestions on part you 
+                cannot figure out. you can tell him , that i have 3 approachs  not sure which one is best.
+            b)Secomdly its pretty common that in simplifying a problem you will gain insight into actual
+                solution of harder path.
+
+    in slide we explained it by example.see it in video starting from 03:30
+
+    5)Look Back and Refactor -it i most important steps when it comes to improving, becoming better 
+        developer. when we have a soltion which is either good or scrapy, it is time to look back and
+        refctor it. now refer to slides. there are some refactoring questins that yu need to ask yourself,
+        once you solve a problem.
+
+        can you think of other ways to refactor- have you followed your comapny guidelines(style guides), 
+        does it follows convemtion of the languages, is spacing inconsistent.these are minor things, but
+        this is important to show, even in an interview setting atleast acknowledge te fact that your code
+        is'nt neat and that you would prefer to make it neater if you had time.
+
+        you can learn from seeing how other people have solved the problem. you some times you can look
+        how someone solved the same problem in diffrent language.
+        so it is always better to look back at your code, make improvesents aof you can, rather than just
+        calling it a day.
+        
+        look at exmaple colt gave in ecture from o7:00. tere he says that regular expressions are not good
+        performance wise.

@@ -1,0 +1,14 @@
+* {
+ box-sizing: border-box;   
+}
+div {
+    background: black;
+    color: white;
+}
+
+.tall-box {
+    background: red;
+    width: 100px;
+    height: 300px;
+    display: inline-block;
+}

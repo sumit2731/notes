@@ -1,0 +1,57 @@
+Intro-
+    Tree Data Structure is commonly used in computer scienece. They are litt;e stepup and complicated from linked list.
+    here we will see difference between trees, binary trees, and binary search trees. but we will focus on binary serach 
+    tress i.e we will implement operations on binary search trees.
+
+    A tree is a data structure that consists of nodes in a parent / child relationship. one parent can have many childs.
+
+    list are linear, trees are non liner. IN list we have a element, then next one, then next. so everything is in line.
+    tress can have branch, we have more than one pathway through tree. In list we move in a single line.
+
+Rules for tree-
+
+    In A tree, we canot have nodes refrencing other nodes which are not below them i.e which are not their childern. so
+    a node can only point to child. so it is parent child relationship. chld cannot point to parent,siblings cannot point
+    to each other. or we can say that there is a single parent for a node. but a node can have many child. see figure 3 and
+    4.
+
+Tree Terminology-
+
+    See figure 5.
+
+Tree Aplications-
+    see figure 6. fpr details you can go through lecture. its just some extra knowledge.
+
+Tree Types-
+
+    There are endless types of tree, they excel at one thing or another. Later when we 
+        learn about heaps, they are also kind of a tree.
+
+    Tress - Normal Tress, we already know them.
+    
+    binary Tress - A node can atmost have 2 childern.there are terms for tree where node can have atmost
+     3 chidlern, 4 childern and so on.. , trees. but they are not commonly talked about. this is because binary
+     tress has some special properties that makes them easier to navigate.
+    
+    Binary Search tree - They are special type of binary serach tree. which excel at searching.so we store sorted 
+        data in particular way in binary search tree, which nakes it easier to retreieve. they are sorted in a 
+        particular way, they are kept in order.BST are used to store data that can be compared, that is sortable,
+        so often classically we are talking about numbers.it can be string or any other type of data, that you know
+        has some way of , there is way for you to order it and compare things,which one is greater and which one is
+        less. so speacil property of binary serach tree is that, if we take a node, then every node that is left of
+        it is, smaller than that node. and on right hand side we have items that are greater than concerend node.
+
+    because of above proeprty , it is easier to serach an item in binary serach tree. we know whether we move to
+        left or right node. otherwise we have transverse the whole tree.there are many of ways to tranverse a tree.
+        we will see them.
+    
+        also insertion is easier as we know where node actually belongs.
+
+    There are many types of binary trees, one of them is binary search tree.
+
+
+Big O(see video)-
+    Searching - 
+        best and worst - O(Log n)
+        worst(see figure 12 ) - O(n)
+    Insersion - same as searching

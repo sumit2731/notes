@@ -1,0 +1,7 @@
+1)how to use exiting npm scripts -
+    
+    "scripts": {
+        "webpack": "webpack",
+        "dev": "npm run webpack -- --mode development",
+        "prod": "npm run webpack -- --mode production"
+    },

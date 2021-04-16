@@ -1,0 +1,66 @@
+1)git remote
+List the remote connections you have to other repositories.
+(when we clone a repo, this is automaticaly set, to from where we have cloned repo)
+(when we make a local repo, we need to set it using  3)
+
+
+2)git remote -v
+Same as the above command, but include the URL of each connection.
+
+3)git remote add origin "https://github.com/sumit2731/Notes-5.git"
+sets remote for local repo. this is already done when we clone a repo. but if we want to
+push local repo to cloud. we have to do this step.
+
+3)git branch -r
+Shows all remote tracking branches.If you have cloned the repo,then  it will show you all remote 
+tracking branches for branches that are on remote repo.howver if some branches are added
+after you cloned the repository, those will not be shown here.
+
+4)git fetch
+when you clone a existing repo, for all branches that are on remote repo, you wil have remote
+tracking branches created for them automatically. but lets say after you have clone the repo, 
+a new branch is created on remote repo. to have remote tracing branch for this newly cretaed
+branch run this comman.
+if you run git branch -r you can see all remote tracking branches for all branches on remote.
+
+it also pulls code from remote branches to remote tracking branches. you can later do merge
+with your local branches, to get latest code on your file system.
+
+5)git checkout origin/<branch-name>
+switces to remote tracking branch, but you will be in detached head state. for this to
+happen, there needs to be remote tracking branch for given branch. it you do not have 
+remote tracking branch. run git fetch, to get remote tracking branches for all branches on remote
+repo.
+
+6)git checkout -b "branchName" origin/"branchName"
+Cretaes a local branch from remote tracking branch.for this to work you should have remote 
+tracking branch that you used in command. if you do not have remote tracking barnch for some branch, 
+then run git fetch.
+
+Apart from creating new branch, it also sets the upstream of that new branch.
+
+7)git checkout filename
+    it will remove all uncommited chnges from this file
+
+7)git pull
+it will fetch the code to remote tracking branch and  then merge it with our local branch in end.it
+also creates remote tracking branches for any new branches that are added to remote repo.
+
+8)git remote rm origin
+removes remote repository
+
+9)git push -u origin <branch> or git push --set-upstream origin "name of branch"
+
+it will create remote tracking for a local branch.this needs to be done, when you have created
+a local branch and you want to push it into remote. when your run git branch -r, 
+and you can see this remote tracking branch.next time you can just use git push or git pull. it also 
+publishes our branch. if you have not set upstream for a branch then you have to specify from
+which branch you want to perform push or pull, ex-
+in branch5-
+git pull origin feature5
+now fetaure5 branch will be created if it does not exist. this was the case of names of branch match
+if they do not match then use-
+git push origin HEAD:feature6
+
+10)git push --all -u
+sets remote tracking branch for all branches

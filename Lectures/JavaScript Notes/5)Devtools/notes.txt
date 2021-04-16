@@ -1,0 +1,78 @@
+Day 1 -
+    
+    1)$0,$1,$2,$3 = Gives the element selected in chrome dev tools
+    2)$('css selector'), $$('css selector') = queryElmenet, queryElementAll(and converts them into array)
+    3)$_ =  references the result of the last evaluated expression.
+    4)$i('lodash') or $i('moment') =  you can quickly import and play with npm libraries right in the console.
+
+
+Day 2 -
+
+    5)copy - It will copy anything from chrome dev tools to clipboard. use - copy($0)
+    6)Save as Global Variable - right click on expression logged into console and make it global variable.
+        it will be stored in global variable temp1, temp2,.....tempn.
+    7)Save a stack trace, and copy it on click board.
+    8)Copy a element from dev tools, select it and do (ctrl +c), now it is copied to clip borad
+
+
+Day 3- (Console Methods)
+
+    9)console.assert(assertion, obj1 [, obj2, ..., objN]) => assertion is js expression, if it is false,
+        then objects or string are printed on screen. It’s useful if you only need to log a message in a 
+        specific condition — now you can do it without a dedicated 'if' statement. Plus, you’re getting a stack 
+        trace gratis ;-)
+        
+        console.assert(false, 'the word is %s', 'foo');
+    
+    10)console.table(data [, columns]);
+        An array containing the names of columns to include in the output.
+
+    11)console.dir - gives better view of data
+
+
+Day 4(Elements Pane) -
+
+    12)h - you can hide and show a element by selecting it and pressing h
+    13)You can do drag and dropon element, element panel
+    14)Move elemnts up and down by selecting in element pane and pressing ctrl + up, ctrl+ down
+    15)Elements pane is editor(cut,copy,paste.undo all are there)
+
+
+Day 5(console.log) -
+
+    16)An object that you log into the console is stored there by a reference until its content is displayed.
+        here note the statement, until its content is displayed.it means if there is only one log statement, then
+        everything will work fine.
+
+    My Finding -
+        console.log("My Name i %s, I am %s years old","Sumeet","27);
+
+
+Day 6(Command Pallete) -
+
+    17)Open Command - [Ctrl]+[Shift]+[P] 
+    
+    18)Capture node screenshot - Select node in elements tab, then select this option
+        Capture full size screenshot
+
+    19)Quickly switch panel layout
+
+    20)Quickly switch themes
+
+
+Day 7 (console is async function by default, so you can directly use await there)
+
+    21) let result = await promise();
+
+Day 8(picker)
+
+
+Day 9(Timming the console)-
+    1)show timestamp option in command pallete(gives time in console.log statements)
+    2)console.time("Timer 1") and console.timeEnd("Timer 2")
+
+
+Day 10(Custom Formatters) -
+
+    
+

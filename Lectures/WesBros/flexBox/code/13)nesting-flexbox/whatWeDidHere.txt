@@ -1,0 +1,4 @@
+open index.html, here we want to make navigation bar, which accomodates any number of items.
+so we use flex box, open index-START.html. here we ave code. but there we had a problem.
+we want to havetext of anchr item to be vertically centered, but we want whole area of flex-cotainer
+to be clickable. we achieve this using nested flexboxs.

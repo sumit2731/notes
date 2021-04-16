@@ -1,0 +1,12 @@
+1)Experimental support for Ivy.with it budnele size has decreased. It is not fully ready for production, there re some untested parts.
+2)experimental support for bazel. - smaller bundles and quick build process.
+3)Differential Loading-  Decreases bundle size almost 20%
+
+
+
+BReaking Chnages-
+
+1)@angular/http is no longer supported. there is no version 8 of this package.it was deprecated in angular 4. use @angular/common/http
+2)ViewChild and ContentChild(ViewChildern and Content Childern work as expected) takes one additonal arguent(should be removed in 
+    angular 9)-
+    @ViewChild('localRefrence', {static: false})

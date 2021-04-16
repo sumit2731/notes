@@ -1,0 +1,36 @@
+box-sizing - 
+    content-box(default) - height and width means content only
+    border-box - height and width means content + padding + border
+
+Generally this snippet is addeed so that we dnt run into problems explained below-
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+width:auto vs width: 100% for block level element. we get over-flows if we set width. lot of times we do not really need to be
+    setting width on many of our elements, this is one off reasons. but setting box-sizing will solve this problem. we also
+    saw that setting width: auto and setting width:100%,box-sizing:border-box is equivalent.
+
+When we set height and width in percentage, thne we refer to parent's width and height. if there is no parent then we refer to
+viw port.
+
+Height vs width - avoid setting height in genreal. let css handle hights for you.every CSS element has intrinsic height by 
+    default i.e height is decided by content inside of it. some times people set height, becuse they want exteded backgroud 
+    or somethng,in that case set min-height. because now your height can chnage if you run into small screen and even if you 
+    add new content. witout min-height , you will have overflow.
+
+    to get more backround, do not set height, get it by setting padding. now heigth will adjust automaically, accoridng to 
+    screen size, you not get overflow and you will always have that emty space.
+
+    One of other resons for setting height is to get same height boxes even if content in them is diffrent. this can be doe by 
+    using flexbox as shown in codepen.
+
+    so unless you run into very specific situtaion where you need to declare specific height, for  very specific purpose, you are 
+    better off never declaring one.
+
+
+Question -
+    1)width: 100% vs auto

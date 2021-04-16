@@ -1,0 +1,23 @@
+Inheritance is very concepts in css and it almost exclusively applies to text properties. you can make any thing inherit,
+there is a way but by defaut most text proeprties are inherited.
+
+as we said most type related properties are inherited, so it saves us lot of code. so we set font-family on body an it
+flows through entire document. same thing is for color.
+
+There are some times where things are little weird, like our links are'nt inheriting certain proeprties. you must be 
+wondering they are just text. so why dont they. somethig intersting happens with heading also, we will see them.
+
+so inheritance has lowest specificity.if secton has some color, then p in that scetion will inherit but if in p
+tag selector, we some other selector it will override it. most browser has some default color of a tag and it 
+overrides the inherited color. they inherit other proeptie slike font size and font weight.
+
+otherthing is h tags dnt inherit font-weight that is because tey are bold by default. i.e there is browser default
+style applied on them.
+
+we can give value of inherit to any css property then that value will be inhrited from parent. like-
+
+a {
+    color: inherit;
+}
+
+y this way we can make any property in css to take inherited value.

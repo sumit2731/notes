@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebComponents</title>
+    <script src="tooltip.js"></script>
+</head>
+<body>
+    <template id="tooltip-template">
+        <!-- If no value is provided in between tags then. default value provided in
+        tag will be used -->
+        <slot>Default Slot</slot><span>(?)</span>
+    </template>
+    
+    <p>
+        <uc-tooltip text="WbbComponnets are set of standards">
+            <!-- This content is pulled into custome elments through slot, but it will not be part of shadow dom
+            it will remain part of light DOM. so styles of light DOM will be applied on it.
+            -->
+            WebComponnets
+        </uc-tooltip> 
+        are Awesome
+    </p>
+    
+    <p>
+        <uc-tooltip text="this is text attribte"></uc-tooltip>
+        are Awesome
+    </p>
+
+    <a is="uc-confirm-link" href="https://www.google.com">Google</a>
+
+</body>
+</html>

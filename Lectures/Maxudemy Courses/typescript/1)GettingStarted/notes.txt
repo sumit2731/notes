@@ -1,0 +1,12 @@
+Advantages of Typescript-
+
+    1)gives some new features and nicer ways of doing something.
+    2)It also gives you extra error checking where errors which you would otherwise get as 
+        runtime errors can be caught and fixed early during development.
+
+
+
+
+
+
+

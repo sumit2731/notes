@@ -1,0 +1,11 @@
+1)All Decorators associacted with dependency Injection -
+    
+    a)@Self(),@Optional(),@SkipSelf()
+        https://medium.com/frontend-coach/self-or-optional-host-the-visual-guide-to-angular-di-decorators-73fbbb5c8658
+
+    b)@Injectable
+        https://blog.ninja-squad.com/2016/12/08/angular-injectable/
+
+2)forRoot Method-
+    a)https://medium.com/slackernoon/when-to-use-angulars-forroot-method-400094a0ebb7
+    b)http://angularfirst.com/the-ngmodule-forroot-convention/

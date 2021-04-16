@@ -1,0 +1,4 @@
+Conditional breakpoints - we know.right click and add conditional brekpoint.
+
+XHR/Fetch Breakpoints - pauses the code if request url contains provided string. open sources section
+    then on right hand side, in debugger sectuon we have XHR/fetch breakpoints.

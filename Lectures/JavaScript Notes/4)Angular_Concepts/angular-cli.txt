@@ -1,0 +1,29 @@
+Angular-Cli -
+
+    Commands -
+        ng new application_name - creates a new workspace. with default application as application_name 
+        ng serve 
+        ng build
+        ng generate application <name>, ng generate library <name> - creates a new application or library. makes a entry for that in angular.json.
+            builer plate of application and libabry is added in foler path menetioned in "newProjectRoot" in angular .json.
+        
+    
+    File Replacement configuration -
+        projects.projectName.architect.build.configurations.configurationName.fileReplacement
+
+    how to make a same configyration avalible in serve -
+
+        projects.projectName.architect.serve.cofiguration.configurationName -
+            "browserTarget": "a10:build:production"
+
+    how to use a configuration while serving-
+
+        ng serve --configuration=production
+
+
+
+Questions -
+    $schema proeprty in  angular.json
+    Schematics property in projects.projectName
+
+    

@@ -1,0 +1,4 @@
+stat with files index.html and style.css. now lets arrange this boxes horizontally.
+open css1.css, we used flexbox. everything is done. now all of them are of equal height
+height is determned by largest div. now lets say whatever be height of our divs, we always
+want our button to be placed at bottom. this is done in css2.css.

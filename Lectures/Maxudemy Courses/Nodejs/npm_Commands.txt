@@ -1,0 +1,12 @@
+1)npm run "script-name"
+it will run our custom script defined in package.json
+
+2)npm install nodemon --save-dev
+installs a package as a dev dependency
+
+3)npm install nodemon --save
+installs a package as a production dependency
+
+
+
+

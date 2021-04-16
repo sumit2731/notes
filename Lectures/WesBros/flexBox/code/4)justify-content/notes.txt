@@ -1,0 +1,12 @@
+justify-content - it decides how items are aligned on main axis when there is extra space left after taking all items.
+    default value is flex-start.see css tricks for diffrent options that we have.
+
+    In order to use justify content our container needs to have fixed width or height(depends upon what is our main axis, 
+    but if flex-direction is row, then then even if we do not give any width then block elemnts have default width of 100%).
+    To vertically center a item, flex-direction: column and justify-content: center.
+
+    also if we have multiple rows, then justify content will align items in each row. see notes of 6 for details. there in third
+    row we had only one item
+    
+    note- if we have used flex-grow on a item, it will take all avalible space, so there will be no empty space hence
+    justify content wnt do anything as there is no empty space.

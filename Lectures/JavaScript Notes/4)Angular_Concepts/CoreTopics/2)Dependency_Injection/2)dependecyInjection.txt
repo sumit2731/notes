@@ -1,0 +1,20 @@
+2)@host and element injectors
+    https://indepth.dev/a-curious-case-of-the-host-decorator-and-element-injectors-in-angular/
+
+
+3)Using Dependency Injection to get instnaces of directive and component-
+    
+    a)accessing directive instnace from component. using this way we can access directive intance that comes in DOM
+        tree of component.
+        Querying For The Closest Parent Element in Angular -
+            https://netbasal.com/querying-for-the-closest-parent-element-in-angular-b2554d60c47e
+
+    b)accessing component instnace on which directive is applied
+        https://stackoverflow.com/questions/46014761/how-to-access-host-component-from-directive
+
+4)Private Providers-
+
+    https://indepth.dev/private-providers/#3-lets-try-to-do-it-cooler-with-private-providers--5/
+
+5)view Providers-
+    https://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html

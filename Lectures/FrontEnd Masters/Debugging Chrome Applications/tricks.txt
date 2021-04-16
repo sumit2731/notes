@@ -1,0 +1,14 @@
+1)To open all child nodes in tree-
+    press option or alt while clicking
+
+2)To open console tab when any othrt tab is open - esc
+
+3)you can do ctrl(or cmd) +shift +p to set auto complete to do anything that you can do with mouse, like
+    switching over tabs.
+
+4)Let's say ou are debugging some code and accidentally you went ahead of line you want to stop on.instead
+    of restarting try this-
+
+    Also you can go back to first line of stack frame by right click on a particulr stack in call stack and select 
+    "Restart Frane". now you will go back to time when that function was called.
+

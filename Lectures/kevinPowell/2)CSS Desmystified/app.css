@@ -1,0 +1,8 @@
+body {
+    text-decoration: underline;
+    color: red;
+}
+
+h1,a, span {
+    color: blue;
+}

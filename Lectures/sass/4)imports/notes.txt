@@ -1,0 +1,30 @@
+Cases where scss import is same as css import i.e these will ve translated into css imports -
+
+    @import url() => @import url("navigation.css");
+    @import "http://"
+    @import "filename.css" => @import "navigation.css"
+    @import "style-screen" screen; = > @import "mobstyle.css" screen and (max-width: 768px); this means consitionally import this file
+
+How sccss enhanes @imports, it allows us to import scss files -
+
+ @import "varibales"
+
+ this impots variables.scss as scss into this file. we dnt need to put "_" or ".scss" here.
+
+
+ Code snippet -
+
+    creating a mixin to import google fonts-
+
+    @mixin google-font($font) {
+        $font: unquote($font);
+        /* 
+        you can only use this interpellation syntax in the context of imports when 
+        you're using css imports.So you're not allowed to import SPSS files based on 
+        some variable name.
+        */
+        @import url("https://fonts.googleapis.com/css?family=#{$font}")
+    }
+
+    @include google-font("Alegreya+Sans");
+    @include google-font("Titillium+Web");

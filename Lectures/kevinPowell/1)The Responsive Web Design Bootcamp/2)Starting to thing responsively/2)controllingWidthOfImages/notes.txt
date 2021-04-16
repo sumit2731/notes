@@ -1,0 +1,15 @@
+if we simply use a image , it's width and height will be eqaul to its orignal one. but we can control it
+    by giving width to image. so adjust it's height automatically to maintains it's ratio. dnt set both
+    (width and height) on image as it will chnage aspect ratio of image and it will look weird. so make
+    width as 100%, to make it fit in container. in code we do this-
+
+    img {
+        width: 100%
+    }
+
+Somee times what we want is we do not want our image to get bigger than its orignal size, but it can get smaller
+    to fit in container. in that case use this-
+
+    img {
+        max-width: 100%;
+    }

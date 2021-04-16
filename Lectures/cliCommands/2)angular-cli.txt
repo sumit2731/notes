@@ -1,0 +1,53 @@
+1)generate-
+
+    1)Generate component inside a folder
+
+        ng g c folderName/componentName
+
+    2)generate component as memeber of someFeature module-
+
+        1)way 1 -
+            Component will be part of that module, wich is neartest to component. so using
+                    point 1,create that component inside module folder.
+
+        2)use module flag-
+            ng g c component1 --module=path_to_moduleFile/nameof mdulefile.ts
+
+            ng g c cmp1 --module=auth/auth.module.ts
+
+Flags-
+    1)prefix = Defines the prefix added to selector of generated components or directives
+        useage -
+            ng new newApp --prefix=enl
+
+2)Workspace Related -
+
+    1)Generate just workspace -
+        ng new workspaceName --createApplication=false
+
+    2)create application inside a workspace (Added flag to skip reinstalling any dependencies.)-
+        ng generate application applicationName --skipInstall=true
+
+    3)Generate a library inside workspace - 
+        ng generate library libraryName  --prefix=enl
+
+    4)Add @angular/elements library
+
+        ng add @angular/elements
+
+    5)generate elements inside a project in workspace -
+        ng g c componentName --project=projectName
+
+    6)Gdnerate build for particular project -
+
+        ng build projectName --watch
+
+        watch - Every time a file changes Angular CLI performs a partial build that emits the amended files
+    
+    7)Serving specific apps in workspace-
+
+        ng serve appName
+
+3)Adding Packages -
+
+    ng add @angular/elements

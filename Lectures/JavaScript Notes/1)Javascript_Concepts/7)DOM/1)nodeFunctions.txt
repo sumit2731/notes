@@ -1,0 +1,45 @@
+DOM Collections-
+    1)HTMLCollection
+    2)NodeList 
+
+DOM collections, and even more – all navigation properties listed in this chapter are read-only.
+  We can’t replace a child by something else by assigning childNodes[i] = ....
+  Changing DOM needs other methods. We will see them in the next chapter.
+
+Almost all DOM collections with minor exceptions are live. use for in loops to iterate over collections.
+
+Node Navigation -
+  
+  1)Node.parentNode
+  2)Node.nextSibling
+  3)Node.previousSibling
+  4)Node.childNodes - returns all node children.It lists all child nodes, including text nodes.
+  5)firstChild and lastChild
+
+Navigation properties listed above refer to all nodes. For instance, in childNodes we can see both text nodes, 
+element nodes, and even comment nodes if there exist.
+
+Element Only Navigation-
+
+  
+  1)Element.parentElement
+  2)Element.previousElementSibling
+  3)Element.nextElementSibling
+  4)Element.childern(live Html Collection) - returns only element children
+  5)Element.firstElementChild, Element.lastElementChild
+
+
+
+Some types of DOM elements, e.g. tables, provide additional properties and collections to access their content.
+
+
+
+
+1)Node.contains() method returns a Boolean value indicating whether a node is a descendant of a given node, i.e. 
+    the node itself, one of its direct children (childNodes), one of the children's direct children, and so on.
+
+    node.contains( otherNode ) 
+
+2)ParentNode.prepend() -  method inserts a set of Node objects or DOMString objects before the first child of the
+  ParentNode. DOMString objects are inserted as equivalent Text nodes.
+    ParentNode.prepend(...nodesToPrepend);

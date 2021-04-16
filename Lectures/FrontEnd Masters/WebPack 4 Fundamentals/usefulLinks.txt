@@ -1,0 +1,5 @@
+Live Binding - 
+    https://stackoverflow.com/questions/52211309/what-does-it-mean-by-live-bindings#:~:text=Live%20bindings%20is%20a%20concept,the%20case%20for%20CommonJS%20modules
+
+Bundler vs Loader - 
+ https://stackoverflow.com/questions/38864933/what-is-difference-between-module-loader-and-module-bundler-in-javascript/42317497

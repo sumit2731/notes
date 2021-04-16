@@ -1,0 +1,51 @@
+1)catchError - Catches errors on the observable to be handled by returning a new observable or throwing an error.
+
+    catchError<T, O extends ObservableInput<any>>(selector: (err: any, caught: Observable<T>) => O): 
+        OperatorFunction<T, T | ObservedValueOf<O>>
+
+    Parameters -
+
+        selector - a function that takes as arguments err, which is the error, and caught, which is the source observable,
+            in case you'd like to "retry" that observable by returning it again. Whatever observable is returned by the 
+            selector will be used to continue the observable chain.
+
+
+    Useage - 
+
+          of(1, 2, 3, 4, 5).pipe(
+            map(n => {
+            if (n === 4) {
+                throw 'four!';
+            }
+                return n;
+            }),
+            catchError((err, caught) => caught),
+            take(30),
+        )
+        .subscribe(x => console.log(++i));
+
+    here we retry same observable again after it errors out till we get 40 values.
+
+
+2)retry - Returns an Observable that mirrors the source Observable with the exception of an error. If the source Observable
+    calls error, this method will resubscribe to the source Observable for a maximum of count resubscriptions (given as a number
+    parameter) rather than propagating the error call.
+
+ retry<T>(count: number = -1): MonoTypeOperatorFunction<T>
+
+ parameters -
+
+ count	- Number of retry attempts before failing.
+
+
+3)retryWhen - The function provided to the operator receives a stream of errors and you need to return an observable which upon value 
+    emission will trigger the request retry.If that Observable calls complete or error then this method will call complete or error on 
+    the child subscription. Otherwise this method will resubscribe to the source Observable.
+
+    if you want to retyrn after some time, then just delay the value from observable retruned from notifier. by default observable passed
+    to notifier emits values whenever source emits the error. how do we emits error on this observable, either by using tap or map.
+
+    retryWhen<T>(notifier: (errors: Observable<any>) => Observable<any>): MonoTypeOperatorFunction<T>
+
+    https://medium.com/javascript-everyday/rxjs-retrywhen-operator-15e3c83b97eb
+

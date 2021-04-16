@@ -1,0 +1,29 @@
+now we will work on navigation bar. see figure 6. we will make these 3 navigation bars. now most of times
+    navigation bar is designed like this -
+            
+            <nav>
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </nav>
+
+    now a days, we dnt use ulwe just put bunch of a links in nav. in this course we will use ul approach because
+        it is lot more common.
+
+Also in code we are using compund selectors, but generally we should go with class approach. here kevin just wants
+ to show ompund selectirs, that s why he is using them. aalso another thing is we should keep our compund selectors
+ simple. for ex, here we are uisng -
+     nav a {}
+      some tutorials use this-
+
+    nav ul li a {}
+
+    there is no need to complicate it. it is dificult to read and it increases the specificity.
+
+In Code -
+
+    here we used flexbox appraoch. first we convert ul into flexbox. then we center things using justify-content.
+    one approch as that we give some width to ul(may be hardcoded or in percentage). but if we have to add new items,
+    we ave ot increase the approch, but here flexbox handles it automatically.

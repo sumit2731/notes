@@ -1,0 +1,51 @@
+What is LInked List
+
+    A data structure that contains a head, tail and length property.Linked Lists consist of nodes, 
+    and each node has a value and a pointer to another node or null. unlike array we cannot refer
+    to a particular node by its index. see figure 1.
+
+    if we want to access particular item then we need to start from begining or end. ararys are Linked
+    elevetor, you can tell me take me to 5th floor(give me to 5th element) while linked list are
+    stairs.you need to go through 1,2,3 and 4th floor before reachig 5th. term singly list comes
+    from fact that each node is coonected one directionally to next node. in doibly list we node 
+    is also connected to backward node.
+
+Comparisons with Arrays
+
+    list
+    
+        Do not have indexes!
+        Connected via nodes with a next pointer
+        Random access is not allowed
+
+    array
+
+        Indexed in order!
+        Insertion and deletion can be expensive
+        Can quickly be accessed at a specific index
+
+
+When should you use Linked List over array
+
+    if you really care about insertion and deletion, especially if you are working with long dataset 
+    and you do not need random access
+
+Big O of common link list operations-
+    Insertion- O(1)
+        push - O(1)
+        unshift - O(1), For Array - it is O(n)
+
+    Removal - 
+        from Head - O(1)
+        from tail - O(n)
+        Anywhere else - O(n)
+
+    Searchin - O(n)
+
+    Access - O(n), in case of array it is O(1)
+
+To Sum it up, singly list excel at inserts deletion. But in case os access,
+    array wins.So use singly linked list when insertion or removal at begining 
+    is frequently required.The idea of a list data structure that consists of nodes
+    is the foundation for other data structures like Stacks and Queues. so you need
+    to know how linked list works in order to understsnd stacks and queues.

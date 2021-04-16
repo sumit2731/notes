@@ -1,0 +1,80 @@
+Intro-
+    Like merge sort, exploits the fact that arrays of 0 or 1 element are always sorted. so keep splitting our arrays
+        until they have length of 0 or 1, so they are induivally sorted.
+    
+    Works by selecting one element (called the "pivot") and finding the index where the pivot should end up in the 
+        sorted array. so numbers smaller than this elemnts are moved to left and numbers greater than pivot element
+        are moved to right. they are not sorted , we just move thme to left or right. so now we knoe that pivot element
+        is on exact spot. number on left or right may or maynot be on right spot.Once the pivot is positioned appropriately, 
+        quick sort can be applied on either side of the pivot. so we reccursively repeat the process on left or right side.
+        it does'nt matter in which sequence we pick our pivot elements, this will work.
+
+Algo-
+
+    See Slide Link -https://cs.slides.com/colt_steele/intermediate-sorting-algorithms#/15/0/0. here see how quick sort Works.
+        Implementing it by code can be dificult. Colt finds this algo dificult.
+
+Implentation -
+
+    Like Merge sort here also we implement helper function in file 1. This function takes a array and index of pivot number.then it
+        puts this pivot element into its right place. This helper function should do it in place i.e it shoudl not return new array,
+        it should modify an existing array and it should return index of pivot.
+
+    piking a pivot is important decision, runtime of algo can chnage depending upon where you pick the pivot from. ideally it should
+        be median value in dataset, so that left and right sides are equal. but ,That's not very easy to do if we dnt know what the data
+        itself is and how it's sorted. so there are other strategies like pick the first element, pick the last, pick the middle one.\
+        for the sake of simplicity we will pick first elements as pivot element, it has some consequences with Big O , we discuss this
+        later.
+
+    so to our helper function we only need to pass a array, pivot element will be its first element. exmaple-
+
+        let arr = [ 5, 2, 1, 8, 4, 7, 6, 3 ]
+
+        pivot(arr); // 4;
+
+        arr;
+        // any one of these is an acceptable mutation:
+        // [2, 1, 4, 3, 5, 8, 7, 6]
+        // [1, 4, 3, 2, 5, 7, 6, 8]
+        // [3, 2, 1, 4, 5, 7, 6, 8]
+        // [4, 1, 2, 3, 5, 6, 8, 7]
+        // there are other acceptable mutations too!
+
+    so any of above arrays are valid as long as 5 is it right place. so it does not matter what we have on left or right side. our funtion 
+     should return the index of pivot element(which we have selected to be first eleemnt)
+    
+    PseudoCode for helper function-
+
+        1)It will help to accept three arguments: an array, a start index, and an end index (these can default to 0 and the array
+         length minus 1, respectively)
+        2)Grab the pivot from the start of the array 
+        3)Store the current pivot index in a variable (this will keep track of where the pivot should end up)
+        4)Loop through the array from the start until the end
+        5)If the pivot is greater than the current element, increment the pivot index variable and then swap the current element
+         with the element at the pivot index
+        6)Swap the starting element (i.e. the pivot) with the pivot index
+
+    PseudoCode of Quick Sort-
+
+        see figure 2. here things to be noticed is that we are working on same array. we are not making sub arrays.
+
+    Big O of Pivot Sort-
+
+        Time Complexity-
+            Best- O(n log n) (this is because we have log n decomposition and for each de composition, we have 
+                              to make O(N) comparisons, that was same case with mergesort, see figure 5)
+            Average-O(log n)
+            Worst(When array is already sorted, see figure 6)-O(n*n)
+
+        Space Compexity - Log(n)
+
+        so we explained the complexity with best and average case. let's explain for worst case. In our algo we are
+            always using first element as pivot element. That is probalmatic if our data is already sorted. see
+            figure 6. the problem is if our pivot element is maximum or minimum value. so get around this problem,
+            what we can do is we can pick any random element as pivot element or we can take middle element as pivot
+            element. this way eve if we have a sorted array we can avoid this problem.
+
+        Still there is a chnace if we pick middle or random element or every time, it's possible that we are always picking,
+        minimum or maximum everytime, we cannot avoid that worst case entirely, because the way the algorithm works is
+        if you are pivoting around the minimum or maximum repeatedly, that's going to be quadratic time. but we can just
+        do our best to avoid the chances of contantly picking the minimum or the maximum.

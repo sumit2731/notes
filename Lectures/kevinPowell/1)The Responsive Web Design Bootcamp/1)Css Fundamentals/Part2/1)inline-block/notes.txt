@@ -1,0 +1,26 @@
+Inline-block-
+
+    Inline block are best of both words, inline-block elements stays in same line and we can also apply
+        width,height,margin(also top-bottom) and padding.
+
+we use inline-block where we need elements to stay in line but we should be able to set width and height on them.
+    button is such a common usecase. by defualt buttin is inline-block.
+
+In code we style regular a tags as buttons. but we were not ablt of give it margin or padding in top-bottom direction, 
+so we chnaged them to inline-block.
+
+Tips to style buttons(these tips also applies when you try to style other elements as button. like we are doing it here,
+    here we style a tag as buttons)-
+
+1)put class directly on a tag, to who which we are making look like button or on button directly..In code we have 2 types
+ of buttons. In second set of buttons class is not on a tag.so to click on a tag we have to click exactly on text.while 
+ in first case we can click anywhere in button.
+2)always use padding to create the "size" of the button, and not width and height. it is because if we give padding, 
+    then content will be centered automatically , if we use width and height then we have to center content manually. 
+    vertical centering is difficult. also if we dnt use padding then if buttons have diffrent text then amount of 
+    emty space(on left and right side) will be different.so it looks awkward.also some times content of button is so 
+    long, that it breaks out.
+
+3)padding of left and right needs to be bigger number than, padding top-bottom. this makes button look balanced. generally i use, 1:2 or 1: 2.5.
+    at the end it all depends how you want your button to look. ydnt stick yourself to this. it is something that kevin found out by looking at
+    other peoples's button. so you can also take inspiration form other people's work.

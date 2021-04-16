@@ -1,0 +1,26 @@
+Here we understood why we can have gaps in grid.Gaps can come because- 
+    1)lets say we have 10 columns, but to 6th column we said it should start at 1st columns.
+     now items after 6th columns can fit in those empty spaces but they will start after 6th 
+     column. so we will have empty spaces.
+    2)lest say 6th column needs 6 spots to fill but we only have 5 spots left in row. so it 
+     leaves those 5 spots empty and moves 6th item to next row. items that come after 6th 
+     item are then placed after 6th item. so we have 5 empty spots in first row. 
+     
+     
+     
+Then we saw how we can fill these spaces, this by using-
+        grid-auto-flow: dense
+    what this option does is, now new item will not come after item 6,
+    first they will fill any empty left by item6.
+    now lets say 7th item needs 10 columns, so it cannot fit in columns left by 6th item in row 1,
+    nor it can fit in same row as 6th item, we need separate row for it. but 8th item will go back
+    to fill up spaces left by  6th item. so it makes sure we do not have any empty spaces.
+
+    grid-autoflow : dense works like this, first we place the item whose position we have set up
+    explicitly, then we will try to fill in hole with items whose position we have not defined. it tries 
+    to fill these new items in space left by some item, if item can fit there, then it will place that item there.
+    note that even after uisng this property, there may be some situations where we stll have gaps,
+    we will see it in gallery exmaple. this will be cases when we have space for one column, but
+    we do not have any item that can fit in 1 column, i.e all items need 2 column span.
+    here we dnt have any space, because we have lot of items that can fit in single column.
+

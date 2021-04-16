@@ -1,0 +1,24 @@
+1)a: link {} - The :link CSS pseudo-class represents an element that has not yet been visited. It matches 
+    every unvisited <a>, <area>, or <link>.
+
+2)a:visisted {} -The :visited CSS pseudo-class represents links that the user has already visited.
+
+3)a:focus {} - The :focus CSS pseudo-class represents an element (such as a form input) that has received focus.
+    It is generally triggered when the user clicks or taps on an element or selects it with the keyboard's "tab" 
+    key.
+
+4)a:hover {} - The :hover CSS pseudo-class matches when the user interacts with an element with a pointing device, 
+    but does not necessarily activate it. It is generally triggered when the user hovers over an element with the 
+    cursor (mouse pointer).
+
+5)a:active - The :active CSS pseudo-class represents an element (such as a button) that is being activated by the 
+    user. When using a mouse, "activation" typically starts when the user presses down the primary mouse button.
+    The :active pseudo-class is commonly used on <a> and <button> elements. Other common targets of this pseudo-class
+     include elements that contain an activated element, and form elements that are being activated through their 
+     associated <label>
+
+Order in which they should be defined in css -
+:link — :visited — :hover — :active.
+
+this is because they have same specificity and one which is defined in last always wins. so if we define normal a{},
+afer all these pseudo classes , it will overwrite them all. once order us important.

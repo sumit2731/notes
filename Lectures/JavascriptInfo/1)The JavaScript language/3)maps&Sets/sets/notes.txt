@@ -1,0 +1,2 @@
+A Set is a special type collection – “set of values” (without keys), where each value may occur only once.
+Set is much better optimized internally for uniqueness checks.

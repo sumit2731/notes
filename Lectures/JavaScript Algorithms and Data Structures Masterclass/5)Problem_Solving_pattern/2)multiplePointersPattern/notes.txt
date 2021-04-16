@@ -1,0 +1,7 @@
+we have some some sort of structure ,liner structures and we are going to be(i dnt knw) seraching for  pair of values or 
+    seraching for something that meets a condition, usually we are searching for a pair.we use 2 refrences, one at the 
+    start and other at the end and we move them towards each other towards middle. or we can have both of them at start 
+    and move them forward in certai way, so there is there is no guarnteed direction.
+
+    In first example we have one pointer at start and one and one at end and move towards each other.
+    In Second Example both pointers are at starting and both move in same direction.

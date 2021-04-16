@@ -1,0 +1,75 @@
+1)String.fromCharCode() - returns a string created from the specified sequence of UTF-16 code units.
+    String.fromCharCode(num1[, ...[, numN]]) - A string of length N consisting of the N specified UTF-16 code 
+    units.
+
+2)charAt() - method returns a new string consisting of the single UTF-16 code unit located at the specified offset 
+    into the string.
+
+3)endsWith - The endsWith() method determines whether a string ends with the characters of a specified string, returning 
+    true or false as appropriate.
+
+    str.endsWith(searchString[, length])
+    length - If provided, it is used as the length of str. Defaults to str.length.
+
+4)includes - The includes() method determines whether one string may be found within another string, returning true 
+    or false as appropriate.
+
+    str.includes(searchString[, position])
+
+    position - The position within the string at which to begin searching for searchString. (Defaults to 0.)
+
+    return value - true or false
+
+5)indexOf - The indexOf() method returns the index within the calling String object of the first occurrence of the 
+    specified value, starting the search at fromIndex. Returns -1 if the value is not found.
+
+    str.indexOf(searchValue [, fromIndex])
+
+
+6)The lastIndexOf() method returns the index within the calling String object of the last occurrence of the specified 
+    value, searching backwards from fromIndex. Returns -1 if the value is not found.
+
+    str.lastIndexOf(searchValue[, fromIndex])
+
+        searchValue -A string representing the value to search for. If searchValue is an empty string, then fromIndex
+         is returned.
+        
+        fromIndex -The index of the last character in the string to be considered as the beginning of a match. The 
+            default value is +Infinity. If fromIndex >= str.length, the whole string is searched. If fromIndex < 0,  
+            the behavior will be the same as if it would be 0.
+
+
+
+
+
+
+1)split -The split() method divides a String into an ordered set of substrings, puts these substrings into an array, 
+    and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the 
+    first parameter in the method's call. for method details refer docs.
+        
+        str.split([separator[, limit]])
+        "sumeet".split() => ["sumeet"]
+        "sumeet".split('i') => ["sumeet"] 
+        "sumeet".split("") => ["s","u","m","e","e","t"]
+
+2)slice - The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
+    str.slice(beginIndex[, endIndex])
+
+        beginIndex- 
+            the zero-based index at which to begin extraction. If negative, it is treated as str.length + beginIndex. 
+            (For example, if beginIndex is -3 it is treated as str.length - 3.)If beginIndex is greater than or equal to 
+            str.length, slice() returns an empty string.
+
+        endIndex -
+            The zero-based index before which to end extraction. The character at this index will not be included.If endIndex
+                is omitted, slice() extracts to the end of the string. If negative, it is treated as str.length + endIndex. 
+                (For example, if endIndex is -3 it is treated as str.length - 3.)
+
+3)substr - The substr() method returns a portion of the string, starting at the specified index and extending for a given number
+    of characters afterwards. 
+    str.substr(start[, length])
+
+4)substring
+
+
+3)charCodeAt() - returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.

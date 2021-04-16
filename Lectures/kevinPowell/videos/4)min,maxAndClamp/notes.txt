@@ -1,0 +1,56 @@
+1)min -
+
+    width: 70%
+    max-width: 600px
+
+    min lets us write above 2 lines in single line-
+
+    to min you can pass 2 or more values. let's stat with 2-
+
+    width: min(500px, 70%)
+
+        min is going to look for smaller of above 2 values at any given time. hence function is called min,
+        because it is choosing min of 2 values. as you chnage browser width, it will pick one of 2 values depnding
+        upon which one is minimum.
+
+
+2)max- it picks the maximum value from given one.
+
+    width: max(400px, 20%, 50vh);
+
+    
+3)min,max
+    
+    a)we can also use one inside another. i.e-
+
+        max: (min(100px,vh),40%)
+
+    b)also we can do math inside these without using calc.like this-
+
+        min: (500px + 10%, 600px);
+        for doing math , you need to have space on both sides of unit. i.e on left and right side of '+'.
+
+4)clamp - It works with only  3 values. if you give it more or less, it wnt work.It's always a minimum, maximum and 
+    ideal size(size that you would like it to be).it's like setting min-width, max-width and width on it, all 3 in
+    1, which is pretty cool.
+
+    clamp(min, ideal, max);
+
+    width: clamp(200px, 50%, 20rem);
+
+    so it wants to be of 50%, but it has minimum size of 300px and max size of 20rem.
+
+    Kevin said that he is not big fan of min-width. as it can cause lot of issues. when you go to mobile, you have to 
+        override them and the stuff like that. so kevin is not sure what are use cases of using clamp for width.
+
+    then Kevin showed how he uses it. he uses it to set font-size.
+    
+    people set font-size like this-
+    
+        font-size: 1vh
+
+    so now font size hcnages when browser window is hcnaged, but on very small window size it is not readable. user tries to
+     zoo in, but as font size depends on vieport height, it remains same even on zoom in. see video for use cases.
+     like that-
+
+    font-size: clamp(2rem, 5vw, 5rem); 14:35

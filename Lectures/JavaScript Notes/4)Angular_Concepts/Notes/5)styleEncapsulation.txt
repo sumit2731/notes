@@ -1,0 +1,3 @@
+1):host
+2)::ng-deep
+3):host-context

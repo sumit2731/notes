@@ -1,0 +1,45 @@
+Specificity order is -
+    a)ID
+    b)class
+    c)tag
+
+to avoid these specificity battles most companies use classs only. because in long run, 
+    it complicates the matteer for nothing.there is how kevin approach things-
+    1)general rules are put on elemnts selector like paddings of h1,h2,h3, p taks a tags,
+        all stuff is on elemnts selector.
+
+    2)Then we have class selector there we can override any elments styles if we want to.
+
+when we have 2 selectors of same specificity changing same css property, then selector that is defind later
+    in css file wins. this error becaomes hard of find when you have large css files.
+
+compound selector are perfect for something like this , when structure of things is same but color
+ and styling differs. this is case with section 2 and 3. lets say we want to style btn class diffrently in
+ both sections. we can do this by-
+
+ .section-one .btn {}
+
+ .section-two .btn {}
+
+Compound Seletors - They can affect how specific your selectors are. you can be more specific by using compound 
+    selectors.is is very controvoncial in css, some people say that we should never use it. lot of class naming
+    conventions try to avoid them.but we have certain use cases where they apply really well.
+
+    
+
+In code -
+    header can be used for title of website, logo and navigation.then we have 2 sections, because we can see that
+    we need 2 sections. In general it is good practice to have a title in your sction. w ecan put header tag in
+    section tag to have title. here we dnt need it. generally it is good practice to have atleast h as first things
+    in your section. here we are no suing h1, because you should have 1 h1 per page. that should be main title of
+    the page. in folder code1 we used compound selectors, but in code2 we gave enrything it's own class
+
+Conpound Selectors and Specificity-
+
+    see figure 3 you can see that second selector has less nesting but it still has high specificity than first one.
+    in figure 4 class selector has more value because upper style has value of one. this is because we have past 9.
+    see video. so its complicated to do these caluclations. how do we avoid them? -
+
+        Give Everything a Single Class
+
+    So in folder code1 we used compound selectors, but in code2 we gave enrything it's own class

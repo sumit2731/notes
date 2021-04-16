@@ -1,0 +1,46 @@
+Objects -
+    1)Object Literal notation
+    2)Property keys must be strings or symbols (usually strings).
+    3)use of square bracket to add and access properties(it allow us to use Invalid variable identifier and variables)
+        Valid Indetifiers -
+            contains no spaces, doesn’t start with a digit and doesn’t include special characters ($ and _ are allowed)
+
+    square bracket also allows us to add vraible property name in literal notation
+        
+        let fruit = prompt("Which fruit to buy?", "apple");
+
+        let bag = {
+            [fruit]: 5, // the name of the property is taken from the variable fruit
+        };
+
+    4)property value shorthand
+    5)Property existence test, “in” operator - "key" in object
+    6)for...in loop (All Enurable proprties in object)
+    7)order in which properties appear in for in loop - integer properties are sorted, others appear in creation order.
+
+Object references and copying - 
+
+Grabage Collection-
+    a)recahability principle.
+
+methods,this-
+    1)method shorthand.There are subtle differences related to object inheritance (to be covered later), but for now they 
+        do not matter.
+
+Constructor, operator "new" -
+    a)new function() { … }
+        let user = new function() {
+            this.name = "John";
+            this.isAdmin = false;
+
+            // ...other code for user creation
+            // maybe complex logic and statements
+            // local variables etc
+        };
+
+    b)Constructor mode test: new.target
+    c)Return from constructors
+    d)omitting parenthesis
+        let user = new User; // <-- no parentheses
+        // same as
+        let user = new User();

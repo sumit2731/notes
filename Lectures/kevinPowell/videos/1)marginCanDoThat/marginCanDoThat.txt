@@ -1,0 +1,45 @@
+Other learnings-
+
+    1)lets say we have container and in container we have 2 block level elements. so these elements have width of 100%;
+        but if we apply display: flex to container then flex items will have width just enough to contain their content.
+        so width of flex items is changed.
+
+    2)if we have a contianer which is block elemnt and it is having some content. if we apply position: fixed to it, then 
+        width of container, will adjust which is just enough to contain content of container.
+
+        also if continer has some content which is block level it will have width of 100%, if continaer has position,
+        fixed, then width of child will reduce to just accomodate content. if child is having sme hardcode width then also,
+        width of container will be , just accomodate child
+
+    3)When we apply position:fixed to element, we can chnage its size by top: 0, bottom: 100 or left : 0, right: 0
+
+
+
+Code base- 7 items placed in same line.
+
+1)To horizontal center -
+    margin-left: auto;
+    margin-right: auto;
+
+    1)If no other element is on line then our item wll be centered.
+    2)if there are some itemson same line, for item wll be placed on middle avalaible space.(1.png)
+
+2)To move a item to extereme right side of container-
+    margin-left: auto
+
+    a)If you do this on 7th item, it will be moved to extereme right side of container.(2.png)
+    b)if you do that on 6th item, both 6th and 7th item will move to right side of caontainer, 7th will touch container
+        boundary, before that we will have 6th item.(3.png)
+
+
+3)we have margin-left: auto is applied on 1st and 6th item.in case after placing all elements in container. rest space will
+    will be equally divided between margin-left of both items.(4.png)
+
+With flexbox-
+
+    In above code we saw that how we can do margin-left:auto or margin-right: auto to horizontally move a element. but if we try to do this 
+        same thing vertically, it wnt work. i.e in normal formatting context margin-top and margin-bottom are ignored.but if we use flexbox it can work.
+        so if chnage formatting context to diplay: flex, then margin-top:auto and margin-bottom:auto work in same way as margin-left: auto and margin-rght: auto
+        work in all other regular contexts. this would work in flex as well
+
+    In code we have a flexbox in which which flex direction is column. here we are using margin-top and margin-bttom to move items along y axis.

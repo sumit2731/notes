@@ -1,0 +1,10 @@
+here we saw that we have a order proeprty on grid-items, using which we can control
+the order of grid-items. defualt value of order property is 0, even if you have not defined it.
+item with least order will be rendered first in html.
+
+so we can chnage order, but note that if you try to select items using keyboard, it will not work,
+also screen redaers will read the text in order it is html.
+
+
+Property seen-
+grid-order

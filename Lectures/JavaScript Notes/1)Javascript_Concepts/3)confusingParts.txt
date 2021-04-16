@@ -1,0 +1,5 @@
+1)Primitve are immutable -
+
+    const myString = '2 bananas';
+    myString[0] = '3';
+    console.log(myString); // '2 bananas'

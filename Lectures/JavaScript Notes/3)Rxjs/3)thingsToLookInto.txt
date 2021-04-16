@@ -1,0 +1,5 @@
+1)ways to make cold observable hot
+1)connect operator and ConnectableObservable
+3)the lessons$ observable is being subscribed two times. In this case, it would not pose a problem because the 
+    observable coming from the service layer is designed to prevent multiple requests to the backend, for example using 
+    publishLast().refCount().

@@ -1,0 +1,28 @@
+So this one is like it's probably the biggest example in the editing,Having said that, it still isn't gonna be perfect for 
+your workflow. But this is where we get into this concept of like using the dev tools as your main IDE.So not having an 
+editor open just using the dev tools. So what we can do is we can go into the sources.
+
+here if you have some files open, So just like in editor, you can right-click and you can do things like close, close others,
+ close to the right or close all.then go tot Filesystem tab, here we have concept of "Add Folder to workspace".the kinda concept
+  here is that Chrome is getting all these files from your local host and then you can 
+  give Chrome a folder of your actual code.And Chrome will start really trying to intelligently make mappings between those 
+  things. So it'll be like okay, a style that's CSS comes down and the folder you gave me also has a style that's CSS and 
+  they're the same. So now, I'm gonna map them together and it will map as many files as it can together.nd once mapped any 
+  changes that we're gonna make actually persist to disk as though they were written in your text editor. So that's the kind 
+  of high level view, let's like walk through it together
+
+  click on "Add Folder to workspace", there add your project folder. click on allow button which appears at top.all your files
+   are added, we still have page tab which shows all tge files coming from server.but in file system i just uploaded my whole
+   folder. now on some files you will see green arrow on tab(both in page and file system tab). also you can see this green tab
+   on styles tab in elements tab.green tick means dev tools has established linked between network resources of page and
+    and the files on our file system.it ha sync,i.e it has mapped.thid green tick means that dev tools has established
+
+   And so that means that anything that I change in here(In styles tab within elements tab) will persist(without saving), will 
+   be written down to actual filesystem(as dev tools has mapped style in style tab to file in our file system). all this work for
+    styles as well as js but not for html. because borwser generates DOM form html.what we got from file system was html now we 
+    are editing DOM in elements tab.so making chnages in DOM in elements, wnt save those chnages in filesystem. but any chnage 
+    you make in sources tab(html as well as ) will persiist in filesysatem.
+
+   many times happens when webapck builds our files and serves a diffrent file to browser, in that case browser needs source maps 
+   to do make this mapping between network resources of page and the files iuploaded. now you chnage your netwrok resources file
+    and file on your file system system will be changed.

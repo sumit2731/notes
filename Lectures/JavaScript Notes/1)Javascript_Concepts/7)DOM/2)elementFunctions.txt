@@ -1,0 +1,71 @@
+1)Element Dimension -
+
+    a)Element.clientLeft -The width of the left border of an element in pixels. It includes the width of the vertical scrollbar
+     if the text direction of the element is right–to–left and if there is an overflow causing a left vertical scrollbar to be 
+     rendered. clientLeft does not include the left margin or the left padding. clientLeft is read-only.
+    
+    b)element.offsetWidth -This is width of element including any borders, padding, and vertical scrollbars (if rendered). 
+     It does not include the width of pseudo-elements such as ::before or ::after.
+
+    c)element.getBoundingClientRect() - Gives a rectangle that represenets bot lement distnace as well as element size.
+
+
+
+1)Element.closest() -The closest() method traverses the Element and its parents (heading toward the document root) 
+    until it finds a node that matches the provided selector string. Will return itself or the matching ancestor. 
+    If no such element exists, it returns null. it is useful in event delegation examples
+
+    var closestElement = targetElement.closest(selectors);
+
+
+2)elem.hidden - When tre it hidea the element.
+    elem.hidden = true
+
+3)element.className - returns class string.
+
+4)elem.ClaslList- gives a read-only property that returns a live DOMTokenList collection of the class attributes 
+    of the element. This can then be used to manipulate the class list.
+
+
+
+
+
+HTMLTableElement
+
+1)HTMLTableElement.rows(Read only) - Returns a live HTMLCollection containing all the rows of the element, that is all <tr> that are a child of the 
+    element, or a child of one of its <thead>, <tbody> and <tfoot> children. The rows members of a <thead> appear first, 
+    in tree order, and those members of a <tbody> last, also in tree order. The HTMLCollection is live and is automatically
+    updated when the HTMLTableElement changes. also we can call this method on tbody to get.
+
+2)HTMLTableElement.insertRow() -Returns an HTMLTableRowElement representing a new row of the table. It inserts it in the rows 
+    collection immediately before the <tr> element at the given index position. If necessary a <tbody> is created. If the index 
+    is -1, the new row is appended to the collection. If the index is smaller than -1 or greater than the number of rows in the 
+    collection, a DOMException with the value IndexSizeError is raised.
+
+3)HTMLTableElement.deleteRow() -Removes the row corresponding to the index given in parameter. If the index value is -1 the last 
+    row is removed; if it smaller than -1 or greater than the amount of rows in the collection, a DOMException with the value 
+    IndexSizeError is raised.
+
+
+
+
+HTMLTableRowElement
+
+1)HTMLTableRowElement.cells - Returns a live HTMLCollection containing the cells in the row. The HTMLCollection is live and 
+    is automatically updated when cells are added or removed.
+    
+    like - rowElemeent.cells[0].innerHtml
+
+2)HTMLTableRowElement.rowIndex -Returns a long value which gives the logical position of the row within the entire table. 
+    If the row is not part of a table, returns -1
+
+3)HTMLTableRowElement.sectionRowIndex – the position (index) of the given <tr> inside the enclosing <thead>/<tbody>/<tfoot>.
+
+5)HTMLTableRowElement.deleteCell() - Removes the cell at the given position in the row. If the given position is greater 
+    (or equal as it starts at zero) than the amount of cells in the row, or is smaller than 0, it raises a DOMException 
+    with the IndexSizeError value.
+
+6)HTMLTableRowElement.insertCell() - Inserts a new cell just before the given position in the row. If the given position 
+    is not given or is -1, it appends the cell to the row. If the given position is greater (or equal as it starts at zero) 
+    than the amount of cells in the row, or is smaller than -1, it raises a DOMException with the IndexSizeError value. 
+    Returns a reference to a HTMLTableCellElement [en-US].
