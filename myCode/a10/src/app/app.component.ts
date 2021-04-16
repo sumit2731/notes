@@ -6,6 +6,7 @@ import {BehaviorSubject, interval,timer ,ReplaySubject, fromEvent, of,from, thro
 import { retryWhen,retry,tap,delay, delayWhen, map, mapTo, concatMap, take,publish,mergeMap, startWith, endWith, withLatestFrom,skipWhile,find} from 'rxjs/operators'
 import { EventEmitter } from 'events';
 import {todos as initialData} from './test_data';
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -13,31 +14,32 @@ import {todos as initialData} from './test_data';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    todos:Array<Todo> = initialData;
-    message: string;
-    callback:Function = (message) => {
-        console.log("setting message...");
-        this.message = message;
-    };
+    env = environment;
+    // todos:Array<Todo> = initialData;
+    // message: string;
+    // callback:Function = (message) => {
+    //     console.log("setting message...");
+    //     this.message = message;
+    // };
 
-    constructor() {
+    // constructor() {
 
-    }
+    // }
 
-    toggleFirst() {
-        this.todos[0].completed = ! this.todos[0].completed;
-    }
+    // toggleFirst() {
+    //     this.todos[0].completed = ! this.todos[0].completed;
+    // }
 
-    addTodo() {
-        let newTodos = this.todos.slice(0);
-        newTodos.push( new Todo(1, "TODO 4", false, new Owner("John", "Doe")));
-        this.todos = newTodos;
-    }
+    // addTodo() {
+    //     let newTodos = this.todos.slice(0);
+    //     newTodos.push( new Todo(1, "TODO 4", false, new Owner("John", "Doe")));
+    //     this.todos = newTodos;
+    // }
 
-    onAdd() {
-        this.message = "Adding Todo ...";
-        this.addTodo();
-    }
+    // onAdd() {
+    //     this.message = "Adding Todo ...";
+    //     this.addTodo();
+    // }
 }   
 
 

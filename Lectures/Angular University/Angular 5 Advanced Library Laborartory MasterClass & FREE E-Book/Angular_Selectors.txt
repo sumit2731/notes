@@ -1,0 +1,1 @@
+see ngClass and ngStyle syntax, just see images in notes

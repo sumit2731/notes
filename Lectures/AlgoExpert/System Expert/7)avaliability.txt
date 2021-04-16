@@ -1,0 +1,20 @@
+Nines - 2 nienes,  3 nines.
+
+SLA - Service level agreement. it is agreement that state that susytem will be avaible for how much tim.
+SLO - service level objecttive. it is componenet of SLA.
+
+You dnt always need to have high avalibility.it might come at cost of high latetcy and low throughput.we can also decide which
+parts of our system need high avalibility.
+
+
+how to increase the avalibility of system? anawer is eliminate single points of failure. this is done by redundancy. redundancy is
+    duplicating or multiplying the parts of your system.
+
+    Passive Redundancy - having multiple load balancers and multiple servers. it is when you have multiple components at given layer in your
+        system and at any point if one of those components for instnce one of these servers dies noting is gonna happen. other servers will
+        constinue to run smoothly.
+
+    Active redundancy - whne you have multiple machines that work togather in such a way that only one or few of the machines are gonna be 
+    typically handling traffic or doing work. if one of these machines fails, other mmachine will know that machine has failed and they gonna
+    take over.
+

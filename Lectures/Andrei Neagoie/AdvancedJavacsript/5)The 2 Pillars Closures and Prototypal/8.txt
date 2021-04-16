@@ -1,0 +1,29 @@
+let dragon = {
+    name: 'Tanya',
+    fire: true,
+    fight() {
+        return true;
+    },
+    sing() {
+        if(this.fire) {
+            return `I am ${this.name} breather of fire`;
+        }
+    }
+};
+
+let lizard = {
+    name: 'Kiki',
+    fight () {
+        return 1;
+    },
+}
+lizard.__proto__ = dragon;
+
+console.log(dragon.isPrototypeOf(lizard));
+
+for (let prop in lizard) {
+    console.log(prop);
+    if (lizard.hasOwnProperty(prop)) {
+        console.log(prop);
+    }
+}

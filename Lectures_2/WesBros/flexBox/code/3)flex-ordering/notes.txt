@@ -1,9 +1,0 @@
-order - It is proeprty we apply on flex items.It takes integars as a value without any unit etc.
-    default order when we dnt set it is 0. if we set order reater than 0, our item come last in main axis.
-    for value smaller than 0, it will move to begining of main axis.
-
-This is cool because we can chnage the order of elements in css. sometimes when we move to mobile layout we 
-    need to chnage order. using it we can do it just by applying some class.
-
-
-there is a limitation, that while selecting text, next item in DOM will be selected.

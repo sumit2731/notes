@@ -1,0 +1,4 @@
+1)see ngClass and ngStyle syntax, just see images in notes
+2)lecture - Using the Angular Renderer to adjust CSS Styles
+3)lecture- 32)Using the Angular Renderer to
+Adjust CSS Styles

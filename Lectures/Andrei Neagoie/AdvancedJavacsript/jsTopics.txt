@@ -1,0 +1,130 @@
+1)Rest and spread operator-
+    https://javascript.info/rest-parameters-spread-operator
+
+2)Destructuring assignment -
+    https://javascript.info/destructuring-assignment
+
+3)Javascript Engine, steps in compilation, compilation vs interpretation - what is done in js
+
+4)what not to use- arguments, delete, for in loop, with
+
+5)Call stack and memory leap. how they work. stack overflow queston, see code snippet 1(Andrei curse)
+
+6)js is garbge collected language. this garbage collection is done automatically(mark and sweep algo) but developers 
+ have to write code like this, so that garbage collection can happen.(lecture 17)
+Mmeory management in js,Grabage collection in js. memory leaks- (lecture 17 and lecture 18)-what causes them and how to prevent them
+  a)Global variables
+    b)adding event listeners
+    c)setInterval
+    These Links-
+    https://dzone.com/articles/eradicating-memory-leaks-in-javascript
+    https://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/#timers
+    https://developers.soundcloud.com/blog/garbage-collection-in-redux-applications
+
+7)Single threaded nature of js, how js run time helps it 
+
+8)In lecture 24 , there is a question. see it. quesion is regarding which code will be xecuted first.
+
+End of Secetion 2 of Andrei---------------------------------------------------
+
+9)Execution context - global and fucntional(see 2links in bookmarks, advanced js)
+
+10)Hoisting-
+    https://medium.com/@pvivek4/hoisting-demystified-with-popular-interview-questions-38a93ea441ff  
+    https://scotch.io/tutorials/understanding-hoisting-in-javascript 
+    In second article, it is said- Function declarations are hoisted over variable declarations but not over variable assignments
+    see questions on hoisting in first link
+
+11)let vs var vs const
+https://medium.com/@pvivek4/es6-difference-between-var-let-and-const-with-examples-18c2d5766851
+
+
+12)In strict mode-
+    a)Deleting variables declared with var, let and const gives refrence errors.
+    2)we cannot even do write operations on variable that are not defined.
+    3)accidental global variables are not allowed
+    4)if a fucntion is in global and we call it by its name  then this points to undefined
+         not to window object. however if we do not use strict mode then it points to window
+         object. but in case of arrow fucntions , there is no change since arrow fucntions gets this from parent scope.
+    5)ES 6 modules use - "use strict" by default.
+
+13)Lexical Scope vs Dynamic Scope
+
+14)scope chain in js- types of scope- block scope, fucntion scope and global scope
+
+15)IIFE - how it was used in libraries to solve problem of global variables.
+
+16)this in js(questions on what should be value of this)- this has dynamic scope,how this acts as place holder
+ see this.js file in code snippets 
+    a)how we use call,bind and apply to stabalize the value of this(remove dynamic nature of this).
+        1)call, bind and apply
+        2)arrow fucntion
+        3)storing value in some other variable
+        fucntion burrowing and fucntion currying.
+        see callAndBind.js in code snippets.
+
+17)scope vs context vs Execution Context
+
+End of section 3 -------------------------
+
+18)Data Types in js.e that came with ES6 is symbol. typeof null is object.
+19)primitive and Non-primitive(refrence) Types in js, pass by value and pass by refrence
+20)Everything in js is object
+21)pass by value and pass by refrence, see code snippet 2 in section 4 of andrew course
+22)type coercion
+
+End of Section 4 -------------------------
+
+
+Part1 -closures
+
+1)functions are objects. when we create fucntion js creates a special object called callable object for us.
+    this object has various properties. see diagram on lecture 64 notes.
+2)Functions are first class citizens.it means they are like data which can be passed around
+  like we do with normal data.so anything that you can so with normal data can be dne with functions. this forms
+  the basis of functional programming
+  First class citzen means 3 things-
+    1)They can be assign to variables like normal value sand we can execte them using that variables.
+    2)They can be passed to another function as parameter
+    3)they can be returned from another functions as a value.
+3)Higher order functions are functions which either take another functions as argument or return another function
+4)closures(see DSTV dairy notes)
+5)main benefits of closure- 1)they are memory efficient 2)Encapsulation(private variables)
+6)jaavscript really popularized this idea of closures. now this closure idea is all over other languages
+    especially fucntional programming languages. now it is adopted in langues like
+    python and ruby after js popularized it and showed how powerful it is.
+
+Part 2 - ProtoType Inheritance
+
+1)Here we saw that the array and function are created are created by calling their function in constructor mode.That is how 
+ they share all properties.see code snippet 1 in prototype1.js, to see how prototype chnain link between array, function and objects.
+2)we have function called isPrototypeOf which we can use to check whther object1 is prototype of
+  object2.
+3)We should never use __proto__ property to make prototype chain, it is bad for performance. i mean code like this-
+  employe.__proto__ = Person. 
+  They have intensionally named it like this so that no one uses it. now questions is then how do we do inheriance then.
+  there are number of ways of doing inheritance, one way is to to use Onject.create method-
+  employe = Object.create(Person), it means Person is protype of employe
+4)Use of prototypal inheritance is ,we can store functions at one location at memory and all objects can use them.
+  same goes for properties. all the array functions actually exists on Array.prototype
+5)then we saw that when we create fucntion, some proeprties like callable and name are stored in that function object,
+  rest all properties(call, bind and apply) are stored up in prototype chain.
+6)prototype property is present on all functions(otherway around only functions have prototype property),it is created by defualt. 
+  but it is used only in case of contructor functions.
+7)Object.protype is always at end of inheritance chain.because verything is created by it. we saw how functions,arrays and objects
+  relates to it. that is why we say everything in js is object, because Object.prototype is at end of all prototype chain.
+8)Using prototypes and closues we can write really powerful paradigms. what paradigms, it was not discussed.
+9)then we added some functions which can be be used on all dates and then we modified some inbuilt functions of arrays.
+  see code snippet 1 and 2 of prototype2.js
+10)Point no 9 is some of situtaions where we cannot use arrow functions.
+11)At the end of lecture it was said that adding new fucntions to exisitng objects and doing imheritamce by doing
+ Array.prototype.methodName is old school. there is newer and cleaner way of doing this by using things like class 
+ keyword.
+12)In last lecture which is summary, we saw that js is combination of scheme + java. function as first
+  class citizen and closures were adopted from scheme and OOP is picked from java. so beauty
+  of js is that we can have both paradigms - functional as well as object. we can even mix and match these
+  paradigms to make complex applicatons. now we have knowledge of closues and inheritnace we will see these
+  paradigms in next sections.
+
+
+--------------end of scetion 5----------------

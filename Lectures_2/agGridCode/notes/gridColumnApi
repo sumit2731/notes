@@ -1,8 +1,0 @@
-1)autoSizeColumn(colKey) - Auto-sizes a column based on its contents.
-2)autoSizeColumns(colKeys) - same as above but resizes more than one columns. paramater passed 
-    is array of keys
-3)getAllColumns() - Returns all the columns, regardless of visible or not.
-4)getAllGridColumns() -Returns all the grid columns, same as getAllColumns(), except 
-    a) it has the order of the columns that are presented in the grid and 
-    b) it's after the 'pivot' step, so if pivoting, has the value columns for the pivot. 
-5)

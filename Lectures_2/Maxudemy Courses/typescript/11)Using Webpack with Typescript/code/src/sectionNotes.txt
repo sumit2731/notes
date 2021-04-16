@@ -1,3 +1,0 @@
-See introduction of namespaces letures, then there are lectures
-of how to divide code into namespace, you can skip that. then See
-lecture about limitations of namesapce.

@@ -1,4 +1,0 @@
-Here we saw that if we flexbox with direction row and flex-wrap, then flex box
-makes sure that content on each row is of same height.
-now on last row we had only 2 elements they were of unweqal width, we solved this problem by
-removing flex-grow and using justify-content

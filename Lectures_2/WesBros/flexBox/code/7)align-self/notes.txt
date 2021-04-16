@@ -1,5 +1,0 @@
-assumption - flex-direction is row
-
-Align self is property on grid items, it is used to arrange induival grid item inside a it's row.as shown in 
-    figure, we have align-items: flex-start on grid. but we applied align-self: flex-end on first item. so
-    that item is at end of its row

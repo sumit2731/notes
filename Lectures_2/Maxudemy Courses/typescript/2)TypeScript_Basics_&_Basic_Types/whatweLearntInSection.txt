@@ -1,5 +1,0 @@
-1)arrays types,tupples, enums, type inference
-2)union,literals, Type aliases(we can define our own types by using "type" keyword)
-3)Function types
-4)any,unknown never
-5)Object vs object vs {}(see 5)Extra_From_Courses), null and undefined

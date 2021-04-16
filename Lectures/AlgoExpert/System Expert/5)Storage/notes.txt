@@ -1,0 +1,2 @@
+storing in data in disk vs storing data in memory
+distributed system, data consistancy.

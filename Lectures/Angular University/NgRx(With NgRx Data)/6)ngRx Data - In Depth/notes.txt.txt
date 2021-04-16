@@ -1,0 +1,9 @@
+ngRx data helps us to handle entity tyoe data. beauty of @ngrx/data is that Everything is taken care of by 
+    convention but also everything is customizable.
+
+Things to be Covered -
+    1)How to setup ngRx data for feature module.
+    2)To setup CourseEntityService - how yo @ngrx/store to make api calls
+    4)setup CourseDataService - how to configure api made by CourseEntityService
+    5)how to put conditions in resolver, to make api call ony when store is empty
+    6)Getting @ngrx/data from store

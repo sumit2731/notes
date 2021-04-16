@@ -1,6 +1,0 @@
-here we will see how sass handles operatins and basic arithmeic expressions. we will use sass shell to see
- some of basic expressions.shell is great tool to now about operatotrs in sass. open shell -
- sass -i
-
-
- then saw basic arithmetic expesions with simple values as well as with colors

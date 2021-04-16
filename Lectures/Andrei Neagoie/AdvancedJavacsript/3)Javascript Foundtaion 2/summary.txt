@@ -1,0 +1,42 @@
+1)In browser global object is window. in nodejs it global.
+
+
+
+questions-
+1)see code snippet1 , to see question of lexical scope.
+
+10)Hoisting-
+    https://medium.com/@pvivek4/hoisting-demystified-with-popular-interview-questions-38a93ea441ff  
+    https://scotch.io/tutorials/understanding-hoisting-in-javascript 
+    In second article, it is said- Function declarations are hoisted over variable declarations but not over variable assignments
+    see questions on hoisting in first link
+
+11)let vs var vs const
+https://medium.com/@pvivek4/es6-difference-between-var-let-and-const-with-examples-18c2d5766851
+
+
+12)In strict mode-
+    a)Deleting variables declared with var, let and const gives refrence errors.
+    2)we cannot even do write operations on variable that are not defined.
+    3)accidental global variables are not allowed
+    4)if a fucntion is in global and we call it by its name  then this points to undefined
+         not to window object. however if we do not use strict mode then it points to window
+         object.
+    5)ES 6 modules use - "use strict" by default.
+
+13)Lexical Scope
+
+14)scope chain in js- types of scope- block scope, fucntion scope and global scope
+
+15)IIFE - how it was used in libraries to solve problem of global variables.
+
+16)this in js(questions on what should be value of this)- this has dynamic scope,how this acts as place holder
+ see this.js file in code snippets 
+    a)how we use call,bind and apply to stabalize the value of this(remove dynamic nature of this).
+        1)call, bind and apply
+        2)arrow fucntion
+        3)storing value in some other variable
+        fucntion burrowing and fucntion currying.
+        see callAndBind.js in code snippets.
+
+17)scope vs context vs Execution Context

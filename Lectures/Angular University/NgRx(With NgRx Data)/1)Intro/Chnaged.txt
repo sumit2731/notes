@@ -1,0 +1,13 @@
+1)Run command - 
+    ng add @ngrx/store
+
+    1)It creates a folder named reducers and in it it creates index.ts file.
+    2)It updates app.module.ts(adds entry of store module in app.module)
+    3)Updates package.json file installs the module
+
+It will create reducer folder in app folder and will add a import in app.module
+
+2)ng add @ngrx/store-devtools
+    1)It adds StoreDevtoolsModule to imports array of @NgModule in app.moudle.ts
+     2)Also updates package.json file and installs the module
+     3)Then we downloaded a extension(Redux Dev Tools) from chrom web store

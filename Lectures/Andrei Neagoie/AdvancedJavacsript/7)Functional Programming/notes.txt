@@ -1,0 +1,12 @@
+Pure Functions - 
+    1)same Input same output
+    2)No Side effect
+
+Refrential transperancy
+idempotent - same function input same output
+Imperatice - what to do, how to do
+Declarative -=what to do, it does'nt tell how to do it.
+	functional programming helps us to be more declarative
+
+currying - convert complex function into single fucntion call which takes one argument at a time
+partial application

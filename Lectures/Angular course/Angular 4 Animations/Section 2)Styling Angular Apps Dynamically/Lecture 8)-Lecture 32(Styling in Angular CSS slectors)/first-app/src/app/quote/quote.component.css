@@ -1,0 +1,29 @@
+h1{
+color : red;    
+}
+/* #quote{
+border: 1px solid black;
+} */
+
+:host{
+    display:block;
+    border: 1px solid black;
+    padding: 20 px;
+   
+}
+:host(.favorite){
+    border: 1px solid red;
+
+}
+:host-context(.boring #very-boring)
+{
+border: 1px solid #ccc;
+color: #ccc;
+}
+
+:host-context(.boring #very-boring) /deep/ h1
+{
+
+color: #ccc;
+}
+

@@ -1,0 +1,15 @@
+<h4>Dynamic Radio Buttons</h4>
+<form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" *ngFor="let question of questions; let i = index">
+    <div for="i">{‌{question.question}}</div>
+    <div formArrayName="dynamic">
+      <div class="radio" *ngFor="let option of question.options; let j = index">
+        <label>
+          <input type="radio" [formControlName]="i" [value]="question.options[j]">
+          {‌{question.options[j]}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="surveyForm.invalid">Submit</button>
+</form>

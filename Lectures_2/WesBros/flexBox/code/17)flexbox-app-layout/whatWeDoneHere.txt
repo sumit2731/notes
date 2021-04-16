@@ -1,1 +1,0 @@
-here we design a mobile layout using flexout.
