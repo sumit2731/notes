@@ -1,0 +1,11 @@
+color codes in network tab -
+
+    white - queued - Atmost 6 request can be sent
+    grey - stalled/ blocked
+    grey - proxy
+    blue - dns server - time it took to resolve dns server, it is cached, so if you hit a new domain, it will spend soe here.
+    green - request sent - time taken to send the reqest when it figured out every thing.
+    green - waiting(TTFB) - It means waiting while server gets response and browser receives first byte from server
+    dark blue - content download - time spent to download the content
+
+    then we saw random screenshots and figured out what is wrong with these request.

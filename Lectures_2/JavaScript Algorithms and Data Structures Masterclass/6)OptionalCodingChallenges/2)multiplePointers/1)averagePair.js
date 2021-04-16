@@ -8,21 +8,17 @@
  * Space: O(1)
  */
 
- function averagePair(arr, avg) {
-    let left = 0;
-    let right = arr.length -1;
-    let tempAverage;
-    while(left < right) {
-        tempAverage = (arr[left] + arr[right])/2;
-        if(tempAverage > avg) {
-            right --;
-        }
-        else if(tempAverage < avg) {
-            left ++;
-        }
-        else if(tempAverage == avg) return [arr[left],arr[right]];
+function averagePair(arr, avgNum) {
+    let leftPointer = 0, rightPointer = arr.length-1;
+    while(leftPointer < rightPointer) {
+        let tempAverage = (arr[leftPointer] + arr[rightPointer])/2;
+        if(tempAverage === avgNum) return true;
+        else if(tempAverage < avgNum) leftPointer++;
+        else rightPointer--;
     }
     return false;
- }
+}
 
- console.log(averagePair([1,2,3],2.5));
+console.log(averagePair([1,2,3],2.5));
+
+

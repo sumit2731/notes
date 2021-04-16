@@ -1,2 +1,4 @@
 createion - fromEventPattern, bindCallback or bindNodeCallback
 combining - repeat
+sampleTime
+example of find

@@ -14,16 +14,17 @@
  * 
  * 
  */
-function isSubsequence(str1, str2) {
-    
-    let j = 0; 
-    
-    for (let i = 0; i < str2.length; i++) {
-        if(str1[j] == str2[i]) j++;
-        if (j == str1.length) return true;
+function isSubsequence(subStr, mainStr) {
+ let subStrPointer = 0, mainStrPointer = 0, matchCount = 0;
+ while(mainStrPointer < mainStr.length) {
+    if(mainStr[mainStrPointer] == subStr[subStrPointer]) {
+        subStrPointer++;
+        matchCount++;
+        if(matchCount == subStr.length) return true;  
     }
-     
-    return false;
+    mainStrPointer++;
+ }
+ return false;   
 }
 
 /**
@@ -32,6 +33,6 @@ function isSubsequence(str1, str2) {
 function isSubsequence2(subStr,mainStr) {
     if(subStr.length == 0) return true;
     if(mainStr.length == 0) return false;
-    if(subStr[0] == mainStr[0]) return isSubsequence3(subStr.slice(1), mainStr.slice(1));
-    else return isSubsequence3(subStr, mainStr.slice(1));
+    if(subStr[0] == mainStr[0]) return isSubsequence2(subStr.slice(1), mainStr.slice(1));
+    else return isSubsequence2(subStr, mainStr.slice(1));
 }

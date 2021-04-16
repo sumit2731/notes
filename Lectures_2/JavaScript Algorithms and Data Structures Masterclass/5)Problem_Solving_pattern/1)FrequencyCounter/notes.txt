@@ -1,0 +1,4 @@
+we use objects to to basically store bunch of values and their frequencies. this is useful when you have multiple
+    pieces of data and you need to compare them, to see if they have simlilar values. If they are analgrams of each
+    other, if a value is contained inside another value.it solves thsose problems in O(n) as compared to easier solutions,
+    which involve using nested loops that solve them in O(n*n).

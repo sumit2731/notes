@@ -9,7 +9,7 @@ now refer to slide , here we can see that selection sort has complexity of O(n*n
 case. so it means selection sort is slower than both of them because, we always need to complete all iterations while other 
 2 can skip some iterations(in normal case also).
 
-Space complexitty is same for all of them ebcause we are not creating  new arrays or varibales(or 2 variables) for each element.
+Space complexitty is same for all of them because we are not creating  new arrays or varibales(or 2 variables) for each element.
  but later we will see in some faster algorithms, they create bunch of smaller arrays. so thier space complexity is not O(1).
 
  THing about insertion sort is , it is great if we want data to be continuously sorted. so new elements are being added to it.

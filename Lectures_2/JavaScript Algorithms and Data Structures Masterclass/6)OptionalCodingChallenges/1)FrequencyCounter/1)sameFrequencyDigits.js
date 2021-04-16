@@ -5,18 +5,21 @@
  * sameFrequency(34,14) => false
  */
 
- function sameFrequency(number1, number2) {
-     let numberString1 = number1.toString();
-     let numberStringObj1 = {};
-     let numberString2 = number2.toString();
-     let numberStringObj2 = {};
-     for(let digit of numberString1) numberStringObj1[digit] = (numberStringObj1[digit] || 0) +1;
-     for(let digit of numberString2) numberStringObj2[digit] = (numberStringObj2[digit] || 0) +1;
-     for (let digit in numberStringObj1) {
-         if (!(numberStringObj1[digit] == numberStringObj2[digit])) return false;
-     }
-     return true;
 
- }
+ function sameFrequency(num1, num2) {
+     if(num1.toString().length !== num2.toString().length) return false;
+    let numObj = {};
+    for(let digit of num1.toString()) {
+        numObj[digit] = (numObj[digit] || 0)+1;
+    }
+    for(let digit of num2.toString()) {
+        if(numObj[digit]) numObj[digit]--;
+        else return false;
+    }
+    return true;
+}
 
- console.log(sameFrequency(1289,9821));
+console.log(sameFrequency(182,281));
+console.log(sameFrequency(34,14));
+console.log(sameFrequency(3589578,5879385));
+console.log(sameFrequency(22,222));

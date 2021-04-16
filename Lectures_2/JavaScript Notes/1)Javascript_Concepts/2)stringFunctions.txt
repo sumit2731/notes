@@ -47,7 +47,10 @@
     and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the 
     first parameter in the method's call. for method details refer docs.
         
-        str.split([separator[, limit]])  
+        str.split([separator[, limit]])
+        "sumeet".split() => ["sumeet"]
+        "sumeet".split('i') => ["sumeet"] 
+        "sumeet".split("") => ["s","u","m","e","e","t"]
 
 2)slice - The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
     str.slice(beginIndex[, endIndex])
@@ -64,7 +67,9 @@
 
 3)substr - The substr() method returns a portion of the string, starting at the specified index and extending for a given number
     of characters afterwards. 
-    str.substr(start[, length]) 
+    str.substr(start[, length])
+
+4)substring
 
 
 3)charCodeAt() - returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.

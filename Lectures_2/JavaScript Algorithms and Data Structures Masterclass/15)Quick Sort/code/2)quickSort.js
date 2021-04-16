@@ -21,12 +21,12 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 
 function quickSort(array, left = 0, right = array.length-1) {
     if(left < right) {
-        let pivotIndex = pivot(array);
+        let pivotIndex = pivot(array,left,right);
         quickSort(array,left,pivotIndex-1);
         quickSort(array,pivotIndex+1,right);
     }
     return array;
 }
 
-console.log(quickSort([40,50,30,10,20]));
+console.log(quickSort([50,40,100,10,5,110,20,35]));
 

@@ -1,2 +1,55 @@
-git merge --squash branchName
-git rebase master
+1)git merge
+
+    master -> m1(1) -->  m2(2) --> m3(3)
+    feature ->m1(1) -->  m2(2) --> f1(4) --> f2(5)
+
+    git merge feature
+    result- m1(1) --> m2(2) --> m3(3) --> f1(4) --> f2(5) --> "Merge branch 'feature' "
+
+
+    master -> m1(1) -->  m2(2) --> m3(5)
+    feature ->m1(1) -->  m2(2) --> f1(3) --> f2(4)
+
+    git merge "feature"
+    result- m1(1) -->  m2(2) --> f1(3) --> f2(4) -> m3(5) --> "Maege branch Feature"
+
+
+2)git merge --squash
+
+    master -> m1(1) -->  m2(2) --> m3(3)
+    feature ->m1(1) -->  m2(2) --> f1(4) --> f2(5)
+
+    git merge --squash feature
+        All changes in feature branch will come in master branch. they will be staged. now you need to
+         commit them.now you will have single commit in your feature branch.
+
+    result - master -> m1(1) -->  m2(2) --> m3(3) -> customCommit
+
+
+    master -> m1(1) -->  m2(2) --> m3(5)
+    feature ->m1(1) -->  m2(2) --> f1(3) --> f2(4)
+
+    git merge --squash feature
+        All changes in feature branch will come in master branch. they will be staged. now you need to
+         commit them.now you will have single commit in your feature branch.
+
+    result - master -> m1(1) -->  m2(2) --> m3(3) -> customCommit
+
+
+3)Conflict During merge-
+
+    a)You want to abort commit-
+        git merge --abort
+
+    b)git merge --contibue  = to be explored
+    
+    c)You want to resolve changes-
+        Git will show you conflict, you mnually need to resolve it. After resolve, stage your chnages and give new commit.
+
+        master -> m1(1) -->  m2(2) --> m3(4)
+        feature ->m1(1) -->  m2(2) --> f1(3)
+
+        Result-
+
+        master -> m1(1) -->  m2(2) --> f1(3) --> m3(4) --> "Custom commit message given"
+

@@ -1,3 +1,104 @@
+a)Object.defineProperty(obj, propertyName, descriptor)
+    
+    descriptors is of 2 flavours -
+        A data descriptor is a property that has a value, which may or may not be writable. 
+        An accessor descriptor is a property described by a getter-setter pair of functions.
+
+    Common properties(Present in both data descriptor and Accessor) -
+        a)configurable - The configurable attribute controls whether the property can be deleted from the object and whether its 
+            attributes (other than value and writable) can be changed.if it is false then-
+            
+            a)Nothing happens when we delete the proeprty form object.In strict mode error is thrown.
+            b)type of this property descriptor cannot be changed.
+
+            Defaults to false
+
+            If the old descriptor had its configurable attribute set to false the property is said to be “non-configurable”. It is not 
+                possible to change any attribute of a non-configurable accessor property. For data properties, it is possible to modify 
+                the value, if the property is writable, and it is possible to change writable attribute from true to false(not vice versa, 
+                throws error).It is not possible to switch between data and accessor property types when the property is non-configurable.
+
+            A TypeError is thrown when attempts are made to change non-configurable property attributes (except value and writable, if 
+                permitted) unless the current and new values are the same.same behaviour happens in strcit mode i.e error is only thrown
+                if value of property is different.
+
+        b)enumerable - The enumerable property attribute defines whether the property is picked by Object.assign() or spread operator.
+            both of these pick both string and symbol enumerable properties that exist on object itself.. 
+            For non-Symbols properties it also defines whether it shows up in a for...in loop and Object.keys() or not.
+            also if it is false then, you will not see propery when object is printed on console. 
+         
+         Defaults to false.
+    
+    Data Descriptor property - 
+        c)value -The value associated with the property. Can be any valid JavaScript value (number, object, function, etc).
+            Defaults to undefined.
+
+        d)writable - true if the value associated with the property may be changed with an assignment operator. 
+         
+        Defaults to false.
+
+        
+        when it is false and we assign some value to object property(using assignent operator), no error is thrown, but value is not 
+            changed.but in strict mode we will get error on this. even if we are assigning same value.
+        
+        but even when writable is false, we can change value using value descriptor-
+
+
+            const myObj = {};
+            
+            Object.defineProperty(myObj,'id', {
+            configurable: true,
+            enumerable: true,
+            value: 1,
+            writable: false
+            });
+
+
+            Object.defineProperty(myObj,'id', {
+            value: 10
+            });
+
+            new value will be 10
+
+
+            
+
+    Accessor Property -
+
+        e)get - A function which serves as a getter for the property, or undefined if there is no getter.When the property is accessed, this function 
+            is called without arguments and with this set to the object through which the property is accessed (this may not be the object on which 
+            the property is defined due to inheritance). The return value will be used as the value of the property.Defaults to undefined.
+
+        f)set) - A function which serves as a setter for the property, or undefined if there is no setter. When the property is assigned, this function 
+            is called with one argument (the value being assigned to the property) and with this set to the object through which the property is assigned.
+            Defaults to undefined.
+
+    If a descriptor has neither of value, writable, get and set keys, it is treated as a data descriptor. If a descriptor has both [value or writable] 
+        and [get or set] keys, an exception is thrown.
+
+
+------ to be continued form here---------------
+
+
+
+2)o.propertyIsEnumerable
+
+3) Object.getOwnPropertySymbols(obj)
+
+4)Reflect.ownKeys(obj) 
+
+5)Object.create - The Object.create() method creates a new object, using an existing object as the prototype of the newly created 
+    object.
+
+    Object.create(proto, [propertiesObject])
+
+    proto - The object which should be the prototype of the newly-created object.
+    propertiesObject (Optional) - If specified, an object whose enumerable own properties specify property descriptors to be added to 
+    the newly-created object, with the corresponding property names. These properties correspond to the second argument of 
+    Object.defineProperties().
+
+
+
 1)Object fucntion-
     
     a)assign(to copy properties)
@@ -15,7 +116,7 @@
                 "configurable": true
             }
     
-    f)Object.defineProperty(obj, propertyName, descriptor)
+
 
     g) Object.defineProperties(obj, descriptors)
         

@@ -10,6 +10,7 @@ function countDown(num) {
     }
     console.log(num);
     num --;
+    // here we calling function again with different input
     countDown(num);
 }
 
@@ -36,7 +37,7 @@ console.log(factorial(99));
 
 
 /**
- *Helper Method Pattern
+ *Helper Method Pattern - Here outer method which is not reccursive calls a inner function which is reccursive
  */
 
 function collectOddValues(arr) {

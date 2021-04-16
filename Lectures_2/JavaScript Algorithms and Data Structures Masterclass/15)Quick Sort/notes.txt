@@ -4,7 +4,7 @@ Intro-
     
     Works by selecting one element (called the "pivot") and finding the index where the pivot should end up in the 
         sorted array. so numbers smaller than this elemnts are moved to left and numbers greater than pivot element
-        are moved to right. they are not sorted , e just move thme to left or right. so now we knoe that pivot element
+        are moved to right. they are not sorted , we just move thme to left or right. so now we knoe that pivot element
         is on exact spot. number on left or right may or maynot be on right spot.Once the pivot is positioned appropriately, 
         quick sort can be applied on either side of the pivot. so we reccursively repeat the process on left or right side.
         it does'nt matter in which sequence we pick our pivot elements, this will work.
@@ -40,8 +40,8 @@ Implentation -
         // [4, 1, 2, 3, 5, 6, 8, 7]
         // there are other acceptable mutations too!
 
-    so any of above arrays are valid as long as 5 is it right place. so it does not matter what we have on left or right side. our untion return the index of
-        pivot element(which we have selected to be first eleemnt)
+    so any of above arrays are valid as long as 5 is it right place. so it does not matter what we have on left or right side. our funtion 
+     should return the index of pivot element(which we have selected to be first eleemnt)
     
     PseudoCode for helper function-
 

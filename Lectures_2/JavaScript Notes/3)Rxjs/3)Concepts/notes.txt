@@ -28,3 +28,9 @@
         pass those values to its subscribers.when we use refcount, same thing happens.see article on multicasting.
 
 2)Higher Order Observable - An observable which emits observables as values.
+
+3) first-order Observable - A observble which emits normal values.
+
+4)How to throw error in obsevable stream-
+    a)In map operator throw error, now your main observabke will error out. when
+    b)In your tap operator throw error, now your main observable will error out.

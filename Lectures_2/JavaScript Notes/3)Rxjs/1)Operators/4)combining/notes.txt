@@ -72,14 +72,23 @@ Static Methods -
         race(first, second, third).subscribe(
             val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
 
-    5)forkJoin - When all observables complete, emit the last emitted value from each.Be aware that if any of the inner observables
-        supplied to forkJoin error you will lose the value of any other observables that would or have already completed if you do 
-        not catch the error correctly on the inner observable.If you are only concerned with all inner observables completing 
-        successfully you can catch the error on the outside. 
-        
-        also you can provide observable svia object or array mapping
+    5)forkJoin - Observable emitting either an array of last values emitted by passed Observables or value from project function.
 
+        Accepts an Array of ObservableInput or a dictionary Object of ObservableInput and returns an Observable that emits either
+         an array of values in the exact same order as the passed array, or a dictionary of values in the same shape as the passed
+         dictionary.
 
+        In order for resulting array to have the same length as the number of input observables, whenever any of that observables
+         completes without emitting any value, forkJoin will complete at that moment as well and it will not emit anything either,
+         even if it already has some last values from other observables. So
+          
+        Conversely, if there is an observable that never completes, forkJoin will never complete as well,
+
+        Overall, in order for forkJoin to emit a value, all observables passed as arguments have to emit something at least once and 
+         complete.
+
+        If any input observable errors at some point, forkJoin will error as well and all other observables will be immediately 
+         unsubscribed.
 
             forkJoin(
             // as of RxJS 6.5+ we can use a dictionary of sources
@@ -104,17 +113,6 @@ Static Methods -
             )
             // [ object, object, array ]
             .subscribe(console.log);
-
-
-        In order for resulting array to have the same length as the number of input observables, whenever any of that observables 
-            completes without emitting any value, forkJoin will complete at that moment as well and it will not emit anything 
-            either, even if it already has some last values from other observables.Conversely, if there is an observable that never 
-            completes, forkJoin will never complete as well, unless at any point some other observable completes without emitting 
-            value, which brings us back to the previous case. Overall, in order for forkJoin to emit a value, all observables passed
-            as arguments have to emit something at least once and complete.
-
-        If any input observable errors at some point, forkJoin will error as well and all other observables will be immediately 
-            unsubscribed.
 
     6)combineLatest - When any observable emits a value, emit the last emitted value from each
         combineLatest(observables: ...Observable, project: function): Observable
@@ -147,13 +145,18 @@ Static Methods -
         output -
             [2,0,0] [2,1,0] [2,2,0] [2,2,1] [2,2,2]
 
-    7)combineAll -When source observable completes use combineLatest with collected observables
-    8)concatAll
-    9)mergeAll
+
     
 Operators-
 
-    1)startWith - Returns an Observable that emits the items you specify as arguments before it begins to emit items emitted by the 
+        
+    1)concatAll
+    
+    2)mergeAll
+    
+    3)combineAll -When source observable completes use combineLatest with collected observables
+
+    4)startWith - Returns an Observable that emits the items you specify as arguments before it begins to emit items emitted by the 
         source Observable.
 
         const source = interval(1000);
@@ -162,9 +165,12 @@ Operators-
         //output: -3, -2, -1, 0, 1, 2....
         const subscribe = example.subscribe(val => console.log(val));
 
-    2)endWith - opposite of startWith
+        you can also provide multiple values. your observble will emits these values before.
 
-    3)withLatestfrom - when ever source obserbale emits value, combines its value with latest value of observable provided as argument to this operator.
+    5)endWith - opposite of startWith
+        like startWith you can provide multiple values.
+
+    6)withLatestfrom - when ever source obserbale emits value, combines its value with latest value of observable provided as argument to this operator.
         signature: withLatestFrom(other: Observable, project: Function): Observable
 
         instead of single observable we can provide multiple observbles to withLatestfrom.
@@ -181,8 +187,27 @@ Operators-
         //[1,0] [2,0] [3,1], [4,1] [5,2]
         interval1$.pipe(withLatestFrom(interval2$)).subscribe(val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
 
-    4)pairwise - Emit the previous and current values as an array.
+    7)pairwise - Emit the previous and current values as an array.The Nth emission from the source Observable will cause the output 
+        Observable to emit an array [(N-1)th, Nth] of the previous and the current value, as a pair. For this reason, pairwise emits 
+        on the second and subsequent emissions from the source Observable, but not on the first emission, because there is no previous 
+        value in that case.
+        
         signature: pairwise(): Observable<Array>
+
+    8)withLatestFrom - Combines the source Observable with other Observables to create an Observable whose values are calculated from 
+        the latest values of each, only when the source emits.
+
+        withLatestFrom<T, R>(...args: any[]): OperatorFunction<T, R>
+
+        All input Observables must emit at least one value before the output Observable will emit a value.
 
 
     Note - go through "see also" section
+
+
+
+Paterns -
+
+    1)Single Observable Patern(*ngIf and async pipe) - combineLatest
+
+     

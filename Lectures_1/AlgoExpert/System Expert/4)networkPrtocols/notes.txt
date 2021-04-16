@@ -1,0 +1,36 @@
+Netwrok Protocols - Set of agree upon rules by which 2 machines talk with each other. netwrok protocols consist of kind of messages,
+    that are gonna be sent and received by machines,format of messages(how they are structured),order of thos messages if they have 
+    any order or whther ot not there should be some sort of response to a messages.
+
+    Some Popular protocos-
+
+    IP - INternet protocol.modern internet runs on it. data is sent between machines in form of IP packet. IP packet is fundamental
+        unit of data that is sent from one machine to another.IP packets are actually maade up of bytes. there are 2 versions of IP
+        protocol - 
+
+        IPV4 - most of modern internet uses this.
+        IPV6 - this is now being used more and more.
+        
+        
+        IP packet has 2 sections-
+
+        a)header- Source IP address,destination IP address,total size of packet, version of IP prototcol packet is folowing.
+        hesder is between 20-60 bytes.
+
+        b)data - ip packet has size of 2 power 16 bytes size i.e 0.065 mb. so generally data is sent in  multiple packets. this is where
+            thing get complicated.if you are use only IP protocol , you dnt have a way of garnteed that all packerts will be received,
+            some of these packets are gonna lost over the network.also you cannot guartee the order of packets. this where TCP comes into
+            play.
+
+    TCP - transmission control protocol. Build on top of IP protocol.it is meant to solve the issue discussed above. it is meant to send 
+        the IP packets correct way. it makes sure that packets are received in correct way, all the packets are received. if some packets
+        are corrupted , atleast we will know that packets are corrupted and we will resend them again. TCP is used in almost all web 
+        applications and it allows you to send large pieces of data. so TCP is buildt on top of IP. in IP packet, in data section, some
+        space is taken by TCP header. TCP headers contains info about ordering of packets.
+
+        When client and server are to communicate with each other using TCP. first they need to establish a TCP connection. this happens via
+        handshake.so client send some packets to server saying that , hi i want to connect with you. server says ok, we can char. then client
+        sends some packet and says we are connected. connection can be ended by eithe party, or it will ended if no response is recevied from
+        any party in given amount of time.
+
+    HTTP - It bilds on top of TCP and introduces the request-response paradigm.

@@ -1,0 +1,139 @@
+<!-- container for *ngIf -->
+    
+    <ng-container *ngIf="userLoggedIn">
+    
+        .... visible only to authenticated users 
+    
+    </ng-container>
+
+
+<!-- For debugging perpose -->
+
+    
+    <!--bindings={
+        "ng-reflect-ng-if": "false"
+    }-->
+
+<!-- else clause -->
+
+
+    <div class="container" *ngIf="courses.length; else noCourses">
+        <h1>All Courses</h1>
+    ....
+    </div>  
+
+    <ng-template #noCourses>
+        <h1>No courses available.</h1>
+    </ng-template>
+
+<!-- ngIf then syntax -->
+
+    
+    <ng-container *ngIf="courses.length; then coursesList; else noCourses">
+    </ng-container>
+
+    <ng-template #coursesList>
+        <h1>All courses available</h1>
+    </ng-template>
+
+    <ng-template #noCourses>
+        <h1>No courses available.</h1>
+    </ng-template>
+
+
+<!-- ngIf with async pipe -->
+
+    
+    <ng-container *ngIf="(courses$ | async) as courses">
+        <div class="courses">
+            {{courses.length}}
+        </div> 
+    </ng-container>
+
+    async pipe will subscribe to the Observable, and make the values emitted by it available to the template.In order to apply 
+    the async pipe, we use the ngIf syntax with the "as" syntax. The values emitted by the Observable are going to be available 
+    inside the scope of the ngIf directive via the courses local template variable.
+
+<!-- Anti pattern - using multiple *ngif, aysnc conditons just to access data -->
+In order to consume the Observable data, we had to resort to repeating the use of ngIf and the async pipe, at multiple levels of the page.
+We also used nested ng-container directives in both the body and the footer, just to be able to access multiple Observables in one section of the page.
+
+    <!-- user -->
+    <div class="header" *ngIf="(user$ | async) as user">
+
+        ... this section of the page only needs the user ...
+        
+        <button *ngIf="!user">Login</button>
+        
+        <button *ngIf="user.loggedIn">Logout</button>    
+        
+    </div>
+
+    <!-- courses,lessons and users -->
+    <div class="body" *ngIf="(courses$ | async) as courses">
+
+        <ng-container *ngIf="(lessons$ | async) as lessons"> 
+        
+            ... we also need the user here again ...
+        
+            <ng-container *ngIf="(user$ | async) as user">
+            
+                ... this section of the page needs courses, lessons, and the user ....
+            
+            </ng-container>
+        
+        </ng-container>
+
+    </div>
+
+    <!-- courses,lessons -->
+    <div class="footer" *ngIf="(courses$ | async) as courses"> 
+
+        <ng-container *ngIf="(lessons$ | async) as lessons">
+            
+            ... this section of the page only needs the courses and the lessons ...     
+            
+        </ng-container>
+
+    </div>
+
+<!-- Solutio1 - Get All the data at one place -->
+
+    <ng-container *ngIf="(user$ | async) as user">
+
+        <ng-container *ngIf="(courses$ | async) as courses">
+
+            <ng-container *ngIf="(lessons$ | async) as lessons">
+
+                <div class="header">
+                    ...
+                </div>
+
+                <div class="body">
+                    ...
+                </div>
+            
+                <div class="footer">
+                    ...
+                </div>
+
+            </ng-container>
+        
+        </ng-container>
+    
+    </ng-container>
+Usually, we want to show to the user something on the screen as early as possible, and some of these data sources might take longer to fetch the data than others.
+
+<!-- Solution 2 is to use single observable Pattern -->
+
+    <ng-container *ngIf="(data$ | async) as data">
+        <div class="header">
+            ... access the user via data.user ...
+        </div>
+        <div class="body">
+            ... access the data via data.user, data.courses, data.lessons ...
+        </div>
+        <div class="footer">
+            ... access the data via data.courses and data.lessons ...
+        </div>
+    </ng-container>

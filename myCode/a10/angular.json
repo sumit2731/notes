@@ -73,7 +73,8 @@
             "production": {
               "browserTarget": "a10:build:production"
             }
-          }
+          },
+          "extractCss": true
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

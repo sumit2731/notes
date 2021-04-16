@@ -7,63 +7,22 @@
 
 
  /**
-  * MySolution - Sliding Window Approach
-  * Complexity - O(n*N)
-  */
-
-  function findLongestSubstring(string) {
-      let start = 0;
-      let end = 1;
-      let largestLength = (string.length > 0) ? 1: 0;
-      let subStr;
-      while (end < string.length) {
-          subStr = string.slice(start, end+1);
-          if (isCharDistinct(subStr) ) {
-              largestLength = Math.max(largestLength, subStr.length);
-              end++;
-          } else start++;
-      }
-      return largestLength;
-  }
-
-  function isCharDistinct(string) {
-    let stringObj = {};
-    for (let char of string) {
-        stringObj[char] = (stringObj[char] || 0)+ 1
-    }
-    for (let prop in stringObj) {
-        if (stringObj[prop] > 1) return false
-    }
-    return true;
-  }
-
-console.log(findLongestSubstring("rithmschool"));
-console.log(findLongestSubstring("thisisawesome"));
-console.log(findLongestSubstring("thecatinthehat"));
-console.log(findLongestSubstring("bbbbb"));
-console.log(findLongestSubstring("longestsubstring"));
-console.log(findLongestSubstring("thisishowwedoit"));
-
-
-/**
- * My Solution 2 - Using Sliding Windiw Approach
+ * My Solution 2 - Using Sliding Window Approach
  * Complexity - O(n)
  */
 
  function findLongestSubstring2(string) {
-     let start = 0;
-     let end = 0;
-     let stringObj = {};
-     let maxlength = 0;
+     let start = 0,end = 0; stringObj = {},maxlength = 0;
      while (end < string.length) {
-        if (stringObj[string[end]]) {
+       let char = string[end];
+        if (stringObj[char]) {
             maxlength = Math.max(maxlength, end - start);
-            start = end =  stringObj[string[end]];
+            start = end =  stringObj[char];
             //end = stringObj[string[end]];
             stringObj = {};
         }
         else {
-            stringObj[string[end]] = end+1;
+            stringObj[char] = end+1;
             end++;
         }
      }
@@ -86,9 +45,7 @@ console.log(findLongestSubstring("thisishowwedoit"));
 
 
 function findLongestSubstring3(string) {
-  let maxStringLength = 0;
-  let stringObj = {};
-  let start =0;
+  let maxStringLength = 0,stringObj = {},start =0;
   for(let i = 0; i< string.length; i++) {
     let char = string[i];
     if (stringObj[char]) {
@@ -107,3 +64,21 @@ function findLongestSubstring3(string) {
 // console.log(findLongestSubstring3("bbbbb"));
 // console.log(findLongestSubstring3("longestsubstring"));
 // console.log(findLongestSubstring3("thisishowwedoit"));
+
+/**
+ * My Solution on top of course solution
+ */
+
+function findLongestSubstring4(str) {
+    let strObj = {}, maxLength = 0, start = 0;
+    for(let i = 0;i<str.length;i++) {
+        let char = str[i];
+        if((strObj[char]) && (strObj[char]-1 >= start)) {
+            maxLength = Math.max(maxLength, i-start);
+            start = Math.max(start,strObj[char]);
+        }
+        strObj[char] = i+1;
+    }
+    maxLength = Math.max(maxLength,str.length - start);
+    return maxLength;
+}

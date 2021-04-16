@@ -137,7 +137,7 @@ Operators-
         case 3 - active subscriptions and observable completed
         case 4 - no active subscription and observable completed.
 
-    1)publish + refcount-
+    1)publish + refcount(without selector)-
         case 1 - New subscriber will start getting value.
         case 2-  subject will subscribe to observable again
         case 3 - new subscriber will just get completed notification
@@ -149,7 +149,7 @@ Operators-
         case 3- It will subscribe to observable again
         case 4 -It will subscribe to observable again.
 
-    3)publishReplay + refcount(will never resubscribe again)
+    3)publishReplay + refcount
         case 1- previous values and new values.
         case 2- It will get previous values and subscribe to observable again
         case 3-  previous value and completed notification.
@@ -160,7 +160,8 @@ Operators-
             if no active subscriptions) -
 
             case 1 - previous values and new values.
-            case 2 - it will subscribe again, but wnt get previous value.
+            case 2 - it will subscribe again, but wnt get previous value.(Because ReplaySubject will be destroyed and any new 
+                subscriber like sub3 will create new ReplaySubject instance and subscribe to Source again)
             case 3 - Gets previous values and then completed notification.dnt subscribe again.
             case 4 - Gets previous values and then completed notification.dnt subscribe again.
 
@@ -171,17 +172,14 @@ Operators-
             case 3 - previous values and completed notification.
             case 4 - previous values and completed notification.
 
-    5)shareReplay({refCount: false}) -
-        case 1 - It will get previous values as well nas future values.
-        case 2 - It will previous values as well as future values.
-        case 3 - it will previous values and completed notification.
-        case 4 - it will previous values and completed notification.
+            The only case where ReplaySubject will unsubscribe from Source is when Source completes or errors. Any new subscriber in 
+            that case will get replayed values and complete. new subscriber will get last N values (if not on error)
 
     6)publishBehavior -
-        case 1- gets last value and future values
-        case 2- gets last value and subscribes again
-        case 3- just competed notification(this is how behaviour subject works)
-        case 4- just completed notification.(this is how behaviour subject works)
+        case 1- Gets last value and future values
+        case 2- Gets last value and subscribes again
+        case 3- Just competed notification(this is how behaviour subject works)
+        case 4- Just completed notification.(this is how behaviour subject works)
 
 
     7)publishLast-

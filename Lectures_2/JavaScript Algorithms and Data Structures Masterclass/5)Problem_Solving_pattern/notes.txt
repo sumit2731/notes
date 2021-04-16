@@ -23,14 +23,17 @@ oppsite ends or at same end. they may move in same or opposite direction.
 
 3)Sliding indow Pattern - This is useful when we have data like array or string and we are looking
 for subset of that data that is continous in some way. 
-    ex- find longest seuence of unique characters in string.
+    ex- 
+        1)find longest seuence of unique characters in string.
+        2)Max sum of subarray(function whih accepts a number and gives maximum sum of subaaray with length n)
 
 we make a windown which can be a single variable or can be a subarray or even another string. then 
 we move that window depending on some condition. we slide it up usually from left to right, if we 
 start at begining. you could go from right to left, you could start in middle i guess. but usually
-we move the window from left.
- somtimes you might make a new window. it is useful in situations where we are keeping track of
-  subset of data in larger set of data.
+we move the window from left.somtimes you might make a new window. 
+    this approach is useful in situations where we are keeping track of subset of data in larger set of data.
 
-4)Divide_and_Conquer- see lecture, example is binary search(accepets a sorted array), quik sort
-merge sort
+4)Divide_and_Conquer- here we dnt have any example as in uncoming lectures we will have plenty of examples like binary 
+serach,merge sort, quick sort. example is binary search(accepets a sorted array), quik sort
+merge sort. In his algo we break the inut into smaller input and ignore other ones(binary sort) or in case of
+of merge sort and quick sort, we actuay merge things back. so this algo is sued for complex problem like sorting.

@@ -27,3 +27,9 @@ function isAagram(word1,word2) {
 }
 
 console.log(isAagram('cinema', 'iceman'));
+
+
+/* 
+a = 2
+a = 1
+*/

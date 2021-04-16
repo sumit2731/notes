@@ -16,7 +16,7 @@ refrence links -
 2)timer - After a given duration, emit numbers in sequence every specified duration
 
     signature - timer(initialDelay: number | Date, period: number, scheduler: Scheduler): Observable
-    if second argument is not provided then only one value(0) is emitted
+    if second argument is not provided then only one value(0) is emitted and then observable completes.
 
 
     //emit 0 after 1 second then complete, since no second argument is supplied
@@ -84,7 +84,6 @@ refrence links -
     
     Here even if we are giving the delay.observable willl error out immediatly.
 
-
 6)fromEvent - Turn event into observable sequence.
     signature: fromEvent(target: EventTargetLike, eventName: string, selector: function): Observable
 
@@ -126,7 +125,7 @@ refrence links -
     setTimeout(() => subscription.unsubscribe(), 3000); // cancel subscription after 3s
 
 
-    Note -cre ate function is deprecated , now directly use this-
+    Note -create function is deprecated , now directly use this-
         
         this.data$ = new Observable((observer: Observer) => {
             observer.next();
@@ -153,3 +152,7 @@ refrence links -
     );
     
     https://rxjs-dev.firebaseapp.com/api/ajax/ajax
+
+
+to be lloked into -
+fromEventPattern, bindCallback ,bindNodeCallback

@@ -1,0 +1,2 @@
+you can click on a elemnt in elements tab and can access that element in cosole by $0, elemnet touched before that
+    by $1 and so on.

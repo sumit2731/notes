@@ -3,6 +3,8 @@ why should we learn about sorting
     2)Some sorting algorithm work better on one set of data while other work better on
         other set of data. so we need to decide when to use when.
 
+    3)This is classic interview question, a good  problem
+
 Elementary Sorting Algorithms-
     1)Bubble Sort
     2)Selection Sort
@@ -14,7 +16,7 @@ Elementary Sorting Algorithms-
 
 Algorithm Of Bubble Sort -
     we go through arary in loop and we compare element with his next elements. if it is smaller than we
-    interchange them. we do it until and of array.so by first loop largest element is at last. in next iteration
+    interchange them. we do it until end of array.so by first loop largest element is at last. in next iteration
     we start from begining but we exclude last element of array, as it is in it's correct position.we keep on doing
      this until all elements are sorted.
 
@@ -31,6 +33,8 @@ Bubble Sort Optimization-
     if we go through array in a iteration and there is no need for swap, then we can conclude that there is no need
     of any more iterations.To implement this in our code we introduce a new variable called noSwap.
 
+    Bubble sort is best suited when data is almost sorted.
+
 
 Time Complexity of Bubble Sort-
 
@@ -38,3 +42,6 @@ Time Complexity of Bubble Sort-
     Average Case - o(n*n)
     Best Case(With Nearly Sorted Array) - O(n)
     With nearly sorted array(i.e best case) and with Optimized Solution - O(n)
+
+In Course there is a websit where we can compare diffrent types of sort -
+ https://www.toptal.com/developers/sorting-algorithms

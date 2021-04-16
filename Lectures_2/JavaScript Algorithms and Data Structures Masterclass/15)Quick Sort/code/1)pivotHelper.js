@@ -6,26 +6,11 @@
 
 
 /* 
-*My solution, here Space Complexity is more
-*/
-function pivotHelper(array, pivotIndex) {
-    let beforeArray = [], afterArray = [];
-    let pivotElement = array[pivotIndex];
-    for (let i =0; i< array.length; i++) {
-        if (i == pivotIndex) continue;
-        if (array[i] <= pivotElement) beforeArray.push(array[i]);
-        else afterArray.push(array[i]); 
-    }
-    return beforeArray.concat([array[pivotIndex]]).concat(afterArray);
-}
-
-
-/* 
 *My solution using Course pseudo code. It is better than course solution, because it
     works for any pivot element. whereas course solution, works only when pivot element
-    is at zero index
+    is at zero index.
 */
-function pivotHelper2(array, pivotIndex, startIndex = 0, endIndex = array.length-1) {
+function pivotHelper(array, pivotIndex, startIndex = 0, endIndex = array.length-1) {
   let pivotElement = array[pivotIndex];
   let index = 0;
   for (let i = startIndex; i <= endIndex; i++) {
@@ -39,6 +24,8 @@ function pivotHelper2(array, pivotIndex, startIndex = 0, endIndex = array.length
   [array[index], array[pivotIndex]] = [array[pivotIndex], array[index]];
   return index;
 }
+
+console.log([5,2,1,8,4,7,6,3]);
 
 
 

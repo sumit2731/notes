@@ -14,7 +14,8 @@ Types of Subject-
     
     const subject = new Rx.BehaviorSubject(Math.random());
 
-    If behavour Subject completes, then new subscriptions only get completed notification. they dnt get last emited value.
+    If Behaviour Subsjects errors out then, new subscribers wnt get any value, they will just get error notification.
+    If behavour Subject completes, then new subscriptions only get any value, they will just get completed notification.
 
 3)Replay Subject - The ReplaySubject is comparable to the BehaviorSubject in the way that it can send “old” values to new 
     subscribers. It however has the extra characteristic that it can record a part of the observable execution and therefore 
@@ -25,7 +26,8 @@ Types of Subject-
     const subject = new Rx.ReplaySubject(2);
     const subject = new Rx.ReplaySubject(2, 100);
 
-    if subject completes, later subscribers will get replayed values and complete notification
+    Even If subject completes, later subscribers will get replayed values and complete notification
+    Even If subject Errors out, later subscribers will get replayed values and complete notification
 
 4)Async Subject - The AsyncSubject is aSubject variant where only the last value of the Observable execution is sent to its 
     subscribers, and only when the execution completes. it means subscribers will get value when subject completes.

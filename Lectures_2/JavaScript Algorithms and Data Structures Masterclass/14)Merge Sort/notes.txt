@@ -5,7 +5,7 @@ Intermediate Algorithms-
         are not able to write code yourself from pseudo code. here we will implement merge sort, quick sort and radix sort.
 
 
-    sorting algo that we learnt (bubble, select and insertion) they do not scal well. for about 100 items they take nticable time.
+    sorting algo that we learnt (bubble, select and insertion) they do not scale well. for about 100 items they take noticable time.
 
 Merge Sort -
 

@@ -1,0 +1,6 @@
+fot http server listens on port 80 is used.
+for https server listens on port 443 is used.
+IP 127.0.0.1 always points to loca machine.
+How to communicate via IP - 
+    nc -l 8081
+    nc 127.0.0.1 8081

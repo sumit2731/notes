@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component,OnChanges, DoCheck, enableProdMode } from '@angular/core';
+import {Todo} from "./todo";
+import {Owner} from "./owner";
 import { ajax } from 'rxjs/ajax';
-import {BehaviorSubject, interval,timer ,ReplaySubject, fromEvent, of,from, throwError, defer, bindCallback, Observable, concat, race,merge, ConnectableObservable, zip, forkJoin, combineLatest} from 'rxjs';
-import { delay, delayWhen, map, mapTo, concatMap, take,publish,mergeMap, startWith, endWith, withLatestFrom} from 'rxjs/operators'
-import { setTimeout } from 'timers';
+import {BehaviorSubject, interval,timer ,ReplaySubject, fromEvent, of,from, throwError, defer, bindCallback, Observable, concat, race,merge, ConnectableObservable, zip, forkJoin, combineLatest, Subject, Observer, empty} from 'rxjs';
+import { retryWhen,retry,tap,delay, delayWhen, map, mapTo, concatMap, take,publish,mergeMap, startWith, endWith, withLatestFrom,skipWhile,find} from 'rxjs/operators'
+import { EventEmitter } from 'events';
+import {todos as initialData} from './test_data';
 
 @Component({
   selector: 'app-root',
@@ -10,30 +13,37 @@ import { setTimeout } from 'timers';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'a10';
-  source;
-  constructor() {
-    let i = 0;
-    console.log(i);
-    let interval1 = setInterval(() => {
-      i++;
-      console.log(i);
-      if(i == 9) clearInterval(interval1);
-    }, 1000);
-    let interval1$ = interval(1000).pipe(
-      take(1)
-    );
-    let interval2$ = interval(2000).pipe(
-      take(6)
-    );
-    let interval3$ = interval(3000).pipe(take(3));
-    interval1$.pipe(withLatestFrom(interval2$)).subscribe(val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
-    //.subscribe(val => console.log(val),error => console.log("Error = " +error),() => console.log("Completed"));
-  }
-  createObservable(obs1$: Observable<any>,time: number, value: any) {
-    let obs2$ = of(value).pipe(
-      delay(time)
-    );
-    return race(obs1$,merge(obs1$,obs2$));
-  }
-}        
+    todos:Array<Todo> = initialData;
+    message: string;
+    callback:Function = (message) => {
+        console.log("setting message...");
+        this.message = message;
+    };
+
+    constructor() {
+
+    }
+
+    toggleFirst() {
+        this.todos[0].completed = ! this.todos[0].completed;
+    }
+
+    addTodo() {
+        let newTodos = this.todos.slice(0);
+        newTodos.push( new Todo(1, "TODO 4", false, new Owner("John", "Doe")));
+        this.todos = newTodos;
+    }
+
+    onAdd() {
+        this.message = "Adding Todo ...";
+        this.addTodo();
+    }
+}   
+
+
+
+
+
+
+
+

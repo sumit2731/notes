@@ -9,12 +9,16 @@ How to Improve Problem Solving-
         diffrent categories and if you can identify some of those categories, there are some
         steps you can take in your code.
 In this section we will talk about only point1.
-lets refer slides now.
+
     1)Understand the problem - Here we saw that there can be lot of questions in simple problem like
       adding 2 numbers. like type of numbers(int or float), size of numbers etc,return type of numbers
       int or float
+
+      https://cs.slides.com/colt_steele/problem-solving-patterns#/10/0/4
+
+      for example see figure 1.
     
-    2)Explore Examples-  write 2-3 examples, i.e have input then output.
+    2)Concrete Examples-  write 2-3 examples, i.e have input then output.
         a)Start with simple examples
         b)More complex examples
         c)edge cases,empty inputs

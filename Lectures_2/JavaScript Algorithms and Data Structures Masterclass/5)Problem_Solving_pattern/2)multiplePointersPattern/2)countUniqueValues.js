@@ -46,7 +46,7 @@
 
 
  /**
-  * Multiple Pointer Solution(course approach)
+  * Multiple Pointer Solution(course approach) _ modifying the orignal Array
   *Time Complexity- O(n)
   *Space Compexity - O(1)
   */
@@ -56,11 +56,11 @@ function UniqueValues3(array) {
     let i = 0;
     let j = 1;
     while (j <= array.length - 1) {
-    if (array[i] !== array[j]) {
-        i++;
-        array[i] = array[j];
-    }
-    j++;
+        if (array[i] !== array[j]) {
+            i++;
+            array[i] = array[j];
+        }
+        j++;
     }
     return i+1;
 }

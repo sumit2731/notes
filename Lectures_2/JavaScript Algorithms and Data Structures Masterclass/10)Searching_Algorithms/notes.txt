@@ -26,3 +26,5 @@ Binary Search -
     Worst &Average Case - O(logn)
 
     Log n mans it is very fast. it is very close to O(1)
+
+Implementing KNP string seraching - video not out

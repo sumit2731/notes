@@ -14,3 +14,11 @@ function selectionSort(arr) {
 }
 
 console.log(selectionSort([50,40,60,10,25]));
+
+
+/* 
+Time Complexity -
+    best case- O(n*n)
+    average case - O(n*n)
+    worst case -O(n*n)
+*/

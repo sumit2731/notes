@@ -1,0 +1,21 @@
+1)Save and reuse color palette
+
+    click on any color in dev tools(background: orange). color palette will open.Then click on second set of arraows.
+        Here you can choose which color should be showin main coor pellete.
+    
+        1)First one is Google's Material Desin color Palette. if you select it you will go to main color pallete
+            but all colors at bottom will from Google's Material Desin. click on any color select any shade and that
+            color will be applied to your element and you will get the hexcode.
+
+        2)"Page Colors" option pull every color from your website and makes a custom color pallete for you.
+
+2)Scroll items into view - Select any node from elements tab in chrome debugger, if that element is not in scroll view.
+    then click on 3 dots avalible at left hand side of elemnt and select "Scroll items into view",it will move your browser's
+    focus to elemnt you are looking for.
+
+3)in the same option there is option to hide(visibility:none) and delete element(remove node copletely).
+    element is hidden by applyisng visibility:hidden atyle by dev tools, so if we override it by !importnat then element wnt 
+    be hidden. you can go back by pressing ctrl+z.
+
+4)trigger various states - select a element. click on :hov. you can give any state to element and that state will be applied.
+    in css panel,selectors are listed in specificity order, so styles applied to that state will move up and you can se them.
