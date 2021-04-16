@@ -1,5 +1,0 @@
-Press ctrl+p(cmd + p) to search any file by name in sources tab.
-
-Thenwe saw step button in debugger. then we saw set in and step out.
-then we saw how debugger show inline infirmation by showing arrows on right of breakpoint.
-you can see value of a variable by hovering over it.

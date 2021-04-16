@@ -1,5 +1,0 @@
-1)Promise defination.Internal properties of promise(cannot be accessd from outside) - State, result
-2)What happens if we cannresolve or rejecte multiple times, they are ignored.
-3)Also, resolve/reject expect only one argument (or none) and will ignore additional arguments.
-4)then,catch and finally.
-5)sdvantages of promises over callback. at the end of blog.

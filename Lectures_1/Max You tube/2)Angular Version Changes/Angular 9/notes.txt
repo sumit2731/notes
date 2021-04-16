@@ -1,7 +1,0 @@
-1)Ivy ids defualt rendering engine. Reduced the build size for most project and made app faster.
-2)when we run ng serve, it will use ahead of time compilation
-3)you can configure how the types you are using in your templates should be checked. there are 3 modes-
-    a)Basic Modes
-    b)Full Mode
-    c)Strict Mode
-4)New options for 'providedIn'

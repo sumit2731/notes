@@ -1,9 +1,0 @@
-Design Fundatamental 4 categories - 
-    1)Undelying or Foundation knowledge(client server model,network protocols)
-    2)Key Characteristics of System - These are the things that you might want your system to have.these are things that you 
-        might be trading off while making certain design decisions.here we re talking about design fundamentals like avaliblability,
-        wait and see,throuhput,redundancy, consiistancy.these key charcateristics of system that you just have to know about.
-    3)Actual Components of Sysstem - Load Balancer, proxies, caches, rate limiting leader election.these will allow system to have key
-        characteristic that we mentioned in step 2.
-    4)Actual tech - real existing products and services that you can actually use in system,either as actual compoennts in system or
-        to achieve certain characteristic in a system.things like zookeeper, xcd,engine x, reddits, amazon s3, ggoogle cloud storage.

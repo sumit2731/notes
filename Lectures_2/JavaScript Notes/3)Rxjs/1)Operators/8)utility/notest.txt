@@ -1,9 +1,0 @@
-1)repeat - Returns an Observable that will resubscribe to the source stream when the source stream completes, at most count times.
-    repeat<T>(count: number = -1): MonoTypeOperatorFunction<T>
-
-    Parameters -
-
-    count -  Optional. Default is -1. The number of times the source Observable items are repeated, a count of 0 will yield an empty 
-                Observable.
-
-    Note: repeat(0) returns an empty observable and repeat() will repeat forever

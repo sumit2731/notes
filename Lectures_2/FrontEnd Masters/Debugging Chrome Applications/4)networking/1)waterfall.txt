@@ -1,9 +1,0 @@
-In network tab by cliking on settings , we can configure what we can see. you can show or hide waterfall graph and other things.
-
-In network tab we can also see initiator i.e which file made this request.there is cool trick to see initiator-
-    press shift and hover over api call for which you want to see initiator.it will show in green what file(in netwrok tab 
-    itself) has fetched it and in red it will show what other files are loaded by file on which you hover over.
-
-
-
-

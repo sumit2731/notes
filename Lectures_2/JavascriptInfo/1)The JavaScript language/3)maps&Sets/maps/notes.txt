@@ -1,4 +1,0 @@
-refer to javascript.info and mozilla docs
-
-1)maps vs objects-
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map

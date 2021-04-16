@@ -1,4 +1,0 @@
-1)diffrent router services.
-2)need of forRoot method to configure service
-3)new syntax ofr lazy loading
-4)canLoad vs canActivate

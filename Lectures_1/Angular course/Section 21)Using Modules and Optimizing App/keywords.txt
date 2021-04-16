@@ -1,3 +1,0 @@
-loadChildern
-forRoot,forChild
-loadingStrategy

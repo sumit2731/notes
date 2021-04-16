@@ -1,6 +1,0 @@
-DOM Breakpoints - Right click on any node, select "Break on"- there are 3 options -
-    1)subtree modification
-    2)attribute modification
-    3)node removal
-
-It will take us to line in js, which is doing it.

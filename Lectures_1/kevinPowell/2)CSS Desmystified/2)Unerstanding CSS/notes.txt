@@ -1,7 +1,0 @@
-In css, we never see element in isolation. we need to see erelation of element with its view port, with its parent and with its siblings.
-
-    Formatting Context - Relationship is how elements interact and work with each other, is defined by formatiing context.these 
-        relationships are controlled by a given elements formatting context.
-
-
-    Leyaours are all about releationship between elements.

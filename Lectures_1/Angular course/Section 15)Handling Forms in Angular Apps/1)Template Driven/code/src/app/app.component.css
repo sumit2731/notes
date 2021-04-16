@@ -1,7 +1,0 @@
-.container {
-  margin-top: 30px;
-}
-/* these styles will be applied to input tags which have ng-invalid and ng-touched class */
-input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
-  border: 1px solid red;
-}

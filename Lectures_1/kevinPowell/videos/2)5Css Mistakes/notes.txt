@@ -1,1 +1,0 @@
-1)Deep nesting of selectors. start using classes. it makes your css readable and easy to understand.

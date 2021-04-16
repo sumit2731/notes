@@ -1,9 +1,0 @@
-let arr = [1,2,3,4,5];
-Array.prototype.map = function () {
-    let str = '';
-    for (let ele in this) {
-        str = str + ele + '@ ';
-    }
-    return str;
-}
-console.log(arr.map());

@@ -1,4 +1,0 @@
-1)if you have to set font size of paragraph, then I encorage you to set the font size of body to be of that size.
- in this way you dnt have to be so specific to stye p tags.so other elements will will also have that font size.
- so te wnt have to write extra css. so for font-size ,font-color and different things like that, that are on p 
- tag, apply them on body, so that other elements can inherit them.

@@ -1,6 +1,0 @@
-1)How to scroll to the first invalid control once a form has been submitted
-    https://medium.com/javascript-everyday/how-to-scroll-to-first-invalid-control-once-a-form-has-been-submitted-eb47d9fbc6e
-
-
-2)how to tap into change of input property -
-    https://dev.to/deerawan/3-different-ways-to-use-input-decorator-4b3c

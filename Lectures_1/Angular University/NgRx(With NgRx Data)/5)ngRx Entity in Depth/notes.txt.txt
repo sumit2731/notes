@@ -1,2 +1,0 @@
-here we saw how we can use entity to make manage coirses data. it actually enhcaaes performance and
-    avoids lot of boilerplate code.

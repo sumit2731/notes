@@ -1,6 +1,0 @@
-<button (click)="onToggle()">Display Details</button>
-<p *ngIf="showSecret">This is Secret Text</p>
-<p *ngFor="let logItem of log" [ngClass]="{c1: logItem > 4}" 
-    [ngStyle]="{backgroundColor : logItem >4 ? 'blue' : 'white'}">{{logItem}}</p>
-
- 

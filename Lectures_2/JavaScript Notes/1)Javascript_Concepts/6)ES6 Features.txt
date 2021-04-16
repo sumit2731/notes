@@ -1,7 +1,0 @@
-1)Arraow functions
-2)Tempral Literals
-3)Spread and Rest Operators
-4)Object and Array Destructing
-5)Class Syntax
-6)Array.from method
-7)Enhanced Object Literals

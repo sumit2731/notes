@@ -1,7 +1,0 @@
-1)Classical Inheritace with protoype -
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create#classical_inheritance_with_object.create
-
-2)Also below this see multiple inehritance by mixins.
-
-
-3)How to define getters and setters on simple js objects, see Object.defineproperty in mdn docs.

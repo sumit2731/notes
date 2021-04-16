@@ -1,8 +1,0 @@
-Different tokes for Service Providers-
-    HTTP_INTERCEPTORS - For Interceptors
-    NG_VALIDATORS - For Custom Validator
-    NG_VALUE_ACCESSOR - For Custom Form Control(Interface needed - ControlValueAccessor)
-
-
-questions -
-    dependencies of factories
