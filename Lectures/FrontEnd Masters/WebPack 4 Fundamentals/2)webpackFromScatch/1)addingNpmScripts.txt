@@ -5,3 +5,19 @@
         "dev": "npm run webpack -- --mode development",
         "prod": "npm run webpack -- --mode production"
     },
+
+2)how to used both ESM and common js module sytax in same file.
+    then we saw that we cannot use both syntax's in same file.
+
+    see this link - https://pencilflip.medium.com/using-es-modules-with-commonjs-modules-with-webpack-2cb6821a8b99
+
+3)aways move your exports at bottom of file.
+
+4)alsways use ESM modules syntax. webpack leverages that to just pull what you need and it can do other optimizations.
+    we saw a example of dead code elimination by using ESM modules for export.
+
+5)all code is in feature/031-all-modules-types
+
+6)see geneate bundle in kode none.
+
+6)checkout to feature/0310-add-first-config-mode-none

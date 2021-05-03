@@ -1,7 +1,15 @@
-function f1(a,b,...c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
+// let img = document.createElement('img');
+// img.src = "https://js.cx/clipart/train.gif"; // (*)
 
-f1(1);
+// img.onload = function() {
+//   alert(`Image loaded, size ${img.width}x${img.height}`);
+// };
+
+// img.onerror = function() {
+//   alert("Error occurred while loading image");
+// };
+
+window.onbeforeunload = function() {
+  console.log("Event happened");
+ return false;
+};

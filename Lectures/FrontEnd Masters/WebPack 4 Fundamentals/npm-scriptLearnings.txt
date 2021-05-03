@@ -1,0 +1,13 @@
+1)To a object we can add diffrent properties like this -
+    npm run webpack --env.proeprty1 value1 env.property2 value2
+
+2)To array we can add values like this -
+     npm run prod:compress -- --env.presets analyze
+     npm run prod -- --env.presets compress "--env.presets" "analyze"
+     npm run webpack -- --env.mode production "--env.presets" "compress" "--env.presets" "analyze"
+
+3) how to add additional arguments to scripts -
+
+    npm run prod -- --env.presets compress
+        // env.preset will passed to prod script. 
+    yarn run --env.presets compress

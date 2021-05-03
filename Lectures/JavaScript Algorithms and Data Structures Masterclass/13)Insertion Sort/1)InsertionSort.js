@@ -5,8 +5,7 @@
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     for (var j = i - 1; j >= 0; j--) if (arr[i] > arr[j]) break;
-    if (j == -1) replace(arr, i, 0, arr[i]);
-    else if (j != i - 1) replace(arr, i, j + 1, arr[i]);
+    if (j != i - 1) replace(arr, i, j + 1, arr[i]);
   }
   return arr;
 }

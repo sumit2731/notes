@@ -1,3 +1,0 @@
-1)edit and creation o of view
-2)filters and grouping
-3) 3 dots after 3 dots, we will have a icon to take us to cockpit

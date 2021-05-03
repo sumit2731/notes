@@ -16,7 +16,7 @@
 
     if we change font size of parent to 4em, then font size of grandchild is also affected.
     in code if we chnage font-size of .col--em, size of h1 and p tags inside it adjust 
-    automatically they are using em units. to see compounding problem, set the font-size
+    automatically as they are using em units. to see compounding problem, set the font-size
     of .grid and .col--em in em. if you chnage font-size of grid, you can see that cascading 
     effect, on h1 and p tags inside  col-em. so be careful with em's.
 

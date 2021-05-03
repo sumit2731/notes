@@ -1,0 +1,46 @@
+switch to feature/04010-composing-configs-webpack-merge
+
+1)added css plugins
+2)hot eload faeture with --hot flag.
+3)loaded css files in style tag in dev mode
+5)loaded css in different file in prod mode.
+6)file loader & url loader
+
+switch to branch- feature/04012-addding-images 
+
+7)added preset.
+8)to have typescript support you need ts-loader and typescript package.
+
+switch to branch - feature/0413-adding-presets
+
+9)added webpackbundle-analuser. this help us to analyse our build. this will be used in performance with webpack section
+ 
+switch to feature/040131-bundle-analyze
+
+
+10)Added compression-webpack-plugin". it compresses the files.it can also extra options, see npm page.
+
+11)then we saw cofiguration to generate source maps. webpack docs there are variis values for devtools proeprty. woth detaild 
+    description. you can ceck them.
+
+12)In q and A we talked about code splitting in webpack.
+
+13)for lugins - check webpack-contrib repo
+
+Doubt -
+1)in video 4 at last why plugins are objects and loaders are strings.
+
+
+
+
+ /** @type {string[]} */
+
+ /**
+ * Add two numbers together
+ * @param  {Number} num1 The first number
+ * @param  {Number} num2 The second number
+ * @return {Number}      The total of the two numbers
+ */
+var addTwoNumbers = function (num1, num2) {
+	return num1 + num2;
+};

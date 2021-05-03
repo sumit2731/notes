@@ -1,0 +1,10 @@
+/* make the slider track red */
+input::-webkit-slider-runnable-track {
+  background: red;
+}
+p {
+    background:blue;
+}
+div#thumb {
+    background: yellow;
+}

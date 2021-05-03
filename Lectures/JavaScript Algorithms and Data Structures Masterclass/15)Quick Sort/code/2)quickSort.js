@@ -26,7 +26,7 @@ function quickSort(array, left = 0, right = array.length-1) {
         quickSort(array,pivotIndex+1,right);
     }
     return array;
-}
+}    
 
 console.log(quickSort([50,40,100,10,5,110,20,35]));
 

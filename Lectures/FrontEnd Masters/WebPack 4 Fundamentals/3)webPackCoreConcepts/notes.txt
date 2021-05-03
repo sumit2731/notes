@@ -1,0 +1,16 @@
+1)How to access env variables from command line. export a fucntion form webpack config. if use env falg in cli, it will
+     be provided in cofig.we can pass objects as well as singe proeprties.
+          
+          "prod": "npm run webpack -- --env.mode production",
+                or
+           "prod": "npm run webpack -- --env production",
+
+2)added html-webpack plugin and webpack.ProgressPlugin.
+
+3)added webpack-dev-server.
+
+4)switched to branch feature/0312-webpack-dev-server
+
+5)conditionally moad extra config that merges with our base config
+
+6)webpack-merge - object.assign for webpack configs

@@ -3,19 +3,17 @@
  * improvement - in inner loop use j < i-1. that will make calculations easier
  */
 
-function bubbleSort1(arr) {
+function bubbleSort(arr) {
     let noSwap = false;
-  for (let i = 0; i < arr.length; i++) {
-      noSwap = true;
-    for (let j = 0; j < arr.length-1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j] ];
-        noSwap = false;
-      }
+    for(let i =arr.length-2; i<= 0; i--) {
+        for(let j = 0 ; j <=i; j++) {
+            if(arr[j] > arr[j+1]) {
+                [arr[j],arr[j+1]] = [arr[j+1],arr[j]];
+                noSwap = true;
+            }
+        }
+        if(noSwap) break;
     }
-    if(noSwap) break;
-  }
-  return arr;
 }
 
 /* 

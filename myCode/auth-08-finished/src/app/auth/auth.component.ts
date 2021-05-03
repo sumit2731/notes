@@ -12,12 +12,13 @@ import { Observable, Subscription } from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
+import {ParentClass} from './ParentClass';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html'
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent extends ParentClass implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -28,9 +29,10 @@ export class AuthComponent implements OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private viewContainer: ViewContainerRef
-  ) {}
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {
+    super();
+  }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;

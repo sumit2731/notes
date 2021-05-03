@@ -1,0 +1,10 @@
+{{randomNumber}}
+<button (click)="childMethod()">Call</button>
+<app-feature1-cmp1 #childComponent>
+
+</app-feature1-cmp1>
+<a [routerLink]="['/feature1']">feature1</a>
+<a [routerLink]="['/lazy1']">Lazy 1</a>
+<a [routerLink]="['/lazy2']">Lazy 2</a>
+
+<router-outlet></router-outlet>

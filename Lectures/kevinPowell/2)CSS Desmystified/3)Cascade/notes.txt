@@ -1,0 +1,27 @@
+First we saw order of cascading. see figure 1.
+then we dived deep into 1)important and origin.
+then we saw why we should not use px unts for setting font-size on html tag. as it will dsiable user fotn-size. we should use
+    rem or %.
+
+then we saw which styles wins based on origin and specificity , then we saw what happens when animations and transitions
+come into play.
+
+then we saw how when to use important, like when we want to disable animations, transitions in media query or by browser 
+    extension.
+
+Then we saw specificity -
+
+1)It's best to keep specificity flat i.e keep everything as a single class selectr.avoid id' nested selectors and double
+    selectors like this-
+
+    .class1.class2 {
+
+    }
+
+keeping specificty help us to rmove one of 3 rules.
+
+but that is like putting training wheels on, once you learned the bike then you can drop the training wheels.then
+we talked that little bit of nesting is okay.
+
+then we talked about speciificity link. there we looked ::not is pseudo class but it does not increase the specificity of
+selector, but any selector inside() of not increases the specificity.

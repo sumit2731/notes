@@ -1,4 +1,4 @@
-1)Arraow functions
+1)Arraow functions, default arguments
 2)Tempral Literals
 3)Spread and Rest Operators
 4)Object and Array Destructing

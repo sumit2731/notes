@@ -27,9 +27,12 @@ function pivotHelper(array, pivotIndex, startIndex = 0, endIndex = array.length-
 
 console.log([5,2,1,8,4,7,6,3]);
 
-
+/* 
+*Course Soution - Here pivot element is fixed at 0
+*/
 
 function pivot(arr, start = 0, end = arr.length - 1) {
+  
   const swap = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
   };

@@ -1,0 +1,88 @@
+ESM -
+    export syntax -
+
+        Named Exports-(Named exports are useful to export several values. During the import, it is mandatory to use the 
+            same name of the corresponding object.) -
+
+            export let name1 = 'name';
+            export const { name1, name2: bar } = o;
+            export { name1, name2, …, nameN };
+            
+
+        Renaming Named Exports - 
+
+            export { name1 as dummyName1, name2 as dummyName2, …, nameN };
+        
+        Default Exports(But a default export can be imported with any name for example) -
+
+            export default function () { ... }
+            export { myFunction as default };` (default is keyword here)
+
+        // Aggregating modules(export .. from syntax)
+
+            export {sayHi} from './say.js'; // re-export named export
+            export {default as User} from './user.js'; // re-export default export, but now it is named export.
+            export * from 'filePath';// re-exports only named exports, but ignores the default one.
+            
+            export { default as function1, name as dummyName} from './fields.utils'; // exporting default as well as named exports. now all are named exports
+            export {default} from './fields.utils'; // ths is rexporting default export again as default export.
+            export { default ,function2 } from 'bar.js'; // here we are reexporting defaultt as well named export as deafult and named export
+
+
+    import synatx -
+
+        Named Imports(name should be same as exported name) -
+            
+            import {foo [as dummyName], bar [as dummyName2]} from '/modules/my-module.js';
+
+
+        Default Imports(while exporting diffrent name be used) -
+            
+            import m from './test'; (let k; export default k = 12;) 
+            imporr {default as dummyName1} from './test';
+        
+        importing both default as well as other exports(here for default export you have to use named import) -
+
+            import {default as function1, name } from './fields.utils';
+
+        import everything - 
+             
+             import * as user from './user.js';
+
+             let User = user.default; // the default export
+             let name = user.name; // other exports
+
+        Side effect import -
+            
+            import '/modules/my-module.js';
+
+CommonJs -
+    
+    export-
+        const getName = () => {
+            return 'Jim';
+        };
+
+        const dateOfBirth = '12.01.1982';
+
+        exports.getName = getName;
+        exports.dob = dateOfBirth;
+
+    import - 
+        Syntax 1
+            const user = require('./user');
+            console.log(`User: ${user.getName()}`);
+            console.log(user.dob);
+
+        Syntax 2
+            const { getName, dob } = require('./user');
+
+    default export -
+
+        class User {}
+        module.exports = User;
+
+    default import -
+
+        const User = require('./user');
+        let obj1 = new User();

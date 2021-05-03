@@ -5,6 +5,7 @@ Not everything is inheritant but there is rule of thumb.Anything related to typo
     color
     font-weight
     line-height
+    text-align
 i.e is the rreason we place lot of typography rules on html or body.
 browser styles takes precendence over inherited styles i.e inherited styles have least precedence.
 
