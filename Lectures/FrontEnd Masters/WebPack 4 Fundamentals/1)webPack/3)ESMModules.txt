@@ -1,0 +1,7 @@
+Problems with ESM -
+
+    1)ESM for nodes is not there yet.mjs is in process.js
+    2)in browser, they are are very very slow.they are unuseable past 10 modules.reason is this is done all at run time.
+        so using ESM in browser is not a option, it is very slow, even if you are using 1 module.
+
+    3)Diffreet libraries can use diffrent module formtat.

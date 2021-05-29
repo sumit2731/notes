@@ -15,12 +15,15 @@ You have named it. So, there were many things that were taken in inspiration for
 And then if you wanted to provide something another file or module, you'd do so using the export default syntax or export and then any expression. Or export conts, whatever and then whatever the value is. And there's a lot of like, there's lots of incredible things now that we have.
 
 [00:02:08]
-We have reusability, we now have true encapsulation. And this is for most modules in general. It's why we started writing this, coming from the pure loosey goosey spaghetti JavaScript ecosystem where it started, what? There's problems with the ESM. So there are kinda some issues. Whats the status for ESM for Node, do you guys know?
+We have reusability, we now have true encapsulation. And this is for most modules in general. It's why we started writing this, 
+ from the pure loosey goosey spaghetti JavaScript ecosystem where it started, what? There's problems with the ESM. So there are kinda
+  some issues. Whats the status for ESM for Node, do you guys know?
 
 [00:02:33]
 
 >> Speaker 2: MJS.
->> Sean Larkin: I mean that's not even fully in stone either. They had to create an entire task force of over 20 open source teams. Just to try to settle on semantics and it's still in process as we speak right now. And so, yes, ESM for node is kind of up in the air.
+>> Sean Larkin: I mean that's not even fully in stone either. They had to create an entire task force of over 20 open source teams. 
+Just to try to settle on semantics and it's still in process as we speak right now. And so, yes, ESM for node is kind of up in the air.
 
 [00:02:56]
 How they work in the browser? Have you guys tried using modules natively in the browser? They're incredibly slow. I would say slow to a point that they're basically broken. It's completely unusable past 10 modules. Or even that takes forever. When you think about it, when you're using that syntax, the browser has to basically read top down.

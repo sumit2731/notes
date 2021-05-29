@@ -1,11 +1,11 @@
-.container .sumeet {
+.container {
   background: green;
+  border: 5px solid black;
+  width: 500px;
+  height: 500px;
 }
 
 .sumeet {
-  background: yellow;
-}
-
-.sumeet.sumeet {
-  background: blue;
+  background:red;
+  border: 3px solid blue;
 }

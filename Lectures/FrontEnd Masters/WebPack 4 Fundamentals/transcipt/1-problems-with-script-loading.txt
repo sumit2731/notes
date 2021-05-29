@@ -52,7 +52,9 @@ And so that way, they could do things. And this is not the only module pattern. 
 But this let's us concatenate. Now, we can take and write a hundred files and we can squish them together without concerns that we're gonna knock out a bunch of variables and scopes, and I put a star there cuz there's always caveats. However, and this really led to the explosion of these toolings.
 
 [00:06:53]
-So we started seeing tools like Make. Who's used Make on a JavaScript project? I did that for the first time in Microsoft Edge. Edge is part of the operating system, and so our OS code base is a 24 terabyte git repo. And it used end make which is our custom windows version but I had that first experience with trying to use make with JavaScript.
+So we started seeing tools like Make. Who's used Make on a JavaScript project? I did that for the first time in Microsoft Edge. Edge 
+is part of the operating system, and so our OS code base is a 24 terabyte git repo. And it used end make which is our custom windows 
+version but I had that first experience with trying to use make with JavaScript.
 
 [00:07:18]
 Boy, it was frustrating. Really frustrating but some people love it. And really, all the purpose is is just to concatenate the files together. And that's what Grunt and Gulp and Broccoli, like all these things. That's where these tools started cropping up. It's trying to solve problems. However, there's still problems with this.

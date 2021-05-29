@@ -16,10 +16,10 @@ function replace(arr, removeIndex, addIndex, element) {
 }
 
 /**
- * Course Solution - btter than mine, beacuse we use splice which is needs a additional iteration
+ * Course Solution - Better than mine, beacuse we use splice which is needs a additional iteration
  */
 
-function insertionSort3(array) {
+function insertionSort2(array) {
   for (let i = 1; i < array.length; i++) {
         let currentVal = array[i];
         for (var j = i - 1; j >= 0 && array[j] > currentVal; j--) {

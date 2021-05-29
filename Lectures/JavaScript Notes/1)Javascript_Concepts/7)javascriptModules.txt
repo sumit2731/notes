@@ -31,7 +31,7 @@ ESM -
 
     import synatx -
 
-        Named Imports(name should be same as exported name) -
+        Named Imports(name should be same as exported name), you can use dummyName in importing module -
             
             import {foo [as dummyName], bar [as dummyName2]} from '/modules/my-module.js';
 
@@ -52,37 +52,39 @@ ESM -
              let User = user.default; // the default export
              let name = user.name; // other exports
 
-        Side effect import -
-            
-            import '/modules/my-module.js';
+    Side effect import -
+        
+        import '/modules/my-module.js';
 
 CommonJs -
     
     export-
-        const getName = () => {
-            return 'Jim';
-        };
 
-        const dateOfBirth = '12.01.1982';
+        Named Export -
+            const getName = () => {
+                return 'Jim';
+            };
 
-        exports.getName = getName;
-        exports.dob = dateOfBirth;
+            const dateOfBirth = '12.01.1982';
+
+            exports.getName = getName;
+            exports.dob = dateOfBirth;
+
+        default export -
+            
+            class User {}
+            module.exports = User;
 
     import - 
-        Syntax 1
+        importing named export -
+            
             const user = require('./user');
             console.log(`User: ${user.getName()}`);
             console.log(user.dob);
 
-        Syntax 2
             const { getName, dob } = require('./user');
 
-    default export -
+        importing default export -
 
-        class User {}
-        module.exports = User;
-
-    default import -
-
-        const User = require('./user');
-        let obj1 = new User();
+            const User = require('./user');
+            let obj1 = new User();

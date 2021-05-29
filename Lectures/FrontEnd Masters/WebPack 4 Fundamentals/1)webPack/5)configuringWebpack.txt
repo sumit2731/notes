@@ -1,0 +1,4 @@
+3 ways to use webpack-dev
+    1)use config file - this commonjs module. it exports some properties which tells webpack, what should it do with my code.
+    2)cli arguments - almost every cli proeprty is bound to cli arguments. so you cas sse webpack without having config property.
+    3)nodejs api - you can create your iwn wrapper.

@@ -1,0 +1,16 @@
+2 ways to load - write separate file or write under script tag.
+
+loading multipe files in a single webpage has performance issues as there is limit in convurrent request.
+but writing all code in single files also has issues like scope, readability etc.
+
+solution -
+    1)IIFE solve the scope problem. we used revealing module pattern to do so. then we started writing code wrapped in IIFE in 
+    multiple files and started bundling them togather in one file ad then load that our html. tools like make, grunt, gulp and 
+    brocolii did this only.they are called bundleres.
+
+Problems in solution -
+    1)Changing one file emans you need to concatinate all files again.
+    2)Dead code is also shipped. if you are using lodash you import entite lodash library. that is aorund2-3 mb of code.
+    3)IIFE are slow. IIFE force js engines to eager parse the code, so you incurr much  more intensive or costly  parsing time
+    when your js is loading. which leads to slow loading apps.
+    4)no lazy loading.

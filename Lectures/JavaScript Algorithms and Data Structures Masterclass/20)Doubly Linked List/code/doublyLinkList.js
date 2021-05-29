@@ -13,6 +13,7 @@ class DoublyLinkedList {
     this.length = 0;
   }
 
+  //O = O(1)
   push(value) {
     let node = new Node(value);
     node.prev = this.tail;
@@ -23,6 +24,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  //O = O(1)
   pop() {
     let removedNode = this.tail;
     if (this.length == 0) return undefined;
@@ -38,6 +40,7 @@ class DoublyLinkedList {
     return removedNode;
   }
 
+  //O = O(1)
   shift() {
     let removedElement = this.head;
     if (!this.head) return undefined;
@@ -51,6 +54,7 @@ class DoublyLinkedList {
     return removedElement;
   }
 
+  //O = O(1)
   unshift(value) {
     let newNode = new Node(value);
     if (this.length == 0) this.head = this.tail = newNode;
@@ -64,13 +68,15 @@ class DoublyLinkedList {
   }
 
   /**
-   * This is my solution. It's better than one shown in course
+   * This is my solution. It's better than one shown in course.
+   * also see my soluion in pactice.js
+   * O = O(n)
    */
   get(index) {
     if (index < 0 || index >= this.length) return undefined;
-    let condition = index < this.length / 2;
-    let node = condition ? this.head : this.tail;
-    let property = condition ? "next" : "prev";
+    let condition = index < this.length / 2; // false
+    let node = condition ? this.head : this.tail; // tail
+    let property = condition ? "next" : "prev"; //prev
     index = condition ? index : this.length - 1 - index;
     let counter = 0;
     while (counter < index) {
@@ -80,31 +86,28 @@ class DoublyLinkedList {
     return node;
   }
 
-  /*
-   *Course solution of get
-   */
-
-/*   get(index) {
-    if (index < 0 || index >= this.length) return null;
+  //course solution
+  get2(index){
+    if(index < 0 || index >= this.length) return null;
     var count, current;
-    if (index <= this.length / 2) {
-      count = 0;
-      current = this.head;
-      while (count !== index) {
-        current = current.next;
-        count++;
-      }
+    if(index <= this.length/2){
+        count = 0;
+        current = this.head;
+        while(count !== index){
+            current = current.next;
+            count++;
+        }
     } else {
-      count = this.length - 1;
-      current = this.tail;
-      while (count !== index) {
-        current = current.prev;
-        count--;
-      }
+        count = this.length - 1;
+        current = this.tail;
+        while(count !== index){
+            current = current.prev;
+            count--;
+        }
     }
     return current;
-  } */
-
+}
+  //O = O(n)
   set(index,value) {
       let node = this.get(index);
       if (node) {
@@ -147,12 +150,31 @@ class DoublyLinkedList {
           return removedNode;
       }  
   }
-  print() {
+
+  /**
+   * This is commonly asked
+   */
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let prevNode = null;
+    while(node) {
+        let nextNode = node.next;
+        node.next = prevNode;
+        node.prev = nextNode;
+        
+        prevNode = node;
+        node = nextNode;
+    }
+  }
+
+  show() {
     let node = this.head;
     while(node) {
-      console.log(node);
+      console.log(node.value);
       node = node.next;
-    }
+    } 
   }
 }
 let list1 = new DoublyLinkedList();

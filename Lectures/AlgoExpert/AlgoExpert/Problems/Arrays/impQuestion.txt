@@ -1,0 +1,6 @@
+1)medium -> 
+    3(to arrange all instance of number at the end of array)
+    4-(monolithicArray)is monotonic(wrote program but output was wrong, missed use case when initial numbers are same)
+    5- (spiral) - I solved but it took lot of time, course solution was much simpler. but my appraoch as right
+    6- longestPeak - solved with similar complecity but course solution ws very simple and scalable.
+    7 - top able to solve with O(1) complexity

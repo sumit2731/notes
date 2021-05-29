@@ -12,6 +12,10 @@ class SinglyLinkedList {
     this.tail = null;
   }
 
+  /**
+   * insert value at last
+   * O = O(1)
+   */
   push(value) {
     let node = new Node(value);
     if (this.head) {
@@ -22,10 +26,11 @@ class SinglyLinkedList {
     return this;
   }
 
+  /**
+   * remove value at last
+   * O = O(n)
+   */
   pop() {
-    /* 
-        Later we will see better solution for this
-        */
     if (!this.head) return undefined;
     let current = this.head;
     let newTail = current;
@@ -36,12 +41,17 @@ class SinglyLinkedList {
     newTail.next = null;
     this.tail = newTail;
     this.length--;
+    //if linked list had only 1 nodes
     if (this.length == 0) {
       this.head = this.tail = null;
     }
     return current;
   }
 
+   /**
+   * remoev value for begining
+   * O = O(1)
+   */
   shift() {
     if (!this.head) return undefined;
     let currentHead = this.head;
@@ -52,6 +62,10 @@ class SinglyLinkedList {
     return currentHead;
   }
 
+  /**
+   * Insert value at begining
+   * O = O(1)
+   */
   unshift(val) {
     let newNode = new Node(val);
     if (!this.head) this.head = this.tail = newNode;
@@ -63,11 +77,12 @@ class SinglyLinkedList {
     return this;
   }
 
+  /**
+   * Get value at given index, starts from 0
+   * O= O(n)
+   */
   get(index) {
     if (index >= this.length || index < 0) return null;
-    // let node = this.head;
-    // for(let i =0; i< index; i++) node = node.next;
-    // return node;
     let counter = 0;
     let current = this.head;
     while (counter != index) {
@@ -76,7 +91,19 @@ class SinglyLinkedList {
     }
     return current;
   }
+  
+  //my solution
+  get2(index) {
+    if(this.length <= index || index < 0) return null;
+    let node = this.head;
+    for(let i = 0; i<=i-1 ;i++) node = node.next;
+    return node;
+  }
 
+  /**
+   * Change value at given index
+   * O = O(n)
+   */
   set(index, value) {
     let node = this.get(index);
     if (node) {
@@ -88,6 +115,7 @@ class SinglyLinkedList {
 
   /**
    * Inserts a new node with a value at a given position
+   * O = O(n)
    */
   insert(index, value) {
     if (index < 0 || index > this.length) return false;
@@ -103,7 +131,8 @@ class SinglyLinkedList {
 
   /* 
     Removes the node at given position
-    */
+    O = O(n)
+  */
   remove(index) {
     if (index < 0 || index > this.length) return false;
     if (index === 0) return this.shift();
@@ -116,49 +145,11 @@ class SinglyLinkedList {
   }
 
   /**
-   * This is my solution using algo explained by Colt.This reverse
-   *  problem is asked a lot in interviews. To see colt's solution
-   *  see file 2
+   * This is asked a lot in interview questions
+   * Course solution.
+   * O- O(n)
    */
   reverse() {
-    let previousNode = this.head;
-    let currentNode = previousNode.next;
-    let nextNode = currentNode.next;
-    previousNode.next = null;
-    while (currentNode) {
-      currentNode.next = previousNode;
-      previousNode = currentNode;
-      currentNode = nextNode;
-      nextNode = nextNode && nextNode.next;
-    }
-    let tempHead = this.head;
-    this.head = this.tail;
-    this.tail = tempHead;
-  }
-
-  /**
-   *
-   * My Solution- Complexity is O(n*n). So it is
-   * not advisable. also it depends upon function get.
-   * hence second solution is reccommended.
-   */
-
-  reverse2() {
-    for (let i = this.length - 1; i >= 1; i--) {
-      let node = this.get(i);
-      let lastNode = this.get(i - 1);
-      node.next = lastNode;
-      if (i == 1) lastNode.next = null;
-    }
-    let tempHead = this.head;
-    this.head = this.tail;
-    this.tail = tempHead;
-  }
-
-  /**
-   * Course solution. algo is same as rverse
-   */
-  reverse3() {
     var node = this.head;
     this.head = this.tail;
     this.tail = node;
@@ -173,6 +164,27 @@ class SinglyLinkedList {
     return this;
   }
 
+  /**
+   * My Solution with same complexity and same approach
+   * Both are equivalent
+   */
+  reverse2() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let prevNode = null, nextNode = null;
+    while(node) {
+      nextNode = node.next;
+      node.next = prevNode;;
+      prevNode = node;
+      node = nextNode;
+    }
+  }
+
+  /**
+   * Prints each and every node of linked list
+   * 
+   */
   show() {
     let node = this.head;
     while (node) {

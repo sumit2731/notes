@@ -15,5 +15,12 @@ Why I Care-
     The more time you spend as a developer, the more likely you'll need to use one of these data structures. You've already 
     worked with many of them unknowingly!. if you have interacted with DOm, then you have worked with tree.
 
-then colt explained the situations where different data structues excel. go through them when you are done with ds. 
+then colt explained the situations where different data structues excel-
+
+    working with map - Graph
+    ordered list with insertion/removal at begining - linked list
+    web scrapping nested html - tree
+    implementing scheduler -Binary Heap
+
+go through them when you are done with ds. 
 sees ides for lecture

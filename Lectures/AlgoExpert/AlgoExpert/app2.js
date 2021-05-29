@@ -1,0 +1,1 @@
+dic[array[i]]

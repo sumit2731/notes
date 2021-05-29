@@ -42,7 +42,8 @@ If you just search Oz Con West 2015 Pete Hunt, you'll find a video where Pete Hu
 And nobody knew who's this random German guy working on this project. And really at this time, Tobias was really only spending about five hours a week on the project. But then, Dan Abramov is, probably? [LAUGH] Dan, he's a good guy. Dan came around at a react conf, and basically wanted to know, so Dan was researching, so stack.
 
 [00:06:30]
-You can just search, stack overflow Dan Abramov, this is the best. Hot module replacement. So then in two years later, Dan Abramov posts like how cool is that? You look at where people started from till today. He basically, what the heck is this hot module replacement that was in Webpack.
+You can just search, stack overflow Dan Abramov, this is the best. Hot module replacement. So then in two years later, Dan Abramov posts 
+like how cool is that? You look at where people started from till today. He basically, what the heck is this hot module replacement that was in Webpack.
 
 [00:06:55]
 It was kinda an out of th feature and he's like, I don't know what this is. Nobody knows what this is. The Webpack1 docks were awful. And so, Tobias jumps on and describes it from a very complex. He gives the whole. It was a great answer! I mean look, the thing's got like, that's probably all of Tobias's points on Stack Overflow is from this question.

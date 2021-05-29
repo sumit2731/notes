@@ -23,7 +23,7 @@ both stack and queue are abstract data structure. Only rule for stack is-
         but we know unshift and shift operation have complexity of O(n), so we will use push or pop.
         frankly speaking if you want efficienty then arrays should'nt be used to implement stacks. if
         we have ton of data in there and all you ned is this last in ,first out capability. we should
-        use our second implementation , where we use linke list. there is no need to maintain indexs,
+        use our second implementation , where we use linkek list. there is no need to maintain indexs,
         if we dnt access data using indexes.
 
 
@@ -35,7 +35,7 @@ both stack and queue are abstract data structure. Only rule for stack is-
 
         When we implemented linked list we had diffrent methods, you can say lets remove other methods and leave
         push and pop. it will work but in stack push and pop are supposed to have O(1). but in singly link list
-        pop had O(1). so what we can do is we can do shift and unshift. this is were Singly List has O(1).
+        pop had O(n). so what we can do is we can do shift and unshift. this is were Singly List has O(1).
 
         if we use doubly,linked list then we can also use push and pop.
 

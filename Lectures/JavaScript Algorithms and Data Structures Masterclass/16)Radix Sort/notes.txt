@@ -1,5 +1,5 @@
 see lecture
-
+visua representtion link - https://visualgo.net/en/sorting
 
 Performance-
     there is little controvery around  it and there is room for argument. but generally accepted notation is-

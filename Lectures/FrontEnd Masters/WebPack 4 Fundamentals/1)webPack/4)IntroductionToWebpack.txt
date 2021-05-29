@@ -1,0 +1,8 @@
+apart for ESM problems. we have preprocessors for HTML and CSS, we have assets. now we need something that not oly let us write 
+    modules, but we need something that lets us supports any module format. atleast untill we get to ESM, that can handle reources
+    and other assets at same time.
+
+webpack lets us write any module format and then compiles them for browser.on top of that it supports code spliting and static
+    sync bundling.
+
+webpack was orignally born as fork of modules-webpack. webpack was born in 2012.

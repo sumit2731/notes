@@ -29,14 +29,16 @@ But like you think about it there is NPM, it is so easy to ship whatever module 
 
 [00:04:01]
 
->> Sean Larkin: And so, like the hyper mass distribution, everybody's starting to write all of their tools, all of their scripts, all of their utilities in JavaScript on node. And the module system really cause this pre-Cambrian just explosion of the evolving ecosystem. And even today it's even faster. But what are these problems?
+>> Sean Larkin: And so, like the hyper mass distribution, everybody's starting to write all of their tools, all of their scripts, all 
+of their utilities in JavaScript on node. And the module system really cause this pre-Cambrian just explosion of the evolving ecosystem. And even today it's even faster. But what are these problems?
 
 [00:04:26]
 There's still problems here. There is no browser support for CommonJS. You can't just go write a CommonJS module and load it in the browser. There's no live bindings, and this is specifically with circular references. So, as more modules started to be created and the ecosystem keeps rapidly developing, we started finding out like people are using modules in very interesting ways.
 
 [00:04:53]
 Trying to self-referral and having circular dependencies and things like that. And this really starts to show itself through CommonJS.
->> Sean Larkin: And the resolution algorithm for CommonJS is kinda slow, it's really slow. And it's built in to know, but it's still really, really slow cuz it's synchronous. By the way, did I say there's no browser support for CommonJS.
+>> Sean Larkin: And the resolution algorithm for CommonJS is kinda slow, it's really slow. And it's built in to know, but it's still
+ really, really slow cuz it's synchronous. By the way, did I say there's no browser support for CommonJS.
 
 [00:05:20]
 
@@ -56,10 +58,14 @@ We all started to see different approaches like loaders, or things that like Jav
 >> Sean Larkin: CommonJS is, when you look at it here, it doesn't look too harmful.
 
 [00:07:00]
-But the problem is that require is actually a function that you can pass anywhere. And so, we started seeing people abuse the crap out of CommonJS syntax, like I love Cindersaurus. Does anybody know who Cindersaurus is? He's probably the author of every, you use a package that he wrote for sure.
+But the problem is that require is actually a function that you can pass anywhere. And so, we started seeing people abuse the crap out 
+of CommonJS syntax, like I love Cindersaurus. Does anybody know who Cindersaurus is? He's probably the author of every, you use a 
+package that he wrote for sure.
 
 [00:07:22]
-He's responsible for 300 billion downloads a year on NPM, or a month, I can't remember what it is, it's a staggering amount. But he writes these tiny packages. Like he'll write ones though that take require and you pass a require function in, and then you call it a different require.
+He's responsible for 300 billion downloads a year on NPM, or a month, I can't remember what it is, it's a staggering amount. But he 
+writes these tiny packages. Like he'll write ones though that take require and you pass a require function in, and then you call it a
+ different require.
 
 [00:07:41]
 And there's no way for bundlers to be able to statically analyze this stuff. We can't know without evaluating the code what's happening with this function. And so,
