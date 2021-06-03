@@ -2,8 +2,8 @@ Rise of commonjs -
     with nodejs runs on server , so we do not have DOM(script tag), so how do we include other js files.this gave birth to commonjs
     module format.
     see figure for 1 for sytsx. coomon js also gave birth to ststic analysis. we can tell what is sued (for most part).this is when
-    explosion js started. npm was created to share common js modules in community.everyone started to write everything in commonjsm
-    because npm was so easy to use. - npm install "anything"
+    explosion of js started. npm was created to share common js modules in community.everyone started to write everything in 
+    common.js because npm was so easy to use. - npm install "anything"
 
 Problem with commonjs -
 
@@ -15,16 +15,16 @@ Problem with commonjs -
 Solutions-
 
 1)people started ship web modules through npm. but commonjs is not supported in browser.this is when bundlers and linkers
-    (linkers are also called loaders) became popular see, figure 2.bundlers(browsify) -they allow you to write commonjs modules, but 
-    then it get bundled and stripping those statements and gets executed in the same oder so that it works in browser. then loaders 
-    dynamically fetch the modules in realtime. see bookmrk for bunders vs loaders.
+    (linkers are also called loaders) became popular see, figure 2.bundlers(browsify) -they allow you to write commonjs modules,
+    but then it get bundled and stripping those statements and gets executed in the same oder so that it works in browser. then 
+    loaders dynamically fetch the modules in realtime. see bookmark for bunders vs loaders.
 
 
 Problems -
 
-    1)require is function and you can pass it anything,people abused it.like a fucntion take a require as a pamameter, and then you 
-    call it in a diffrent require.there was no way to bundlers to statically analyse the stuff. so you cannot know without analysing
-    these functions hwt is ised and what not.so you get bloated bundles.
+    1)require is function and you can pass it anything,people abused it.like a fucntion take a require as a pamameter, and then 
+    you call it in a diffrent require.there was no way to bundlers to statically analyse the stuff. so you cannot know without 
+    analysing these functions what is  used and what not.so you get bloated bundles.
 
     2) lazy loading. there is no way to asynchronous load something with require, especially with web.
 

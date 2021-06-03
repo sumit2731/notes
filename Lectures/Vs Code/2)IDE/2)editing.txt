@@ -1,0 +1,7 @@
+1)select upto end of line-
+    window-
+    mac -cmd + shift + right
+
+2)select from current position to end of word(breaks at camelcase, - ) -
+    mac - option +shift + right
+    win-  ctrl +  shift + right

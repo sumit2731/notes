@@ -14,10 +14,13 @@ You really should. We fell back to production mode anyway but here's where you c
 We'd have node installed and we would just run this command after doing an mpm install. And so, but we can take it a step further. mpm has this awesome capability to compose scripts. So or I guess I should say it started with mpm and yarn supports it as well.
 
 [00:01:49]
-So let's say running just npm webpack, there might be different environments that you wanna build in. And so much that we're enforcing you now to think about that, that we have a mode property that specifies development or production. If you can provide that like that information like I'm just my local div environment until webpack that.
+So let's say running just npm webpack, there might be different environments that you wanna build in. And so much that we're 
+enforcing you now to think about that, that we have a mode property that specifies development or production. If you can provide
+ that like that information like I'm just my local div environment until webpack that.
 
 [00:02:11]
-We created this property, so we could optimize for build speed over production quality or vice versa depending on what mode you're in. And so, you have the ability to compose scripts. So if you wanted to pass let's say a mode, like the mode property to webpack without the config, you can still do so but we don't wanna have to basically write out this command every single time and we can just call the original command but just add on to it, so add a dev property nd you can actually call an existing command, so npm run webpack.
+We created this property, so we could optimize for build speed over production quality or vice versa depending on what mode you
+'re in. And so, you have the ability to compose scripts. So if you wanted to pass let's say a mode, like the mode property to webpack without the config, you can still do so but we don't wanna have to basically write out this command every single time and we can just call the original command but just add on to it, so add a dev property nd you can actually call an existing command, so npm run webpack.
 
 [00:02:50]
 And then, with this syntax here, so this --, this basically says pipe in the next arguments onto the original commands. So I can say this --mode development. So now, you can compose without having to basically rewrite like, when these get pretty large or over the top, you're gonna start noticing that like you have a billion scripts here.

@@ -1,0 +1,9 @@
+:root {
+    --sumeet: blue;
+    --sood: yellow;
+}
+
+
+.sumeet {
+    background: var(--sumeet, var(-sood))
+}

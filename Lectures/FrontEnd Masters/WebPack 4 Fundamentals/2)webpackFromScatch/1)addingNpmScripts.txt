@@ -1,10 +1,62 @@
-1)how to use exiting npm scripts -
+1)npm adds executables for all packages in bin folder in node_modules. npm allows you to run scripts that hoist that binary 
+    package within its scope.
+
+2)webpak defauts -
+    entry - src/index.js (only src is provided it will look for index.ts also)
+
+3)how to use exiting command in npm -
     
     "scripts": {
         "webpack": "webpack",
-        "dev": "npm run webpack -- --mode development",
-        "prod": "npm run webpack -- --mode production"
-    },
+        "dev": "npm run webpack 
+    }
+
+4)how to pass paramteres to while reusing existng command -
+    "scripts": {
+        "webpack": "webpack",
+        "dev": "npm run webpack -- --mode development" 
+    }
+
+    -- says pipe in the next arguments to orignal commnads.
+
+5)how to debug a node file in chrome -
+
+    1)node inspect ./code1/app.js
+        1)Breakpoint breaks on first line. in cmd shows the line on which breakpoint stops.
+        2)To Integrate with vscode -
+            a)Attach with vs code using "toggle auto attach".vs code breakpoints will work now.
+
+
+    2)node --inspect ./index.js -
+        If no breakpoint is placed then file will be executed.
+        can debug in chrome, as well as vs code
+
+
+    3)node --inspect --inspect-brk ./index.js
+        
+        a)In chrome open - chrome://inspect/#devices
+        b)Remote Target- click on "inspect"
+        c) breakpoint will open in chrome debugger.
+        d)If you want to attach in vscode -
+            Attach with vs code using "toggle auto attach".vs code breakpoints will work now.
+
+6)then to debug webpack add this script-
+
+    "debug": "node --inspect --inspect-brk ./node_modules/webpack/bin/webpack.js",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 2)how to used both ESM and common js module sytax in same file.
     then we saw that we cannot use both syntax's in same file.

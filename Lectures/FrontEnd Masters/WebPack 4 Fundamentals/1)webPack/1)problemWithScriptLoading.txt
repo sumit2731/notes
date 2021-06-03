@@ -9,7 +9,7 @@ solution -
     brocolii did this only.they are called bundleres.
 
 Problems in solution -
-    1)Changing one file emans you need to concatinate all files again.
+    1)Changing one file means you need to concatinate all files again.
     2)Dead code is also shipped. if you are using lodash you import entite lodash library. that is aorund2-3 mb of code.
     3)IIFE are slow. IIFE force js engines to eager parse the code, so you incurr much  more intensive or costly  parsing time
     when your js is loading. which leads to slow loading apps.

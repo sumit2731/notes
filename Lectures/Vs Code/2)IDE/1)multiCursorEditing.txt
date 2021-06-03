@@ -1,0 +1,22 @@
+1)Add Selection to next Find Match -
+    win - ctrl +d
+    mac - cmd +d 
+    select a word and then do this, multicursor will be placed at next occurance of selected word.
+    selection settings(case sensitivity, exact match) is same as find setting. chnge at one place will reflect 
+    at other.In scroll bar you ca see where are cursor's added.
+
+2)Add Selection to previous Find Match - search from command pallete
+
+3)Select all occurances of Find Match - 
+cmd + shift + l
+    It adds muli cursor at all occurance of selected word in a file.
+
+4)multi  cursor with mouse - alt + click
+
+4)cursor undo  - 
+    win - ctrl + u
+    mac - cmd + u
+    It removes last added cursor
+
+3)sursor redo - do it from command pallete, no command for it
+    It adds last removed cursor.

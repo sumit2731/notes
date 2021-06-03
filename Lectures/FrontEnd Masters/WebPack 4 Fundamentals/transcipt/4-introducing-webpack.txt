@@ -8,7 +8,9 @@ I mean, assets and so it wouldn't even just thinking about this in retrospect. W
 And so wouldn't it be nice that, let's talk about Webpack. [LAUGH] This is where kinda Webpack was born. Webpack is a module bundler. So you might be like, Sean, what are you talking about? Module bundler lets you write any module format. It doesn't have to be any, but for us, for Webpack, it's that you can require or use anymore module format and it'll allow those to work in the browser.
 
 [00:01:29]
-That's the simplest format for a bundler. On top of that, Webpack supports code splitting or static async bundling, where you can create separately lazy lot of bundles at build time. Nothing is dynamic and so then, that way you have all these extra optimizations that you can leverage. And there's just a ridiculous, ridiculously large ecosystem for Webpack.
+That's the simplest format for a bundler. On top of that, Webpack supports code splitting or static async bundling, where you 
+can create separately lazy lot of bundles at build time. Nothing is dynamic and so then, that way you have all these extra 
+optimizations that you can leverage. And there's just a ridiculous, ridiculously large ecosystem for Webpack.
 
 [00:01:56]
 Today, it is the most performant way, if you want to write the most performant application or you want to set canonical standards. You need to be using Webpack today. It's why Microsoft chooses it for all of it's top 1,000 Alexa websites. It allows us to be incredibly flexible, and do any sort of custom workflow and makes it possible.
