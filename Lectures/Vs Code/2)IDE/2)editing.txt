@@ -1,7 +1,20 @@
 1)select upto end of line-
-    window-
+    win- alt + shift + right
     mac -cmd + shift + right
 
 2)select from current position to end of word(breaks at camelcase, - ) -
     mac - option +shift + right
     win-  ctrl +  shift + right
+3)go to edn of line -
+
+    win -
+    mac- ctrl + e
+
+4)copy line to down/up -
+    win - shit +alt + down(up)
+    mac - shift +option+ down(up)
+
+
+5)go to start of line-
+
+    mac - ctrl + a

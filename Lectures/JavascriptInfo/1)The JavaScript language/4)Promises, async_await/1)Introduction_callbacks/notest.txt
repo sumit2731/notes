@@ -1,4 +1,10 @@
 Points Covered -
-    1) “callback-based” style of asynchronous programming.
+    1) “callback-based” style of asynchronous programming - by implementing loading scripts example.
     2)error First Callback Approach
-    3)Problems with callbacks.
+    3)Problems with callbacks - Pyramid of Doom, Callback hell.
+        The “pyramid” of nested calls grows to the right with every asynchronous action. Soon it spirals out of 
+        control.
+    4)Solution to callbac hell - use induival functions
+    5)drawaback of functions used in point - 
+        a)Single use only
+        b)code lookslike torn apart, is difficlut to read

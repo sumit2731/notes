@@ -1,0 +1,1 @@
+instead of media queries use-repeat,autofit,flex-wrap

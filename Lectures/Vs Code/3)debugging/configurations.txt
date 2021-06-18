@@ -1,0 +1,25 @@
+1)node inspect ./code1/app.js
+    Breakpoint breaks on first line. in cmd shows the line on which breakpoint stops.
+    To Integrate with vscode -
+        a)Attach with vs code using "toggle auto attach".vs code breakpoints will work now.
+
+
+2)node --inspect ./index.js
+    1)Can debug in chrome, need to have breakpoint.
+    2)In VS code- If "toggle auto attach" is on and breakpoints are in place it will debug.
+
+
+3)node --inspect --inspect-brk ./index.js
+
+    Debugging in chrome dev tools -
+        a)In chrome open - chrome://inspect/#devices
+        b)Remote Target- click on "inspect"
+        c) breakpoint will open in chrome debugger.
+    
+    Debugging in VS Code -
+        1)By default --inspect brk flag does not start debugging in vs code. but when you open chrome dev tools, and
+            "toggle auto attach" is true, then debugger in vs code will also start working.
+        Attach with vs code using "toggle auto attach".vs code breakpoints will work now.
+
+4)use "stopOnEntry": true, flag in launch.json.
+https://code.visualstudio.com/Docs/editor/debugging#_run-mode

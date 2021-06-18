@@ -19,7 +19,7 @@
 
     -- says pipe in the next arguments to orignal commnads.
 
-5)how to debug a node file in chrome -
+5)how to debug a node file in chrome(see vscode/debugging/configurations) -
 
     1)node inspect ./code1/app.js
         1)Breakpoint breaks on first line. in cmd shows the line on which breakpoint stops.

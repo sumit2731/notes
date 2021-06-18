@@ -1,0 +1,59 @@
+.flex-parent {
+    display: flex;
+  }
+
+/* .flex-parent > * {
+  flex-basis: 100%;
+} */
+  
+  .flex-item {
+    padding: .5em;
+    background: #efefef;
+    border: 3px solid #333;
+  }
+  
+  .flex-item.no-shrink {
+    flex-shrink: 0;
+  }
+
+  .flex-grow {
+      flex-grow:1;
+  }
+  
+  /* =========================
+     GENERAL STYLES 
+     NOT RELATED TO THE TUTORIAL
+  ============================ */
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  :root {  
+    --clr-primary: #ee6352;
+    --clr-secondary: #d16e8d;
+    --clr-accent: #F7F7FF;
+    --clr-gradient: linear-gradient(-90deg, var(--clr-primary), var(--clr-secondary));
+    --ff-title: bungee, sans-serif;
+    --ff-body: canada-type-gibson,sans-serif;
+    --fw-body: 300;
+    --fw-bold: 800;
+    --fw-title: 400;
+    --fw-number: 800;
+  }
+  
+  body {
+    min-height: 100vh;
+    font-family: var(--ff-body);
+    font-weight: var(--fw-body);
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    width: min(95%, 45rem);
+    margin: 0 auto;
+  }

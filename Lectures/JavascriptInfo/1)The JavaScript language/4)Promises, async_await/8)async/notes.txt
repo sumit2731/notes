@@ -1,0 +1,14 @@
+1)function with keyword async always return promise.Other values are wrapped in a resolved promise automatically.
+    We could explicitly return a promise, which would be the same. basically it works in same way how returning from 
+    then works.
+
+2)await keyword works only inside function with keyword async.
+3)The keyword await makes JavaScript wait until that promise settles and returns its result.
+4)await literally suspends the function execution until the promise settles, and then resumes it with the promise result. 
+    That doesn’t cost any CPU resources, because the JavaScript engine can do other jobs in the meantime: execute other scripts, 
+    handle events, etc.It’s just a more elegant syntax of getting the promise result than promise.then. And, it’s easier to read 
+    and write.
+
+5)If a promise resolves normally, then await promise returns the result. But in the case of a rejection, it throws the error, just as 
+    if there were a throw statement at that line.
+

@@ -1,0 +1,98 @@
+----------Snippet1-------------------------------------------------------------
+1)Firefox dev tools for flex box is best. shows the shrink and grow for a item.
+2)By default each item occupies will have width, according to its content. so flexbox intrinsically sets width equal to -
+    width: max-content
+
+    now in max-content there are no line breaks. i.e very long lines also appears in single line.
+
+    so at this point of point any flex-shrinking is not happening. but if you add random long string in second column(give it some line 
+    so that content does not overflow container), then flex-shrink happens. so now some columns are shrink more than others, so how is
+    width of item is determined in flexbox? answer is in snippet 3.
+-----------Snippet 2------------------------------------------------
+
+3)If content is too large to fit in container, then flex shrink kickcs in. however if flex shirnk if off then content will have 
+width: max-content, and we will get overflow.
+4)so first it determines content size, then it detremines if this will fit in container?
+    if yes, then item have width accoriding to content.
+    if no and flex shrink is off, then items will overflow.
+    if no and flex shrink is on, then items will shrink to fit in contianer.
+    
+    but what decides how much each columns shrink?
+
+---------------------------Snippet 3-----------------------------------------
+
+5)when we give width or flex-basis to each item, now width of each item is not determined by max-content i.e it overwrites that 
+    width:max-content behaviour, so it no longer looks at content size to determines the width, we have expliitly declared width,
+    it will use that.
+
+6) total width of content is 1200px, while parent is 600px, so flex-shrink comes into play.flex-shrink is rate at which items shrink by,
+    as flex-shrink is equal for all columns, middle columns will always have more width then rest 2, because they all are going to  
+    shrink by same rate)
+
+7)but what determines the final size? here 600 is container size, 1200 is content size, as shrink rate is same for all, each column
+    size is divided by 2. firefox dev tools shows us what was orignal size and how much item has shrunk. here it is nice round number,
+    but this is not always the caase.
+
+----------------------Snippet 4------------------------------------------------------------------
+Trick to make equal width columns with flexbox uisng flex-shrink-
+    1)set flex-basis of all items to 100%.
+    2)flex-shrink should be 1    
+
+Trick to make equal width columns with flexbox uisng flex-grow-
+
+
+    1)set flex: 1 , on item, which means-
+        flex-grow:1
+        flex-shrink:1
+        flex-basis: 0
+-----------------Snippet5 - 
+    1)problem with approaches explained in Snippet 4, because eof padding present in induival item.
+
+------Snippet 6----------------------------------------------------------------
+
+    solution of equal width columns. using flexbox. added a extra div item that is not having padding.soluion works for both
+    flex-grow and flex-shrink.
+
+
+----Snippet 7------------------------------------------------
+
+    solution to problem in snippt 5 using grid.
+
+
+flex-box vs grid - see video from last.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+flex-shrink is rate at which items shrink by. in example 3 middle item is still longer than last 2 items. because rate of
+    shrink is same. so second item will alwas be larger.

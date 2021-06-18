@@ -1,15 +1,2 @@
-// let img = document.createElement('img');
-// img.src = "https://js.cx/clipart/train.gif"; // (*)
-
-// img.onload = function() {
-//   alert(`Image loaded, size ${img.width}x${img.height}`);
-// };
-
-// img.onerror = function() {
-//   alert("Error occurred while loading image");
-// };
-
-window.onbeforeunload = function() {
-  console.log("Event happened");
- return false;
-};
+let arr = [{id: 1, name: "Sumeet Sood"},{id: 2, name: 'Kriti Gupta'},{id: 3, name: 'Unknown'}]
+let obj = {id: 1, name: "Sumeet", address: 'India'}

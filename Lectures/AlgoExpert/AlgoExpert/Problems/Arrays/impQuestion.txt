@@ -4,3 +4,4 @@
     5- (spiral) - I solved but it took lot of time, course solution was much simpler. but my appraoch as right
     6- longestPeak - solved with similar complecity but course solution ws very simple and scalable.
     7 - top able to solve with O(1) complexity
+    8 - merge overlappingArray - able to solve  y debugging the code.

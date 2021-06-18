@@ -1,0 +1,8 @@
+1)Change the value of variables
+2)conditional + count breakPoins, both can be combined
+3)inline breakPoints - multiple breakPnts in same line
+    1)shift + f9
+    2)placig inline breakpoint after placig normal breakpoint
+
+4)functional breakpoints - supported in c++
+5)data breakpoint -- supported in c++

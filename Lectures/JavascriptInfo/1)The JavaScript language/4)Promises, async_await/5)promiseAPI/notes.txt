@@ -1,0 +1,30 @@
+There are 6 static methods of Promise class:
+    1)Promise.all - Takes an array of promises (it technically can be any iterable, but is usually an array) and returns a new promise.
+        The new promise resolves when all listed promises are settled, and the array of their results becomes its result.
+        Normally, Promise.all(...) accepts an iterable (in most cases an array) of promises. But if any of those objects is not a 
+        promise, it’s passed to the resulting array “as is”.
+
+         If any of the promises is rejected, the promise returned by Promise.all immediately rejects with that error. but we can provide
+         catch block for a induival promise and then return dummyValue from catch block. see ex1 in code.
+
+
+    2)Promise.allSettled - (recent addition to the language. Old browsers may need polyfills).
+        Promise.allSettled just waits for all promises to settle, regardless of the result. The resulting array has:
+
+            {status:"fulfilled", value:result} for successful responses,
+            {status:"rejected", reason:error} for errors.
+
+        so even if 1 promise fails we get result for al promises in array.
+
+        see polyfil implementation of this in code.
+
+    3)Promise.race - Promise.all, but waits only for the first settled promise and gets its result (or error).
+        let promise = Promise.race(iterable);
+
+    4)Promise.any - Similar to Promise.race, but waits only for the first fulfilled promise and gets its result.If all of the given 
+        promises are rejected, then the returned promise is rejected with AggregateError – a special error object that stores all 
+        promise errors in its errors property.
+
+    5)Promise.resolve(value) - creates a resolved promise with the result value.
+
+    6)Promise.reject(error) - creates a rejected promise with error.

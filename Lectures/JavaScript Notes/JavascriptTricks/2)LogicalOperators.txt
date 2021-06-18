@@ -1,0 +1,20 @@
+1)Reducing if-else condition by using logical operator -
+    foo === 10 && doSomething(); 
+    // is the same thing as if (foo == 10) then doSomething();
+    // Output: 10
+
+    foo === 5 || doSomething();
+    // is the same thing as if (foo != 5) then doSomething();
+
+
+2)Ternary operator isntead of using if- else -
+    
+    function Fever(temp) {
+        return temp > 97 ? 'Visit Doctor!'
+        : temp < 97 ? 'Go Out and Play!!'
+        : temp === 97 ? 'Take Some Rest!';
+    }
+
+    // Output
+    Fever(97): "Take Some Rest!" 
+    Fever(100): "Visit Doctor!"
