@@ -3,7 +3,8 @@ Day 1 -
     1)$0,$1,$2,$3 = Gives the element selected in chrome dev tools
     2)$('css selector'), $$('css selector') = queryElmenet, queryElementAll(and converts them into array)
     3)$_ =  references the result of the last evaluated expression.
-    4)$i('lodash') or $i('moment') =  you can quickly import and play with npm libraries right in the console.
+    4)$i('lodash') or $i('moment') =  console importer.
+        you can quickly import and play with npm libraries right in the console.
 
 
 Day 2 -
@@ -27,13 +28,13 @@ Day 3- (Console Methods)
     10)console.table(data [, columns]);
         An array containing the names of columns to include in the output.
 
-    11)console.dir - gives better view of data
+    11)console.dir - gives better view of data. for ex shows DOM object for copied HTML element.
 
 
 Day 4(Elements Pane) -
 
     12)h - you can hide and show a element by selecting it and pressing h
-    13)You can do drag and dropon element, element panel
+    13)You can do drag and drop an element elment, that elemnt will remoevd from previous position and inserted in new one.
     14)Move elemnts up and down by selecting in element pane and pressing ctrl + up, ctrl+ down
     15)Elements pane is editor(cut,copy,paste.undo all are there)
 
@@ -41,11 +42,7 @@ Day 4(Elements Pane) -
 Day 5(console.log) -
 
     16)An object that you log into the console is stored there by a reference until its content is displayed.
-        here note the statement, until its content is displayed.it means if there is only one log statement, then
-        everything will work fine.
-
-    My Finding -
-        console.log("My Name i %s, I am %s years old","Sumeet","27);
+        
 
 
 Day 6(Command Pallete) -
