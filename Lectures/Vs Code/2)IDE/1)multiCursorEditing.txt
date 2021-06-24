@@ -1,25 +1,43 @@
-1)Add Selection to next Find Match -
+1)Add Cursor below/above -
+    win - ctrl + alt + down
+    mac - cmd + option + down
+
+2)Add Selection to next Find Match -
     win - ctrl +d
     mac - cmd +d 
     select a word and then do this, multicursor will be placed at next occurance of selected word.
     selection settings(case sensitivity, exact match) is same as find setting. change at one place will reflect 
     at other.In scroll bar you ca see where are cursor's added.
 
-2)Add Selection to previous Find Match - search from command pallete
+3)Add Selection to previous Find Match - search from command pallete
 
-3)Select all occurances of Find Match -
+4)Select all occurances of Find Match -
     win - ctrl + shift + l(L)
     mac - cmd + shift + l(L)
     It adds muli cursor at all occurance of selected word in a file.
 
-4)multi  cursor with mouse - 
+5)multi  cursor with mouse - 
     win -alt + click
     mac - opt + click
 
-4)cursor undo  - 
+6)cursor undo  - 
     win - ctrl + u
     mac - cmd + u
     It removes last added cursor
 
-5)sursor redo - do it from command pallete, no command for it
+7)cursor redo - do it from command pallete, no command for it
     It adds last removed cursor.
+
+8)box-column selection-
+    select text and move cursor by pressing these-
+        win - alt +shift
+        mac - option + shift
+
+    here whole block is selected but we also get multi cursors. here multicursors are added by movement of cursor.
+    
+
+9)add cusrosr to top/bottom -
+    select for commnd pallete
+
+10)add cursor to line start/end -
+    adds cursor to start/end of all selected lines

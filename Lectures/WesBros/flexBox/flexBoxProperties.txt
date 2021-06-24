@@ -4,13 +4,15 @@ a)Flex Container
         b)inline-flex - flex container is as large as content
     
     2)flex-direction - It sets the main and cross axis. we have both main and cross axis.
-        flex-direction: row | row-reverse | column | column-reverse;
+        flex-direction: row(default) | row-reverse | column | column-reverse;
     
     3)flex-wrap - 
         it tells flex box that it can place flex items on next row. see lecture 2 notes.
         wrap means -Cross Axis is from Top to bottom
         wrap reverse - Cross Axis is from Bottom to Top i.e first row will start from bottom
         flex-wrap: nowrap(defualt) | wrap | wrap-reverse;
+
+        this also chnages the direction of cross axis.
 
     4)Justify-content - notes of lecture 4
      default value is flex-start.

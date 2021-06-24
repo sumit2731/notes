@@ -18,7 +18,7 @@ import {ParentClass} from './ParentClass';
   selector: 'app-auth',
   templateUrl: './auth.component.html'
 })
-export class AuthComponent extends ParentClass implements OnDestroy {
+export class AuthComponent  implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -30,9 +30,7 @@ export class AuthComponent extends ParentClass implements OnDestroy {
     private authService: AuthService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver
-  ) {
-    super();
-  }
+  ) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -98,8 +96,9 @@ export class AuthComponent extends ParentClass implements OnDestroy {
         a)Helper directive(placeholder.directive.ts)
         b)Dependency injection
     */
-    //const hostViewContainerRef = this.alertHost.viewContainerRef;
-    const hostViewContainerRef = this.viewContainer;
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+    console.log(hostViewContainerRef);
+    //const hostViewContainerRef = this.viewContainer;
     hostViewContainerRef.clear();
 
     const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);

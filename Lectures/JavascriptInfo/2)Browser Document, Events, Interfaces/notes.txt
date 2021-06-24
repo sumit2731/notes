@@ -1,0 +1,8 @@
+1)Events that do not bubble -
+    mouseenter, mouseleave
+
+2)events for which composed:false, do not cross shadow DOM boundary.
+    mouseenter, mouseleave (also do not bubble),
+    load, unload, abort, error,
+    select,
+    slotchange.

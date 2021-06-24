@@ -2,12 +2,12 @@ so by defualt width of flex container is 100%. so what happens if items take mor
     each box is calc(33.3333333% - 20px). if each box is given that much width, flex items will move out from container.
     
     1)flex box will start decreasing width of each item to make them fit into container.But while decreasing width it has to 
-      respect induival width given or minimum width of each item.like in code we can give min-width to each item or we can increase
-       number of char inside each item, so this item will have greater width than rest.now still items can move out from container 
-       and we will have scroll in browser if required.
+      respect  minimum width of each item.like in code we can give min-width to each item or we can increase number of char 
+      inside each item, so this item will have greater width than rest.now still items can move out from container 
+      and we will have scroll in browser if required.
 
    2)In above situuation, If we want to shrink items unequally. we can use flex-shrink, to control ratio how those items are 
-      shrink. but flex-shrink will also respect hardcode width or min-width given to each item. default value of flex-shrink
+      shrink. but flex-shrink will also respect min-width given to each item. default value of flex-shrink
       is 1.it means all items will shrink unequally.
 
    3)Other solution can be, we can give some hardcoded width to container. so that it can accmodate all items, now flexbox won't
@@ -16,11 +16,11 @@ so by defualt width of flex container is 100%. so what happens if items take mor
    4)Other solution is we can have use flex-wrap property. we are telling flexbox, not to shrink flex items, but take remaining
       items to next rows, if there isnt enugh space. if there is enough space then this proeprty wnt do anything.
 
-   5)By Default flex items were stretching all way across to occupy full width of container. after apply flex wrap, we divide 
+   5)By Default flex items were stretching all way across to occupy full height of container. after we apply flex wrap, we divide 
       container into rows. 
       
       when there was single row, height of that row was such that it stretched across whole height of container(if container has 
-      fixed height).this height of rows is controlled by align-items(defuakt value is stretch).this because container had fixed 
+      fixed height).this height of rows is controlled by align-items(defualt value is stretch).this is because container had fixed 
       height. if we dnt give height to container then it will have height according to height its items. if we start increasing 
       height of item,it will move out from row and container.
       
@@ -39,10 +39,9 @@ so by defualt width of flex container is 100%. so what happens if items take mor
       within row, item will have it's given height. so point to be noted is that align-content or align-items control the height of
       rows not of induival item. refer figure 1.
       
-
-
-      
-      
-
-   Note- Above case is when we have main axis along x axis. if main axis is along y axis then width becomes height and height
+Note- Above case is when we have main axis along x axis. if main axis is along y axis then width becomes height and height
       becomes width and vice versa.
+
+Questions -
+   1)give some height to container , turn on flex-wrap. you will have multile rows. now give height to one more, there is unusual
+      gap.

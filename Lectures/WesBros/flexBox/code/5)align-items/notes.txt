@@ -1,2 +1,7 @@
 align-items adjusts the items along cross axis when there is single row. twhen there are mutiple rows, use align content property.
-    desfut value is strtech. In code we used baseline, which is very handy. it allows o align items so that baseline is same.
+    default value is strtech. In code we used baseline, which is very handy. it allows o align items so that baseline is same.
+
+
+    Figure 1- items are of diffrenert size, but text is on same line.(align-items: baseline)
+    Figure 2 - height of items is diffrent but each item is in center, of conrtainer.(align-items: center)
+    Figure 3- Here main axis is top to bottom, align-item:center. so each item is in horizontal center, depending on its size.

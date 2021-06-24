@@ -1,20 +1,29 @@
-1)select upto end of line-
+1)select from current position to end of word(breaks at camelcase, - ) -
+    win-  ctrl +  shift + right
+    mac - option +shift + right
+
+2)select upto end of line-
     win- alt + shift + right
     mac -cmd + shift + right
 
-2)select from current position to end of word(breaks at camelcase, - ) -
-    mac - option +shift + right
-    win-  ctrl +  shift + right
-3)go to edn of line -
+3)select file upto start/end -
+    win - ctrl  + shift + up/down(does not wrok)
+    mac - cmd   + shift + up/down
+
+4)copy line to down/up -
+    win - alt    + shift + down(up)
+    mac - option + shift + down(up)
+
+
+6)Move line up/down -
+    win - alt    + down/up
+    mac - option + down / op
+
+5)go to edn of line -
 
     win -
     mac- ctrl + e
 
-4)copy line to down/up -
-    win - shit +alt + down(up)
-    mac - shift +option+ down(up)
-
-
-5)go to start of line-
+6)go to start of line-
 
     mac - ctrl + a

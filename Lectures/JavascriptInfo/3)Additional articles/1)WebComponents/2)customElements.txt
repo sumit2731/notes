@@ -1,0 +1,11 @@
+1)custome Elements -
+
+    a)autonomous Elements - new tags, extending HTMLElement
+    b)“Customized built-in elements” – extensions of existing elements.
+
+
+API-
+    1)customElements.define("my-element", MyElement);
+     or customElements.define('hello-button', HelloButton, {extends: 'button'});
+    2)customElements.get(tag)
+    3)customElements.whenDefined(tag)

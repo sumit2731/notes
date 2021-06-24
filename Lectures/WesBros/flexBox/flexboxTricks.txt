@@ -1,3 +1,9 @@
+1)Vertical Centering using flexBox -
+
+    1)If main axis is left to right then use align-item or align-content
+    1)Change min axis to top to bottm and then use justify-content: center
+
+
 1)if are using wrap and we have multiple rows on cross axis. size of items in each row is same.
     if we increase the size of one row, size of other is automatically increased.
 2)if we specify the flex:1, then it will set flex-basis as 0%, It means make all items of same size.

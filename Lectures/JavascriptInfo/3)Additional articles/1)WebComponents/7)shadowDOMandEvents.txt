@@ -1,0 +1,22 @@
+1)Events that happen in shadow DOM have the host element as the target, when caught outside of the component.
+2)Retargeting does not occur if the event occurs on a slotted element, that physically lives in the light DOM.
+
+
+1)event.composedPath() - gives array of elemnts on which event will be triggered.
+2)event.composed - Events only cross shadow DOM boundaries if their composed flag is set to true.
+    For most built in events it is true.
+    If it’s true, then the event does cross the boundary. Otherwise, it only can be caught from inside the shadow 
+        DOM.
+    If we dispatch a CustomEvent, then we should explicitly set composed: true., if you want your event to cross 
+    shadow DOM boudary.
+
+
+    Please note that in case of nested components, one shadow DOM may be nested into another. In that case composed 
+    events bubble through all shadow DOM boundaries. So, if an event is intended only for the immediate enclosing 
+    component, we can also dispatch it on the shadow host and set composed: false. Then it’s out of the component 
+    shadow DOM, but won’t bubble up to higher-level DOM.
+
+    
+
+This is true if event is able to propogate acrosss shadow DOM, for custome events you need to
+    set it true.
