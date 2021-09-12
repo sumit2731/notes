@@ -1,7 +1,8 @@
 //--------------------------Ex 1------------------------------------
 
 /* 
-Polyfill implementation of Promise.allSettled
+Polyfill implementation of Promise.allSettled. here concept used is mapping of promise, explained in promise chaining notes,
+code block 1.2
 */
 
 if (!Promise.allSettled) {

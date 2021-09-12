@@ -56,7 +56,7 @@ In this section we will talk about only point1.
 
     in slide we explained it by example.see it in video starting from 03:30
 
-    5)Look Back and Refactor -it i most important steps when it comes to improving, becoming better 
+    5)Look Back and Refactor - It is most important steps when it comes to improving, becoming better 
         developer. when we have a soltion which is either good or scrapy, it is time to look back and
         refctor it. now refer to slides. there are some refactoring questins that yu need to ask yourself,
         once you solve a problem.

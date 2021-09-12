@@ -85,6 +85,8 @@ function promisify2(f) {
     };
 }
 
-/* 
-promisification is only meant for functions that call the callback once. Further calls will be ignored.
+/*
+There are also modules with a bit more flexible promisification functions, e.g. es6-promisify. In Node.js, there’s a built-in 
+util.promisify function for that. promisification is only meant for functions that call the callback once. Further calls will 
+be ignored.
 */

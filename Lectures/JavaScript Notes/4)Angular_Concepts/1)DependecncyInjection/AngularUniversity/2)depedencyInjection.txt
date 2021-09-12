@@ -1,0 +1,284 @@
+problem with creating dependency manually
+
+technique of just receiving your dependencies as inputs without knowing how they work internally or how they were created is 
+    aptly named dependency injection
+
+Provider factory function -
+    A provider factory function is simply a plain function that Angular can call in order to create a dependency, it's as simple
+     as that: it's just a function. - That provider factory function can even be created implicitly by Angular using some simple
+     conventions that we will talk about, and that is actually what usually happens for most of our dependencies.But we can also
+     write that function ourselves if needed.
+
+How to write our own provider? -
+
+    our own "provider factory function" for the CoursesService class:
+
+        function coursesServiceProviderFactory(http:HttpClient): CoursesService {
+            return new CoursesService(http);
+        }
+
+    Our Own "Angular injection token"-
+        
+        Angular needs to be able to classify dependencies somehow, in order to identify that a given set of dependencies are all of 
+        the same type.In order to uniquely identify a category of dependencies, we can define what is known as an Angular injection
+        token.
+
+        export const COURSES_SERVICE_TOKEN = new InjectionToken<CoursesService>("COURSES_SERVICE_TOKEN");
+
+        This injection token object will be used to clearly identify our CoursesService dependency in the dependency injection 
+        system.
+
+        So how do we use "Angular injection token" object can be used to uniquely identify a set of dependencies -
+
+    The provider itself is simply a configuration object, that we pass on to the providers array of a module or component.
+    How to define own provider -
+
+        @NgModule({
+            imports: [],
+            declarations: [
+                ...
+            ],
+            providers: [
+                {
+                    provide: COURSES_SERVICE_TOKEN,
+                    useFactory: coursesServiceProviderFactory,
+                    deps: [HttpClient]
+                }
+            ]
+        })
+        export class CoursesModule { }
+
+
+    how to use this provider -
+
+        constructor( @Inject(COURSES_SERVICE_TOKEN) private coursesService: CoursesService) {
+            ...
+        }
+
+    useFactory: this should contain a reference to the provider factory function, that Angular will call when needed to create 
+        dependencies and inject them
+
+    provide: this contains the injection token linked to this type of dependency. The injection token will help Angular determine 
+        when a given provider factory function should be called or not
+
+    deps: this array contains any dependencies that the useFactory function needs in order to run, in this case the HTTP client.
+
+    note - For each provider this factory function is called only once, even if provider is queried for this token multiple times.
+        If service is not injected anywhere then this factory function is not called.
+
+Using class names as Injection Tokens -
+
+    you can use anything that is guaranteed to be unique in the Javascript runtime in order to identify a type of dependency, 
+    it doesn't have to be an explicit injection token object.
+    
+    A class name can then be uniquely represented at runtime by its constructor function, and because it's guaranteed to be 
+    unique, it can be used as an injection token.
+
+    So we can simplify a bit the definition of our provider - 
+
+
+        @NgModule({
+            imports: [
+                ...
+            ],
+            declarations: [
+                ...
+            ],
+            providers: [
+                {
+                    provide: CoursesService,
+                    useFactory: coursesServiceProviderFactory,
+                    deps: [HttpClient]
+                }
+            ]
+        })
+        export class CoursesModule { }
+
+    how to use this token -
+        constructor( @Inject(CoursesService) private coursesService: CoursesService) {}
+
+
+Simplified configuration of providers: useClass - 
+
+    Instead of explicitly defining a provider factory function with useFactory, we have other ways to tell Angular how to 
+    instantiate a dependency.In the case of our provider, we can use the useClass property.This way Angular will know that
+    the value that we are passing is a valid constructor function, that Angular can simply call using the new operator:
+
+        providers: [
+        {
+            provide: CoursesService,
+            useClass: CoursesService,
+            deps: [HttpClient]
+        }
+        ]
+
+    Another super convenient feature of useClass is that for this type of dependencies, Angular will try to infer the injection
+     token at runtime based on the value of the Typescript type annotations.This means that with useClass dependencies, we don't 
+     even need the Inject decorator anymore, which explains why you rarely see it:
+
+        constructor(private coursesService: CoursesService){}
+
+
+    As we can see, class dependencies are much more convenient to use, as opposed to having to use @Inject explicitly!.
+    For the particular case of useClass providers, we can simplify this even further.
+
+    Instead of defining a provider object manually, we can simply pass the name of the class itself as a valid provider 
+    configuration item:
+
+        @NgModule({
+            imports: [],
+            declarations: [],
+            providers: [
+                CoursesService
+            ]
+        })
+        export class CoursesModule { }
+
+    Angular will determine that this provider is a constructor function, so Angular will inspect the function, it will then 
+    create a factory function determine the necessary dependencies, and create an instance of the class on demand.
+
+    But notice that just setting your provider like this won't work, because Angular will not know how to find the dependencies of 
+    this class (remember the deps property).For this to work, you need to also apply the Injectable() decorator to the service class:
+
+
+        @Injectable()
+        export class CoursesService() {
+            http: HttpClient;
+
+            constructor(http: HttpClient) {
+                this.http = http;
+            }
+        }
+
+    This decorator will tell Angular to try to find the dependencies for this class by inspecting the types of the constructor 
+    function arguments at runtime!.
+
+    One thing to bear in mind is that the useClass option will not work with interface names, it works only with class names.
+    This is because an interface is a compile-time only construct of the Typescript language, so the interface does not exist at 
+    runtime.
+
+Understanding Angular multiple value dependencies - 
+
+    @Component({
+        selector: 'choose-quantity',
+        templateUrl: "choose-quantity.component.html",
+        styleUrls: ["choose-quantity.component.scss"],
+        providers: [
+            {
+            provide: NG_VALUE_ACCESSOR,
+            multi:true,
+            useExisting: ChooseQuantityComponent
+            }
+        ]
+    })
+    export class ChooseQuantityComponent implements ControlValueAccessor {}
+
+
+    there are some occasions where we want to have dependencies with multiple different values.i.e same token will hve different 
+        values.A very common example that you might have already come accross are form control value accessors.
+
+
+    but because multi is set to true, we are actually adding to the array of values of this dependency, instead of overwriting it.
+
+useExisting provider -
+
+Understanding Angular Hierarchical Dependency Injection - 
+    You see, if you need a dependency somewhere, for example if you need to inject a service into a component, Angular is going to 
+        first try to find a provider for that dependency in the list of providers of that component.If Angular does not find a 
+        provider at the level of the component itself that needs the dependency, then Angular is going to try to find a provider in 
+        the parent component.If it finds the provider it will instantiate and use it, but if not, it will ask the parent of the parent
+        component if it has the provider that it needs, etc.This process will be repeated until we reach the root component of the 
+        application.If no provider is found after this process, you know what happens: yes, we get our good friend the "No provider 
+        found" message.
+
+
+    This process of going up the component tree searching for the right provider is known as dependency resolution, and because it 
+    follows the hierarchical structure of our component tree, the Angular dependency system is said to be hierarchical.
+
+
+Advantages of Hierarchical Dependency Injection -
+    allows us to share services when needed. and allows us to separate services when needed.
+
+Example of Hierarchial Injection in component tree -
+
+Example of hierarchial Injection in module-
+
+Modules vs Components Dependency Injection Hierarchies - 
+
+    What is actually happening is that there are two separate dependency injection hierarchies:
+
+    there is an hierarchy at the level of the components, that follows the tree structure of the components on the page
+        But there is also a separate injection hierarchy at the level of the modules.
+
+    And the hierarchy at the level of the components takes precedence over the module injection hierarchy.
+    If Angular follows all the components up until the root component without finding a matching provider and it still doesn't find anything, only then will Angular try to find a matching provider at the level of the modules hierarchy.
+
+    Angular will then start with the providers of the current module, and look for a matching provider.
+
+    If it doesn't find it, then Angular will try to find a provider with the parent module of the current module, etc. until reaching 
+    the root module of the application.
+
+
+Configuring the Dependency Injection Resolution mechanism -
+    As we have learned, the Angular component dependency injection resolution mechanism always starts at the current component, and 
+    scans for matching providers all the way up the root component of the application, and it doesn't find a matching dependency it 
+    throws an error.lets tweak this behaviour.
+
+    @Optional -If No provider found for a dependency then no error is thrown.
+        constructor(@Optional() private coursesService: CoursesService) {}
+
+        but you need to make sure that your component checks if the dependency exists or not and provide an alternative to it if it 
+        doesn't.
+
+    @SkipSelf - configures where dependency lookup process starts.
+        
+        constructor(@SkipSelf() private coursesService: CoursesService) {}
+
+    @self - we want our component to look for a dependency in its own providers only, and skip checking the providers of all its 
+        parent components, we can do so by using the Self decorator:
+
+        constructor(@Self() private coursesService: CoursesService) {}
+
+Understanding the @Host decorator -
+
+    Allows directive to  access the private component service(host service) in the following way.The use of the Host decorator 
+    configures where Angular should stop searching for a dependency, in a similar way to what Self does.But in this case, this 
+    decorator is meant for directives only, and it says to Angular to search for a matching provider only on the providers of its 
+    host component, and nowhere else.
+
+    @Directive({
+        selector: '[highlighted]'
+    })
+    export class HighlightedDirective {
+
+        constructor( @Host() private coursesService: CoursesService) {
+            console.log('coursesService highlighted ' + coursesService.id);
+        }
+    }
+
+What are Tree-Shakeable Providers? 
+
+    @Injectable({
+        providedIn: CoursesModule
+    })
+    export class CoursesService() {
+
+        constructor(private http: HttpClient) {}
+    }
+
+
+    We have also access to the options useClass, useValue, useExisting, and deps that we have access when configuring a provider at 
+        the level of a module or component.
+
+    Using providedIn, we can not only define module-level providers, but we can even provide service to other modules, by making the
+     services available at the root of the module dependency injection tree:
+
+    @Injectable({
+        providedIn: "root"
+    })
+
+    With this syntax, the CoursesService is now an application-wide singleton, meaning that there is only instance of the service 
+    for the whole application.
+Doubts -
+    why useExisting was used in custom form controls.
+    how multi:true behaves in case of lazy loaded modules.

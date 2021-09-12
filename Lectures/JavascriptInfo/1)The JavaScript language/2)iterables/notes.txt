@@ -1,0 +1,5 @@
+Known Iterables -
+     array
+     string
+     map
+     set

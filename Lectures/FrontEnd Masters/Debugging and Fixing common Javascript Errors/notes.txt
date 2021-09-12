@@ -1,0 +1,17 @@
+Questions -
+    1)string.length
+    2)floating point calculations - Javscript floating point operation overflow the rounding precision,
+        use precision functions tgo avoid that.
+        https://floating-point-gui.de/
+    3)date question - months start from 0
+    4)Array question - new Array[1,2,Array(2)]
+    5)array.sort question
+    
+
+Problems -
+    a)delete was throwing error
+        1)found the event which was triggered on click of event using, event listenrs tab. checked framework listeners.
+            from there got to entry into user code base.
+        2)then setup te workspace, made chnages in chrome dev tools only.
+        3)enabed async stack traces.
+        4)adding a file to blackbox by right clicking or by using settings tab.

@@ -1,0 +1,17 @@
+<div>
+    <button (click)="toggleChild()">Toggle Child</button>
+</div>
+<app-child-component *ngIf="childComp"></app-child-component>
+
+<!-- <div>
+    <button (click)="toggleCourses()">Toggle Courses</button>
+</div>
+<app-course *ngIf="coursesComp"></app-course> -->
+
+<div>
+    <button (click)="toggleCourseCard()">Toggle Card</button>
+</div>
+<app-course-card *ngIf="courseCard"></app-course-card>
+
+<a [routerLink]="['/lazy']">Load LazyLoaded</a>
+<router-outlet></router-outlet>

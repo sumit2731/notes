@@ -5,3 +5,7 @@
 
 
 2)How to get instance of servoce from depedency injection.
+
+
+3)in customValidator, why fucntion accepts parameter of typeabstractControl and not formControl? is it possible to create
+     validators on FormGroup or Array.

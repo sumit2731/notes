@@ -1,3 +1,20 @@
+1)npm init -y
+
+2)code .
+    opens vs code
+
+2)npm install <pacakge-name> -D
+    npm install <pacakge-name> --save-dev
+
+3)npm i --production
+
+4)npm view <pacakge-name>
+
+5)npm view <package-name> versions
+
+6)npm install <package@version>
+
+
 1)npm root -g
     gives location where global npm packages are installed.
     default is - C:\Users\sumit\AppData\Roaming\npm\node_modules(windows)

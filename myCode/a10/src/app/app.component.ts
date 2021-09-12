@@ -15,31 +15,9 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent {
     env = environment;
-    // todos:Array<Todo> = initialData;
-    // message: string;
-    // callback:Function = (message) => {
-    //     console.log("setting message...");
-    //     this.message = message;
-    // };
-
-    // constructor() {
-
-    // }
-
-    // toggleFirst() {
-    //     this.todos[0].completed = ! this.todos[0].completed;
-    // }
-
-    // addTodo() {
-    //     let newTodos = this.todos.slice(0);
-    //     newTodos.push( new Todo(1, "TODO 4", false, new Owner("John", "Doe")));
-    //     this.todos = newTodos;
-    // }
-
-    // onAdd() {
-    //     this.message = "Adding Todo ...";
-    //     this.addTodo();
-    // }
+    f1() {
+      console.log("f1 called")
+    }
 }   
 
 

@@ -24,3 +24,5 @@ function sortedSquaredArray(array) {
 	}
   return newArr;
 }
+let arr = [-9,-5,-4,1,2,13];
+console.log(sortedSquaredArray(arr))

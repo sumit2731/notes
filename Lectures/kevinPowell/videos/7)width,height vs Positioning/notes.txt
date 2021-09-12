@@ -1,0 +1,9 @@
+here we saw how we can center(vertically and horizontally) the absolutely positioned element in a relative element.
+to do that we have to use cobination of -
+    top,bottom,margin-top,margin-bottom - when margin-top and margin-right are defined it means distance between top and
+        bottom of child and parent is defined. as height is also defined so now element canno occupy full height of parent.
+        now defining margin-top:auto and margin-bottom:auto, places the element in middle.
+
+
+    Tricks-
+        a)place

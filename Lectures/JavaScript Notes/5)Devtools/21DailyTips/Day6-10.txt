@@ -1,0 +1,36 @@
+Day 6(Command Pallete) -
+
+    17)Open Command - [Ctrl]+[Shift]+[P] 
+    
+    18)Capture node screenshot - Select node in elements tab, then select this option
+        Capture full size screenshot
+
+    19)Quickly switch panel layout - from command pallete, serach
+        layout and move it horizontally or vertically
+
+    20)Quickly switch themes - search theme in commnd pellete and switch between
+        light and dark themes.
+
+
+Day 7 - async console
+    21)console is async function by default, so you can directly use await there-
+        let result = await promise();
+
+Day 8(picker) -
+    color picker visit later
+
+
+Day 9(Timming the console)-
+    1)"show timestamp" option in command pallete(gives time in console.log statements)
+    2)if you want to measure time in which a script runs-
+        console.time()
+        console.timeEnd()
+
+    if you are using multiple timers, then you can give label to your timer -
+        console.time("timer1")
+        console.timeEnd()
+
+        timer1:767.90ms
+
+Day 10 - Custom Formatters
+    here we saw how we can define custom formatters for console.log

@@ -7,9 +7,9 @@ let p1 = function f1(val) {
 
 // Example1 - handler return a value that gets wrapped up in a promise
 p1(1).then(val => val) //2
-     .then(val => 3 * val)//6
-     .then(val => 4* val) //24
-     .then(val => console.log(val));
+     .then(val => 3 * val)//2
+     .then(val => 4* val) //6
+     .then(val => console.log(val)); //24
 
 //Example2- handler is returning promise itself
 p1(1).then(val => p1(val)) //4
@@ -17,6 +17,24 @@ p1(1).then(val => p1(val)) //4
      .then(val => p1(val)) //16
      .then(val => p1(val))// 32
      .then(val => console.log(val))
+
+
+//Trick to change value emitted by a promise i.e mapping------------------Block 1.2 ------------------------------------------------
+
+//Promise that reolsve with value 5 in 5 seconds
+let p1 = new Promise((resolve,reject) => setTimeout(() =>resolve(5) ,5000));
+
+const rejectHandler = reason => ({ status: 'rejected', reason });
+const resolveHandler = value => ({ status: 'fulfilled', value });
+
+/* 
+This promises resolves at same time as p1 but value is converted.logic behind this-
+    then returns a promise which resolves with a value returned by callbacks passed to then. so promise return by then only
+    resolves when orignal promises i.e p1 is resolved
+*/
+let p2 = p1.then(resolveHandler, rejectHandler);
+p2.then((val) => console.log(val));
+
 
 //Use of promise chaining to load scripts in parallel ------------------------Block 2-------------------------------------------------------
 

@@ -1,0 +1,26 @@
+1)Validators -
+
+    a)How to add paramters to validator function -
+        https://dzone.com/articles/how-to-create-custom-validators-in-angular
+
+    b)How to create custom validators for template driven forms
+    c)How to add validator at formgroup Level
+    d)How to control valiadtion of other formcontrol from validator of other forn control or from validator of formGroup
+        https://jasonwatmore.com/post/2018/11/10/angular-7-template-driven-forms-validation-example
+
+    e)How to add Inbuilt validators to a custom form control, co that we do not need to sepcify it while creating form control -
+        https://blog.angular-university.io/angular-custom-form-controls/
+
+
+    
+    g)how to add form controls and change validation status dynamically -
+        https://netbasal.com/three-ways-to-dynamically-alter-your-form-validation-in-angular-e5fd15f1e946
+
+
+
+Pending Articles -
+
+    https://netbasal.com/make-your-angular-forms-error-messages-magically-appear-1e32350b7fa5
+
+    How to scroll to the first invalid control once a form has been submitted
+        https://medium.com/javascript-everyday/how-to-scroll-to-first-invalid-control-once-a-form-has-been-submitted-eb47d9fbc6e

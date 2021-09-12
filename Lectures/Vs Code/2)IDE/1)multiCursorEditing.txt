@@ -3,11 +3,13 @@
     mac - cmd + option + down
 
 2)Add Selection to next Find Match -
+    select a word and then do this, multicursor will be placed at next occurance of selected word.
+    
     win - ctrl +d
     mac - cmd +d 
-    select a word and then do this, multicursor will be placed at next occurance of selected word.
+    
     selection settings(case sensitivity, exact match) is same as find setting. change at one place will reflect 
-    at other.In scroll bar you ca see where are cursor's added.
+    at other.In scroll bar you can see where are cursor's added.
 
 3)Add Selection to previous Find Match - search from command pallete
 
@@ -37,6 +39,7 @@
     
 
 9)add cusrosr to top/bottom -
+    Place the multicursor from current line upto file at top/bottom.
     select for commnd pallete
 
 10)add cursor to line start/end -

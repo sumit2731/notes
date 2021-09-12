@@ -1,0 +1,10 @@
+WeakSet behaves similarly:
+
+    It is analogous to Set, but we may only add objects to WeakSet (not primitives).
+    An object exists in the set while it is reachable from somewhere else.
+    Like Set, it supports add, has and delete, but not size, keys() and no iterations.
+
+
+The most notable limitation of WeakMap and WeakSet is the absence of iterations, and the inability to get 
+    all current content. That may appear inconvenient, but does not prevent WeakMap/WeakSet from doing their
+    main job – be an “additional” storage of data for objects which are stored/managed at another place.

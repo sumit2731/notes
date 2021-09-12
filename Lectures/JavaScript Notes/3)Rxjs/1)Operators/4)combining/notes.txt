@@ -120,11 +120,12 @@ Static Methods -
         combineLatest accepts either an array of Observables or each Observable can be put directly as an argument
 
         Be aware that combineLatest will not emit an initial value until each observable emits at least one value. resultant 
-            observable waits for each observable to emit first value.when all observable have emitted atleast one value, then
-            resultant observable emits first value. this value is array which contains all values of observable.now with each
-            subsequent emisison from each observable resultant observable will emit a value, which combines latest value of 
-            observable which emitted value, with last emitted value from each observable.we can also pass a selector function
-            which combines values of observables.
+            observable waits for each observable to emit first value.this will lead to some vlues being lost. see figure 1.to 
+            overcome this, you can use startWith operator.when all observable have emitted atleast one value, then resultant 
+            observable emits first value. this value is array which contains all values of observable.now with each subsequent 
+            emisison from each observable resultant observable will emit a value, which combines latest value of observable which
+            emitted value, with last emitted value from each observable.we can also pass a selector function which combines values
+            of observables.
 
         If one observable completes, its last value is used in stream.
         If any Observable errors, combineLatest will error immediately as well, and all other Observables will be unsubscribed.

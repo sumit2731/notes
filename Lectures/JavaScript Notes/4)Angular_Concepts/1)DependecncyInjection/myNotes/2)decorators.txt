@@ -1,0 +1,55 @@
+1)@Self() - if we want our component to look for a dependency in its own providers only, and skip checking the providers of all 
+    its parent components.
+
+    constructor(@Self() private coursesService: CoursesService) {}
+
+
+2)@Optional() - This will prevent an error from being thrown if no matching provider is found for the dependency, but you need to 
+    make sure that your component checks if the dependency exists or not and provide an alternative to it if it doesn't.
+
+    constructor(@Optional() private coursesService: CoursesService)
+
+3)@SkipSelf() -  skip your local component providers and start the matching process directly at the parent component and from 
+    there down to the root component.
+
+    constructor(@SkipSelf() private coursesService: CoursesService)
+
+    Usecase -
+        you might have some provider for a service at the level of your component that you want to provide to its child components,
+         but the component itself needs an instance of that same service to work, and it needs to get it from its parent components
+         and not from its own providers.
+
+4)@host() - The use of the Host decorator configures where Angular should stop searching for a dependency.this decorator is meant 
+    for directives only, and it says to Angular to search for a matching provider only on the providers of its host component, 
+    and nowhere else.
+
+    constructor( @Host() private coursesService: CoursesService) {
+        console.log('coursesService highlighted ' + coursesService.id);
+    }
+    
+    so depenency is injected based on providers configured on host elements. if no provider is configured then we get a error.
+
+5)@Injectable - 
+
+    when your service also has some dependencies then, there are 2 wys to sepcify them.
+
+        1)while configuring the provider you can specify the deps property.
+        2)attach the @Injectable() decorator to class. now angular will inject dependencies in this class also.This decorator will 
+            tell Angular to try to find the dependencies for this class by inspecting the types of the constructor function arguments
+            at runtime!
+    
+    Tree shakable provider - Allows to config provider for service at service level. takes a object that acts as provider object. 
+    which has extra property called injectedin which defines module in which service will be injected. advantage of using this syntax is 
+    that provider is now treeshakable.
+
+6)@Inject - Used in constructor. It specifies the injection token for dependecy injection.angulr uses it to get dependency injection 
+    token.
+    
+    export class CourseCardComponent implements OnInit {
+
+        constructor( @Inject(COURSES_SERVICE_TOKEN) private coursesService: CoursesService) {
+            console.log(this.coursesService);
+        }
+    }
+
+    when we use forClass in providers then we can skip @Injectable, then dependency is resolved on basis of class type only.

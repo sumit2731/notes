@@ -1,0 +1,1 @@
+I faced dificulty in problem 3. I was able to solve it, but solution was not as optimized as in course.

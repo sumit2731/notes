@@ -1,0 +1,15 @@
+microtasks- 
+    MutationObserver, 
+    Promise.then() and Promise.catch(), 
+    other techniques based on Promise such as the fetch API, 
+    V8 garbage collection process, 
+    process.nextTick() in node environment.
+macrotasks - 
+    initial script, 
+    setTimeout, 
+    setInterval, 
+    setImmediate, 
+    I/O, 
+    UI rendering.
+
+See this - 

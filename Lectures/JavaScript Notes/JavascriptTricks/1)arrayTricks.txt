@@ -21,6 +21,7 @@
         arr.sort((a,b) => Math.random() - 0.5);
     
     d)How to create large arrays with some elements inside them-
+        
         1)Empty Array
 
             a)let arr1 = new Array(50); // this will create array of 50 elements. each element is undefined

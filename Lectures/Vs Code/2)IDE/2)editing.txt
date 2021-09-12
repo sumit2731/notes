@@ -7,7 +7,7 @@
     mac -cmd + shift + right
 
 3)select file upto start/end -
-    win - ctrl  + shift + up/down(does not wrok)
+    win - ctrl  + shift + up/down(does not wrok, select whole below line)
     mac - cmd   + shift + up/down
 
 4)copy line to down/up -

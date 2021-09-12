@@ -1,0 +1,12 @@
+useFactory
+deps
+useClass
+multi - Lets you define multiple values for a provider. isntead of overwriting each other these multiple values are combined in
+    in array. using this we can provide diffrent values in diffrent modules and we can combine them using this.however if we
+    provide value at component level, then that is a diffrent injector. there values are not combined.
+useValue
+useExisting
+
+
+
+

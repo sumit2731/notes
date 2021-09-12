@@ -7,7 +7,7 @@
     // is the same thing as if (foo != 5) then doSomething();
 
 
-2)Ternary operator isntead of using if- else -
+2)Ternary operator instead of using if- else -
     
     function Fever(temp) {
         return temp > 97 ? 'Visit Doctor!'

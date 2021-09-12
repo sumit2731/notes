@@ -1,0 +1,3 @@
+1)monitorEvents(element, ebentName)
+2)getEventListeners(element)
+3)debug(listeners.click[0].listener)

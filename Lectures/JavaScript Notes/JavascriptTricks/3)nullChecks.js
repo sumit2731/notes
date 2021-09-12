@@ -17,8 +17,8 @@ const dogName = adventurer.dog?.name;
 
 
 /**
-2)Uisng expression to access properties.When using optional chaining with expressions, if the left operand is null or undefined, the expression will not be 
-  evaluated.
+2)using expression to access properties.When using optional chaining with expressions, if the left operand is null or undefined, the 
+  expression will not be evaluated.
 */
 
 let nestedProp = obj?.['prop' + 'Name'];
@@ -31,7 +31,7 @@ let prop = potentiallyNullObj?.[x++];
 console.log(x); // 0 as x was not incremented
 
 /* 
-3)Conditionally calling a fucntiton if it exist on object. if no such property is present then it returns undefined.
+3)Conditionally calling a function if it exists on object. if no such property is present then it returns undefined.
  
 If there is a property with such a name and which is not a function, using ?. will still raise a TypeError exception 
  (someInterface.customMethod is not a function).

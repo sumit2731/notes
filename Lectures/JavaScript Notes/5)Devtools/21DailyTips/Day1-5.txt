@@ -1,0 +1,45 @@
+Day 1 -
+    
+    1)$0,$1,$2,$3 = Gives the element selected in chrome dev tools
+    2)$('css selector'), $$('css selector') = queryElmenet, queryElementAll(and converts them into array)
+    3)$_ =  references the result of the last evaluated expression.
+    4)$i('lodash') or $i('moment') =  console importer.
+        you can quickly import and play with npm libraries right in the console.
+
+
+Day 2 -
+
+    5)copy - It will copy anything from chrome dev tools to clipboard. use - copy($0)
+    6)Save as Global Variable - right click on expression logged into console and make it global variable.
+        it will be stored in global variable temp1, temp2,.....tempn.
+    7)Save a stack trace, and copy it on click board.
+    8)Copy a element from dev tools, select it and do (ctrl +c), now it is copied to clip borad
+
+
+Day 3- (Console Methods)
+
+    9)console.assert(assertion, obj1 [, obj2, ..., objN]) => assertion is js expression, if it is false,
+        then objects or string are printed on screen. It’s useful if you only need to log a message in a 
+        specific condition — now you can do it without a dedicated 'if' statement. Plus, you’re getting a stack 
+        trace gratis ;-)
+        
+        console.assert(false, 'the word is %s', 'foo');
+    
+    10)console.table(data [, columns]);
+        An array containing the names of columns to include in the output.
+
+    11)console.dir - gives better view of data. for ex shows DOM object for copied HTML element.
+
+
+Day 4(Elements Pane) -
+
+    12)h - you can hide and show a element by selecting it and pressing h
+    13)You can do drag and drop an element elment, that elemnt will remoevd from previous position and inserted in new one.
+    14)Move elemnts up and down by selecting in element pane and pressing ctrl + up, ctrl+ down
+    15)Elements pane is editor(cut,copy,paste.undo all are there)
+
+
+Day 5(console.log) -
+
+    16)An object that you log into the console is stored there by a reference until its content is displayed.
+        

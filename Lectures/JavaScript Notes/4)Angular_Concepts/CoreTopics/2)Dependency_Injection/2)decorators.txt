@@ -1,5 +1,0 @@
-1)@Self()
-2)@Optional()
-3)@SkipSelf()
-4)@host()
-5)@Injectable - Tree-shakable providers

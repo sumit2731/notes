@@ -1,0 +1,6 @@
+1)order of properties of object in iteration
+
+webWorkers
+setImmediate
+mutation observable
+intersection observable

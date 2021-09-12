@@ -1,0 +1,8 @@
+1)Object.fromEntries(map) - Creates a object form iterables. like array, map ,set etc
+
+2)Irerate over properties-  
+    for-in- includes only enumerable string-keyed properties; 
+    Object.keys- includes only own, enumerable, string-keyed properties; 
+    Object.getOwnPropertyNames - includes own, string-keyed properties even if non-enumerable; 
+    Object.getOwnPropertySymbols does the same for just Symbol-keyed properties, etc
+    Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).

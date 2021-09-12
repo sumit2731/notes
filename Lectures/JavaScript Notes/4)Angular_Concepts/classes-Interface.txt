@@ -1,0 +1,7 @@
+Interface -
+
+    ControlValueAccessor - Needed to implement custome form cotrol.
+        https://blog.angular-university.io/angular-custom-form-controls/
+
+    Validator - Needed to define built-in validators.
+        https://blog.angular-university.io/angular-custom-form-controls/

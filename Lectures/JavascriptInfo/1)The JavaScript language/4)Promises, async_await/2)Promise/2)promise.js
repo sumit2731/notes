@@ -1,13 +1,24 @@
-//---------------------------------------------Pormise Problem - Important Concept-----------------------------------
-function p1() {
-  return new Promise((resolve, reject) => setTimeout(() => resolve(1), 5000));
+let p1 = new Promise((resolve,reject) => setTimeout(() => resolve(1),6000));
+let p2 = new Promise((resolve,reject) => setTimeout(() =>resolve(p1),3000));
+let p3 =  new Promise((resolve,reject) => setTimeout(() =>resolve(p2),3000));
+
+//1 when p1,p2 and p3 resolves
+p3.then(val => console.log(val));
+
+let p4 = Promise.resolve(p3);
+
+/* pending promise - this promise is resolved when final promise resloves i.e when p3 emitted value */
+console.log(p4);
+
+/* 1, p4e resolves when p1,p2,p3 are resolved */
+p4.then(val => console.log(val));
+
+async function f1() {
+    let a = await p4;
+    console.log("await excuted");
+    return a;
 }
 
-let p2 = new Promise((resolve, reject) => setTimeout(() => resolve(p1()), 5000));
-
-
-/*
-here we get the value emitted by promise retured by p1 function, not the promise itslef
-this is concept used in polyfill implementtion of Promise.allSEttled
-*/
-p2.then(val => console.log(val));
+let a = f1();
+a.then(val => console.log("returned promise executed"));
+let i = 0;

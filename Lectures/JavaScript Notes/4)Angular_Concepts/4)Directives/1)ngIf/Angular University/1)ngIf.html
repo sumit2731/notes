@@ -1,0 +1,149 @@
+<!-- Ways to hide elemnts in css
+        dipplay:none
+            Element is present in DOM but do not occupy any space in page
+    
+        visibility:hidden
+            Ekement is present in DOM tree as well as it occupies some space
+
+
+-->
+
+<!-- 0. If you do not have a  container elment to apply *ngIf use ng-container -->
+    <ng-container>
+        <div></div>
+        <div></div>
+        <div></div>
+    </ng-container>
+
+
+<!-- 1. *ngIf directive with a single condition -->
+
+    <div *ngIf="condition">
+        This DIV is displayed when "condition" is true
+    </div>
+
+<!-- 2. [ngIf] with ng-template -->
+
+    <ng-template [ngIf]="condition">
+        <div>This DIV is displayed when "condition" is true</div>
+    </ng-template>
+
+    syntaxes #1 and #2 are 100% equivalent from an Angular compiler perspective.
+
+    When to use that syntax? If we want to conditionally render two sibling elements that don’t have a single 
+        common parent in the DOM. For instance:
+
+    <ul>
+    <li>First item</li>
+    <ng-template [ngIf]="showItemsTwoAndThree">
+        <li>Second item</li>
+        <li>Third item</li>
+    </ng-template>
+    </ul>
+
+<!--3. *ngIf with an else case -->
+
+    <div *ngIf="condition; else elseBlock">
+        Content to render when condition is true.
+    </div> 
+    
+    <ng-template #elseBlock>
+        <div>Content to render when condition is false.</div>
+    </ng-template>
+
+<!--4. *ngIf with both then and else cases -->
+
+    <div *ngIf="condition; then thenBlock else elseBlock"></div>
+    
+    <ng-template #thenBlock>
+        Content to render when condition is true.
+    </ng-template>
+    
+    <ng-template #elseBlock>
+        Content to render when condition is false.
+    </ng-template>
+
+    Note that in the above example, the parent div is actually not rendered.
+
+<!-- 5. Storing a conditional result in a variable -->
+
+    <div *ngIf="(userObservable$ | async) as user; else loading">
+        Hello {{user.last}}, {{user.first}}     
+    </div>     
+    
+    <ng-template #loading>
+        Loading user info...
+    </ng-template>
+
+    <!-- 
+        The values emitted by the Observable are going to be available inside the scope of the ngIf directive via the user local 
+        template variable. 
+        
+        advantages of using async pipe -
+            the pipe will take care of unsubscribing from the Observable automatically when the component gets destroyed.
+            component view will get automatically updated with the latest Observable data if using OnPush change detection.
+    -->
+
+<!--6. ngIf and async - Anti pattern - here see combined useage of ngIf and async pipe just to get some data
+
+-->
+
+    <div class="header" *ngIf="(user$ | async) as user">
+
+        ... this section of the page only needs the user ...
+        
+    <button *ngIf="!user">Login</button>
+        
+    <button *ngIf="user.loggedIn">Logout</button>    
+        
+    </div>
+
+    
+    <div class="body" *ngIf="(courses$ | async) as courses">
+
+        <ng-container *ngIf="(lessons$ | async) as lessons"> 
+        
+            ... we also need the user here again ...
+        
+            <ng-container *ngIf="(user$ | async) as user">
+            
+                ... this section of the page needs courses, lessons, and the user ....
+            
+            </ng-container>
+        
+        </ng-container>
+
+    </div>
+
+    
+    <div class="footer" *ngIf="(courses$ | async) as courses"> 
+
+        <ng-container *ngIf="(lessons$ | async) as lessons">
+            
+            ... this section of the page only needs the courses and the lessons ...     
+            
+        </ng-container>
+
+    </div>
+
+<!-- 7. Solution to above- "The Single Data Observable pattern" -->
+
+
+    <ng-container *ngIf="(data$ | async) as data">
+        
+        <div class="header">
+            ... access the user via data.user ...
+        </div>
+        
+        <div class="body">
+            ... access the data via data.user, data.courses, data.lessons ...
+        </div>
+        
+        <div class="footer">
+            ... access the data via data.courses and data.lessons ...
+        </div>
+    </ng-container>
+
+
+    This Observable contains all the data that the component template will need throughout its lifecycle, which explains the name of 
+    the pattern. here when we get response from api data$ emits a value, which makes some data to be visisble.
