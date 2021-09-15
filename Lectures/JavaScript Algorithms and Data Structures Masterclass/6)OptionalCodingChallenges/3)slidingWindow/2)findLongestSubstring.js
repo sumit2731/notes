@@ -30,12 +30,12 @@
      return maxlength;
  }
 
-// console.log(findLongestSubstring2("rithmschool"));
-// console.log(findLongestSubstring2("thisisawesome"));
-// console.log(findLongestSubstring2("thecatinthehat"));
-// console.log(findLongestSubstring2("bbbbb"));
-// console.log(findLongestSubstring2("longestsubstring"));
-// console.log(findLongestSubstring2("thisishowwedoit"));
+ console.log(findLongestSubstring("rithmschool"));//7
+ console.log(findLongestSubstring("thisisawesome"));//6
+ console.log(findLongestSubstring("thecatinthehat"));//7
+ console.log(findLongestSubstring("bbbbb"));//1
+ console.log(findLongestSubstring("longestsubstring"));//8
+ console.log(findLongestSubstring("thisishowwedoit"));//6
 
 /**
  * Tutorial Approach(Best One)
@@ -58,12 +58,12 @@ function findLongestSubstring3(string) {
   return maxStringLength;
 }
 
-// console.log(findLongestSubstring3("rithmschool"));
-// console.log(findLongestSubstring3("thisisawesome"));
-// console.log(findLongestSubstring3("thecatinthehat"));
-// console.log(findLongestSubstring3("bbbbb"));
-// console.log(findLongestSubstring3("longestsubstring"));
-// console.log(findLongestSubstring3("thisishowwedoit"));
+// console.log(findLongestSubstring2("rithmschool"));//7
+// console.log(findLongestSubstring2("thisisawesome"));//6
+// console.log(findLongestSubstring2("thecatinthehat"));//7
+// console.log(findLongestSubstring2("bbbbb"));//1
+// console.log(findLongestSubstring2("longestsubstring"));//8
+// console.log(findLongestSubstring2("thisishowwedoit"));//6
 
 /**
  * My Solution on top of course solution
@@ -82,3 +82,11 @@ function findLongestSubstring4(str) {
     maxLength = Math.max(maxLength,str.length - start);
     return maxLength;
 }
+
+
+// console.log(findLongestSubstring3("rithmschool"));//7
+// console.log(findLongestSubstring3("thisisawesome"));//6
+// console.log(findLongestSubstring3("thecatinthehat"));//7
+// console.log(findLongestSubstring3("bbbbb"));//1
+// console.log(findLongestSubstring3("longestsubstring"));//8
+// console.log(findLongestSubstring3("thisishowwedoit"));//6

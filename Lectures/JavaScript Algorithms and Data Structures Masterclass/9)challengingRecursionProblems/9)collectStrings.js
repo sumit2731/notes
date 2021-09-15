@@ -18,7 +18,7 @@ function collectStrings (obj,newArray) {
 
 
 /**
- * Tutorial Solution 1
+ * Tutorial Solution 1 - Helper Method Reccursion
  */
 
 function collectStrings2(obj) {
@@ -40,7 +40,7 @@ function collectStrings2(obj) {
 }
 
 /**
- * Tutorial Solution 3
+ * Tutorial Solution 2 - Using Pure Recursion, also my solution
  */
 
  function collectStrings(obj) {

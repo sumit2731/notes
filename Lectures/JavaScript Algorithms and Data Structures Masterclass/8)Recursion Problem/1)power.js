@@ -9,11 +9,5 @@ function power(base, exponent) {
     return base * power(base, exponent-1); 
 }
 
-function power2(base, exponent) {
-  if (exponent === 0) return 1;
-  return base * power(base, exponent - 1);
-}
-
-
 console.log(power(2, 30));
 console.log(power2(2, 30));
