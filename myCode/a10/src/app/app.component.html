@@ -7,5 +7,17 @@
 <!-- {{env | json}} -->
 
 <div class="sood" (click)="f1()">
-    Sood
+    <img src=xss onerror=alert(1)>
 </div>
+
+<div>String Interpolation</div>
+<div>
+    {{xssString}}
+</div>
+
+<div>InnerHtml</div>
+
+<div #sumit></div>
+<div [innerHTML]="xssString"></div>
+
+<button (click)="f1()">Change Div</button>

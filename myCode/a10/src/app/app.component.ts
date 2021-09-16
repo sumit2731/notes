@@ -1,4 +1,4 @@
-import { Component,OnChanges, DoCheck, enableProdMode } from '@angular/core';
+import { Component,OnChanges, DoCheck, enableProdMode, ViewChild, ElementRef } from '@angular/core';
 import {Todo} from "./todo";
 import {Owner} from "./owner";
 import { ajax } from 'rxjs/ajax';
@@ -15,8 +15,11 @@ import {environment} from "../environments/environment";
 })
 export class AppComponent {
     env = environment;
+    xssString = "<img src=xss onerror=alert(2)>"
+
+    @ViewChild('sumit', {static: true}) divRefrence : ElementRef;
     f1() {
-      console.log("f1 called")
+      this.divRefrence.nativeElement.innerHTML = this.xssString;
     }
 }   
 
