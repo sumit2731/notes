@@ -1,0 +1,3 @@
+2)forRoot Method-
+    a)https://medium.com/slackernoon/when-to-use-angulars-forroot-method-400094a0ebb7
+    b)http://angularfirst.com/the-ngmodule-forroot-convention/

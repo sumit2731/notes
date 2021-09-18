@@ -71,3 +71,27 @@ console.log('second');
 "i have resolved"
 console.log('second')
 
+
+
+/* 
+Question4 -
+*/
+
+async function check() {
+    var pro = (x) => {
+        return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve(console.log("inside timeout"+x));
+            },x);
+        });
+    }
+    var arr = [1000,1001];
+    console.log("before");
+    arr.forEach(async i => {
+        await pro(i);
+        console.log("after await");
+    });
+    console.log("after");
+}
+
+check();

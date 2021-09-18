@@ -1,0 +1,5 @@
+var arr1 = "john".split(""); //['j','o','h','n']
+var arr2 = arr1.reverse();//['n','h','o','j']
+var arr3 = "jones".split(); //["jones"]
+arr2.push(arr3); // ['n','h','o','j',["jones"]]
+console.log("length = " +arr1.length + "last= " +arr1.slice(-1)) //length = 4 last = ['n']

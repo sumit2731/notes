@@ -1,0 +1,1 @@
+1)see challenge solition in Es5 of singleton pattern. You solved, but here encapsulation is done beautifully.

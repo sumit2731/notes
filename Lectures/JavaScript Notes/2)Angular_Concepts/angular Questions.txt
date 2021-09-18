@@ -1,0 +1,11 @@
+1)How to make sure tat 2 instances of same service is not getting created-
+    a)forRoot of module
+    b)providedIn: root
+    c)singletonGuard
+
+
+2)How to get instance of servoce from depedency injection.
+
+
+3)in customValidator, why fucntion accepts parameter of type abstractControl and not formControl? is it possible to create
+     validators on FormGroup or Array.
