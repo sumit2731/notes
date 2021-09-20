@@ -1,4 +1,10 @@
+1)How to attach or detahca a class based on value of a class variable-
 
+      @HostBinding('class.focus')
+        get focus() {
+            console.log(this.inputFocus);
+            return this.inputFocus;
+        }
 
 
 2)how to tap into change of input property -
