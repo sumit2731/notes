@@ -9,3 +9,5 @@
 
 3)in customValidator, why fucntion accepts parameter of type abstractControl and not formControl? is it possible to create
      validators on FormGroup or Array.
+
+4)content projection in angular. multislot contnt projection.

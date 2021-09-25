@@ -1,0 +1,13 @@
+The chain of responsibility pattern allows a request sent by a client to be received by more than one object. It creates a 
+    chain of loosely-coupled objects that, upon receiving the request, either handle it or pass it to the next handler 
+    object.
+
+A common example of this pattern is event bubbling in DOM. An event propagates through different nested elements of the 
+    DOM until one of them handles it.
+
+
+You can use it if your program is written to handle various requests in different ways without knowing the sequence and type
+ of requests beforehand. It allows you to chain several handlers, thus, allowing all of them a chance to process the request.
+
+A good example of the use of the chain of responsibility pattern is in the process of event bubbling in the DOM, where the
+ event propagates through the nested elements, one of which may choose to handle the event.

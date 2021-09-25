@@ -6,7 +6,7 @@ class Printer {
     }
   }
 
-  static getInstance(numOfpages){
+  static getInstance(numOfpages) {
     if(!instance){
       instance = new Printer(numOfpages);
     }

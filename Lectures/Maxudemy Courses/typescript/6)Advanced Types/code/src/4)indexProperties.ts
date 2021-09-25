@@ -126,8 +126,8 @@ type PartialWithNewMember4<T> = {
 
 // **Do not** use the following!
 // This is an error!
-/* type PartialWithNewMember41<T> = {
+type PartialWithNewMember41<T> = {
   [P in keyof T]?: T[P];
-  newMember: boolean;
-} */
+  // newMember: boolean;
+}
 

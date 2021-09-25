@@ -1,0 +1,43 @@
+https://blog.angular-university.io/angular-ng-content/
+
+Notes-
+    a)Problem without content projection
+    b)how ontent projection solves these problem.
+    c) how to use projected content in template of component.
+    d)problems after content projection -
+        a)How to styleProjected content
+        b)how to get events of projected content
+
+    e)Solution to the above problems -
+
+        a)styling projeced content -
+            use :host and ::ng-deep -
+
+                :host ::ng-deep input {
+                    border: none;
+                    outline: none;
+                }
+
+        b)get events of proected contetnt -
+
+            use directive on projected content and get instance of that directive in component, using ContentChildern -
+                @ContentChild(InputRefDirective) input: InputRefDirective;
+
+    f)Multi-Slot Content Projection -
+
+            <ng-content select="i"></ng-content>
+            <ng-content select="input"></ng-content>
+
+        but we could also look for an element with a given CSS class, and combine multiple selectors.
+
+            <ng-content select="input.test-class"></ng-content>
+
+        It's also possible to capture content that does not match any selector. For example, this would also inject the 
+         input element into the template:
+
+            <ng-content select="i"></ng-content>
+            <ng-content></ng-content>
+
+
+        In this context, the <ng-content></ng-content> tag without any selector would fetch all the content that did not 
+            match any of the other selectors:

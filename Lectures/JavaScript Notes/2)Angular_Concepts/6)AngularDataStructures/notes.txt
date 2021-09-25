@@ -1,0 +1,1 @@
+QueryList - ViewChild or ContentChild returns this.It is iterable.

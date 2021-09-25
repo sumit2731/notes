@@ -1,0 +1,55 @@
+1)Syntax -
+
+    1)Common Syntax -
+
+        <tr *ngFor="let hero of heroes">
+            <td>{{hero.name}}</td>
+        </tr>
+
+
+        a)we are passing to *ngFor an iteration expression
+        b)a loop variable named hero is defined using the keyword let, which is consistent with Javascript syntax.
+        c)the expression is under the form of var i of items, which is consistent with the Javascript of iteration functionality.
+
+    2)accessing Index -
+
+        <tr *ngFor="let hero of heroes; let i = index">
+            <td>{{hero.name}}</td>
+            <td>{{i}}</td>
+        </tr>
+
+
+    3)accessing odd and even -
+
+        <tr *ngFor="let hero of heroes; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
+            <td>{{hero.name}}</td>
+        </tr>
+
+    4)accessing first and last -
+
+        <tr *ngFor="let hero of heroes; let first = first; let last = last" [ngClass]="{ first: first, last: last }">
+            <td>{{hero.name}}</td>
+        </tr>
+
+2)How does ngFor work when we add or remove elements from the list? -
+    see blog now. 
+    As the input list gets modified, ngFor will try to avoid to constantly create and destroy the DOM elements of the list, 
+    as this is an expensive operation. Also, when we pass to ngFor a new list, this does not mean that the whole list will be 
+    re-built, meaning all the DOM re-created.
+
+    Many of the existing DOM elements will be reused and only some values inside them will be overwritten, and the decision is
+     taken for each element in the list separately.
+
+3)How to use trackBy?
+
+    <tr *ngFor="let hero of heroes; trackBy: trackHero" >
+        <td>{{hero.name}}</td>
+    </tr>
+
+
+    trackHero(index, hero) {
+        console.log(hero);
+        return hero ? hero.id : undefined;
+    }
+
+4)Is ngFor only For Arrays?

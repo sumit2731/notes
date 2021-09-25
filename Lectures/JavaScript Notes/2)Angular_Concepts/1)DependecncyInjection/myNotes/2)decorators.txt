@@ -31,14 +31,19 @@
 
 5)@Injectable - 
 
-    when your service also has some dependencies then, there are 2 wys to sepcify them.
+    a)when your service also has some dependencies then, there are 2 ways to sepcify them.
 
         1)while configuring the provider you can specify the deps property.
-        2)attach the @Injectable() decorator to class. now angular will inject dependencies in this class also.This decorator will 
-            tell Angular to try to find the dependencies for this class by inspecting the types of the constructor function arguments
-            at runtime!
+                {
+                    provide: COURSES_SERVICE_TOKEN,
+                    useFactory: coursesServiceProviderFactory,
+                    deps: [HttpClient]
+                }
+        2)when you are using useClass option, then we can use @Injectable decoator .attach the @Injectable() decorator to class. now 
+            angular will inject dependencies in this class also.This decorator will tell Angular to try to find the dependencies for 
+            this class by inspecting the types of the constructor function arguments at runtime!
     
-    Tree shakable provider - Allows to config provider for service at service level. takes a object that acts as provider object. 
+    b)Tree shakable provider - Allows to config provider for service at service level. takes a object that acts as provider object. 
     which has extra property called injectedin which defines module in which service will be injected. advantage of using this syntax is 
     that provider is now treeshakable.
 

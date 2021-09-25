@@ -21,6 +21,8 @@ Angular 4 -
     b)Angular CLI configuration file angular-cli.json has been replaced with angular.json.now we can see project property
         in anglar.json, it means we can multiple projects under same workspace.
 
+    c)new way of defining providers, i.e defining providers at level of @Injectable.
+
 
 4)Angular 7 -
     1)CanLoad is newly introduced in Angular-7.
@@ -30,3 +32,7 @@ Angular 4 -
             ActivatedRouteSnapshot. That gives you full flexibility to inspect the current router state and decide 
             accordingly.
     3)We can pass state while doing navigation, and thenw ecan acess it in window.history.state 
+
+
+5)Angular 9 -
+    Angular 9, Ivy is the standard engine for rendering your content.
