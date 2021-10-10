@@ -26,6 +26,7 @@
 
     here we retry same observable again after it errors out till we get 40 values.
 
+2)finalize
 
 2)retry - Returns an Observable that mirrors the source Observable with the exception of an error. If the source Observable
     calls error, this method will resubscribe to the source Observable for a maximum of count resubscriptions (given as a number

@@ -5,6 +5,7 @@ The chain of responsibility pattern allows a request sent by a client to be rece
 A common example of this pattern is event bubbling in DOM. An event propagates through different nested elements of the 
     DOM until one of them handles it.
 
+When to use the chain of responsibility pattern?
 
 You can use it if your program is written to handle various requests in different ways without knowing the sequence and type
  of requests beforehand. It allows you to chain several handlers, thus, allowing all of them a chance to process the request.

@@ -5,45 +5,9 @@
  * Time Complexity - O(n)
  */
 
-
- /**
- * My Solution 2 - Using Sliding Window Approach
- * Complexity - O(n)
- */
-
- function findLongestSubstring2(string) {
-     let start = 0,end = 0; stringObj = {},maxlength = 0;
-     while (end < string.length) {
-       let char = string[end];
-        if (stringObj[char]) {
-            maxlength = Math.max(maxlength, end - start);
-            start = end =  stringObj[char];
-            //end = stringObj[string[end]];
-            stringObj = {};
-        }
-        else {
-            stringObj[char] = end+1;
-            end++;
-        }
-     }
-     maxlength = Math.max(maxlength, end - start);
-     return maxlength;
- }
-
- console.log(findLongestSubstring("rithmschool"));//7
- console.log(findLongestSubstring("thisisawesome"));//6
- console.log(findLongestSubstring("thecatinthehat"));//7
- console.log(findLongestSubstring("bbbbb"));//1
- console.log(findLongestSubstring("longestsubstring"));//8
- console.log(findLongestSubstring("thisishowwedoit"));//6
-
 /**
- * Tutorial Approach(Best One)
+ * Tutorial Approach
  */
-
-
-
-
 function findLongestSubstring3(string) {
   let maxStringLength = 0,stringObj = {},start =0;
   for(let i = 0; i< string.length; i++) {
@@ -66,7 +30,7 @@ function findLongestSubstring3(string) {
 // console.log(findLongestSubstring2("thisishowwedoit"));//6
 
 /**
- * My Solution on top of course solution
+ * My Solution (Best One)
  */
 
 function findLongestSubstring4(str) {

@@ -14,30 +14,32 @@
   *My Solution with same complexity
   */
 
-function minSubArrayLen(arr, minSum) {
-  let minLength = Infinity,tempMinLength = Infinity ,left = 0, right = 0;
-  let tempSum = arr[0];
-  while(right < arr.length && right >= left) {
-    if(tempSum < minSum) {
-        right += 1;
-        tempSum += arr[right];
-    }
+function minSubArrayLen(minSum, arr) {
+  let tempSum = 0, minLength = Infinity, left = 0, right = 0;
+  while(right <= arr.length-1 || tempSum >= minSum) {
     if(tempSum >= minSum) {
-        tempMinLength = right - left + 1;
-        if(minLength > tempMinLength) minLength = tempMinLength;
-        tempSum = tempSum - arr[left];
-        left += 1;
+      minLength = Math.min(minLength,right - left );
+      if(minLength === 1) return 1;
+      tempSum -= arr[left];
+      left++;
     }
+    else {
+      tempSum += arr[right];
+      right++;
+    }
+    if(tempSum >= minSum) minLength = Math.min(minLength,right - left );
   }
-  return minLength === Infinity ? 0: minLength;
+  return (minLength === Infinity) ? 0 : minLength;
 }
+
+console.log(minSubArrayLen(7, [2,1,5,2,3,2]));
 
 
  /**
   * 
   *Solution given in course
   */
-function minSubArrayLen(nums, sum) {
+function minSubArrayLen2(nums, sum) {
   let total = 0;
   let start = 0;
   let end = 0;
@@ -66,9 +68,31 @@ function minSubArrayLen(nums, sum) {
   return minLen === Infinity ? 0 : minLen;
 }
 
- console.log(minSubArrayLen([2,3,1,2,9,4,3],7));
+//console.log(minSubArrayLen([2,3,1,2,9,4,3],7));
 
- 
+/* 
+Educative Solution is best solution
+*/
+ function smallest_subarray_with_given_sum(s, arr) {
+  let windowSum = 0,
+    minLength = Infinity,
+    windowStart = 0;
+
+  for (windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+    windowSum += arr[windowEnd]; // add the next element
+    // shrink the window as small as possible until the 'window_sum' is smaller than 's'
+    while (windowSum >= s) {
+      minLength = Math.min(minLength, windowEnd - windowStart + 1);
+      windowSum -= arr[windowStart];
+      windowStart += 1;
+    }
+  }
+
+  if (minLength === Infinity) {
+    return 0;
+  }
+  return minLength;
+}
 
 
 

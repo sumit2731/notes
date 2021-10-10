@@ -1,1 +1,12 @@
 1)I failed to answer both problems of slidingWindow
+
+
+Update 2-
+
+
+1)educative problem are good - failed to answer second one(longestSubstringWithSameCharacters).
+2)educative problem - better solution in course for educarive problem 3.(permutationsINString)
+3)educative problem 4 - solved but took lot of time. but appraoch 2 is better, so use approach 2 is using inner loop,
+    itn can be used in other problems also.
+
+4)educative problem 5 -I solved the problem but course solution was good.
