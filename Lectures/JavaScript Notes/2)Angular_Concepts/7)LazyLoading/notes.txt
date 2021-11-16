@@ -1,0 +1,86 @@
+Link -  https://juristr.com/blog/2019/04/state-lazy-loading-components-angular/
+
+1)lazy loading via routes -
+    
+    loadChildern accepts string
+        {
+            path: 'home',
+            loadChildren: './home/home.module#HomeModule'
+        }
+    
+    loadChildern accepts dynamic import also
+        {
+            path: 'home',
+            loadChildren: () => import('./lazy-route/lazy.module').then(mod => mod.LazyModule)
+        }
+
+2)Manual Lazy Loading of Modules
+
+    1)sepcify this in angular.json(not needed if you using dynamic import in angular8+) -
+            "lazyModules": [
+              "src/app/shared-components/users/users.module"
+            ]
+
+    2)Dynamically Creating Module and Component.
+        a)Doing it manually -
+    
+            Use load(it takes path of module as argument) method of NgModuleFactoryLoader it returns NgModuleFactory. we can 
+                create instance of module form NgModuleFacory.
+
+                const moduleRef = moduleFactory.create(this.injector).instance;
+
+            starting with Angular v8+ the NgModuleFactoryLoader has been deprecated. Read this article to see how to manually 
+            lazy load NgModules in ViewEngine and Ivy starting from Angular v8+
+            https://juristr.com/blog/2019/10/lazyload-module-ivy-viewengine/
+
+            Create instnace of component -
+                For that we need to get hold of the component type and then using a ComponentFactoryResolver we can instantiate 
+                the component accordingly and attach it to the view.detials -
+
+                https://juristr.com/blog/2017/07/ng2-dynamic-tab-component/
+
+
+        b)Use a library called https://www.npmjs.com/package/@herodevs/lazy-af.
+
+3)Lazy Laoding Angular Elements.
+
+    1)package our Angular Element into a module and lazy load the module, and then return the instnace of component.
+
+        code to load a module - 
+
+
+        loadComponent(componentTag: string): Promise<HTMLElement> {
+
+            const path =  () =>import('../users/users.module').then(m => m.UsersModule);
+            return new Promise((resolve, reject) => {
+                (path() as Promise<NgModuleFactory<any> | Type<any>>).then(elementModuleOrFactory => {
+                    if (elementModuleOrFactory instanceof NgModuleFactory) {
+                    // if ViewEngine
+                    return elementModuleOrFactory;
+                    } else {
+                    try {
+                        // if Ivy
+                        return this.compiler.compileModuleAsync(elementModuleOrFactory);
+                    } catch (err) {
+                        throw err;
+                    }
+                    }
+                })
+                .then(moduleFactory => {
+                    const moduleRef = moduleFactory.create(this.injector).instance;
+                    cmpRegistryEntry.moduleRef = moduleRef;
+
+                    // instantiate the component
+                    const componentInstance = document.createElement(componentTag);
+                    resolve(componentInstance);
+                })
+                .catch(err => {
+                    console.error('error loading module', err);
+                    reject(err);
+                });
+            });
+            
+        }
+    
+    2)you can pass data into component istance.
+    3)attach that instance to DOM

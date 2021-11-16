@@ -31,8 +31,15 @@ Angular 4 -
             runGuardsAndResolvers that will be invoked by the framework, passing the current and future 
             ActivatedRouteSnapshot. That gives you full flexibility to inspect the current router state and decide 
             accordingly.
-    3)We can pass state while doing navigation, and thenw ecan acess it in window.history.state 
+    3)We can pass state while doing navigation, and thenw wecan acess it in window.history.state 
 
+5)Angular 8 -
+    1)Starting with Angular 8, Ivy has been shipped behind a flag in experimental mode, while in Angular v9 it is active by 
+        default.
 
+    2)starting with Angular v8+ the NgModuleFactoryLoader has been deprecated. now you can use dynamic import syntx. then use
+        Compiler service to get NgModuleFactory.
+
+    3)Since Angular 8 we can use the browser’s built-in dynamic imports to load JavaScript modules asynchronous in Angular.
 5)Angular 9 -
     Angular 9, Ivy is the standard engine for rendering your content.

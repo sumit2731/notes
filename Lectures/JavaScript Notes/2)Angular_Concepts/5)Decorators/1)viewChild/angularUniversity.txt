@@ -65,3 +65,9 @@ Using @ViewChild to inject Directives -
     directives are applied to the same plain HTML element or Angular component. solution to above problem is-
 
      @ViewChild('primaryInput', {read: ColorPickerDirective}) colorPicker: ColorPickerDirective;
+
+
+
+In this article we use biew container to get viewContanerRefrence on ng-template -
+
+    https://www.mokkapps.de/blog/manually-lazy-load-modules-and-components-in-angular/

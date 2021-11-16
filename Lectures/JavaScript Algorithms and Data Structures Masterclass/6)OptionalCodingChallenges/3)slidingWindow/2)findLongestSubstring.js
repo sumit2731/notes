@@ -8,7 +8,7 @@
 /**
  * Tutorial Approach
  */
-function findLongestSubstring3(string) {
+function findLongestSubstring2(string) {
   let maxStringLength = 0,stringObj = {},start =0;
   for(let i = 0; i< string.length; i++) {
     let char = string[i];
@@ -33,13 +33,13 @@ function findLongestSubstring3(string) {
  * My Solution (Best One)
  */
 
-function findLongestSubstring4(str) {
+function findLongestSubstring3(str) {
     let strObj = {}, maxLength = 0, start = 0;
     for(let i = 0;i<str.length;i++) {
         let char = str[i];
         if((strObj[char]) && (strObj[char]-1 >= start)) {
             maxLength = Math.max(maxLength, i-start);
-            start = Math.max(start,strObj[char]);
+            start = strObj[char];
         }
         strObj[char] = i+1;
     }

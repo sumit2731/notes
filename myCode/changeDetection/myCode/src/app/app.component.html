@@ -1,0 +1,8 @@
+<h1>App Component</h1>
+<h1>{{changeDetectorCalled()}}</h1>
+<button (click)="incCount()">Update Counter</button>
+<button (click)="refresh()">Refresh in Root</button>
+<!-- <button (click)="appRef.tick()">Trigger Change Detection</button> -->
+<app-child1 [Counter]="Counter"></app-child1>
+<app-child2 [Counter]="Counter"></app-child2>
+

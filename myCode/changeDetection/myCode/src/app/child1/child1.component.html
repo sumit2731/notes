@@ -1,0 +1,12 @@
+<h1>Child1</h1>
+<p>Counter in Child1 = {{Counter.count}}</p>
+<p>Local Number = {{localNumber}}</p>
+<p>{{dummyFunction()}}</p>
+<!-- <p>Counter in Child1 = {{count}}</p> -->
+<button (click)="refresh()">Child1 Refresh</button>
+<button (click)="incLocalNumber()">Inc Local NUmber</button>
+<button (click)="incGrandChild()">Inc GrandCHild</button>
+<button (click)="detach()">Detach</button>
+<button (click)="reAttach()">Reattach</button>
+<!-- <div *ngFor="let num of numbers">{{num}}</div> -->
+<app-grand-child [numbers]="numbers"></app-grand-child>

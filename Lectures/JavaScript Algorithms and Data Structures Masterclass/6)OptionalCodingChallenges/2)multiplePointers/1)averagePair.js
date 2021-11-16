@@ -21,4 +21,18 @@ function averagePair(arr, avgNum) {
 
 console.log(averagePair([1,2,3],2.5));
 
+/* 
+See Alternate solution in educative solution
+*/
+function pair_with_target_sum(arr, targetSum) {
+    const nums = {}; // to store numbers and their indices
+    for (let i = 0; i < arr.length; i++) {
+      const num = arr[i];
+      if (targetSum - num in nums) {
+        return [nums[targetSum - num], i];
+      }
+      nums[arr[i]] = i;
+    }
+    return [-1, -1];
+}
 

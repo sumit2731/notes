@@ -1,0 +1,17 @@
+Web Content Accessibility Guidelines (WCAG) Accessibility Standrads
+    A
+    AA
+    AAA
+
+WebAIM  is a org that provide not official spec but nice user friendly checklists with their recommendations.
+
+    https://webaim.org/
+    https://webaim.org/standards/wcag/checklist
+
+
+ARIA is a spec, it is accessible ability focused helpers. we can ue aria-label to lbe a image. they are addtive to html spec
+    and work in all browsers.they are things that helps specifically with accessibility.labelling, what is role of something
+    like if we are using a div as a button, is a common accessibility example.there is role attribute of aria to say, screen 
+    readers, this is actually a button.
+
+    ARIA - accessible rich internet applications.

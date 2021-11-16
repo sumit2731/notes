@@ -1,1 +1,11 @@
 I faced dificulty in problem 3. I was able to solve it, but solution was not as optimized as in course.
+
+
+Educative Problem -
+
+    1)here see problem 3. see how we transfered problem to  finding a pair. then see approach of finding a pair.
+
+
+Tobe looked later -
+
+    educative problem 4

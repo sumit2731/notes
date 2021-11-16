@@ -5,3 +5,42 @@ Interface -
 
     Validator - Implement to define built-in validators on cutom form control.
         https://blog.angular-university.io/angular-custom-form-controls/
+
+
+Services - 
+
+    NgModuleFactoryLoader - Used to lazyload a module Factory. starting with Angular v8+ the NgModuleFactoryLoader has been 
+        deprecated.
+
+        this.loader
+            .load(path)
+            .then(moduleFactory => {
+                const moduleRef = moduleFactory.create(this.injector).instance;
+                // TODO: do something interesting with the module
+            })
+
+    NgModuleFactory - above service returns the instance of this type. how to get its inastance-
+
+        1)view engine - dynamic import statement returns its instance.
+
+        2)Ivy - dynamic import returns Type<any>, we have to use Compiler Service to asynchronously compile the module on the 
+            fly-
+                compileModuleAsync: <T>(moduleType: Type<T>) => Promise<NgModuleFactory<T>> // t is returned by import syntax
+    
+        It isused to create module instnace.  -
+
+        const moduleRef = moduleFactory.create(this.injector).instance;
+
+    ComponentFactoryResolver - Creates component factory which can be used to instnace of component. used when dynamically
+     creating component or when lazily loading a module and creating a component.
+         
+         this.ComponentFactoryResolver.resolveComponentFactory(TabComponent)
+
+         How to gets it's instance -
+
+         1)When you want to load a componen dynamically and given module is lready loaded then use depednedecy ijection.
+         2)When you load module dynamically, use -
+
+            NgModuleFactory.create(parentInjector: Injector) gives NgModuleRef<T>
+
+            on NgModuleRef<T> callcomponentFactoryResolver to get instance

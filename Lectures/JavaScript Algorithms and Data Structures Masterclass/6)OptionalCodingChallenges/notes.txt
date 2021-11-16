@@ -1,12 +1,28 @@
-1)I failed to answer both problems of slidingWindow
+Update 1 -
+    1)I failed to answer both problems of slidingWindow
 
 
 Update 2-
 
+    Answer all problems, and also attempted to know about educative problems.
 
-1)educative problem are good - failed to answer second one(longestSubstringWithSameCharacters).
-2)educative problem - better solution in course for educarive problem 3.(permutationsINString)
-3)educative problem 4 - solved but took lot of time. but appraoch 2 is better, so use approach 2 is using inner loop,
-    itn can be used in other problems also.
+    Udemy Course Problems -
 
-4)educative problem 5 -I solved the problem but course solution was good.
+        1)problem 1 of udemy couurse(and sliding pattern problem of previous section), educative solution is less confusining 
+            and less chances of errors are there.idea is to use another loop for shrinking window so that no of usecase reduce 
+            in outer loop. 
+
+    educative Problems -
+
+        All educative problems use outer loop to increase the window and inner loop to decrease the window. problem 1.
+         when size of window needs to remain fix, then both of these loops run togather - problem 2,3
+
+        2)Falied to answer educative problem 2, even took lot of time to understand after solution.
+        3)In problem 2,3 we increase and decrease size of window at same time.
+        4)
+ 
+        2)educative problem - better solution in course for educarive problem 3.(permutationsINString)
+        3)educative problem 4 - solved but took lot of time. but appraoch 2 is better, so use approach 2 is using inner loop,
+            itn can be used in other problems also.
+
+        4)educative problem 5 -I solved the problem but course solution was good.

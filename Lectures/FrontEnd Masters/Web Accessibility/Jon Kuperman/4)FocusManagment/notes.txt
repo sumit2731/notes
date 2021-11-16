@@ -1,0 +1,11 @@
+lets we have bunch of buttons, we can navigte around them using ab. but lets say one button will have dropdown, so
+    expectation is that pressing tab should move to next button, if you want to move into drodown you need o press enter
+    \and arrow keys.
+
+
+storing focussed element in variable before a page transition, so that when traistion is done you can rteurn back to it.example is 
+    opening and modal.it preserves the tabindex and also moves the screen if required.
+
+tab trapping - it synechronizes the keyboad only exerience with visual experience. it is used not let user escape from modal.
+ In modals escape key should close the modal or user shuld be able to tab to close icon. code in index.html of focus-management
+ folder.

@@ -1,0 +1,10 @@
+parsing -
+    to make a function to be eagerly parsed wrap it in paranthesis.
+    livbrary does that for you - https://github.com/nolanlawson/optimize-js
+    v8 engine written a blog post why it is not required - https://v8.dev/blog/preparser#pife
+    testing different libraries - https://nolanlawson.github.io/test-optimize-js/
+    threre is a webpack plugin for the the optimize.js
+
+
+
+    nested functions are always lately parsed.

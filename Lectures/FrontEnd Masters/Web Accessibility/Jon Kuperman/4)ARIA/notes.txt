@@ -1,0 +1,28 @@
+https://learn-a11y.netlify.app/aria/index.html
+
+
+labels -
+    aria-label
+        <a aria-label="link">Link</a>
+    aria-labelledby
+        <div id="foo>THis is link</div>
+        <a href="abc" aria-labelledby="foo">Link</a>
+    aria-describedby
+        it is more descriptive
+
+
+Then we looked at aria mdn docs where all roles, states are mentioned. state are like aria-checked, aria-expanded etc.
+when expanded you need to add it and then remove it using js. aria state helps users to know abut current state of appication.
+so roles and labels are easy you just need to add them to html but state and proprtiesare little trickier because you need to 
+set dynamically via js.
+
+
+Live regions - whne user books uber cab, user needs to know when driver is coming.
+
+    <div aria-live="assertive">Waiting for a ride</div>
+
+    assertive - will interrupt whatever it's doing to announce.
+    polite - will announce the live region update when it next idles.
+    off - will not read the update.
+
+    see exercise 3.html

@@ -1,7 +1,35 @@
 Javascript -
     
-    1)order of properties of object in iteration
-    webWorkers
-    setImmediate
     mutation observable
+    webWorkers
+    service workers
+    1)order of properties of object in iteration
+    setImmediate
     intersection observable
+    memory leak
+
+
+Angular - 
+    1)Chnags that Ivy Brings
+    1)custom preloading strategies.
+    2)Why use dynamic component
+    3)angular.json configs
+    4)lazy load styles in angular
+
+
+
+    Questions -
+
+    1)How to make sure tat 2 instances of same service is not getting created-
+    a)forRoot of module
+    b)providedIn: root
+    c)singletonGuard
+
+
+    2)How to get instance of servoce from depedency injection.
+
+
+    3)in customValidator, why fucntion accepts parameter of type abstractControl and not formControl? is it possible to create
+        validators on FormGroup or Array.
+
+    4)content projection in angular. multislot contnt projection.

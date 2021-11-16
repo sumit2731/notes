@@ -1,0 +1,56 @@
+https://learn-a11y.netlify.app/accessible-html/index.html
+
+
+Lot of thing in accesibility can be achieved by using proper or semanric elements in html for what yo are trying to accomplish.
+
+
+some elements do not have functionlaity but have some semantic meaning , these might help your SEO scores, your ebsite health 
+    score, but they dnt really do anything.they do not add any extra utility for screen readers.
+
+
+but some provide lot of fucntionlaity.we can use a div and style it as a button, but it will have impact on accessibility.
+
+screen readers can read all links, all headings in a page.so alays use properr h1 tags, for nesting always use h2 inside h1 
+    and all. some people use div and use css for styling, do not use that, screen readers cannot read through css.
+    also some time people use div ,span and then style them as button, dnt do that, always us buttons.
+
+labels -
+    then we saw how labeling makes forms accessible. Some time in design we do not want labels, in that case just hide them.
+    
+    but some fields are not lableble, there we need to use aria -
+        <div aria-label=""some text></div>
+
+    when will your aria-label read by screen reader?, for this you need to make your div focusable and you need to focus on it 
+        to read the content aloud. aability to make them focusable is done by by tab index.
+
+    Sometimes you just want to communicate with screen reader without showing anthng on actual website. read website mentioned 
+    above.
+
+buttons -
+    read link. aria labels used -
+
+        role
+        aria-label
+
+    other attrbiutes -
+        tabindex
+
+
+LInks -
+    sometimes clue that whta link does is visual, like -
+        Do download code "clicl here"
+
+    if sceen reader user read all links in page in one go, then he will not get any idea, for that use aria-label-
+
+    <a aria=label="github repo link for code">Click Here<a/>
+
+Button vs LInks -
+
+    use buttons for interaction on page, use links to navigate t other page.
+    do not use button for navigating to other page.
+
+Sometimes you have submit button but clicking on it redirects you. is there any way of telling user that he will be taken soewhere
+ else? within aria we can add roles like has transiotion, has popup, has navigation. it tells user it is submit button, but we 
+ will do different thing here.like tis is button label is register for account but it as aria haspopup.
+
+

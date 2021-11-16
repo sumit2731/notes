@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div contentEditable id="elem">
+        Click and <b>edit</b>, please
+        <div contentEditable id="child1">
+            Child1
+            <div contentEditable id="child11">Child1 Child</div>
+        </div>
+        <div  contentEditable id="child2">Child2</div>
+    </div>
+    <div id="highlight-demo"></div>
+
+    <button id="btn1">Add Child</button>
+    <button id="btn2">Add GrandChild</button>
+    <button id="btn3">Add Super GrandChild</button>
+    <!-- <button id="btn3">Remove Super Grand Child</button> -->
+
+</body>
+<script src="app.js"></script>
+</html>

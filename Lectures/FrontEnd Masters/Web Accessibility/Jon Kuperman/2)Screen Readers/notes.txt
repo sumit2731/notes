@@ -1,0 +1,23 @@
+https://learn-a11y.netlify.app/screen-readers/index.html
+
+1)types if screen readers
+2)Alternative text & captions
+    screen readers start reading image source by default if alt is not provided. 
+    so provide alt attribute as when alt attribute is provide screen reader will not read image src.
+    In case of user uploaded image - 
+        a)Give general text
+        b)Give blank alt attribute as thos will prevent screen reader form reading src attribute.
+
+    also i case of decrative images (like in corners) also giving empty alt and skipping reading src helps.
+
+    If something is very vital for your website then you can provide empty alt attribute but you can provide a visually div
+    hiddnen div which describes the image, which is invisible to normal users but visisble to screen readers.
+
+
+    see image 1.
+
+    when you focus over input screen redaers read the label for that.
+
+
+    then at last we opened a html page in screen reader. at sw how wscreen reader reads the page.
+

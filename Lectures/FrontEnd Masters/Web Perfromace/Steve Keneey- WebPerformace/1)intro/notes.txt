@@ -1,0 +1,15 @@
+3 Types of performance -
+
+    1)Network load performance
+    2)Javascript Parsing and compilation performance
+    3)Rendering performance
+
+
+RAIL is a user-centric performance model that provides a structure for thinking about performance. The model breaks down the 
+    user's experience into key actions (for example, tap, scroll, load) and helps you define performance goals for each of 
+    them.
+
+R - Response
+A - Animation
+I - Idle
+L - Load

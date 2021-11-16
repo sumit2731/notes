@@ -12,13 +12,11 @@
 
 2)Object.keys - Object.keys() method returns an array of a given object's own enumerable and string property.
 
-3)Object.getOwnPropertyNames- This method returns an array of all properties (including non-enumerable properties except for those which 
-    use Symbol) found directly in a given object.
+3)Object.getOwnPropertyNames- Thus gives object's own string properties. Even if they are non-enumerable.
 
-4)Object.hasOwnProperty() - The hasOwnProperty() method returns a boolean indicating whether the object has the specified property as 
-    its own property (as opposed to inheriting it).
+4)Object.getOwnPropertySymbols Gives objects's symbol properties, even if they are not enubrable.
 
-5)propertyIsEnumerable
+5)Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
 
 
 

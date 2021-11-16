@@ -1,0 +1,10 @@
+1)ngOnChanges()
+2)ngOnit() -Called after all input bound propertie sare avlaible. this is called after component tree is constructed.
+3)ngDoCheck() -
+    Use this hook to Implement a custom change detection, whenever Angular fails to detect the changes made to Input 
+    properties. This hook is particularly useful when you opt for the Onpush change detection strategy.
+    This runs after default change detection is invoked.This hook is added so that developer can add his or her custom 
+    code to peform a custom CD.
+
+    ngDochecked is called does not mean that chnage detection has ran. in onPush staregy even if chnage dection is not
+    called. ngDocheck is still called.

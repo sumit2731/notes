@@ -1,0 +1,43 @@
+Observations - 
+
+
+    1)
+        parent - OnpUsh
+        child - Default
+
+        whenever chnage detection happens in parent(event handler is called etc) it also happens in child.
+
+    2)
+        parent - OnPush
+        child - OnPush
+
+        If you call detechChnages in parent, then it will not trigger cnage detection in child, as child is using onPush.
+            if child is using default chnage detection, then calling detect chnages on parent will also trigger change 
+            detection in child.
+
+
+    3) -
+        parent - On Push
+        child - On Push
+
+        in paret setImeout runs and we are chnaging the refrence of input bound properties of child 1. but ngOnChes of child is
+        not called, nor its view is getting updated. 
+        
+        Reason - As parent is using onPush, setTImeout will not trigger chnage detection in parent. as chnage detection is not 
+            happening in parent it cannot happen in child.hence view is not updated.
+
+            If you chnage refrence of input bound properties in event handler then, change detection of parent is triggered,
+                as refrence of input bound properties is chnaged chnage detction is also triggered in child. however if
+                just push new element in array in parent then child will not be updated as it is using ONpush, even if we call
+                detectChanges in parent.
+
+            If child is using default chnage detection then even without changing refrence of input bound proeprties of child 
+            in event handler of parent(which uses onPush) will update the view.
+
+
+    4)dettaching a view
+        Any event handler(or anything else) will not fire chnage detection, only way is to manually call the detectChanges.
+        calling change detection manually in parent will also trigger change detection in child(if child is not using on push
+        change detection strategy).
+
+        In above case calling markForCheck will not do anything i.e chnage detector will not fire in parent as well as child.

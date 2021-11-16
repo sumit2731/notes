@@ -11,8 +11,8 @@
  */
 
 /**
-  *My Solution with same complexity
-  */
+  *My Solution with same complexity as that of udemy course
+*/
 
 function minSubArrayLen(minSum, arr) {
   let tempSum = 0, minLength = Infinity, left = 0, right = 0;
