@@ -10,4 +10,4 @@ import { Cmp1Component } from './cmp1/cmp1.component';
     CommonModule
   ]
 })
-export class Feature1Module { }
+export class Feature1Module {}
