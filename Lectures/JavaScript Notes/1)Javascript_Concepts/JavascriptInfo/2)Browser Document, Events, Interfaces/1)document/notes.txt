@@ -1,0 +1,2 @@
+Element.clientTop - The width of the top border of an element in pixels. It is a read-only, integer property of element.
+Element.clientLeft - The width of the left border of an element in pixels
