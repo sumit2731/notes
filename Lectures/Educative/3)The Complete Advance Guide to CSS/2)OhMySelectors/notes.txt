@@ -1,0 +1,116 @@
+Combinator selector -
+
+    descendant selector (space)
+    child selector (>)
+    adjacent sibling selector (+)
+    general sibling selector (~)
+
+Pseudo-class Selector - The pseudo-class selectors targets the selector, in a specific state.
+    
+    a:link will target and style every a tag with an href attribute. i.e an a that contains a link.
+    a:visited will target every anchor tag, a that has already been visited (clicked) on the page.
+    a:hover will target every link as you hover over them
+    a:active will style the link, just when you click on it. When it is active
+    
+    :first-child  -It targets the first child of a specific element within the parent element.
+        
+        //styles p if it is first child under div
+        div p:first-child {
+            color: red
+        }
+        
+        or
+        //styles p if it is first child of any element
+        p:first-child {
+            color:red
+        } 
+        see figure 1.
+
+    :last-child
+
+    :only-child
+
+    :nth-child(n)
+        
+        li:nth-child(1) {
+            color: red
+        }
+
+        nth-child is even more powerful. It allows for selecting multiple elements dynamically.
+
+            odd,even -I could easily target every odd or even list item, li like this:
+
+                li:nth-child(odd) {
+                    color: red;
+                }
+
+            multiplier expressions - 
+
+                // value of n selects from 0
+                li:nth-child(2n+1) {
+                    color: red;
+                }
+
+
+    All pseudo-classes and pseudo-element -
+
+        https://www.w3schools.com/css/css_pseudo_classes.asp
+
+Pseudo-element selectors act as if you added new HTML markup into the HTML document, and then styled that markup.
+    The Pseudo-element selectors are very much like the Pseudo-class selectors in terms of how they are written. 
+    Except that the CSS3 specification states that they should be written with double colons. e.g. p::first-line.
+    For backward compatibility, and better browser support due to browser manufacturers, the use of a single colon 
+    for these pseudo-elements is encouraged.
+
+    :first-letter -
+
+        .content:first-letter {
+            color: red;
+            font-weight: bold;
+            font-size: 200%;
+        }
+
+    :first-line
+        The beauty of the :first-line selector is that it dynamically selects the first line even if the length of 
+            the first line changes e.g due to resizing the browser.
+
+
+    :before, :after - before and :after pseudo-element selectors are very useful for many css tricks you’ll find out 
+        there. They are used to generate content from css, and style them too.
+
+        .article:before {
+            content: "Yes, I do"
+        }
+
+        .article:after {
+            content: "No, I dont"
+        }
+
+        Note that the value of the content property must be specified, even if it is empty. i.e content: ''.
+
+        :before places the content before any child elements within the parent element, and :after places the content after every child 
+            element within the parent. see figure 2.
+
+        A few things to note are:
+
+            Content added using pseudo-elements is only visually displayed. It is not inserted into the DOM.
+
+            Don’t rely on :before and :after to insert content that is relevant to the meaning and completeness of the content on the page.
+
+    :selection - styles the text selected by user.
+
+Attribute selector -
+    educative covers only first 2 rest are taken from w3 school.
+    
+    [attribute] - attribute is present
+    [attribute=value] - attribute has provided value.
+    [attribute~=value] - attribute contains word value
+    [attribute*=value] - attribute has substring value
+
+    [attribute|=value] -starting word
+    [attribute^=value] - contains substr in staring
+    [attribute$=value] - contsins substr in ending
+
+
+
+
