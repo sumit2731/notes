@@ -1,0 +1,1 @@
+mdn article on specificity and inheritance. bookmarked in css-> specificity
