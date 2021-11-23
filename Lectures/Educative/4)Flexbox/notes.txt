@@ -1,0 +1,9 @@
+case - container has no width, item has no width.
+
+case - container has no width but item has width but no text.
+    In this case width of flex-item will decrease so that there is no need to scroll.
+
+case 3 - container has width, item has width, but item also has text, which is less than item width.
+    In this case item will have min-width to display text, even if it means scroll.
+
+case 4 -

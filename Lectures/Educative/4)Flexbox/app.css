@@ -1,0 +1,13 @@
+ul {
+    display: flex; /*or inline-flex*/
+    list-style: none;
+    /* width:500px; */
+    background: red;;
+  }
+  
+li {
+    width: 500px;
+    height: 100px;
+    background-color: #8cacea;
+    margin: 8px;
+  }
