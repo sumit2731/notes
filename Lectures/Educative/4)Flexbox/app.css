@@ -1,13 +1,20 @@
-ul {
+.container {
     display: flex; /*or inline-flex*/
     list-style: none;
     /* width:500px; */
-    background: red;;
+    background: red;
+    border: 1px solid black;
   }
   
-li {
+.item {
     width: 500px;
     height: 100px;
     background-color: #8cacea;
     margin: 8px;
   }
+
+.container2 {
+  width: 200px;
+  height: 200px;
+  background: blue;
+}

@@ -1,0 +1,2 @@
+1)width vs flex-basis
+    https://www.freecodecamp.org/news/flexboxs-flex-basis-explained-83d1a01413b7/

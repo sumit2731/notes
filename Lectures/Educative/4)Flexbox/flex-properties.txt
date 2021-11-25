@@ -1,0 +1,59 @@
+container properties -
+
+    1)flex-direction
+        flex-direction: row(default) || column || row-reverse || column-reverse;
+
+    2)flex-wrap
+        flex-wrap: wrap || no-wrap(default) || wrap-reverse;
+
+
+    3)flex-flow 
+        flex-flow is a shorthand property which takes flex-direction and Flex-wrap values.
+
+
+    4)justify-content
+        The justify content property defines how flex items are laid out on the main axis.
+        
+        justify-content: flex-start(default) || flex-end || center || space-between || space-around
+
+    5)align-items
+        this defines how items are laid on cross axis.
+
+        align-items: flex-start || flex-end || center || stretch(default) || baseline
+
+    6)align-content
+
+        The align-content property is used on multi-line flex-containers.
+        It takes the same values as align-items apart from baseline.
+
+        align-items: flex-start || flex-end || center || stretch(default)
+
+flex-items properties - 
+
+    1)order
+        allows to chnage position of flex items without changing html.
+        default value is 0. can take -ve and +ve values. items are arranged in ascending order.
+
+    2)flex-grow
+        default - 0
+
+    3)flex-shrink
+        default - 1
+
+    4)flex-basis - The flex-basis property specifies the initial size of a flex-item. Before the flex-grow or flex-shrink 
+        properties adjust it’s size to fit the container or not.
+
+        The default value is flex-basis: auto. Flex-basis can take on any values you’d use on the normal width property. 
+        That is, percentages || ems || rems || pixels etc.
+
+
+    5)flex
+        The flex shorthand allows you set the flex-grow, flex-shrink and flex-basis properties all at once.
+
+        flex: 0 1 auto;
+
+        flex: default => flex: 0 1 auto
+        flex: none => flex:0 0 auto
+        Flex: "positive number"# => flex: "positive number" 1 0;
+
+
