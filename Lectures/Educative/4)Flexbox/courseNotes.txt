@@ -1,4 +1,4 @@
-container properties -
+1)container properties -
 
     1)flex-direction
         flex-direction: row(default) || column || row-reverse || column-reverse;
@@ -28,7 +28,7 @@ container properties -
 
         align-items: flex-start || flex-end || center || stretch(default)
 
-flex-items properties - 
+2)flex-items properties - 
 
     1)order
         allows to chnage position of flex items without changing html.
@@ -43,7 +43,12 @@ flex-items properties -
     4)flex-basis - The flex-basis property specifies the initial size of a flex-item. Before the flex-grow or flex-shrink 
         properties adjust it’s size to fit the container or not.
 
-        The default value is flex-basis: auto. Flex-basis can take on any values you’d use on the normal width property. 
+        The default value is flex-basis: auto, which means -
+
+        The width of the flex-item is computed “automatically” based on the content size (and obviously, plus whatever padding
+         you set too).
+
+        Flex-basis can take on any values you’d use on the normal width property. 
         That is, percentages || ems || rems || pixels etc.
 
 
@@ -56,4 +61,11 @@ flex-items properties -
         flex: none => flex:0 0 auto
         Flex: "positive number"# => flex: "positive number" 1 0;
 
+    6)align-items
+        aligns a induival item along the cross axis of parent.
 
+        align-items: auto || flex-start || flex-end || center || baseline || stretch
+
+3)absolute and relative flex items
+
+4)Auto Margin Alignment

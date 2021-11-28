@@ -1,20 +1,15 @@
-.container {
-    display: flex; /*or inline-flex*/
-    list-style: none;
-    /* width:500px; */
-    background: red;
-    border: 1px solid black;
-  }
-  
-.item {
-    width: 500px;
-    height: 100px;
-    background-color: #8cacea;
-    margin: 8px;
-  }
+ul {
+  display: flex;
+  border: 1px solid red;
+  padding: 0;
+  list-style: none;
+  background-color: #e8e8e9;
+}
 
-.container2 {
-  width: 200px;
-  height: 200px;
-  background: blue;
+li {
+  flex: 0 0 auto;
+  background-color: #8cacea;
+  margin: 8px;
+  color: #fff;
+  padding: 4px;
 }
