@@ -1,5 +1,6 @@
 ul {
   display: flex;
+  flex-direction: column;
   border: 1px solid red;
   padding: 0;
   list-style: none;
@@ -8,8 +9,8 @@ ul {
 
 li {
   flex: 0 0 auto;
-  background-color: #8cacea;
-  margin: 8px;
-  color: #fff;
-  padding: 4px;
+    background-color: #8cacea;
+   margin: 8px;
+   color: #fff;
+   padding: 4px;
 }
