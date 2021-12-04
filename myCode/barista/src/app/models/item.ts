@@ -10,4 +10,6 @@ export interface Item {
     freeItems?:  {id: number, maxQty: number}[];
     //id,discountPercentage
     discountItems?: {id: number, discount: number, maxQty: number}[];
+    //maxQuanity of item that can be added in cart
+    maxQty?: number;
 }
