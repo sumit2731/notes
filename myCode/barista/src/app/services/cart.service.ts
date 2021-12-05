@@ -8,54 +8,72 @@ import {Items} from '../data/items';
 export class CartService {
   /**
    * @Author Sumeet Sood
-   * @Desc This is map which stores the item added in cart
+   * @Desc This is map which stores all items added in Cart
    * @param {string} key - key of mainItem
    * @param {CartItem} cartItem - actual cart item.
    */
   addedCartItems: Map<number,CartItem> = new Map();
+  /**
+   * @Author Sumeet Sood
+   * @Desc These are all items converted into cartItems
+   */
   allCartItems: CartItem[] = [];
   /**
    * @Author Sumeet Sood
    * @Desc stores all items by key
    */
-  itemsDictionary: { [key: string]: Item };
+  itemsDictionary: { [key: string]: Item } = {};
   totalPrice = 0;
   constructor() {
     this.setItemsDictionary(Items);
-    this.setallCartItems(Items);
+    this.setAllCartItems(Items);
   }
 
   setItemsDictionary(items: Item[]) {
-   for(let item of items) {
-     this.itemsDictionary[item.id] = item
-   }
+   for(let item of items) this.itemsDictionary[item.id] = item
+   
   }
 
-  setallCartItems(items: Item[]) {
-    for(let item of items) {
-      let cartItem!:CartItem;
-      cartItem.item = item;
-      cartItem.quanity = 0;
-      cartItem.calucatedPrice = 0;
-      this.allCartItems.push(cartItem);
-    }
+  setAllCartItems(items: Item[]) {
+    for(let item of items) this.allCartItems.push({item, quanity:0, calucatedPrice: 0});
   }
 
+  /**
+   * @Author Sumeet Sood
+   * @Desc Adds combo items to cartItem if not already added
+   */
   addComboDetails(cartItem: CartItem) {
+    //check whether cartAdded are added previously or not
     if(!cartItem.discountedItems) {
-      let discountedCartItems = [];
-      for(let discountedItem of (cartItem.item.discountItems || [])) {
-        let discountedCartItem!:CartItem;
-        discountedCartItem.item = {...this.itemsDictionary[discountedItem.id]};
-        discountedCartItem.item.discountPercentage = discountedItem.discount;
-        discountedCartItem.item.maxQty = discountedItem.maxQty;
-        discountedCartItem.quanity = 0;
-        discountedCartItem.calucatedPrice = this.getItemPrice(discountedCartItem.item, 1);
-        discountedCartItems.push(discountedCartItem);
-      }
+      cartItem.discountedItems = this.getComboItems(cartItem.item.discountItems || []);
+      cartItem.freeItems = this.getComboItems(cartItem.item.freeItems || []);
     }
   }
 
+  /**
+   * @Author Sumeet Sood
+   * @Desc Creates combo ite for cartItem
+   */
+  getComboItems(itemDetails: {id: number, discount?: number, maxQty: number}[]) {
+
+    let comboItems = [];
+      for(let itemDetail of itemDetails) {
+        let discountedCartItem!:CartItem;
+        discountedCartItem.item = {...this.itemsDictionary[itemDetail.id]};
+        discountedCartItem.item.discountPercentage = itemDetail.discount || 100;
+        discountedCartItem.item.maxQty = itemDetail.maxQty;
+        discountedCartItem.quanity = 0;
+        discountedCartItem.calucatedPrice = itemDetail.discount ? this.getItemPrice(discountedCartItem.item, 1): 0;
+        comboItems.push(discountedCartItem);
+      }
+      return comboItems;
+  }
+
+  /**
+   * @Author Sumeet Sood
+   * @Desc Calculates the price of cartItem(combo price) and updates the total money to be paid
+   * @When Quanity of item or combo price of tem is updated
+   */
   updateCart(cartItem:CartItem) {
     let oldprice = (this.addedCartItems.get(cartItem.item.id)?.calucatedPrice) || 0;
     if(cartItem.quanity) {
@@ -63,21 +81,25 @@ export class CartService {
       let discountedItemsPrice = 0;
       if(cartItem.discountedItems) {
         for(let discountedItem of cartItem.discountedItems) {
-          if(discountedItem.quanity > 0) discountedItemsPrice += this.getItemPrice(discountedItem.item, discountedItem.quanity);
+          discountedItemsPrice += (discountedItem.quanity * discountedItem.calucatedPrice);
         }
       }
-      
       this.totalPrice = this.totalPrice - oldprice + itemPrice + discountedItemsPrice;
       cartItem.calucatedPrice = itemPrice + discountedItemsPrice;
       this.addedCartItems.set(cartItem.item.id, cartItem);
     }
+    //it means item is removed from cart
     else {
       this.totalPrice -= oldprice;
       this.addedCartItems.delete(cartItem.item.id);
     }
+    console.log(this.totalPrice);
   }
 
-
+  /**
+   * @Author Sumeet Sood
+   * @Desc Calculates the price of item after applying tax and discount
+   */
   getItemPrice(item:Item, qty: number) {
     let orignalPrice = item.price;
     if(item.discountPercentage) {

@@ -8,11 +8,11 @@ export interface CartItem {
     */
     quanity: number;
     /* 
-    In Case of main item it is combo price
-    In Case of combo items this is price after discount
+    In Case of main item it is main item + discouted item price, depends on quanity
+    In Case of combo items this is price of 1 item after discount
     */
     calucatedPrice: number;
     //id, quanity
-    freeItemsDetails?: CartItem[];
+    freeItems?: CartItem[];
     discountedItems?: CartItem[];
 }
