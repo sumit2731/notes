@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CartItem, Item} from  '../models';
 import {Items} from '../data/items';
+import { ItemComponent } from '../item/item.component';
 
 @Injectable({
   providedIn: 'root'
@@ -58,13 +59,13 @@ export class CartService {
 
     let comboItems = [];
       for(let itemDetail of itemDetails) {
-        let discountedCartItem!:CartItem;
+        let discountedCartItem: Partial<CartItem> = {};
         discountedCartItem.item = {...this.itemsDictionary[itemDetail.id]};
         discountedCartItem.item.discountPercentage = itemDetail.discount || 100;
         discountedCartItem.item.maxQty = itemDetail.maxQty;
         discountedCartItem.quanity = 0;
-        discountedCartItem.calucatedPrice = itemDetail.discount ? this.getItemPrice(discountedCartItem.item, 1): 0;
-        comboItems.push(discountedCartItem);
+        discountedCartItem.calucatedPrice = itemDetail.discount ? Math.floor(this.getDiscountedPrice(discountedCartItem.item.price, discountedCartItem.item.discountPercentage)): 0;
+        comboItems.push(discountedCartItem as CartItem);
       }
       return comboItems;
   }
@@ -77,11 +78,13 @@ export class CartService {
   updateCart(cartItem:CartItem) {
     let oldprice = (this.addedCartItems.get(cartItem.item.id)?.calucatedPrice) || 0;
     if(cartItem.quanity) {
-      let itemPrice = this.getItemPrice(cartItem.item, cartItem.quanity);
+      //let itemPrice = this.getItemPrice(cartItem.item, cartItem.quanity);
+      let itemPrice = this.getPriceAftertax(cartItem.item.price,cartItem.item.taxPercent);
       let discountedItemsPrice = 0;
       if(cartItem.discountedItems) {
         for(let discountedItem of cartItem.discountedItems) {
-          discountedItemsPrice += (discountedItem.quanity * discountedItem.calucatedPrice);
+          let priceAfterTax = this.getPriceAftertax(discountedItem.calucatedPrice, discountedItem.item.taxPercent);
+          discountedItemsPrice += (discountedItem.quanity * priceAfterTax);
         }
       }
       this.totalPrice = this.totalPrice - oldprice + itemPrice + discountedItemsPrice;
@@ -108,5 +111,12 @@ export class CartService {
     let taxedpriced = orignalPrice*(1 + (item.taxPercent/100));
     return taxedpriced * qty;
   }
+  getDiscountedPrice(price: number, discountPercentage: number) {
+    return price*(1-(discountPercentage/100));
+  }
+  getPriceAftertax(price: number, taxPercentage: number) {
+    return price*(1 + (taxPercentage/100));
+  }
+  //getPriceAfterTax(price, tax) {}
 
 }

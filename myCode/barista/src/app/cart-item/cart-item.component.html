@@ -5,13 +5,18 @@
         <div class="item-desc">{{cartItem.item.desc}}</div>
         <button (click)="getComboDetails()" *ngIf="showComboButton">See Combo</button>
 
-        <div class="discount-items-container">
+        <div class="combo-items-container">
+            
             <div *ngFor="let discountItem of discountItems;let i=index;">
-                <span>{{discountItem.item.name}} at</span>
-                <span class="orignal-price">{{discountItem.item.price}}</span>
-                <span>{{discountItem.calucatedPrice}}</span>
-                <input [(ngModel)]="discountItemsQty[i]" type="text">
+                <ng-container  *ngTemplateOutlet="comboItemTemplate;context:{item:discountItem}"></ng-container>
+                <input type="text" [(ngModel)]="discountItemsQty[i]">
             </div>
+            
+            <div *ngFor="let freeItem of freeItems; let i = index">
+                <ng-container *ngTemplateOutlet="comboItemTemplate;context: {item: freeItem}"></ng-container>
+                <input type="text" [(ngModel)]="freeItemsQty[i]">
+            </div>
+
         </div>
         
     </div>
@@ -25,3 +30,9 @@
 </div>
 
 <div class="bottom-border"></div>
+
+<ng-template #comboItemTemplate let-item="item">
+    <span>{{item.item.name}}</span>
+    <span class="orignal-price">{{item.item.price}}</span>
+    <span class="discount-price">{{item.calucatedPrice}}</span>
+</ng-template>

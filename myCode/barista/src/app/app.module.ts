@@ -7,6 +7,7 @@ import { ItemComponent } from './item/item.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { FormsModule } from '@angular/forms';
 import { CartItemsComponent } from './cart-items/cart-items.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes = [
@@ -20,7 +21,8 @@ const routes = [
     AppComponent,
     ItemComponent,
     CartItemComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

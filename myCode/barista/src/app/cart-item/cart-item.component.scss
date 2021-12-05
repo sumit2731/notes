@@ -6,6 +6,7 @@
 
 .item-name {
     margin-right: 4px;
+    margin-top: 0;
     color: #3e4152;
     word-break: break-word;
     text-transform: capitalize;
@@ -22,14 +23,29 @@
     color: rgba(40, 44, 63, 0.45);
 }
 
+.combo-items-container span {
+    display: inline-block;
+    width: 20%;
+}
+
 .orignal-price {
     text-decoration: line-through;
+}
+
+.discount-price::before {
+    content: "\20B9";
+}
+
+.discount-price {
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between ;
 }
 
 input {
