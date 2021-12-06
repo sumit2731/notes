@@ -1,7 +1,7 @@
 .item-container {
     display: flex;
     justify-content: space-between;
-    padding: 45px;
+    padding: 20px;
 }
 
 .item-name {
@@ -21,6 +21,7 @@
 
 .item-desc {
     color: rgba(40, 44, 63, 0.45);
+    max-width: 500px;;
 }
 
 .combo-items-container span {
@@ -55,7 +56,7 @@ input {
 
 .bottom-border {
     border: .5px solid #d4d5d9;
-    margin: 0 45px;
+    margin: 0 20px;
 }
 
 
