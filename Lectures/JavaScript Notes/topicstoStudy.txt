@@ -1,3 +1,12 @@
+Interview Questions -
+
+    1)what is best way to remove the component from angular.
+        a)embedded view vs host view
+        b)bootstraped component is in embedde view or host view
+    2)how would you improve the performance of your application - angular vs well as vanilla.
+        how to load images? images sprites
+    3)how do you peform authentication? auth0, auth1?
+    4)generator functions
 Javascript -
     
     mutation observable
