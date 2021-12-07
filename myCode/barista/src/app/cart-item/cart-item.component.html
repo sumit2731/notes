@@ -2,7 +2,7 @@
     <div class="name-container">
         <h2 class="item-name">{{cartItem.item.name}}</h2>
         <h3 class="item-price">{{cartItem.item.price}}</h3>
-        <div class="item-desc">{{cartItem.item.desc}}</div>
+        <div class="item-desc" *ngIf="detailDesc">{{cartItem.item.desc}}</div>
         <button (click)="getComboDetails()" *ngIf="showComboButton">See Combo</button>
 
         <div class="combo-items-container">
@@ -22,7 +22,7 @@
     </div>
     
     <div class="image-container">
-        <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ubdbvosfml69yx55gzmd">
+        <img *ngIf="detailDesc" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ubdbvosfml69yx55gzmd">
         <input [(ngModel)]="itemQty" type="text">
         <button (click)="updateCart(cartItem)">Update</button>
     </div>

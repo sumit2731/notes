@@ -1,5 +1,15 @@
-<!-- <div class="item-container">
-    <app-cart-item [cartItem]="cartItem" (updateCartItem)="updateCart($event)" *ngFor="let cartItem of cartItems"></app-cart-item>
-</div> -->
+<div class="cart-container">
+    <h1>Cart</h1>
+    
+    <div class="items-container">
+        <app-cart-item *ngFor="let cartItem of cartItems.values()" [cartItem]="cartItem" [detailDesc]="false" 
+            (updateCartItem)="updateCart($event)">
 
-<h1>Cart</h1>
+        </app-cart-item>
+    </div>
+
+    <div class="price-container">
+        <span>Total Amount:</span> <span>{{cartService.totalPrice}}</span>
+    </div>
+    
+</div>

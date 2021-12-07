@@ -10,6 +10,7 @@ import { CartService } from '../services/cart.service';
 export class CartItemComponent implements OnInit {
   @Input() cartItem:CartItem;
   @Output() updateCartItem = new EventEmitter<CartItem>();
+  @Input() detailDesc = true;
   discountItems: CartItem[];
   freeItems: CartItem[];
   itemQty:number;
