@@ -13,10 +13,15 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItems = this.cartService.menuItems;
+    this.cartService.updateMenuItem.subscribe(cartItem => this.updateMenuItem(cartItem));
   }
 
   updateCart(cartItem: CartItem) {
     this.cartService.updateCart(cartItem);
+  }
+  updateMenuItem(cartItem:CartItem) {
+    let menuItemIndex = this.cartService.itemsMenuMap[cartItem.item.id];
+    this.cartItems[menuItemIndex] = {...cartItem};
   }
 
 }

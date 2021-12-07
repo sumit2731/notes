@@ -16,9 +16,6 @@ export class CartComponent implements OnInit {
   }
   
   cartUpdated(cartItem: CartItem) {
-    this.cartService.updateCart(cartItem);
+    this.cartService.updateCart(cartItem, true);
   }
-
-  updateFromCart() {}
-
 }

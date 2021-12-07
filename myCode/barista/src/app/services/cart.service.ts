@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CartItem, Item} from  '../models';
 import {Items} from '../data/items';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +9,14 @@ import {Items} from '../data/items';
 export class CartService {
   /**
    * @Author Sumeet Sood
-   * @Desc This is map which stores all items added in Cart
-   * @param {string} key - key of mainItem
-   * @param {CartItem} cartItem - actual cart item.
+   * @Desc This is items which are added in cart
    */
-  addedCartItems: Map<number,CartItem> = new Map();
-
   cartItems:CartItem[] = [];
   /**
    * @Author Sumeet Sood
-   * @Desc property is item id, index is index in cartItems
+   * @Desc property is item id, value is index in cartItems
    */
-     itemsCartMap: any = {};
+  itemsCartMap: any = {};
   /**
    * @Author Sumeet Sood
    * @Desc These are all items converted into menuItems
@@ -35,8 +32,9 @@ export class CartService {
    * @Desc property is item id and value is index in menuItems
    * @Not needed as there will be one to one mapping
    */
-  itemsMenuItemMap: any = {};
+  itemsMenuMap: any = {};
   totalPrice = 0;
+  updateMenuItem = new Subject<CartItem>();
 
 
   constructor() {
@@ -51,7 +49,7 @@ export class CartService {
 
   setMenuItems(items: Item[]) {
     for(let i = 0; i< items.length; i++) {
-      this.itemsMenuItemMap[items[i].id] = i;
+      this.itemsMenuMap[items[i].id] = i;
       this.menuItems.push({item: items[i],quanity:0, calucatedPrice: 0})
     }
   }
@@ -81,7 +79,7 @@ export class CartService {
         discountedCartItem.item.discountPercentage = itemDetail.discount || 100;
         discountedCartItem.item.maxQty = itemDetail.maxQty;
         discountedCartItem.quanity = 0;
-        discountedCartItem.calucatedPrice = itemDetail.discount ? Math.floor(this.getDiscountedPrice(discountedCartItem.item.price, discountedCartItem.item.discountPercentage)): 0;
+        discountedCartItem.calucatedPrice = itemDetail.discount ? Math.ceil(this.getDiscountedPrice(discountedCartItem.item.price, discountedCartItem.item.discountPercentage)): 0;
         comboItems.push(discountedCartItem as CartItem);
       }
       return comboItems;
@@ -90,58 +88,55 @@ export class CartService {
   /**
    * @Author Sumeet Sood
    * @Desc Calculates the price of cartItem(combo price) and updates the total money to be paid
-   * @When Quanity of item or combo price of tem is updated
+   * @When Quanity of item or combo price of item is updated
    */
-  updateCart(cartItem:CartItem) {
-    let isUpdated = !!this.itemsCartMap[cartItem.item.id];
-    let oldprice = 0;
-    if(isUpdated) {
-      oldprice = this.cartItems[this.itemsCartMap[cartItem.item.id]-1].calucatedPrice
-    }
-    if(cartItem.quanity) {
-      //let itemPrice = this.getItemPrice(cartItem.item, cartItem.quanity);
-      let itemPrice = this.getPriceAftertax(cartItem.item.price,cartItem.item.taxPercent);
-      let discountedItemsPrice = 0;
-      if(cartItem.discountedItems) {
-        for(let discountedItem of cartItem.discountedItems) {
-          let priceAfterTax = this.getPriceAftertax(discountedItem.calucatedPrice, discountedItem.item.taxPercent);
-          discountedItemsPrice += (discountedItem.quanity * priceAfterTax);
-        }
-      }
-      this.totalPrice = this.totalPrice - oldprice + itemPrice + discountedItemsPrice;
-      cartItem.calucatedPrice = itemPrice + discountedItemsPrice;
-      if(isUpdated) {
-        let index = this.itemsCartMap[cartItem.item.id]-1;
+  updateCart(cartItem: CartItem, updateMenu:boolean = false) {
+    let index = this.itemsCartMap[cartItem.item.id] - 1;
+    let oldPrice;
+    //If item is alredy in cart
+    if(index || (index === 0)) {
+      oldPrice = this.cartItems[this.itemsCartMap[cartItem.item.id]-1].calucatedPrice;
+      //quanity is getting updated
+      if(cartItem.quanity) {
+        cartItem.calucatedPrice = this.getComboPrice(cartItem);
+        this.totalPrice = this.totalPrice - oldPrice + cartItem.calucatedPrice;
         this.cartItems[index] = {...cartItem};
       }
+      //item was already added in cart, now qunaity is updated to 0
       else {
-        this.itemsCartMap[cartItem.item.id] = this.cartItems.length + 1;
-        this.cartItems.push({...cartItem});
-      } 
+        this.totalPrice -= oldPrice;
+        this.cartItems.splice(index,1);
+        delete this.itemsCartMap[index];
+      }
     }
-    //it means item is removed from cart
+    //if item is not added in cart
     else {
-      this.totalPrice -= oldprice;
-      let index = this.itemsCartMap[cartItem.item.id]-1;
-      this.cartItems.splice(index,1);
+      // If item is being added in cart(qunaity is non zero)
+      if(cartItem.quanity) {
+        cartItem.calucatedPrice = this.getComboPrice(cartItem);
+        this.totalPrice = this.totalPrice + cartItem.calucatedPrice;
+        this.cartItems.push({...cartItem});
+        this.itemsCartMap[cartItem.item.id] = this.cartItems.length;
+
+      }
     }
     console.log(this.totalPrice);
     console.log(this.cartItems);
+    if(updateMenu) {
+      this.updateMenuItem.next(cartItem);
+    }
   }
 
-  updateFromCart(cartItem:CartItem) {}
-
-  /**
-   * @Author Sumeet Sood
-   * @Desc Calculates the price of item after applying tax and discount
-   */
-  getItemPrice(item:Item, qty: number) {
-    let orignalPrice = item.price;
-    if(item.discountPercentage) {
-      orignalPrice = orignalPrice*(1 - (item.discountPercentage/100))
+  getComboPrice(cartItem: CartItem) {
+    let itemPrice = this.getPriceAftertax(cartItem.item.price,cartItem.item.taxPercent);
+    let discountedItemsPrice = 0;
+    if(cartItem.discountedItems) {
+      for(let discountedItem of cartItem.discountedItems) {
+        let priceAfterTax = this.getPriceAftertax(discountedItem.calucatedPrice, discountedItem.item.taxPercent);
+        discountedItemsPrice += (discountedItem.quanity * priceAfterTax);
+      }
     }
-    let taxedpriced = orignalPrice*(1 + (item.taxPercent/100));
-    return taxedpriced * qty;
+    return Math.floor((itemPrice *cartItem.quanity) + discountedItemsPrice);
   }
   getDiscountedPrice(price: number, discountPercentage: number) {
     return price*(1-(discountPercentage/100));
@@ -149,6 +144,4 @@ export class CartService {
   getPriceAftertax(price: number, taxPercentage: number) {
     return price*(1 + (taxPercentage/100));
   }
-  //getPriceAfterTax(price, tax) {}
-
 }
