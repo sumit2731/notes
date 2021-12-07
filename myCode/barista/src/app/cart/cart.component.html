@@ -2,14 +2,15 @@
     <h1>Cart</h1>
     
     <div class="items-container">
-        <app-cart-item *ngFor="let cartItem of cartItems.values()" [cartItem]="cartItem" [detailDesc]="false" 
+        <app-menu-item *ngFor="let cartItem of cartItems.values()" [cartItem]="cartItem" [detailDesc]="false" 
             (updateCartItem)="updateCart($event)">
 
-        </app-cart-item>
+        </app-menu-item>
     </div>
 
     <div class="price-container">
-        <span>Total Amount:</span> <span>{{cartService.totalPrice}}</span>
+        <h3>Total Amount:</h3> 
+        <h3 class="amount">{{cartService.totalPrice}}</h3>
     </div>
     
 </div>

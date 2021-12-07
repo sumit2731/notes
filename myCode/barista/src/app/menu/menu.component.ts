@@ -3,16 +3,16 @@ import { CartItem } from '../models';
 import { CartService } from '../services/cart.service';
 
 @Component({
-  selector: 'app-cart-items',
-  templateUrl: './cart-items.component.html',
-  styleUrls: ['./cart-items.component.scss']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
-export class CartItemsComponent implements OnInit {
+export class MenuComponent implements OnInit {
   cartItems:CartItem[];
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.allCartItems;
+    this.cartItems = this.cartService.menuItems;
   }
 
   updateCart(cartItem: CartItem) {

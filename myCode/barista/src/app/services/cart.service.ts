@@ -17,16 +17,23 @@ export class CartService {
    * @Author Sumeet Sood
    * @Desc These are all items converted into cartItems
    */
-  allCartItems: CartItem[] = [];
+  menuItems: CartItem[] = [];
   /**
    * @Author Sumeet Sood
    * @Desc stores all items by key
    */
   itemsDictionary: { [key: string]: Item } = {};
+  /**
+   * @Author Sumeet Sood
+   * @Desc property is item id and value is index in menuItems
+   */
+  itemsMenuItemMap: any = {};
   totalPrice = 0;
+
+
   constructor() {
     this.setItemsDictionary(Items);
-    this.setAllCartItems(Items);
+    this.setMenuItems(Items);
   }
 
   setItemsDictionary(items: Item[]) {
@@ -34,8 +41,11 @@ export class CartService {
    
   }
 
-  setAllCartItems(items: Item[]) {
-    for(let item of items) this.allCartItems.push({item, quanity:0, calucatedPrice: 0});
+  setMenuItems(items: Item[]) {
+    for(let i = 0; i< items.length; i++) {
+      this.itemsMenuItemMap[items[i].id] = i;
+      this.menuItems.push({item: items[i],quanity:0, calucatedPrice: 0})
+    }
   }
 
   /**

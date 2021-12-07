@@ -32,7 +32,10 @@
 <div class="bottom-border"></div>
 
 <ng-template #comboItemTemplate let-item="item">
-    <span>{{item.item.name}}</span>
-    <span class="orignal-price">{{item.item.price}}</span>
-    <span class="discount-price">{{item.calucatedPrice}}</span>
+    <!-- <div class="combo-container"> -->
+        <span>{{item.item.name}}</span>
+        <span class="orignal-price">{{item.item.price}}</span>
+        <span class="discount-price">{{item.calucatedPrice}}</span>
+    <!-- </div> -->
+  
 </ng-template>

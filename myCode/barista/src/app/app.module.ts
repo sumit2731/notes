@@ -3,12 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { ItemComponent } from './item/item.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 import { FormsModule } from '@angular/forms';
-import { CartItemsComponent } from './cart-items/cart-items.component';
+import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
-import { FilterItemsPipe } from './filter-items.pipe';
 
 
 const routes = [
@@ -20,11 +18,9 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    //ItemComponent,
-    CartItemComponent,
-    CartItemsComponent,
+    MenuItemComponent,
+    MenuComponent,
     CartComponent,
-    FilterItemsPipe
   ],
   imports: [
     BrowserModule,

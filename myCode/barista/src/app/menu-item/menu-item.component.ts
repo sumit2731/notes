@@ -3,11 +3,11 @@ import { CartItem } from '../models';
 import { CartService } from '../services/cart.service';
 
 @Component({
-  selector: 'app-cart-item',
-  templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.scss']
+  selector: 'app-menu-item',
+  templateUrl: './menu-item.component.html',
+  styleUrls: ['./menu-item.component.scss']
 })
-export class CartItemComponent implements OnInit {
+export class MenuItemComponent implements OnInit {
   @Input() cartItem:CartItem;
   @Output() updateCartItem = new EventEmitter<CartItem>();
   @Input() detailDesc = true;
@@ -18,6 +18,7 @@ export class CartItemComponent implements OnInit {
   freeItemsQty: number[] = [];
   showComboButton = false;
   comboOpened = false;
+  
   
   //@Output() updateCart = new EventEmitter<CartItem>();
   constructor(private cartService:CartService) { }
@@ -39,7 +40,13 @@ export class CartItemComponent implements OnInit {
     for(let i = 0; i< this.discountItems.length; i++) this.discountItemsQty[i] = this.discountItems[i].quanity;
     for(let i = 0; i< this.freeItems.length; i++) this.freeItemsQty[i] = this.freeItems[i].quanity;
   }
-
+  
+  // isComboAvalaible() {
+  //   let itemsAttcahed = (this.cartItem.discountedItems ||  this.cartItem.freeItems);
+  //   let itemsAvalible = ((this.cartItem.item.discountItems || []).length > 0) || ((this.cartItem.item.freeItems || []).length > 0);
+  //   this.showComboButton = (!itemsAttcahed && !itemsAvalible);
+  // }
+  
   getComboDetails() {
     this.cartService.addComboDetails(this.cartItem);
     this.setComboDetails();
