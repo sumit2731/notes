@@ -10,7 +10,7 @@ import { CartService } from '../services/cart.service';
 export class MenuItemComponent implements OnInit {
   @Input() cartItem:CartItem;
   @Output() updateCartItem = new EventEmitter<CartItem>();
-  @Input() detailDesc = true;
+  @Input() isMenuItem = true;
   discountItems: CartItem[];
   freeItems: CartItem[];
   itemQty:number;
@@ -26,7 +26,7 @@ export class MenuItemComponent implements OnInit {
   ngOnInit(): void {
     
     this.setComboDetails();
-    this.showComboButton = (this.cartItem.item.discountItems || this.cartItem.item.freeItems || []).length > 0;
+    this.showComboButton = this.isComboAvalaible();
   }
 
   setComboDetails() {
@@ -41,11 +41,13 @@ export class MenuItemComponent implements OnInit {
     for(let i = 0; i< this.freeItems.length; i++) this.freeItemsQty[i] = this.freeItems[i].quanity;
   }
   
-  // isComboAvalaible() {
-  //   let itemsAttcahed = (this.cartItem.discountedItems ||  this.cartItem.freeItems);
-  //   let itemsAvalible = ((this.cartItem.item.discountItems || []).length > 0) || ((this.cartItem.item.freeItems || []).length > 0);
-  //   this.showComboButton = (!itemsAttcahed && !itemsAvalible);
-  // }
+  isComboAvalaible() {
+    let itemsAttcahed = (this.cartItem.discountedItems ||  this.cartItem.freeItems);
+    let itemsAvalible = ((this.cartItem.item.discountItems || []).length > 0) || ((this.cartItem.item.freeItems || []).length > 0);
+    return itemsAvalible && !itemsAttcahed;
+  }
+
+  
   
   getComboDetails() {
     this.cartService.addComboDetails(this.cartItem);

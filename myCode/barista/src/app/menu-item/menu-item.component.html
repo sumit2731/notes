@@ -1,8 +1,9 @@
 <div class="item-container">
+    
     <div class="name-container">
         <h2 class="item-name">{{cartItem.item.name}}</h2>
-        <h3 class="item-price">{{cartItem.item.price}}</h3>
-        <div class="item-desc" *ngIf="detailDesc">{{cartItem.item.desc}}</div>
+        <h3 class="item-price indian-price">{{cartItem.item.price}}</h3>
+        <div class="item-desc" *ngIf="isMenuItem">{{cartItem.item.desc}}</div>
         <button (click)="getComboDetails()" *ngIf="showComboButton">See Combo</button>
 
         <div class="combo-items-container">
@@ -22,20 +23,28 @@
     </div>
     
     <div class="image-container">
-        <img *ngIf="detailDesc" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ubdbvosfml69yx55gzmd">
+        <img *ngIf="isMenuItem" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/ubdbvosfml69yx55gzmd">
         <input [(ngModel)]="itemQty" type="text">
         <button (click)="updateCart(cartItem)">Update</button>
     </div>
 
 </div>
 
+
+<div class="price-conatiner indian-price" *ngIf="!isMenuItem"> 
+    
+    {{cartItem.calucatedPrice}}
+    
+</div>
+
+
+
 <div class="bottom-border"></div>
 
 <ng-template #comboItemTemplate let-item="item">
-    <!-- <div class="combo-container"> -->
+
         <span>{{item.item.name}}</span>
         <span class="orignal-price">{{item.item.price}}</span>
-        <span class="discount-price">{{item.calucatedPrice}}</span>
-    <!-- </div> -->
+        <span class="indian-price">{{item.calucatedPrice}}</span>
   
 </ng-template>

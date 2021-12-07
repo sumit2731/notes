@@ -38,18 +38,14 @@ export class CartService {
 
 
   constructor() {
-    this.setItemsDictionary(Items);
-    this.setMenuItems(Items);
+    this.setData(Items);
   }
 
-  setItemsDictionary(items: Item[]) {
-   for(let item of items) this.itemsDictionary[item.id] = item
-   
-  }
-
-  setMenuItems(items: Item[]) {
+  setData(items: Item[]) {
     for(let i = 0; i< items.length; i++) {
-      this.itemsMenuMap[items[i].id] = i;
+      let item = items[i];
+      this.itemsMenuMap[item.id] = i;
+      this.itemsDictionary[item.id] = item
       this.menuItems.push({item: items[i],quanity:0, calucatedPrice: 0})
     }
   }
@@ -68,7 +64,7 @@ export class CartService {
 
   /**
    * @Author Sumeet Sood
-   * @Desc Creates combo ite for cartItem
+   * @Desc Creates combo item for cartItem
    */
   getComboItems(itemDetails: {id: number, discount?: number, maxQty: number}[]) {
 
@@ -87,7 +83,9 @@ export class CartService {
 
   /**
    * @Author Sumeet Sood
-   * @Desc Calculates the price of cartItem(combo price) and updates the total money to be paid
+   * @Desc Calculates the price of cartItem(combo price) ,updates the total money to be paid, synsmenu qunaity if required
+   * @param cartItem item added or removed in cart
+   * @param updatedMenu whther menu needs to be synced
    * @When Quanity of item or combo price of item is updated
    */
   updateCart(cartItem: CartItem, updateMenu:boolean = false) {
@@ -120,8 +118,6 @@ export class CartService {
 
       }
     }
-    console.log(this.totalPrice);
-    console.log(this.cartItems);
     if(updateMenu) {
       this.updateMenuItem.next(cartItem);
     }

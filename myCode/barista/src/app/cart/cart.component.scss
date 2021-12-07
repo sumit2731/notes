@@ -13,12 +13,8 @@
 
 .price-container {
     flex-shrink: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-right:20px;
+    margin-left: 20px;
     display: flex;
     justify-content: space-between;
-}
-
-.amount::before {
-    content: "\20B9";
 }

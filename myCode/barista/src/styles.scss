@@ -6,3 +6,11 @@ body{
     margin: 0px;
     height: 100vh;
 }
+
+.indian-price::before {
+    content: "\20B9";
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
