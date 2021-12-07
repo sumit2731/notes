@@ -8,15 +8,17 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartItems:Map<number,CartItem> = new Map();
+  cartItems: CartItem[] = [];
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.addedCartItems;
+    this.cartItems = this.cartService.cartItems;
   }
-
-  updateCart(cartItem: CartItem) {
+  
+  cartUpdated(cartItem: CartItem) {
     this.cartService.updateCart(cartItem);
   }
+
+  updateFromCart() {}
 
 }

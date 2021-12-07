@@ -2,8 +2,8 @@
     <h1>Cart</h1>
     
     <div class="items-container">
-        <app-menu-item *ngFor="let cartItem of cartItems.values()" [cartItem]="cartItem" [detailDesc]="false" 
-            (updateCartItem)="updateCart($event)">
+        <app-menu-item *ngFor="let cartItem of cartItems" [cartItem]="cartItem" [detailDesc]="false" 
+            (updateCartItem)="cartUpdated($event)">
 
         </app-menu-item>
     </div>

@@ -13,9 +13,16 @@ export class CartService {
    * @param {CartItem} cartItem - actual cart item.
    */
   addedCartItems: Map<number,CartItem> = new Map();
+
+  cartItems:CartItem[] = [];
   /**
    * @Author Sumeet Sood
-   * @Desc These are all items converted into cartItems
+   * @Desc property is item id, index is index in cartItems
+   */
+     itemsCartMap: any = {};
+  /**
+   * @Author Sumeet Sood
+   * @Desc These are all items converted into menuItems
    */
   menuItems: CartItem[] = [];
   /**
@@ -26,6 +33,7 @@ export class CartService {
   /**
    * @Author Sumeet Sood
    * @Desc property is item id and value is index in menuItems
+   * @Not needed as there will be one to one mapping
    */
   itemsMenuItemMap: any = {};
   totalPrice = 0;
@@ -85,7 +93,11 @@ export class CartService {
    * @When Quanity of item or combo price of tem is updated
    */
   updateCart(cartItem:CartItem) {
-    let oldprice = (this.addedCartItems.get(cartItem.item.id)?.calucatedPrice) || 0;
+    let isUpdated = !!this.itemsCartMap[cartItem.item.id];
+    let oldprice = 0;
+    if(isUpdated) {
+      oldprice = this.cartItems[this.itemsCartMap[cartItem.item.id]-1].calucatedPrice
+    }
     if(cartItem.quanity) {
       //let itemPrice = this.getItemPrice(cartItem.item, cartItem.quanity);
       let itemPrice = this.getPriceAftertax(cartItem.item.price,cartItem.item.taxPercent);
@@ -98,15 +110,26 @@ export class CartService {
       }
       this.totalPrice = this.totalPrice - oldprice + itemPrice + discountedItemsPrice;
       cartItem.calucatedPrice = itemPrice + discountedItemsPrice;
-      this.addedCartItems.set(cartItem.item.id, cartItem);
+      if(isUpdated) {
+        let index = this.itemsCartMap[cartItem.item.id]-1;
+        this.cartItems[index] = {...cartItem};
+      }
+      else {
+        this.itemsCartMap[cartItem.item.id] = this.cartItems.length + 1;
+        this.cartItems.push({...cartItem});
+      } 
     }
     //it means item is removed from cart
     else {
       this.totalPrice -= oldprice;
-      this.addedCartItems.delete(cartItem.item.id);
+      let index = this.itemsCartMap[cartItem.item.id]-1;
+      this.cartItems.splice(index,1);
     }
     console.log(this.totalPrice);
+    console.log(this.cartItems);
   }
+
+  updateFromCart(cartItem:CartItem) {}
 
   /**
    * @Author Sumeet Sood

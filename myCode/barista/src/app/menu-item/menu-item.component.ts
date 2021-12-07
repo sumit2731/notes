@@ -55,16 +55,16 @@ export class MenuItemComponent implements OnInit {
 
   updateCart(cartItem:CartItem) {
     
-    this.cartItem.quanity = this.itemQty;
+    this.cartItem.quanity = +this.itemQty;
     
     for(let i = 0; i< (cartItem.discountedItems || []).length; i++) {
       let discountedItem = ((cartItem?.discountedItems) || [])[i];
-      discountedItem.quanity = this.discountItemsQty[i];
+      discountedItem.quanity = +this.discountItemsQty[i];
     }
 
     for(let i = 0; i< (cartItem.freeItems || []).length; i++) {
       let freeItem = ((cartItem?.freeItems) || [])[i];
-      freeItem.quanity = this.freeItemsQty[i];
+      freeItem.quanity = +this.freeItemsQty[i];
     }
 
     this.updateCartItem.emit(cartItem);
