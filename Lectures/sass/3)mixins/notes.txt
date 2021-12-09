@@ -19,7 +19,8 @@ code snippets -
             padding: 8px 12px;
         }
 
-    Syntax 2(instead of using font-size) - 
+    Syntax 2(Instead of using font-size, we cab use this synntax,
+        this is scss syntax nothing related to mixins) - 
 
         @mixin large-text {
             font: {
@@ -90,7 +91,7 @@ code snippets -
 
     Syntax 9(passing content to mixin) -
 
-        @mixin apply-toie-6 {
+        @mixin apply-to-ie-6 {
             * html {
                 @content;
             }
