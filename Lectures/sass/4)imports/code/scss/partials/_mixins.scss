@@ -6,7 +6,7 @@
   you're using css imports.So you're not allowed to import SPSS files based on 
   some variable name.
   */
-  @import url("https://fonts.googleapis.com/css?family=#{$font}")
+  @import url("https://fonts.googleapis.com/css?family=#{$font}");
 }
 @mixin warning {
   background-color: orange;

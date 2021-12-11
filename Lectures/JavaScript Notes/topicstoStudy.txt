@@ -21,6 +21,8 @@ Javascript -
 
 
 Angular - 
+
+
     1)Chnags that Ivy Brings
     1)custom preloading strategies.
     2)Why use dynamic component
@@ -28,8 +30,15 @@ Angular -
     4)lazy load styles in angular
 
 
+CSS -
 
-    Questions -
+    1)cross compatibility
+    2)css resets, normalize reset - used to get rid of browser compatibility
+    3)CSS Vendor Prefixes
+
+
+
+Questions -
 
     1)How to make sure tat 2 instances of same service is not getting created-
     a)forRoot of module

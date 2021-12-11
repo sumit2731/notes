@@ -45,8 +45,7 @@
             width: auto;
             max-width: 960;
         }
-  
-     }
+    }
 
     now we can change size(960px) at one place and it will reflect all over place.
 

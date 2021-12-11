@@ -3,13 +3,23 @@ Cases where scss import is same as css import i.e these will ve translated into 
     @import url() => @import url("navigation.css");
     @import "http://"
     @import "filename.css" => @import "navigation.css"
-    @import "style-screen" screen; = > @import "mobstyle.css" screen and (max-width: 768px); this means consitionally import this file
+    @import "style-screen" screen; = > @import "mobstyle.css" screen and (max-width: 768px); 
+
+        this means import the "mobstyle.css" style sheet ONLY if the media is screen and the viewport is maximum 768 pixels:
+
+
 
 How sccss enhanes @imports, it allows us to import scss files -
 
- @import "varibales"
+ 1)@import "varibales"
 
- this impots variables.scss as scss into this file. we dnt need to put "_" or ".scss" here.
+    this impots variables.scss as scss into this file. we dnt need to put "_" or ".scss" here.
+    it will look in same directory as the file in which code is written. in case file is located somewhere else,
+    we can use relative paths.
+
+    @import "folder1/variables";
+    or
+    @import "./folder1/variables";
 
 
  Code snippet -
@@ -24,6 +34,7 @@ How sccss enhanes @imports, it allows us to import scss files -
         some variable name.
         */
         @import url("https://fonts.googleapis.com/css?family=#{$font}")
+        #{$font} means use variable here
     }
 
     @include google-font("Alegreya+Sans");
