@@ -1,0 +1,7 @@
+:root {
+    --padding-width:20px;
+}
+
+.sood {
+    padding-left: var(--padding-width)
+}

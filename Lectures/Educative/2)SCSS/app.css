@@ -1,0 +1,12 @@
+:root {
+    --b_color: red;
+   
+}
+
+.sumit {
+    --length: 500px;
+    width: 100px;
+    height: var(--length);
+    background-color: var(--b_color);
+    /* background-color: red; */
+}

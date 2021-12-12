@@ -1,0 +1,24 @@
+We use the $ symbol when we wish to make something a variable.
+
+
+
+    $color-primary: #ffff00; // Yellow
+
+    body {
+    background-color: $color-primary;
+    }
+
+
+    Note: You can use single line comments in Sass with //.
+
+
+Advantage -
+
+This becomes extremely powerful when working on large projects!
+
+If you wish to make a change to a colour used throughout your stylesheets, it’s much simpler to alter if the color is defined in 
+    one location as a single variable.
+
+The alternative to changing the value of one variable defined at one location is finding and replacing every reference to the 
+    value you want to change. This is a much more tedious task, especially if you want to implement a quick change to test out a 
+    different color or font.
