@@ -1,0 +1,22 @@
+@mixin border-style($border-width, $border-style) {
+    border: $border-width $border-style blue;
+}
+
+@function inceraseBy($width, $inc) {
+    @return $width + $inc;
+}
+
+.sumit { 
+    height:100px;
+    width: 100px;
+    background-color:red;
+    @include border-style(inceraseBy(3px, 2px), solid);
+}
+
+.sood { 
+    @include border-style(inceraseBy(4px, 5px), dashed);
+    height:200px;
+    width: 200px;
+    background-color:yellow;
+}
+
