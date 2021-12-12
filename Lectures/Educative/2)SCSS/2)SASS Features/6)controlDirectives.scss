@@ -1,0 +1,82 @@
+/* 
+if-else
+*/
+@mixin heading($size) {
+    @if $size == large {
+      font-size: 4rem;
+    }
+    @else if $size == medium{
+      font-size: 3rem;
+    }
+    @else if $size == small {
+      font-size: 2rem;
+    }
+    @else {
+      font-size: 1rem;
+    }
+}
+   
+.h1 {
+    @include heading(large);
+}
+
+.h6 {
+    @include heading(small);
+}
+
+/* 
+for loop
+
+If we replace the through keyword with to, it makes the loop exclusive. The difference being that it won’t execute when the 
+variable is equal to end.
+
+@for $i from 1 to 5 {
+   .list-#{$i} {
+      width: 2px * $i;
+   }
+}
+*/
+
+@for $i from 1 through 5 {
+    
+    .list-#{$i} {
+        width: 2px * $i;
+    }
+
+}
+
+/* 
+css
+*/
+
+.list-1 {
+    margin-left: 2px; 
+}
+  
+.list-2 {
+    margin-left: 4px; 
+}
+
+.list-3 {
+    margin-left: 6px; 
+}
+
+.list-4 {
+    margin-left: 8px; 
+}
+
+.list-5 {
+    margin-left: 10px; 
+}
+
+/* 
+while loop
+*/
+
+$i: 1;
+@while $i < 6 {
+  .list-#{$i} {       
+     width: 2px * $i;   
+  }
+  $i: $i + 1;
+}

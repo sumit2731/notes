@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAeA,AAAA,MAAM,CAAC;EAJH,KAAS,EAKc,IAAI;EAJ3B,MAAS,EAI6B,IAAI;CAC7C;;AAED,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,GAAG;CAIb;;AAHI,AAAD,UAAM,CAAC;EACH,UAAU,EAAE,KAAK;CACpB;;AAGL;;;;;EAKE",
+    "sources": [
+        "../2)SASS Features/7)interpolation.scss"
+    ],
+    "names": [],
+    "file": "7)interpolation.css"
+}

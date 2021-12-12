@@ -1,0 +1,35 @@
+/* 
+In SASS a placeholder looks and acts a lot like a class selector, only it starts with a % and it’s not included in the CSS output.
+
+However, the preprocessor will skip %placeholder and it won’t be included in the final CSS file.
+
+difference from mixins and inheritance -
+    placeholders do not take arguments like  mixins. diffrence between mixin and placeholder see bookmark link.
+    difference between placeholder and inheritance - placeholder are not compiled to css , while in inheritaance selector from which we 
+    extend will be compiled to css.
+
+*/
+
+/* 
+scss -
+*/
+
+    %placeholder {
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        @extend %placeholder;
+    }
+    p {
+        @extend %placeholder;
+    }
+
+/* 
+css -
+*/
+
+body, p {
+    width: 100%;
+    height: 100%;
+}

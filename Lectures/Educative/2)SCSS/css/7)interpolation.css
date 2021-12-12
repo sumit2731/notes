@@ -1,0 +1,20 @@
+.sumit {
+  width: 20px;
+  height: 20px;
+}
+
+.sood {
+  color: red;
+}
+
+.sood-menu {
+  background: black;
+}
+
+/* 
+    Main reasons to use Interpolation #
+        We can use dynamically created names as a property name, a variable name or for other similar purposes.
+
+        We can create highly reusable code!
+*/
+/*# sourceMappingURL=7)interpolation.css.map */

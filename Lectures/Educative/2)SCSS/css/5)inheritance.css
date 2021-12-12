@@ -1,0 +1,44 @@
+/* 
+scss -
+*/
+.button, .button-secondary, .button-terninary {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.button-secondary {
+  background-color: #4CAF50;
+}
+
+.button-terninary {
+  background-color: #4CAF50;
+}
+
+/* 
+css - 
+*/
+.button, .button-secondary, .button-terninary, .button-secondary, .button-terninary {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.button-secondary {
+  background-color: #4CAF50;
+}
+
+.button-terninary {
+  background-color: #4CAF50;
+}
+/*# sourceMappingURL=5)inheritance.css.map */

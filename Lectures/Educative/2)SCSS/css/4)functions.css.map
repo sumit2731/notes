@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,KAAK,CAAC;EACF,OAAO,EAJC,IAA8B;CAKzC",
+    "sources": [
+        "../2)SASS Features/4)functions.scss"
+    ],
+    "names": [],
+    "file": "4)functions.css"
+}

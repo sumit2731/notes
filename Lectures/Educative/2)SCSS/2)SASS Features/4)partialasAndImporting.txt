@@ -1,0 +1,6 @@
+Partials in SASS help us to break up our files into smaller files without affecting performance.
+
+The use of partials allows us to modularize our CSS, to help keep things maintainable.
+
+We divide up our Sass into separate files representing different components. A partials’ name will always start with an 
+underscore _. We then import the partial using an @import directive.

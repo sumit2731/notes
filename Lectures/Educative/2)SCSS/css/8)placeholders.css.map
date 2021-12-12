@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": ";AAAA;;;;;;;;;;EAUE;AAEF;;EAEE;AAME,AAJA,IAII,EAGJ,CAAC,CAPY;EACT,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACf;;AAQL;;EAEE;AAEF,AAAA,IAAI,EAAE,CAAC,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CACf",
+    "sources": [
+        "../2)SASS Features/8)placeholders.scss"
+    ],
+    "names": [],
+    "file": "8)placeholders.css"
+}

@@ -1,22 +1,19 @@
-@mixin border-style($border-width, $border-style) {
-    border: $border-width $border-style blue;
-}
+.button-secondary {
+    @extend .button;
+    background-color: #4CAF50; // Green
+} 
 
-@function inceraseBy($width, $inc) {
-    @return $width + $inc;
+.button {
+    background-color: #0000FF; // Blue
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
 }
-
-.sumit { 
-    height:100px;
-    width: 100px;
-    background-color:red;
-    @include border-style(inceraseBy(3px, 2px), solid);
+.button-terninary {
+    background-color: black; // Green
+    @extend .button;
 }
-
-.sood { 
-    @include border-style(inceraseBy(4px, 5px), dashed);
-    height:200px;
-    width: 200px;
-    background-color:yellow;
-}
-

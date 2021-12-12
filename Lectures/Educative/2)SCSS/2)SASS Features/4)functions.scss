@@ -1,0 +1,7 @@
+@function add-numbers($first-number, $second-number) {
+    @return $first-number + $second-number
+}
+
+.box1 {
+    padding: add-numbers(5px, 10px);
+}

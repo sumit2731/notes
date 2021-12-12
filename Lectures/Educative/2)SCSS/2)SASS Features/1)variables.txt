@@ -1,0 +1,9 @@
+declare them using this - 
+
+    variable names always starts with '$' -
+
+        $color-primary: #ffff00; // Yellow
+
+        body {
+        background-color: $color-primary;
+        }
