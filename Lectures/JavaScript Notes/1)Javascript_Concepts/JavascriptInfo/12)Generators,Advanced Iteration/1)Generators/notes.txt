@@ -1,0 +1,16 @@
+1)syntax to define generator function.
+2)geneator function returns a generator object which is iterator object-
+    how to use generator function  in loop to get values, 
+    use generator function to create array.
+
+3)We can use a generator function for iteration by providing it as Symbol.iterator. generator function returns a iterable,
+    which is excactly what a Symbol.iterator should return. Generators were added to JavaScript language with iterators in mind, 
+    to implement them easily.
+
+4)Generator composition -
+
+    Generator composition is a special feature of generators that allows to transparently “embed” generators in each other.
+
+5)“yield” is a two-way street -
+    it not only returns the result to the outside, but also can pass the value inside the generator.
+

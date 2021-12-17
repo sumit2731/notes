@@ -17,3 +17,12 @@
 
 6)There exist many “system” symbols that JavaScript uses internally, and we can use them to fine-tune various aspects of our 
     objects.
+
+API -
+     
+    1)creating symbol -
+
+        let sym = Symbol("id");
+
+    2)accessing description -
+        sym.description

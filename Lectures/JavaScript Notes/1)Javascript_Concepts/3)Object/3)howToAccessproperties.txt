@@ -2,13 +2,15 @@
     Iterates over enumerable, string properties of object as well as its ancestors.
 
     for...in loop iterates over the properties of an object in an arbitrary order.
-    If a property is modified in one iteration and then visited at a later time, its value in the loop is its value at that later time. 
+    If a property is modified in one iteration and then visited at a later time, its value in the loop is its value
+    at that later time. 
     A property that is deleted before it has been visited will not be visited later. 
     Properties added to the object over which iteration is occurring may either be visited or omitted from iteration.
 
-    In general, it is best not to add, modify, or remove properties from the object during iteration, other than the property currently 
-    being visited. There is no guarantee whether an added property will be visited, whether a modified property (other than the current
-    one) will be visited before or after it is modified, or whether a deleted property will be visited before it is deleted.
+    In general, it is best not to add, modify, or remove properties from the object during iteration, other than 
+    the property currently being visited. There is no guarantee whether an added property will be visited, whether
+    a modified property (other than the current one) will be visited before or after it is modified, or whether a 
+    deleted property will be visited before it is deleted.
 
 2)Object.keys - Object.keys() method returns an array of a given object's own enumerable and string property.
 

@@ -1,0 +1,2 @@
+1)in iterator topic of javascript.info, see surrogate pair thing.
+    link - https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/
