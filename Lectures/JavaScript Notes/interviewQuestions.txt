@@ -1,0 +1,65 @@
+Swiggy -
+
+    1)how a browser page is rendered. focus on each process- how js is execited, how borwser paiting occurs.
+    2)defer and async keywords in script tag.
+    3)request and response headers.
+    4)CORS request.
+    5)How to resolve he case if bowser is taking too much time to load.
+        a)Landing page is taking too much to load - how will ou get the isue and resolve it.
+        b)is there any matrix to handle same.
+    6)browser caching.
+
+
+Algonomy -
+
+    Round 1 -
+        
+        1)If want to do some clean up before user closes up browser window.
+
+    Round 2 -
+
+        1)Why do we need action, why cannot we call reducer directly.
+        2)what is advantage of currying.
+        3)2 programs -
+            a) sum(a)(b)(c)(d)
+            b)roman number problem
+
+                https://i.pinimg.com/originals/cf/4d/cb/cf4dcbb9609a6efe691c723a8b8a9afc.png
+
+                /*'I'= 1;
+                'V'= 5;
+                'X'= 10;
+                'L'= 50;
+                'C'= 100;
+                'D'= 500;
+                'M'= 1000; */
+
+                // Input: VIII - Output:8
+                // Input: XX - Output:20
+
+                let romanLetterDic = {
+                    'I':1,
+                'II':2,
+                'III':3,
+                'IV': 4,
+                'V': 5,
+                'VI': 6,
+                'VII':7,
+                'VIII':8,
+                'IX': 9,
+                'X': 10
+                
+                }
+
+                let exceptionLetterDic = {
+                'IV': 4
+                }
+                function romanToNumber (romanNumber) {
+                    let actualNumber = 0;
+                if(romanNumber in romanLetterDic) return romanLetterDic[romanNumber];
+                    for(let char of romanNumber) {
+                    let mappedNumber = romanLetterDic[char];
+                    actualNumber += mappedNumber;
+                }
+                return actualNumber;
+                }

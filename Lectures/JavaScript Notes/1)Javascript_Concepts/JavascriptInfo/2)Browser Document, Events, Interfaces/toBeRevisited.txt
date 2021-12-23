@@ -1,2 +1,0 @@
-1)for css animation in football -
-    transition: all 1s;

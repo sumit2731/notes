@@ -10,3 +10,9 @@
     4)use flexbox, if vertical axis is our cross secion, the use align-content: center
 3)vertically baseline
     a)use flebox, align-items:baseline
+
+4)how to show ellipsis -
+    
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;

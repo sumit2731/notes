@@ -1,0 +1,14 @@
+body {
+    margin: 0px;
+}
+
+.container1 {
+    background: yellow;
+    height: 130vh;
+    border: 10px solid red;
+}
+
+.container2 {
+    background: blue;
+    height: 50vh;
+}

@@ -10,11 +10,15 @@ Interview Questions -
 Javascript -
     
     mutation observable
+    intersection observable
+    windows.requestIdleCallback
+    window.requestAnimationFrame() -- see videos
     webWorkers
     service workers
+    context api
     1)order of properties of object in iteration
     setImmediate
-    intersection observable
+    
     memory leak
     currying questions
     closure questions

@@ -1,0 +1,42 @@
+Browser Engine -
+    within a browser, there’s a piece of software that figures out what to display to you based on the files it receives. This is called the browser engine
+
+Chrome -
+    rendiring engine - blink (fork of webkit)
+    js engine - v8
+
+    Chromium is the browser project that holds them all together
+Firefox -
+    browser engine - geko
+    js engine - spider monkey
+
+safari -
+    browser engine - 
+    js engine - Javscript Core
+
+Steps -
+
+    1)First, the raw bytes of data are converted into characters.You may see this with the characters of the code you
+     have written. This conversion is done based on the character encoding of the HTML file.
+
+    2)These characters are further parsed into something called tokens.
+        The way the browser interprets this file is by first parsing it. In the parsing process, and particularly 
+        during tokenization, every start and end HTML tag in the file is accounted for.
+
+    3)Tokens are great, but they are also not our final result. After the tokenization is done, the tokens are then 
+        converted into nodes.
+
+    4)nodes are then converted into tree structure that we call DOM tree.
+
+    4)now css is fetched and same process is repeated for it. we get CSS DOM tree form it.
+
+    5)browser combines DO and CSS OM to form render tree.The render tree contains information on all visible DOM content on the 
+        page and all the required CSSOM information for the different nodes. Note that if an element has been hidden by CSS 
+        (e.g., by using display; none), the node will not be represented in the render tree.
+
+        The hidden element will be present in the DOM but not the render tree. This is because the render tree combines 
+        information from both the DOM and the CSSOM, so it knows not to include a hidden element in the tree.
+
+        With the render tree constructed, the browser moves on to the next step: layout!
+
+    6)
