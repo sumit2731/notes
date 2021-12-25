@@ -2,9 +2,22 @@ response headers -
 
     CORS-
 
+
         Access-Control-Allow-Origin - That header should contain the allowed origin (in our case https://javascript.info), or a 
             star *. Then the response is successful, otherwise it’s an error.
 
+        
+        Safe response headers that can be accessed in response of safe request -
+
+
+            Cache-Control
+            Content-Language
+            Content-Type
+            Expires
+            Last-Modified
+            Pragma
+
+        
         Access-Control-Expose-Headers - sent by server in safe request,it contains a comma-separated list of unsafe header names 
             that should be made accessible.
 
@@ -12,8 +25,8 @@ response headers -
         
         Access-Control-Allow-Headers - must have a list of allowed headers.
 
-        Access-Control-Max-Age(optional) - specify a number of seconds to cache the permissions. So the browser won’t have to send
-         a preflight for subsequent requests that satisfy given permissions.
+        Access-Control-Max-Age(optional) - specify a number of seconds to cache the permissions. So the browser won’t 
+         have to send a preflight for subsequent requests that satisfy given permissions.
 
 
         Access-Control-Allow-Credentials - allows client to set cookies and auth informtaion in CORS request.
@@ -27,17 +40,19 @@ request headers -
     
     CORS-
         Origin - tells from where the request came. (such as https://javascript.info)
+
+        headers allowed in safe request -
+
+            Accept,
+            Accept-Language,
+            Content-Language,
+            Content-Type with the value application/x-www-form-urlencoded, multipart/form-data or text/plain.
+        
         Access-Control-Request-Method - header has the method of the unsafe request.
         Access-Control-Request-Headers - header provides a comma-separated list of its unsafe HTTP-headers.
 
-        safe headers in safe request -
 
-            Cache-Control
-            Content-Language
-            Content-Type
-            Expires
-            Last-Modified
-            Pragma
+
 
     cookies -
         

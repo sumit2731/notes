@@ -1,0 +1,41 @@
+1)Defination of cookies
+2)Uses of cookies in authentication
+3)How to access cookies of a origin in a website - document.cookie
+    The value of document.cookie consists of name=value pairs, delimited by ;. Each one is a separate cookie.
+    pixelRatio=2; _ga=GA1.2.941563953.1619182511; _ym_uid=1619182512667979383; _ym_d=1637218214; ext_name=ojplmecpdpgccookcobabopnaifgidhf; _gid=GA1.2.1174815116.1640169108; _ym_isad=1
+
+4)Writing to document.cookie -
+    it is setter.A write operation to document.cookie updates only cookies mentioned in it, but doesn’t touch other cookies.
+
+    document.cookie = "user=John";
+
+    document.cookie = operation does not overwrite all cookies. It only sets the mentioned cookie user.
+
+5)limits on cookie storge -
+    should not exceed 4KB.
+    The total number of cookies per domain is limited to around 20+, the exact limit depends on the browser.
+
+6)cookie option - Cookies have several options, many of them are important and should be set.
+    document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
+
+    a)path - The url path prefix must be absolute. It makes the cookie accessible for pages under that path. By default, it’s the 
+        current path.If a cookie is set with path=/admin, it’s visible at pages /admin and /admin/something, but not at /home or 
+        /adminpage.Usually, we should set path to the root: path=/ to make the cookie accessible from all website pages.
+
+    b)domain - By default, a cookie is accessible only at the domain that set it. So, if the cookie was set by site.com, we won’t 
+        get it at other.com. …But what’s more tricky, we also won’t get the cookie at a subdomain forum.site.com!
+
+
+    c)expires, max-age - By default, if a cookie doesn’t have one of these options, it disappears when the browser is closed. Such 
+        cookies are called “session cookies”.
+
+    d)secure - The cookie should be transferred only over HTTPS.By default, if we set a cookie at http://site.com, then it also 
+     appears at https://site.com and vice versa.That is, cookies are domain-based, they do not distinguish between the protocols.
+     With this option, if a cookie is set by https://site.com, then it doesn’t appear when the same site is accessed by HTTP, as 
+     http://site.com.
+
+
+     document.cookie = "user=John; secure";
+
+    e)httpOnly - The web-server uses the Set-Cookie header to set a cookie. Also, it may set the httpOnly option.This option 
+        forbids any JavaScript access to the cookie. We can’t see such a cookie or manipulate it using document.cookie.
