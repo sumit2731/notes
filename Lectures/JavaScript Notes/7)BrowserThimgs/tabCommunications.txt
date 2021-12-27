@@ -1,0 +1,2 @@
+1)window.onstorage event on local and session storage.
+2)BroadcastChannel API - the special API for same-origin inter-window communication, it’s more full featured, but less supported.

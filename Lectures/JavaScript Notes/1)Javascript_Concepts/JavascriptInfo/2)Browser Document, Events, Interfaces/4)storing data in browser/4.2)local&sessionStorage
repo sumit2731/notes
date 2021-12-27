@@ -1,0 +1,62 @@
+localStorage and sessionStorage allow to save key/value pairs in the browser.
+
+    Most browsers allow at least 2 megabytes of data (or more) and have settings to configure that.
+     server cannot manupilate local and session storage
+     The storage is bound to the origin (protocol/domain/port triplet)
+     both key and value must be strings.
+
+    Methods and Properties -
+
+        setItem(key, value) – store key/value pair.
+        getItem(key) – get the value by key.
+        removeItem(key) – remove the key with its value.
+        clear() – delete everything.
+        key(index) – get the key on a given position.
+        length – the number of stored items.
+
+
+Local Storage - 
+    
+    1)Shared between all tabs and windows from the same origin.
+    2)The data does not expire. It remains after the browser restart and even OS reboot.
+
+    Object-like access -
+        1)you can cannot use keys that are already defined.
+        2)storage event is not triggered
+
+        so use setItem to store values instead of directly setting the data.
+
+    Looping Over Keys -
+
+        storage objects are not iterable.
+
+        one of ways to iterabe over all user defined Properties-
+
+            for(let i=0; i<localStorage.length; i++) {
+                let key = localStorage.key(i);
+                alert(`${key}: ${localStorage.getItem(key)}`);
+            }
+
+Session storage -
+    
+    Properties and methods are the same, but it’s much more limited:
+
+    The sessionStorage exists only within the current browser tab.
+        Another tab with the same page will have a different storage.
+        But it is shared between iframes in the same tab (assuming they come from the same origin).
+    The data survives page refresh, but not closing/opening the tab.
+
+    sessionStorage is bound not only to the origin, but also to the browser tab. For that reason, sessionStorage is used sparingly.
+
+Storage Event -
+
+    When the data gets updated in localStorage or sessionStorage, storage event triggers, with properties:
+
+    key – the key that was changed (null if .clear() is called).
+    oldValue – the old value (null if the key is newly added).
+    newValue – the new value (null if the key is removed).
+    url – the url of the document where the update happened.
+    storageArea – either localStorage or sessionStorage object where the update happened.
+
+
+    The important thing is: the event triggers on all window objects where the storage is accessible, except the one that caused it.

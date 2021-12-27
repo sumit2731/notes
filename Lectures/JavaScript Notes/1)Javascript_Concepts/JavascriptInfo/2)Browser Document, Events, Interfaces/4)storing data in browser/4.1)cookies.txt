@@ -1,4 +1,7 @@
 1)Defination of cookies
+    they are specific to domain
+    cookies can be set via response headers or in js(we can disable via some options) also
+    they are sent with each http call(almost each as these are not sent in CORS calls) to same domain
 2)Uses of cookies in authentication
 3)How to access cookies of a origin in a website - document.cookie
     The value of document.cookie consists of name=value pairs, delimited by ;. Each one is a separate cookie.
@@ -15,7 +18,7 @@
     should not exceed 4KB.
     The total number of cookies per domain is limited to around 20+, the exact limit depends on the browser.
 
-6)cookie option - Cookies have several options, many of them are important and should be set.
+6)cookie_option - Cookies have several options, many of them are important and should be set.
     document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
     a)path - The url path prefix must be absolute. It makes the cookie accessible for pages under that path. By default, it’s the 
@@ -34,8 +37,21 @@
      With this option, if a cookie is set by https://site.com, then it doesn’t appear when the same site is accessed by HTTP, as 
      http://site.com.
 
+        document.cookie = "user=John; secure";
 
-     document.cookie = "user=John; secure";
+    e)samesite
+        
+        samesite=strict
+        samesite=lax
 
-    e)httpOnly - The web-server uses the Set-Cookie header to set a cookie. Also, it may set the httpOnly option.This option 
+    f)httpOnly - The web-server uses the Set-Cookie header to set a cookie. Also, it may set the httpOnly option.This option 
         forbids any JavaScript access to the cookie. We can’t see such a cookie or manipulate it using document.cookie.
+
+7)third party cookies - A cookie is called “third-party” if it’s placed by a domain other than the page the user is visiting.
+    Naturally, some people don’t like being tracked, so browsers allow to disable such cookies.
+
+
+    Also, some modern browsers employ special policies for such cookies:
+
+        Safari does not allow third-party cookies at all.
+        Firefox comes with a “black list” of third-party domains where it blocks third-party cookies.
