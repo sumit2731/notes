@@ -1,36 +1,18 @@
-function curry(fn) {
-    let arg = [];
-    function dummyFuncion(...argument) {
-        if(arg.length === fn.length) {
-            let arguments = [...arg];
-            arg = [];
-            return fn(...arguments);
-        }
-        else {
-            arg = arg.concat(...argument);
-            return dummyFuncion;
-        }
+let i = 0;
+
+  function count() {
+
+    // do a piece of the heavy job (*)
+    do {
+      i++;
+      progress.innerHTML = i;
+    } while (i % 1e3 != 0);
+
+    if (i < 1e7) {
+        console.log("Inside if block");
+      setTimeout(count);
     }
-    return dummyFuncion;
-}
 
-function twoNumberSum(a,b) {
-    return a + b;
-}
+  }
 
-function threeNumberSum(a,b,c) {
-    return a + b + c;
-}
-
-let newTwoNumberSum = curry(twoNumberSum);
-let newThreeNumberSum = curry(threeNumberSum);
-
-//console.log(newTwoNumberSum(1)(2)());
-console.log(newThreeNumberSum(1,2)(3)());
-console.log(newThreeNumberSum(1)(2,3)());
-console.log(newThreeNumberSum(1,2,3)());
-
-/* 
-advancedSum(1,2,3)
-advancedSum(1)(2)(3)
-*/
+  count();
