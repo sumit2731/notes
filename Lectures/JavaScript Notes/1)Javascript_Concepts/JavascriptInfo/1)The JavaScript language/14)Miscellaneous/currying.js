@@ -22,7 +22,7 @@ let newSum = curry(sum);
 let addedNumbers = newSum(1)(2);
 
 /* 
-Advantages of curying
+Advantages of curying - Gives us partials
 */
 
 let addTen = newSum(10);
