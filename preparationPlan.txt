@@ -1,0 +1,44 @@
+Daily Activitites -
+    1)Solve a coding problem on educative.
+    2)go through system design interview problem on educative.
+    3)javscript projects.
+    4)read a article on js info
+    5)css, scss - continue educative , read some blogs.
+    6)blogs - js tips etc.
+    7)reviesion.
+
+
+
+Day 1 -
+    
+    1)Solve Coding problems on educative - 1 hour
+    2)1 article on js info - 30 mins
+    3)react learning - 30 minutes.
+    4)educative system design problem - 30 minutes
+   
+
+    total - 2 hour 30 minutes
+
+
+Day 2 -
+
+    1)continue css course on educative(flexbox and css) - 45 minutes
+    2)1 css article - 15 minutes
+    3)Js Info article - DOM (30 minutes)
+    4)Js Project -45 minutes. (start with wes Bros)
+    5)Js blogs - 15 minutes.
+
+
+    total - 2 hour 30 minutes
+
+
+
+Day 3 -
+
+    1)docker and kubernets on educative - 45 minutes
+    2)debugging articles - 30 minutes
+    3)Solve Coding problems on educative - 1 hour
+    4)pending js articles - 15 minutes.
+    4)revision of articles.
+
+    total - 2 hour 15 minutes

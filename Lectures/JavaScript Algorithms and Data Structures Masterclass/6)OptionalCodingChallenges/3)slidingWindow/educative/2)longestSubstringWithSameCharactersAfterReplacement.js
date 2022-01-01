@@ -7,6 +7,10 @@ length of the longest substring having the same letters after replacement.
 
 */
 
+/* 
+Course Solution
+*/
+
 function length_of_longest_substring(str, k) {
   let windowStart = 0, maxLength = 0, maxRepeatLetterCount = 0, frequencyMap = {};
   // Try to extend the range [windowStart, windowEnd]
@@ -55,3 +59,42 @@ function length_of_longest_substring(str, k) {
   Output: 6
   Explanation: Replace the '0' at index 5 and 8 to have the longest contiguous subarray of 1s having length 6.
   */
+
+/* 
+My logic based on course logic, but it also tells where to replace alphabets
+*/
+
+function longestString2(str, k) {
+    
+  let strObj = {}; currentWindowStart =0, currentWindowEnd = 0, maxLength = 0, maxFrequencyCount = 0, 
+  finalWindowStart = 0, finalWindowEnd = 0, newWindow = true , maxFreqChar = str[0];
+  for(currentWindowEnd = 0; currentWindowEnd< str.length; currentWindowEnd++) {
+      let currentChar = str[currentWindowEnd];
+      strObj[currentChar] = (strObj[currentChar] || 0) + 1;
+      if(maxFrequencyCount < strObj[currentChar]) {
+          maxFrequencyCount = strObj[currentChar];
+          newWindow = true;
+          finalWindowStart = currentWindowStart;
+          maxFreqChar = currentChar;
+      }
+      let currentWindowLength = currentWindowEnd-currentWindowStart+1;
+      if((currentWindowLength - maxFrequencyCount === k) && newWindow) {
+          maxLength = currentWindowLength;
+          newWindow = false;
+          finalWindowEnd = currentWindowEnd;
+      } else if(currentWindowLength - maxFrequencyCount > k) {
+          let currentWindowStartChar = str[currentWindowStart];
+          currentWindowStart++;
+          strObj[currentWindowStartChar]--;
+          newWindow = false;
+      }
+  }
+  if(newWindow) {
+      finalWindowEnd = str.length -1;
+      maxLength = finalWindowEnd- finalWindowStart + 1;
+  }
+  console.log("Final Window Start = " + finalWindowStart);
+  console.log("Final Window End = " + finalWindowEnd);
+  console.log("Final Length = " + maxLength);
+  console.log("Max Freq Charact = " +maxFreqChar);
+}

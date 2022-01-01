@@ -1,0 +1,10 @@
+Steps-
+
+    1)First, the raw bytes of data are converted into characters.This conversion is done based on the character encoding of the 
+        HTML file.
+    2)Characters are converted into tokens.
+    3)After the tokenization is done, the tokens are then converted into nodes.
+        You may think of nodes as distinct objects with specific properties. In fact, a better way to explain this is to see a node 
+            as a separate entity within the document object tree.
+
+    4)Upon creating these nodes, the nodes are then linked in a tree data structure known as the DOM.

@@ -1,5 +1,6 @@
 Browser Engine -
-    within a browser, there’s a piece of software that figures out what to display to you based on the files it receives. This is called the browser engine
+    within a browser, there’s a piece of software that figures out what to display to you based on the files it receives.
+     This is called the browser engine
 
 Chrome -
     rendiring engine - blink (fork of webkit)

@@ -1,8 +1,8 @@
-Update 1 -
+Attempt 1 -
     1)I failed to answer both problems of slidingWindow
 
 
-Update 2-
+Attempt 2-
 
     Answer all problems, and also attempted to know about educative problems.
 
@@ -26,3 +26,11 @@ Update 2-
             itn can be used in other problems also.
 
         4)educative problem 5 -I solved the problem but course solution was good.
+
+Attempt 3 -
+
+    solved all problems of course.
+
+    educative problems not able to solve -
+
+        1)2nd problem - longestSubstirngWithSameCharacterAfterReplacement

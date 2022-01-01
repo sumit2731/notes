@@ -1,0 +1,9 @@
+
+    1)how a browser page is rendered. focus on each process- how js is execited, how borwser paiting occurs.
+    2)defer and async keywords in script tag.
+    3)request and response headers.
+    4)CORS request.
+    5)How to resolve he case if bowser is taking too much time to load.
+        a)Landing page is taking too much to load - how will ou get the isue and resolve it.
+        b)is there any matrix to handle same.
+    6)browser caching.
