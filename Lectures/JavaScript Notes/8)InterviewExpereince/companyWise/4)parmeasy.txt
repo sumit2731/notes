@@ -1,0 +1,7 @@
+Round 1 -
+
+    1)Write a program to check if strings are matching in a string
+
+Round 2 -
+
+    1)Write a program to check if rotation number in cyclic srted array.

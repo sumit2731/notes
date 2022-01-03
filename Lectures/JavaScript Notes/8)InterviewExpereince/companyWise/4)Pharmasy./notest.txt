@@ -1,0 +1,19 @@
+Round 1 -
+
+    1)Write a program to check if strings are matching in a string
+        
+        solution in app.js
+
+        I solved it.
+        questions by interveiwer-
+
+            1)any other way to solve it?
+            2)why use extra space in  object, use map instead.
+
+Round 2 -
+
+    1)Write a program to check if rotation number in cyclic srted array.
+
+    I solved in in O(n), interviewer asked to solve it on O LOg(n). I was not able to.
+
+    solution was easy, you just need to make all patterns in copy .write it down in copy.
