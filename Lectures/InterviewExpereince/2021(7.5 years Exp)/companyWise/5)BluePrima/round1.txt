@@ -1,0 +1,10 @@
+1)right a function that compares object and check if they are equal or not.
+    solved it, then it was asked where it will fail -
+
+    a)it will fail in case of null.
+    b)Then interviewer asked me to handle array case also.
+    c)in last solution was working for object and array, but was failing when array had null property.
+
+    interviwer took more than allocated time.
+
+    result - awaited

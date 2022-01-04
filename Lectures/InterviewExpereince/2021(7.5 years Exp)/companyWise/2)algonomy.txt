@@ -2,7 +2,9 @@ Round 1 -
         
         1)If want to do some clean up before user closes up browser window.
 
-    Round 2 -
+    Resut - Cleared Round
+
+Round 2 -
 
         1)Why do we need action, why cannot we call reducer directly.
         2)what is advantage of currying.
@@ -49,3 +51,5 @@ Round 1 -
                 }
                 return actualNumber;
                 }
+
+    Result - Rejected
