@@ -16,3 +16,5 @@ Iteration 2-
 
     educative 2-
         a) problem 1 is good, but i solved it.
+        b)problem 3 is good, test cases were passed but solution was not entirely correct, i.e it was taking more iteration 
+            than required.

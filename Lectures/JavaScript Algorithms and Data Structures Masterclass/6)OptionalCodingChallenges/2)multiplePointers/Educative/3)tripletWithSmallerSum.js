@@ -44,3 +44,36 @@ function triplet_with_smaller_sum(arr, target) {
     }
     return count;
   }
+
+
+/* 
+Varition of this problem -
+
+Problem: Write a function to return the list of all such triplets instead of the count. How will the time complexity change in this case?
+solution
+*/
+
+const triplet_with_smaller_sum2 = function(arr, target) {
+  let count = 0;  let resultArray = [];
+  arr = arr.sort((a,b) => a-b);
+  // TODO: Write your code here
+  for(let i = 0; i<=arr.length -3; i++) {
+    let currentTarget = target - arr[i];
+    let start = i +1 , end = arr.length-1;
+    while(end > start) {
+      let currentSum = arr [i] + arr[start] + arr[end];
+      if(currentSum < target) {
+        let tempEnd = end;
+        while(start < tempEnd) {
+          resultArray.push(arr[i], arr[start], arr[tempEnd]);
+          tempEnd--;
+        }
+        start++;
+      }
+      else {
+        end--;
+      }
+    }
+  }
+  return resultArray;
+};

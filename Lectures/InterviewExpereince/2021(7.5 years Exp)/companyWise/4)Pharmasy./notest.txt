@@ -25,6 +25,8 @@ Round 2 -
 
     System of Facebook like website
 
+    problems faced - need to upload muliple images in a single post, how can we do that.
+
 
 result was combined for round 1 & 2-
     Final reesult - rejected
