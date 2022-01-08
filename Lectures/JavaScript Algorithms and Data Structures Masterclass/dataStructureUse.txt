@@ -1,0 +1,1 @@
+1)use of queue in mutiplePointers probem 4- subArrayWithLessProduct.

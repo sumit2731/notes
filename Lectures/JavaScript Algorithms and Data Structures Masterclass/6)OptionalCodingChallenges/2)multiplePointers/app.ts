@@ -1,24 +1,23 @@
-const triplet_with_smaller_sum = function(arr, target) {
-  let count = 0;  let resultArray = [];
-  arr = arr.sort((a,b) => a-b);
+const find_subarrays = function(arr, target) {
+  let result = [];
   // TODO: Write your code here
-  for(let i = 0; i<=arr.length -3; i++) {
-    let currentTarget = target - arr[i];
-    let start = i +1 , end = arr.length-1;
-    while(end > start) {
-      let currentSum = arr [i] + arr[start] + arr[end];
-      if(currentSum < target) {
-        let tempEnd = end;
-        while(start < tempEnd) {
-          resultArray.push(arr[i], arr[start], arr[tempEnd]);
-          tempEnd--;
-        }
-        start++;
+  //n
+  for(let end = 0; end<= arr.length ; end++) {
+
+    let currentProduct = arr[end], currentSubArray = [arr[end]], start = end -1;
+    //n
+    while(target > currentProduct) {
+      //n
+      result.push([...currentSubArray]);
+      if(start >= 0) {
+        currentProduct *= arr[start];
+        //n
+        currentSubArray.unshift(arr[start]);
+        start--;
       }
-      else {
-        end--;
-      }
+      else break;
     }
   }
-  return resultArray;
+  return result;
 };
+console.log(find_subarrays([2,5,3,10],30));
