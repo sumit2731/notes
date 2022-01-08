@@ -1,6 +1,0 @@
-<ul>
-    <li *ngFor="let todo of todos;">
-        <todo-item [todo]="todo" (toggle)="onToggle($event)"></todo-item>
-    </li>
-</ul>
-<button (click)="blowup()">Trigger Change Detection Loop</button>
