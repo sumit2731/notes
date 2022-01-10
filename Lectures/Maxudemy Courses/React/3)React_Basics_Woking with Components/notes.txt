@@ -1,1 +1,23 @@
-demo writing
+we will learn concepts mentions in pic and will build expense tracker app.
+
+react is all about components. why? see slide 2.
+    react uses decalative approach for building components i.e you define end state, react manages the DOM for you. 
+    figure 3.
+
+To creaate react project use "create-react-app" -
+    https://create-react-app.dev/
+    https://github.com/facebook/create-react-app
+
+
+    how to create react project -
+        
+        npx create-react-app "projectName"
+
+    how to run project -
+
+        npm start
+
+JSX means javascript xml
+    html is the end xml
+
+how react works - imperative vs declaative approach
