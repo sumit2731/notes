@@ -48,9 +48,11 @@
     first parameter in the method's call. for method details refer docs.
         
         str.split([separator[, limit]])
-        "sumeet".split() => ["sumeet"]
-        "sumeet".split('i') => ["sumeet"] 
-        "sumeet".split("") => ["s","u","m","e","e","t"]
+        "sumeet sood".split() => ["sumeet sood"]
+        "sumeet sood".split("") => ["s","u","m","e","e","t"," ","s","o","o","d"]
+        "sumeet sood".split(" ") => ['sumeet', 'sood']
+        "sumeet sood".split("t") => ['sumee', ' sood']
+        "sumeet sood".split("s") => ['','umeet ' ,'ood']
 
 2)slice - The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
     str.slice(beginIndex[, endIndex])

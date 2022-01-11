@@ -11,3 +11,12 @@
 
     
     result - cleared first round.
+
+Round 2 -
+
+    in angular, have a app that implements  custom dropdown.when your serach in it then options are filtered.
+
+    result - cleared second round
+
+
+Round 3 -
