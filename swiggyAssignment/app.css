@@ -1,0 +1,39 @@
+.widget-container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+#main-input {
+    display: inline-block;
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+.hide {
+    display: none;;
+}
+
+
+.comments-list {
+    list-style-type: none;
+}
+
+.comment-header-container h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: blue;
+}
+
+.comment-body-continer {
+    margin-bottom: 0.5rem;
+}
+  
