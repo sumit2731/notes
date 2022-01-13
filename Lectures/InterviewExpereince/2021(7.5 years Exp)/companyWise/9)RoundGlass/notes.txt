@@ -1,0 +1,28 @@
+Round 1-
+    
+    1)In an array find number of pairs, which are divisible by number k.
+        
+        solved with complexity n*n. tryied to solve with moving pointeers. interviewer said, its not possible.
+        then interviewer said "have you heared about, hashmap ? then i discussed the approach.
+    
+    2)
+        Input - 'sumeet sood'
+        Output - 'teemus doos'
+
+        
+        Interviewer said it is easy.
+
+        Took some time, have to debug the code. then solved it. 
+
+
+
+    3)Question on margin collapsing
+
+        <div class="div1"></div> // margin-bottom = 20px
+        <div class="div2"></div> // margin-top = 100px
+         
+         answered this one.
+
+    4)features in latest version of angular.
+
+    5)have you worked on server side rendering.

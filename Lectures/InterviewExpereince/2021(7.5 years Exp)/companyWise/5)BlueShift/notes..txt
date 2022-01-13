@@ -20,3 +20,19 @@ Round 2 -
 
 
 Round 3 -
+    you have to implement video streaming service which has comments, reccomendations, move next and before button.
+    design UX, then request - response interface.
+
+    questions -
+        1)why video is on left and reccomendation on right?
+        2)why video src, comment and reccommendation in single api, instead of 3 api's, when api for fetching
+            comment and request are present.
+
+        3)what if video size is huge? o to split it into diffrent parts.
+
+
+Round 4 -
+    It was with US panel.
+
+        1)he gave demo of product, had  some discussion on latest technologies.
+        2)coding question -see 2)allCombnators

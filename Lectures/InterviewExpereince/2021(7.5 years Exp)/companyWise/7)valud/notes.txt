@@ -1,0 +1,16 @@
+Round 1 -
+    1)parent div whould have 100% width and height of parent.child div inside it, should have 20% wwidth of its parent and it 
+        should be square.
+
+    solition - i implemnte it using js.
+
+    but trick was to use css, use padding in percentage. then task to center the contnt. it was done using position.
+
+    reslt - cleared
+
+Round 2 -
+
+    1)what will you like to improve in vauld UI.
+    2)wwork that you are proud of.
+
+    result - feedback awaited

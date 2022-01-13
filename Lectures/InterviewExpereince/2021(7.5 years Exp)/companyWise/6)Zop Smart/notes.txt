@@ -1,0 +1,25 @@
+Round 1 -
+    do not remember
+
+Round 2 -
+    do not remember
+
+Round 3(with CTO)-
+    
+    what is css sspecificity, how is it resolved.
+    angular life cycle hooks
+    JIT compilation
+    is js compiled or interpreted
+
+    Result - Cleared
+
+
+Round 4-
+    what is web3.0 web 2.0
+    how object oriented programming is done in js.
+    what is scalability?
+    scaalalability vs extendabiity.
+    what are the steps taken when you enter url to when browser renders the content.
+
+    Result - Cleared
+

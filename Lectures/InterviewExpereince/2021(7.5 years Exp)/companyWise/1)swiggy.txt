@@ -1,12 +1,28 @@
+Round 1-
+    Machine Coding Round.
+
+    1)what are web performance metrics were discussed?
+    2)then interviewer aked specifically about - Cumulative Layout Shift (CLS).
+    3)implement comment widget using native javascript. functinallities -
+        1)make new comment
+        2)like comment.
+        3)reply on comment(any level)
+        4)edit comment
+        5)delete comment
+
+
+
 Round 2 -
     Domain Knowledge -
 
 
         1)how a browser page is rendered. focus on each process- how js is execited, how borwser paiting occurs.
         2)defer and async keywords in script tag.
-        3)request and response headers.
+        3)how many request and response headers, do you now.
         4)CORS request.
         5)How to resolve he case if bowser is taking too much time to load.
             a)Landing page is taking too much to load - how will ou get the isue and resolve it.
             b)is there any matrix to handle same.
         6)browser caching.
+
+result - combined 1 and 2 , - rejected
