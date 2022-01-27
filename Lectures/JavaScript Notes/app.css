@@ -1,0 +1,18 @@
+body {
+    font-size: 20px;
+    padding:20px;
+}
+
+#parent {
+    padding: 50px;
+    background: yellow;
+    width: 500px;
+    height: 500px;
+}
+
+#child {
+    background: green;
+    width: 400px;
+    height: 400px;
+}
+

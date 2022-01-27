@@ -1,0 +1,82 @@
+Level 1 - 
+    
+    Initial values & Ineritance
+
+    Initial values of css properties -
+
+        display - inline
+        position- static
+        top,left,right,bottom - auto
+        color:black
+
+
+    Inheritance -
+
+        Inherited properties -
+            1)typography related properties -
+                a)font-size
+                b)font-weight
+                c)line-weight
+                d)color
+                e)text-shadow
+
+        properties not inherited -
+            1)padding, border, margin,positio, display, transform
+
+Level 2 - 
+    
+    user-agent-stylesheets
+
+Level 3 - 
+    
+    Normalize CSS
+
+Level 4 - 
+    
+    CSS Reset
+
+
+    Keywords to reset css values -
+        initial - Initial value of CSS property
+        
+        inherit - Inherit the value from parent
+        
+        unset - 
+            case 1 -if css value is inerited then equivalent to inherit
+            case 2 - if css value is not inherited then equivalent to initial
+        
+        revert -
+            case 1 - same as unset.
+            case 2 -
+                case 1 -if some value is defined for this property in user stylesheet, then take that value
+                case2 -if some values is not defined in user style stylesheet, then equivalnt to initial.
+
+
+        all -
+
+            all:inherit This new property resets several properties at once.
+
+
+            /* Good */
+                
+                .common-content *{ 
+                    all: revert;
+                }
+            /* Bad */
+                
+                .common-content *{ 
+                    border: revert;
+                    font-size: revert; 
+                    display: revert;  
+                    position: revert;  
+                    top: revert; 
+                    left: revert;
+                }
+
+
+
+
+
+Next Article -
+
+    https://elad.medium.com/normalize-css-or-css-reset-9d75175c5d1e

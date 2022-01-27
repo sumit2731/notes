@@ -1,0 +1,12 @@
+S3 - Simplified Storage Service. S3 provides web interfaces to store files. Our data files (image files, video 
+    files, text files, etc.) are stored as objects within buckets. Buckets serve as containers for objects.
+
+S3 Use Cases -
+
+    Internet data storage - netflix, amazon prime.Data files are stored in buckets within S3. The stored data files 
+        are known as objects. We can store unlimited data in the form of objects inside a bucket. Each object’s data
+         can be up to 5 terabytes (TB) in size.
+
+    Data Archive
+    Data Backup
+    Hosting

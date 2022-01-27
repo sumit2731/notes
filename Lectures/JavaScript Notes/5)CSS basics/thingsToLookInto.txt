@@ -1,1 +1,3 @@
-MDN docs of trnslate property.
+1)MDN docs of trnslate property.
+2)auto value in css. default value of left,right is auto.
+3)how percentage value works in css.

@@ -1,0 +1,5 @@
+1)How web works 
+    what is DNS etc.
+
+2)How CSS works -
+    https://elad.medium.com/how-does-css-work-92fe7116916d

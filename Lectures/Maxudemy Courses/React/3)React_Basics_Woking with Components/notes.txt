@@ -1,12 +1,21 @@
 we will learn concepts mentions in pic and will build expense tracker app.
 
-react is all about components. why? see slide 2.
-    react uses decalative approach for building components i.e you define end state, react manages the DOM for you. 
-    figure 3.
+25)react is all about components. why? see slide 2.
 
-To creaate react project use "create-react-app" -
-    https://create-react-app.dev/
-    https://github.com/facebook/create-react-app
+26)react uses decalative approach for building components.
+    it basically means that with React,you will not tell React that a certain HTML element should be created and 
+    inserted in a specific place on the user interface as you would be doing it with Vanilla JavaScript.Instead with
+    React and that's really important,you will always define the desired end state,the target state or possibly also
+    different target states depending on different conditions and it's then React's job to figure out which elements
+    on the actual webpage might need to be added or removed or updated.And you don't write these concrete DOM updating
+    instructions on your own as you would be doing it with just JavaScript,instead with React and React components,you
+    just define these end states and under which conditions which state should be usedi.e you define end state, react
+    manages the DOM for you. figure 3.
+
+28)Creating new react Project
+    To creaate react project use "create-react-app" -
+        https://create-react-app.dev/
+        https://github.com/facebook/create-react-app
 
 
     how to create react project -
@@ -17,7 +26,103 @@ To creaate react project use "create-react-app" -
 
         npm start
 
-JSX means javascript xml
-    html is the end xml
+    now in course we will use trimmed version of this projcet. to get it go to this -
+        https://github.com/academind/react-complete-guide-code/tree/03-react-basics-working-with-components/code
 
-how react works - imperative vs declaative approach
+        here branch name is - 03-react-basics-working-with-components/code
+        go to this folder - 01-starting-setup
+
+30)Analyzing a Standard React Project
+    
+    starting point is index.js.
+    content of this file is transfered before it is delivered to browser because browser cannot undertsnad that 
+    content, like importing css file, and synatx in ReactDOM.render. that syntax is jsx.
+
+    App.js has our first webcomponent, there we are returning something. we are writing html code inside js file.
+    this is not valid js, this is jsx which is special syntax inveted by react team. here it is working inside out
+    js files because of overall project setup i.e it is chnaged while it is delivered to browser.
+
+31)Introducing JSX
+
+    JSX is html code inside javascript.JSX stands for javascript XML,HTML in the end is XML, you could say.And again, 
+        this is really important, This only works because there are transformation steps running behind the scenes 
+        because of this NPM start process which we started,which transforms this JavaScript code to more browser friendly
+        code.we can see that trsnforemd code also,we inspecting the source file fo browser tab, there we found ApP 
+        function, there content of it was different than what we have written.we wnt want to write that final code 
+        because it is super complex.so we write code that is easy to write and it is tranformed to code that actually 
+        runs in browser.
+
+32)How React Works
+
+    here we saw what is imperative programming. here we chnaged the content the component and DOM was updated, we dont
+    have to write code to attach that new node to DOM, react does that automatically. this is decalartive programming,
+    we define state and reacts figures out the DOM instructions.
+
+33)Building First React Component
+
+    Component in react is js function that return jsx code. component seletor must start with Uppercase letter,when it
+    is used inside jsx code because react follow rule that lower case selector ate default html element nd uppercase
+    are react component selectors.
+
+34)writing more complex JSX
+
+    In react component JSX that you are retrning must have only one root html element.reason for this and workaround 
+    around this will visit later, as of now we will wrap or code inside div.
+
+35)Adding syles
+
+    here we created a css for ExpeneItem component, then we imported that in ExpenseItem.js. while adding class name to
+    html element inside jsx we have to use className instead of class.This is because this is not html , it is JSX which
+    is syntax invinted by react team and in the edn,under the hood, it is javascript only.That's why nost attibutes are 
+    same but not all.here class atribute is renaemd to className as class is reserved keyword in js.technically it will
+    still owrk if you use class but should use className.
+
+36)working with expressions in jsx
+    within jsx we can use {}, within these we can run any js expression. here we defined some variables in component and
+    used them in jsx using {}.
+
+37)Passing data via props
+
+    props are just custom attributes via which you can pass data. we can even passjs values through {} syntax.
+
+    how to pass props -
+
+        <ExpenseItem
+            title={expenses[0].title}
+            price="52"
+        ></ExpenseItem>
+
+    How to use props -
+
+        function ExpenseItem(props) {
+
+            return (
+               <h2>{props.title}</h2>
+               <h3>{props.price}</h3>           
+            );
+        }
+
+38)Adding nomal js logic to components
+    here we defined some variables in component and accessed them in jsx of component.
+
+40)Concept of composition
+
+    approach of building UI from smaller building bocks is called composition.here we defined a card component which has common
+    html structure and it accepts html form outsid to be rendered inside it, using props.childern. we also saw how can we attach
+    classes passed from parent component to card component. what we gained by this?
+
+    here we moved common container css and html to card component. but some times this common html is quite complex like in case
+    of modal, popup etc.
+
+    these wrapper components are also part of composition.
+
+41)closer look at jsx
+
+    here we have a look at what our jsx code that we return from component is converted to. In older version of react, we used
+    to right components in this oler syntax only, and we needed to import React form 'react'. but this code is bit hard to right, 
+    hence modern react setups lets you write code in jsx format, and automatically converts it into that format. o ts just a 
+    syntactic sugar. see code in App.js. this also explains why you returned jsx can have only one root element, because of 
+    compatibility with this syntax as react.createElememt will create only one element in the end.
+
+    so using JSX syntax also calls React.createEement function as we see in older syntax. now it is done automatically by our project
+    setup. this also expalin why 'react' dependency is needed althrough we never import anything in project from react.
