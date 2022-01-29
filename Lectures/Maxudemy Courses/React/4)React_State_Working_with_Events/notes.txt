@@ -1,0 +1,179 @@
+47)Listing to events
+    you can access html events default html tags in jsx. how to erch -
+    (Html Button element) https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button -> DOM Interface(HTML Button Element)
+    HTML Element -> events
+
+    so for all these events there is equivalent prop in react that you can add to listen to these events
+    in jsx.
+
+    adding event listener via element.addingEventListener is imperative way .in react we add event listener
+    by adding a prop.this prop starts with 'on', as react exposes all these default events with props 
+    that start with 'on'. way 1-
+
+        <button onClick={() => {console.log("Button Clicked")}}>Change Title</button>
+
+    way 2 -
+
+         <button onClick={clickHandler}>Change Title</button>
+
+        click hanlder is defined inside a component.
+
+
+    event prop always starts with 'on' followed by event name in capital letter -
+
+        click -> onClick
+
+48)How component functions are executed
+
+    In starting when application is bootstrap, when react see a component in jsx it calls that function to get html,
+    if that html again has some custom component it again calls it and evaluates it until there is no custom component(or
+    no jsx).but this is done only once during bootstrap. so any dynamic text in jsx is evaluated at that time.lets say we
+     want to chnage HTML whne user click somewhere, but since react has already evaluted the 
+    jsx of component nothing will be chnaged in screen.so we need a way of telling the react that something has 
+    changed and that certain component should be re-evaluated, that's where react introduces a special concept called
+    state.
+
+    here we tried to use a varible declared inside a function in jsx, and then we updated it on click handler but as
+    described above nothing chnaged on screen as component jsx is not getting reevaluated.
+
+49)working with state
+    here we have a data(varible in function) which when chnged should lead to re-evaluation  of component and component
+    should be redrawn.by default regular variable inside component function do not trigger such re-evaluation.
+    so we import useStae form react, this function allows us to define values as state where chnages to these values
+    should reflect in component function being called again.
+
+    useState is one of react hook, all react hooks starts with 'use'. hooks should be called inside component function, 
+    not inside some  function inside component function, but directly inside component function.there is one exception
+    that we will talk layer.
+
+    useStae needs a default state value , because with useState we create a variablw whose values chnage forces component
+    to be re-evalauated and re rendered.so we have assign a initial values to that special variable. we pass this initial
+    value as argumen to useState.useState returns a array where first element is state variable and second one is function
+    used to upate the value of that variable.so we cannot assihn new values to that variable using '='.
+
+    on click handler we call this function to update state, now what it does it, it uodates value of variable but also
+    leads to calling component function again, hence chnages reflect on UI. however if we immediately print value of 
+    special variable , we will still see older value because it does not update state immeditley , but it schedules the
+    state update.this is how react state works.
+
+    chnage in state only leads to reevaluation of that particular component only in which this state was registered.
+
+        import react, {useState} from 'react';
+
+        function ExpenseItem() {
+            const [title, setTitle] = useState(props.title);
+            const clickHandler = function() {
+                setTitle('New Title');
+                console.log(title);
+            }
+            return ();
+        }
+
+50)More closer look at state
+
+    here useState creates a new state for each component instnace i.e if we have multle component instnace and state of 
+    only one is changes, then only that component instnace function will be called again.
+
+    we have used const for tittle but we are chnaging the vaue of it. when setState is called it basically calls the 
+    component function again, so it means new const will be defined. this can be verified by printing something
+    in begining of component function. since we get value of title through useState only so react manages to intialize,
+    this varible with latest value only, that we have given while calling the setState.
+
+    so default value given to useStae is only considered when component function is executed first time for a given 
+    instnace.In subsequent calls values passed to setState is used as deault value of state.
+
+    so state adds reactivity to our component, without state our UI will never change. so with state and listning to
+    events gives reactivity to our application.
+
+50)Working with multiple states
+
+    here we get vales on change of form through input. now we want to store them somewehre, so that these can be combined
+    when user wants to save expense. also we want to store them in such a way that it survives when component function is 
+    is reexected, for whatever reason , we can use state.
+
+    here we are doing it to update the component, but component will be updated anyways. but we are doing it store value
+    in some variable, which is kind of detached from the life cycle of this compoent.so no matter how many time component
+    is executed, value is store and survives. one way fo doing it is this, there are other ways also, but thisworks just
+    fine and also we will need the state to rerender the component later anyways.
+
+    but here we have 3 inputs. so solution is we can have multiple state pieces per component. so you can call useState
+    multiple times.all these state piceces which are inside same component will be separated form each other.
+
+51)Single state vs multiple states
+
+    here we could have also used single state with object as value to stoe three properties. both appraoches are fine,
+    but max prefers multiple states and most code out there also prefers same.
+
+    here we switched to single state concept. but here one thing is not fine, when we update the state, we also consider
+    our old state for copying in the values.
+
+        const titleChangeHandler = (event) => {
+            setUserInput({
+                ...userInput,
+                enteredTitle: event.target.value
+            })
+        };
+
+
+52)Updatin the state that depends upon previous state
+
+    for we are updating state is not correct, it technical would work but in niche cases it could fail and it's simply
+    not a good practice to update it like this.
+
+    for such cases(where we use previous state to set new state) we should pass callback to state updating function, 
+    argument to this callback is previousState,returned value is new state.
+
+    
+        const titleChangeHandler = (event) => {
+
+            /**
+            * @Desc When updatig a state that depends on previous state, do it in thisway
+            */
+            setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredTitle: event.target.value
+            }
+
+            })
+        };
+
+    reason for this is as we know react do not uopdate the state immediately, but it reschedules it. so theoratically if
+    you schdules the lot of state updates at same time, you could be depending upon a outdated or incorrect state, if you
+    use earlier approach. but with callback approach react will always gives you the latest state, keeping in mind all
+    schduled stateUpdates. so this is safer way to make sure that you always operate on latest state snapshot.
+
+    now we are switiching back to multiple state in a component. just wanted to show this because of this concept only.
+
+57)handling form submission
+
+    here we handled form submission by resetting all 3 states. but here react intelligentlly batches all state updates
+    and calls the component function only once.
+
+58)Adding two-way binding
+
+    here we added 2 way data binding by using by binding attribute- 'value' to state variable, so when we update state,
+    component jsx is evelauted again and it is updated.
+
+59)child-to-parent component communication
+
+    we do this by passing props which expect function as value form parent to child. in child component we can call
+    them.so parent will get to know abut update in child component.
+
+60)Lifting te state up
+
+    refer the slide 2. lifting state up means we generate data in child component then we pass it to parent component,
+    either to be used there or to be pass it to another child component of that parent.this is called 
+    lifting the state up. also the nesting can be of any level.
+    
+    In our example data is generated by form component, which is needed in expenses component. these 2 are not directly 
+    related, so form form we pass data to newExpenses, form which we pass it to App.js, because App.js has direct access
+    to Expenses component. in future lectures we will defines expenses in app.js as state, so that chnage in it will lead
+    to rerendering of Expenses component. 
+
+    so concept is to lift the state as up to component which as accessed to(is parent of) componnt where that data needs 
+    to be used.
+
+
+
+    

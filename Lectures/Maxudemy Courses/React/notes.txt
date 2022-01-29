@@ -1,2 +1,11 @@
 regarding code of project, each section has its code, but all code repo can be found in "Course Source Code",  there
     we have different branch for diffrent sections and each section we have different codes.
+
+
+questions -
+
+    multiple state updates in  section 4, lecture 52,58.
+
+questions asked in course -
+
+    1)lecture 54, component getting updated on each form value control change.

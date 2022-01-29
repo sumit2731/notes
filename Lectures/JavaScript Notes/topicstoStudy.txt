@@ -24,6 +24,9 @@ Javascript -
     closure questions
 
 
+    onChnage vs input event in html
+
+
 Angular - 
 
 
