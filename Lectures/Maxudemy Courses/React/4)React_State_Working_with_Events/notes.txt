@@ -174,6 +174,40 @@
     so concept is to lift the state as up to component which as accessed to(is parent of) componnt where that data needs 
     to be used.
 
+61)Controlled vs Uncontrolled components & Stateless vs Staateful component
+
+    In ExpensesFilter.js we implmented 2 way data binding.whenever we use 2 way data bnding we are controlling a component.
+    this means value which is used in component(like value selected in year dropdown, in ExpensesFilter.js) is oassed on to
+    parent component through props and is received from parent component.both currently set value as well as function which handles
+    the selceted value is not part of expenses filter.this component only prsents the UI, and attaches couple of props and listener,
+    but real logic reside in parent component(Expenses component).
+
+    so controlled component means value and chnages to value are not handled by component itself but in parent component. here
+    Expenses component controls te ExpensesFilter component.
+
+
+    Stateful, smart - These components have state assoiated with them
+    Stateless, dumb, presentation components - these component do not have state.
+
+    In all react projects there will be cople of components that manage state(like Expenses component,ExpenseForm).
+    presentational component do not have any sate and are just there to show some data.generally in react projects we have few stateful
+    components and lot more stateless components.this is because you split your app in multiple pieces and most pieces, most components,
+    will focus on outputting something. but there are cople of component that manage state and then this state is spread out and 
+    distributed through props in the end.like in expenses filter we pass state to ExpensesFilter component.THis is standard pattern,
+    you manage state in couple of components and then you might pass that around to other components.
+
+
+
+
+Topics Covered -
+    1)Listening of events and event handlers
+    2)working with state(updating componet UI after initial rendering) - useState Hook
+        how to use state, chnage state,Single state vs MultiState, modify state using previous state value
+        Lifting state, batching of state
+    3)2 way data binding
+    4)sending value back to parent
+    5)Control components, smart, dumb components
+
 
 
     

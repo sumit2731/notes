@@ -85,9 +85,7 @@ const ExpenseForm = (props) => {
         setEnteredAmount('');
         setEnteredDate('');
     }
-
-    console.log("Expense form rendered");
-    
+        
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
