@@ -1,0 +1,136 @@
+64)RenderingList of Data
+
+    we can use this in jsx -
+
+    {
+        [
+        <p>This is tag1</p>, 
+        <p>This is tag2</p>
+        ]
+    }
+
+    this will render 2 p tags. we can also use custom tags instead of p.so here we create array of jsx element using array declared
+        in component function. 
+    
+    Instead of this -
+                
+                <ExpenseItem
+                    title={props.items[0].title}
+                    amount={props.items[0].amount}
+                    date={props.items[0].date}
+                ></ExpenseItem>
+            
+                <ExpenseItem
+                    title={props.items[1].title}
+                    amount={props.items[1].amount}
+                    date={props.items[1].date}
+                ></ExpenseItem>
+                
+                <ExpenseItem
+                    title={props.items[2].title}
+                    amount={props.items[2].amount}
+                    date={props.items[2].date}
+                ></ExpenseItem>
+                
+                <ExpenseItem
+                    title={props.items[3].title}
+                    amount={props.items[3].amount}
+                    date={props.items[3].date}
+                ></ExpenseItem>
+
+
+    we use this -
+
+        {props.items.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} />)}
+
+66)here we th use of 'key' prop in rendering list. we saw without key prop react have to update each item, but after adding key prop,
+    it just added a item in begining without updateing rest of expense-list.although i have some doubts in state preservation, that
+    is mentioned in course.
+
+    here what happens is component functions are still called but react only updates the new list, without key prop, it just adds
+    a new item and updates all items in order to match the array.
+
+67)Outputting conditional content
+
+    we do it by adding a dynamic expression inside jsx and use condition there.
+
+    lonng statements like 'if' and 'for' loop is not allowed inside curly braces. but we can ternary expression
+
+    way 1 -
+
+        {(filteredExpenses.length === 0) ? 
+                    
+            (<p>NO Expenses Found</p>)
+            : 
+            (
+                filteredExpenses.map(expense => (
+                    <ExpenseItem
+                        key={expense.id}
+                        title={expense.title} 
+                        amount={expense.amount} 
+                        date={expense.date} 
+                    />
+                ))
+            )
+        }
+
+    
+    way 2-
+
+
+
+        {(filteredExpenses.length === 0) && (<p>NO Expenses Found</p>)}
+
+        {(filteredExpenses.length > 0) && 
+            
+            (
+                filteredExpenses.map(expense => (
+                    <ExpenseItem
+                        key={expense.id}
+                        title={expense.title} 
+                        amount={expense.amount} 
+                        date={expense.date} 
+                    />
+                ))
+            )    
+        }
+
+    way 3 -
+
+        here we store jsx content inside variables in components.
+        see expenses.js for this.
+        this makes your jsx snippet very clean, in th course we use this.
+
+68)Adding conditional return statements
+
+    here we saw that we can return diffrent jsx from component based on some conditions.
+
+
+70)Adding Dynamic Styles
+
+    here we set dynamic styles for height of bar. by uisng style prop. style is html attribute, but in jsx it works bit diffrent,
+    there it expect a js object as value. keys are css property and value of key's are value of css properties. for properties like
+    background-color use camel case version like backgorundColor or use 'background-color'
+
+
+
+Summary -
+    1)rendering list
+    2)adding a new item , is showed in items list.this is done by making expenses a staet in app.js
+    3)key prop
+    4)dynamic styles with style prop
+    
+question -
+
+    1)https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25597082#questions/16332034
+
+    2)State is not lost - 
+        https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25597082#questions/16206986
+
+    3)cnstructir function is still called -
+        https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25597082#questions/16206918
+
+
+    66) 2 questions in lecure 66.
+
+    
