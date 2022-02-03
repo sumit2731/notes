@@ -4,6 +4,8 @@ import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
 
+    console.log("New Expense Rerendered");
+
     const [isEditing, setIsEditing] = useState(false);
 
     const saveExpenseDataHandler = (enteredExpenseData) => {
