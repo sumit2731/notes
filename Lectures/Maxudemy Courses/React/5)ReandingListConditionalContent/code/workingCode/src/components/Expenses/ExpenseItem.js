@@ -8,12 +8,6 @@ function ExpenseItem(props) {
 
     const [counter,setCounter] = useState(0);
 
-    const updateCounter = () => {
-        console.log("Updating Counter");
-        setCounter(prevCounter => ++prevCounter);
-    }
-    
-
     return (
         <li>
             <Card className="expense-item">
@@ -21,7 +15,6 @@ function ExpenseItem(props) {
                 <div className="expense-item__description">
                     <h2>{props.title}</h2>
                     <h2>{counter}</h2>
-                    <button onClick={updateCounter}>UpdateCounter</button>
                     <div className="expense-item__price">${props.amount}</div>
                 </div>
             </Card>

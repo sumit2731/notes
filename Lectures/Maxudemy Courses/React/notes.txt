@@ -9,3 +9,23 @@ questions -
 questions asked in course -
 
     1)lecture 54, component getting updated on each form value control change.
+
+JSX syntax -
+
+    1)class -> className
+    2)click -> onClick
+        all events are listen by 'on' + 'name of event in capital letter'
+    3)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
+        so while setting properties like bacjround-color either use -
+            
+            'background-color' (write property name within '')
+            
+            or 
+            
+            bakgroundColor (write js version of proeprtyName i.e camelcase version)
+
+    4)attaching some multiple as well as stateic classes to jsx element -
+
+        <div className = {`staticClass1 ${flag ? 'dynamicClass' : ''} staticClass2 `}></div>
+
+        <div className = {`staticClass1 ${flag && 'dynamicClass'} staticClass2 `}></div>
