@@ -104,6 +104,10 @@
     import css like this -
         import styles from './Button.module.css';
 
+        earlier while using normal css we imported css like this -
+
+            import './Button.module.css'
+
     all classes defined inside Button.modules.css are avalble as properties on style object like this -
 
         <button type={props.type} className= {styles.button} onClick={props.onClick}>

@@ -15,7 +15,16 @@ JSX syntax -
     1)class -> className
     2)click -> onClick
         all events are listen by 'on' + 'name of event in capital letter'
-    3)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
+
+    3)for -> htmlFor
+
+        html -
+            <label for="name">Name</label
+
+        jsx -
+            <label htmlFor="name">Name</label>
+    
+    4)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
         so while setting properties like bacjround-color either use -
             
             'background-color' (write property name within '')
@@ -24,8 +33,27 @@ JSX syntax -
             
             bakgroundColor (write js version of proeprtyName i.e camelcase version)
 
-    4)attaching some multiple as well as stateic classes to jsx element -
+    5)attaching some multiple as well as stateic classes to jsx element -
 
         <div className = {`staticClass1 ${flag ? 'dynamicClass' : ''} staticClass2 `}></div>
 
         <div className = {`staticClass1 ${flag && 'dynamicClass'} staticClass2 `}></div>
+        
+
+    6)how to render list of elements -
+
+        <div>
+            {[<li></li>, <li></li>]}
+        </div>
+
+        here react will render all jsx elemnts given in array. so we make this array dynamic based on the list -
+
+        <div>
+            {users.map(user => <li></li>)}
+        </div>
+
+    7)component communication - listing the state up
+
+    8)ways of conditional renderting
+
+        section5, lecture 67
