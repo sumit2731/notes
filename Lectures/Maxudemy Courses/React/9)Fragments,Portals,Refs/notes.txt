@@ -1,7 +1,7 @@
 103)Reaxt Fragments
 
     Approach 1-
-        build custom wrappers , which just returns prop.childern.
+        build custom wrappers , which just returns prop.childern. (see components/helpers/wrapper.js)
 
     Approach 2 -
 
@@ -30,3 +30,49 @@
     sometimes you want modals, drawers, sidepanls, overlays in some particular component but there context is global(modal in 
     AddUser). you can make it work via css styles but this is a wrong practice. it is bad for accessibility, as this is not correct
     semantically,you can use portals to render you content somewhere else as compared to rendered at normal place.
+    there are 2 steps to use portals -
+
+        a)you mark a place for portal -
+            index.html -
+            <div id="backdrop-root"></div>
+
+        b)to component you should tell that soe content should be moved to portal -
+
+            ErrorModal.js
+
+            return(
+                {ReactDOM.createPortal(<BackDrop onConfirm = {props.onConfirm}  />, document.getElementById("backdrop-root"))}
+            );
+
+        You can use ReactDOM.createPoratl any where , where you can use jsx.
+
+105)refs
+
+    refs allows us to get access to other html elements and work with them. you can setup connect between html code and js code.
+    we can store html element in js code and then can access it. howveer do not use it to manipulate the DOM, DOM manipulation
+    should be handled by react.
+
+    see AddUser.js, there we used ref to read value from input and then used ref to reset the value.resetting the value is really
+    DOM manupulation, we are not adding a new elmenet, we are not changing a class but again this is a person choice, max thinks
+    resetting avlaue is okay. in AddUser.js we moved form state based solution to refs based solution
+
+        const nameInputRef = useRef();
+
+        <input id="username" type = "text" 
+            ref = {nameInputRef}
+        />
+
+    secod use case for refs -
+
+        The useRef Hook allows you to persist values between renders.It can be used to store a mutable value that does not cause 
+        a re-render when updated.
+
+
+
+106)controlled vs unconrtolled components
+
+    using refs we are not controlling input by react state, so this is uncontrolled component.
+
+    while ucontroled component is when we use state to update value of input.
+
+

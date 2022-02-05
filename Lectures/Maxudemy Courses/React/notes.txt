@@ -5,6 +5,7 @@ regarding code of project, each section has its code, but all code repo can be f
 questions -
 
     multiple state updates in  section 4, lecture 52,58.
+    rile of intial value to useRef
 
 questions asked in course -
 
@@ -12,17 +13,32 @@ questions asked in course -
 
 JSX syntax -
 
-    1)class -> className
-    2)click -> onClick
-        all events are listen by 'on' + 'name of event in capital letter'
+    1)built in props in react -
+        a)className = class in html
+        b)onClick = handling click based events. all events we have props - 'on' + event name in camel case
+        c) htmlFor = for in html
 
-    3)for -> htmlFor
+            html -
+                <label for="name">Name</label
 
-        html -
-            <label for="name">Name</label
+            jsx -
+                <label htmlFor="name">Name</label>
 
-        jsx -
-            <label htmlFor="name">Name</label>
+        4)key prop - idnetufies each element while rendering list
+                
+        5)ref prop - connect a ref with a html element
+
+    2)hooks in react -
+        useState - returns a array. First Element is state variable with default value, 
+            second one is function to change first state variable
+        useRef - It has 2 uses -
+        
+            a)The useRef Hook allows you to persist values between renders.It can be used to store a mutable value that does not 
+                cause a re-render when updated.
+
+            b)It can be used to access a DOM element directly.
+
+        
     
     4)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
         so while setting properties like bacjround-color either use -
