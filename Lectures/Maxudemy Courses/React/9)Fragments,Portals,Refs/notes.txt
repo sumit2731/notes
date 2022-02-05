@@ -1,0 +1,32 @@
+103)Reaxt Fragments
+
+    Approach 1-
+        build custom wrappers , which just returns prop.childern.
+
+    Approach 2 -
+
+            <React.Fragment>
+                <AddUser onAddUser={addUserHandler} />
+                <UsersList users={usersList} />
+            </React.Fragment>
+
+            or 
+
+            <Fragment>
+                <AddUser onAddUser={addUserHandler} />
+                <UsersList users={usersList} />
+            </Fragment>
+
+    Approach 3(needs some project setup)- 
+
+        
+            <>
+                <AddUser onAddUser={addUserHandler} />
+                <UsersList users={usersList} />
+            </>
+
+104)Portals
+
+    sometimes you want modals, drawers, sidepanls, overlays in some particular component but there context is global(modal in 
+    AddUser). you can make it work via css styles but this is a wrong practice. it is bad for accessibility, as this is not correct
+    semantically,you can use portals to render you content somewhere else as compared to rendered at normal place.
