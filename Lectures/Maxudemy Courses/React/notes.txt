@@ -29,14 +29,30 @@ JSX syntax -
         5)ref prop - connect a ref with a html element
 
     2)hooks in react -
-        useState - returns a array. First Element is state variable with default value, 
+        a)useState - returns a array. First Element is state variable with default value, 
             second one is function to change first state variable
-        useRef - It has 2 uses -
+        b)useRef - It has 2 uses -
         
             a)The useRef Hook allows you to persist values between renders.It can be used to store a mutable value that does not 
                 cause a re-render when updated.
 
             b)It can be used to access a DOM element directly.
+
+        c)useEffect -it takes a callback as a function, and array of dependecies. it will call callback function on rerender of component
+            function , if provided dependencies change.
+
+            useEffect(() => {}, []);
+
+            note that callback can return a cleanup function which will be called -
+                a)before calling main callback except whne main callback is calle first time
+                b)when component is destroyed
+
+        d)useReducer - it basically allows us to maage state, it is more powerful than useState.
+            const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn);
+
+            for details see section 10 notes.
+
+        
 
         
     

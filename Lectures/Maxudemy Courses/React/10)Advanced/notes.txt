@@ -1,1 +1,77 @@
 Handling SideEffects, Using Reducers & Using Context API
+
+1)useEffect
+    see slides.
+
+    it takes a callback as a function, and array of dependecies. it will call callback function exactly after re-render of 
+        component function , if provided dependencies change.
+
+    in code we used it in App.js to check the login state of user. there we provided [] in plce of dependecies, so callback 
+        executed only once.if we provided empty array, then callback is called on each component re -render.
+    then we used it in LOgin.js, to update formavalidation state.se code in code snippets folder.
+
+    here we considered actions to be taken as user interaction with form also as side-effect.
+
+    read lecture 113 to know what should be included as dependency of sideeffect.
+
+    then we saw the callback provided to useEffect, we can also return a cleanUp function. this cleanUp function will be called
+    before executing main callback. but it wnt be called before maincallcabk is called firts time. see code in Login.js
+    there we implement the debuncing using this cleanup function. this cleanup function lso run when your component is getting
+    destrpyed.
+
+2)useReducer
+
+    const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn);
+
+    It is use ofr state managment like useState but it is bit more powerful and used in more complex state. 
+    
+        1)sometimes you have more complex state- multiple state that kind of belong togather, they are managing same thing,
+            just diffrent aspects to it.or 
+        2)you have multiple states that kind of chnage togather or are related.
+        3)one state depends on other state
+        4)there are multiple ways of updatig the state(i.e you have lot of cases that will chnage the state) 
+
+    
+    In above cases using useState becomes hard and error prone to use and manage and it is easy then to ride bad and inefficient
+    or code. in such cases useEffect is replacement of useState, if we need more powerful state managment.it does not mean you 
+    should always use forReducer, it's more complex to use and need bit more setup. for most of the cases useState is enough.
+    
+    In code we saw that namevalue and validaity of name value field are some what related.while calculating validity of overall
+     form, we calculate validate of both email and password,which we are also doing induivally on blur event. even if we use
+     validaity state of email and password to calucate validity of overall form instead of values of email and password,
+     when we input somrthing in email , we use value state to calculate validity state, which is wrong. here we cannot use
+     callback based approach of useState setter because both state are diffrent. so this is usecase for use reducer.
+     
+     so it looks like whole form can be managed as one state using useReducer.but clearly email value and validity belong 
+     togather. similarly passowrd value and validity belong togather.in course we manage email and passwords state separatly 
+     using useReducer. formState is still mannaged through useState, and it is updated through validity of email and password.
+     so max still code is not optimal, we can can manage overall state with useReducer only. in course we chnaged the code,
+     to update the status of form thrugh useEffect hook only, this hook will always get updated state. so we can update a state,
+     using other statesnapshot, because it is guarnteed that useEffect will always get latest state.
+
+     note that we can merge emailValue and emailValidity togather without using useReducer, we can do that by using useState only.
+     in that case state will be object having  properties.but insuch cases where your state becoes more complex, bigger and combines
+     multiple related state, useReducer can be worth having look at.
+
+         
+
+3)useState vs useReducer
+
+    See slide5.
+
+    on left hand side, in additional to last point - useState can be prefered if state is not updated in many ways and you do 
+        not have state as object or anything like that.
+
+    see lecture 120.
+
+
+
+queestions -
+
+1)useState vs useReducer -
+
+    https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599236#questions/16844414/
+
+    https://kentcdodds.com/blog/should-i-usestate-or-usereducer
+
+2)
