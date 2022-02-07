@@ -64,6 +64,98 @@ Handling SideEffects, Using Reducers & Using Context API
 
     see lecture 120.
 
+4)React Context API - 
+
+    stste is managed behind the scenes by react, you can chnage it from any component and pass  it to any componnt.
+    we can have multiples context for mutliple global state in your pp.
+
+    a)create context object using react.createContext.
+
+        const AuthContext = React.createContext({
+            isLoggedIn: false
+        });
+        See State/auth-context.js
+
+        react.context returns a object that contains the components
+
+    b)use that component -
+        1)provide it- all components wrapped by my context should have access to it. 
+
+            <AuthContext.Provider}>
+                
+                <MainHeader  onLogout={logoutHandler} />
+                <main>
+                    {!isLoggedIn && <Login onLogin={loginHandler} />}
+                    {isLoggedIn && <Home onLogout={logoutHandler} />}
+                </main>
+            
+            </AuthContext.Provider>
+
+            see App.js
+
+            only wrapped components(and their all chiderns) will be able to listen to context.
+        2)consume it - you need to hook into it, need to listen to it.
+
+            there are 2 ways to listen -
+                a)AuthContext-Consumer
+                    1)Wrap components where you need to access context via AuthContext.Consumer
+                    2)consumer takes a child between its selectors, which is a function. argument in this function is your
+                        context data, in function you should return jsx, which is components where you want to access this context.
+
+
+                            <AuthContext.Consumer>
+                                {(ctx) => {
+                                    return (
+                                    <nav className={classes.nav}>
+                                        <ul>
+                                        {ctx.isLoggedIn && (
+                                            <li>
+                                            <a href="/">Users</a>
+                                            </li>
+                                        )}
+                                        {ctx.isLoggedIn && (
+                                            <li>
+                                            <a href="/">Admin</a>
+                                            </li>
+                                        )}
+                                        {ctx.isLoggedIn && (
+                                            <li>
+                                            <button onClick={props.onLogout}>Logout</button>
+                                            </li>
+                                        )}
+                                        </ul>
+                                    </nav>
+                                    );
+                                }}
+                            </AuthContext.Consumer>
+
+                    here app crashes.this because we do have a default value for context,but this default values will only be 
+                    used only if we would consume wihout a provider.so techinally provider is not needed however you should
+                     memrize this pattern where we need the provider.techbically you dnt need it if you have a dfault value,
+                     but inreality you would use context to have value that can change and that will only be possible with 
+                     provider. to make this work we provide a value prop in Provider component. you can chnage the value given
+                     to value prop using state of component and once it chnages the new value be passed down to all consuming 
+                     component.but this is something i will comebac to in a second.
+
+                     so we manage value prop via state, when we chnange it all listening components gets updated data.
+
+                     here we changed the state in parent component, so child components will be rendered and they will get the
+                     latest data through context without passing props at nested lavel. here App.js is parent and Navigation.js 
+                     is nested child.
+
+                b)React Hook
+                    instead of using callback inside provider component to get access to context, we can get it from useContext
+                    hook.
+
+                    see navigation.js for syntax.
+
+5)Making Context dynamic
+
+    here we passed functions also via context. to nav.js we pass function defined in App.js via context. so we call function from
+    nav.js, we cchnages the state in login.js. also we saw that to Login and Home component we will continue to pass callv\back via
+    prop becuase there we use them. in home .js we pass them further to Button.js, but passing it directly to Button.js will mean
+    that now button can only be used for logout purpose only. so passing data via props gives flexibility, passing data via
+    context gives cleaner syntax.
 
 
 queestions -

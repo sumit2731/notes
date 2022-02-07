@@ -52,6 +52,8 @@ JSX syntax -
 
             for details see section 10 notes.
 
+        e)useContext
+
         
 
         
