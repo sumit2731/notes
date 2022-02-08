@@ -158,6 +158,46 @@ Handling SideEffects, Using Reducers & Using Context API
     context gives cleaner syntax.
 
 
+    go to this commit, to see change - 
+        Context API Part 1
+        def98d58a43a6c55698a63ecc266010e08524af9
+
+
+
+
+125)Building & Using Custom Context Provider
+    after lecture 124, we used context to provide values form App.j to deeply nested component, we provided functions as well via
+    context, i.e we defined it in Ap.js and then passed it to value object of ContextProvided, without any nesting.
+
+    but still state is managed in app.js, it would be nice we can move this state and state  update login into a separate ContextProvider 
+    component. so that app.js do not have all that login and it just concentrate on rendering something on screen.
+
+    again this is one of solutions and you do not to follow it.but is worth having look at.lot of devs prefer that because now 
+    each component has one one job and not ton of jobs. 
+
+
+126)context limitations
+
+    use context for state management(multiple component wide or aop wide) and props for configurations. so use them widely. as explained in lecture using props for button
+    component makes sense, if we use context to pass event handler, then it will be hard coded and we will loose flexobility of 
+    using it anywhere, there using props makes sense.
+
+    also context is not optimized for managing the state that changes frequently like every second or mutiple times in a second.
+    so what if we have to mange application wide sate that changes more frequently? we will have a look at redux for that.
+
+    see slide 8.
+
+127)Learning the "rules of hooks"
+
+    
+
+
+
+
+
+    
+
+
 queestions -
 
 1)useState vs useReducer -
