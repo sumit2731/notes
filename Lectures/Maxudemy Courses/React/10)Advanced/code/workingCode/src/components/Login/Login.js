@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useReducer, useContext } from 'react';
+import React, { useState, useEffect, useReducer, useContext, useRef } from 'react';
 
 import Card from '../UI/Card/Card';
-import Input from '../UI/Input';
+import Input from '../UI/Input/Input';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 import AuthContext from '../../store/auth-context';
@@ -29,6 +29,8 @@ const passwordReducer = (state,action) => {
 }
 
 const Login = () => {
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
   /**
    * @commneted to use useReducer hook
    */
@@ -42,8 +44,8 @@ const Login = () => {
    * @Desc Default state value is used first time. when reducer is called, component function is executed again,
    * there value returned by reducer will used to intialize the state.
    */
-  const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: true});
-  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value: '', isValid:true});
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: null});
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value: '', isValid:null});
   const authContext = useContext(AuthContext);
 
   /**
@@ -62,7 +64,7 @@ const Login = () => {
    */
 
   useEffect(() => {
-    console.log("ececuting effect");
+    console.log("excecuting effect");
     const identifier = setTimeout(() =>{
       setFormIsValid(emailState.isValid && passwordState.isValid);
     }, 500);
@@ -110,7 +112,17 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    authContext.onLogin(emailState.value, passwordState.value);
+    if(formIsValid) {
+      authContext.onLogin(emailState.value, passwordState.value);
+    }
+    //focus the first invalid input that i find
+    else if(!emailState.isValid) {
+        emailInputRef.current.focus();
+    } else {
+      passwordInputRef.current.focus();
+
+    }
+    
   };
 
   return (
@@ -121,16 +133,16 @@ const Login = () => {
         
         <Input id="email" type="text" value ={emailState.value} label="email"
           onChange = {emailChangeHandler} onBlur = {validateEmailHandler} 
-          isValid = {emailState.isValid}>
+          isValid = {emailState.isValid} ref= {emailInputRef} >
         </Input>
         
         <Input id="passowrd" type="text" value ={passwordState.value} label="password"
           onChange = {passwordChangeHandler} onBlur = {validatePasswordHandler} 
-          isValid = {passwordState.isValid}>
+          isValid = {passwordState.isValid}  ref = {passwordInputRef}>
         </Input>
         
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" className={classes.btn} >
             Login
           </Button>
         </div>

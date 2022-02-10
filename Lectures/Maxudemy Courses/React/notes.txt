@@ -26,7 +26,12 @@ JSX syntax -
 
         4)key prop - idnetufies each element while rendering list
                 
-        5)ref prop - connect a ref with a html element
+        5)ref prop -    
+            1)you can create variable that does not get reset during re-render.
+            2)in built in html elemnts you can use it in jsx, then can access the html refence using useRef() or
+                React.createRef.
+            3)For custom react components you can use it in jsx, and then can execute the function defined in your custom
+                component and exposed by useImperativeHandle. lecture 129 for details.
 
     2)hooks in react -
         a)useState - returns a array. First Element is state variable with default value, 
@@ -52,11 +57,24 @@ JSX syntax -
 
             for details see section 10 notes.
 
-        e)useContext
+        e)useContext - lets you grab the context. alternate way of consuming Context API , other way is to wrap the
+            jsx in ContextObject.Consumer component.
+
+        f)useImperativeHandler - useImperativeHandle customizes the instance value that is exposed to parent components when 
+            using ref.here we can expose variables and function that can be called from parent component. 
+            
+            As always, imperative code using refs should be avoided in most cases. useImperativeHandle should be used with 
+            forwardRef:
 
         
 
-        
+    3)React API -
+        1)React.foreardRef - with this you can accept the ref argument from outside and it will be availble to
+            component function.
+
+        2)React.createContext - crates the context, which helps you to pass data across functions.
+            Context.provider
+        3)
     
     4)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
         so while setting properties like bacjround-color either use -

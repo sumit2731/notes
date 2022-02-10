@@ -169,11 +169,14 @@ Handling SideEffects, Using Reducers & Using Context API
     after lecture 124, we used context to provide values form App.j to deeply nested component, we provided functions as well via
     context, i.e we defined it in Ap.js and then passed it to value object of ContextProvided, without any nesting.
 
-    but still state is managed in app.js, it would be nice we can move this state and state  update login into a separate ContextProvider 
-    component. so that app.js do not have all that login and it just concentrate on rendering something on screen.
+    but still state is managed in app.js, it would be nice we can move this state and state  update login into a separate 
+    ContextProvider component. so that app.js do not have all that login and it just concentrate on rendering something on screen.
+    while managing and passing state is handled by the
 
     again this is one of solutions and you do not to follow it.but is worth having look at.lot of devs prefer that because now 
     each component has one one job and not ton of jobs. 
+
+    see below commit for chnages
 
 
 126)context limitations
@@ -189,7 +192,44 @@ Handling SideEffects, Using Reducers & Using Context API
 
 127)Learning the "rules of hooks"
 
+    see slide 9.
+
+128)Forward refs
+
+    here 2 concepts forwardRef and useImperative hooks is explained. refer to docs to understand them induivally, then see their
+    combined use here.
+    ForwardRef -  https://reactjs.org/docs/forwarding-refs.html
+
+    here we created a component called Inout.js nad we use that componnt instead of built in html input element in Login.js
+    then we want to call a function in Inout.js frm login.js, we tried to use useRef for this but useRef cannot be used for 
+    functional components.
+
+    useImperativeHandle - useImperativeHandle customizes the instance value that is exposed to parent components when using ref. 
+        As always, imperative code using refs should be avoided in most cases. useImperativeHandle should be used with 
+        forwardRef.
     
+    
+    it allows us to use functionality inside a component imperatively, which means not through regular state
+    prop management, not through controlling component through statei n parent component, but instead by calling or manipularing
+    something  ina component programatically. you dnt want to do this ofter, you should find a alternarive.but here this is nice 
+    solution. it accepts 2 areguments -
+
+        1)in our function paramters along with props we also get another paramater. in 99.99% caes we only need prop.technically
+            there is also a second argument thatyou can accept, ref.that is ref if a ref should be set from outisde.now while using
+            selector of Input component, we add ref prop and bind it to something, this will establish the action, this will part of
+            allowing this binding.
+
+            to enable this second argument(ref) in component function, we need to export our component in sepcial way. we need to
+            wrap it in React.forwardRef. this takes our component function as first argument , and returns a React component, a special
+            one, that is capable of being bound to ref.
+
+        2)it is callback that returns a object, object will contain all the data,that you will be able to use from outside.
+         can be called from outside.property name can be anything, value should be internal function variable or function .here
+          we provide activate function as focus property.
+
+    with this setup, our Input componen can take ref prop, it will expose a ref and it is controllable or useable with refs.
+    but you can only use that you have exposed outside with useImperative handle
+
 
 
 
