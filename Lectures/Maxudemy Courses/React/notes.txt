@@ -33,7 +33,72 @@ JSX syntax -
             3)For custom react components you can use it in jsx, and then can execute the function defined in your custom
                 component and exposed by useImperativeHandle. lecture 129 for details.
 
-    2)hooks in react -
+        6)props.childern - all the content between selectors of custom of component
+
+    
+        7)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
+
+            
+            so while setting properties like bacjround-color either use -
+                
+                'background-color' (write property name within '') => style = {''background-color' : 'red'}
+                
+                or 
+                
+                bakgroundColor (write js version of proeprtyName i.e camelcase version) => style = {bakgroundColor : 'red'}
+
+2)JSX Tricks -
+
+    1)attaching some multiple as well as stateic classes to jsx element -
+
+        <div className = {`staticClass1 ${flag ? 'dynamicClass' : ''} staticClass2 `}></div>
+
+        <div className = {`staticClass1 ${flag && 'dynamicClass'} staticClass2 `}></div>
+        
+
+    2)how to render list of elements -
+
+        <div>
+            {[<li></li>, <li></li>]}
+        </div>
+
+        here react will render all jsx elemnts given in array. so we make this array dynamic based on the list -
+
+        <div>
+            {users.map(user => <li></li>)}
+        </div>
+
+    3)how to add all properties of object as attributes to a html element -
+        
+        <input id={props.input.id} {...props.input}></input>
+        It will add all properties of props.input as attribute to input element ex -
+
+        if props.input = {id: 'id1', type: 'text'} will result in -
+            <input id="id1" type="text">
+
+    4)component communication - listing the state up
+
+    5)ways of conditional renderting
+
+        section5, lecture 67
+
+    6)You can store jsx element in a variable, then render use them in returned jsx.
+            
+            const cartItems = 
+                <ul>
+                    {
+                        [{id: 'c1', name: 'Sushi', amount: 2, price: 12.99}].map(item => <li>{item.name}</li> )
+                    }
+                </ul>
+            ;
+
+            return (
+                <div>
+                    {cartItems}
+                </div>
+            );
+
+3)hooks in react -
         a)useState - returns a array. First Element is state variable with default value, 
             second one is function to change first state variable
         b)useRef - It has 2 uses -
@@ -66,46 +131,17 @@ JSX syntax -
             As always, imperative code using refs should be avoided in most cases. useImperativeHandle should be used with 
             forwardRef:
 
-        
+4)React API -
 
-    3)React API -
-        1)React.foreardRef - with this you can accept the ref argument from outside and it will be availble to
-            component function.
+    1)React.foreardRef - with this you can accept the ref argument from outside and it will be availble to
+        component function.
 
-        2)React.createContext - crates the context, which helps you to pass data across functions.
-            Context.provider
-        3)
-    
-    4)style= "height: 100%"; padding: 20px"  =>  style= {{height: '100px', padding: '20px}}
-        so while setting properties like bacjround-color either use -
-            
-            'background-color' (write property name within '')
-            
-            or 
-            
-            bakgroundColor (write js version of proeprtyName i.e camelcase version)
+    2)React.createContext - crates the context, which helps you to pass data across functions.
+        Context.provider
+    3)React.Fragment - For wrapping some components together, as react component can return only 1 root level component.
 
-    5)attaching some multiple as well as stateic classes to jsx element -
+5)ReactDOM API -
 
-        <div className = {`staticClass1 ${flag ? 'dynamicClass' : ''} staticClass2 `}></div>
-
-        <div className = {`staticClass1 ${flag && 'dynamicClass'} staticClass2 `}></div>
-        
-
-    6)how to render list of elements -
-
-        <div>
-            {[<li></li>, <li></li>]}
-        </div>
-
-        here react will render all jsx elemnts given in array. so we make this array dynamic based on the list -
-
-        <div>
-            {users.map(user => <li></li>)}
-        </div>
-
-    7)component communication - listing the state up
-
-    8)ways of conditional renderting
-
-        section5, lecture 67
+    1)createPortal
+        In jsx of component you can write this -
+            {ReactDOM.createPortal(<BackDrop onConfirm = {props.onConfirm}  />, document.getElementById("backdrop-root"))}
