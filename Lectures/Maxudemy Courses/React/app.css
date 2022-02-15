@@ -4,3 +4,7 @@ div {
     background-color: yellow;
     border: 5px solid red;
 }
+
+.sumit {
+    display: none;;
+}

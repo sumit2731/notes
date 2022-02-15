@@ -1,0 +1,34 @@
+Topics Covered -
+
+    152,154)How react works - reat vs React DOM, vurtual DOM, reevealuating a component vs re-rendering a component.
+    153)see above things in code.
+    155)avoiding unnecessary re-evelauation of component using React.memo.
+        when to use it vs when not to use it
+        then we saw componets which receive objects as props are re-evelauted when parent component function is re-evaluated
+        calbacks passed as prop will lead to re-evaluation of component function  even after using react.memo
+
+        React.memo can also take a second argument which is callback
+
+
+    156)how we can use useCallback hook with React.memo, when functions are passed as props.
+
+    157)why use dependecies in useCallback hook. 
+         in JavaScript functions are closures,which means they close over the values that are available in their environment.
+
+         see code in App.js.
+
+    159)then we saw how state variables(created with useState, useReducer) are not recreated again when component function is executed again, when
+        state changes.
+
+
+    160)Understanding State Scheduling & Batching - slide 6
+        2 patterns for staate chnage -
+            1)when your state depends upon previous value of same state, use callcak form fo setState function.(2nd argument 
+                returned by useState)
+            2)when your state update depends upon latest value of other state, use useEffect and mention other states as
+                dependencies
+
+    Questions -
+        1)second argument to react.memo
+
+        
