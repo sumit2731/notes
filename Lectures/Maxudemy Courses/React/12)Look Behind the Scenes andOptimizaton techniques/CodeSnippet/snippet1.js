@@ -11,12 +11,10 @@ function App() {
   const [allowToggle, setAllowToggle] = useState(false);
   let [pstate, setPstate] = useState(0);
 
-  /**
-   * @Desc when to use callback based approch in setState function
-   *  when same renering state of component introduces multiple staate updates, and new state depends upon
-   *  previous state.
-   */
   const PstateHandler = () => {
+    /**
+     * @Desc See by running the code effect of using callback when next state depends upon previous state
+     */
     setPstate(pstate +1);
     setPstate(pstate +1);
     

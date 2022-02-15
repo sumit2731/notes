@@ -28,6 +28,9 @@ Topics Covered -
             2)when your state update depends upon latest value of other state, use useEffect and mention other states as
                 dependencies
 
+        see code snippet 1, there we have reason to use functional form of state update. peplace his file with App.js of 
+        code1 to run it.
+
     Questions -
         1)second argument to react.memo
 

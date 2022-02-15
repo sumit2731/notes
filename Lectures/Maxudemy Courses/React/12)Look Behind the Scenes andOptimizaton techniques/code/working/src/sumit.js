@@ -16,7 +16,6 @@ const myButtonStyle = {
 //==============================
 const MyButton = memo(
   ({myClickHandlerProps}) => {
-    console.log('My button');
     return <button
       onClick={myClickHandlerProps}
       style={myButtonStyle}
