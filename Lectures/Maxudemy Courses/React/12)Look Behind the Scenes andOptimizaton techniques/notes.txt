@@ -31,6 +31,17 @@ Topics Covered -
         see code snippet 1, there we have reason to use functional form of state update. peplace his file with App.js of 
         code1 to run it.
 
+    161)Optimizing with useMemo
+
+        useMemo allows you to memorize any kind of data across component function executions.
+
+        first argument is callback, value returned byt his callback is stored in mentioned variable.
+        second argument is dependency array, value will be recalculated when something in dependecies array chnages.
+
+         const listItems = useMemo(() =>[5, 3, 1, 10, 9] ,[]);
+
+
+
     Questions -
         1)second argument to react.memo
 

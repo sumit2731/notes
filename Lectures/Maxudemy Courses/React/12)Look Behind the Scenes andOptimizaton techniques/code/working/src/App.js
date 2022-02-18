@@ -29,7 +29,7 @@ function App() {
   /**
    * @Desc Use of dependecies in useCallback hook
    */
-  const toggleParagraphHandler =useCallback( () => {
+  const toggleParagraphHandler = useCallback( () => {
     if(allowToggle) {
       setShowParagraph(showParagraph => !showParagraph);
     }

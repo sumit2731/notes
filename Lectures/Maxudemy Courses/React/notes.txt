@@ -137,9 +137,8 @@ JSX syntax -
         g)useCallback - Allows to store a function across multiple component executions. 
         
             1st argument - callback in question
-            2nd rgument - array of dependecues
-        new function will re returned if
-            array of dependecies which is second argument have changes.
+            2nd rgument - array of dependecues,new function will re returned if array of dependecies which is second argument 
+                have changed.
 
             without useCallback - 
                 
@@ -153,7 +152,25 @@ JSX syntax -
                     setShowParagraph(showParagraph => !showParagraph);
                 },[]);
         
-        useed with reactMemo
+            used with React.Memo
+
+        h)useMemo - It allows you to memorize any kind of data across component function executions.
+
+            first argument is callback, value returned byt his callback is stored in mentioned variable.
+            second argument is dependency array, value will be recalculated when something in dependecies array chnages.
+
+            usesage -
+
+                const listItems = useMemo(() =>[5, 3, 1, 10, 9] ,[]);
+
+                  const sortedList = useMemo(() => {
+                        console.log("Use Memo CallBack executed");
+                        return items.sort((a, b) => a - b);
+                   }, [items]);
+
+            see App.js and DEmolIst.js of 12 section, codeblock2
+
+
 
 4)React API -
 
@@ -178,6 +195,23 @@ JSX syntax -
             export default React.memo(DemoOutput);
 
         when to use it - performance cost of revelauating the component vs performace cost of comparing props.
+
+        By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, 
+        you can also provide a custom comparison function as the second argument.
+
+            function MyComponent(props) {
+                /* render using props */
+            }
+            
+            function areEqual(prevProps, nextProps) {
+                /*
+                return true if passing nextProps to render would return
+                the same result as passing prevProps to render,
+                otherwise return false
+                */
+            }
+            
+            export default React.memo(MyComponent, areEqual);
 
 
 
