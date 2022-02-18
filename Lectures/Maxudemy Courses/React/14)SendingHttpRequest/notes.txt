@@ -1,0 +1,3 @@
+artivles to visit - 
+    https://academind.com/tutorials/rest-vs-graphql
+    https://www.youtube.com/watch?v=hOtZhNb4TKg

@@ -111,14 +111,17 @@ JSX syntax -
 
             b)It can be used to access a DOM element directly.
 
-        c)useEffect -it takes a callback as a function, and array of dependecies. it will call callback function on rerender of 
-         component function , if provided dependencies change.
+        c)useEffect -it takes a callback as a function, and array of dependecies.  callback function will be excuted after every 
+            reevaluation  of component function , if provided dependencies change.
 
             useEffect(() => {}, []);
 
             note that callback can return a cleanup function which will be called -
-                a)before calling main callback except when main callback is calle first time
+                a)before calling main callback except when main callback is called first time
                 b)when component is destroyed
+
+            1)empty dependency array means run it only once when component re renders.
+            2)if we dnt pass second argument, it means run this function which time component is re- rendered.
 
         d)useReducer - it basically allows us to maage state, it is more powerful than useState.
             const [state, dispatchFn] = useReducer(reducerFn, initialState, initFn);
