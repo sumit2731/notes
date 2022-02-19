@@ -4,4 +4,11 @@
 189)using custom hook function
     custom hooks used in ForwardCounter.js
 190)congiguring custom hooks
-    used same hook in BackwardCounter.js by cutomixing it
+    used same hook in BackwardCounter.js by cutomomizing our hook, that is it accepts a parameter.
+
+191 ) here we have project 2. here app.js and NewTask.js, have similar logic of making api call and then updating loading and error
+    state we can outsource the logic into separate function, but since logic involves use of react state and react hook, here normal
+    function wnt do the trick because there we are not allowed to use hooks,so we need custom hook as we have stateful logic here.
+
+192)here we built a custom http hook. see working folder of code 2 for my solution.
+    see code2/working2 for course solution.
