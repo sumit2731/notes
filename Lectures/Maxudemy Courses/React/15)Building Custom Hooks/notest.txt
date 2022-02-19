@@ -1,0 +1,7 @@
+187)what are 'custom hooks'
+188)Creating a Custom React Hook Functions - 
+    custom hook created in - hooks/use-counter.js
+189)using custom hook function
+    custom hooks used in ForwardCounter.js
+190)congiguring custom hooks
+    used same hook in BackwardCounter.js by cutomixing it
