@@ -10,5 +10,10 @@
     state we can outsource the logic into separate function, but since logic involves use of react state and react hook, here normal
     function wnt do the trick because there we are not allowed to use hooks,so we need custom hook as we have stateful logic here.
 
-192)here we built a custom http hook. see working folder of code 2 for my solution.
-    see code2/working2 for course solution.
+192)here we built a custom http hook. see code2/working2 for my solution.
+    see code2/working for course solution.
+
+193)here we used the customhook in app.js. there we also refactored our custom hook to fit useCase of app.js.
+    how to avoid use of useCallbcak and useMemo by using argumnets instead of taking variables from closure. 
+    if we take variable form closre then we have to make react maintains those values acrossrender cycle, which can be cumbersome
+    some times.
