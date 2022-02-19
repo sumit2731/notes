@@ -12,7 +12,7 @@ response headers -
 
             Cache-Control
             Content-Language
-            Content-Type
+            Content-Type: 'application./json'
             Expires
             Last-Modified
             Pragma
