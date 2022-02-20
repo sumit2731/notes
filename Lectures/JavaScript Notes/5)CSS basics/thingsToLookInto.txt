@@ -1,3 +1,17 @@
 1)MDN docs of trnslate property.
 2)auto value in css. default value of left,right is auto.
 3)how percentage value works in css.
+
+
+Pending-
+1)block formatting context (in overfkow:hidden)
+red - line boxes
+
+red-line height
+blue-baseline
+green- height of font
+
+
+Things to look into-
+1)pseudo classes and pseudo elements
+2)BEM naming convention

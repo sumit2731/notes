@@ -61,15 +61,3 @@ https://css-tricks.com/almanac/properties/w/whitespace/
 
 
 
-Pending-
-1)block formatting context (in overfkow:hidden)
-red - line boxes
-
-red-line height
-blue-baseline
-green- height of font
-
-
-Things to look into-
-1)pseudo classes and pseudo elements
-2)BEM naming convention
