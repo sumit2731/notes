@@ -5,3 +5,8 @@
 3)then we started managing formValidity thrugha  separate state and we updated in useEffect hook as it depends upon value of other
     states(inut if all state), but later we started managing form validity in simple variable and updated it during component re-render,
     as we are executing component function on each keystroke in input. see commit2 of code.
+
+4)then we added a one more input- email. see commit - Section 16 part3
+
+5)thne we used hook, there instead of managing value and touched hook in component, we manage them in custom hook.
+    commit - section 16 Part 4
