@@ -30,6 +30,8 @@ Handling SideEffects, Using Reducers & Using Context API
         2)you have multiple states that kind of chnage togather or are related.
         3)one state depends on other state
         4)there are multiple ways of updatig the state(i.e you have lot of cases that will chnage the state) 
+        5)there are lot of different possible state values
+        6)state updating logic is complex.
 
     
     In above cases using useState becomes hard and error prone to use and manage and it is easy then to ride bad and inefficient

@@ -10,3 +10,12 @@
 
 5)thne we used hook, there instead of managing value and touched hook in component, we manage them in custom hook.
     commit - section 16 Part 4
+
+6)thn we used that hook to manage 2 input form.
+
+7)then we used that hook to manage 3 input form.
+
+
+
+pending -
+    1)look into artciles that creates a hook for managing form.

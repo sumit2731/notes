@@ -14,6 +14,9 @@ questions asked in course -
 
     1)lecture 54, component getting updated on each form value control change.
 
+pending -
+    1)look into artciles that creates a hook for managing form.(section 16, second last lecture)
+
 JSX syntax -
 
     1)built in props in react -
