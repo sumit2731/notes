@@ -229,3 +229,54 @@ JSX syntax -
 
     2)ReactDOM.render - reners the component inside element in DOM. code is used in index.js
         ReactDOM.render(<App />, document.getElementById('root'));
+
+
+6)react-outer-dom
+
+    1)import { Switch, Route,Redirect } from 'react-router-dom';
+
+        <Switch>
+
+          <Route path="/" exact>
+            <Redirect to="/welcome"></Redirect>
+          </Route>
+          
+          <Route path="/welcome">
+            <Welcome></Welcome>
+          </Route>
+
+          <Route path="/products" exact>
+            <Products></Products>
+          </Route>
+
+          <Route path="/products/:productId">
+            <ProductDetail></ProductDetail>
+          </Route>
+        
+        </Switch>
+
+    2)import {Link, NavLink} from 'react-router-dom';
+
+        <nav>
+                <ul>
+                    
+                    <li>
+                       
+                        <NavLink to="/welcome" activeClassName = {classes.active}>Welcome</NavLink>
+                    </li>
+
+                    <li>
+                  
+                        <NavLink to="/products" activeClassName = {classes.active}>Products</NavLink>
+                    </li>
+                
+                </ul>
+        </nav>
+
+    3)import {useParams} from 'react-router-dom';
+
+        const ProductDetail = () => {
+            const params = useParams();
+            console.log(params.productId);
+        
+        };

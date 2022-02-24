@@ -1,0 +1,89 @@
+1)npm install react-router-dom@5
+
+2)Steps to activate react router - 
+
+    index.js -
+
+        ReactDOM.render(
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>, 
+            document.getElementById('root')
+        );
+
+    app.js -
+
+        return (
+            
+            <main>
+                
+                <Route path ="/welcome">
+                    <Welcome></Welcome>
+                </Route>
+
+                <Route path="/products">
+                    <Products></Products>
+                </Route>
+                
+                <Route path="/products/:productId">
+                    <ProductDetail></ProductDetail>
+                </Route>
+            
+            </main>
+      
+         );
+
+    Matching in react router world means your path starts with the path defined here. so if we are at products/p1, then this
+    path starts with /products, which is second route so it will be rendered. 3rd path is also matched it will also be rendered.
+
+    so more that one Route will be rendered. to alter that behvaiour use switch component from react-router-dom. wrap your Route 
+    components inside switch, now only one Route,which ever is match(it matches start of path not entire path) first will be rendered.
+    this is behaviour of version 5. so second route will rendered even if 3rd one is more specififc.
+
+    there is a param called, exact if we add it, then Route will be rendered if it is exat match of url.
+    
+    
+
+2)navigate to routes -
+
+     <Link to="/welcome">Welcome</Link>
+
+3)attachng classes to active link -
+
+     <NavLink to="/welcome" activeClassName = {classes.active}>Welcome</NavLink>
+
+4)dynamic route -
+
+        <Route path="/product-detail/:productId">
+          <ProductDetail></ProductDetail>
+        </Route>
+
+5)extracting route params -
+
+    import {useParams} from 'react-router-dom';
+
+    const ProductDetail = () => {
+        const params = useParams();
+        console.log(params.productId);
+    };
+
+6)nesting routes -
+    we can add Route component at multiple levels. Route component in component will be evlauted if that component is active.
+    in code our route is added in app.js -
+
+                  <Route path="/welcome">
+                    <Welcome></Welcome>
+                  </Route>
+
+    we we go to welcome/new-user, we load welcome component. within welcome component we have this route -
+            <Route path="/welcome/new-user">
+                <p>Welcome, New User</p>
+            </Route>
+
+    since welcome component is active so this route wll be considered , since path matches, so p tag will be displayed.
+
+7)redirect -
+
+        <Route path="/" exact>
+            <Redirect to="/welcome"></Redirect>
+        </Route>
