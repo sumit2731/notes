@@ -1,15 +1,22 @@
-import { useRef } from 'react';
+import { useRef, useState,Fragment } from 'react';
+import {Prompt} from 'react-router-dom'
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
 
 const QuoteForm = (props) => {
+  console.log("Component Rendered");
+  const [isEntering, setIsEntering] = useState(false);
+  console.log('isEntering = ' +isEntering);
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
   function submitFormHandler(event) {
+    console.log("Submit Handler Called");
     event.preventDefault();
+    setIsEntering(false);
+    console.log(isEntering);
 
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
@@ -19,9 +26,20 @@ const QuoteForm = (props) => {
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
 
+  const formFocusedhandler = () => {
+    console.log("Focus Handler called");
+    if(!isEntering) setIsEntering(true);
+  };
+
+  const finishEnteringHandler = () => {
+    // setIsEntering(false);
+  }
+
   return (
-    <Card>
-      <form className={classes.form} onSubmit={submitFormHandler}>
+    <Fragment>
+      <Prompt when= {isEntering} message = {(location) => 'Are You Sure You want to leave? All You Data Will be Lost'}></Prompt>
+      <Card>
+      <form onFocus ={formFocusedhandler} className={classes.form} onSubmit={submitFormHandler}>
         {props.isLoading && (
           <div className={classes.loading}>
             <LoadingSpinner />
@@ -37,10 +55,11 @@ const QuoteForm = (props) => {
           <textarea id='text' rows='5' ref={textInputRef}></textarea>
         </div>
         <div className={classes.actions}>
-          <button className='btn'>Add Quote</button>
+          <button onClick = {finishEnteringHandler} className='btn'>Add Quote</button>
         </div>
       </form>
-    </Card>
+      </Card>
+    </Fragment>
   );
 };
 

@@ -48,6 +48,23 @@
 
      <Link to="/welcome">Welcome</Link>
 
+3)navigation to routes programmartically - 
+
+    import {useHistory} from 'react-router-dom'
+
+    const NewQuote = () => {
+        const history = useHistory();
+        const addQuoteHandler = (quoteData) => {
+            history.push({
+               pathname: match.url,
+               search : `?sort=${isSortAscending ? 'desc': 'asc'}`
+            });
+            history.push(`${match.url}?sort=${isSortAscending ? 'desc': 'asc'}`);
+        }
+    }
+
+    useHistory gives us access to histort object, object that allow us to chnage and manage url.
+
 3)attachng classes to active link -
 
      <NavLink to="/welcome" activeClassName = {classes.active}>Welcome</NavLink>
@@ -66,6 +83,12 @@
         const params = useParams();
         console.log(params.productId);
     };
+
+6)wildcard route -
+
+        <Route path="*">
+            <NotFound></NotFound>
+        </Route>
 
 6)nesting routes -
     we can add Route component at multiple levels. Route component in component will be evlauted if that component is active.
@@ -87,3 +110,103 @@
         <Route path="/" exact>
             <Redirect to="/welcome"></Redirect>
         </Route>
+
+8)getting query parameters -
+    import {useLocation} from 'react-router-dom';
+
+        {
+            hash: ""
+            key: "ouhimg"
+            pathname: "/quotes"   // whole url that is loaded into browser. not for this particular component
+            search: "?sort=asc"
+            state: undefined
+        }
+
+    const location = useLocation();// location object gives info about currently loaded url
+    const queryParams = new URLSearchParams(location.search);
+    const isSortAscending = queryParams.get('sort') === 'asc';
+
+9)Getting information about currently loaded route -
+
+    useRouteMatch similar to useLocation but it has more information about currently loaded route, not just about url
+    but about some internally managec data that reaxt router is aware of.
+
+        import {useParams, Route, Link,useRouteMatch} from 'react-router-dom';
+
+        const QuoteDetail = () => {
+            const match = useRouteMatch();
+                isExact: false
+                params: {quoteId: 'q2'}
+                path: "/quotes/:quoteId"
+                url: "/quotes/q2"
+            console.log(match);
+        }
+
+        thing to be noted here is path and url are what is loaded for our component. event if url path is longer,
+        it will only show what is used for loading this component.
+
+
+
+1)Hooks -
+    
+    1)useLocation -
+
+        Main use -
+        1)reading query params
+        2)get the url that is loaded in browser address bar.(useRouteMatch gives part of url for which given component is
+            loaded)
+
+        Code -
+
+            import {useLocation} from 'react-router-dom';
+
+            {
+                hash: ""
+                key: "ouhimg"
+                pathname: "/quotes"   // whole url that is loaded into browser. not for this particular component
+                search: "?sort=asc"
+                state: undefined
+            }
+
+            const location = useLocation();// location object gives info about currently loaded url
+            //getting query params -
+            const queryParams = new URLSearchParams(location.search);
+            const isSortAscending = queryParams.get('sort') === 'asc';
+
+    Question - what is state parameter
+
+
+    2)useRouteMatch
+
+        MainUse -
+            1)To get the part url for which current component is loaded(2 diffrent componets will have differnt values)
+            2)To get route path for currently loaded component(see data for diffrence between route and path)
+            3)to know whether or not exact match was found
+            4)to get url parameters
+
+
+        useRouteMatch similar to useLocation but it has more information about currently loaded route, not just about url
+         but about some internally managec data that reaxt router is aware of. code -
+
+            import {useParams, Route, Link,useRouteMatch} from 'react-router-dom';
+
+            const QuoteDetail = () => {
+                const match = useRouteMatch();
+                    isExact: false
+                    params: {quoteId: 'q2'}
+                    path: "/quotes/:quoteId"
+                    url: "/quotes/q2"
+                console.log(match);
+            }
+
+        thing to be noted here is path and url are what is loaded for our component. event if url path is longer,
+        it will only show what is used for loading this component.
+
+
+
+
+
+commits -
+
+1)section 20 commit 1 end - initial code and practice code for ruting concept
+2)section 20 commit 2 starting - initual code of project

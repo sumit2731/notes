@@ -233,7 +233,17 @@ JSX syntax -
 
 6)react-outer-dom
 
-    1)import { Switch, Route,Redirect } from 'react-router-dom';
+    1)import {BrowserRouter} from 'react-router-dom';
+
+        ReactDOM.render(
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>, 
+            document.getElementById('root')
+        );
+
+
+    2)import { Switch, Route,Redirect } from 'react-router-dom';
 
         <Switch>
 
@@ -255,7 +265,7 @@ JSX syntax -
         
         </Switch>
 
-    2)import {Link, NavLink} from 'react-router-dom';
+    3)import {Link, NavLink} from 'react-router-dom';
 
         <nav>
                 <ul>
@@ -273,10 +283,22 @@ JSX syntax -
                 </ul>
         </nav>
 
-    3)import {useParams} from 'react-router-dom';
-
+    4)import {useParams} from 'react-router-dom';
+        this hook allow us to read params from url
         const ProductDetail = () => {
             const params = useParams();
             console.log(params.productId);
         
         };
+
+    5)import {useHistory} from 'react-router-dom';
+
+    5)import {useRoute} from 'react-router-dom';
+    
+    let { path, url } = useRouteMatch();
+
+
+
+BrowserRouter -> Router -> Router.Provider -> Router-History.provider -> component
+Route -> Router.Consumer -> Router.Provider -> component
+Switc ->  Router.Consumer -> Route -> Router.Consumer -> Router.Provider -> component

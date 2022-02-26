@@ -1,9 +1,9 @@
 import { useState } from 'react';
-
 import classes from './Comments.module.css';
 import NewCommentForm from './NewCommentForm';
 
 const Comments = () => {
+
   const [isAddingComment, setIsAddingComment] = useState(false);
 
   const startAddCommentHandler = () => {
