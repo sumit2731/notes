@@ -1,4 +1,5 @@
-1)npm install react-router-dom@5
+1)npm install react-router-dom@5.
+
 
 2)Steps to activate react router - 
 
@@ -17,17 +18,21 @@
             
             <main>
                 
-                <Route path ="/welcome">
-                    <Welcome></Welcome>
-                </Route>
+                <switch>
+                    
+                    <Route path ="/welcome">
+                        <Welcome></Welcome>
+                    </Route>
 
-                <Route path="/products">
-                    <Products></Products>
-                </Route>
+                    <Route path="/products">
+                        <Products></Products>
+                    </Route>
+                    
+                    <Route path="/products/:productId">
+                        <ProductDetail></ProductDetail>
+                    </Route>
                 
-                <Route path="/products/:productId">
-                    <ProductDetail></ProductDetail>
-                </Route>
+                </switch>
             
             </main>
       
@@ -44,30 +49,15 @@
     
     
 
-2)navigate to routes -
+3)navigate to routes with links -
 
-     <Link to="/welcome">Welcome</Link>
+    <Link to="/welcome">Welcome</Link>
+    <NavLink to="/quotes" activeClassName = {classes.active}>All Quotes</NavLink>
 
-3)navigation to routes programmartically - 
+    both of these will add a tag, if we want to add a class to that a tag, ad classname param on these components.
 
-    import {useHistory} from 'react-router-dom'
 
-    const NewQuote = () => {
-        const history = useHistory();
-        const addQuoteHandler = (quoteData) => {
-            history.push({
-               pathname: match.url,
-               search : `?sort=${isSortAscending ? 'desc': 'asc'}`
-            });
-            history.push(`${match.url}?sort=${isSortAscending ? 'desc': 'asc'}`);
-        }
-    }
 
-    useHistory gives us access to histort object, object that allow us to chnage and manage url.
-
-3)attachng classes to active link -
-
-     <NavLink to="/welcome" activeClassName = {classes.active}>Welcome</NavLink>
 
 4)dynamic route -
 
@@ -75,16 +65,9 @@
           <ProductDetail></ProductDetail>
         </Route>
 
-5)extracting route params -
 
-    import {useParams} from 'react-router-dom';
 
-    const ProductDetail = () => {
-        const params = useParams();
-        console.log(params.productId);
-    };
-
-6)wildcard route -
+5)wildcard route -
 
         <Route path="*">
             <NotFound></NotFound>
@@ -192,16 +175,58 @@
 
             const QuoteDetail = () => {
                 const match = useRouteMatch();
-                    isExact: false
-                    params: {quoteId: 'q2'}
-                    path: "/quotes/:quoteId"
-                    url: "/quotes/q2"
+                    {
+                        isExact: false
+                        params: {quoteId: 'q2'} // this is params for whle url
+                        path: "/quotes/:quoteId" // only for urrently loaded component
+                        url: "/quotes/q2" // only for currently loaded component
+                    }
                 console.log(match);
             }
 
         thing to be noted here is path and url are what is loaded for our component. event if url path is longer,
         it will only show what is used for loading this component.
 
+    3)useHistory
+        Main Use -Helps to navigate to routes programmartically - 
+
+        import {useHistory} from 'react-router-dom'
+
+        const NewQuote = () => {
+            const history = useHistory();
+            const addQuoteHandler = (quoteData) => {
+                {
+                    action: "POP"
+                    block: ƒ block(prompt)
+                    createHref: ƒ createHref(location)
+                    go: ƒ go(n)
+                    goBack: ƒ goBack()
+                    goForward: ƒ goForward()
+                    length: 50
+                    listen: ƒ listen(listener)
+                    location: {pathname: '/quotes', search: '', hash: '', state: undefined, key: '7rmbum'}
+                    push: ƒ push(path, state)
+                    replace: ƒ replace(path, state)
+                }
+                console.log(history)
+                history.push({
+                    pathname: match.url,
+                    search : `?sort=${isSortAscending ? 'desc': 'asc'}`
+                });
+                history.push(`${match.url}?sort=${isSortAscending ? 'desc': 'asc'}`);
+            }
+        }
+
+        useHistory gives us access to histort object, object that allow us to chnage and manage url.
+    
+    4)useParams -extracting route params -
+
+    import {useParams} from 'react-router-dom';
+
+    const ProductDetail = () => {
+        const params = useParams();
+        console.log(params.productId);
+    };
 
 
 
@@ -210,3 +235,4 @@ commits -
 
 1)section 20 commit 1 end - initial code and practice code for ruting concept
 2)section 20 commit 2 starting - initual code of project
+3)section 20 commit 3 - end of project coe
