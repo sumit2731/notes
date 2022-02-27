@@ -6,17 +6,14 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
 
 const QuoteForm = (props) => {
-  console.log("Component Rendered");
+
   const [isEntering, setIsEntering] = useState(false);
-  console.log('isEntering = ' +isEntering);
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
   function submitFormHandler(event) {
-    console.log("Submit Handler Called");
     event.preventDefault();
     setIsEntering(false);
-    console.log(isEntering);
 
     const enteredAuthor = authorInputRef.current.value;
     const enteredText = textInputRef.current.value;
@@ -27,7 +24,6 @@ const QuoteForm = (props) => {
   }
 
   const formFocusedhandler = () => {
-    console.log("Focus Handler called");
     if(!isEntering) setIsEntering(true);
   };
 

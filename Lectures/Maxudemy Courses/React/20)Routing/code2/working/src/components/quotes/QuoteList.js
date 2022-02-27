@@ -15,7 +15,6 @@ const sortQuotes = (quotes, ascending) => {
 
 const QuoteList = (props) => {
   const history = useHistory();
-  console.log(history);
 
   const location = useLocation();
 
