@@ -146,8 +146,8 @@ Handling SideEffects, Using Reducers & Using Context API
                      is nested child.
 
                 b)React Hook
-                    instead of using callback inside provider component to get access to context, we can get it from useContext
-                    hook.
+                    instead of using callback inside provider component to get access to context, we can get it from 
+                    useContext hook.
 
                     see navigation.js for syntax.
 
