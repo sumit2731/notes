@@ -1,0 +1,10 @@
+1)In promise chain, from each then block we need to return a promise, if we return a non primise value, it will be 
+    wrapped in a promise. see code snippet 1 in app.js.
+
+2)In promise.then instead of returning a promise, we can return promise.then also. promise. then also returns promise.
+    so next promise in chain still receives that promise. resolved value of that proise will be whatever we return from
+    first callback to null(first rule will be applied on this)
+
+    from snippet 2 we return a normal value so it is wrapped in a promise.
+    from snippet 3 we return a value so it is not wrapped into the promise
+
