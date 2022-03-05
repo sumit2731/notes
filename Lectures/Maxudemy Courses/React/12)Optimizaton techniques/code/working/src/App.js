@@ -17,13 +17,11 @@ function App() {
    *  previous state.
    */
   const PstateHandler = () => {
-    setPstate(pstate +1);
-    setPstate(pstate +1);
+    // setPstate(pstate +1);
+    // setPstate(pstate +1);
     
-    // setPstate((oldPstate) => oldPstate +1);
-    // setPstate((oldPstate) => oldPstate +1);
-
-
+    setPstate((oldPstate) => oldPstate +1);
+    setPstate((oldPstate) => oldPstate +1);
   }
   
   /**
