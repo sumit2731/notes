@@ -70,9 +70,6 @@ const NewTask = (props) => {
       },
       createTask.bind(null, taskText)
     );
-    
-    
-
 
   }
 

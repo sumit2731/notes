@@ -20,10 +20,6 @@ const useHttp = () => {
             setIsLoading(false);
             setError(error.message);
         }
-
-        
-        
-
     }
     
     return [isLoading, error,makeApiCall];
