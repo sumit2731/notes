@@ -1,0 +1,128 @@
+As modules support special keywords and features, we must tell the browser that a script should be treated as a module,
+ by using the attribute 
+ 
+    <!doctype html>
+    <script type="module">
+        import {sayHi} from './say.js';
+
+        document.body.innerHTML = sayHi('John');
+    </script>
+
+
+Modules work only via HTTP(s), not locally
+
+
+Core Modules features - What’s different in modules, compared to “regular” scripts?There are core features, valid both
+ for browser and server-side JavaScript.
+
+ a)Always “use strict”
+ b)Module-level scope - with modules we use import/export instead of relying on global variables.
+
+    In the browser, if we talk about HTML pages, independent top-level scope also exists for each 
+    <script type="module">.
+
+
+    <script type="module">
+        // The variable is only visible in this module script
+        let user = "John";
+    </script>
+
+    <script type="module">
+        alert(user); // Error: user is not defined
+    </script>
+
+
+c)A module code is evaluated only the first time when imported
+    If the same module is imported into multiple other modules, its code is executed only once, upon the first import. 
+    Then its exports are given to all further importers.
+
+    Such behavior is actually very convenient, because it allows us to configure modules.
+
+    Here’s the classical pattern:
+
+        a)A module exports some means of configuration, e.g. a configuration object.
+        b)On the first import we initialize it, write to its properties. The top-level application script may do that.
+        c)Further imports use the module.
+
+
+d)import.meta
+
+    The object import.meta contains the information about the current module.Its content depends on the environment.
+    In the browser, it contains the URL of the script, or a current webpage URL if inside HTML:
+
+
+e)In a module, “this” is undefined
+
+    That’s kind of a minor feature, but for completeness we should mention it.In a module, top-level this is undefined.
+
+    Compare it to non-module scripts, where this is a global object:
+
+
+    <script>
+        alert(this); // window
+    </script>
+
+    <script type="module">
+        alert(this); // undefined
+    </script>
+
+f)Browser-specific features -
+
+    1)Module scripts are always deferred, same effect as defer attribute
+
+        When using modules, we should be aware that the HTML page shows up as it loads, and JavaScript modules run after
+         that, so the user may see the page before the JavaScript application is ready. Some functionality may not work 
+         yet. We should put “loading indicators”, or otherwise ensure that the visitor won’t be confused by that.
+
+
+    2)Async works on inline scripts
+        For non-module scripts, the async attribute only works on external scripts. Async scripts run immediately when 
+        ready, independently of other scripts or the HTML document.For module scripts, it works on inline scripts as 
+        well.That’s good for functionality that doesn’t depend on anything, like counters, ads, document-level event 
+        listeners.
+
+    3)External scripts- External scripts that have type="module" are different in two aspects:
+
+        a)External scripts with the same src run only once:
+
+            <!-- the script my.js is fetched and executed only once -->
+            <script type="module" src="my.js"></script>
+            <script type="module" src="my.js"></script>
+
+        b)External scripts that are fetched from another origin (e.g. another site) require CORS headers, as described 
+            in the chapter Fetch: Cross-Origin Requests. In other words, if a module script is fetched from another 
+            origin, the remote server must supply a header Access-Control-Allow-Origin allowing the fetch.
+
+
+            <!-- another-site.com must supply Access-Control-Allow-Origin -->
+            <!-- otherwise, the script won't execute -->
+            <script type="module" src="http://another-site.com/their.js"></script>
+
+
+        c)No “bare” modules allowed
+
+            In the browser, import must get either a relative or absolute URL. Modules without any path are called “bare”
+             modules. Such modules are not allowed in import.For instance, this import is invalid:
+
+                import {sayHi} from 'sayHi'; // Error, "bare" module
+                // the module must have a path, e.g. './sayHi.js' or wherever the module is
+
+
+            Certain environments, like Node.js or bundle tools allow bare modules, without any path, as they have their
+             own ways for finding modules and hooks to fine-tune them. But browsers do not support bare modules yet.
+
+
+        d)Compatibility, “nomodule”
+
+            Old browsers do not understand type="module". Scripts of an unknown type are just ignored. For them, it’s 
+            possible to provide a fallback using the nomodule attribute:
+
+                <script type="module">
+                    alert("Runs in modern browsers");
+                </script>
+
+                <script nomodule>
+                    alert("Modern browsers know both type=module and nomodule, so skip this")
+                    alert("Old browsers ignore script with unknown type=module, but execute this.");
+                </script>
+
