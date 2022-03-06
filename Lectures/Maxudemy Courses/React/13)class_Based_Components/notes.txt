@@ -1,0 +1,21 @@
+why class based components -
+
+    prior to 16.8 you have to use class based components in some cases, specifically while dealing with state and with side 
+    effects. prior to 16.8 we cannot chnage state in functional components and we can also cannot handle side effects in 
+    fucntional components. but in 16.8 'react hooks' were introduced.
+
+    so hooks are functions for functiona based components which brings features to functionl components which were previously
+    reserved for class based components. class based components cannot use react hooks.
+
+2)handling state in class based components -
+    see code/current/src/components/
+
+3)Handling side effects in class based component -
+    see slide 5
+    see code in code/UserSearch.js and code/User component.
+
+4)using context in class based components -
+    we can connect functionl components to multiple contexts but class based component can be connected to only one context.
+    there are 2 ways of comsuming the context in react components -
+        a)you have to use context.Consumer component
+        b)use this context, see code/UserSearch.js
