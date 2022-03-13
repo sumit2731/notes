@@ -1,0 +1,26 @@
+13) when test libarry cannot find a role, it gives you error, a;so tells you which roles it can find in your DOM and
+    what is name of elmeent and element itself.
+
+    then we use firevents to simlate click event.
+
+
+
+
+
+
+jest -
+
+    a)toBe - expect(colorButton.textContent).toBe('Change to red');
+
+jest-dom - 
+
+    a)expect(linkElement).toBeInTheDocument();
+    b)expect(colorButton).toHaveStyle({backgroundColor: 'red'});
+    c)toHaveTextContext -
+        expect(colorButton).toHaveTextContent('Change to red');
+
+@testing-library/react -
+
+    a)render
+    b)screen
+    c)fireEvent.click(colorButton);

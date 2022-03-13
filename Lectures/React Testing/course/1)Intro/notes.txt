@@ -1,0 +1,151 @@
+regular expressions -
+
+    1)(/learn react/i) - case insenstive
+
+jest assetion -
+
+    Example 1-
+        expect(linkElement).toBeInTheDocument();
+
+            expect -
+                jest global, starts the assertion
+
+            expect argument -
+                subject of assertion
+
+            matcher -
+                type of assertion
+                this match comes from Jest-DOM
+
+            matcher argument -
+                refines the matcher
+
+            here matcher coms from jest-dom
+
+    Examples of jest mathchers -
+
+        expect(element.content).toBe('Hello')
+        expect(elementsArray).toHaveLength('Hello')
+
+jest -dom -
+    comes with create-react-app(installed by default by create-react-app)
+    it uses setUptest.js to import jest-dom before each test, means jest-dom matchers are avalible for every test
+
+    exmaples of matchers -
+        toBeVisisble()
+        toBeChcked()
+
+jest -
+
+    jest-wtach mode -
+
+        in ceeate react app "npm test" runs the jest in watch mode.
+        watch mode is way in whch you can run jest so tht it will watch for changes in fles since last commit.
+        it will only run test that are related to files which changed since last comit
+        if no files is chnaged since lat commit, then you have o tell jest which test you want to run
+
+
+How jest works -
+
+    How does it knows test fails or passed?
+
+        test fails if error is thrown when running function passed to test
+        assertions throw errors wwhen expectation fails
+        no errors thrown means test passed => empy test should also pass as no error is thrown
+        also if we manually throw a error in test, it will fail
+        usually we do not throw error deliberately in tests to make them fail, usually you run assertions, but the assertions 
+            job is to thow error, if expectation fails and test will fail.
+
+TDD(Test Driven Development) -
+    Red Green Testing
+    Write test Before writing Code
+        write shell function => wite test => test fail => write code => test pass
+
+    benefites -
+        a)Makes diffrence how writing test feels as part of process -
+            make writing test as part of coding process and not as a chore that you have to do that at the end.
+        b)more efficient - you run your app to see if it works, that is manual testig. but if you have all those test 
+            written as you go along, every time you make a chnage, you get to rerun your tests. you you get free regression 
+            testing. you dnt have to open your app and manually test if your app made a difference.
+
+
+react-testing library philosophy -
+
+    Wht does it do?
+        Creates virtual DOM 
+        provides utilities(like finc elements in DOM and click on them) for interacting with that virtual DOM
+        this allows for testing without a browser
+
+    types of testing -
+        Unit testing - Test one unit of code in isolation. this unit is function or react component
+        
+        Integration Testing - tests how multiple units interact togather, tests interactin between components and
+            between different micro services.
+        
+        Functional testing - these test a particular fuction(behaviour not one particular code function) of software.
+            ou enter data into form and click on submit. now you want to check function that software does right thing 
+            with that particular set of data.that might be integration test that have mutiple units but you also might have
+            functional test  that's a unit test. maybe just testing to see whether when you enter invalid data, entry box
+            turns red. that would be more of unit test but still be a functional test.
+
+            idea of fucntional test is you are not testing your code but your behaviour.and this distinction might sound familiar
+            with first lecture where we said that react library encourages testing how usrs use your software and not 
+            testing you internal code implementation. so react library encourages functional test.
+        
+        Acceptance/ End to End testing -
+            uses actual browser and server. react-testing library is not built fot this.they need cypress, selenium etc.
+
+
+Functional testing vs Unit testing
+
+    Unit Test -
+        a)isolated, use mock versions of dependencies.
+        b)you also test internas- you need to do this becaise when testing component in inslation, all you can do is to test
+            the state differences that it made to state because yu dnt have other components to see what difference it made
+            to your app.
+        c)when isolated it is very esy to pinpoint the failures.
+        d)furthers from how users are intercating with software.you test can pass even when ypur users have failures and 
+            your test can fail when users intercating with app have success.
+        e)more likely to break when refactoring, refactoring means changing how your software is written without changing
+            the behavour.with unit testing you are writing how your softwate is written, which mesn you are testing your 
+            internals.which means if you chnage how it is written it might break even through behaviour is same.this is negative
+            as if your software is still working as it is supposed to be, your test should pass.
+
+    Functional testing -
+        a)include all relevent units for paticular behavior or user flow tgat you are testing. benefit is it cloe to how
+        users interact with software.which means it is more likely that passing test means users are going to be ok and 
+        failing test means users will have problem.
+        b)test are robust, which means even if you refactor your cod as long as your behaviour remains same, test will pass.
+        c)more difficult to debug
+
+    React Tesing library means advantages of fucntional testing are more, so we will be doing functional testing here.
+
+
+TDD vs BDD -
+
+    see leture
+
+
+Testing Library and accessibiity -
+
+    Testing library is opinated abut how to find elements as it is opinated towards most things and it recommnds
+    finding elements by accessiblity handles or finding them way assistive technologies or screen readers would be
+    able to find them.
+
+    how to see which role to look for -
+
+        https://www.w3.org/TR/wai-aria/#role_definitions - list all roles, click on induival role it will open a table,
+            check "Base Concept".
+
+    also you can give any role to any html element by using role attribute.
+
+
+
+
+
+Bult in HTML elements have these roles -
+
+1)button - button
+2) <li> = listitem
+3)heading
+4)link, <a> has built in role of link
