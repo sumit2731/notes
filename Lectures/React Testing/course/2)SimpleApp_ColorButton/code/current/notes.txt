@@ -11,6 +11,7 @@
 jest -
 
     a)toBe - expect(colorButton.textContent).toBe('Change to red');
+    b)expect(checkbox).not.tobe(""abc)
 
 jest-dom - 
 
@@ -19,8 +20,24 @@ jest-dom -
     c)toHaveTextContext -
         expect(colorButton).toHaveTextContent('Change to red');
 
+    d)expect(colorButton).toBeEnabled();
+    e)expect(checkbox).toBeChecked();
+
 @testing-library/react -
 
     a)render
     b)screen
     c)fireEvent.click(colorButton);
+
+
+Bult in HTML elements have these roles -
+
+1)button - <button>
+2) <li> = listitem
+3)heading
+4)link = <a> if it has href
+5)checkbox, <input type="checkbox">
+
+pending -
+
+    lecture 17

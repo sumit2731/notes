@@ -138,14 +138,3 @@ Testing Library and accessibiity -
             check "Base Concept".
 
     also you can give any role to any html element by using role attribute.
-
-
-
-
-
-Bult in HTML elements have these roles -
-
-1)button - button
-2) <li> = listitem
-3)heading
-4)link, <a> has built in role of link

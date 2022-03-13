@@ -53,6 +53,12 @@ JSX syntax -
                 
                 bakgroundColor (write js version of proeprtyName i.e camelcase version) => style = {bakgroundColor : 'red'}
 
+
+        8)defaultChecked
+            this can be used to check or uncheck a checkbox
+
+            <input type="checkbox" defaultChecked={this.state.chkbox} onChange={this.handleChangeChk} />
+
 2)JSX Tricks -
 
     1)attaching some multiple as well as stateic classes to jsx element -
