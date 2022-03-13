@@ -27,6 +27,9 @@ jest-dom -
 
     a)render
     b)screen
+        let checkbox = screen.getByRole('checkbox', {name: 'Disabled Button'});
+            You can query the returned element(s) by their accessible name. The accessible name is for simple cases equal
+             to e.g. the label of a form element, or the text content of a button, or the value of the aria-label attribute.
     c)fireEvent.click(colorButton);
 
 
