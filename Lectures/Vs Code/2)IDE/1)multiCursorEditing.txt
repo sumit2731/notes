@@ -39,8 +39,7 @@
     
 
 9)add cusrosr to top/bottom -
-    Place the multicursor from current line upto file at top/bottom.
-    select for commnd pallete
+    a)palce a cursor at some point, select -"Add cursor to top/bottom". this will add cursors at same position in all lines till top/bottom.
 
-10)add cursor to line start/end -
-    adds cursor to start/end of all selected lines
+10)add cursors to line ends -
+    select some lines of text and select - "adds cursor to ends." this will add multicursors at end of each line.

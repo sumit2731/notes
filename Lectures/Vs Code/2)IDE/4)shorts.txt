@@ -1,0 +1,56 @@
+1)scafold html -
+    ! and sedlect emmet.
+
+2) serach "color themes" from command pellete
+
+    you can download thousand of color themes from market place.
+
+
+3)mimimap on right hand side of vs code
+    you can see zoomed out view of file. you can hover over to see where you are in file. and you can hover in that are and scroll
+    while being there to see how I am navigating in code.
+
+4)hide sidebar -
+    ctrl + b
+
+5)split terminal
+
+6)creating nested file -
+
+    press ctrl +n, then type folder1/folder2/file1 to create folder along with file
+
+7)"Go to symbol" - you can find all declaraed things in file.
+    search in command pellete - "go to symbol in workspace".
+    shortcut - command + shift + o
+
+    You can browse these by arraow keys and filter them by typing something.
+
+8) go th defination -
+    press cmd or cntl and hover over something, blueundline indicates that click on it will take you its navigation
+
+9)recent projects -
+
+    ctrl + r
+
+10)outline -
+    outlnes diplayes all symbols(classes functions constants) in current file. it also show nested symbols like variables decalared inside
+    functions and values of enums.
+
+11) code folding
+
+12)show and hide termina -
+
+    ctrl + `
+
+    to open new terminal tab - ctrl + shift + `
+
+13)Copy line down - 
+    alt(option) + shift + down
+
+    this can even duplicate multiple lines in selection
+
+14) go to line -
+        cntl + g
+
+        also supports negative line numbers i.e -1 means go to last line
+

@@ -1,0 +1,4 @@
+1)first we tested for a element to be present in node.
+2)thn we learnt about test suites.
+3)then we learnt about how to simulate user events in this simulated DOM.
+4)then we learnt asynchronous testing using find queries.

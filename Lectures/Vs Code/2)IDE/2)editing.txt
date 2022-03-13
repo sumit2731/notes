@@ -16,8 +16,13 @@
 
 
 6)Move line up/down -
-    win - alt    + down/up
     mac - option + down / op
+    win - alt    + down/up
+
+7)"surround with snippet" -
+
+    select text and from command pellete serach "surround with snippet"
+
 
 5)go to edn of line -
 

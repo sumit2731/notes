@@ -1,10 +1,10 @@
 1)here we added a input and its validation logic. see commit, commit1 to see this logic.
-2)but that was lot of code to implement a simple think, then we refactored our logic and removed inputValid state and start 
-    deriving it from inputValue only.
+2)but that was lot of code to implement a simple think, then we refactored our logic and removed inputValid state and 
+    start deriving it from inputValue only.
 
 3)then we started managing formValidity thrugha  separate state and we updated in useEffect hook as it depends upon value of other
-    states(inut if all state), but later we started managing form validity in simple variable and updated it during component re-render,
-    as we are executing component function on each keystroke in input. see commit2 of code.
+    states(inut if all state), but later we started managing form validity in simple variable and updated it during 
+    component re-render,as we are executing component function on each keystroke in input. see commit2 of code.
 
 4)then we added a one more input- email. see commit - Section 16 part3
 

@@ -1,0 +1,16 @@
+1)Open a new group - 
+    ctrl + \
+    cmd + \
+
+2)Split editor in group - 
+    serach from comamnd Palete - "Split Editor in group"
+
+3)close split editor -
+    serach from command pellete - "Join Editor in Group"
+
+4)we have these commands alo -
+
+    split editor into group above
+    split editor into next group
+    etc 
+    etc
