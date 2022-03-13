@@ -1,2 +1,8 @@
 1)How css woks -
     https://elad.medium.com/how-does-css-work-92fe7116916d
+
+
+2)js -
+
+    how to use ES modules in node 
+        https://blog.logrocket.com/es-modules-in-node-today/

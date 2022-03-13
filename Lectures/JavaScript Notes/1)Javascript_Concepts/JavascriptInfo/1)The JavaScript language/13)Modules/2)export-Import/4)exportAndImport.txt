@@ -1,0 +1,34 @@
+Import the module (its code runs), but do not assign any of its exports to variables:
+
+    import "module"
+
+
+
+Syntax -
+
+    1)We can put import/export statements at the top or at the bottom of a script, that doesn’t matter.
+
+        So, technically this code is fine:
+
+
+            sayHi();
+
+            // ...
+
+            import {sayHi} from './say.js'; // import at the end of the file
+
+        In practice imports are usually at the start of the file, but that’s only for more convenience
+
+
+    2)Please note that import/export statements don’t work if inside {...}.
+        A conditional import, like this, won’t work:
+
+        if (something) {
+        import {sayHi} from "./say.js"; // Error: import must be at top level
+}
+
+
+
+    
+
+        
