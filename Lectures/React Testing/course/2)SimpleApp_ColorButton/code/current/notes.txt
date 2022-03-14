@@ -12,6 +12,11 @@ jest -
 
     a)toBe - expect(colorButton.textContent).toBe('Change to red');
     b)expect(checkbox).not.tobe(""abc)
+    c)defining mock functions and giving them some output value -
+        window.fetch = jest.fn();
+        window.fetch.mockResolvedValueOnce({
+            json: async () => [{id: 'p1', title: 'First Post'}]
+        });
 
 jest-dom - 
 

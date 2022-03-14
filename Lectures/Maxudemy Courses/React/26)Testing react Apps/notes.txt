@@ -1,4 +1,7 @@
 1)first we tested for a element to be present in node.
 2)thn we learnt about test suites.
 3)then we learnt about how to simulate user events in this simulated DOM.
-4)then we learnt asynchronous testing using find queries.
+4)then we learnt asynchronous testing using findAll query which returns promise and we can give some time till this 
+    promise will be resolved or rejected.we can make callback passed to test as async and use await keyword to wait 
+    for promises to resolve.
+5)then we saw how to mock api calling by fetch by using monkey patching.
