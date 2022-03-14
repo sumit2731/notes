@@ -1,0 +1,10 @@
+13) when test libarry cannot find a role, it gives you error, a;so tells you which roles it can find in your DOM and
+    what is name of elmeent and element itself.
+
+    then we use firevents to simlate click event.
+
+
+
+
+
+
