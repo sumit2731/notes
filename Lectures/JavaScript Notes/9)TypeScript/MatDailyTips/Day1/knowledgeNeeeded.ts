@@ -21,9 +21,16 @@ type NewSingleFruitCount2 = {
 
 }
 
+/* 
+here a "Computeed property name" is used in left hand side so this [k2 in k] syntax is required.
+to used it on riht hand side, it is not required. without [] harcoded K will be used.
+and using [K] will throw error
+
+*/
+
 type NewSingleFruitCount3 = {
     [K in keyof FruitCounts]: {
-        [k2 in K] : number
+        [K1 in K]: number
     }
 
 }
@@ -31,7 +38,7 @@ type NewSingleFruitCount3 = {
 
 
 /* 
-Converting a normal object type into union
+Converting a object type into union
 */
 
 let demoObject = {

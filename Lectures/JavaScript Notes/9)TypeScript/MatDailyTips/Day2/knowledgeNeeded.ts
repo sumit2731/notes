@@ -9,7 +9,7 @@ export type Entity =
         }
     |
         {
-            type: "commnet";
+            type: "comment";
         };
 
 /* 
@@ -18,15 +18,6 @@ How to get type which is union of values of another union
 */
 
 type valuesogUnion = Entity["type"];
-
-/* 
-
-using that union to derived object type
-*/
-
-type DerviedType1 = {
-    [EntityType in Entity["type"]]: string
-}
 
 /* 
 Using that union type in values of object also. here Entity type is used
@@ -49,3 +40,35 @@ type DerviedType3 = {
         type: EntityType
     }
 }
+
+/* 
+converting it into union type
+*/
+
+type DerviedType4 = {
+    [EntityType in Entity["type"]]: {
+        type: EntityType
+    }
+}[Entity["type"]]
+
+
+/* 
+Adding a property name
+
+*/
+
+type DerviedType5 = {
+    [EntityType in Entity["type"]]: {
+        type: EntityType
+    } & Record<`${EntityType}Id`,string>
+    
+}[Entity["type"]]
+
+
+let result:DerviedType5 = {
+        type: 'comment',
+        commentId: '123'
+
+}
+
+console.log(result);
