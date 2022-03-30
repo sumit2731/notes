@@ -148,7 +148,7 @@
                 key: "ouhimg"
                 pathname: "/quotes"   // whole url that is loaded into browser. not for this particular component
                 search: "?sort=asc"
-                state: undefined
+                state: undefined // here we can push some data into state while navigating. see blog in dev.to
             }
 
             const location = useLocation();// location object gives info about currently loaded url
@@ -188,6 +188,7 @@
         it will only show what is used for loading this component.
 
     3)useHistory
+        history object can be mutated so do not use it for location object for determining the current location state.
         Main Use -Helps to navigate to routes programmartically - 
 
         import {useHistory} from 'react-router-dom'
