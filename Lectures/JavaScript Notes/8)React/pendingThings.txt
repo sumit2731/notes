@@ -1,4 +1,11 @@
 1)Recat Docs -
+
+    1)context in advanved guide -
+        a)see when context rerenders
+        b)render props when passing multple guides
+
+    2)In render prop section, see HOC thing.
+
     composition vs inheritance -
         artckes is clear but more about compositions vs inheritance in javacsript
 

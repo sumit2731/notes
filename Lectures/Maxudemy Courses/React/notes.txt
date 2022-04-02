@@ -2,14 +2,9 @@ regarding code of project, each section has its code, but all code repo can be f
     we have different branch for diffrent sections and each section we have different codes.
 
 
-questions -
 
-    multiple state updates in  section 4, lecture 52,58.
-    rile of intial value to useRef
 
-    dependecy to useCallback hook
-    econd argument to react.memo
-
+   
 questions asked in course -
 
     1)lecture 54, component getting updated on each form value control change.
@@ -193,7 +188,7 @@ JSX syntax -
         Context.provider
     3)React.Fragment - For wrapping some components together, as react component can return only 1 root level component.
     4)React.createElement - used to create elements while returning from react component. nowa days we dnt have to do that.
-    5)react.memo - When component is wrapped inside it while exporting, componnt function will only be called if props passed
+    5)React.memo - When component is wrapped inside it while exporting, componnt function will only be called if props passed
         to component are changed(when state in parent component chnaged). 
 
         code -
@@ -224,6 +219,8 @@ JSX syntax -
             }
             
             export default React.memo(MyComponent, areEqual);
+
+    6)React.Suspense, React.lazy
 
 
 
