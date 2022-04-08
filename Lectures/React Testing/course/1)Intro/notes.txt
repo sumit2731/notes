@@ -1,6 +1,4 @@
-regular expressions -
 
-    1)(/learn react/i) - case insenstive
 
 jest assetion -
 
@@ -37,19 +35,21 @@ jest -dom -
 
 jest -
 
-    jest-wtach mode -
+    jest-watch mode -
 
         in ceeate react app "npm test" runs the jest in watch mode.
         watch mode is way in whch you can run jest so tht it will watch for changes in fles since last commit.
         it will only run test that are related to files which changed since last comit
-        if no files is chnaged since lat commit, then you have o tell jest which test you want to run
+        if no files is chnaged since lat commit, then you have o tell jest which test you want to run.
+
+    no if you want to exit watch mode and run some file pattern and all other things jest will show you some options.
 
 
 How jest works -
 
     How does it knows test fails or passed?
 
-        test fails if error is thrown when running function passed to test
+        test fails if error is thrown when running function passed to test.
         assertions throw errors wwhen expectation fails
         no errors thrown means test passed => empy test should also pass as no error is thrown
         also if we manually throw a error in test, it will fail
@@ -83,7 +83,7 @@ react-testing library philosophy -
             between different micro services.
         
         Functional testing - these test a particular fuction(behaviour not one particular code function) of software.
-            ou enter data into form and click on submit. now you want to check function that software does right thing 
+            you enter data into form and click on submit. now you want to check function that software does right thing 
             with that particular set of data.that might be integration test that have mutiple units but you also might have
             functional test  that's a unit test. maybe just testing to see whether when you enter invalid data, entry box
             turns red. that would be more of unit test but still be a functional test.
@@ -100,7 +100,7 @@ Functional testing vs Unit testing
 
     Unit Test -
         a)isolated, use mock versions of dependencies.
-        b)you also test internas- you need to do this becaise when testing component in inslation, all you can do is to test
+        b)you also test internals- you need to do this becaise when testing component in inslation, all you can do is to test
             the state differences that it made to state because yu dnt have other components to see what difference it made
             to your app.
         c)when isolated it is very esy to pinpoint the failures.
@@ -130,9 +130,11 @@ Testing Library and accessibiity -
 
     Testing library is opinated abut how to find elements as it is opinated towards most things and it recommnds
     finding elements by accessiblity handles or finding them way assistive technologies or screen readers would be
-    able to find them.
+    able to find them. it has a guide about which query to use -
 
-    how to see which role to look for -
+
+
+    how to see which role to look for -https://testing-library.com/docs/queries/about/#priority
 
         https://www.w3.org/TR/wai-aria/#role_definitions - list all roles, click on induival role it will open a table,
             check "Base Concept".

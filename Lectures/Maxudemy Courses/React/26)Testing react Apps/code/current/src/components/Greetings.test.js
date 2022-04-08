@@ -44,7 +44,7 @@ describe('Greetings Component',() => {
        //screen.getAllByText('Hello World', {exact: true});
        const helloWorldElement = screen.getByText('Hello World!');
        /**
-        * expect is global function to hich we can pass our testing result valuethat can be anything a number, a string or DOM node.
+        * expect is global function to which we can pass our testing result value that can be anything a number, a string or DOM node.
         * and on result of this expect function we can call various matchers like tobeInTheDocument which check if HTML element is n document.
         * you can also check opposite of matcher by adding .not and then your matching functions
         */
