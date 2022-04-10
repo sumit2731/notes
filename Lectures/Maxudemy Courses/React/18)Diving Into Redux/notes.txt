@@ -1,0 +1,8 @@
+Disadvantages of redux -
+
+    a)complexity - setup and managing state with react context can be complex. for large apps you can end up with
+        setup like shown in slide 5 in pdf. if you try to manage all things in single context, then single context will
+        become complex, see slide 6.
+
+    b)performnace - for frequent state updates context is not that great. react team member says it is replacement of flux
+        like architecture in all usecaases.slide 7.
