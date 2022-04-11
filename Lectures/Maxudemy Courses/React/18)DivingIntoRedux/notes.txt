@@ -1,0 +1,50 @@
+Disadvantages of redux -
+
+    a)complexity - setup and managing state with react context can be complex. for large apps you can end up with
+        setup like shown in slide 5 in pdf. if you try to manage all things in single context, then single context 
+        will become complex, see slide 6.
+
+    b)performnace - for frequent state updates context is not that great. react team member says it is replacement
+     of flux like architecture in all usecaases.slide 7.
+
+
+Code Notes -
+
+    1)first we saw how we can use redux in any javascript application. code/reduxWithoutReact. see notes in course.
+    2)then we use redux in react application. code/reduxInReact.
+        1)then we we installed -
+            npm install redux react-redux
+
+            react-redux is needed so that using redux inside react project is easier.it makes easier to connect
+            rect application with store and reducers and so on very simple.it will for example make it very simple
+            to subscribe components to redux store.
+
+        2)steps to use redux in react application -
+
+            1)create a store and reducer (store/index.js)
+            2)provide store using Provider form react-redux. only component which are wrapped inside this Provider
+                will have access to redux.here we provide store at highest level in app by wrapping root component
+                by Provider(index.js)
+
+            3)we tell Provider which store we want to provide by using store prop on Provider component. now 
+             components of our app can tap into store, can set up subscription to the data and dispatch actions.
+
+            4)access store using useSelector hook provided by react-redux in counnter.js.w wecan also use useStore
+            hook whic gives access to whole store but useSelector is moe convininet as it allows us to select a part
+            of state managed by store.
+
+            in case of class based componnet, we can use connect function, which will be wrapped around class based
+            component and will connect component to store.
+
+            useSelector takes a function as argument which determines which piece of data we want to extract form 
+            store. argumnt to function is whole store. this functionnis executed by react-redux.
+
+            now whenever that part of state chnages, our component function is rexecucuted because behind the scenes a 
+            subscripton is setup.
+
+
+            5)dispatching action from component.
+
+                here we use useDispatcher hook to get access to dispatch function.
+
+            6)using redux in class based components. see counter.js to see how we use connect for this.
