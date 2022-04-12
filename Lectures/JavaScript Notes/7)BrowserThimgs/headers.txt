@@ -36,7 +36,34 @@ response headers -
         Set-Cookie
 
     security -
+        Strict-Transport-Security (HSTS) - The HTTP Strict Transport Security header informs the browser that it 
+            should never load a site using HTTP and should automatically convert all attempts to access the site using
+            HTTP to HTTPS requests instead.
+            
+            syntax -
 
+                Strict-Transport-Security: max-age=<expire-time>
+                Strict-Transport-Security: max-age=<expire-time>; includeSubDomains
+                Strict-Transport-Security: max-age=<expire-time>; preload
+
+                Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+        Content-Security-Policy (CST) - you can enable it by adding header or by using meta tag -
+
+            <meta http-equiv="Content-Security-Policy"
+                content="default-src 'self'; img-src https://*; child-src 'none';">
+
+
+            what it does -
+                a)A CSP compatible browser will then only execute scripts loaded in source files received from those 
+                    allowed domains, ignoring all other scripts (including inline scripts and event-handling HTML 
+                    attributes).
+
+                b)he server can specify which protocols are allowed to be used; for example (and ideally, from a security
+                 standpoint), a server can specify that all content must be loaded using HTTPS.
+
+                    cookies attributes - marking all cookies with the secure attribute and providing automatic redirects
+                     from HTTP pages to their HTTPS counterparts.
         
 
 
@@ -61,3 +88,19 @@ request headers -
     cookies -
         
         Cookie
+
+
+18001031333
+
+Connection: keep-alive
+content-encoding: gzip
+Content-Type: text/html
+Date: Mon, 11 Apr 2022 06:36:22 GMT
+last-modified: Mon, 11 Apr 2022 05:49:41 GMT
+server: fwe
+Transfer-Encoding: chunked
+x-envoy-upstream-service-time: 1
+x-frame-options: SAMEORIGIN
+x-fw-ratelimiting-managed: false
+x-request-id: 9a431ecc-e69b-929f-b989-0922e8fdb3a7
+x-trace-id: 00-062411f95f3f162fdf1d125b285e911b-8e8f22962aa89156-01

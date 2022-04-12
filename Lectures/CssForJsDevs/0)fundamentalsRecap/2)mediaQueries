@@ -1,0 +1,42 @@
+if state of css
+
+    // Javascript
+    if (condition) {
+    // Some JS that will run if the condition is met.
+    }
+
+    /* CSS */
+    @media (condition) {
+    /* Some CSS that'll run if the condition is met. */
+    }
+
+    examples - 
+
+
+        @media (max-width: 300px) {
+            .small-only {
+                color: red;
+            }
+        }
+
+
+        @media (min-width: 300px) {
+            .large-screens {
+            display: block;
+            }
+            .small-screens {
+            display: none;
+            }
+        }
+
+
+    Valid conditions - 
+
+        max-width and min-width are media feature. In the context of a media query, max-width is a “media feature”, not a CSS property. They just happen to share the same name.
+            Not all CSS properties have corresponding media features. For example, this snippet is not valid:
+
+
+
+            /* 🚫 Not valid, since `font-size` can't be queried */
+                @media (font-size: 32px) {
+            }
