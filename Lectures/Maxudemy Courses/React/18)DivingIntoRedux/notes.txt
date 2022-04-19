@@ -1,4 +1,4 @@
-Disadvantages of redux -
+Disadvantages of context -
 
     a)complexity - setup and managing state with react context can be complex. for large apps you can end up with
         setup like shown in slide 5 in pdf. if you try to manage all things in single context, then single context 
@@ -48,3 +48,37 @@ Code Notes -
                 here we use useDispatcher hook to get access to dispatch function.
 
             6)using redux in class based components. see counter.js to see how we use connect for this.
+
+            7)avoid mutting the state. see lecture 240.
+
+        3)redux devtoolkit -there is lsightly easie way of using redux as well.we saw core foundation first, to understand how
+            how it works.lets see a approach which is easier to setup and maintain. problems that we will face if our application
+             cocntinues to grow, i.e if we manage more and more state with redux -
+
+                a)avoiding typos in action types. clashing action names in reducers.
+                b)amount of data managed by state.we have mention all properties gain when we chnae one proeprty, so file can get very 
+                    large.
+                c)we can accidentaly mutate the existing state, if we have nested object and arrays.
+
+                there are solution to these problem in vanilla js like using constants instead of harcoding action types, spliting
+                large redcucer into multiple smaller reducers, so that file is not very large, there are third paty packages that allow
+                you to automtically copy state and ensure that you do not accidentally edit it.instead of loooking into diffrent solutions,
+                we can have one solution - redux toolkit.it just makes working ith reduc esier.
+
+        4)working with redux-toolkit -
+
+            1)npm install @reduxjs/toolkit, 
+                we can uninstall the redux library because it is alteady included in toolkit.
+
+            2)createSlicer
+                see src/store/index.js of folder3.  
+            3)now we have state slice, how do we make our store aware of this slice, how we dispatch actions againts this slice?
+                for that we need to pass reducer to our store.see index.js of folder 3.
+
+                const store = configureStore({
+                    reducer: counterSlice.reducer
+                });
+
+            4)now how do we dispatch actions, because we do not have our own if checks, we do not know what 
+            identifiers for our actions should be?we have just those methods names. how do we know what to dispatch.
+

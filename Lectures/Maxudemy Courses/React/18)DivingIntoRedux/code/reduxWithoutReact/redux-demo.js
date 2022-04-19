@@ -24,7 +24,7 @@ const counterReducer = (state = {counter: 0},action) => {
 
 /**
  * @Desc here we connect store with its reducer. redux calls this reducer whenever action is dispatched.
- * also when file is executed first ime a intil action is kind of dispatched by redux. but subscriber is 
+ * also when file is executed first time a intil action is kind of dispatched by redux. but subscriber is 
  * not called. for that initial action, we have given defaul value to state.
  */
 const store = redux.createStore(counterReducer);
