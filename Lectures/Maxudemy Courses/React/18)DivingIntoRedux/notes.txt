@@ -51,7 +51,7 @@ Code Notes -
 
             7)avoid mutting the state. see lecture 240.
 
-        3)redux devtoolkit -there is lsightly easie way of using redux as well.we saw core foundation first, to understand how
+    3)redux devtoolkit -there is lsightly easie way of using redux as well.we saw core foundation first, to understand how
             how it works.lets see a approach which is easier to setup and maintain. problems that we will face if our application
              cocntinues to grow, i.e if we manage more and more state with redux -
 
@@ -65,7 +65,7 @@ Code Notes -
                 you to automtically copy state and ensure that you do not accidentally edit it.instead of loooking into diffrent solutions,
                 we can have one solution - redux toolkit.it just makes working ith reduc esier.
 
-        4)working with redux-toolkit -
+    4)working with redux-toolkit -
 
             1)npm install @reduxjs/toolkit, 
                 we can uninstall the redux library because it is alteady included in toolkit.
