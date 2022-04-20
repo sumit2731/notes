@@ -98,9 +98,27 @@ const counterSlice = createSlice({
  * combineReducer, which will combine the reducers.
  * 
  * but we can ditch edux here and import configureStore from devtool kit, which will make it more convininent. configureStore like createStore creates a store, 
- * but it makes merging different reducers easier.lets use it
+ * but it makes merging different reducers easier.lets use it.
+ * 
+ * it expect object as argument nd there we have proerty called reducer. reducer and reducers because redux wants one main reducer function which is responsible 
+ * for global state.with configure store, value of reducer can be a single reducer like this -
+ *  
+        const store = configureStore({
+            reducer: counterSlice.reducer
+        });
+ * here this single reducer will be used as global reducer.
+
+    but if we have multiple says slicer then value of recuder key is again a object, in that object we can have any kes of our choice. value these keys will be
+    diffrent redcuer functions, so we will have map of reducers, and this map is then set as value of main reducer na dbehind the scenes configure store will merge
+    all those reducers into a big reducer.
+
+        const store = configureStore({
+            reducer: {counter: counterSlice.reducer}
+        });
  */
 //const store = createStore(counterSlice.reducer);
-const store = createStore(counterSlice.reducer);
+const store = configureStore({
+    reducer: counterSlice.reducer
+});
 
 export default store;
