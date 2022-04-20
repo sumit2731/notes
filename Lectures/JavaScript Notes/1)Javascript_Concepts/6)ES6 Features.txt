@@ -5,3 +5,5 @@
 5)Class Syntax
 6)Array.from method
 7)Enhanced Object Literals
+8)Optional Chaining
+9)nullish coalish

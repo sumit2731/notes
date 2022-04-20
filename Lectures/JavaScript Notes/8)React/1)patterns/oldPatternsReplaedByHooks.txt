@@ -1,0 +1,8 @@
+Old class based component patterns where hooks can be used -
+
+    1)Higher Order Component
+    2)container -presenter pattern
+    3)render props
+
+
+Part 1- https://blog.devgenius.io/react-component-patterns-to-use-based-on-need-part-2-e15270191cc9

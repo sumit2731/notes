@@ -82,6 +82,9 @@ request headers -
         Access-Control-Request-Method - header has the method of the unsafe request.
         Access-Control-Request-Headers - header provides a comma-separated list of its unsafe HTTP-headers.
 
+        Referer - The Referer HTTP request header contains an absolute or partial address of the page that makes the 
+            request.can be controlled by response header - Referrer Policy
+
 
 
 
