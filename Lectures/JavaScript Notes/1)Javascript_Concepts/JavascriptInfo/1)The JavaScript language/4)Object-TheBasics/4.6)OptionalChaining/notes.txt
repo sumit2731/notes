@@ -1,0 +1,66 @@
+Optional chaining '?.'
+
+    The optional chaining ?. is a safe way to access nested object properties, even if an intermediate property doesn’t exist.
+    The optional chaining ?. stops the evaluation if the value before ?. is undefined or null and returns undefined.
+    In other words, value?.prop:
+        works as value.prop, if value exists,
+        otherwise (when value is undefined/null) it returns undefined.
+
+    Don’t overuse the optional chaining - we should apply ?. carefully, only where it’s acceptable, according to our code logic, that 
+        the left part doesn’t exist. So that it won’t hide programming errors from us, if they occur.
+    The variable before ?. must be declared
+
+    Short-circuiting
+        As it was said before, the ?. immediately stops (“short-circuits”) the evaluation if the left part doesn’t exist.
+        So, if there are any further function calls or operations to the right of ?., they won’t be made.
+
+            let user = null;
+            let x = 0;
+
+            user?.sayHi(x++); // no "user", so the execution doesn't reach sayHi call and x++
+
+            alert(x); // 0, value not incremented
+
+
+    Other variants: ?.(), ?.[] - 
+
+        ?.() is used to call a function that may not exist. code - 
+
+            let userAdmin = {
+                admin() {
+                    alert("I am admin");
+                }
+            };
+
+            let userGuest = {};
+
+            userAdmin.admin?.(); // I am admin
+
+            userGuest.admin?.(); // nothing happens (no such method)
+
+        The ?.[] syntax also works, if we’d like to use brackets [] to access properties instead of dot .. Similar to previous cases, 
+            it allows to safely read a property from an object that may not exist. code -
+
+
+            let key = "firstName";
+
+            let user1 = {
+                firstName: "John"
+            };
+
+            let user2 = null;
+
+            alert( user1?.[key] ); // John
+            alert( user2?.[key] ); // undefined
+
+
+        Also we can use ?. with delete:
+            delete user?.name; // delete user.name if user exists
+
+        We can use ?. for safe reading and deleting, but not writing. The optional chaining ?. has no use on the left side of an 
+            assignment. code - 
+
+
+                let user = null;
+                user?.name = "John"; // Error, doesn't work
+                // because it evaluates to: undefined = "John"
