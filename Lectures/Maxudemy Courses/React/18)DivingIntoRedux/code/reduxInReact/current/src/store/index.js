@@ -1,25 +1,25 @@
-import {createStore} from 'redux';
-import {createSlice, configureStore} from '@reduxjs/toolkit';
+import { createStore } from 'redux';
+import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = {counter: 0, showCounter: true};
 
 
 /**
  * @Desc    createReducer is also there which allows us to create reducer with certain enhancements, but createSlice is 
-    more powerful, and it will simplyfy couple of aspects in one go.it wants object as rgument, here we are preparing global 
-    slice of our state.when we have diffrent states,thatare not related then we can create diffrent stat slices, potentially 
-    in diffrent files, to have more maintainable code. here we have only one slice, as counter and showCounter belong togather.
+    more powerful, and it will simplyfy couple of aspects in one go.it wants object as argument, here we are preparing global 
+    slice of our state.when we have diffrent states,that are not related then we can create diffrent state slices, potentially 
+    in different files, to have more maintainable code. here we have only one slice, as counter and showCounter belong togather.
     
     every slice needs a name, identifier you could say.
     then we give it intialState
     then we need to add reducer, reducers is a object a map, you could say, that this slice needs. in this objet we can add methods,
-     any names of your choice, though these names will become important later. here we added 4 methods because we had 4 diffrent if cases in
-     our reducer before.these methods receive current state and action, and will be called by automatically by redux.
+    any names of your choice, though these names will become important later. here we added 4 methods because we had 4 diffrent if
+    cases in our reducer before.these methods receive current state and action, and will be called by automatically by redux.
 
-     but here we do not need action because these methods will be automatically called depending which action was triggered. now we do not
-     need to write if checks in reducer.in these methods we are allowed to modify the state. this is because redux toolkit internally uses package called
-     imur whcih detects code lke this and clones the existing state, create new state object, keep all state that we are not editing and override the state,
-     which we are editing in immutable way.
+    but here we do not need action because these methods will be automatically called depending which action was triggered. now we
+    do not need to write if checks in reducer.in these methods we are allowed to modify the state. this is because redux toolkit 
+    internally uses package called imur whcih detects code lke this and clones the existing state, create new state object, keep 
+    all state that we are not editing and override the state,which we are editing in immutable way.
 
  */
 const counterSlice = createSlice({
@@ -67,7 +67,7 @@ const counterSlice = createSlice({
 //         return {
 //             ...state,
 //             counter: state.counter +1,
-            
+
 //         };
 //     }
 
@@ -75,17 +75,17 @@ const counterSlice = createSlice({
 //         return {
 //             ...state,
 //             counter: state.counter + action.amount,
-           
+
 //         };
 //     }
-    
+
 //     if(action.type === 'decrement') {
 //         return {
 //             ...state,
 //             counter: state.counter -1,
 //         }
 //     }
-    
+
 //     if(action.type === 'toggle') {
 //         return {
 //             ...state,
@@ -98,24 +98,24 @@ const counterSlice = createSlice({
 //const store = createStore(counterReducer);
 
 /**
- * @Desc here instead of manaully cretaing reducer , we used reducer create by createSlice. but if we have multiple state slices, then it will be a problem,
- * because to create store we can pass only one reducer. but as we have multiple slices , we will have multiple reducers. in reduc there this function called
- * combineReducer, which will combine the reducers.
+ * @Desc here instead of manaully cretaing reducer , we used reducer create by createSlice. but if we have multiple state slices, then
+ *  it will be a problem,because to create store we can pass only one reducer. but as we have multiple slices , we will have multiple
+ *  reducers. in redux there this function called combineReducer, which will combine the reducers.
  * 
- * but we can ditch edux here and import configureStore from devtool kit, which will make it more convininent. configureStore like createStore creates a store, 
- * but it makes merging different reducers easier.lets use it.
+ * but we can ditch redux here and import configureStore from devtool kit, which will make it more convininent. configureStore like
+ *  createStore creates a store, but it makes merging different reducers easier.lets use it.
  * 
- * it expect object as argument nd there we have proerty called reducer. reducer and reducers because redux wants one main reducer function which is responsible 
- * for global state.with configure store, value of reducer can be a single reducer like this -
+ * it expect object as argument dnd there we have proerty called reducer. reducer and not reducers because redux wants one main 
+ * reducer function which is responsible for global state.with configure store, value of reducer can be a single reducer like this -
  *  
         const store = configureStore({
             reducer: counterSlice.reducer
         });
  * here this single reducer will be used as global reducer.
 
-    but if we have multiple says slicer then value of recuder key is again a object, in that object we can have any kes of our choice. value these keys will be
-    diffrent redcuer functions, so we will have map of reducers, and this map is then set as value of main reducer na dbehind the scenes configure store will merge
-    all those reducers into a big reducer.
+    but if we have multiple says slicer then value of recuder key is again a object, in that object we can have any kes of our 
+    choice. value these keys will be diffrent redcuer functions, so we will have map of reducers, and this map is then set as 
+    value of main reducer and behind the scenes configure store will merge all those reducers into a big reducer.
 
         const store = configureStore({
             reducer: {counter: counterSlice.reducer}
