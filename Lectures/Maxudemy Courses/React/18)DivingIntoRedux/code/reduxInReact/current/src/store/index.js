@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import {createSlice, configureStore} from '@reduxjs/toolkit';
 
-const intialState = {counter: 0, showCounter: true};
+const initialState = {counter: 0, showCounter: true};
 
 
 /**
@@ -24,8 +24,8 @@ const intialState = {counter: 0, showCounter: true};
  */
 const counterSlice = createSlice({
     name: 'counter',
-    intialState,
-    reducer: {
+    initialState,
+    reducers: {
         increment(state) {
             state.counter++;
         },
@@ -33,13 +33,18 @@ const counterSlice = createSlice({
             state.counter--;
         },
         increase(state,action) {
-            state.counter = state.counter + action.amount;
+            //state.counter = state.counter + action.amount;
+            /**
+             * @Desc Data passed to action creators can be accessed via payload property
+             */
+            state.counter = state.counter + action.payload;
         },
         toggleCounter(state) {
             state.showCounter = !state.showCounter;
         }
     }
 });
+
 
 
 /**
@@ -120,5 +125,24 @@ const counterSlice = createSlice({
 const store = configureStore({
     reducer: counterSlice.reducer
 });
+
+
+
+/**
+ * @Desc For dispatching action create Slice has got us covered, createSlice automaticaly creates unique action 
+    identifiers for our diffrent  reducers. to get hold of these identifiers  use action property on counterSlice.
+
+    this will have diffrent propertues whos name matches with method names that we had in createSlice function.
+    we can call these methods and they return action objects to us. so these methods are called actionCreators
+    counterSlice.actions.toggleCounter returns => actio object of this type -
+        {type: some auto generated unique identifiers}
+    
+    so action identifiers are created automatically for us.we do not have to create those action objects on our 
+    own.these actions will trigger corrosponing reducers. so from this file we can export this actions object.
+
+    we will use it to generate action object in components, where we can then disatch these actions.
+ */
+    
+export const counterActions = counterSlice.actions;
 
 export default store;

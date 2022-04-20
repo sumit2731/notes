@@ -82,3 +82,10 @@ Code Notes -
             4)now how do we dispatch actions, because we do not have our own if checks, we do not know what 
             identifiers for our actions should be?we have just those methods names. how do we know what to dispatch.
 
+                for this we accsed action property on created state slice. it gave us methods which will create action objects
+                with unique identifiers for us.we export these and use it in components where we need them.
+
+                also we can pass any data to actionCreators and in redcuer it can be accsed via payload property.
+
+                see store/index.js and store/counter.js
+
