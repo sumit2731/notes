@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialCounterState = {counter: 0, showCounter: true};
+const initialCounterState = { counter: 0, showCounter: true };
 
 
 /**
@@ -32,7 +32,7 @@ const counterSlice = createSlice({
         decrement(state) {
             state.counter--;
         },
-        increase(state,action) {
+        increase(state, action) {
             //state.counter = state.counter + action.amount;
             /**
              * @Desc Data passed to action creators can be accessed via payload property
@@ -46,11 +46,21 @@ const counterSlice = createSlice({
 });
 
 
-const initialState = {}
+const initialAuthState = {
+    isAuthenticated: false
+}
 
-createSlice({
+const authSlice = createSlice({
     name: 'authentication',
-    initialState: initialState
+    initialState: initialAuthState,
+    reducers: {
+        login(state) {
+            state.isAuthenticated = true;
+        },
+        logout(state) {
+            state.isAuthenticated = false;
+        }
+    }
 });
 
 /**
@@ -126,10 +136,24 @@ createSlice({
         const store = configureStore({
             reducer: {counter: counterSlice.reducer}
         });
+
+    Event when you work with multiple slices,you still only have one Redux store,so you still only call configureStore once.
+     and this store only has one root reducer here(reducer mentioned in property of object parameter to configure store).
+    
+     but as I briefly explained earlier,this reducer actually does not just take a reducer function as an argument but also an 
+     object which acts as a map of reducers where you can then have any key names of your choice,for example, counter and then 
+     point at your different reducers.And these individual reducers here will then automatically be merged together into one main 
+     reducer,which is exposed to this store.
+
+     now property names used in object argument to reducer is then used to access that part of state, i.e they need to be
+     used in useSelector, earlier we did state.counter now we need to do state.counter.counter
  */
 //const store = createStore(counterSlice.reducer);
 const store = configureStore({
-    reducer: counterSlice.reducer
+    reducer: {
+        counter: counterSlice.reducer,
+        auth: authSlice.reducer
+    }
 });
 
 
@@ -148,7 +172,9 @@ const store = configureStore({
 
     we will use it to generate action object in components, where we can then disatch these actions.
  */
-    
+
 export const counterActions = counterSlice.actions;
+
+export const authActions = authSlice.actions;
 
 export default store;
