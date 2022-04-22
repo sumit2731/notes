@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialCounterState = {counter: 0, showCounter: true};
+const initialState = {counter: 0, showCounter: true};
 
 
 /**
@@ -24,7 +24,7 @@ const initialCounterState = {counter: 0, showCounter: true};
  */
 const counterSlice = createSlice({
     name: 'counter',
-    initialState: initialCounterState,
+    initialState,
     reducers: {
         increment(state) {
             state.counter++;
@@ -46,12 +46,6 @@ const counterSlice = createSlice({
 });
 
 
-const initialState = {}
-
-createSlice({
-    name: 'authentication',
-    initialState: initialState
-});
 
 /**
  * @Desc we give state a default value, so that when reducer is executed for first time we have some default value
