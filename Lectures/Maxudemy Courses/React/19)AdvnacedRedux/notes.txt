@@ -1,0 +1,23 @@
+1)slide 1-
+    here is one super important rule.Your reducer functions must be pure, side-effect free, and synchronous.So your reducer 
+    functions should take some input in the case of the Redux reducer,the old state and the action,and then produce some output.
+    It has nothing to do with redux,but it just general reducer concept that you have a pure,side effects synchronous function
+    that takes input and produces some output.And for the same input,for the same values,it will always produce the same output,
+    without any side effects that happen along the way without any asynchronous code that blocks it.No code of that kind must be 
+    part of your reducer functions.
+
+    important question is when working with redux, when we dispatch some action that would involve a side effect, like HTTP request
+     that should be sent,where should we then put the side effect code?
+
+
+ options are -
+    
+    1)We can put our side effects possibly asynchronous code directly into the component with user fact for example, so just as
+     we did it before in this course,and then we only dispatch an action once that side effect is done so Redux doesn't know 
+     anything about that side effect,
+
+    2)we write our own action creator functions,so we don't use the automatically generated ones redux toolkit gives us but instead
+     we write our own action creators.And it turns out that for those action creators redux actually has a solution that allows us
+      to perform side effects and run asynchronous tasks as part of this action creators without changing the reducer function.
+
+we are going to have a look at both approaches in this course section.
