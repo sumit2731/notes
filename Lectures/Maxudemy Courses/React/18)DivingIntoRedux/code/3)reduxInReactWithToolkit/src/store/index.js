@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialState = {counter: 0, showCounter: true};
+const initialState = { counter: 0, showCounter: true };
 
 
 /**
@@ -13,7 +13,7 @@ const initialState = {counter: 0, showCounter: true};
     every slice needs a name, identifier you could say.
     then we give it intialState
     then we need to add reducer, reducers is a object a map, you could say, that this slice needs. in this objet we can add methods,
-    any names of your choice, though these names will become important later. here we added 4 methods because we had 4 diffrent if
+    any names of your choice, though these names will become important later. here we added 4 methods because we had 4 diffrent of
     cases in our reducer before.these methods receive current state and action, and will be called by automatically by redux.
 
     but here we do not need action because these methods will be automatically called depending which action was triggered. now we
@@ -32,7 +32,7 @@ const counterSlice = createSlice({
         decrement(state) {
             state.counter--;
         },
-        increase(state,action) {
+        increase(state, action) {
             //state.counter = state.counter + action.amount;
             /**
              * @Desc Data passed to action creators can be accessed via payload property
@@ -105,7 +105,7 @@ const counterSlice = createSlice({
  * but we can ditch redux here and import configureStore from devtool kit, which will make it more convininent. configureStore like
  *  createStore creates a store, but it makes merging different reducers easier.lets use it.
  * 
- * it expect object as argument dnd there we have proerty called reducer. reducer and not reducers because redux wants one main 
+ * it expect object as argument and there we have proerty called reducer. reducer and not reducers because redux wants one main 
  * reducer function which is responsible for global state.with configure store, value of reducer can be a single reducer like this -
  *  
         const store = configureStore({
@@ -113,8 +113,8 @@ const counterSlice = createSlice({
         });
  * here this single reducer will be used as global reducer.
 
-    but if we have multiple says slicer then value of recuder key is again a object, in that object we can have any kes of our 
-    choice. value these keys will be diffrent redcuer functions, so we will have map of reducers, and this map is then set as 
+    but if we have multiple says slices then value of reducer key is again a object, in that object we can have any keys of our 
+    choice.value these keys will be different redcuer functions, so we will have map of reducers, and this map is then set as 
     value of main reducer and behind the scenes configure store will merge all those reducers into a big reducer.
 
         const store = configureStore({
@@ -130,7 +130,7 @@ const store = configureStore({
 
 /**
  * @Desc For dispatching action create Slice has got us covered, createSlice automaticaly creates unique action 
-    identifiers for our diffrent  reducers. to get hold of these identifiers  use action property on counterSlice.
+    identifiers for our diffrent reducers. to get hold of these identifiers  use action property on counterSlice.
 
     this will have diffrent propertues whos name matches with method names that we had in createSlice function.
     we can call these methods and they return action objects to us. so these methods are called actionCreators
@@ -142,7 +142,7 @@ const store = configureStore({
 
     we will use it to generate action object in components, where we can then disatch these actions.
  */
-    
+
 export const counterActions = counterSlice.actions;
 
 export default store;

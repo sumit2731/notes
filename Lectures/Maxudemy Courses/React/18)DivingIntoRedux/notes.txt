@@ -10,8 +10,8 @@ Disadvantages of context -
 
 Code Notes -
 
-    1)first we saw how we can use redux in any javascript application. code/reduxWithoutReact. see notes in course.
-    2)then we use redux in react application. code/reduxInReact.
+    1)first we saw how we can use redux in any javascript application. code/reduxWithoutReact. see notes in code folder 1.
+    2)then we used redux in react application.
         1)then we we installed -
             npm install redux react-redux
 
@@ -33,7 +33,7 @@ Code Notes -
             hook whic gives access to whole store but useSelector is moe convininet as it allows us to select a part
             of state managed by store.
 
-            in case of class based componnet, we can use connect function, which will be wrapped around class based
+            In case of class based componnet, we can use connect function, which will be wrapped around class based
             component and will connect component to store.
 
             useSelector takes a function as argument which determines which piece of data we want to extract form 
@@ -51,24 +51,26 @@ Code Notes -
 
             7)avoid mutting the state. see lecture 240.
 
-    3)redux devtoolkit -there is lsightly easie way of using redux as well.we saw core foundation first, to understand how
+    3)redux devtoolkit -there is slightly easie way of using redux as well.we saw core foundation first, to understand how
             how it works.lets see a approach which is easier to setup and maintain. problems that we will face if our application
              cocntinues to grow, i.e if we manage more and more state with redux -
 
                 a)avoiding typos in action types. clashing action names in reducers.
-                b)amount of data managed by state.we have mention all properties gain when we chnae one proeprty, so file can get very 
-                    large.
+                b)amount of data managed by state.we have to mention all properties again when we change one proeprty. also number
+                of if checks will increase, so reducer file can get very large.
                 c)we can accidentaly mutate the existing state, if we have nested object and arrays.
 
                 there are solution to these problem in vanilla js like using constants instead of harcoding action types, spliting
-                large redcucer into multiple smaller reducers, so that file is not very large, there are third paty packages that allow
-                you to automtically copy state and ensure that you do not accidentally edit it.instead of loooking into diffrent solutions,
-                we can have one solution - redux toolkit.it just makes working ith reduc esier.
+                large redcucer into multiple smaller reducers, so that file is not very large, there are third paty packages that 
+                allow you to automtically copy state and ensure that you do not accidentally edit it.instead of loooking into 
+                diffrent solutions, we can have one solution - redux toolkit.it just makes working ith reduc esier.
 
     4)working with redux-toolkit -
 
+        a)managing single State Slice(code folder 3)  -
+
             1)npm install @reduxjs/toolkit, 
-                we can uninstall the redux library because it is alteady included in toolkit.
+                we can uninstall the redux library because it is already included in toolkit.
 
             2)createSlicer
                 see src/store/index.js of folder3.  
@@ -82,10 +84,48 @@ Code Notes -
             4)now how do we dispatch actions, because we do not have our own if checks, we do not know what 
             identifiers for our actions should be?we have just those methods names. how do we know what to dispatch.
 
-                for this we accsed action property on created state slice. it gave us methods which will create action objects
+                For this we accsed action property on created state slice. it gave us methods which will create action objects
                 with unique identifiers for us.we export these and use it in components where we need them.
 
                 also we can pass any data to actionCreators and in redcuer it can be accsed via payload property.
 
-                see store/index.js and store/counter.js
+                see store/index.js and store/counter.js.
+
+
+        b)managing multi State Slices(code folder 4) -
+
+            1)here we want to manage auth state through redux, so we will 2 slices for state instead of one.
+            2)when we had single slice,To configureStore method in store/index.js we pass reducer directly -
+
+                const store = configureStore({
+                    reducer: counterSlice.reducer
+                });
+
+                now we have multiple reducers, so we will pass reducerMap to configureStore -
+
+                const store = configureStore({
+                    reducer: {
+                        counter: counterSlice.reducer,
+                        auth: authSlice.reducer
+                    }
+                });
+
+                here name of keys will become important while selecting this state slice from overall state.
+
+            3)here key names for reducer map are - counter and auth. they are used in useSelector -
+
+                selectors with single state slice  -
+                    const counter = useSelector(state => state.counter);
+                    const show = useSelector(state => state.showCounter);
+
+                selectors with mutistate slices -
+                
+                finally -
+                      const counter = useSelector(state => state.counter.counter);
+                      const show = useSelector(state => state.counter.showCounter);
+                      const isAuth = useSelector(state => state.auth.isAuthenticated);
+
+
+
+            5)then we added a new slice of state(authentication) in our store in store/index.js file.
 
