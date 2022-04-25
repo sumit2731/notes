@@ -21,3 +21,29 @@
       to perform side effects and run asynchronous tasks as part of this action creators without changing the reducer function.
 
 we are going to have a look at both approaches in this course section.
+
+
+2)in code folder 1, we just prepared a application with redux code, that is what we alrrasy did in last section.
+
+3)In lecture 256, we discussed problem about where we should do that data transaformation, we did it in component and discused
+    it drawbacks-
+        
+        1)If same action needs to be dispatched in multiple components, then that data transaformation logic needs to be copied
+            everywhere. we can solve this by outsouurce this transaformation logic into a function.
+        2)even if we solve problem 1, our reducer are now ot doing lot of work just storing the data that they get.
+        That can be fine and if that's your personal preference that's not necessarily bad but it's not the main idea behind using
+         Redux. see slide 2. here code that we have now is synchronous and side effect free and we have written it inside component
+         and not reducer.but what would be better way of doing it then? Because we need to prepare it before we send it to Firebase
+         because we can send the request from inside the reducer.
+
+
+4)so our first option is to move data transaformation logic into reducer and make http request in useEffect when state have been
+    updated.see code in app.js. here when we get state slice form store, a subscription is setup, whenever state changes component
+    function is re executed.since we have added cart as dependency of useEffect, useEffect will be executed agaim. this helps
+    us to create lean components and fat reducers with all state transaformation logic and perform all the side effect logic,
+    that might depend upon our store.
+
+    So that is a very, very nice and that's a very good way of having our side effect logic in a component and keeping all our 
+    data transformation logic inside of a Reducer,which is where we typically wanna have it when working with Redux.
+
+    see code in folder 2 for this.
