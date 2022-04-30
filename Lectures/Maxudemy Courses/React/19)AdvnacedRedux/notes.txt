@@ -76,3 +76,12 @@ we are going to have a look at both approaches in this course section.
 7)In Lecture 261, we implemented the fetching of cart data on application bootstrap by actionCreators. now when we fetch the
     data from store initially, then we also save that same data in store, how can we get around that?
 
+8)in lecture 262, we solved that problem by adding a new new value to store state.
+
+9)In Lecture 263, we saw how to use redux dev tools. important feature was jum to state thing.
+
+
+
+Main Takeaway from section -
+    Prefer reducers for data transformations and only put side-effects or async code into your components or action creators.
+
