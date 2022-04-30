@@ -1,4 +1,6 @@
-1)slide 1-
+1)in code folder 1, we just prepared a application with redux code, that is what we alrrasy did in last section.
+
+2)slide 1-
     here is one super important rule.Your reducer functions must be pure, side-effect free, and synchronous.So your reducer 
     functions should take some input in the case of the Redux reducer,the old state and the action,and then produce some output.
     It has nothing to do with redux,but it just general reducer concept that you have a pure,side effects synchronous function
@@ -23,27 +25,54 @@
 we are going to have a look at both approaches in this course section.
 
 
-2)in code folder 1, we just prepared a application with redux code, that is what we alrrasy did in last section.
-
-3)In lecture 256, we discussed problem about where we should do that data transaformation, we did it in component and discused
-    it drawbacks-
-        
-        1)If same action needs to be dispatched in multiple components, then that data transaformation logic needs to be copied
-            everywhere. we can solve this by outsouurce this transaformation logic into a function.
-        2)even if we solve problem 1, our reducer are now ot doing lot of work just storing the data that they get.
-        That can be fine and if that's your personal preference that's not necessarily bad but it's not the main idea behind using
-         Redux. see slide 2. here code that we have now is synchronous and side effect free and we have written it inside component
-         and not reducer.but what would be better way of doing it then? Because we need to prepare it before we send it to Firebase
-         because we can send the request from inside the reducer.
 
 
-4)so our first option is to move data transaformation logic into reducer and make http request in useEffect when state have been
-    updated.see code in app.js. here when we get state slice form store, a subscription is setup, whenever state changes component
-    function is re executed.since we have added cart as dependency of useEffect, useEffect will be executed agaim. this helps
-    us to create lean components and fat reducers with all state transaformation logic and perform all the side effect logic,
-    that might depend upon our store.
+3)In lecture 255,we started with writing async and side effect logic code component.there it was discussed that what code we write
+ on frotend and where we write that code depends upon backend.If backend handles complex logic then on UI we can just make api 
+ call and on response, we can store response directly in reducer(do less work on UI) i.e data tranformation that we do in reducer 
+ can be done at backend.(for ex in productIteem we can disoatch action with response from data and remove logic from reducer).
+  
+  but in our case we haave 2nd case i.e our backend does not handle complex logic and just saves the data that we send,then this 
+  data transaformation needs to be done on UI,and then we need to make api call. but problem is we are doing this data transformation 
+  in reducer and from reducer we cannot make api call(as it is side effect).
 
-    So that is a very, very nice and that's a very good way of having our side effect logic in a component and keeping all our 
-    data transformation logic inside of a Reducer,which is where we typically wanna have it when working with Redux.
+  so we need to find a way where we do data transformation on UI and the send that data to backend, withut doing that sending
+  inside of reducer.
 
-    see code in folder 2 for this.
+4)In lecture 256, we tried to write our data transfsormation code in component. note still we are not making api call.
+    slide2 shows approaches of writing code. note that here our code is synchronous, so we should prefer at reducer.
+
+    write fat actions is not bad, you can do that but that is not central idea of reudx. so our code is suboptimal, how do 
+    we improve it?
+
+5)lecture 257, we wrote data tranformation logic in reducer only, as we had earlier, it is just that in some component(here app.js)
+    we susbcribe to changes in store and we make api call when store changes. here synchronous logic is in reducer but
+    asynchronous code is in component. order is switched, first we update the store, then on store chnage we make api call.
+
+    this allows us to keep lean components create a fat Reducer with all the logic and then perform any side effects that might 
+    depend on our Redux state.
+
+
+6)In lecture 260, here we use actionCreator approach to run some async code that depewnds upon store.
+
+    A thunk is simply a function,that delays an action until later,until something else finished.
+    And we could write an action creator as a thunk,to write an action creator,which does not immediately return the action object,
+    but which instead,returns another functionwhich eventually returns the action.So that we can run some other code before we 
+    then dispatch the actual action object.
+
+
+    see code and comments in store/cart-slice.js.why should we use this patttern? Well, it's simply an alternative
+    to having that logic in your component.You can add that logic in your components.You can stick to the approach we had
+    before,but it's also not a bad idea to keep your components lean, to not have too much logic in them.And at the moment,
+    by moving that logic to this action creator function, we did achieve this.
+
+
+    This component is now leaner.It only dispatches one action,not multiple actions.It doesn't care about sending the HTTP request,
+    and all the hard work,happens inside of our custom action creator function,in our Redux files.And splitting our recode like this,
+    could be considered good,because it keeps our components lean.That does not mean that the other approach is bad.Both options are
+    viable and that's why I am showing both here.
+
+
+7)In Lecture 261, we implemented the fetching of cart data on application bootstrap by actionCreators. now when we fetch the
+    data from store initially, then we also save that same data in store, how can we get around that?
+
