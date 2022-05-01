@@ -1,0 +1,171 @@
+There's two things we need to do before anything else.
+
+    a)terminal software - This is the application that runs the command-line environment.
+    b)Shell languages - When we type a command into the terminal and press “enter”, that command will be interpreted by the shell 
+        language.
+
+        The most popular shell language is Bash.It's linux based shell language.
+        Modern MacOS versions ship with Zsh instead of Bash, but Zsh is very similar: it's part of the same "family", and shares 
+            almost all of the same commands. For our purposes, they can be used interchangeably.
+
+prompt - The single line of text is known as a prompt. It's called a “prompt” because it's waiting for you to provide some sort of 
+    instruction.
+ 
+Skip the “$”! - When reading installation instructions for an NPM package, you'll often see things like this:
+    $ npm install some-package
+
+    while running comamdn exclude $.Why would the installation instructions include a random symbol that isn't 
+    actually part of the command!?
+
+    In the Bash shell language, $ is the "prompt character", shown at the end of the prompt.It's essentially a symbol
+    that says "Hey, this stuff over here is meant to be run in the terminal!"Even though $ isn't actually used as the prompt 
+    character in many modern shell languages like Zsh, the symbolism lives on, like how the “save” icon is a floppy disk () even 
+    though we haven't used floppy disks in decades.
+
+
+~ charcter in zsh - On MacOS and Linux, the tilde character is shorthand for the user's home directory. On my machine, “~” is 
+    equivalent to “/Users/joshu”.whne we open zshterminal for first time. so when we open terminal, it opens at home directory,
+    hence it shows ~ sign.
+
+
+
+
+commands -
+
+    a)pwd - printing working directory
+        /Users/susood
+
+    b)ls - shows the content(flders and files) of directory in which you are present. 
+        flags -
+            1)l - "long”, which prints the directory contents in a detailed list with metadata.
+            2)a - "all", which'll include hidden files and directories.
+
+        using mutiple flags -
+
+        ls -la
+
+
+    c)cd - chnage directory.
+        
+            1)cd "folder name" => takes you to inside folder
+                if folder with name "folder name" does not exist in current directory then it  throws the error.
+
+            2) cd folder1/folder2/folder3/folder4
+                
+                tab autocomplete
+                    a)you can take help of autocomplete via tab button. type 'cd + space', then tab you will be shown folders.you 
+                        can manually type some folder fromm optios and press enter.
+
+                    b)cd "someText" + tab
+                        1)now if there is only on match of folder with folderName, it's name will be auto comnpleted, and at last
+                        you will see slash , ex -
+
+                            cd f => cd folder/
+                             '/' means that this is name of folder(durectory and you can press enter)
+
+                        2)if text is auto comnpleted but does not end with ?. it means even after auto complete text, there are
+                            more options, if you again press tab it will show you all options. using those options you can try to
+                            type something and again press tab, auto complete will happen again.
+                        
+                        protip - lets say you want to go to folder1/folder2/folder3/folder4. instead of executing cd command 4 times.
+                        you can do cd then tab => cd folder1/, then again tab, so options will refreshed each time you press tab.you
+                        will see options by pressing tab depending on path which you have given to cd command.
+                    c)we can also use Tab to auto-complete Git branches, or fill in the rest of a command.
+
+            3)cd .. => go one level up in directory.
+                if you want to move 2 levels down -
+                cd ../../
+
+                The dot character (.) has a special meaning in most shell languages:
+                    A single dot (.) refers to the current directory.
+                    Two dots (..) refer to the parent directory.
+
+                This comes form js import paths. that means in you can navigate like this in terminal -
+
+                    cd ../folder1/folder2
+
+            4) cd -
+                It lets you move between 2 file paths.lets say you were at path - desktop. form here you moved to this path 
+                cd folder1/folder2/folder3/folder4.
+
+                using "cd -" you can go make to dektop.
+                if you again press "cd -", it will take you to folder1/folder2/folder3/folder4.
+
+                so you can keep toggling between 2 locations.
+
+                same thing you can do in "git checkout", to keep switching between 2 branches.
+
+                    "git checkout -"
+
+
+
+    4) rm -
+        a)rm fileName => deletes the file. you cannot delete directory with rm command. you will need -r flag.
+        b)with flags -
+            1)rm -r folderName => deletes the folder 
+                The he r flag stands for “recursive”. It will delete everything inside the stuff directory, anything inside the 
+                directories inside the stuff director
+
+            2)if you run into permission issues use 'f' flag.We can group multiple flags with a single dash, like this:
+            rm -rf foldername
+
+                Flags take many shapes and sizes. By convention, it's common for flags to have a short form (eg. -f) and a 
+                long form (--force). The long form typically uses two dashes, and uses whole words instead of individual letters
+
+            
+    5)ping - The ping command will check the latency against a given IP address. It's useful for checking whether a given server 
+        is online or not. 8.8.8.8 is the IP address for Google's DNS server.
+
+    6)Interrupting commands -
+        a)ctrl + c - to end a long running command
+        b)ctrl + d - to end the session.
+
+    7)exiting Vi/Vim - These editors are notoriously difficult to quit; ctrl + c won't help you here!.
+
+        To quit without saving, follow these steps:
+
+            Press Escape.
+            Press :. This should add a prompt at the bottom of the terminal.
+            Type q! and press Enter.
+
+    Tricks -
+        8)Cycling and toggling commands - 
+            a)use up/down key to switch between commands.
+            b) use - in commands like "cd" and "git checkout" to toggle between paths and branches.
+        9)clearing terminal - 
+            
+            a)clear command - This command/shortcut is implemented within Bash/Zsh. It's part of the shell environment. This means 
+             that it only works while the shell is idle, when you have a prompt waiting to receive instructions.on twtter someone 
+             said- clear works in bash and wsl,and clear in cmd on windows. In power shell either of these can be used.
+            
+            b)shortcut - ctrl + l(small L). There's a universal shortcut, ctrl + L. This has the same effect as the clear command. It should 
+                work across MacOS, Windows, and Linux. someone on twitter says it works on linux and maxos.
+
+            This command/shortcut is implemented within Bash/Zsh. It's part of the shell environment. This means that it only works 
+            while the shell is idle, when you have a prompt waiting to receive instructions.
+
+            Certain terminal applications also implement their own shortcuts, and these shortcuts can work even while the shell is
+             busy.some of them are - 
+
+                a)On MacOS, across just about any shell (Terminal.app, iTerm2, Hyper), the shortcut is ⌘ + k.
+                b)If you use Hyper on non-MacOS platforms, the shortcut is ctrl + shift + k.
+
+        10)alias - advanced topic out of scope of this article.
+
+        10)Switching to a GUI file explorer -
+            In mac - 
+                a)"open fileName" The open command is generally used to open a file, the same way double-clicking a file opens it 
+                    in a GUI file explorer. 
+                b)"open directoryName" - Opens the  directory in finder.
+                c)"open ." - Opens the current directory in finder.
+            In windows - "explorer ."
+            linux - xdg-open 
+
+        11)Chaining commands -
+            npm install && npm run start
+
+            The && operator allows us to chain multiple commands together. The first command will be executed, npm install. The moment 
+                it finishes, the second command will be run automatically.
+
+
+        
