@@ -1,41 +1,95 @@
-Images contain the code, the setup, the meet, you could say and containers are then the running instances of those images.
-1)first we created a docker based on node o=image on docker hub abd accessed terminal inside container from our hosting 
-    machine.
-2)then we build up on that image and created our custom image.we executed our node js code with node image from docker hub.
-    then we pull base node image and add our code on top of that base image.Typically you would pull into your official base
-    image and then add your code on top of that to execute your code with that image.
-
-3)to create our own docker image, instruction are specified in Dockerfile. so we create docker file.
-
-4)then we create(or build) a image based on instructions specified in DockerFile.run this -
-
-    build .
-        here . means Dockerfile is at same path where we are running this file.
-
-    this returns a docker image id.
-
-5)then we use that id to run a container.
-
-    docker run "imageId"
-
-6)then we saw how we can connect contsiner port to port on local system by using p flag with diocker run.
-    docker run -p 3000:80 dockerImage
-
-7)then we saw layerbased architecture of docker. how chnaging one layer means that subsequent layers should run again.
-    It exists to speed up the creation of images since Docker only rebuilds and re-executes what needs to be re-executed.
-    here we also improved the performance by copying the package.json first.
+First Half(build images, run containers) -
 
 
-commands -
+    Images contain the code, the setup, the meet, you could say and containers are then the running instances of those images.
+    1)first we created a docker based on node o=image on docker hub abd accessed terminal inside container from our hosting 
+        machine.
+    2)then we build up on that image and created our custom image.we executed our node js code with node image from docker hub.
+        then we pull base node image and add our code on top of that base image.Typically you would pull into your official base
+        image and then add your code on top of that to execute your code with that image.
 
-    docker run node
-        It downloads the node docker image from docker hub(if not found locally) and creates the contianer based on that image.
-        here container is created and exited automatically because intercative shell created in container is not exposed to us 
-        automatically.for that we can add flag -it, we will actually tell Docker that we wanna expose an interactive session from
-        inside the container to our hosting machine.
+    3)to create our own docker image, instruction are specified in Dockerfile. so we create docker file.
 
-        docker run -it node
+    4)then we create(or build) a image based on instructions specified in DockerFile.run this -
 
-    docker run -p 3000:80 dockerImage
+        build .
+            here . means Dockerfile is at same path where we are running this file.
 
-        it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
+        this returns a docker image id.
+
+    5)then we use that id to run a container.
+
+        docker run "imageId"
+
+    6)then we saw how we can connect contsiner port to port on local system by using p flag with diocker run.
+        docker run -p 3000:80 dockerImage
+
+        commit - Docker Commit1
+
+    7)then we saw layerbased architecture of docker. how chnaging one layer means that subsequent layers(commands) should
+    run again.It exists to speed up the creation of images since Docker only rebuilds and re-executes what needs to be
+    re-executed.here we also improved the performance by copying the package.json first. see code2, for chnged Dockerfile,
+    here we chnaged the sequence commands for better performance.
+
+
+    commands -
+
+        docker run "imageId"
+            creates a contianer form image and runs that container in attached mode by default. imageid can exist on system or
+                on dockerHub.
+
+            Examples - 
+
+                docker run node
+                    It downloads the node docker image from docker hub(if not found locally) and creates the contianer based 
+                    on that image.here container is created and exited automatically because intercative shell created in 
+                    container is not exposed to us automatically.for that we can add flag -it, we will actually tell Docker 
+                    that we wanna expose an interactive session from inside the container to our hosting machine.
+
+                    docker run -it node
+
+            flags -
+
+                1)-p = for attaching port.
+                    docker run -p "loalPort":"imagePort" dockerImage
+                    it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
+                2)-d
+                    docker run -d "imageId"
+                        for running container in detached mode. it returns the id of detacched container. which can be later used to
+                        attach the container.
+
+                    using multiple flags -
+
+                        docker run -p 8000:80 -d "imageid"
+
+
+Second Half(Managing Images & Containers)(see slide 9 ) - 
+
+    container can be in 2 modes-
+        attached - attached simply means that we're listening to the output of that container.For example, to what's being printed to the 
+            console.
+        detacched - we are not listening to outouts
+
+
+    commnads -
+        1)docker start "containerName"(or contianerId)
+            this restarts a container in detached mode.
+
+            flags -
+                1)a - attaches the started container.
+                    docker start -a "containerName"
+
+        2)docker container attach "containerId"
+            Attcahes a detacched container.
+
+        3)docker attach "containerName"
+            attaches a running container
+
+        3)docker logs "containerName"
+            fetches the past logs for containers.
+
+            flags -
+
+                -f - follow. keeps on listening and prints future logs also. we are simply attaching docker gain.
+
+
