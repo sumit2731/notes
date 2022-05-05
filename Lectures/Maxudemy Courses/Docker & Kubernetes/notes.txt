@@ -1,38 +1,4 @@
-Part 1(build images, run containers) -
-
-
-    Images contain the code, the setup, the meet, you could say and containers are then the running instances of those images.
-    1)first we created a docker based on node o=image on docker hub abd accessed terminal inside container from our hosting 
-        machine.
-    2)then we build up on that image and created our custom image.we executed our node js code with node image from docker hub.
-        then we pull base node image and add our code on top of that base image.Typically you would pull into your official base
-        image and then add your code on top of that to execute your code with that image.
-
-    3)to create our own docker image, instruction are specified in Dockerfile. so we create docker file.
-
-    4)then we create(or build) a image based on instructions specified in DockerFile.run this -
-
-        build .
-            here . means Dockerfile is at same path where we are running this file.
-
-        this returns a docker image id.
-
-    5)then we use that id to run a container.
-
-        docker run "imageId"
-
-    6)then we saw how we can connect contsiner port to port on local system by using p flag with diocker run.
-        docker run -p 3000:80 dockerImage
-
-        commit - Docker Commit1
-
-    7)then we saw layerbased architecture of docker. how chnaging one layer means that subsequent layers(commands) should
-    run again.It exists to speed up the creation of images since Docker only rebuilds and re-executes what needs to be
-    re-executed.here we also improved the performance by copying the package.json first. see code2, for chnged Dockerfile,
-    here we chnaged the sequence commands for better performance.
-
-
-    commands -
+commands -
 
         1)docker run "imageId"
             creates a contianer form image and runs that container in attached mode by default. imageid can exist on system or
@@ -71,19 +37,8 @@ Part 1(build images, run containers) -
                         4)--rm
                             it automatically removes the container when it exists.
                             docker run -p 3000:80 -d --rm "imageId"
-                            
 
-
-Part 2(Managing Images & Containers)(see slide 9 ) - 
-
-    container can be in 2 modes-
-        attached - attached simply means that we're listening to the output of that container.For example, to what's being printed to the 
-            console.
-        detacched - we are not listening to outouts
-
-
-    commnads -
-        1)docker start "containerName"(or contianerId)
+        2)docker start "containerName"(or contianerId)
             this restarts a container in detached mode.
 
             flags -
@@ -95,61 +50,44 @@ Part 2(Managing Images & Containers)(see slide 9 ) -
                     docker start -a -i "containerName". you can use -t flag but if orignally container was started with -t flag
                     then that will be memomized.
 
-        2)docker container attach "containerId"
+        
+        3)docker container attach "containerId"
             Attcahes a detacched container.
 
-        3)docker attach "containerName"
+        4)docker attach "containerName"
             attaches a running container
 
-        3)docker logs "containerName"
+        5)docker logs "containerName"
             fetches the past logs for containers.
 
             flags -
 
                 -f - follow. keeps on listening and prints future logs also. we are simply attaching docker gain.
 
-Part 3 (python, code 3) -
 
-    here we ran a python program which waits for 2 inputs form users.there we saw if we need to give inputs to program running
-    inside container, we can use -i flag with docker run and docker start.
-
-
-    The running container is then actually not really that big,it's just an extra thin layer, the command layer basically, added on top of the image.
-    So, this image code is used in the running container.it's not copied again, just to make this clear.multiple container share same image code.
-
-    That's why this code inside of the image is also locked in and read only containers can only make changes,And for example, create files inside of
-    that new extra thin container layer that was added on top of all the image layers.
-
-    then we saw cp command which allows us copy to and copy from container. it can be useful to copy config file into container
-     and copy log file out from contianer.
-
-
-    commands -
-
-        1)docker rm "container1Name" "container2Name" "container3Name"
+        6)docker rm "container1Name" "container2Name" "container3Name"
             It removes the contianer. this container should be stopped first, you cannot remove a running container.
 
-        2)docker container prune
+        7)docker container prune
             removes all stopped containers at once.
 
-        3)docker images
+        8)docker images
             lists all images
 
-        4)docker rmi "image1Id" "image2Id" "image3Id"
+        9)docker rmi "image1Id" "image2Id" "image3Id"
             it removes the image and all its layers. you can only remove the images which are not used by any containers.
             that means even if image is used by container and that container is stopped, first you need to delete the 
             contianer, only then you can remove the image.
 
-        5)docker image prune
+        10)docker image prune
             removes all images which are not used by any containers.
 
-        6)docker image inspect "imageId"
+        11)docker image inspect "imageId"
             gives the details about a image.
 
-        7)docker cp - docker cp "path1" "path2". copies files form path1 to path2.
+        12)docker cp - docker cp "path1" "path2". copies files form path1 to path2.
             docker path is specified by dockerName:pathInsideDocker
                 ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents inside dummy, 
                         we can also target induival files)
 
-                    b)docker cp strange:/test dummy (copies file from container to local system)
-
+                    b)docker cp strange:/test dummy (copies file from container to local system)                 
