@@ -1,4 +1,12 @@
 1)disabled
-
+    
     button:disabled {}
     button:disabled:hover {}
+
+2)first-child
+
+    selector:first-child {}
+        element which matches this selector, but that element should be first child of its parent.
+
+    selector >*:first-child {}
+        Apply this style to first child of element selected element.
