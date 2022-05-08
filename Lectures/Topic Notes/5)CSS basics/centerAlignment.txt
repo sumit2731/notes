@@ -1,0 +1,102 @@
+Horizontal Allignment -
+
+    1)text-align
+        if parent has display:block and its childern are inline or inline-block, then text-align on parent will center the childern
+        horizontally.
+
+    2)margin:auto
+        it comes handy to horizontally middle a block child.
+
+        margin:auto does not work on -
+        
+            a)floated elements
+            b)inline elements
+            c)absolute positioned element
+            d)fixed positioned element
+
+        In all of above cases margin:auto means value of 0 to margin. however in case of absolute element there are other tricks to 
+            make margin:auto work for horizontal centring. we can even make it work for vertical centring. configs are -
+
+            .parent {
+                position: relative;
+            }
+
+            .child {
+                position: absolute;
+                
+                left: 0; // any value not just auto, which is default
+                right: 0; // any value not just auto, which is default
+                width: max-content; // any value not just auto, which is default
+                
+                top: 0; // any value not just auto, which is default
+                bottom:0; //any value not just auto, which is default
+                height: max-content; //any value not just auto, which is default
+
+                margin: auto;
+            }
+
+            details see this - https://www.hongkiat.com/blog/css-margin-auto/
+
+    3)position: absolute
+        In vertical centering see "using top and transform properties"
+
+
+
+Vertical Centering -
+
+    CSS2 -
+        
+        a)display:table
+            
+            .parent {
+                display: table
+            }
+
+            .child {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+    CSS 3-
+
+        a)position: absolute
+
+            1)using top and transform properties(works for horizontal centring also) -
+                .parent{
+                    height: 10em;
+                    position: relative 
+                }
+                .child {
+                    position: absolute;               /* 2 */
+                    top: 50%;                         /* 3 */
+                    transform: translate(0, -50%) 
+                }
+
+            you can also use margin-left: 50%, for details see -
+                https://www.w3.org/Style/Examples/007/center.en.html#text
+
+
+            2)by using margin-auto, see point 2 of horizontal centering 
+        
+        b)using flexbox
+
+            1)way1
+                
+                .parent {
+                    display: flex;
+                }
+
+                .child {
+                    align-items: center // or you can use align-content
+                }
+
+            2)way2 -
+
+                .parent {
+                    display:flex;
+                    flex-direction: column;
+                }
+
+                child {
+                    justify-content: middle;
+                }

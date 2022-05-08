@@ -1,7 +1,7 @@
 % depends on width of parent -
     
-    margin(left/right)
-    padding(left/right)
+    margin(left/right/top/bottom)
+    padding(left/right/top/bottom)
     left
     right
 

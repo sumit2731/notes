@@ -1,0 +1,10 @@
+inherited proeprties -
+    Most of the properties that inherit are typography-related, like color, font-size, text-shadow, and so on.
+        line-height
+        color
+
+    complete list - https://www.sitepoint.com/css-inheritance-introduction/#list-css-properties-inherit
+
+non inherited properties -
+
+    box-sizing

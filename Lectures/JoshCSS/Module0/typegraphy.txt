@@ -1,0 +1,90 @@
+To change font -
+    font-family: Arial;
+
+    It's called a “family” because each font consists of multiple character sets: for example, “Roboto” includes 12 
+    individual sets: 6 font weights, with 2 variants (normal and italic).
+
+
+    There are a handful of “web safe fonts”. These are fonts that come pre-installed on all major operating systems- 
+        Arial
+        Times New Roman
+        Tahoma.
+
+
+
+    Font families come in different styles. The 3 most popular:
+
+        Serif
+        Sans-serif
+        Monospace
+
+custom fonts -
+
+    Alternatively, we can pick a custom font (AKA a web font)! In order for this to work, we'll need to instruct the 
+    browser to download the fonts we're missing.
+    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+        When using a web font, it's customary to surround it in quotation marks -
+            font-family: 'Roboto', sans-serif;
+
+
+    When using a web font, it's customary to surround it in quotation marks. This is technically only required if the font name has multiple 
+    words, but it's a good convention regardless.
+    
+    Here's how we'd use that Google font:
+
+            font-family: 'Roboto', sans-serif;
+
+3 most common formatting options:
+
+    a)bold - We can create bold text with the font-weight property:
+
+        font-weight: bold;
+
+        There's also a numbering system, from 1 to 1000, which lets us control the font weight more precisely:
+
+            /* Light, thin text*/
+            font-weight: 300;
+            /* Normal text */
+            font-weight: 400;
+            /* Heavy, bold text */
+            font-weight: 700;
+
+        The default value for font weight is 400, and the bold keyword maps to 700.
+
+
+    b)italic -
+
+        font-style: italic;
+
+        Similar to bold text, the browser can simulate italic text by rendering the characters at an angle. For best results, though, we should 
+        supply an italic character set.
+    
+    c)Underlined text - We can toggle an element's underline with the text-decoration property:
+
+        /* remove underlines from anchor tags: */
+        a {
+            text-decoration: none;
+        }
+
+Alignment -
+    We can shift characters horizontally using the text-align property. to see details of how text-align works, see this-
+        CSS basics/centerAlignment
+
+Text-transform -
+
+    /* RENDER WITH ALL CAPS */
+    text-transform: uppercase;
+    /* Capitalize The First Letter Of Every Word */
+    text-transform: capitalize;
+
+Spacing -
+
+    We can tweak the spacing of our characters in two ways.
+
+        a)We can tweak the horizontal gap between characters using the letter-spacing property.
+            letter-spacing: 3px;
+        
+        b)We can tweak the vertical distance between lines using the line-height property.

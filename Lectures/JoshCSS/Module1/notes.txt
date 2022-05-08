@@ -1,0 +1,62 @@
+Inheritance - Most of the properties that inherit are typography-related, like color, font-size, text-shadow, and so on.
+    complete list - https://www.sitepoint.com/css-inheritance-introduction/#list-css-properties-inherit
+
+The Cascade
+
+directions -
+    logical properties. chromes user-agent has these to support right to left languages also -
+
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+
+        .asymmetric-logical-padding {
+            padding-block-start: 20px;
+            padding-block-end: 40px;
+            padding-inline-start: 60px;
+            padding-inline-end: 80px;
+        }
+
+box-model -
+    prefered units for padding, margin and border - px
+        If we use em then padding also increases when users increases the font-size of browser. this is not what we want. people who 
+        really want to increase the padding they have option of zoom.
+    do not use px for font-size, it is bad for accessibility. we discussed that in module 0. this is because we are givig option to
+    user to increase font-size if he wants. by using rem for font size we give this option.
+
+
+border -
+    currentColor is always a reference to the element's derived text color (whether set explicitly or inherited), and it can be used 
+        anywhere a color might be used:
+
+            .box {
+                color: hotpink;
+                border: 1px solid currentColor;
+                box-shadow: 2px 2px 2px currentColor;
+            }
+
+    border vs outline -
+
+        The core difference is that outline doesn't affect layout. Outline is kinda more like box-shadow; it's a cosmetic effect draped 
+        over an element, without nudging it around, or changing its size.
+
+
+margin -
+    unlike padding and border, negative values are allowed.
+        A negative margin can pull an element outside its parent:
+        Negative margins can also pull an element's sibling closer:
+
+    It's easy to fall into the trap of thinking that margin is exclusively about changing the selected element's position. Really, 
+    though, it's about changing the gap between elements. Negative margin shrinks the gap below an element, causing the next element 
+    to scoot up closer.
+
+
+    negative margin tricks -
+
+        a)move child outisde of parent (by giving negative top margin)
+        b)to stretch a child across parent,event across padding (by giving negative left and right margin)
+    
