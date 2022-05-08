@@ -2,13 +2,13 @@ Part 1(build images, run containers) -
 
 
     Images contain the code, the setup, the meet, you could say and containers are then the running instances of those images.
-    1)first we created a docker based on node o=image on docker hub abd accessed terminal inside container from our hosting 
+    1)first we created a docker based on node image on docker hub abd accessed terminal inside container from our hosting 
         machine.
     2)then we build up on that image and created our custom image.we executed our node js code with node image from docker hub.
-        then we pull base node image and add our code on top of that base image.Typically you would pull into your official base
-        image and then add your code on top of that to execute your code with that image.
+        Typically you would pull into your official base image and then add your code on top of that to execute your code with 
+        that image.
 
-    3)to create our own docker image, instruction are specified in Dockerfile. so we create docker file.
+    3)to create our own docker image, instruction are specified in Dockerfile. so we create Dockerfile.
 
     4)then we create(or build) a image based on instructions specified in DockerFile.run this -
 
@@ -52,11 +52,13 @@ Part 1(build images, run containers) -
 
                         1)-p = for attaching port.
                             docker run -p "loalPort":"imagePort" dockerImage
-                            it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
+                            it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker 
+                            container.
+                        
                         2)-d = dettached
                             docker run -d "imageId"
-                                for running container in detached mode. it returns the id of detacched container. which can be later used to
-                                attach the container.
+                                for running container in detached mode. it returns the id of detacched container. which can be later 
+                                used to attach the container.
 
                             using multiple flags -
 
@@ -64,7 +66,8 @@ Part 1(build images, run containers) -
 
                         3)-i  interactive
                             docker run -i "imageId"
-                                runs docker container form image, and give intercative terminal.generally used along with "t" flag -
+                                runs docker container form image, and give intercative terminal.generally used along with "t" flag.
+                                but i am not able to find any difference by attsching "t" flag.
                                 docker run -it "imageId"
 
 
@@ -77,9 +80,9 @@ Part 1(build images, run containers) -
 Part 2(Managing Images & Containers)(see slide 9 ) - 
 
     container can be in 2 modes-
-        attached - attached simply means that we're listening to the output of that container.For example, to what's being printed to the 
-            console.
-        detacched - we are not listening to outouts
+        attached - attached simply means that we're listening to the output of that container.For example, to what's being printed to 
+         the console.
+        detacched - we are not listening to outputs.
 
 
     commnads -
@@ -124,6 +127,22 @@ Part 3 (python, code 3) -
      and copy log file out from contianer.
 
 
+    In slide 11, we can see  2 options of sharing image with others.then we uploaded a image on docker hub so that anyone can download it.
+
+    then we saw how we can name docker container while running them. then we see saw naming system iof images -
+         name: tag
+
+
+         note that tag is optional.
+
+         see slide 10.
+
+
+    then we pushed a image into dockerHUb and then downlaoded that image from docker hub.
+
+
+
+
     commands -
 
         1)docker rm "container1Name" "container2Name" "container3Name"
@@ -148,8 +167,8 @@ Part 3 (python, code 3) -
 
         7)docker cp - docker cp "path1" "path2". copies files form path1 to path2.
             docker path is specified by dockerName:pathInsideDocker
-                ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents inside dummy, 
-                        we can also target induival files)
+                ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents 
+                    inside dummy, we can also target induival files)
 
                     b)docker cp strange:/test dummy (copies file from container to local system)
 

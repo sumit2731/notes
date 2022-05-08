@@ -1,44 +1,64 @@
 commands -
+        1) docker build
+            docker build .
+            It creates the docker image from docker config file. as a rgument it takes path of Dockerfile, . means file exist in same
+            path where terminal is. this command returns the imageid, which is used to create the container.
+            this builds the docker image based on Dockerfile found in this directory. it sets up the image for container to be launched.
 
-        1)docker run "imageId"
+            flags -
+
+                a) -t
+                    docker build -t goals:latest .
+
+        2)docker run "imageId"
             creates a contianer form image and runs that container in attached mode by default. imageid can exist on system or
                 on dockerHub.
 
             Examples - 
 
-                docker run node
-                    It downloads the node docker image from docker hub(if not found locally) and creates the contianer based 
-                    on that image.here container is created and exited automatically because intercative shell created in 
-                    container is not exposed to us automatically.for that we can add flag -it, we will actually tell Docker 
-                    that we wanna expose an interactive session from inside the container to our hosting machine.
+                    docker run node
+                        It downloads the node docker image from docker hub(if not found locally) and creates the contianer based 
+                        on that image.here container is created and exited automatically because intercative shell created in 
+                        container is not exposed to us automatically.for that we can add flag -it, we will actually tell Docker 
+                        that we wanna expose an interactive session from inside the container to our hosting machine.
 
-                    docker run -it node
+                        docker run -it node
 
-                    flags -
+            flags -
 
-                        1)-p = for attaching port.
-                            docker run -p "loalPort":"imagePort" dockerImage
-                            it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
-                        2)-d = dettached
-                            docker run -d "imageId"
-                                for running container in detached mode. it returns the id of detacched container. which can be later used to
-                                attach the container.
+                1)-p = for attaching port.
+                    docker run -p "loalPort":"imagePort" dockerImage
+                    it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
+                2)-d = dettached
+                    docker run -d "imageId"
+                        for running container in detached mode. it returns the id of detacched container. which can be later used to
+                        attach the container.
 
-                            using multiple flags -
+                    using multiple flags -
 
-                                docker run -p 8000:80 -d "imageid"
+                        docker run -p 8000:80 -d "imageid"
 
-                        3)-i  interactive
+                3)-i  interactive
                             docker run -i "imageId"
                                 runs docker container form image, and give intercative terminal.generally used along with "t" flag -
                                 docker run -it "imageId"
 
 
-                        4)--rm
-                            it automatically removes the container when it exists.
+                4)--rm
+                    it automatically removes the container when it exists.
                             docker run -p 3000:80 -d --rm "imageId"
+                5)--name - gives the naame to container
+        
+        3)docker ps 
+            gives lis of all running docker containers.
 
-        2)docker start "containerName"(or contianerId)
+            flags -
+                a) a -it gives all processes(running and stopped), all containers that docker created for us.
+        
+        4)docker stop containerName
+            stop the container.you can get docker container name by running docker ps.   
+        
+        5)docker start "containerName"(or contianerId)
             this restarts a container in detached mode.
 
             flags -
@@ -51,43 +71,63 @@ commands -
                     then that will be memomized.
 
         
-        3)docker container attach "containerId"
+        6)docker container attach "containerId"
             Attcahes a detacched container.
 
-        4)docker attach "containerName"
+        7)docker attach "containerName"
             attaches a running container
 
-        5)docker logs "containerName"
+        8)docker logs "containerName"
             fetches the past logs for containers.
 
             flags -
 
                 -f - follow. keeps on listening and prints future logs also. we are simply attaching docker gain.
 
-
-        6)docker rm "container1Name" "container2Name" "container3Name"
+        9)docker rm "container1Name" "container2Name" "container3Name"
             It removes the contianer. this container should be stopped first, you cannot remove a running container.
 
-        7)docker container prune
+        10)docker container prune
             removes all stopped containers at once.
 
-        8)docker images
+        11)docker images
             lists all images
 
-        9)docker rmi "image1Id" "image2Id" "image3Id"
+        12)docker rmi "image1Id" "image2Id" "image3Id"
             it removes the image and all its layers. you can only remove the images which are not used by any containers.
             that means even if image is used by container and that container is stopped, first you need to delete the 
             contianer, only then you can remove the image.
 
-        10)docker image prune
-            removes all images which are not used by any containers.
+        13)docker image prune
+            removes all images which are not tagged and not used by any containers.
 
-        11)docker image inspect "imageId"
+            flags -
+                1)a - removes named (tagged) images also
+
+        14)docker image inspect "imageId"
             gives the details about a image.
 
-        12)docker cp - docker cp "path1" "path2". copies files form path1 to path2.
-            docker path is specified by dockerName:pathInsideDocker
-                ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents inside dummy, 
-                        we can also target induival files)
+        15)docker cp - It allows you to copy files into or from a running container
+            docker cp "path1" "path2". copies files form path1 to path2.
 
-                    b)docker cp strange:/test dummy (copies file from container to local system)                 
+            docker path is specified by dockerName:pathInsideDocker
+                ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents 
+                    inside dummy, we can also target induival files)
+
+                    b)docker cp strange:/test dummy (copies file from container to local system)
+
+            this is helpful to copy logs files.We will instead learn about a better way of updating code in a container
+
+        16)docker tag
+            creates the clone os existing image with new tag
+
+            docker tag "oldTag" "newTag"
+
+        17)docker push "repository name"
+            pushes a image to repository in image sharing platform. default is docker hub.
+
+
+        18)docker pull "repo:tag"
+            pulls a image from git hub
+
+             
