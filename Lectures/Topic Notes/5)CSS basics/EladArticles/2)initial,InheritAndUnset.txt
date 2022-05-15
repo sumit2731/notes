@@ -1,0 +1,11 @@
+initial - All css properties have initial value, this value set that value for a particular css proeprty.
+
+inherit - The keyword value of inherit tells the browser to search for the closest parent element’s value and let the current
+ element inherit that value. If the closest parent has an inherit value too, the browser will continue going up the DOM until
+ it finds some value. If there isn’t any value, the browser will use its user-agent style, and if there isn’t any user-agent 
+ style, it will use the initial base style.
+
+unset - if property is inherited then it is equivaltent to inherit.
+        if property is not inheritable then this is equivalent to initial.
+
+revert - same as unset but instead of going to default value od css property, it uses the value defined in user-style sheet.

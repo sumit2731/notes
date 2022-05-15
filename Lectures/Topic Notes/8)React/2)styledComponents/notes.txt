@@ -1,0 +1,187 @@
+/**
+ * @Syntax1
+ */
+
+const Title = styled.h1(`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`);
+
+
+/**
+ * @Implementation
+ */
+function h1(styles) {
+    return function NewComponent(props) {
+      const uniqueClassName = comeUpWithUniqueName(styles);
+      const processedStyles = runStylesThroughStylis(styles);
+      createAndInjectCSSClass(uniqueClassName, processedStyles);
+      return <h1 className={uniqueClassName} {...props} />
+    }
+}
+
+/**
+ * @Syntax2
+ */
+
+const AlternativeSyntax = styled('h1')`
+  font-size: 1.5em;
+`);
+
+/**
+ * @Implementation that supports syntax2.
+ */
+
+const styled = (Tag) => (styles) => {
+    return function NewComponent(props) {
+      const uniqueClassName = comeUpWithUniqueName(styles);
+      createAndInjectCSSClass(uniqueClassName, styles);
+      return <Tag className={uniqueClassName} {...props} />
+    }
+}
+
+styled.h1 = styled('h1');
+styled.button = styled('button');
+  // ...And so on, for all DOM nodes!
+
+
+/**
+ * @Syntax3 - Wrapping custom components
+ */
+
+function Message({ children, ...delegated }) {
+    return (
+      <p {...delegated}>
+        You've received a message: {children}
+      </p>
+    );
+}
+  
+  const UrgentMessage = styled(Message)`
+    background-color: pink;
+  `;
+  
+  render(
+    <UrgentMessage>
+      We're having a fire sale!
+    </UrgentMessage>
+  );
+
+
+/**
+  * @Syntax4 Composing styled-components
+*/
+
+const Button = styled.button`
+  background-color: transparent;
+  font-size: 2rem;
+`
+
+const PinkButton = styled(Button)`
+  background-color: pink;
+`;
+
+render(
+  <PinkButton>Hello World</PinkButton>
+);
+
+/**
+ * @Implementation to support syntax 4
+ */
+
+ const styled = (Tag) => (styles) => {
+  return function NewComponent(props) {
+    const uniqueClassName = comeUpWithUniqueName(styles);
+    const processedStyles = runStylesThroughStylis(styles);
+    createAndInjectCSSClass(uniqueClassName, processedStyles);
+    const combinedClasses =
+      [uniqueClassName, props.className].join(' ');
+    return <Tag {...props} className={combinedClasses} />
+  }
+}
+
+
+
+/**
+ * @Syntax5 - interpolated styles
+ */
+
+ const ContentImage = styled.img`
+ display: block;
+ margin-bottom: 8px;
+ width: 100%;
+ max-width: ${p => p.maxWidth};
+`;
+
+render(
+ <>
+   <ContentImage
+     alt="A running shoe with pink laces and a rainbow decal"
+     src="/images/shoe.png"
+     maxWidth="200px"
+   />
+   <ContentImage
+     alt="A close-up shot of the same running shoe"
+     src="/images/shoe-closeup.png"
+   />
+ </>
+)
+
+
+/**
+ * Behind the scenes -
+ * 
+  <style>
+    .JDSLg {
+      display: block;
+      margin-bottom: 8px;
+      width: 100%;
+      max-width: 200px;
+    }
+    .eXyedY {
+      display: block;
+      margin-bottom: 8px;
+      width: 100%;
+    }
+  </style>
+<img
+  alt="A running shoe with pink laces and a rainbow decal"
+  src="/images/shoe.png"
+  class="sc-bdnxRM JDSLg"
+/>
+<img
+  alt="A close-up shot of the same running shoe"
+  src="/images/shoe-closeup.png"
+  class="sc-bdnxRM eXyedY"
+/>
+ */
+
+
+/**
+ * using css variables in interpolation
+
+const ContentImage = styled.img`
+  display: block;
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: var(--max-width);
+`;
+
+render(
+  <>
+    <ContentImage
+      alt="A running shoe with pink laces and a rainbow decal"
+      src="/images/shoe.png"
+      style={{
+        '--max-width': '200px',
+      }}
+    />
+    <ContentImage
+      alt="A close-up shot of the same running shoe"
+      src="/images/shoe-closeup.png"
+    />
+  
+  </>
+)
+ */

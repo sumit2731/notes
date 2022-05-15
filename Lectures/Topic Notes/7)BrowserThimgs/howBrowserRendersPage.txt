@@ -1,3 +1,6 @@
+Source - https://blog.logrocket.com/how-browser-rendering-works-behind-scenes/
+
+
 Browser Engine -
     within a browser, there’s a piece of software that figures out what to display to you based on the files it receives.
      This is called the browser engine
@@ -24,10 +27,21 @@ Steps -
         The way the browser interprets this file is by first parsing it. In the parsing process, and particularly 
         during tokenization, every start and end HTML tag in the file is accounted for.
 
-    3)Tokens are great, but they are also not our final result. After the tokenization is done, the tokens are then 
-        converted into nodes.
+        The parser understands each string in angle brackets (e.g., <html>, <p>) and understands the set of rules that apply 
+        to each of them. For example, a token that represents an anchor tag will have different properties from one that 
+        represents a paragraph token.
 
-    4)nodes are then converted into tree structure that we call DOM tree.
+        Conceptually, you may see a token as some sort of data structure that contains information about a certain HTML tag. 
+        Essentially, an HTML file is broken down into small units of parsing called tokens. This is how the browser begins 
+        to understand what you’ve written.
+
+    3)Tokens are great, but they are also not our final result. After the tokenization is done, the tokens are then 
+        converted into nodes.You may think of nodes as distinct objects with specific properties. In fact, a better way to 
+        explain this is to see a node as a separate entity within the document object tree.
+
+    4)Upon creating these nodes, the nodes are then linked in a tree data structure known as the DOM. The DOM establishes the 
+        parent-child relationships, adjacent sibling relationships, etc. The relationship between every node is established in 
+        this DOM object.
 
     4)now css is fetched and same process is repeated for it. we get CSS DOM tree form it.
 

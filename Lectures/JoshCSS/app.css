@@ -1,19 +1,12 @@
-body {
-  background: #222;
-  padding: 32px;
+.parent {
+  width: 200px;
+  height: 200px;
+  background: yellow;
 }
 
-.card {
-  background-color: white;
-  padding: 32px;
-  border-radius: 8px;
-}
-
-img {
-  display: block;
-  width: 100%;
-}
-
-p, img {
-  margin-bottom: 16px;
+.child {
+  width: 100px;
+  height: 100px;
+  background: red;
+  display: none;
 }
