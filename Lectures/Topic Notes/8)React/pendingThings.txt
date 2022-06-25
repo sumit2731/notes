@@ -12,3 +12,12 @@
 
 2)emotion -
     tagged template literals
+
+
+3)controlled vs uncontrolled components.
+
+4)react-virtulization
+
+5)compoud components, composite compoents
+
+5)remix, react query

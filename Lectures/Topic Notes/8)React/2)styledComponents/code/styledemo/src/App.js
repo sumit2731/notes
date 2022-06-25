@@ -1,30 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
+import Button from './Button';
+import { useState } from 'react';
 
 function App() {
-  const ContentImage = styled.img`
-    display: block;
-    margin-bottom: 8px;
-    width: 100%;
-    max-width: var(--max-width);
-  `;
+  console.log("App function called");
+  // const ContentImage = styled.img`
+  //   display: block;
+  //   margin-bottom: 8px;
+  //   width: 100%;
+  //   max-width: var(--max-width);
+  // `;
+  let buttonLabel = 'label1';
+  const [appState,setAppState] = useState('state1');
+  const clickHandler = () => {
+    //console.log("App Button clicked");
+    buttonLabel = Math.random();
+    console.log(buttonLabel);
+    setAppState(setAppState(new Date().getTime()));
+  }
   return (
     <>
-      <h1>Working</h1>
-      <ContentImage
-        alt="A running shoe with pink laces and a rainbow decal"
-        src="https://www.joshwcomeau.com/images/shoe.png"
-        style={{
-          '--max-width': '200px',
-        }}
-      />
-      <ContentImage
-        alt="A close-up shot of the same running shoe"
-        src="https://www.joshwcomeau.com/images/shoe.png"
-      />
+      <button onClick={clickHandler}>App Button</button>
+      <Button label={new Date().getTime()}></Button>
     </>
-   
   );
 }
 

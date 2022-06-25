@@ -1,0 +1,22 @@
+.container {
+    width: 800px;
+}
+
+.parent {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    width:800px;
+    background: red;
+    height: 800px;
+}
+
+.child {
+    height: 150px;;
+    background: yellow;
+    border:1px solid blue;
+}
+
+.child-content {
+    width:100%;
+}

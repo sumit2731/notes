@@ -10,3 +10,20 @@
 
     selector >*:first-child {}
         Apply this style to first child of element selected element.
+
+
+
+3):nth-of-type() - The :nth-of-type(n) selector matches every element that is the nth child, of the same type (tag name), of its parent.
+
+    p::nth-of-type(2)
+    p::nth-of-type(odd)
+    p::nth-of-type(even)
+    p::nth-of-type(2n+1)
+
+    If an integer is specified only one element is selected—but the keywords or a formula will iterate through all the children of the 
+    parent element and select matching elements.
+
+    /* Selects every fourth <p> element among any group of siblings */
+    p:nth-of-type(4n) {
+        color: lime;
+    }
