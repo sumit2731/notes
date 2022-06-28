@@ -1,0 +1,34 @@
+Scope in js is directly linked to lexical env. i.e is directly dependent on lexical env
+
+
+scope -
+
+    what is scope of varible b? => where can be access variable b.
+    is b inside of scope of function c? => can i access b inside c?
+
+
+what is lexical env?
+
+    when a function is executed execution context is created and put on callstack. execution context has 2 parts memory
+    and code.whenever execution context is created , a lexical env is also created. lexical env is local memory plus
+    refence to lexical env of parent. here parent means lexical parent.for global scope parent is none.
+
+
+    lexical means in hierarchy or in sequence. in our examle we can say that c function is lexically sitting 
+    inside a function. it means where that code is present physically inside code. so a lexical parent of c. so it 
+    means lexical env of c is its memory + lexical env of a. see figure 1. so this is how lexocal env looks like, see 
+    figure1.
+
+
+Use of lexical Env
+    when we try to access variable b inside function c, js engine check memory of function c, since varible b is not 
+    found there then it uses this refrence and goes to lexical env of parent.lexical means where it is physically 
+    present in the code. c is present  a , so a is lexical parent of c. now if that varible is not inside a, then it will
+    go it lexical parent of a to fnd that varible. at the end we reaches global and even if that varible is not defined
+    in glocal env, we gets a error that varible is not defined.
+
+
+scope chain
+
+    this way of finding variable i.e looking in its own memory then oving to parent's lexical env is called sope chain.
+    scope chain is chain of all these lexical env and parent refrences.
