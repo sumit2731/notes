@@ -1,0 +1,7 @@
+here we saw our default size of flex items depends upon content in them. they are just as wide as it is needed to it their 
+    content.epty space is left blank.if the size of one item is very large, so that all items cannot fit into container, 
+    then items shrink to just inside container.item shrinks in such a way that min-width for each item is maintained. for 
+    text it is size of longest word, for image it can be width of image.
+
+
+this is default behaviour of flex-items which can be tweaked if we want to.

@@ -1,0 +1,7 @@
+display property can be broken into 2 parts-
+    outer-display - how elements interacts with other elements.
+    inner-display - how childern inside eleemnt behave
+
+setting display: flex , mean outer display is block and inner display is flex.
+
+you can also use display: inline-flex. it means outer display is inline and inner display is flex.

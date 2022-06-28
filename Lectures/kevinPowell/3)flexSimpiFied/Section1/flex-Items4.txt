@@ -1,0 +1,17 @@
+here we looked at height of flexitems. with display:flex, size of element was dependent on content in them.but all flex-items have
+    same height. this what we wanted form long time, but now it is so easy with flex-box. if we give height to one of flex-items
+    it takes that height, but other ones have height i.e equal to height of content box  of flexConatiner. this is happening
+    because of align-items:strtch.
+
+
+In second part of video we saw that we height greater than longest flex-items to one of items, height of container increases and 
+    other items also strech to fill out whole container.
+
+here our container is not having any explicit height set on it. it all depends upon height of flex-items, which in turn depends
+    on it's content.
+
+My Observation -
+
+if our container has a height sit on it, all flex-item stretch to fill the height. if we give explicit height to one of items,
+    1)if that height is less than height of container then that items shriks, other items continue to occupiy full height.
+    2)if height is more than height of container, then that item moves out of container, but rest items remains inside container

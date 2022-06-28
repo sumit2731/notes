@@ -1,0 +1,5 @@
+we saw that display:flex does not chnage flex conatiner that much but flex-items are influenced a lot. one  way they are affect is
+    idpslya property of flex-items does not matter anymore i.e we cannot give pading-top and margin-top to inline items,
+    but if container is flex-container all these things start working. so in short value of display proeprty for flex-items does 
+    not matter anymore. so it does'nt matter if one is block , inline or inline-block eleemnt,all become flex-items and behave
+    like flex-items.

@@ -13,7 +13,11 @@
 
 
 
-3):nth-of-type() - The :nth-of-type(n) selector matches every element that is the nth child, of the same type (tag name), of its parent.
+3):nth-of-type() -The :nth-of-type(n) selector matches every element that is the nth child, of the same type (tag name), of its parent.
+    syntax - 
+        selector:nth-of-type()
+
+        All siblings are matched by selector are further filtered by condition provided by this selector.
 
     p::nth-of-type(2)
     p::nth-of-type(odd)
@@ -27,3 +31,5 @@
     p:nth-of-type(4n) {
         color: lime;
     }
+
+    .child::nth-of-type(2) {}
