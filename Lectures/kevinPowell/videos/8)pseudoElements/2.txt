@@ -1,0 +1,13 @@
+https://www.youtube.com/watch?v=xoRbkm8XgfQ
+
+1)to content property we can give url like this -
+    content: url('some url');
+
+    but this image cannot be reszied.
+
+2)open and closing quotes -
+    content: open-quote;
+    content: close-quote;
+
+
+3)tooltip

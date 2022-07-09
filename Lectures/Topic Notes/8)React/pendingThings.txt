@@ -21,3 +21,10 @@
 5)compoud components, composite compoents
 
 5)remix, react query
+
+
+
+
+react topics to study -
+
+1)derived react state.

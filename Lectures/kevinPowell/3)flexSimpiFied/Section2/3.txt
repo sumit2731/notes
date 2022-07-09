@@ -1,0 +1,1 @@
+In flexbox and grid we do not have margin collpasing.

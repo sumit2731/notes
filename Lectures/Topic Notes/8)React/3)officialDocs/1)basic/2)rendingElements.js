@@ -2,6 +2,9 @@
  * Elements are the smallest building blocks of React apps.One might confuse elements with a more widely known concept of
  * “components”. We will introduce components in the next section. Elements are what components are “made of”,
  *
+ * Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the
+ * DOM to match the React elements.
+ *
  * Rendering an Element into the DOM
  */
 

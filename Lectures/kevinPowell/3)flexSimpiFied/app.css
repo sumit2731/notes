@@ -1,63 +1,120 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap");
+.hero {
+  background-image: url("https://images.unsplash.com/photo-1617597628547-6f9e223c99fe?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYxODkzNjgyMA&ixlib=rb-1.2.1&q=85");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 1em;
+}
 
-/* Box sizing rules */
+.hero-content {
+  background: white;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+
+/* =========================
+     GENERAL STYLES 
+     NOT RELATED TO THE TUTORIAL
+  ============================ */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p {
-  margin: 0;
+:root {
+  --clr-primary: #ee6352;
+  --clr-secondary: #d16e8d;
+  --clr-accent: #f7f7ff;
+  --clr-gradient: linear-gradient(
+    -90deg,
+    var(--clr-primary),
+    var(--clr-secondary)
+  );
+  --ff-title: bungee, sans-serif;
+  --ff-body: canada-type-gibson, sans-serif;
+  --fw-body: 300;
+  --fw-bold: 800;
+  --fw-title: 400;
+  --fw-number: 800;
 }
 
-/* Set body defaults */
 body {
-  line-height: 1.5;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 400;
-  font-size: 1.25rem;
-
-  /* center demo content on the screen */
   min-height: 100vh;
+  font-family: var(--ff-body);
+  font-weight: var(--fw-body);
+  font-size: 1.25rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
+a {
+  color: inherit;
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+a:hover,
+a:focus {
+  color: var(--clr-accent);
 }
 
-.flex-container {
-  width: 70%;
-  max-width: 60rem;
-  border: 5px solid #000;
-  padding: 2em;
-  display: flex;
+:focus {
+  outline: 5px solid var(--clr-accent);
+  outline-offset: 3px;
 }
 
-.flex-item {
-  margin: 0.5rem;
-  border: 5px solid #aaa;
-  background-color: #000;
-  color: #fff;
-  padding: 0.5em;
+.title,
+.credits {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1em 0 2em;
+  margin: 0;
+  background: var(--clr-gradient);
+  position: relative;
+  z-index: 1000;
+}
+
+.title {
+  font-size: 4rem;
+  font-family: var(--ff-title);
+  font-weight: var(--fw-title);
+  color: white;
+  text-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 100%);
+}
+
+.title span {
+  font-weight: var(--fw-number);
+  color: black;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.125em;
+  font-size: 2em;
+  z-index: -1;
+  opacity: 0.25;
+}
+
+.container {
+  width: min(95%, 45rem);
+  margin: 0 auto;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+.card {
+  padding: 1em;
+  background: var(--clr-gradient);
+  color: white;
+  border-radius: 0.25rem;
 }

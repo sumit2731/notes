@@ -1,0 +1,24 @@
+* {
+  margin: 0px;
+}
+
+p[data-tool-tip] {
+  position: relative;
+  margin-top: 70px;
+  display: inline-block;
+}
+
+p:hover::after {
+  content: attr(data-tool-tip);
+  display: block;
+  position: absolute;
+  background: black;
+  padding: 1em 3em;
+  color: white;
+  border-radius: 5px;
+  font-size: 0.8em;
+  bottom: 100%;
+  left: 0;
+  transition: transform ease-out 150ms;
+  /* z-index: 1; */
+}

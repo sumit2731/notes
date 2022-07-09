@@ -1,0 +1,6 @@
+code - 03-3
+
+
+here we saw how we can use media query to switch the flex-direction. we also saw that using reverse in flex-direction, we can change
+    the order in which flex-items appear. but be careful because if people are using assistive technologies, they would refrence html 
+    for order of content.

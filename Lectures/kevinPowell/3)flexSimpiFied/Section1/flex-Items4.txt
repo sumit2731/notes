@@ -12,6 +12,6 @@ here our container is not having any explicit height set on it. it all depends u
 
 My Observation -
 
-if our container has a height sit on it, all flex-item stretch to fill the height. if we give explicit height to one of items,
+if our container has a height set on it, all flex-item stretch to fill the height. if we give explicit height to one of items,
     1)if that height is less than height of container then that items shriks, other items continue to occupiy full height.
     2)if height is more than height of container, then that item moves out of container, but rest items remains inside container

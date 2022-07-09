@@ -1,0 +1,20 @@
+https://www.youtube.com/watch?v=qKiz9gdJdr8
+
+with display:flex or grid , we do not see collpasing margins.
+
+solution for margn collpasing -
+    1)use dislay:flow-root, on parent
+    2)break direct contact between 2 margins, i.e give padding or border.
+    3)using universal selector you can make margin of all elemnts as 0.
+    4)use this selector to select all childern other than first child -
+        h1, h2, h3, p {
+            margin: 0;
+        }
+        .flow > * + * {
+            margin-top: 1em
+        }
+
+        now whenever you give this class to parent all elemnts except first child will have same margin. there is another 
+            selector for this also, but it more specificity, so it is not recommended -
+
+        .flow > *:not(:first-child) {}

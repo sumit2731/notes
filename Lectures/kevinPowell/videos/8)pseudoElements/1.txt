@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=zGiirUiWslI
+
+1)In order to see content you have to use content property
+2)by default ::before and ::after are inline elements.
+3)images cannot have ::before and ::after

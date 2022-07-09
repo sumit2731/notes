@@ -1,6 +1,6 @@
 here we saw how we can have 3 equal size columns. first approach is to do width:33.33%%, problem with this is if we have only 2 
     items then empty space is left out. so better way is to set width:100%, now no matter how many columns are there they all
-    be equal sized. this is because each os them wants 100% but as flex-shrink is 1 for all of them , they shrink in equal
+    be equal sized. this is because each of them wants 100% but as flex-shrink is 1 for all of them , they shrink in equal
     proportion.
 
 
