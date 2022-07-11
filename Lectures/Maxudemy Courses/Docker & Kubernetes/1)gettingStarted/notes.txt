@@ -1,13 +1,15 @@
 commands -
+    
     docker build .
-        this builds the docker image based on Dockerfile found in this directory. it sets up the image for container to be launched.
+        This builds the docker image based on Dockerfile found in this directory. it sets up the image for container to be launched.
 
 
     docker run -p 3000:3000 dockerImageId
         this run the container based on image whose Id is given
+    
     docker ps 
-        gives lis of all running docker containers.
-        you can also add -a flag => it gives all processes(running and stopped), all containers that docker created for us.
+        gives list of all running docker containers.
+        You can also add -a flag => it gives all processes(running and stopped), all containers that docker created for us.
 
     docker stop containerName
         stop the container.you can get dokcer container name by running docker ps.

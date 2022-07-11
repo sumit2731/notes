@@ -4,8 +4,8 @@
 # This allows us to build our image up on other base image. image with this name should exist on your system or on docker hub
 FROM node
 
-# this tells docker that all subsequent commands should be run form inside of this folder.COPY and RUN , run relative to this 
-# path
+# Iy sets the working the working directory of docker.this tells docker that all subsequent commands should be run form inside of this 
+# folder.COPY and RUN , run relative to this path
 
 WORKDIR /app
 
@@ -21,15 +21,19 @@ WORKDIR /app
 
 # since working directory is set we can use .
 
+# COPY . .
+
+# or
+
 # COPY . ./
 
-# here we explicit about it, where files are copied
+# here we are explicit about it, so we set a absolute path
 
 COPY . /app
 
 # now we want to run npm install. so do this. 
 # By default, all those commands will be executed in the working directory off your Docker container and image.And by default, that 
-# working directory is the root folder in that container file system. so to run this command here we set working directory
+# working directory is the root folder in that container file system. so to run this command, here we set working directory
 
 RUN npm install
 

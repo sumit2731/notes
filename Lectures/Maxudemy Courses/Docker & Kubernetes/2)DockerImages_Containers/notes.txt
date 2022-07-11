@@ -1,9 +1,17 @@
 Part 1(build images, run containers) -
 
 
-    Images contain the code, the setup, the meet, you could say and containers are then the running instances of those images.
+    Images contain the code, the setup, the meat, you could say and containers are then the running instances of those images.
+    
     1)first we created a docker based on node image on docker hub abd accessed terminal inside container from our hosting 
-        machine.
+        machine. 
+        
+        commands - 
+            docker run node 
+                downloads a image and runs a container. But that container has been stopped automatically.
+            docker run -it node
+                runs a image and exposes the interactive terminal exposed by container
+    
     2)then we build up on that image and created our custom image.we executed our node js code with node image from docker hub.
         Typically you would pull into your official base image and then add your code on top of that to execute your code with 
         that image.
@@ -12,7 +20,7 @@ Part 1(build images, run containers) -
 
     4)then we create(or build) a image based on instructions specified in DockerFile.run this -
 
-        build .
+        docker build .
             here . means Dockerfile is at same path where we are running this file.
 
         this returns a docker image id.
@@ -21,12 +29,15 @@ Part 1(build images, run containers) -
 
         docker run "imageId"
 
-    6)then we saw how we can connect contsiner port to port on local system by using p flag with diocker run.
+    6)then we saw how we can connect container port to port on local system by using p flag with diocker run.
         docker run -p 3000:80 dockerImage
 
         commit - Docker Commit1
 
-    7)then we saw layerbased architecture of docker. how chnaging one layer means that subsequent layers(commands) should
+    7)then we saw that images are Read-Only.After creating the image, if we change the source code then we have to re-build the image 
+        again.
+
+    8)then we saw layer based architecture of docker. how changing one layer means that subsequent layers(commands) should
     run again.It exists to speed up the creation of images since Docker only rebuilds and re-executes what needs to be
     re-executed.here we also improved the performance by copying the package.json first. see code2, for chnged Dockerfile,
     here we chnaged the sequence commands for better performance.
@@ -52,7 +63,7 @@ Part 1(build images, run containers) -
 
                         1)-p = for attaching port.
                             docker run -p "loalPort":"imagePort" dockerImage
-                            it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker 
+                            It runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker 
                             container.
                         
                         2)-d = dettached
@@ -66,8 +77,8 @@ Part 1(build images, run containers) -
 
                         3)-i  interactive
                             docker run -i "imageId"
-                                runs docker container form image, and give intercative terminal.generally used along with "t" flag.
-                                but i am not able to find any difference by attsching "t" flag.
+                                runs docker container from image, and give intercative terminal.Generally used along with "t" flag.
+                                but i am not able to find any difference by attaching "t" flag.
                                 docker run -it "imageId"
 
 
@@ -117,11 +128,12 @@ Part 3 (python, code 3) -
     inside container, we can use -i flag with docker run and docker start.
 
 
-    The running container is then actually not really that big,it's just an extra thin layer, the command layer basically, added on top of the image.
-    So, this image code is used in the running container.it's not copied again, just to make this clear.multiple container share same image code.
+    The running container is then actually not really that big,it's just an extra thin layer, the command layer basically, added on top of 
+    the image.So, this image code is used in the running container.It's not copied again, just to make this clear, multiple container share
+     same image code.
 
-    That's why this code inside of the image is also locked in and read only containers can only make changes,And for example, create files inside of
-    that new extra thin container layer that was added on top of all the image layers.
+    That's why this code inside of the image is also locked in and read only containers can only make changes,And for example, create files
+     inside of that new extra thin container layer that was added on top of all the image layers.
 
     then we saw cp command which allows us copy to and copy from container. it can be useful to copy config file into container
      and copy log file out from contianer.
@@ -129,16 +141,85 @@ Part 3 (python, code 3) -
 
     In slide 11, we can see  2 options of sharing image with others.then we uploaded a image on docker hub so that anyone can download it.
 
-    then we saw how we can name docker container while running them. then we see saw naming system iof images -
+    then we saw how we can name docker container while running them. then we see saw naming system of images -
          name: tag
 
+         like containers have names, images have tags. tag has 2 parts - 
+            a)actual name or repository of your image.
+            b)tag - its is optional
+        
+        This concept of having these two parts exists for a simple reason though.With the name you can set up the general name of your image.
+        To be precise you can create a group of multiple,maybe more specialized images.For example node, the image we pulled in, it only has
+         name, but we want to pull specifci version of node then we can use tag and that's optional, as I said, you can define a more 
+         specialized version of that image. Within that group of images.
 
-         note that tag is optional.
+        for example while pulling node image form docker hub we can pull specific version of node using tag -
+            node:14.9
 
          see slide 10.
 
+    then saw how we can share images. see slide 11. we have 2 options -
+        a)share Dockerfile, so now user needs to create dickermage based on this file. for that he needs to have surrounding code.
+        b)second way is to share a built docker image.
 
-    then we pushed a image into dockerHUb and then downlaoded that image from docker hub.
+        slide 11 shows push and pull commands. by if we just use -
+        
+        docker push imageName of docker pull ImageName, then it will refer to docker hub only. if we want to refer to another repo then we
+        need to inclde host:name.
+
+    then we pushed a image into dockerHUb and then downlaoded that image from docker hub. steps for uploading a image-
+
+        a)go to dockerGub -. repository and create a repository. because share image is just a repository. when we say repository, we are 
+            talking about image.
+
+        b)then we need to choose if it is public or privaate repo. then there is a optiona to have build settings i.e we can trigger a build
+         with every git push of your repo. but we do not need that.
+
+         c)once repo si created it shows you command to push image on your local system to docker hub -
+            docker push sumeet27/node-hello-world-28:tagname
+
+            here sumeet27/node-hello-world-28 is name of repo.
+
+            if you run this command on local, you will get -
+            "An image does not exist locally with the tag: sumeet27/node-hello-world-28"
+
+        d)so in your local you need to have image with same name. there are 2 ways to do that -
+            1)re build the image and give it name "sumeet27/node-hello-world-28".
+                docker build -t sumeet27/node-hello-world-28
+            2)if we already have a image with some other name we can clone the image and give it desired name -
+                docker tag oldName newName
+
+            no you can push your image - docker push sumeet27/node-hello-world-28:tagname
+
+        e)if you are have connected your docker cli with docker hub then that image will be pushed otherwise you will get error -
+            "access denied".
+
+            to link docker cli with docker hub account -
+
+                1)run -
+                    docker login.
+
+                    enter username nad password.
+
+                2)push again. your image will pushed to docker hub.
+
+        THis push is done smartly, in our case we rely on node image which is already on docker hub , so that node image is not pushed to 
+        docker hub. It establishes the connection to that nide image and only pushes the extra code it needs.
+
+
+
+    Then we pulled the same image using -
+
+        docker pull sumeet27/node-hello-world-28
+
+        we can now run the container based on this image - 
+            docker run sumeet27/node-hello-world-28
+
+        by default docker pull will get the latest image from docker hub. if you had a uploaded on docker hub but now you rebuild
+        the imge on local and pushed it to docker hub, whne doing docker pull will fetch the latest uploaded image.
+
+        also when we directly try to do - docker run sumeet27/node-hello-world-28, first it will try to find image locally, if it is not
+            able to find it locally then it will pull it through docker hub.
 
 
 
@@ -165,7 +246,8 @@ Part 3 (python, code 3) -
         6)docker image inspect "imageId"
             gives the details about a image.
 
-        7)docker cp - docker cp "path1" "path2". copies files form path1 to path2.
+        7)docker cp - 
+            docker cp "path1" "path2". copies files form path1 to path2.
             docker path is specified by dockerName:pathInsideDocker
                 ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents 
                     inside dummy, we can also target induival files)

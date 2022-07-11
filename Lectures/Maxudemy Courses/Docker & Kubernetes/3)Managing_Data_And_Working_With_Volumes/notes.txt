@@ -1,0 +1,84 @@
+Module content -
+    a)diffrent types of data in images And Containers
+    b)dive into concept called volumne
+    c)arguments and envirenment variables.
+
+lecture 43 -
+    Slide 1 shows different types of data. for permanent data, that we need to read and write. we use concept called volumnes.
+    
+    see slide 2 -
+    Application run time data is stored in container. And when I say stored in containers,not in images, I'm talking about this 
+        extra layer,which is added by Docker on top of our image,which then actually makes up that container.And this extra 
+        layer basically is a bit of a logic you could say,that is aware of the image,is aware of the file system of the image,
+        and kind of mirrors that file system without copying it.But then that's the extra thing,here, Docker then actually also
+        has read-write access,and is able to manipulate that file's system.Without changing it in the image,just by changing it
+        in that extra layer.And behind the scenes,this is managed in a very efficient way,where Docker basically keeps track of
+        the changes made by the container,and derives the final file system,by taking the file system in the image,and combining
+        it with the changes stored in that read-write layer.
+
+lecture 44, 45 -
+
+    here app in folder code1 is explained. this app shows a page which ask for title and text. you click on save.
+    let's say title is title1, now a file with name title1.txt  will be created in folder temp. now if file with 
+    same name does not exist in feedback folder, it is copied there. if it exist there user is redirect to page,
+    which shows him that file already exists(pages/exists.html).
+
+    also you can see the file store in feedback by vissitng the route - localhost:3000/feedback/text1.txt
+
+lecture 46 -
+    
+    so problem that we are trying to solve is upon deleting a container filesystem of that container is also deleted. so
+    it means any changes made on top of image by this container is also lost.but we would like to keep those changes, even
+    after container is destroyed.
+
+    note that upon stopping the container file system is not deleted , so when we start the container again , those changes
+    are there.
+
+
+lecture 47(Introducing volumnes) -
+
+    see slide 3
+    Volumes are folders on your host machine,so not in the container,not in the image,but on your host machine hard drive,
+    which are mounted,which basically means, made available or mapped,into containers.If you add a volume to a container,
+    the volume will not be removed,when a container is removed,
+
+
+
+lecture 48,49(types of volumes) -
+
+    In lecture 48 we setup the annonymous volume in our dockerFile. see code1 folder. then we noticed that this volume is getting destrpyed when we stop
+     the container if we use --rm flag while starting container. see dockerFile of code1 to know more about annonymous volume. we will see
+     usecase for annonymous volumne later in course.
+
+
+    see slide 4 to see types of volumes. 
+
+    there is named volumes also, if we use those then they are not destroyed when we remove or stop the container. the file persist on our local 
+     filesystem, when we start the container again, then those files are c opied back into container as both locations are mapped to each other
+     via volums.So named volumes are great for data which should be persistent,and that's important,which you don't need to edit or view directly,
+    because you don't really have access to that folder on your host machine.As I just said, it's hidden somewhere managed by Docker,
+    and it's hard to find out where it is. And it's not meant to be edited by you.I'll come back to an option which you can edit later.
+
+
+    we cannot create namd volume inside of docker file. we need to create them when we run container.
+
+    comamnd for that is -
+
+    docker run -v nameofVolumne:pathInContanerFileSystem
+
+    so we ran this command - docker run -p 3000:80 -d --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
+
+    saved a file. stopped the container, then saw volumes using -
+
+    docker volume ls
+
+    we can see that volume is still there.
+
+    then we created a new container but gave it same volume we can see that we can still access files that were stored in older 
+    container.
+
+    docker run -p 3000:80 -d --rm --name feedback-app-new -v feedback:/app/feedback feedback-node:volumes
+
+    here we chnaged the name of container but since old storage is lined old filesystem is made avalible inside  container.
+
+
