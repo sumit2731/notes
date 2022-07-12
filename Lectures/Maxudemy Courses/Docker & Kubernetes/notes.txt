@@ -59,10 +59,33 @@ commands -
                     now we can refer to container using this name, like to stop container - docker stop containerName
 
                 6) -v
-                    -v nameofVolume:pathInContainerFileSystem
-                    it helps us to create a named volume and linked a local file system with path in container.
+                    a)named volumne
+                        -v nameofVolume:pathInContainerFileSystem
+                        it helps us to create a named volume and linked a local file system with path in container.
 
-                    docker run -p 3000:80 -v feedback:/app/feedback feedback-node:volumes
+                        docker run -p 3000:80 -v feedback:/app/feedback feedback-node:volumes
+                    b)bind mount
+                        -v "absolutePathInSystem:absolutePathInContainer"
+                        docker run -d -p 3000:80  --rm --name feedback-app -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app" feedback-node
+
+                        instead of using full absolyte path we can use this -
+
+                            macOS / Linux: -v $(pwd):/app
+
+                            Windows: -v "%cd%":/app
+
+                    c)annonymous volume (see dockerFile of code1 in section 3)
+                        -v "absolePathInDockerFileSystem"
+                        -v /app/node_modules
+
+                        note - this can also be mentioned in Dockerfile -
+                            VOLUME ["/app/node_modules"]
+
+                    d)ro - by defualt all volumes are read-write tat means docker can read as well as write data into them. but you can turn them
+                        into read only by sing :ro in then end. ex -
+
+                        -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app:ro"
+
         
         3)docker images
             lists all images
@@ -159,9 +182,24 @@ commands -
 
     3)volumes
         a)docker volume ls
-            gives name of all volumes setup by docker.r
+            gives name of all volumes setup by docker. it shows only named and annonymous volumes. bind mounts are not shown.
 
         b)docker volume rm VOL_NAME 
+            you get error if you try to remove a volume which is ised by some contianer which is currently running.
         
         
-        c)docker volume prune.
+        c)docker volume prune
+            removes all unused volume. does not remove volume which is used by currently running containers
+
+        d)docker volume create feedback-files
+            it creates a volumne. while giving volume while running container ,docker will create volume if it does not exist. but still you can also
+            manually create named volumes.
+        e)docker volume inspect "volumeName"
+
+            it shows the details of volumen like when it was created , path  and options used while creating the volume. path is not in local file 
+            system, but it path in virtual machine that docker has setup on your system. under options you can see whether this volume is read only or
+            not.
+
+
+
+docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2:/app" -v /app/node_modules feedback-node

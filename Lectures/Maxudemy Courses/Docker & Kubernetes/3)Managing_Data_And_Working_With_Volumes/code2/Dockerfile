@@ -24,6 +24,10 @@ EXPOSE 80
 # hidden somewhere on your computer,and it's not meant to be accessed by you. So it's hard to find out where exactly it is, but also we shouldn't 
 # access and work in that folder anyways.as we also saw that this path is hidden somewhere in your system, we are not supposed to find it and work 
 # with it.
+
+#There is use of annonymous volume where we use it saving the oeverrite of data by other volumes(see lectures 53), there annonymous volume
+# neeeds to be specified while creatng container in docker cli. specifying volume in dockerFile will not help there. 
+
 # VOLUME [ "/app/feedback" ]
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
