@@ -203,3 +203,61 @@ Lectures 56(Look at Read-Only Volume) -
 Lecture 57(managing docker volumes)
 
     here we saw basic commands to manage docker volumes. commands are listed in main notes.
+
+lecture 58(using "COPY" vs Bind Mounts) -
+
+    here we saw that why do we need copy command in Dockerfile, when we have bind mount. reason for this is bind mount
+    is good for development but while deploying contianer we do not want to chabge files on the fly. so that is why we
+    want to have snapshot of code in image. while spinning up the contianer we may use bind mount otherwise we can 
+    directly go for deployemnt.
+
+59)(dont copy everything)
+
+    we can add a dockerignore file, there we can mention files that should'nt be copied when we use '.' in copy command.
+    for example we do want to copy node_modules form local system to image.
+
+61)Arguments & Envirenment variables
+    see slide 8.
+
+    first we added a envirement variable.
+        env variables are added while creating docker through --enc or -e flag. they can be used in Dockerfile by $Name. In code base how to access them depends upon 
+        language to language. but in nodejs we can access hem by -
+            process.env.nameofvarible.
+
+        earlier we created container by- 
+            docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp feedback-node
+
+        now we just added a env variable by adding --env flag -
+            docker run -d --rm -p 3000:8000 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp --env PORT=8000 feedback-node:env
+
+        then we used this varible in DockerFile and server,js file.
+
+    ways to add -
+        --env PORT=8000 --env name=abc
+                    or
+        -e PORT=8000 --env name=abc
+
+    also we can add env variables in file. then use this flag -
+        --env-file "relative path of file"
+
+        --env-file ./.env
+
+
+lecture 62 - it is text read it
+
+lecture 63(Using build arguments) -
+
+    see code 4. here we use build time arguments to pass defualt value of port while creating the image, instead of hardcoding it in Dockerfile.
+     argument cannot be used in code, it is only avalible in docker file.
+
+     so we define a argument in DockerFile. and provide value for it while creating the image.
+
+     docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000
+
+
+     Now one note about where you specify args and envs.You might of course wanna place arg and envin a place where you then need it thereafter,
+        and not place it right at the beginning of your Dockerfile because these instructions just like all other instructions, add layers to your
+        Dockerfile.And hence, when something changes about them, all subsequent layers are rebuilt, are re-executed.And I don't wanna 
+        execute npm install again all the time.Just because I passed in a different default port argument.It's not relevant to this command.
+
+    so we moved them after NPM install command.

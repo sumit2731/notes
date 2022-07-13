@@ -85,7 +85,16 @@ commands -
                         into read only by sing :ro in then end. ex -
 
                         -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app:ro"
+                7)--env or -e
+                        it lets you pass envirenment varibles. refer lecture 60 in notes. to see more
 
+                        -e PORT =8000 -e name=sumit
+
+                8)--env-file
+                        lets you pass a file, which contains value of envirement variables.
+
+                        ex - 
+                            docker run ---env-file ./.env imageName
         
         3)docker images
             lists all images
