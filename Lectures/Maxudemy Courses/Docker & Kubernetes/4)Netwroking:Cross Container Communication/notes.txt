@@ -1,0 +1,109 @@
+67, 68, 69 -
+
+    In these lectures we saw various use case of communicating outside container.
+
+    a)sending http request to service deployed in web.
+    b)communicating with Db that is running on our local system.(mongo db running on host machine)
+    c)communicating with app running in another docker container.
+        in general, building applications with multiple containers is quite common.
+
+        with Docker containers,it is strongly recommended and the best practice that every container should just do one main thing.
+        So if you have a node application, which also needs a Mongo DB database,it is a recommendation that your node application
+        go into one container and one image and your Mongo DB database uses another image and runs in another container.
+
+
+70,71 -
+
+    In lecture 70 we understood the web app.
+
+    In lecture 71 we started the container, but it stopped because code to connect to mongo server to local system errored out. note even through we 
+        did not had mongo db running in our system Max had but in his case also node server` was not able to connect to mongo server running on local
+        host.
+
+    then we commnered out mongo db connection code and find out that by defualt from inside a container we can can send request to other servers 
+    deoloyed  on internet.
+
+
+72)connecting to ports of host mahine -
+    how to connect node server which is running inside container with mongo db server which is running in local machine?
+    you need to chnage the URL through which you are trying to connect with mongo db.there is a special instruction,
+    a special hint you can give to Docker in your code.There is a special address you can use for your requests.
+
+    so instead of this -
+        'mongodb://localhost:27017/swfavorites'
+
+    use this -
+        'mongodb://host.docker.internal:27017/swfavorites'
+
+    so we replaced local host with host.docker.internal. This special domain is recognized by Docker.It's understood by Docker.
+    And it's translated to the IP address off your host machine as seen from inside the Docker container.
+
+
+    even if you wanted to connect to API server running on your local system, use this instead of local host.Now under the hood,
+    this will be transformed to this IP address off your local host machine as seen from inside this container.
+
+73)container to container communication -
+
+    here we ran -
+        docker run --name mongodb mongo
+    this downloaded the mongo image from docker hub and started the container on top of it.
+
+    then we inspected the container using -
+        docker container inspect mongodb
+
+        from there we got the IP address for our docker container by -
+            network settings -> ip address 172.17.0.2
+
+        this is IP address of this container and can be used to contact this container.
+
+
+    In used this Ip address in app.js in url which is used to connect to mongodb -
+
+        mongodb://172.17.0.2:27017/swfavorites
+
+    uisng this we were able to connect to mongo db. then we rebuild the image for node app and started container.
+
+    but this is not very convinient, as we have to rebuild our node app image each time mongo db contianer restarts.
+
+
+74)Container Networks
+    see slide 2.
+    lets say we have some container and we want to alow communication between these,then we can put these container into a network by
+    specifying network flag while running the container.
+
+    docker run --network "networkName"
+
+    This then creates a network in which all containers are able to talk to Java,and Docker is then automatically doing this
+    IP look up and resolving stuff.
+
+    then we removed our both containers and tried to start them in netwrok -
+
+    docker run -d --name mongodb --network favorites-net mongo
+
+    but we received error that network does not exist. so unlike volumes docker will not create networks automatically , you have to create them.
+    so create ntwork first -
+
+        docker network create favorites-net.
+
+        you can see all networks by - docker network ls
+
+        if you run this command now, you will see some default networks are created automatically.
+
+    then we created mongodb container isndie this container.
+    
+    then in app.js instead of using IP of mongodb container, we can just use name of mongodb container, as both conainers are paet of same network
+    docker will translate container name to IP address. then we rebuild the image of node server and then created container in same netwrok -
+
+        docker run --name favorites --network favorites-net -d --rm -p 3000:3000 favorites-node
+
+    now everythings works. this is how container can commnunicate to each other. 
+
+75)how docker resolves IP address
+
+    see slide 4, so dicker does chnage the source code, it just detects the outgoing request and resolves the IP for such requests.
+
+76)diffreent types of networks
+    https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22614216#questions/17865980
+
+77)summary
+    possible imprrovements - data in db should not lost when container is destroyed. we will improve on this in next

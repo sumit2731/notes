@@ -95,7 +95,10 @@ commands -
 
                         ex - 
                             docker run ---env-file ./.env imageName
-        
+
+                9)--network
+                    docker run --network "networkName" imageName
+                    network with this names needs to be created there otherwise container creation will faul.see notes of lectures 74 for detals.
         3)docker images
             lists all images
 
@@ -176,6 +179,11 @@ commands -
         8)docker container prune
             removes all stopped containers at once.
 
+        9)docker container inspect "containerName"
+
+            this commands isnpects the container. we used it to get IP address of container where our mongoDB container was running.
+            then we used ip address of this container to connect to mongodb from container that was running node code.
+
 
         9)docker cp - It allows you to copy files into or from a running container
             docker cp "path1" "path2". copies files form path1 to path2.
@@ -209,6 +217,13 @@ commands -
             system, but it path in virtual machine that docker has setup on your system. under options you can see whether this volume is read only or
             not.
 
+    4)network -
 
+        a)docker network create "networkName"
+            creates the network
+
+        b)docker network ls
+
+            list the all networks
 
 docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2:/app" -v /app/node_modules feedback-node
