@@ -1,0 +1,66 @@
+79)Module Intro
+    Now the idea behind this module is to show you how you can build a more realistic application consisting of multiple
+    services and therefore multiple containers which work together.But the idea is also that you can practice what you
+    learned over the last course modules.Because we are not really going to learn anything new in this section, rather,
+    we're going to combine what we learned and apply what we learned to this multi-service,multi container application.
+
+80)Our target App & Setup
+    here we go through project structure and requirements. see slide 1
+
+81)Dockerizing the mongoDB
+
+    here we run the official mongo image. like we did last time but this time we also want to expose a port from container 
+    to local system, so that nodejs server that is running in local system can connect to mongoDb running in conatiner.
+
+    docker run --name mongodb --rm -d -p 27017:27017 mongo
+
+    then we test whether nodejs running on local is apple to connect to it or not. in nodejs server we printed on conslde,
+    connected to mongo db . also in logs of mongo container we can see something with node js has connected to it.
+
+
+82)Dokerizing the node App
+
+    here first we created the Dockerfile. then from dockerFile we created the image -
+        docker build -t goals-node .
+
+    then we run a container based on this image -
+        docker run --name goals-backend --rm -p 80:80 goals-node
+
+    we are expsoing the container port to local system, so that react app running on local host can still talk to backend running docker. 
+
+    but in the console we can see that ourr application crashed, so container was stopped and remoevd. it fails to
+    connect because in app.js we are trying to connect to mongoDb with this url -
+
+        mongodb://localhost:27017/course-goals
+
+    as we already have port of mongodb container exosed to our local file system. this will work if from node container we
+    can connect to local machine port, so instead of localhost we use - 
+
+        host.docker.internal
+
+    so chnage the app.js, delete the image and then re build the image
+
+
+83)Moving the React SPA into Container
+    first we create the Dockerfile. then we create the image -
+
+        docker build -t goals-react .
+
+    then we created the container based on that image
+
+        docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
+
+    you will see that we do not see anything on localhost:3000, so seeing logs we saw that contiener existsed after printing -
+
+    "Starting dev serever"
+
+    now this is specifci to react project, You need to run it in interactive mode, by adding -it flag.
+
+
+    the React project is set up the waythat if it doesn't receive this input(-it flag),it immediately stops the server because no
+     one's interested anyways.
+
+
+     now our all apps are dockerized. now we can plan to add additional functions like persisting the mongoDb data when mongo container
+     shuts down and also right now they are communicating with each other through local post, i.e they publish there ports. it will be
+     great if they can communicate through container name i.e if we put all of them into same network.
