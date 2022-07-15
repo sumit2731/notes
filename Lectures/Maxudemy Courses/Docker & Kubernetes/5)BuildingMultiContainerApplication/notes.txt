@@ -56,11 +56,99 @@
 
     now this is specifci to react project, You need to run it in interactive mode, by adding -it flag.
 
+        docker run --name goals-frontend --rm -p 3000:3000 -it goals-react
+
 
     the React project is set up the waythat if it doesn't receive this input(-it flag),it immediately stops the server because no
      one's interested anyways.
 
 
      now our all apps are dockerized. now we can plan to add additional functions like persisting the mongoDb data when mongo container
-     shuts down and also right now they are communicating with each other through local post, i.e they publish there ports. it will be
-     great if they can communicate through container name i.e if we put all of them into same network.
+     shuts down and also right now they are communicating with each other through local post, i.e they publish there ports. it 
+     will be great if they can communicate through container name i.e if we put all of them into same network.
+
+
+84)Adding Docker network
+    create network -
+        docker run --name mongodb --rm -d -p 27017:27017 mongo
+    run mondb container in this network(now we do not need to expose port to local system) -
+        docker run --name mongodb --rm -d --network goals-net mongo
+
+    run nodejs container in network  -
+
+        first we need to chnage way we connect to mongo db. instead of connecting to local system , we connect to container
+        in this network. then we build the image. then run container in netwrok
+
+        docker run --name goals-backend --rm  --network goals-net goals-node
+
+    run react app in network -
+
+        first we change the netwrok calls to local host to name of nodejs-backend container name(goals-backend).
+
+        http://localhost/goals => http://goals-backend/goals
+
+        we build the image, then we run the contsiner in network -
+
+            docker run --name goals-frontend --rm -it -p 3000:3000 --network goals-net goals-react
+
+            here we expose the port to local system because w ewant to interact with this app.
+
+        now we run our app it fails. why it fails? react-app runs in browser, browser which is in local system. there we try to fetch resource from -
+        
+        http://goals-backend/goals
+
+        here docker has no chnace of translating it to ip address of node backend.webback-dev server runs in docker but that does'nt matter. so
+         we have to replace 
+          http://goals-backend/goals => http://localhost/goals
+
+          rebuild the image. then reun cotainer, here there is no need to run this container on network -
+
+          docker run --name goals-frontend -it -p 3000:3000 goals-react
+
+    now in nodejs cotianer we need to expose a port to local system, so that js code running in browser in local system can talk with node
+    server. stop the container and run it gain with -p option -
+
+    docker run --name goals-backend --rm  --network goals-net -p 80:80 goals-node
+
+
+    now everything is working fine. mongodb and node are running inside docker and both containers are netwrok, communates through this network.
+
+    react app is running inside docker container, not on network. it exposes port 3000, so browser gets the files form server.
+    it send request to port 80 on local host. node app has exposed this port to local system.
+
+
+
+
+86)Adding Data persistance to MongoDb with Volumnes
+
+    2 problems -
+        a)persist DB data when container is removed
+        b)restrict access i.e add username and password
+
+    In mongoimage docs of docker hub, we fund that mongo db stores data in data/db folder. so uisng named volume we will persist that folder.
+
+    so stop container and run it again with -
+        docker run --name mongodb -v data:/data/db --rm --network goals-net mongo
+
+    regrading authentication mongoDb supports these 2 envirenmeent variables -
+
+        MONGO_INITDB_ROOT_USERNAME and MONGO_INITDB_ROOT_PASSWORD
+
+        now we need to specify this username and password in other containers trying to access this db.
+
+        first we stop our container and restar it again with these2 envirement variables -
+
+            docker run --name mongodb -v data:/data/db --rm --network goals-net -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+        now we need to specify tis user name and password in nodejs code, while we connect to db, so we need to chnage the connection string,
+        
+        mongo db understand this format -
+            mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
+
+
+            "mongodb://mongodb:27017/course-goals", => "mongodb://max:secret@mongodb:27017/course-goals?authSource=admin",
+
+        after this chnage rebuild your image and run container(on same network)
+
+
+

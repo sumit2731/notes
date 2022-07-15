@@ -178,8 +178,8 @@
                     {
                         isExact: false
                         params: {quoteId: 'q2'} // this is params for whle url
-                        path: "/quotes/:quoteId" // only for urrently loaded component
-                        url: "/quotes/q2" // only for currently loaded component
+                        path: "/quotes/:quoteId" // only for urrently loaded component,The path pattern used to match. Useful for building nested <Route>s
+                        url: "/quotes/q2" // only for currently loaded component, The matched portion of the URL. Useful for building nested <Link>s
                     }
                 console.log(match);
             }
