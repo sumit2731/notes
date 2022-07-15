@@ -86,7 +86,7 @@ commands -
 
                         -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app:ro"
                 7)--env or -e
-                        it lets you pass envirenment varibles. refer lecture 60 in notes. to see more
+                        it lets you pass envirenment varibles. refer lecture 61 in notes to see more ways of adding env variable.
 
                         -e PORT =8000 -e name=sumit
 

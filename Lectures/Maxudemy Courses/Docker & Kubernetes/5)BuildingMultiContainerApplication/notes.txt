@@ -152,3 +152,58 @@
 
 
 
+87)Volumes, Bind Mounts & Polishing of nodejs container
+
+    2 thinsg to achieve -
+
+        a)persist the logs data whenever container is shut down.
+        b)whever code is updated in local, node server should run utomatically
+
+    solution -
+        docker run --name goals-backend -v logs:/app/logs -v $(pwd):/app -v /app/node_modules --rm -p 80:80 --network goals-net goals-node
+
+            first we used named volume to copy data form logs into volume so that it is not lost.
+            next we used bind mount to sync our code source with code inside docker, so that ever we chnage code in local folder, server in container 
+            restarts.then we used annonymous volume because we do not node_modules folder inside docker to be overwritten by content of bind mount. this
+            is because more specifc path in volumes have higher priority.
+
+        then in order to have live code updates we started using nodemon to uopdate file.
+
+    further improvement - 
+        a)mongodb id and password is hardcoded in nodejs code. there we can use envirement varibles. 
+    
+            1)declare ENV variables in dockerFile.
+            2)use them in nodejs code while connecting to db.
+            3)provide these values while running the container.
+
+            then run container using this -
+
+
+                docker run --name goals-backend -v logs:/app/logs -v $(pwd):/app -v /app/node_modules -e MONGODB_USERNAME=max -e MONGODB_PASSWORD=secret --rm -p 80:80 --network goals-net goals-node
+
+
+        b)Added .dockerignore file.
+
+
+88)Live Source Code updates for react Containers
+
+    we simply use bind mounts -
+
+        docker run -v $(pwd)/src:/app/src --name goals-frontend --rm -p 3000:3000 -it goals-react
+
+    for windows users using wsl2, live updates wnt be seen, for this see article attached with this lesson. here
+    solution is create your project in linux file system instead of y=using windows file system.
+
+
+89)Summarry
+
+    see slide 2 and 3
+
+    Setup shown here is only for development. There actually also are a lot of developers who use Docker only in 
+    development because they can encapsulate their environments and so on, and they don't even use it for production.
+
+    improvement -
+        a)very long docker commands.have to run each command induivally even through container belongs togather
+        b)this is dev only setup.
+
+    Point a will be addressed in next section. point b will be addressed in later sections.

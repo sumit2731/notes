@@ -217,30 +217,38 @@ lecture 58(using "COPY" vs Bind Mounts) -
     for example we do want to copy node_modules form local system to image.
 
 61)Arguments & Envirenment variables
-    see slide 8.
+    see slide 8. see code4
 
-    first we added a envirement variable.
-        env variables are added while creating docker through --enc or -e flag. they can be used in Dockerfile by $Name. In code base how to access them depends upon 
-        language to language. but in nodejs we can access hem by -
-            process.env.nameofvarible.
+    first we added a envirement variable. in DockerFile -
+        
+        ENV PORT 80
+        ENV PORT2 81
 
-        earlier we created container by- 
-            docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp feedback-node
+        so this is default value of PORT variable. anywhere in dockerFile wecan refer to this varible by $PORT. now we
+        can also overwrite value of these envirement variables at run time by passing explicit values -
+        
+        a)env variables are added while creating docker through --env or -e flag. they can be used in Dockerfile by $Name. In code 
+            base how to access them depends upon language to language. but in nodejs we can access hem by -
+            
+            process.env.nameofvariable.
 
-        now we just added a env variable by adding --env flag -
-            docker run -d --rm -p 3000:8000 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp --env PORT=8000 feedback-node:env
+            earlier we created container by- 
+                docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp feedback-node
 
-        then we used this varible in DockerFile and server,js file.
+            now we just added a env variable by adding --env flag -
+                docker run -d --rm -p 3000:8000 --name feedback-app -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/node_modules -v /app/temp --env PORT=8000 feedback-node:env
 
-    ways to add -
-        --env PORT=8000 --env name=abc
-                    or
-        -e PORT=8000 --env name=abc
+            then we used this varible in DockerFile and server,js file.
 
-    also we can add env variables in file. then use this flag -
-        --env-file "relative path of file"
+            ways to pass multiple env variables -
+                --env PORT=8000 --env name=abc
+                            or
+                -e PORT=8000 --env name=abc
 
-        --env-file ./.env
+        b)also we can add env variables in file. then use this flag -
+            --env-file "relative path of file"
+
+             --env-file ./.env
 
 
 lecture 62 - it is text read it
