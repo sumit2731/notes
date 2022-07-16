@@ -36,7 +36,7 @@ docker run --name goals-backend \
   --rm \
   -d \
   --network goals-net \
-  -p 80:80 \
+   80:80 \-p
   goals-node
 
 ---------------------

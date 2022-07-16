@@ -20,3 +20,88 @@
 
     it shows what goes in docker file. idea of compose is replace the running docker commands in terminal with a 
     configuration file.
+
+
+93)Creating Compose File
+
+    It's always a yamol file and yamol is just a specific text format where you use indentation to express dependencies
+    between configuration options.
+
+94)Diving into the Compose File Configuration
+    here see the docker-compose.yaml file fo code1.
+
+
+96)Docker Compose Up & down
+
+    To start services with docker-compose,navigated into the folder where this docker-compose file sits,so navigated into your project,
+    and now it's just one command.
+
+        docker-compose up.
+
+        And this will start all the services to find in this compose file. And it will not just start the containers,it also will pull
+        and build all the images that might be required.
+
+    In the logs we can read this -
+        Creating network "code1_default" with the default driver
+        Creating volume "code1_data" with default driver
+        Creating code1_mongodb_1 ... done
+        Attaching to code1_mongodb_1
+
+        this creates containers in attached mode, use -d flag to 
+
+
+        docker-compose down
+            removes all services and removes all containers.deltes all container, default network it created and shuts everything down.
+            if you also want to delete volumes then add -v flag. by volume we mean named volume.
+
+
+97)working with multiple comtainers
+    here we setup baceknd container also. in this we used a new config of docker-compose. it is depends upon. see code1.
+
+    then we started all containers by running -
+        docker-compose up
+
+    if we run docker ps, we can see the name fo containers gave diffrent names than names of services that we have mentioned in 
+    docker-compose.yaml.
+
+    mongodb -> folderName + mongodb + 1
+
+
+    Nonetheless, the names you specify here under services,so mongodb and backend, these names will also be memorized, you could say,
+    by Docker and you can use these names inside your code to establish network connections. inside node code we use name of mongodb
+    contaner to connect with it.
+
+    So these service names are the names you can use in your code to send requests and to leverage the network Docker Compose creates 
+    for you.
+
+98)Adding another Container(frontend)
+
+    here we added frontend container in docker compose.
+
+    onr thing to notice is in docker compose we give the path of dockerFile, so each time we run the dicker compose , it is not going
+    to rebuild the image. it will re build the image only if something changed in file.
+
+    also here we we added 2 new configs because in terminal we used --it.
+
+    with all this, we can create all 3 omages and spin up containers with just one command -
+        docker-compose up
+
+
+99)Building Images & Undesrtanding Container Names
+    1)how to rebuild images whne working with docker-compose -
+        docker-compose up --build
+
+        if you just want to rebuild the images defined in your docker-compose file(i.e images that you build in docker 
+            compose with build command) -
+
+        docker compose build - this will just rebuild the images without starting the container.
+
+    2)names of container
+        after starting container via docker compose we notice that containr names are not exactly same as service name.
+        container name follow format -
+            folderName_serviceName_IncrementingNumber(like 1)
+
+        we can give our container name in dockerCompose file by using option -
+            contianer_name
+
+

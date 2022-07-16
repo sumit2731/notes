@@ -226,4 +226,28 @@ commands -
 
             list the all networks
 
-docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2:/app" -v /app/node_modules feedback-node
+    5)dockerCompose
+
+        a)docker-compose up
+            starts the all services and containers mention in docker-compose.yaml. see lecture 96. by default all services are in attached mode.
+
+            flags -
+
+                a)-d
+                    docker-compose up -d
+                        starts the all services in container in dettached mode.
+
+                b)--build
+                    this forces the images to be rebuild even if nothing has chnaged in file since last time image was rebuild
+
+        b)docker-compose down
+            removes all services and removes all containers.deltes all container, default network it created and shuts everything down.
+             this does not delete volumes(named volume).
+
+            flags -
+
+                a)-v 
+                    docker-compose down -v
+
+        c)docker-compose build
+            docker builds the images without starting the containers

@@ -1,0 +1,148 @@
+# this is version of dockerCompose specification that we want to use.and the version we defined here has an effect on the
+# features we can use in this compose file because the docker compose specification and therefore the Syntex we have
+# to use in this docker compose file is under active development and may change over time. So you can lock in a certain
+# version up here so the docker knows which features are and are not available.And therefore it's able to execute your
+#  docker compose file correctly.
+
+# https://docs.docker.com/compose/compose-file/ visist thsi link to see all configuration options that you can use in compose
+# configuration file. here we are using version 3.8. about this link, It's a huge list, a long list of configuration
+# options you can add in your docker compose yamol file and you will not need all of them. You will only need a small
+# subset for most applications
+
+# version is case senstive
+
+version: "3.8"
+
+# service has a couple of nested values.
+# So we enter a new line and now the indentation here matters. I did indent by two blanks here.And this is important
+# because yamol uses indentation to express dependencies and everything which is indented by two blanks is now a direct
+# child of services and services needs at least one child element possibly multiple children. Now what are the children
+# of services though? That will be your containers. And since our application here has three containers,we will have three
+#  child elements here below services.Now you can choose names of your choice to label these containers to give these
+# containers a name.
+
+# You can use any names you want here.They should all be on the same level though. All indented by two blanks,since they
+# all are equal children to services.
+services:
+  # Now we can define a configuration for every container and you might already be guessing it. We do that by indenting again.
+  # all container by default started with --rm which means if they are stopped they are removed
+  # commnd used in terminal -
+  # docker run --name mongodb -v data:/data/db --rm --network goals-net -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+  mongodb:
+    # this can be just image name which will be looked up locally and on docker hub. it could be a full URL to another repository, for example,
+    # where this image might be stored,it could be your own repository, like academind,hello-world, which we created early in this course
+
+    # if you want to create the image from Dockerfile, then use build command. see beckend section
+    image: "mongo"
+    # as we can have more than 1 volumne so we have thius nested syntax. here we deine named volume.
+    # we need - when we have single value in list of single values. while defining envirenemnt varibles we had key-value pair(: followed by space) which creates
+    # yaml object so we do not need '-'. hoewever we use seond syntax of envirement varibles that is '=' then we need to use '-'
+    volumes:
+      - data:/data/db
+
+    # envirement variables
+
+    # environment:
+    # we have 2 syntaxes of defining envirement variables
+    # name: value
+    # - name=value
+
+    # MONGO_INITDB_ROOT_USERNAME: max
+    # MONGO_INITDB_ROOT_PASSWORD: secret
+
+    # envirenment variable file
+    env_file:
+      # here we add all the envirement files that should be used in this container in the list
+      # we add the relative path as seen from yaml
+      - ./env/mongo.env
+
+    # you can add a network by adding the networks' key here, and then you can specify all the networks this container should belong to.
+    # But in many cases, you don't need to do this.You don't need to do this because when you use Docker Compose, Docker will automatically
+    # create a new environment for all the services specified in this compose file and it will add all the services to that network out
+    #  of the box.So all these services which are defined in one and the same compose file will already be part of one and the same network
+    # that was created for them by Docker. if you add network separately, then  the MongoDB service would not just be added to the
+    # default network that is created, but also to this special network, which you specified here.
+
+    # networks:
+    #   - goals-net1
+    #   - goals-net2
+
+    # Gives this exact name to container
+    contianer_name: mongodb
+
+  backend:
+    # here we specify the relative path of Dockerfile from docker-compose.yaml.image will be build using this configuration and will be
+    # used for this container or service. this is shorter form. here this form is enough
+
+    build: ./backend
+
+    # this is longer form of build
+
+    # build:
+
+    # this is folder in which Dockerfile is placed.And also another note about the context.It can be the path to your Dockerfile,
+    # like this example here,but it will also be the place where the Dockerfile is built thereafter,so where the image will be
+    # generated.So if in your Dockerfile, you are copying some folder into the image, the context must be set to a folder
+    # that includes that to be copied folder.
+
+    # if your Dockerfile would be in some other nested folder and needs access to folders outside of that nested folder,then your
+    # context should be set to a higher level folder. see 02:50 of levture 97.
+    # if this is not clrea now then it will be clarified in section where we build php laravel project
+
+      # context: ./backend
+
+      # this option is only required if you have named your Dockerfile something else.
+
+      # dockerfile: Dockerfile
+      # args:
+        # some-arg: 1
+
+    ports:
+      # first port is localhost port. second is docker port. here we can specify multiple ports that our container exposes to local host
+      - '80:80'
+
+    volumes:
+      # named volume
+      - logs:/app/logs
+      # announymous volume
+      - /app/node_modules
+      # bind mount, here to specify path on local system, we can relative path from docker-compose.yaml
+      - ./backend:/app
+
+    env_file:
+      - ./env/backend.env
+
+    # This is the option which we have only in docker compose and not in docker run cmd command we create and launch multiple services,
+    # so multiple containers at the same time,sometimes, one container might depend on another container to be up and running already.
+    # So for example here, my backend actually depends on mongodb being up and running already.and therefore, I want express a dependency here
+    # to let compose know that it should first bring up mongodb and only once that is up and running,it should create this backend container.
+
+    # As a value it takes lists with dashes
+
+    depends_on:
+      - mongodb
+
+
+  forntend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    # this is to tell this service needs a open input connection. -it flag is combination of stdin_open and tty flag 
+    # And with these two options added the frontend container will be started in this interactive mode.Even if you then
+    # started in detached mode,it internally still knows that it's able to receive input and it will then start up 
+    # correctly.
+    stdin_open: true
+    # this to attach terminal
+    tty: true
+    depends_on:
+      - backend
+
+# for named volumes,you should also add a volumes' key next to services.and any named volumes you're using in your services have to be
+# listed here in this case data.but this is the syntax Docker wants for being aware of named volumes it should create for your services.
+# Anonymous volumes and bind mountsdon't need to specified here.
+
+volumes:
+  data:
+  logs:
