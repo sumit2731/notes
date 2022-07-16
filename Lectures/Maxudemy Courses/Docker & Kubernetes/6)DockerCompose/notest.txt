@@ -1,0 +1,22 @@
+91)intro
+    the Docker ecosystem, ships with a naval tool,which is called, Docker Compose,which makes managing multi containers
+    setups easier,it helps you automate the setup process and it allows you to bring up this entire setup, with all the
+    different containers and their individual configurations with just one command.
+
+    in this section we will see, how we can utilize Docker Compose to make working with this multi container application
+    a bit more convenient and easier.
+
+
+92)Docker-Compose:What & Why?
+    see slide 2.
+    
+    Docker Compose is not suited for managing multiple containers on different hosts.At least that's not its primary 
+    strength.Docker Compose is really great for managing multiple containers on one and the same host.
+
+    Docker Compose is perfect and in general,it's a super powerful Docker tool, which you will use a lot in reality for
+    development, but also for things beyond development, as you will learn throughout this course.
+
+    see slide 3
+
+    it shows what goes in docker file. idea of compose is replace the running docker commands in terminal with a 
+    configuration file.
