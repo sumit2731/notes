@@ -68,7 +68,7 @@ services:
     #   - goals-net2
 
     # Gives this exact name to container
-    contianer_name: mongodb
+    container_name: mongodb
 
   backend:
     # here we specify the relative path of Dockerfile from docker-compose.yaml.image will be build using this configuration and will be

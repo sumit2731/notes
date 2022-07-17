@@ -1,0 +1,160 @@
+102)Module Intro - What are utility containers
+    refer slide 1
+    utility container is not official term, it is command that max uses.
+    With utility containers,I in the end mean containers which only have a certain environment in them.Let's say a node JS environment or a
+    PHP environment something like that.And the idea here is that they don't start an application when you run them,but instead you run them
+    in conjunction with some command specified by you to then execute a certain task.
+
+
+    And this is a syntax we haven't seen this far.It's a syntax we haven't used this far.Adding an extra command after the image name
+    when starting a container.
+
+103)Utility containers and why would we use them
+    let's say we wanna create a node application.we can create such an application without node being installed on our system.But it would be
+    quite cumbersome.Because we need this package .JSON file with some configuration about the node app.
+
+    typically, you create new node projects by running npm init, in your project folder.NPM is available on your machine if you got nodejs 
+    installed on your system. so we need to install node.
+
+    Now the problem with that, in turn,is that the entire idea behind Docker is that we don't need to install tools globally on our host 
+    machine.Instead, we want to use containers which include the environments our application needs.
+
+    this is node specific problem. initial creation of project still needs these tools to be installed on your system.
+
+    And that's exactly where utility containers can help us
+
+104)Diffrent ways of running commnads in containers
+
+    docker run -it node
+        this runs node's offcial image. now we can run node commands. we started container with it flag so it is waiting for our input,
+        and whatever input we give it here is passed on to container. lets stop this contaner and run it in dettached mode -
+
+    docker run -it -d node
+        we ran this container in dettached mode, so now we do not see terminal to give our inputs. but internally it is still waiting to
+        get inputs which will keep it up and running.
+
+    to run commands inside this container we use exec command. we run
+
+            docker exec containerName npm init
+        
+    The Docker exec command allows you to execute certain commands inside of a running container besides the default command, this 
+     container executes.So besides the command that might've been specified in a Docker file, that command still continues running.
+     So the application still continues to run but you can run additional commands inside of a container.
+
+    this commands started some questions that exeited because this command needs to be started in intertive mode , so run -
+
+        docker exec containerName --it npm init
+
+
+    now it asks some questions and create package.json file inside container. without having node installed on our system. still
+    there is no use of it , because file is created inside the container and we do not access to file. but this is just starting.
+
+    There's also is one other syntax that can be interesting. stop the container.with Docker exec we can execute commands in a running
+    container without interrupting the default command which starts when the container starts.We also can override that default command
+    though.Now, when we start the node container the default command that is executed in the container is the node executable itself
+    which enters the so called a Rebel which is just an interactive mode where we can run node commands.That's the default command,
+    the node image will execute when we started.And if we use interactive mode, we stay connected and we can then work with that interactive
+    node input mode.Now we can override this default command by adding a new command after the image name. like this -
+
+    docker run -it node npm init
+
+    so now it just ask for package.json inputs once we enter it, it finishes and it stops container thereafter.because we overrode the default
+    command which would have opened this ongoing node interactive mode with the npm init command, which just creates a project and then stops
+    once it finished.
+
+   at this moment, that's all not too useful.I'm just getting started with these commands to make you aware of this feature Docker also offers.
+    Docker exec could be useful for example to read some log files, which were written inside of a container without interrupting the main 
+    process.
+
+
+105)Building First utility container
+
+    refer to code1. here we created a dockerFile, used node image in int. inside it we can isntruct to run npm init
+    command using CMD but I want to give the user full control over this image and allow the user to run any command
+    against this image. lets build this -
+
+    docker build -t node-utility .
+
+    now we ran container based on this and and execute npm init -
+
+    docker run -it node-util npm init
+
+    but now package.json is created inside container and we do not access to it.Now I want to mirror it to my local folder
+    so that what I create in the container is also available here on my host machine. So that I can create a project on my host
+    machine with help of a container. That's the idea behind having a utility container, we can use it to execute something which
+    has an effect on the host machine without having to install all the extra tools on the host machine.
+
+    for that we used bind bound -
+
+    docker run -it -v $(pwd):/app node-utility npm init
+    
+    now we can see package.json folder is creted in our local
+
+
+106)Utilizing EntryPoint
+
+    we want that if we run this command -
+        docker run -it node-util init
+
+    docker should automatically addend "npm "and should run "npm init".
+
+    So that we have a more restricted utility container where we can't do everything.Also to protect ourselves, so that I 
+    don't accidentally run some command in the container, which deletes everything.And then because of the bind mount,
+    it starts deleting content on my host machine as well.
+
+    there we will use EntryPOINT config in DockerFile, value that we specify there will be prepended to any commands that we 
+    pass after image name. so we added ENTRYPOINT in dokcer config and then we ran this -
+
+        docker run -it -v $(pwd):/app node-utility init
+
+    running this command will create the package.json in container and because of bind mount, same will appear in our
+    local system also.also container exits after running this commands.
+    
+    then lets say we want to add a npm package, for that we need to run npm install command,so we run -
+
+    docker run --it -v $(pwd):/app node-utility install express --save
+
+    now we can see that node_modules folder in our local. express entry in package.json
+
+
+    that's a pattern you will also see in many Docker project,and it's also a pattern we will use in some parts of this course.
+    It has a disadvantage,We have to run these relatively long commands in the terminal in the command prompt. to solve
+    thus we can use docker-compose.
+
+
+107)using Docker Container
+    see code 3
+
+    here we will use docker compose to run utility containers. so we defined a service. now if we run -
+
+        docker-compose up 
+
+
+    it will ust start the container and start building npm, dnt know what exactly it is trying to do.problem in it just executed
+    "npm" command,because that is our entry point. but we want to pass command from outside which should run in container.
+
+    we have got "docker-compose exec" to run command in already running containers which were created by docker-compose. but here our 
+    containers are not running.there is another command "docker-compose run serviceName". it allows us to run single service in case 
+    docker-compose.yaml has multiple services and it allows us to run command along with it. this command will replace default command in
+    container.we refer service to be run as name of service mentioned in docker-compose.yaml. see the command notes for refernce of these
+     commands. so we run -
+
+        docker-compose run npm init
+
+        here npm is name of our service,mentioned in docker-compose.yaml. along with it we have mentioned a command. this comamnd will
+        be mentioned by entrypoint mentioned in Dockerfile. here entrypoint mentioned is "npm".so command run will be -
+
+            npm init
+
+    this creates the package.json folder insie container and because of bind mount, it is copied into our local host also. similary
+    we can use it to install some packages also.
+
+    with "docker-compose run" container is created , it runs its comamnd then shuts down but it is not removed. so will see lot of 
+    containers that are not running. for that we can add --rm flag with docker-compose run -
+
+        docker-compose run --rm npm init
+
+
+108)Utility Containers, permissions & Linux.
+    When working with "Utility Containers" on Linux, I recommend that you also take a closer look at this very helpful thread in the Q&A section: 
+    https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/#questions/12977214/

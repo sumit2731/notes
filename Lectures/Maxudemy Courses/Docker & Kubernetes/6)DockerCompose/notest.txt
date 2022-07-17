@@ -102,6 +102,6 @@
             folderName_serviceName_IncrementingNumber(like 1)
 
         we can give our container name in dockerCompose file by using option -
-            contianer_name
+            container_name
 
 

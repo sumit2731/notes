@@ -1,5 +1,5 @@
 commands -
-    Images -
+    1)images -
         1) docker build
             docker build .
             It creates the docker image from docker config file. as argument it takes path of Dockerfile, . means file exist in same
@@ -29,6 +29,10 @@ commands -
                         that we wanna expose an interactive session from inside the container to our hosting machine.
 
                         docker run -it node
+
+            a)we can specify the command after image name, this will replace the default command that is define din image. see lecture 104
+
+                docker run -it node npm init
 
             flags -
 
@@ -129,7 +133,7 @@ commands -
         9)docker pull "repo:tag"
             pulls a image from git hub
 
-    Containers -
+    2)containers -
 
         1)docker ps 
             gives lis of all running docker containers.
@@ -196,7 +200,6 @@ commands -
 
             this is helpful to copy logs files.We will instead learn about a better way of updating code in a container
 
-
     3)volumes
         a)docker volume ls
             gives name of all volumes setup by docker. it shows only named and annonymous volumes. bind mounts are not shown.
@@ -226,10 +229,19 @@ commands -
 
             list the all networks
 
-    5)dockerCompose
+    5)docker-compose
+        for detials on difference between "docker-compose run" and "docker-compose exec". see this link -
+            https://medium.com/analytics-vidhya/how-to-understand-the-difference-between-docker-composes-up-vs-run-vs-exec-commands-a506151967df
 
         a)docker-compose up
             starts the all services and containers mention in docker-compose.yaml. see lecture 96. by default all services are in attached mode.
+
+            another variant -
+                a)docker-compose up serviceName
+                    this will start only one service
+
+                b)docker-compose up serviceName1 serviceName2 serviceName3
+                    this will starts the follwoing services.
 
             flags -
 
@@ -251,3 +263,52 @@ commands -
 
         c)docker-compose build
             docker builds the images without starting the containers
+
+        d)docker-compose ps
+
+            list all the services running under container
+
+        e)docker-compose run serviceName 
+            varient - docker compose run serviceName command. if you want your container to be destroyed after running the service
+                then use --rm flag.
+
+                also this respects the entrypoint mentioned in Dockerfile.
+
+            note - it can be used to just run a single service. optionally you can also give a command that you need to run in container.this comamnd
+                will replace the default command in container.this will always spin up a new container.
+
+            Commands you use with run start in new containers with configuration defined by that of the service, including volumes, links,
+             and other details. However, there are two important differences:
+
+                a)command passed by run overrides the command defined in the service configuration.
+                b)docker compose run command does not create any of the ports specified in the service configuration. This prevents port 
+                    collisions with already-open ports. If you do want the service’s ports to be created and mapped to the host, specify
+                    the --service-ports -
+
+                        docker compose run --service-ports web python manage.py shell
+
+            docker-compose run is meant for running one-off tasks in a container.by default no ports will be created in case  they collide
+             with already opened ports.
+
+            see docs - https://docs.docker.com/engine/reference/commandline/compose_run/
+
+        f)docker-compose exec [options] [-e KEY=VAL...] SERVICE COMMAND [ARGS...]
+
+            docker-compose exec is meant to interact with a container that is already running. That also explains why it requires a 
+             COMMAND argument, because it’s expecting the container that is currently running to already be executing the default command
+             so it expects to run a different.
+
+            It is best to avoid using docker-compose exec unless there is a strong reason to do so.
+            
+    6)docker exec "containerName" "command"
+        docker exec german npm init
+        The Docker exec command allows you to execute certain commands inside of a running container besides the default command, this 
+        container executes.So besides the command that might've been specified in a Docker file, that command still continues running.
+        So the application still continues to run but you can't run additional commands inside of a container.
+
+        flags -
+
+            a)-it
+                docker exec -it containername Command
+
+                use this if you want to stay connected to that process, you're starting up here and if you want to be able to provide input.
