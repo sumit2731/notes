@@ -25,6 +25,10 @@
 
 104)Diffrent ways of running commnads in containers
 
+    docker run node
+
+    containers starts and then stops. because it is exepcting some inout form us we need to run it in -it mode.
+
     docker run -it node
         this runs node's offcial image. now we can run node commands. we started container with it flag so it is waiting for our input,
         and whatever input we give it here is passed on to container. lets stop this contaner and run it in dettached mode -
@@ -43,7 +47,7 @@
 
     this commands started some questions that exeited because this command needs to be started in intertive mode , so run -
 
-        docker exec containerName --it npm init
+        docker exec -it containerName npm init
 
 
     now it asks some questions and create package.json file inside container. without having node installed on our system. still
