@@ -1,0 +1,77 @@
+111)Intro
+    In this module we're going to practice what we ave already learnt, a bit more, and we're also going to learn about a couple of 
+    new aspects. and new ways of using Docker compose.We're going to practice this on a Laravel PHP project,setting up a Laravel 
+    PHP project on our local machine with Docker. why we choose laravel?
+        a)We already saw nodejs setup.
+        b)nodejs setup was very simple, laravel project setup is more complicated. it is very annoying.
+
+
+112)The Target Setup
+    see slide 1, we will have 6 container which are working with each other.
+
+    main idea is build and run php application without any installing any tools on local machine.
+
+113) Adding a nginx(web server) Container
+    here we built the nginx container. see code1.
+
+    see server service section in docker-compose.yaml file.
+
+114)Adding a PHP container
+
+    Here, I actually want to use a custom docker file though because there is no finished image which has everything I need.
+        Just to clarify that, if you search for a PHP on docker hub,you will find an official image and we are going to use that.
+        But I actually wanna build a custom image,building up on that image because I don't just want PHP,I also want to install
+        some extra extensions which laravel needs.
+
+
+    If you don't have a command or entry point at the end,then the command or entry point of the base image will be used if it has 
+    any.And this base image here, this php base image will have a default command which is executed which in the end is a command 
+    that invokes the PHP interpreter.So this image which we're building here will then automatically run this default command of the
+    base image. And therefore it will be able to deal with incoming PHP files that should be interpreted because our base image is
+    invoking this interpreter.
+
+    The first very important thing we have to do here is we have to ensure that this php interpreter can reach our source code.so
+    lets use bind mount for that. here we use delagted option see docker-compose.yaml file for this.
+
+    The other important thing is the port on which his PHP interpreter listens for work you could say.And this port is actually 
+    defined here in nginx conf.Here, I'm sending requests or PHP requests, you could say, to php:3000. here isntead of using php
+    we can use a IP adress of localhost, But I'm actually utilizing the fact that all the containers created in one docker compose
+    file are part of the same network and can discover each other by name(name of services).
+
+    now in nginx server we are routing any php file access to php:3000. but php image exposes port 9000. so in nginx file we chnage 
+    port to 9000.php is exposing port 9000, this we found out at - 
+    https://github.com/docker-library/php/blob/master/7.4/alpine3.16/fpm/Dockerfile
+        this github of docker php image, then navigated to some folders to see Dockerfile of image that we are using - php/7.4/alpine3.16/fpm/Dockerfile
+
+
+115)Adding My SQL Container
+
+    We need to provide some environment variables,which are used by this image,to setup a database,a user, a password and so on.
+        And we find the detailed description again,on the Docker Hub page for this MySQL image. here we can see what envirenemnt
+        variables we can set and what they do -
+            https://hub.docker.com/_/mysql
+
+
+    we use envirenment variables to set -
+
+    MYSQL_DATABASE = homestead
+        this is name of a default initial database which will be created when this container starts up.we set this to a homestead,
+        you can find this in the Laravel documentation.
+
+
+116)Adding a Composer Utility Container
+    to create the laravel application we need composer tool. so we setup this utility container.which will then not only be used 
+    internally by Laravel,but which most importantly can be used by us,to also set up a Laravel application in the first place.
+
+
+    Now we need to ensure that we expose our source code directory to that image,so that this image works on our source code directory,
+    and when we use it to install Laravel and set up a Laravel project,it does so in our source folder.
+
+
+    we'll need the other two utility containers for a certain features inside of Laravel.But for the moment, we can ignore them.
+        And instead we can start using the composer utility container to create a Laravel application And then we can see if we can
+        launch this application with help of our free containers.
+
+
+117)creating alaareevl App via Composer Untility container
+    docker-compose run --rm composer create-project --prefer-dist laravel/laravel .

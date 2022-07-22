@@ -34,7 +34,7 @@ services:
 
     # if you want to create the image from Dockerfile, then use build command. see beckend section
     image: "mongo"
-    # as we can have more than 1 volumne so we have thius nested syntax. here we deine named volume.
+    # as we can have more than 1 volumne so we have this nested syntax. here we deine named volume.
     # we need - when we have single value in list of single values. while defining envirenemnt varibles we had key-value pair(: followed by space) which creates
     # yaml object so we do not need '-'. hoewever we use seond syntax of envirement varibles that is '=' then we need to use '-'
     volumes:

@@ -1,0 +1,22 @@
+1)size, that allows reading it without scrolling
+2)when extracting smaller components, don’t stop halfway. A component should be described either as a “component that implements 
+    various stuff” or as a “component that composes various components together”, not both.
+
+3)extract Container components when there is a need to share some visual or behavioural logic that wraps elements that still need to 
+    be under “consumer” control.
+
+    there will be performnace boost if we can pass other component as childern. they do not render when component re renders.
+
+4)Does this state belong to this component?
+
+Good Component Rules -
+
+    a)A “good component” is a component that I can easily read and understand what it does from the first glance.
+    b)A “good component” should have a good self-describing name.
+        Sidebar for a component that renders sidebar is a good name. 
+        CreateIssue for a component that handles issue creation is a good name. 
+        SidebarController for a component that renders sidebar items specific for “Issues” page is not a good name (the name indicates 
+            that the component is of some generic purpose, not specific to a particular page).
+    c)A “good component” doesn’t do things that are irrelevant to its declared purpose.
+        Topbar component that only renders items in the top bar and controls only topbar behaviour is a good component. 
+        Sidebar component, that controls the state of various modal dialogs is not the best component.
