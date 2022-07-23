@@ -117,6 +117,9 @@ services:
     # So for example here, my backend actually depends on mongodb being up and running already.and therefore, I want express a dependency here
     # to let compose know that it should first bring up mongodb and only once that is up and running,it should create this backend container.
 
+    # some times we only start some services, starting a service A, will start all services which service A depends on, when all dependent
+    # services have started, then service A will also start
+
     # As a value it takes lists with dashes
 
     depends_on:

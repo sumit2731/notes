@@ -255,6 +255,9 @@ commands -
 
                 b)--build
                     this forces the images to be rebuild even if nothing has chnaged in file since last time image was rebuild
+                    this forces to docker to through dockerFiles again and then recreate the image if something changed.if nothing has chnaged
+                    then because of layer concept in images and images are cached , it will not rebuild the image.so it will just reuse the 
+                    cached layers.
 
         b)docker-compose down
             removes all services and removes all containers.deltes all container, default network it created and shuts everything down.

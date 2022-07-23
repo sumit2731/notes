@@ -77,3 +77,15 @@
     docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
 
     this creates the laravel app and copy the folder into local path
+
+
+118)Launching only some dicker compose services
+    here we started our all services by - 
+        docker compose up -d server php mysql
+
+    then we had a look at doker-compose up --build, which rebulds the image if something chaned in dockerFile or files which are copied from
+        local system to docker container.
+
+    also we saw that we can use "depends_on:" filed in docker-compose.yaml and start only one service, dependent services will be started`
+    automatically. even if we are starting all services, service will depends_on flag will only start when dependent services are 
+    started.
