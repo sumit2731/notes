@@ -83,7 +83,7 @@ services:
     # this is folder in which Dockerfile is placed.And also another note about the context.It can be the path to your Dockerfile,
     # like this example here,but it will also be the place where the Dockerfile is built thereafter,so where the image will be
     # generated.So if in your Dockerfile, you are copying some folder into the image, the context must be set to a folder
-    # that includes that to be copied folder.
+    # that includes that to be copied folder. see lecture 122, it explains this concept.
 
     # if your Dockerfile would be in some other nested folder and needs access to folders outside of that nested folder,then your
     # context should be set to a higher level folder. see 02:50 of levture 97.

@@ -79,7 +79,10 @@
     this creates the laravel app and copy the folder into local path
 
 
-118)Launching only some dicker compose services
+118)Permission errors in linux
+    here we had a look at permission errors in linux system while adding bind mount.
+
+119)Launching only some dicker compose services
     here we started our all services by - 
         docker compose up -d server php mysql
 
@@ -89,3 +92,90 @@
     also we saw that we can use "depends_on:" filed in docker-compose.yaml and start only one service, dependent services will be started`
     automatically. even if we are starting all services, service will depends_on flag will only start when dependent services are 
     started.
+
+120)Adding more utility containers
+    We need the artisan tool to run certain laravel commands.For example, to populate the database with some initial data.
+
+    so we set up new services artisan and npm in docker-compose.yaml. in case of artian just add some initial data into
+    db , here we use same dockerFile as server config and we add entrypoint. so there are some config that are upto this 
+    point we have been adding in dockerFile but they can also be added in docker-compose.yaml.
+
+    here we set entrypoint and working dir for docker-compose.yaml. this will override these config , if they are specified in
+        dockrFile. then we run this command -
+
+    docker-compose run --rm artisan migrate
+        This will write some data to the database and it will therefore also check whether this database set up work.
+
+
+121)Docker Compose with and without Dockerfiles
+     
+    adding docker file instructions in the docker compose file, like entry point or working dir, This is something you can do,
+        but not something you have to do.it is up to you which approach you prefer.if you need to runa certain command in an image,
+        or if you need to copy something you'll need a docker file anyways because you don't have copy or run available here in a 
+        docker compose file.
+
+    bind mounts are great for development so that you can mirror a certain folder on your host machine into a container.But that 
+    they're not really an option if you then also plan on deploying a container.
+
+    Because In, your local folders on your host machine are really only available there on your host machine.If you take this 
+    container, server container let's say,and you put it on another server,your source code, and this folder structure, won't be 
+    there.Sure, you could create it there but that's not the idea of containers.Instead, the idea behind containers is that everything
+    a container needs is inside of that container.
+
+
+    And the idea of bind mounts really is just that we can have an easier time during development,for example because our latest 
+    source code and our latest nginx configuration is always directly exposed to a container.
+    
+    The implication of that is that we might want to consider creating a docker file for this server and copying over our source code
+        and our nginx configuration into that image so that besides that bind bound, which works during development, we also  copy a
+        snapshot of the source code and have our configuration in the image when it's being built.So that when we later deploy that 
+        image,it already contains all the source code and the configuration it needs.
+
+
+122)Bind Mounts and Copy: When to use What
+
+    as discussed in last lecture, here isntead of relyting on bind mounts we copied src and nginx config into server container by
+    creating a dockerFile. see code2.
+
+    in nginx.dockerfile, we do not specify any cmd because nginx has a default command and if we do not specify our own command,
+    the default command of nginx image will run and that will start this server, which is what we want.
+
+    then we make corrosponding chnages in docker-compose.yaml. here one important chnage is, until now under build value of context
+    was folder in which our dockerFile will be found.Now, that won't work here,because the context does more than just set the folder
+    in which this dockerfile can be found.It also sets the folder in which the dockerfile will be built.And that matters.
+
+    In this dockerfile, I'm referring to the nginx folder,and I'm referring to the src folder. both these folders are outside of
+    of dockerfiles folder.So if I set dockerfiles as my context and the dockerfile is built in that folder,nginx and src are 
+    unreachable,and hence, building this image would fail.
+
+    so we specify the context as . which means path in which docker-compose.yaml exist and then we refer the path of dockerFile with
+    dockerfile proeprty.
+
+    then we do the same of php container i.e remove bind mount and copy files insids the container.
+
+    now lets run the server container -
+
+    docker-compose up --build server
+        we use build command because we want to rebuild the images.
+
+    then there was error because php images restricts the read and write access inside container and in php images we are copying the 
+    files inside docker system.This wasn't a problem with the bind mount which we used before,but it is a problem if we work only
+    inside of the container as we're doing it now.
+
+    The solution is to give our container write access to certain folders to be precise to our source code folder, our working directory 
+    here.The solution is to give our container write access to certain folders to be precise to our source code folder,our working 
+    directory here. And we can do this by running a number of command
+
+
+
+summary -
+
+    here we mainly talked about laravel and nginx setup. i wa snot able to follow along because of nginx server was not showing correctpage.
+    may be some config needs to be done. key things -
+
+        1)role of context under build in docker-compose.yaml.
+        2)bind mounts are perefered in dev setup only. in prrod setup yu can create your file system on server but this not idea of
+            docker. everything should be in your docker container only.
+        3)some configs that we mention in dockerFile like WORKDIR and ENTRY point can also be mentioned in docker-compose.yaml.
+            if speciffied at both then docker-yaml will override.
+        4)then we saw how to chnage permission of user to have read and write access in container.
