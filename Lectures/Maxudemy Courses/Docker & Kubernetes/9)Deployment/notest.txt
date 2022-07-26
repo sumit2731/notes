@@ -1,0 +1,75 @@
+125)from dev to prod.
+    see slide 2
+    things to keep in mind -
+        1) for bind mounts even though we may use them during development and we shouldn't use them in production.You will still learn
+         in this section how does won't contradict the idea behind containers and how does won't lead to containers that are different 
+         during development and production.
+        
+        2)your containerized apps might need different setups for development and for production which sounds strange at first
+            after all the idea with containers was that we have one at the same environment.That's true but some applications
+            like React apps for example simply need a build step where the code is converted and optimized and that builds step
+            happens after development before you deploy the application.But even though we need this build step in this module
+            you will all learn how you can still ensure that you ship containers which have reproducible environments and where 
+            to code that work locally will also work once you deployed it
+
+        3)So whilst you might be able to test everything let's say with Docker compose locally on one host machine for deployment you
+         might consider splitting it across multiple servers or multiple host machines
+
+        4)couple of lectures in this module where we will actually go for less control but also less responsibilities solution
+            so that ultimately we as a developer have an easier time.
+
+
+126)deployment processes and examples
+    refer slide 4
+        hosting provider - remote machine.
+
+
+127)Getting started with example
+    refer slide 6
+
+128)bind mounts in prod
+    refer slide 3. so we should not use bind mounts in deployment. that is why bind mounts are not specified in dockerfile, you define bind bounds while
+    running the container. so it means we can use same image  for both dev and deployment.
+
+    if we use docker-compose.yaml then we have bind mount written it. we will see how we deploy multi container apps later.
+
+
+129)Introducing AWS & EC2
+    EC2 allows us to create virtual servers in cloud which means our own computers in cloud. here we went to aws account. clicked on EC2. and then
+    clicked on launch a new instance.
+
+130)Connecting to an EC2 instance
+    here we configure our instance that we are going to launch. important screen is keypair.Here you can create a new key pair and you will need this key
+    pair,which will be a file in the end,to later connect to your instance via SSH and to run commands on it.
+
+    then we connected with remote computer using ssh.
+
+131)Installing docker
+    run -
+        sudo yum update -y
+            this will update all packages. then run this -
+
+    now we can run -
+        sudo amazon-linux-extras install docker
+
+    now we can run -
+        sudo service docker start
+        now docker is started and we can run docker commands.
+
+
+133)pushing image to cloud
+    here we pushed our image to docker hub. first we create a new repo on docker hub. then we created a image on local system. then we
+    renamed that image to same name as docker hub repository. then we ran  -
+        docker push sumeet27/node-example-1
+
+    you should be logged in to docker.you can use this command to login -
+        docker login
+
+134)RUNNING & PUBLISHING the app(on EC2)
+
+    sudo docker run -d --rm -p 80:80 sumeet27/node-example-1
+
+
+
+
+

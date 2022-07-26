@@ -1,3 +1,10 @@
-1)permission errors while adding bindmount in linux system.
+1)permission error in linux when using utility container to add files on local system -
+
+    https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/23074458#questions/12977214/
+
+
+2)permission errors while adding bindmount in linux system.
     how it was solved in laravel project -
         https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/23172898#questions/14040174
+
+3)steps on install docker on servers is given in lecture 133.

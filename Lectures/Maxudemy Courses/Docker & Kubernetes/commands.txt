@@ -321,3 +321,11 @@ commands -
                 docker exec -it containername Command
 
                 use this if you want to stay connected to that process, you're starting up here and if you want to be able to provide input.
+
+    7)docker hub -
+
+        a)docker login -
+            allows you to enter username and passowrd to login into dockerhub
+
+        b)docker push sumeet27/node-example-1
+            it pushes the image with tag "sumeet27/node-example-1" to docker hub.
