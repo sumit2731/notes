@@ -1,0 +1,3 @@
+1)mouseOut vs mouseLeave
+    onMouseLeave event does not bubble
+    mouseOut - anytime the mouse cursor leaves a decendant of that element, the event would trigger
