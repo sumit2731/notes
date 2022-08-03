@@ -1,0 +1,26 @@
+useCallback and useMemo are hooks that are useful only for consecutive renders (i.e. re-renders), for the initial render they 
+    are actually harmful
+
+why do we need these -
+    1)memoizing props to prevent re-renders
+        memoizing props on a component makes sense: when every single prop and the component itself are memoized.
+            components can be memorized by either using React.memo or by using useMemo(see app.js).
+    2)memoizing values to avoid expensive calculations on every re-render
+        calculation takes more less time, rendering takes more time.
+        
+        unless you actually calculating factorials of big numbers, remove useMemo hook on all pure javascript operations. 
+         Re-rendering children will always be your bottleneck. Use useMemo only to memoize heavy parts of the render tree.
+
+        Remove useMemo around “native” javascript operations - compare to components updates those are invisible and just 
+         take additional memory and valuable time during the initial render
+
+
+One small thing: considering how complicated and fragile all of this is, useMemo and useCallback for performance optimisations 
+    really should be your last resort. Try other performance optimisation techniques first. Take a look at those articles that 
+    describe some of those:
+
+        How to write performant React code: rules, patterns, do's and don'ts
+        Why custom react hooks could destroy your app performance
+        How to write performant React apps with Context
+        React key attribute: best practices for performant lists
+        React components composition: how to get it right.

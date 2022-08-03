@@ -1,0 +1,53 @@
+Component Rerenders -
+    a)state changes - State changes are the “root” source of all re-renders.
+    b)parent re-renders
+    c)context changes - When the value in Context Provider changes, all components that use this Context will re-render, even
+        if they don’t use the changed portion of the data directly.Those re-renders can not be prevented with memoization 
+        directly, but there are a few workarounds that can simulate it (see Part 7: preventing re-renders caused by Context).
+    d)Everything that is happening inside a hook “belongs” to the component that uses it
+        a)state change inside the hook will trigger an unpreventable re-rerender of the “host” component
+        b)if the hook uses Context and Context’s value changes, it will trigger an unpreventable re-rerender of the “host” 
+            component
+
+    e)props changes (the big myth) - 
+        It doesn’t matter whether the component’s props change or not when talking about re-renders of not memoized components.
+        Only when memoization techniques are used (React.memo, useMemo), then props change becomes important.
+
+Preventing re-renders with composition -
+    Antipattern: Creating components in render function - Do not define components in render function.this will lead to component
+        remounted instead of re-rendered.
+
+    moving state down - This pattern can be beneficial when a heavy component manages state, and this state is only used on a 
+        small isolated portion of the render tree. 
+        
+        A typical example would be opening/closing a dialog with a button click in a complicated component that renders a 
+         significant portion of a page.In this case, the state that controls modal dialog appearance, dialog itself, and 
+         the button that triggers the update can be encapsulated in a smaller component. As a result, the bigger component
+         won’t re-render on those state changes.
+
+    children as props - This can also be called “wrap state around children”. This pattern is similar to “moving state down”: 
+        it encapsulates state changes in a smaller component. The difference here is that state is used on an element that 
+        wraps a slow portion of the render tree, so it can’t be extracted that easily.
+
+    components as props - Pretty much the same as the previous pattern, with the same behavior: it encapsulates the state 
+        inside a smaller component, and heavy components are passed to it as props. Props are not affected by the state change,
+        so heavy components won’t re-render.
+
+        Can be useful when a few heavy components are independent from the state, but can’t be extracted as children as a group.
+
+
+Preventing re-renders with React.memo
+
+    a)All props that are not primitive values have to be memoized for React.memo to work
+    b)components as props or children
+        If memorized component is taking elements as props, then these elements also need to memeorized. otherwise when state
+        changes in parent component, elements passed as props as well as memoerized component will be re-rendered.
+
+        2 ways of memerizing the elements passed as props -
+            1)useMemo
+            2)In elements use memorized versions of component.
+
+        example - https://codesandbox.io/s/part-4-2-memo-on-components-in-props-55tebl?file=/src/App.tsx
+
+
+Improving re-renders performance with useMemo/useCallback

@@ -16,5 +16,5 @@
 
 193)here we used the customhook in app.js. there we also refactored our custom hook to fit useCase of app.js.
     how to avoid use of useCallbcak and useMemo by using argumnets instead of taking variables from closure. 
-    if we take variable form closre then we have to make react maintains those values acrossrender cycle, which can be cumbersome
-    some times.
+    if we take variable form closre then we have to make react maintains those values across render cycle, which 
+    can be cumbersome some times.

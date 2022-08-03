@@ -144,7 +144,7 @@ JSX syntax -
         g)useCallback - Allows to store a function across multiple component executions. 
         
             1st argument - callback in question
-            2nd rgument - array of dependecues,new function will re returned if array of dependecies which is second argument 
+            2nd argument - array of dependecues,new function will re returned if array of dependecies which is second argument 
                 have changed.
 
             without useCallback - 
