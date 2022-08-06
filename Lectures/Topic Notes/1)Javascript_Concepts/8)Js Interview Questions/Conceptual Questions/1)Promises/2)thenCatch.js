@@ -1,3 +1,12 @@
+/* 
+then and catch always returns a promise.that promise is resolved with value returned by callbacks passed to them.
+if callback returns a promise, then promise returned is resolved when returned promise is resolved
+
+
+
+*/
+
+
 //https://medium.com/frontend-canteen/10-code-challenges-to-master-promise-then-and-promise-catch-3da2bdea1d97
 
 /**
@@ -30,8 +39,15 @@ Promise.resolve(1)
 
 /**
  * challenge4
- *
- * when a failed promise is handled by catch. catch block returns the promise. which is caught by then blcks fater it
+ * 
+ *  promise2 = promise1.then(onFulfilled, onRejected);
+ * If either onFulfilled or onRejected returns a value x, run the Promise Resolution Procedure [[Resolve]](promise2, x).
+ * If either onFulfilled or onRejected throws an exception e, promise2 must be rejected with e as the reason.
+ * 
+ * If onFulfilled is not a function and promise1 is fulfilled, promise2 must be fulfilled with the same value as promise1
+ * If onRejected is not a function and promise1 is rejected, promise2 must be rejected with the same reason as promise1.
+ * 
+ * https://promisesaplus.com/#point-40
  */
 
 Promise.reject(1)
@@ -52,6 +68,11 @@ Promise.reject(1)
 /**
  * 3
  * undefined
+ */
+
+/**
+ * A Promises will be resolved and rejected only once. But on Promise you can execute any number of callbacks.
+ * all then blocks will be resolved with same value
  */
 
 const promise = new Promise((resolve, reject) => {
@@ -117,4 +138,30 @@ let p2 = p1.then((val) => p2);
  *  If argument to then or catch is not function then it is ignored
  */
 
-Promise.resolve(1).then(2).then(Promise.resolve(3)).then(console.log);
+Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .then(console.log);
+
+
+/**
+ * https://promisesaplus.com/#the-promise-resolution-procedure
+ * If value to which a promise resolved is again a promise, then it then block we do not receive promise, we receive 
+ *  resolved value of that promise, here we checked this at 2 levels but this can go to any level
+ */
+ let p11 = new Promise((resolve,reject) => setTimeout(()=> resolve(1),5000));
+
+ p11.then(val => console.log("p1 resolved"));
+ 
+ let p21 = new Promise((resolve,reject) => setTimeout(()=> resolve(p11),5000));
+ p21.then(val => console.log("p2 resolved"));
+ 
+ let p3 = Promise.resolve(p21)
+ 
+ p3.then(val => console.log(val));
+
+ /**
+  * Diffrence between resolved and fullfilled
+  */
+
+  //https://masteringjs.io/tutorials/fundamentals/promise-resolve

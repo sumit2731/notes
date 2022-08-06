@@ -17,10 +17,9 @@ response headers -
             Last-Modified
             Pragma
 
-        
         Access-Control-Expose-Headers - sent by server in safe request,it contains a comma-separated list of unsafe header names 
             that should be made accessible.
-
+        
         Access-Control-Allow-Methods  - must have the allowed method.
         
         Access-Control-Allow-Headers - must have a list of allowed headers.

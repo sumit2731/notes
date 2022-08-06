@@ -3,6 +3,11 @@
  * question 9
  */
 
+/**
+ * After exection of microqueue task, we check if there any task left in mcrotask queue, if yes we execute it.
+ * If not only then we movee to macro queue
+ */
+
 const timer1 = setTimeout(() => {
   console.log("timer1");
 

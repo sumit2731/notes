@@ -1,3 +1,4 @@
 1)XSS (Cross Site Scripting Attack)
 
-2)XSRF(Cross Site Request Forgery)
+2)XSRF(Cross Site Request Forgery) -
+    https://javascript.info/cookie

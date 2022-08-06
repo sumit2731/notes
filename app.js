@@ -1,6 +1,30 @@
-function f1(...args) {
-    console.log(args);
-}
+// This is a JavaScript Quiz from BFE.dev
 
-let a = 1, b= 2;
-f1`this${a} ${b}`;
+
+// if (true) {
+//   function foo() {
+//     console.log('BFE')
+//   }
+// }
+// if (false) {
+//   function bar() {
+//     console.log('dev')
+//   }
+// }
+// console.log(typeof foo);
+// console.log(typeof bar);
+
+// foo()
+// bar()
+
+// var hoisted = "foo" in this;
+
+// if (true) {
+//   function foo(){ return 1; }
+// }
+// console.log(`typeof foo is ${typeof foo}`);
+
+console.log(typeof foo);
+if(true) {
+  function foo() {console.log(1)}
+}
