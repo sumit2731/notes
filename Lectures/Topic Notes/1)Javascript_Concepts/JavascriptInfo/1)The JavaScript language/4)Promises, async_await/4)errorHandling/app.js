@@ -12,17 +12,21 @@ function p1(num1) {
 }
 
 /* 
- * example 1, promise rejects, the control jumps to the closest rejection handler in promise chain. here since we have 
-    provided second callback for error handling(line *), control does not go to catch, but goes to error handler defined 
+ * example 1, promise rejects, the control jumps to the closest rejection handler in promise chain missing all then blocks in between. here since
+   we have  provided second callback for error handling(line *), control does not go to catch, but goes to error handler defined 
     at line *, then to next resolve handler(line **).value passed to this resolved handler is undefined as we did not return
     anyhing from reject handlerf at line *, but if we remove it then control goes to nearest catch block i.e lien ***
  */
 
-    p1(1).then(num1 => p1(num1)) //2
-     .then(num2 => p1(num2)) //4
-     .then(num3 => p1(num3), error => 8) //8 *
-     .then(num4 => console.log("control in then block" + num4)) //16 **
-     .catch(error => console.log("Error " +error)) //***
+    p1(1)
+      .then((num1) => p1(num1)) //2
+      .then((num2) => p1(num2)) //4
+      .then(
+        (num3) => p1(num3),
+        (error) => 8
+      ) //control goes in error block
+      .then((num4) => console.log("control in then block" + num4)) //16 **
+      .catch((error) => console.log("Error " + error)); //***
 
 //-------- Block2--------- rethrowing of error
 

@@ -1,0 +1,16 @@
+10)AWS Infrastructure,Regions &Availability Zones
+
+    regions -> Avalaibility Zone -> Data Centers
+
+        AZ's are separated from each other, which means if AZ is down others are not affected.
+        one region contains atleast 3 avalibility zones. AZ are not far aprt form each as data centers. regios are multiple
+        hundered miles apart form each other. AZ's are couple of miles apart from each other.
+
+
+        these data centers are connected by amazon's own network. 
+
+
+
+    2 Kinds of services -
+        Self-service and managed. see slide 22. see slide 27 for detailed grouping.see slide 28 group of services are not 
+        relevent for this certification and there is separate certification of these.

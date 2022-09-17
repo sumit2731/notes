@@ -11,7 +11,7 @@ p1(1).then(val => val) //2
      .then(val => 4* val) //6
      .then(val => console.log(val)); //24
 
-//Example2- handler is returning promise itself
+//Example2- handler is returning promise itself - output are same as Example 1 just delay is added
 p1(1).then(val => p1(val)) //4
      .then(val => p1(val)) //8
      .then(val => p1(val)) //16
@@ -28,7 +28,7 @@ const rejectHandler = reason => ({ status: 'rejected', reason });
 const resolveHandler = value => ({ status: 'fulfilled', value });
 
 /* 
-This promises resolves at same time as p1 but value is converted.logic behind this-
+This promises p2 resolves at same time as p1 but value is converted.logic behind this-
     then returns a promise which resolves with a value returned by callbacks passed to then. so promise return by then only
     resolves when orignal promises i.e p1 is resolved
 */
@@ -56,6 +56,11 @@ loadScript('src1')
 
 // without promise chaining it grows towards pyramid of doom
 
+/* 
+Sometimes it’s ok to write .then directly, because the nested function has access to the outer scope. In the example above the
+ most nested callback has access to all variables num1,num2,num3. But that’s an exception rather than a rule.
+*/
+
 loadScript('src1').then(script1 => {
     loadScript('src2').then(script2 => {
         loadScript('src3').then(script3 => {
@@ -66,10 +71,7 @@ loadScript('src1').then(script1 => {
 
 
 //--------------------------Block 3 ----------------------------------------------------------------
-/* 
-Sometimes it’s ok to write .then directly, because the nested function has access to the outer scope. In the example above the
- most nested callback has access to all variables num1,num2,num3. But that’s an exception rather than a rule.
-*/
+
 
 
 function p1(num1) {
@@ -77,6 +79,11 @@ function p1(num1) {
         setTimeout(() =>resolve(2*num1),1000)
     });
 }
+
+/* 
+Sometimes it’s ok to write .then directly, because the nested function has access to the outer scope. In the example above the
+ most nested callback has access to all variables num1,num2,num3. But that’s an exception rather than a rule.
+*/
 
 p1(1).then(num1 => { //2
     p1(num1).then(num2 => { //4

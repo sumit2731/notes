@@ -1,10 +1,17 @@
-1)When a promise rejects, the control jumps to the closest rejection handler. it enables us to define single rejection handler for
- whole promise chain at the end of chain.
+1)When a promise rejects, the control jumps to the closest rejection handler, skipping all then blocks in between. it enables us to define single
+    rejection handler for whole promise chain at the end of chain.even in the catch if we handle error, then block after are executed with value
+    returned by error handler or catch block.
 
-2).catch doesn’t have to be immediate. It may appear after one or maybe several .then. see exaple1 in code
+2).catch doesn’t have to be immediate. It may appear after one or maybe several then blocks. when error occurs in any of then block, all next then
+    blocks before catch or error hander are missed.control goes to nearest error handler directly.see exaple1 in code. Also if in error block if we 
+    handle the error, control goes to next then blocks.In that way we can recover failed promises in chain and continue. also in same way we can 
+    recover induival individual promises in Promise.all(dsicussed in next section)
 
 3)implicit try catch block - The code of a promise executor and promise handlers has an "invisible try..catch" around it. 
-    If an exception happens, it gets caught and treated as a rejection. as per pont 1, rejection is handled by catch block.
+    If an exception happens, it gets caught and treated as a rejection.
+
+    a)If error ocuurs in executor then it is treated as promise has been rejected. only synchronous errors are handled
+    b)if error ocuurs in any then or catch block, it is handled by next error handling block.
 
 4)rethrowing of error - If we throw inside .catch, then the control goes to the next closest error handler. And if we handle
  the error and finish normally, then it continues to the next closest successful .then handler. 
@@ -13,4 +20,4 @@
 is thrown. In the browser we can catch such errors using the event unhandledrejection. we should report these events to server , so 
 that our app just never dies.
 
-6)see question in last.
+6)See question in last. also see question at last in previous section it also belongs to errors.

@@ -1,30 +1,17 @@
 // This is a JavaScript Quiz from BFE.dev
 
+const obj = {
+    a: 1,
+    b() {
+      return this.a
+    }
+  }
+  console.log(obj.b()) //1
+  console.log((true ? obj.b : a)()) //undefined
+  console.log((true, obj.b)()) //undeined
+  console.log((3, obj['b'])()) //undefined
+  console.log((obj.b)())//1
+  console.log((obj.c = obj.b)()) //undefined
+  
 
-// if (true) {
-//   function foo() {
-//     console.log('BFE')
-//   }
-// }
-// if (false) {
-//   function bar() {
-//     console.log('dev')
-//   }
-// }
-// console.log(typeof foo);
-// console.log(typeof bar);
 
-// foo()
-// bar()
-
-// var hoisted = "foo" in this;
-
-// if (true) {
-//   function foo(){ return 1; }
-// }
-// console.log(`typeof foo is ${typeof foo}`);
-
-console.log(typeof foo);
-if(true) {
-  function foo() {console.log(1)}
-}

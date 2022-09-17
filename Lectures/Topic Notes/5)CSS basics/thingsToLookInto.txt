@@ -1,4 +1,8 @@
-1)MDN docs of trnslate property.
+1)transform property
+      transition-property: width, height;
+      transition-duration: 2s;
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
 2)auto value in css. default value of left,right is auto.
 3)all keyword in css
 

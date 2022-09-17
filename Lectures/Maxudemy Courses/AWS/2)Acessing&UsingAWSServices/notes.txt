@@ -1,0 +1,33 @@
+17)Diffrent Ways of using AWS Services: CLI,SDK's & the AWS API.
+
+    see slide 32
+
+    Management Console
+    AWS CLI -
+        you need to install CLI and configure it.once you also know how to use it,which does take some practice and which
+         is a bit more advanced, it's perfect for executing well known, possibly repeated tasks, and it can simplify complex
+          or repeated large-scale setups, becuase now you dnt have to click through various pages of some web UI.
+        
+        Instead, you can run exactly the commands you want,and you can even automate them with custom-made scripts or 
+        anything like that.
+    SDk's - Now here we're talking about writing code in various programming languages that in the end, then also sends 
+        commands to AWS behind the scenes to use certain AWS services in a certain way.you can basically manage your AWS 
+        infrastructure,so the services you want to use and the way you want to use them as code.
+
+        This is what infrastrycture as a code mean.
+
+        You can write a script in Python, for example,which will start a server, install some software on it,
+         then start a process, and then shut down the server once it's done, and all you need to do then is run that 
+         script instead of performing all these steps manually.
+
+21)Cost managemet and working with budget
+
+    Biling dashboar(name drowpdn , then select billing dashbard)
+        here you can see your monthly biils and all.
+
+        cost explorer - helps you understand your ccosts.
+        budget -
+            you can set budeget and then create alerts on top if it.
+
+24)service quotas -
+    it lets as increase service limit

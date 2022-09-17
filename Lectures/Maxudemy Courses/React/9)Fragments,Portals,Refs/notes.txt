@@ -36,7 +36,7 @@
             index.html -
             <div id="backdrop-root"></div>
 
-        b)to component you should tell that soe content should be moved to portal -
+        b)to component you should tell that some content should be moved to portal -
 
             ErrorModal.js
 

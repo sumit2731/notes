@@ -1,3 +1,12 @@
+Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue PromiseJobs, more often referred to as 
+    the “microtask queue” (V8 term).
+
+    The queue is first-in-first-out: tasks enqueued first are run first.
+    Execution of a task is initiated only when nothing else is running.
+
+An “unhandled rejection” occurs when a promise error is not handled at the end of the microtask queue.
+
+
 microtasks- 
     MutationObserver, 
     Promise.then() and Promise.catch(), 

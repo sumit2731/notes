@@ -20,16 +20,26 @@
 
 
 126)deployment processes and examples
+    here we will deploy a simple nodejs application woth database to EC2 in aws.
     refer slide 4
         hosting provider - remote machine.
 
 
-127)Getting started with example
-    refer slide 6
+127)here we deploy a node js app without db into EC2.EC2 is a service offered by AWS which allows you to spin up your own remote hosting
+    machines, you could say,Your own computers in the cloud.
+    And we will go though three main steps to bring our Dockerized application to life on an EC2 instance.
+        refer slide 6
+
+    refer to code1 foler. first we build the image -
+        docker build -t node-dep-example .
+
+    then we run the container based on that image -
+
+        docker run -d --rm --name node-dep -p 80:80 node-dep-example
 
 128)bind mounts in prod
-    refer slide 3. so we should not use bind mounts in deployment. that is why bind mounts are not specified in dockerfile, you define bind bounds while
-    running the container. so it means we can use same image  for both dev and deployment.
+    refer slide 3. so we should not use bind mounts in deployment, isntead use copy commands. that is why bind mounts are not specified 
+    in dockerfile, you define bind bounds while running the container. so it means we can use same image  for both dev and deployment.
 
     if we use docker-compose.yaml then we have bind mount written it. we will see how we deploy multi container apps later.
 

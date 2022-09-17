@@ -1,12 +1,11 @@
 1)a call to promise.then returns a promise, so that we can call the next .then on it.
-2)When a handler returns a value, it becomes the result of that promise, so the next .then is called with it.
+2)When a handler returns a value, it becomes the result of that promise(promise is resolved immediately), so the next .then is called with 
+    resolved result of promise.
 3)this is called promise chaining, see example1 in code.
 4)A handler, used in .then(handler) may create and return a promise.In that case further handlers wait until it 
     settles, and then get its result. see exmale 2.
-
 5)now use of promise chaining to load scripts, one after another. code block 2
-
-6)cases where isntead of promise chaining we have to promise nesting. code block3.
+6)cases where instead of promise chaining we have to promise nesting. code block3.
 
 7)thenable objects can be retruned from handlers passed to then.(see blog)
 

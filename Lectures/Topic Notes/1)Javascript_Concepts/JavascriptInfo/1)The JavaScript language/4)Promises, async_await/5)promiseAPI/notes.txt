@@ -25,6 +25,10 @@ There are 6 static methods of Promise class:
         promises are rejected, then the returned promise is rejected with AggregateError – a special error object that stores all 
         promise errors in its errors property.
 
-    5)Promise.resolve(value) - creates a resolved promise with the result value.
+    5)Promise.resolve(value) - creates a resolved promise with the result value.The method is used for compatibility, when a function is expected to 
+        return a promise.
 
-    6)Promise.reject(error) - creates a rejected promise with error.
+    6)Promise.reject(error) - creates a rejected promise with error.In practice, this method is almost never used.
+
+
+    note - Methods Promise.resolve and Promise.reject are rarely needed in modern code, because async/await syntax  makes them somewhat obsolete.
