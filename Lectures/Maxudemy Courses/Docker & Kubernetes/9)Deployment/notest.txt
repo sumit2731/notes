@@ -38,38 +38,75 @@
         docker run -d --rm --name node-dep -p 80:80 node-dep-example
 
 128)bind mounts in prod
-    refer slide 3. so we should not use bind mounts in deployment, isntead use copy commands. that is why bind mounts are not specified 
-    in dockerfile, you define bind bounds while running the container. so it means we can use same image  for both dev and deployment.
+    refer slide 3. 
+    while running container we did'nt specified any bind mounds infact we didi not use any volumes.
 
-    if we use docker-compose.yaml then we have bind mount written it. we will see how we deploy multi container apps later.
+    In development so whilst we're working on the application,our container of course should encapsulate the runtime environment,but not 
+    and that's important, not necessarily the code.
+
+    In Prod ,There the idea really is that the container works standalone and that it does not depend on any surrounding setup on the 
+    remote machine.The image and therefore the container based on the image should be the single source of truth you could say.That means
+    we can rely on the fact that if we take that image and run a container based on it,we got everything this application needs.We don't 
+    also need to move some source code into a special folder on that remote machine.That would totally destroy the idea behind containers
+    if we now all of a sudden again need to configure the hosting machine.We want to have everything,what our application needs inside of
+    that container.There should be nothing, absolutely nothing,around that container on the hosting machine.And therefore when we build for
+    production,we use copy instead of bind mounts.
+
+
+    now we specify bind mounts and volumnes while running a container based on a image. thsi helps us to use same docker imge in dev and
+    prod, its just while running container for dev we can use bind mounts. this is the reason why bind mounts an dvolumes are not part of
+    dockerFile.
+
+
+    Now of course if we used a Docker compose file,we might have that bind mount written into that compose file,but I will come back to 
+    compose files and how we deploy such multi container projects later.For the moment it's about one container, one image and then copy
+    is your friend
 
 
 129)Introducing AWS & EC2
-    EC2 allows us to create virtual servers in cloud which means our own computers in cloud. here we went to aws account. clicked on EC2. and then
-    clicked on launch a new instance.
+    EC2 allows us to create virtual servers in cloud which means our own computers in cloud.  
+    1)go to aws management console.
+    2)search Ec2 and clicked on it.
+    3)now goal is to start a Ec2 instance, there are multiplw ways of doing it.one is to click on "Launch Instance".
 
 130)Connecting to an EC2 instance
-    here we configure our instance that we are going to launch. important screen is keypair.Here you can create a new key pair and you will need this key
-    pair,which will be a file in the end,to later connect to your instance via SSH and to run commands on it.
+    1)here we configure our instance that we are going to launch. 
+    2)important screen is keypair.Here you can create a new key pair and you will need this key pair,which will be a file in the end,to 
+        later connect to your instance via SSH and to run commands on it. so created a key pair and gave it name example-1.
+    3)after creating key-pair, we clicked on Luanch instance.
+    4)click on "view all instances".
+    5)status of your instnace your be running.
+    6)now we need to connect to this server using ssh.
+        a)for mac and linux - 
+            you can directly use ssh command in terminal.
+        b)for windows this is not build it .
+            a)you need to instal wsl2 on widnows 10(linux running for windows) or putty.
 
-    then we connected with remote computer using ssh.
+    7)select instnace and click on connect and select ssh. here follow the steps given in to connect to server.
+    8)now we are connected to remote server.
 
 131)Installing docker
-    run -
+    updating packages -
         sudo yum update -y
             this will update all packages. then run this -
 
-    now we can run -
+    installing docker -
         sudo amazon-linux-extras install docker
 
-    now we can run -
+        that's why we should pick this amaxon image when we created this instance.on this amazozn based virtual instances,we have these commands 
+        avalible which makes installing these extra softwares like docker easier. this will install docker on remote machine.
+
+    starting docker -
         sudo service docker start
         now docker is started and we can run docker commands.
 
 
 133)pushing image to cloud
     here we pushed our image to docker hub. first we create a new repo on docker hub. then we created a image on local system. then we
-    renamed that image to same name as docker hub repository. then we ran  -
+    renamed that image to same name as docker hub repository -
+        docker tag existingImageName nameformDockerHub
+    
+     then we ran  -
         docker push sumeet27/node-example-1
 
     you should be logged in to docker.you can use this command to login -
