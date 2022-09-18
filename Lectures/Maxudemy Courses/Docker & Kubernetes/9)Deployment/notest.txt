@@ -102,21 +102,224 @@
 
 
 133)pushing image to cloud
-    here we pushed our image to docker hub. first we create a new repo on docker hub. then we created a image on local system. then we
-    renamed that image to same name as docker hub repository -
-        docker tag existingImageName nameformDockerHub
-    
-     then we ran  -
-        docker push sumeet27/node-example-1
 
-    you should be logged in to docker.you can use this command to login -
-        docker login
+    step to publish image to docker hub -
+
+        1)create repository on docker hub. name it - sumeet-node-example-27.
+        2)create a image on your local machine whose ame is same as name of repository. -
+
+            docker build -t node-dep-example-1 .
+            docker tag node-dep-example-1 sumeet27/sumeet-node-example-27
+
+        3)then login into docker hub -
+            docker login
+        4)docker push sumeet27/sumeet-node-example-27
 
 134)RUNNING & PUBLISHING the app(on EC2)
+    run this command to download and run your pushed image on ec2 instance -
 
-    sudo docker run -d --rm -p 80:80 sumeet27/node-example-1
+        sudo docker run -d --rm -p 80:80 sumeet27/sumeet-node-example-27
+
+    you can run this to cnfoirm if your container is running - sudo docker run -d --rm -p 80:80 sumeet27/sumeet-node-example-27
+
+    now go to instance ;ist in ec2 list and copy the ip4 address fo your instance. hit tha address in browser. but we do not see anything.
+    
+    And that's not a bug, that's a security feature.By default, your instance your EC2 instance, is basically disconnected from everything
+    in the world wide web, so that no one is able to connect except for you with SSH.And this is controlled with a so called security group.
+
+    to chnage this, on left side go to "Security Groups" or in your instnace you can see security group, you can click on it and you will be
+    taken to security group.security groups basically controls which traffic is allowed on our EC2 instance.
+        outbound rules - controls which traffic is allowed from the instance queue to somewhere else
+        inbound rules - controls which traffic is allowed form outside world to this instance. here only one port is open which is 22, this
+            is for ssh. this port is open for entire world. now here we add a new role to inbound group. to allow outside world to access this
+            port.
+
+    now using IP you can see your websit via ip of EC2.
+
+
+135)managing and updating the container /image
+    here we saw how you could push updates to your code,to that remote server and how you can then stop and shut everything down if you want
+     that to do that. 
+
+    updating the code -
+
+        1)make code chnages on local system.
+        2)build the image on local.
+            docker build -t node-dep-example-1 .
+            docker tag node-dep-example-1 sumeet27/sumeet-node-example-27
+        3)push the image on docker hub.
+            docker push sumeet27/sumeet-node-example-27
+
+        4)stop container on EC2 instance.
+
+        5)pull latest image -
+            docker pull sumeet27/sumeet-node-example-27
+        5)rerun the container based on image -
+            sudo docker run -d --rm -p 80:80 sumeet27/sumeet-node-example-27
+
+    Stopping Everything -
+        Way 1 -
+            a)stop the container.
+
+        way 2 -
+            a)terminate ecs instance - select the instance, actions -> instance state -> terminate
+
+
+        this will not be the final way of deploying an application with Docker.Because it turns out that this approach,which has showed 
+        you in great detail here,has a couple of disadvantages and downsides.
+
+
+136)Disadvantages of current approach - 
+    see slide 9.
+
+    disdavantges -
+        1)You are responsible for security.
+        2)You are responsible for updating OS.
+        3)connecting to remote client via SSH can be cumbersome. we can have some approach where  wwe can run a single command where all this
+            will be taken care of.
+
+137)From manualdeployment to managed services
+    ECS - elastic container service. it helps in managing container.With launching them, running them, monitoring them and so on.
+
+    switching to some managed service,no matter if it's by AWS or by any other provider,means that you don't just use Docker anymore,
+    instead, you now use a service provided by a cloud provider and you have to follow the rules of that service you could say.
+    That simply means that deploying containers and running containers is now not done with the Docker command anymore because now we don't
+    install Docker on some machine anymore that's the entire idea behind a managed service,but instead it means that we now will need to 
+    use the tools the cloud provider gives us for the specific service we wanna use.
+
+    here we will show this with the example of AWS ECS.It's just one possible example.
+    I still wanna show you over the next lectures,how you could take what you learned and migrate that into the rule set
+    a specific service gives you or forces on you and therefore these steps shown there will only work for that service.
+
+139)Deploying with AWS ECS: A managed Docker container Service.
+
+    here we want to run our container based on image pushed in docker hub via ECS. AWS ECS things in 4 categories -
+
+    a)clusters
+    b)containers
+    c)tasks
+    d)service
+
+    containaer -
+        lets start with container. we pick the container that want to deploy. there are some examples but we pick the custom one,
+        so we should configure it. we click on configure and sidebar opens.here we configure howw ECS later executes "docker run".  it means
+        all this options can we configure when we execute "docker run" command -
+        here we give -
+
+            name of container
+            image based on which it should run
+            port that should exposed
+
+            in env section -
+                entry point or command that should be xecuted wjen this container starts.
+                working directory -
+
+                envirenment variavles
+
+            network settings - will come back to this when we have more than one container deployed.By default, our container will be 
+                reachable from the web.
+
+            storage and loggings - we can define bind mounts and volumes.
+
+        now we defined our container that should be launched form here.
+
+    tasks -
+        Now, in the next section, we can define our task for this container.And the task is basically, as it says here,the blueprint for 
+        your application.Here, you can tell AWS how it should launch your container.So not how it should execute docker run,but how the 
+        server on which it runs this should be configured, you could say.And therefore a task actually also can include more than one 
+        container.options here -
+
+            compatibility - fargate or EC2.
+
+        leave it untouched.
+
+    service - And a service, in the end, now controls how this task,so this configured application and the container
+        that belongs to it, should be executed. options -
+
+        load balancer - we will not use it now.
+
+        So you could say every task is executed by a service.So you have one service per task.
+
+    cluster - 
+        You could say that's the overall network in which our services run.Here, we have just one service with one task with one 
+        container,but if you had a multi-container app,you could group multiple containers in one cluster so that they all belong together 
+        logically, and they all can talk to each other.Now here, we automatically get this cluster network created for us
+
+
+    after setting all these click on create , then on "view Service". now created service will be openen. how to see our running application -
+
+        1)click on tasks. then click on single task(taskid not task defination).
+        2)there under network, you can find public IP. paste this in browser and you will see your app up and running.
+
+    but the huge advantage here is that we didn't start any custom servers or machines.We did not install anything, and we're not responsible
+    for keeping anything up to date. We just configured how AWS should execute our containers,and that is it.
+
+
+141)Updating managed container
+
+    update your image and push it to docker hub. ow how to tell ECS to download the updated service -
+
+        1)got to clusters -> default -> task -> task defination -> create new revision
+
+            create new revision creates new task, keep all seetings same because we just want to create same task again.ECS will pull image form docker hub when you create
+            a new task and then launch and use service in that tasks.
+
+        2)click on "create" -> actions -> update service -> skip to review -> update service.
+
+        3)now go to service -> tasks -> click on task id -> public ip -> open it in browser.
+
+        now you will see that ip has chnaged, But there are ways of actually still connecting a domain to this running ECS task in general,
+        independent from the specific IP AWS assigned,more on that can be found in the resources attached to this lecture.
 
 
 
+    alternate -
+        do niot create new task but use "update service" and select "Force new deployment"
 
 
+142)Preparing a multiContainer App
+    delete the previous setup -
+        delete the service in cluster
+        then delete the cluster
+
+
+    refer to code 2. here we have 2 containers via docker compose.
+
+    Important things -
+
+        a)we will not use docker compose for deployment.Docker compose is a great tool for running multiple containers in a Docker
+        compose file,possibly also for multiple containers on your local machine.But it's not really a great tool for deployment 
+        right now. on deployment certain things start to matter which were not there in local like how CPU should be allocated to
+        particular service.It depends heavily on the hosting provider you're using,which kind of extra information might be 
+        needed. as this info cnt be part of docker compose.But that's no problem,you will see that deploying these individual 
+        containers will still be super easy.And that we can use this compose file as an inspiration. To understand which deployment
+        settings are needed for aws.So therefore, we'll just use docker-compose config file ,you could say an inspiration of what 
+        we need to do and manually deploy these individual containers,these services to AWS ECS.
+
+        b)Unfortunately for AWS ECS we will not be able to use this automatic find the container IP by container name feature
+        which works so nice locally. this is because on local system, all contianer runs on same machine and docker creates the 
+        network , all container are put on this network on same machine.and docker is able to replace the placeholder with actualt 
+        IP of contianer. but on ECS there are thiusands of machine. it is highly unlikely that both your container will run on same
+        machine.
+
+        however if we use same task for them then they will run on same machine, Still then AWS ECS will not create a Docker network
+        for them instead it allows you to use localhost as an address inside of your container application code.
+
+
+
+        And you create a Docker network and then all these containers will be put into the same network on your local machine.
+        And then AWS ECS gives us access to the network on that machine and to the other containers,which are part of the task,
+        through the local host address.
+
+
+        So we can use localhost instead of Mongo DB here when deploying this with AWS ECS,because these two containers,which we 
+        wanna connect the node app container and Mongo DB will be part of the same task,and therefore will be guaranteed to run
+        on the same machine.And then AWS ECS gives us access to the network on that machine and to the other containers,which are
+        part of the task,through the local host address.
+
+        but we do not want to change code when we deply i local and prod. for that we used value of mongodb from env file.
+        for dev we give this value to MONGODB_UR in backaend.env.
+
+
+
+143)configuring nodejs backend container

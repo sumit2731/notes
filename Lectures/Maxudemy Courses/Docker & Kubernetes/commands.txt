@@ -86,7 +86,7 @@ commands -
                         note - this can also be mentioned in Dockerfile -
                             VOLUME ["/app/node_modules"]
 
-                        Use of annonymous volume, when we want to map floder form local system to docker file system, but some folder
+                        Use of annonymous volume, when we want to map folder form local system to docker file system, but some folder
                         on docker system we do not want to overwrite(like node_modules) then we can map this node_module to a announymous
                         volume. now this node_modules will not be overwritten by bind mount.
 
