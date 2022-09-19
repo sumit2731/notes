@@ -224,10 +224,10 @@ lecture 58(using "COPY" vs Bind Mounts) -
         ENV PORT 80
         ENV PORT2 81
 
-        so this is default value of PORT variable. anywhere in dockerFile wecan refer to this varible by $PORT. now we
+        so this is default value of PORT variable. anywhere in dockerFile we can refer to this varible by $PORT. now we
         can also overwrite value of these envirement variables at run time by passing explicit values -
         
-        a)env variables are added while creating docker through --env or -e flag. they can be used in Dockerfile by $Name. In code 
+        a)env variables are added while creating container through --env or -e flag. they can be used in Dockerfile by $Name. In code 
             base how to access them depends upon language to language. but in nodejs we can access hem by -
             
             process.env.nameofvariable.

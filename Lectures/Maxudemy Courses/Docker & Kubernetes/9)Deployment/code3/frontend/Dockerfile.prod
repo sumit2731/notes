@@ -1,0 +1,42 @@
+FROM node:14-alpine
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+# CMD [ "npm", "run","build" ]
+
+RUN npm run build
+
+# end of step 1
+
+# Every FROM Instaruction vreates a new stage in your DockerFile.Even if you use the same image as in previous step
+#  this previous step you could say,will be discarded and you will switch to a new base image
+
+FROM nginx:stable-alpine
+
+# Now here, we wanna do something special though,we don't want to have our previous changes be discarded.Instead, we wanna use 
+# the optimized files and serve them.Therefore, you can add a special instruction you could say,after this FROM instruction here.
+# we need to give a name to previos stage and in second stage, so on second base image in this Dockerfile,we can copy from this 
+# first stage by using the special "dash dash from" option here on the copy instruction. Now here with the FROM option,
+
+# we're telling Docker that this copy will not refer to our local host project folder,but instead queue the file system from this
+# build stage
+
+# here we copy final content from first build  stage into this stage. as we dnt want to copy everything we need to sepcify the 
+# source path, then we specify the destination path. That's a special folder for this nginx image.It is the default folder
+# from where nginx will try to serve files.
+
+COPY --from=build /app/build /usr/sgare/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+# Now, the final container will only include that second stage,but it will first of all build this first stage to derive this final stage.
+# You could also have more than one stagein one at the same Dockerfile.If you need that you can have as many stages as you want.
+# For example, an extra stage for running your tests.

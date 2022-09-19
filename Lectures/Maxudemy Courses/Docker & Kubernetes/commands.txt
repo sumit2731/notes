@@ -3,8 +3,12 @@ commands -
         1) docker build
             docker build .
             It creates the docker image from docker config file. as argument it takes path of Dockerfile, . means file exist in same
-            path where terminal is. this command returns the imageid, which is used to create the container.
-            this builds the docker image based on Dockerfile found in this directory. it sets up the image for container to be launched.
+            path where terminal is. this command returns the imageid, which is used to create the container. when docker file is in some
+            folder -
+
+            docker build ./frontend
+
+
 
             flags -
 
@@ -14,6 +18,19 @@ commands -
                     this builds a image based on docker configuration and then gives name and tag to that image. so later we can refer to 
                     this image using this name. note here tag is optional you can leave it, if you want. when you print all images, name 
                     of image will be shown in repository column.
+
+                b)-f
+                    this is used in case your dockerFile has some different name than Dockerfile -
+
+                    docker build -f frontend/DockerFile.prod
+
+                complex command -
+
+                docker build -t custom-tag -f ./frontend/DockerFile.prod ./frontend
+
+                note - here you need to frontend ath 2 times because first one gives the location of file and secodn one sets the context
+                of build command. see lecture 155 for details.
+
 
         2)docker run "imageId"
             docker run "imageName or tag"

@@ -274,7 +274,7 @@
 
 
     alternate -
-        do niot create new task but use "update service" and select "Force new deployment"
+        do niot create new task , under culster, open service -> update servicde -> select "Force new deployment"
 
 
 142)Preparing a multiContainer App
@@ -323,3 +323,140 @@
 
 
 143)configuring nodejs backend container
+
+    here we created cluster, then we created task within that cluster.
+    to create task we created task definations, within task definations we confgued the container.
+
+     here while cretaing container ,under envirement tab added some configurations -
+
+        a)commad - node,app.js
+            this is because in local we run "npm start", which means => "start": "nodemon app.js"
+
+            in prod we do not have dev dependeny nodemon and we do not want live reloading so overwrite command given in docker file
+            give our own command.
+        b)then under envirement variables we have value to env variables.
+     
+144)Deploying a Second Container & A Loadbalancer
+
+    hHere under same task defination we add a another container.as a image we add official mongo image. but for mongo container, in 
+    local we used a bind mount to persisten data. for time being in ECS container we leave the volumes part empty, we will
+    revisist this later.
+
+
+    so we add the container under same task defination. so we have a task defination with 2 contaner inside of it.
+    With that created,we can now launch a service based on this task,which then actually launches these containers
+    with the defined configuration.
+
+    for that go to clusters, then open our cluster, then go to services.
+
+
+
+145)Using load balancer for stable domain
+
+    mistake made -
+        a)in target group, under group_settings -> helathcheck ->  api call was sent to / for health check, as result containers were restarted frequenlt.
+        b)in load balancer only default security group was added, goals security grouo(which is used for ECS services) was not added.
+
+        now you can use the url given in loadbalancer page to access your pages by domain.
+
+
+146)Using EFS Volumes with ECS
+    here data was not persistent when our task was shut down. we went to our task and under volumne we added a EFS(elastic file 
+    system)EFS helps us to add hard drive to our server less container which will survive even if container shuts down.
+
+    we updated the task defination and created a volume inside it.type of volume is EFS.EFS is aws services which helps to attach 
+    file syste to containers. this file system will survive even ifcontainers are restarted.
+     
+    intially there is no file system that we can attach. 
+    
+        so we create a filesystem via AFS console, and while creating it we 
+        configure it -
+            1)we crated a new security group while configuring the file system.
+            2)In security group create a new inbound rule -
+                type -BFS
+                Source - selecet custome , then select securty group of EFS that you are using for containers.
+                
+                    this allows container running in group1 to talk with anything in newly secity group over a configured port.
+
+            3)in network access section add this securoty group.
+
+    then we select this newly created file system while adding volume in our  task defination. this is same as defining the volume
+    at the end of docker-compose file. now go to container inside tasks and under mound poiints select this volume and map it
+    to the location inside container. now click on container to create new task revioson.
+
+    now action -> update service(force redeployment)
+
+    now when we restart the service, we will see that we our new deployment is not succesful and under tasks in services there are
+    failed tasks. read logs reason is that we are using rolling deployment, older instance will be killed when new isntance is 
+    started. as result new isntance is not started. so we manually kill ur task in service , so that new task is started automatically.
+
+
+    we are happu with this workaround because anyway we will be relacing this mongodb container with other strategy.
+
+
+147)Our Current Architecture
+
+    refer to slide 12 to see current architecture.
+
+
+148)Databases & Containers:Important considerations
+    refer to slide 11 for problem in db containers
+    
+149)Moving to mongoDb atlas
+    here we moved to cloud based mngo db service - mongo atlas
+
+152)Understanding common problem
+
+    here we saw problem that in UI for prod we need separate command to build application then need a server to serve it.
+
+153)cretaing build only container
+
+    here we created a new docker file Dockerfile.prod, with configs only for prod. we ran build command insted of npm start.
+    but we also need a server to serve these file. for that lets have a look at multi stage builds.
+
+154)
+    see slide 17. here we had a look at multi stage builds or multi stage docker files.
+
+    with multistage builds we need use run instead of commands. so we chnage ourr docker file. so our first step is to generate 
+    build files.
+
+    Then we can continue with more steps thereafter.Now, we could do it as in a regular Dockerfile as well.But now here's the 
+    special thing,I wanna switch to a different base image after this command.
+
+    We can have a second FROM statement here, effectively turning this into a multi-stage build Dockerfile.Because typically, you
+    must only have one base image. see notes in Dockerfile.prod in frontend folder.
+
+    at the end of lecture our multi stage DockerFile is ready, now lets see how can we use this file.
+
+155)Building a Multi Stage Image
+
+    see dockerFile of frontend folder in code 3. 
+
+    here we build our docker forntend docker image -
+
+    docker build -f frontend/Dockerfile.prod -t academind/goals-react ./frontend
+
+
+    here you can see that we gave frontend path 2 times. with frontend at lst we set the context for build coomand and  at begining
+    we give it point to our DockerFile. see the DockerCompose.yaml file in docker compose section to know this context thing.
+
+    after build we pushed it into docker hub.
+
+
+156)Deploying a standalone frontend app
+
+    we go to our task definations, then open task for this app. then open latest revision and then click on 
+    "create new task revision".then in container defination part we added a new container.
+
+    here while configuring container, we configured the "startup dependeny ordering" i.e backend should start first.
+
+    but create button was dsiabled as both container were uisng same port. solutions -
+        a)both backend and frotned can be part of same container.
+        b)we can chnage port of backend or frotned.
+        c)we can create separate rask for frotned.
+    
+    
+
+
+
+    
