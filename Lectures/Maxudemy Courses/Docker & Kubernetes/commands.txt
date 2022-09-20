@@ -31,6 +31,13 @@ commands -
                 note - here you need to frontend ath 2 times because first one gives the location of file and secodn one sets the context
                 of build command. see lecture 155 for details.
 
+                c)--target
+                    used in multistage build, this would cause the image build process to stop after stage given by target flag was processed.
+
+                    docker build --target "stageName"  .
+                    more complex version - 
+                        docker build --target "stageName" -f frontend/Dockerfile.prod ./frontend
+
 
         2)docker run "imageId"
             docker run "imageName or tag"

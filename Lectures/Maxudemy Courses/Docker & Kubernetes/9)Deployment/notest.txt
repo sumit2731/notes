@@ -451,11 +451,90 @@
     here while configuring container, we configured the "startup dependeny ordering" i.e backend should start first.
 
     but create button was dsiabled as both container were uisng same port. solutions -
-        a)both backend and frotned can be part of same container.
-        b)we can chnage port of backend or frotned.
+        a)both backend and frotned can be part of same container. and same node server ca serve our html also.
+        b)we can use diffrent port for backend.
         c)we can create separate rask for frotned.
+
+    for sake of showing how to host multiple containers we go wth solution 3. so we did this -
+    we created new tasks defination.
+    create new loadbalancer
+    view the task defination and go to actions -> create a service.
+    create the service based on this task,and then add a loadBalancer in service.
+
+    In your FE code use the url from load balancer of backend(load balancer is configured in service)and use that in your code.
+    in code we added a condition to use local host the its dev build and load balancer url when its prod build
+
+    then copy the url form loadbalancer and open it in browser, you should see web page.
+
+157)Development vs Prod
+
+    here we saw that in react we have different Dockerfile for dev and prod.and end point to bacekdn code diffres.
+    for node code, we connect to difdrent db, in dev and prod.
+
+    so we might thing that it is not one ans same env and we lost the benefits of docker. but this is not the case, in recat's
+    case diffren files are needed because build dtep is required, react forces us. and end points nedds to be diffrentnt. but
+    we ca see that in dev and prod we are using same version of node.
+
+    same goes for backend even db is diffrent, runtime and code is locked in image. then we run image in dev and prod.
+    we do not want to use same db in dev and prod.
+
+
+158)Understanding multi-stage builds
+    we build the whole dockerFile in multistage , but a smentioned in leture 155, we can also target induival stages. -
+
+    docker build --target "stageName" -f frontend/Dockerfile.prod ./frontend
+
+    docker build --target "stageName" -f frontend/Dockerfile.prod ./frontend
+
+    this would cause the image build process to stop after this stage was processed.
+
+    this will be helpful when you have multistages ,Let's say one stage for testing,one stage for running a server.
+    And sometimes you just wanna run up to the tests.Sometimes you also wanna run up to the server.
+
+    see Dockerfile.prod to see how we can give name to build stages.
+
+
+159)Beyond AWS
+    here we saw AWS but you can use any other c;oud services also.
+
+     I wanted to show you potential challenges what to keep in mind and how certain features we saw locally with Docker and Docker
+     compose can be translated to manage services.Therefore what you learned here should not just help you with AWS,but with any
+     provider since you already are aware of a couple of approaches and pin points,you might be using and facing when deploying 
+     containers.
+
+160)Summary 
+
+    what we covered -
+
+        1)deployment on -
+            a)remote amchine where you need to do everything like installing docker then downloading image.
+            b)managed approach like ECS
+        2)bind mounts are primarily for local setup to mirror our live code into container.
+        3)for applications that need build step, we saw multistage build step
+        4)deploying multiple containers in same task and in diffrent tasks(diffret URL's)
+        5)tradeoff's between more control and responsibilities vs having less. 2 approachs(slide 10) -
+        6)same thing in databses (slide 11).And that there, again, we have this trade-off,we can deploy our own database containers,
+            but then we also have to manage them.And there are aspects like performance, scaling,availability, but also backups 
+            and security,which can be challenging.
+
+            That's why I also recommended that you at least consider moving to a managed database service
+
+
+To be looked into -
+
+https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22626711#questions/13989812
+
+
+my Question -
+
+https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22626711#questions/18307506
+
+ipc 
+subnets
+security groups - exposes a specific ports, inbound-outbound rules are defined.
+target group name - after selecting load balancer while configuring a service, we need this.
     
-    
+
 
 
 
