@@ -1,0 +1,55 @@
+171)more Problems with Manual Depooyment
+
+    refer slide 1.
+
+    1)container migt crash and needs to be replaced.
+    2)depending upon traffic or workload we might want to increase or decrease the container instances
+    3)if we have multiple contianers then we need to distribute incoming traffic equally.
+
+172)Why kubernetes
+    slide no 2 & 3
+
+173)What is kubernetes
+
+    refer slide 4
+    Kubernetes can help us with the problem outlined in the last lecture because with kubernetes,we have a way of defining our
+    deployments,our scaling of containers and how containers should be monitored and replaced if they fail. We have a way of 
+    defining all of that independent from the cloud service we're using.
+
+    Because kubernetes is an open-source system and de-facto standard for managing container deployments and for orchestrating 
+    containers.
+
+    slide 6 - how kubernetes work.
+    slide 7 - confog file
+    this configuration would work with any cloud provider as long as it supports Kubernetes, or even if it doesn't support it you
+    can manually install some Kubernetes software on any machine you own and then that software, if you want to call it like that,
+    we'll be able to utilize this config file.
+
+    And what's even better is the fact that you can actually merge certain cloud providers-specific options into this config file.
+    So that if some cloud provider would require additional configuration, you could just add that configuration into that main 
+    file And if you then ever want to use that file with another cloud provider,you just need to remove or replace the cloud 
+    provider specific configurations with the  new cloud provider,and you don't have to rewrite the entire config file.
+
+    That is the idea behind kubernetes, Having this standardized way of describing deployments.
+
+    slide 8- what kubernetes is not.
+
+    It's an open-source project.It's just a collection of concepts and a collection of software you could say, which together can 
+    be used with any cloud provider.
+
+    kubernetes is not just a software which you run on some machine, it's indeed that collection of concepts and tools which you'll
+     see in actual throughout this course, which can help us with deployment on any provider of our choice.
+
+
+
+     slide 5 - kubernetes is docker-compose for multi-machine setup
+
+     you can think of kubernetes,as Docker-Compose for multiple machines because in its core, that is basically what it's about.
+        Docker compose is a tool we learn about,which helps us manage multi container projects easily on our local machine.We could
+        even use it on single container projects
+
+    And kubernetes does this the same for multi machine setups because when you deploy your application,you do that by running the
+    application across multiple computers, multiple machines,not just one machine.And kubernetes makes deploying your containers,
+    monitoring and restarting them automatically across multiple machines very easy.So it's like docker-compose with some convenience
+    deployment specific extra features for managing and running your dockerized, your containerized application on a multi machine
+    setup
