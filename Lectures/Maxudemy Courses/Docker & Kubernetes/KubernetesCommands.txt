@@ -1,0 +1,18 @@
+Minicube - sets the dummy cluster locally.it will use a virtual machine oon your machine, to create the cluster in there.So it simulates
+    another machine on your machine by using such a virtual machine and the this virtual machine 
+    then holds this cluster.It will actually create a single node cluster which means there the worker and master node
+    is combined into one single virtual machine
+
+    installation -
+        brew install minikube
+
+    commands -
+        minikube start - creates the cluster
+        minikube dashboard -shows the Ui in browser
+
+
+kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
+    node.
+
+    installation -
+        brew install kubectl

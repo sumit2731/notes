@@ -1,0 +1,51 @@
+181)Kubernetes in Action - Diving into Core concepts
+    ways to create infrastruture for kubernetes -
+        
+        a)kubermatic - built for kubernetes but not part of it
+        
+        b)elastic kubrnetes service (EKS) - That is a service which will allow you to bring your own Kubernetes configuration so that you
+        don't have to use the AWS specific configuration as you did have to use with ECS but EKS. So this Elastic Kubernetes Service will
+        then also set up all the resources neededby your Kubernetes configuration.
+
+
+182)Kubenetes: Required Setup and installiyion steps
+
+    refer slide 2
+
+    things we need to get started -
+
+        1)Cluster - Master and Worker Node, all softwares and services installed on them.
+        
+        2)kubectl or kube-control tool - we need another tool locally on our machine and that's the kubectl or kube-control tool. The 
+            kubectl tool is actually a tool which you then use to send instructions to the cluster for example, to create a new deployment,
+            delete a deployment or change our running deployment. kebectl sends instructions to master node, which in turn sends 
+            instruction to slave node.
+
+
+    Mincube -
+        And for setting up this dummy cluster locally we can use a tool called minikube. Minikube is in the end a tool which you can 
+        install locally for playing around with Kubernetes and for testing it and it will use a virtual machine on your laptop on your
+        machine, on your local machine to create the cluster in there.So it simulates another machine on your machine by using such a
+        virtual machine and the this virtual machine then holds this cluster.
+
+
+        It will actually create a single node cluster which means there the worker and master node is combined into one single virtual 
+        machine, this is not someting we do in deployment bit here it is fine.
+
+
+183)MacOs setup
+
+184)
+
+185)Understanding Kubernetes Object(Resources)
+
+
+    important things about pods -
+        1)pods are ephemeral,which basically means they don't persist.If a pod is replaced or removed by Kubernetes,all the resources in 
+            the pod,for example, data stored and created by a container is lost.
+
+        2)when working with Kubernetes,we can create pods on our own and start them on some worker node in our cluster,but that's typically
+            not what we will do.Instead, we want Kubernetes to manage these pods for us,We want Kubernetes to automatically create and 
+            remove and replace them.
+
+

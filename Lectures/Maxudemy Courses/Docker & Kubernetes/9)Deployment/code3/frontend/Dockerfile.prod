@@ -7,7 +7,7 @@ COPY package.json .
 RUN npm install
 
 COPY . .
-
+# CMD can only be used as the last stage, so here replacing CMD with RUN
 # CMD [ "npm", "run","build" ]
 
 RUN npm run build
