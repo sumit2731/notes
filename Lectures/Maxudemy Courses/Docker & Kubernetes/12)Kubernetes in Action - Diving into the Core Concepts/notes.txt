@@ -34,11 +34,34 @@
 
 
 183)MacOs setup
+    see Kubenetes commands notes.
 
-184)
+    here we installed minikube and kubectl. then we started our cluster by - minikube start
+
+184)Windows setup
 
 185)Understanding Kubernetes Object(Resources)
+    slide3
+    
+    now we need to understand which kind of commands, which kind of language Kubernetes understands,for example,create a new pod and 
+    start a new container.Kubernetes works with so called objects.Kubernetes knows a couple of objects, for example, pods, deployments,
+    services, volumes,and way more than that.
 
+    Now, the idea behind these objects,is simply that you can create such an object by executing a certain command.And then Kubernetes 
+    will take that object created by you,which of course is just a thing in code in the end,and it will then do something based on the
+    instructions encoded in that object, you could say.And these objects can actually be created in two different ways, 
+    
+        1)imperatively
+        2)declaratively.
+
+    Some key object kubernenets knows(slide 4) -
+
+    a)Pods - If you wanna tell Kubernetes,that it should create a pod,run a container and do that on some worker node in the cluster.
+        You would tell Kubernetes to do that,by creating a pod object in code or with help of a command,and sending that object to 
+        Kubernetes. pods are part of cluster therefore can commnunicate with other pods outside world.by default pod has cluster-internal
+        IP by default. we can chnage this and communicate with cluster even from outside the cluster.But by default, a pod has a cluster
+        internal IP address,which can be used to send requests to that pod and there for to the containers running in the pod. containers
+        inside same pod can communicate with each other with local host.
 
     important things about pods -
         1)pods are ephemeral,which basically means they don't persist.If a pod is replaced or removed by Kubernetes,all the resources in 
@@ -47,5 +70,31 @@
         2)when working with Kubernetes,we can create pods on our own and start them on some worker node in our cluster,but that's typically
             not what we will do.Instead, we want Kubernetes to manage these pods for us,We want Kubernetes to automatically create and 
             remove and replace them.
+            
+        And that's why we typically don't just create pod objects and send them to the cluster,but why we create controller objects,
+            specifically the deployment object,which then actually will create pods for us.So therefore, let's next have a look at this
+            deployment object, and let's understand how that works.
+
+
+
+186)The "Deployment" object
+    we genrally do not create pod objects but we create deployment objects. see slide 5.
+
+187)A First Deployment
+
+    1)create docker image -
+        docker build -t kub-first-app
+
+    2)start kubernetes cluster , if it is not already running -
+        minikube status (checks status)
+        minikube start (starts cluster)
+
+    3)we can now send our image or send the instruction to create a deployment to that cluster.we use kubectl command to create deployment
+        object. with create command object is automaatically created and sent to cluster. so we use kubectl create command to create 
+        deployment object, this is imperative way of creating the objects.
+
+        kubectl create typeofObject nameOfObject --image=nameOfImageUsedByContainerOfPodCreatedByThisDeployment
+        kubectl create deployment first-app
+
 
 
