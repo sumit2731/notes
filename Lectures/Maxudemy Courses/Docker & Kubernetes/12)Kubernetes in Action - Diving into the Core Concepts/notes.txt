@@ -81,7 +81,7 @@
     we genrally do not create pod objects but we create deployment objects. see slide 5.
 
 187)A First Deployment
-
+    here we wanted to deploy code1 in kubernetes cluster.
     1)create docker image -
         docker build -t kub-first-app
 

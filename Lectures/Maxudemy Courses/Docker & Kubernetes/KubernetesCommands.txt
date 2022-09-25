@@ -7,9 +7,12 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
         brew install minikube
 
     commands -
-        minikube start - creates the cluster
-        minikube dashboard -shows the Ui in browser
-        minikube status - to check whether cluster is running or not
+        minikube start - 
+            creates the cluster
+        minikube dashboard -
+            shows the Ui in browser
+        minikube status - 
+            to check whether cluster is running or not
 
 
 kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
@@ -19,7 +22,11 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
         brew install kubectl
 
     commands -
-        1)create
+        1)kubectl create "objectName" "nameOfObject"
+            It creates the mentioned object and sends it to cluster.
+            kubectl create - you will get help with types of objects that you can create
+            example -
+                a)kubectl create deployment "nameOfDeployment"
         2)kubectl get deployments 
             we can see how many deployments we have in our cluster to which we connected here.
 
