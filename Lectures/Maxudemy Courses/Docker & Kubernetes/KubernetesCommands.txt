@@ -13,6 +13,8 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
             shows the Ui in browser
         minikube status - 
             to check whether cluster is running or not
+        minikube delete --all -
+            deletes all minibute clusters
 
 
 kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
@@ -25,12 +27,18 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
         1)kubectl create "objectName" "nameOfObject"
             It creates the mentioned object and sends it to cluster.
             kubectl create - you will get help with types of objects that you can create
-            example -
+            implemententation -
                 a)kubectl create deployment "nameOfDeployment"
+                    arguments -
+                        a)image
+                            kubectl creeate deployment "nameOfDeployment" --image="name OfImage"
+                                creates a deployment object with a given name and containers in the pod in deployment object will be based
+                                on provided image name
+
         2)kubectl get deployments 
             we can see how many deployments we have in our cluster to which we connected here.
 
         3)kubectl get pods
             we will see pods created by our deployments.
 
-        4)kebectl delete "nameOfDeployment" 
+        4)kubectl delete deployment "nameOfDeployment" 

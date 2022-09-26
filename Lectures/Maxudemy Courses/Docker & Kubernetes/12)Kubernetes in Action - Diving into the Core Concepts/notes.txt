@@ -94,7 +94,54 @@
         deployment object, this is imperative way of creating the objects.
 
         kubectl create typeofObject nameOfObject --image=nameOfImageUsedByContainerOfPodCreatedByThisDeployment
-        kubectl create deployment first-app
+        kubectl create deployment first-app --image="kub-first-app"
 
+        you will not get error here but this will not check. lets check how many deployment are in lcuster to which we are connected -
+
+            kubectl get deployments
+
+        By the way, kubectl was configured by minikube automatically connect to minikube so we don't need to tell the command that we
+        wanna interact with minikube here. we see we have 1 deploymet of which 0 is ready.this means 1 deployment failed. letse see 
+        status of pods-
+
+            kubectl get pods.
+
+        here we see that 0 of 1 pods are ready. and we can also see the error- ImagePull error. reason for this is cluster is in 
+        virtual machine and image exist in local machine. so we need to pull image form docker hub. 
+        
+        so lets delete this dpeloyment -
+
+            kubectl delete deployment first-app
+
+        In course we pushed image on docker hub and fetched the resources form there, but on office lapop it was not wrking. still
+        i was getting error in puling image. so i used this approach -
+            https://minikube.sigs.k8s.io/docs/handbook/pushing/
+             i used this way -
+
+                minikube cache add kub-first-app
+
+        now run -
+
+            kubectl create deployment first-app --image=sumeet27/kub-first-app
+
+    4) see the sttaus of deployments and pods -
+        kubectl get deployments
+        kubectrl get pods
+        
+188)kubectl:behind the scenes
+
+    see slide 7.
+    Now on that Worker Node,we got this kubelet service,which I also mentioned in the last course section,
+    which now manages the Pod here,starts the Container in the Pod and basically also monitors this Pod and checks its health.
+
+189)Service Object
+    To reach a pod and the container running in a pod,we need a service.Because a service object is another object Kubernetes knows,
+    which is responsible for exposing pods to other pods in the cluster, or very important to us here to visitors outside of the
+    cluster.So to the entire world.
+
+    Now service, groups pods together and gives them a shared address a shared IP address.And this address then won't change.
+    So you can use a service to move multiple pods into that service and make them reachable on that service unchangeable IP 
+    address.And even better than that,you can also tell the service to expose this address which doesn't change not just inside
+    of the cluster,which you also can do,but also outside of the cluster.
 
 
