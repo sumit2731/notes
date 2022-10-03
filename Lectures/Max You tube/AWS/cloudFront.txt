@@ -1,0 +1,51 @@
+1)Using route 53 to asses EC2 instnace via custom domain -
+
+    1)Created EC2 instance and launched it with some code.
+    2)went to route 53 and created a DNS.when it regsotered then come back.
+    3)Go to route 53 and register a new domain.
+    3)go hosted zone in route 53 dashboard and click on your domain. by default 2 records will be created for your domain. do not delete 
+        them.
+    4)we added a new record. records simply means ="how domain can be used".
+        in that record we linked our domain with public IPv4 address for our Ec2 instnace.
+        record type - A
+
+        now we can access our websites using this custom domain using route 53.
+
+    5)but here problem is public Ipv4 addres chnages everytime, that problem was solved using elastic ip addresses.
+        1)request a IP adress.
+        2)associate that ip address with instance.
+
+2)Using Route 53 to access loadBalancer URL(which connects to ec2 instance) -
+
+    1)Create a target group and include your running instance in that target group.
+    2)create a load balancer, and select the target group created in step1 during load balnacer creation.
+    3)now load balancer has a domain name automatically assigned to it. we can use it to hit our server. but we want to use
+        our own custom domain.
+    4)Update our record in hosted zone of aws route 53. now we do not have a IP but we have a domain name.
+        a)turn on Alias in route 53. this allows us to directly point at specific aws resources as targets for this record.
+        b)from dropdown we selected application load balancer. then region, then name of load balancer.now we can access
+            load blancer using custom domain.
+
+3)Optimizing content delivery with cloudfront -
+
+    1)create a cloud frotn distribution - 
+
+        origin -
+            a)select origin domain - this is where your origin content is stored. this can be a s3 bucket or load balnacer.
+            b)paths - optional
+            c)name of origin
+            d)additional headers - optional
+        default cache behaviour -
+            a)
+        3)functions - code to executed, can modfying equest etc.
+
+    2)after completing this we can access our server using "distribution domain name". which is assign automatically by aws.
+    3)but we want to use our custom domain to access -
+        1)got to route 53 -> hosted zone -> open your domain.
+        2)open your record 
+            a)alias, chnage to -> cloud front distribution
+            b)then select your cloud front distribution thereafter. but we cannot see name here. you need to modify the settings of
+            your distribution network -
+                1)open your cloud front distribution. click on settings. update the "alternate domain name(Cname)" to your custom domain
+                    for whcih you are defining the route in route 53.
+                2)request a SSL certificate for your domain through AWS certificate manager.and add it here.
