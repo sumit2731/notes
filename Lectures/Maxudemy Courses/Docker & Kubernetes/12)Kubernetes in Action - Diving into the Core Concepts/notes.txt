@@ -87,10 +87,10 @@
 
     2)start kubernetes cluster , if it is not already running -
         minikube status (checks status)
-        minikube start (starts cluster)
+        minikube start (starts cluster, needed if cluster is not running)
 
     3)we can now send our image or send the instruction to create a deployment to that cluster.we use kubectl command to create deployment
-        object. with create command object is automaatically created and sent to cluster. so we use kubectl create command to create 
+        object. with create command object is automatically created and sent to cluster. so we use kubectl create command to create 
         deployment object, this is imperative way of creating the objects.
 
         kubectl create typeofObject nameOfObject --image=nameOfImageUsedByContainerOfPodCreatedByThisDeployment
@@ -122,9 +122,9 @@
 
         now run -
 
-            kubectl create deployment first-app --image=sumeet27/kub-first-app
+            kubectl create deployment first-app --image=kub-first-app
 
-    4) see the sttaus of deployments and pods -
+    4) see the staus of deployments and pods -
         kubectl get deployments
         kubectrl get pods
         
@@ -144,4 +144,117 @@
     address.And even better than that,you can also tell the service to expose this address which doesn't change not just inside
     of the cluster,which you also can do,but also outside of the cluster.
 
+    The default is that it's internal only but with a service, we can overwrite this.So without services, pods are very hard to reach
 
+190)Exposing a deployment with a Service
+    we created the service using -
+
+        kubectl expose deployment first-app --type=LoadBalancer --port=8080
+
+        to see diffrent types of services, see commands section.
+
+    then checked whether it is running or not by -
+
+        kubectl get services
+
+    name of service is same as deployment i.e first-app
+
+    here we saw our service but external-ip is still pending.Now, if this would be deployed on a cloud provider,we would actually see an
+    external IP here,but for minikube,this will always stay in the pending status.but minikube has a command,which will give us access to
+    the service by basically mapping a special port to an IP which we can reach from our local machine,and which identifies this virtual
+    machine running on our local machine.
+
+        minikube service "nameOfService" => minikube service first-app
+
+    this  shows the service name and ip that will be opened automatically in browser, here you can see your running application.
+191)restarting the continers
+    Here we saw that containers are restarted automatically when some error occurs in our code.This the behaviour we get when we crate a 
+    deployment. we can see how many times a pod has 
+    restarted by this command -
+
+        kubectrl geet pods 
+
+
+192)Scaling in Action
+    here we ran this command - 
+        kubectl scale deployment/first-app --replicas=3
+
+    it will create new replicas or instances of pod.since we have load balancer.at last we again chnaged replicas to 1
+
+193)Updating the deployment
+    1)chnage code.
+    2)generate new image.
+    3)upload image on docker-hub.
+    4)run this command -
+
+        kubectl set image deployment/"name of deployment" containerName="image name"
+
+        kubectl set image deployment/first-app kub-first-app=kub-first-app
+
+        we get the name of container via UI,
+
+
+        This replaces the image in container of give deployment with new image.it sets the image for already running deployment.
+
+        now by default you will not see any chnage this is because existing image is downloaded only if tag is chnaged, there are ways
+        of changing this but its gud to chnage tag name on image update, so we update the image tag -
+    5)update image tag -
+
+        docker build -t  kub-first-app:2 .
+
+    6)uopload the image on docker hub
+    7)run kubectl command -
+
+        kubectl set image deployment/first-app kub-first-app=kub-first-app:2
+
+
+        now kubernetes detects the chnage in image tagm so it redownloads the images and retsarts your container based on this.
+        we get image updated confirmation.
+
+    8)you can check the updating satus by -
+
+        kubectl rollout status deployment/"name of deployment" => kubectl rollout status deployment/first-app
+
+
+    In kubernetes dashboard go to  -> pods(on left pane) -> click on pod name.
+
+    here under events you can see that new image was downloaded and new continer was created based on that image.
+
+    at the bottom you can see contianer name and image name on which that container is based off of.
+
+
+194)Deployment Rollbacks & History
+
+    here we tried to use a image that does not exist - 
+
+        kubectl set image deployment/first-app kub-first-app=kub-first-app:3
+
+    There was no error. lets check the progress of our rollout -
+
+        kubectl rollout status deployment/"nameOfDeployment"
+        kubectl rollout status deployment/first-app
+
+    here we can see that deployment is in progress and old replica is shutting down.In dashboard also under pods you can see that
+    1 pod failed to pull images and another is ruuning. so old pod was not shut down because newer does not started running.this is
+    rolling update strategy. so lets rollback this deployment because this has failed anyway.
+
+        kubectl rollout undo deployment/"deoploymentName"
+        kubectl rollout undo deployment/first-app
+
+    now no of pods is one and in rollback status also we saw success message.
+
+    now how can we go back to previous rollout-
+
+        1)get all rollout details - 
+            kubectl rollout undo deployment/first-app --to-revision=1
+
+        2)to see which image was used in a rollout -
+            kubectl rollout history deployment/first-app --revision="identifier"
+            kubectl rollout history deployment/first-app --revision=2
+
+        3)to back to a reviion -
+
+            kubectl rollout deployment/first-app --to-revision=1
+
+195)imperative vs declarative approach
+    impretaive approach means using config file instead of commands to manage kubernetes.

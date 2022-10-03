@@ -1,1 +1,0 @@
-docker-compose exec is meant to interact with a container that is already running. That also explains why it requires a COMMAND argument, because it’s expecting the container that is currently running to already be executing the default command so it expects to run a different

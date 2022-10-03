@@ -7,7 +7,7 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
         brew install minikube
 
     commands -
-        minikube start - 
+        minikube start - z
             creates the cluster
         minikube dashboard -
             shows the Ui in browser
@@ -15,6 +15,10 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
             to check whether cluster is running or not
         minikube delete --all -
             deletes all minibute clusters
+
+        minikube service "nameOfService"
+            this will give us access to the service by basically mapping a special port to an IP which we can reach from our local 
+            machine,and which identifies this virtual machine running on our local machine. so we can reach the servivce via this IUP.
 
 
 kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
@@ -42,3 +46,85 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
             we will see pods created by our deployments.
 
         4)kubectl delete deployment "nameOfDeployment" 
+
+        5)kubectl expose deployment
+            exposes the pod,created by a deployment by creating a service.
+
+            kubectl expose deployment first-app
+                a)--port = port that will be exposed
+
+                b)--type = type of service that we want to create, diffrent types are -
+                
+                    a)ClusterIP - default type. This is means it will only be reachable from inside the cluster.Still, we will then at 
+                        least get an address which doesn't change.
+
+                    b)NodePort - which actually means this deployment should be exposed with help off the IP address of the worker node
+                        on which it's running.this then will be accesssible form outside.LoadBalancer utilizes a LoadBalancer which has 
+                        to exist in the infrastructure on which our cluster runs.And then this LoadBalancer will actually generate
+                        a unique address for this service. LoadBalancer, this type hereis only available if your cluster and the 
+                        infrastructure on which the cluster runs supports it.
+
+                    c)LoadBalancer -Now LoadBalancer utilizes a LoadBalancer which has to exist in the infrastructure on which our cluster
+                        runs.And then this LoadBalancer will actually generate a unique address for this service.it will also evenly 
+                        distribute incoming traffic across all pods, which are part of this service.Now LoadBalancer, this type here
+                        is only available if your cluster and the infrastructure on which the cluster runs supports it.AWS does, for 
+                        example, and minikube thankfully also does it
+
+                    ex - kubectl expose deployment first-app --type=LoadBalancer --port=8080
+        6)kubectl scale deployment/"nameOfDeployment"
+            It scales the no of pods present n deployment.
+            options -
+                a)replicas - it means how many instances for pod you want to have.
+
+            ex - kubectl scale deployment/first-app --replicas=3
+
+        7)kubectl set image deployments/"name of deployment" containerName="image name"
+
+            This replaces the image in container of given deployment with new image.by defualt kubenetes downloaded new image only
+            tag of image is changed. so chnage the tag. there are ways to override this.
+
+        8)rollouts -
+            a)Status of last rollout -
+
+                kubectl rollout status deployment/"name of deployment"
+
+                output - prints the sttaus of rollout
+
+            b)to see rollout hostory -
+
+                kubectl rollout history deployment/"nameOfDeployment"
+
+            c)to get detials about the rollout -
+
+                kubectl rollout history deployment/first-app --revision="identifier"
+
+                identifier we get from last command.here we will get details like which image was used.
+
+            d)how to get back to previous rollout
+
+                1)takes user to last rollout -
+                    kubectl rollout undo deployment/"nameOfDeployment" - 
+                    
+                2)to take user back to a specific rollut -
+                    kubectl rollout undo deployment/first-app --to-revision="revisionTag" (revision tag from )
+        
+        9)how to go back to previous deployment -
+
+
+
+            options -
+                a)--to-revision - takes user back to specific version.
+                    kubectl rollout undo deployment/first-app --to-revision="revisionTag"
+                    kubectl rollout undo deployment/first-app --to-revision=2
+                    
+
+
+
+
+
+
+kubernetes objects -
+
+    a)pods
+    b)deployment
+    c)service

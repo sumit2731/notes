@@ -1,0 +1,23 @@
+# serach kubernetes deployment yaml to see latest version
+apiVesrion: apps/v1
+# kind of kubernetes object that you would like to create
+# you can check API refrence of kubernetes to see all supported objects and configurations
+# https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#deployment-v1-apps
+kind: Deployment
+# under AOI refrence if kubvernetes go to deployment then go to metadeta, to see full possible object. many objects dnt need so many objects
+metadata:
+  name: second-app-deployment
+# the specification of this deployment.And that's the meat of this object because here, we will define how this deployment
+# should be configured.
+spec:
+  # no of pod instances
+  replicas: 1
+  # Here You will define the pods that should be created as part of this deployment.
+  template:
+    # since this is for pod which is another kubernetes object, so we add metadata. we can give it name if we want to give it.
+    # we do need kind here because template always describes the pod.
+    metadata:
+      # we will see why it is needed. any key value pair is acceptable
+      labels:
+        app:  second-app
+
