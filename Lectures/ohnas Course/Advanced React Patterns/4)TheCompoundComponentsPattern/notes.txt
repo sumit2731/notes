@@ -1,0 +1,10 @@
+here we expose the internal components of medium clap to end user.now end user uses clapComponent like this -
+    <MediumClap/>
+
+now we want user to use it like this -
+
+    <MediumClap>
+      <ClapIcon />
+      <ClapCount />
+      <CountTotal/>
+    </MediumClap>

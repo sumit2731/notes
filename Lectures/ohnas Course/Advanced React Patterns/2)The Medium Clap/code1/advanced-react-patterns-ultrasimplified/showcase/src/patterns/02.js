@@ -119,6 +119,8 @@ const MediumClap = () => {
    * @Desc If this is not wrapped in useClalback then setRef is called again and again
    */
   const setRef = useCallback((node) => {
+    let refkey = node.dataset.refkey;
+    debugger;
     setRefState((prevRefState) => ({
       ...prevRefState,
       [node.dataset.refkey]: node,

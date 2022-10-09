@@ -1,7 +1,15 @@
 here we refactored the code of section1, and used hooks to outsource the animation logic instead of using Higher order
-    components.
+    component. 01.hs has HOC code but 02.js has hooks code. code is in previous section pnly.
 
-if hit roadblock because our hook was triggered first and then state containing element refrences was updated later.
-    for that we used dependencues in if check in useEffect and used dependecies in useEffect.
+we hit roadblock because our hook was triggered first and then state containing element refrences was updated later.
+    for that we used dependencues and if check in useEffect.
 
-still then we were facing the problem of inifne renders that was solved using useCallback
+
+still then we were facing the problem of inifne renders that was solved using useCallback. basic problem here is if state is object,
+then infine cycle continue. but after using useCallback hook that problem was solved. this is still a questions t me why it happens.
+
+when state is object and useCallback is not used, then ref calllback function is called infine nuber of times.
+when state is not object and useCallback is not used, then ref calllback function is called 3 times.
+when state is object and useCallback is used, then ref callback is used only once.
+
+
