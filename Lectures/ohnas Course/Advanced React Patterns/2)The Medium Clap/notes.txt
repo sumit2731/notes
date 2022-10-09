@@ -1,0 +1,2 @@
+Here we implemented the clap components logic by using a js library for animation. all animation logic is outsourced into a 
+    higher order component.

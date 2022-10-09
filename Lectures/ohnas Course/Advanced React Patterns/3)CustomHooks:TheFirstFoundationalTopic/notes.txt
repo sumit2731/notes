@@ -1,0 +1,7 @@
+here we refactored the code of section1, and used hooks to outsource the animation logic instead of using Higher order
+    components.
+
+if hit roadblock because our hook was triggered first and then state containing element refrences was updated later.
+    for that we used dependencues in if check in useEffect and used dependecies in useEffect.
+
+still then we were facing the problem of inifne renders that was solved using useCallback
