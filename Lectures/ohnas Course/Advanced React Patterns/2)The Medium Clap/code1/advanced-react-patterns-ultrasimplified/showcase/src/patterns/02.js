@@ -11,6 +11,7 @@ const initialState = {
  * CustomHook for animation
  */
 const useClapAnimation = ({ clapEl, countEl, clapTotalEl }) => {
+  //if you directly called constructor here , then it will be called again and again, so we pass function to useState
   const [animationTimeline, setAnimationTimeline] = useState(
     () => new mojs.Timeline()
   );
