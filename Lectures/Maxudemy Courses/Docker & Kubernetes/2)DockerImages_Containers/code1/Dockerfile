@@ -19,7 +19,7 @@ WORKDIR /app
 
 # COPY . /app
 
-# since working directory is set we can use .
+# since working directory is set we can use . or ./ as both are relaive paths
 
 # COPY . .
 
@@ -27,12 +27,14 @@ WORKDIR /app
 
 # COPY . ./
 
-# here we are explicit about it, so we set a absolute path
+# here we want top explicit about it, so we set a absolute path
 
 COPY . /app
 
+# to copy selected files use this - COPY README.md package.json some-other-file.js whatever.txt ./
+
 # now we want to run npm install. so do this. 
-# By default, all those commands will be executed in the working directory off your Docker container and image.And by default, that 
+# By default, all those commands will be executed in the working directory of your Docker container and image.And by default, that 
 # working directory is the root folder in that container file system. so to run this command, here we set working directory
 
 RUN npm install
@@ -44,6 +46,11 @@ RUN npm install
 
 # but actually, this instruction only is added for documentation purposes.It doesn't really do anything.It is a best practice to add 
 # it and you should add it to clearly document which ports will be exposed by your container
+
+# The EXPOSE command in a Dockerfile will also tell `docker run` which ports to map to the host when using the `--publish-all` (or `-P`) option.  
+# That option will tell docker to map a RANDOM port on the host to any EXPOSEd port that isn't explicitly mapped with `-p`/`--publish`.
+
+
 
 EXPOSE 80
 

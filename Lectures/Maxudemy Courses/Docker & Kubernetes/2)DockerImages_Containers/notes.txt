@@ -254,3 +254,26 @@ Part 3 (python, code 3) -
 
                     b)docker cp strange:/test dummy (copies file from container to local system)
 
+
+
+Synopsis -
+
+    1)Intro to images and container.
+    2)Types of images -
+        Prebuild and custom
+    3)image concepts -
+        a)defining custom config file
+        a)images are read only
+        a)building imgage from config file.
+        b)layer based architecture of image - Cacheing of images, optimization of projects.
+
+    4)Container concepts -
+        a)running containers from docker hub image(node)
+        b)various options while running contaimner -
+            a)-it
+            b)-p
+
+Extra concpts - 
+    https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22181376#questions/18468102
+Questions -
+    https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22166810#questions/18468102
