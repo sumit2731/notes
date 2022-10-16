@@ -72,11 +72,11 @@ commands -
 
                         docker run -p 8000:80 -d "imageid"
 
-                3)-i  interactive
-                            docker run -i "imageId"
-                                runs docker container from image, and give intercative terminal.generally used along with "t" flag -
-                                docker run -it "imageId"
-
+                3)-it  interactive
+                            docker run -it "imageId"
+                                runs docker container from image, and give intercative terminal.now you can give inputs and also see the outputs.
+                                In code it was used to execute node image and interact with cli.
+                                when you only need to see output try to use only -i or -t flag.
 
                 4)--rm
                     it automatically removes the container when it exists.
@@ -167,7 +167,7 @@ commands -
     2)containers -
 
         1)docker ps 
-            gives lis of all running docker containers.
+            gives lis of all running docker containers. ps stands for processes
 
             flags -
                 a) a -it gives all processes(running and stopped), all containers that docker created for us.
