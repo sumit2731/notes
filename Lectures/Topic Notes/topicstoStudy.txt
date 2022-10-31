@@ -11,6 +11,7 @@ Javascript -
     
     mutation observable
     intersection observable
+    Resize Observable
     windows.requestIdleCallback
     window.requestAnimationFrame() -- see videos
     webWorkers

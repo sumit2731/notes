@@ -3,5 +3,5 @@
     1)for css animation in football -
     transition: all 1s;
 
-1)in iterator topic of javascript.info, see surrogate pair thing.
+2)in iterator topic of javascript.info, see surrogate pair thing.
     link - https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/

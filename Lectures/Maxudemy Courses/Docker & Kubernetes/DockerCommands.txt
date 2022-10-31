@@ -16,8 +16,8 @@ commands -
                     docker build -t goals:latest .
 
                     this builds a image based on docker configuration and then gives name and tag to that image. so later we can refer to 
-                    this image using this name. note here tag is optional you can leave it, if you want. when you print all images, name 
-                    of image will be shown in repository column.
+                    this image using this name. note here tag is optional you can leave it(be default tag will be latest), if you want. when 
+                    you print all images, name of image will be shown in repository column.
 
                 b)-f
                     this is used in case your dockerFile has some different name than Dockerfile -
@@ -28,7 +28,7 @@ commands -
 
                 docker build -t custom-tag -f ./frontend/DockerFile.prod ./frontend
 
-                note - here you need to frontend ath 2 times because first one gives the location of file and secodn one sets the context
+                note - here you need to frontend ath 2 times because first one gives the location of file and second one sets the context
                 of build command. see lecture 155 for details.
 
                 c)--target
@@ -66,27 +66,42 @@ commands -
                 2)-d = dettached
                     docker run -d "imageId"
                         for running container in detached mode. it returns the id of detacched container. which can be later used to
-                        attach the container.
+                        attach the container. using -
+                            docker container attach "containerName"
 
                     using multiple flags -
 
                         docker run -p 8000:80 -d "imageid"
 
-                3)-it  interactive
+                3)-i
+                    It measn run the docker in interative mode. it allows us to give input to the process.when we run a container from image
+                    then by default it runs in attached mode. it means we can see the output but we cannot give the input.In section 2, see
+                    code 2. if you normally run the container form image it will fail, because it needs inputs from user. this flag allow us
+                    to give input also. i stands for interactive. form docker help - Keep STDIN open even if not attached.
+
+                    docker run -i "imageName"
+
+                4)-t
+                    this allocates a pseudo TTY and in the end this means it creates a terminal.typically we combine -i flag with t and 
+                    use them like this this - -it.and therefore if you combine the I and the T flag we are able to input something so the
+                    container will listen for our input and we'll also get a terminal exposed by the container which is actually the 
+                    device where we enter the input.
+
+                5)-it  interactive
                             docker run -it "imageId"
                                 runs docker container from image, and give intercative terminal.now you can give inputs and also see the outputs.
                                 In code it was used to execute node image and interact with cli.
                                 when you only need to see output try to use only -i or -t flag.
 
-                4)--rm
+                6)--rm
                     it automatically removes the container when it exists.
                             docker run -p 3000:80 -d --rm "imageId"
-                5)--name - gives the naame to container
+                7)--name - gives the naame to container
                     docker run -p 3000:80 -d --rm --name "nameString" "imageId"
 
                     now we can refer to container using this name, like to stop container - docker stop containerName
 
-                6) -v
+                8) -v
                     a)named volumne
                         -v nameofVolume:pathInContainerFileSystem
                         It helps us to create a named volume and linked a local file system with path in container. named volume are not 
@@ -118,12 +133,12 @@ commands -
                         them into read only by sing :ro in then end. ex -
 
                         -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app:ro"
-                7)--env or -e
+                9)--env or -e
                         it lets you pass envirenment varibles. refer lecture 61 in notes to see more ways of adding env variable.
 
                         -e PORT =8000 -e name=sumit
 
-                8)--env-file
+                10)--env-file
                         lets you pass a file, which contains value of envirement variables.
 
                         ex - 
@@ -131,7 +146,7 @@ commands -
 
                         see lecture 61
 
-                9)--network
+                11)--network
                     docker run --network "networkName" imageName
                     network with this names needs to be created there otherwise container creation will faul.see notes of lectures 74 for detals.
         3)docker images
@@ -146,19 +161,25 @@ commands -
             removes all images which are not tagged and not used by any containers.
 
             flags -
-                1)a - removes named (tagged) images also
+                1)a - removes named (tagged) images also but does not remove images who are used by a container,even stopped container
                     docker image prune -a
 
         6)docker image inspect "imageId"
             gives the details about a image.
 
         7)docker tag
-            creates the clone of existing image with new tag. but both images will have same imageId
+            creates the clone of existing image with new tag. but both images will have same imageId and will existing simultaneously.
 
             docker tag "oldTag" "newTag"
 
         8)docker push "repository name"
             pushes a image to repository in image sharing platform. default is docker hub.
+            lets say username in docker hub is sumeet27 and name of repository is node-app. then you need to rename your image in local 
+            system to sumeet27/node-app then run -
+
+            docker push sumeet27/node-app
+
+            you can also give tag name but that is optional.if we do not use tag then by default latest tag name is given
 
 
         9)docker pull "repo:tag"
@@ -179,8 +200,8 @@ commands -
 
 
         3)docker start "containerName"(or contianerId)
-            this restarts a container in detached mode. Note -p is remeber when you first started a container. you cannot give this flag
-            while starting container again once it have been stopped.
+            this restarts a container in detached mode(terminal wnt be waiting). Note -p is remeber when you first started a container. you cannot give 
+                this flag while starting container again once it have been stopped.
 
             flags -
                 1)a - attaches the started container.
@@ -189,7 +210,8 @@ commands -
 
                 2)i - interactive flag.you give input also.
                     docker start -a -i "containerName". you can use -t flag but if orignally container was started with -t flag
-                    then that will be memomized.
+                    then that will be memomized. In python code where we need inputs form user we used both attach and interactive flag.
+                    but it also works only with interactive flag.
 
 
         4)docker container attach "containerId or ContainerName"
@@ -222,7 +244,8 @@ commands -
 
             docker path is specified by dockerName:pathInsideDocker
                 ex - a)docker cp dummy/. strange_neumann:/test (copies file from local to conatiner. dummy/. means copy all contents 
-                    inside dummy, we can also target induival files)
+                    inside dummy, we can also target induival files, here . means copy everything). inside container test folder will
+                    be created, if it does not exist yet.
 
                     b)docker cp strange:/test dummy (copies file from container to local system)
 
@@ -338,6 +361,16 @@ commands -
         The Docker exec command allows you to execute certain commands inside of a running container besides the default command, this 
         container executes.So besides the command that might've been specified in a Docker file, that command still continues running.
         So the application still continues to run but you can't run additional commands inside of a container.
+
+
+        use this command you can do these things inside file system of container -
+
+            1)create file
+            2)see files in system.
+
+        to all this execute this command - docker exec -it "containerName" bash.
+        This will create a new Bash session in the container. now all commands will be executed in container.
+        see this - https://docs.docker.com/engine/reference/commandline/exec/
 
         flags -
 
