@@ -36,7 +36,13 @@ app.post("/create", async (req, res) => {
     if (exists) {
       res.redirect("/exists");
     } else {
+      /**
+       * Commenting ut this code as this will not work when file is shared across devices
+       */
       //await fs.rename(tempFilePath, finalFilePath);
+      /**
+       * This copies file and later deletes it.
+       */
       await fs.copyFile(tempFilePath, finalFilePath);
       await fs.unlink(tempFilePath);
       res.redirect("/");
