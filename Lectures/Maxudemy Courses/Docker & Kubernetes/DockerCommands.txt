@@ -133,8 +133,8 @@ commands -
                         on docker system we do not want to overwrite(like node_modules) then we can map this node_module to a announymous
                         volume. now this node_modules will not be overwritten by bind mount.
 
-                    d)ro - by defualt all volumes are read-write tat means docker can read as well as write data into them. but you can turn 
-                        them into read only by sing :ro in then end. ex -
+                    d)ro - by defualt all volumes are read-write, this means docker can read as well as write data into them. but you can turn 
+                        them into read only by using :ro in then end. ex -
 
                         -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app:ro"
                 9)--env or -e

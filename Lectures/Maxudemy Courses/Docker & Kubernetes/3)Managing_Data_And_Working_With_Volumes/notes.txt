@@ -10,6 +10,10 @@ Code -
 Important Concepts -
     Lecture 53 - How we can use annonymous volumes to prevent overwriting of some folder in docker file system
 
+Opeating system Diffrences -
+    a)For using bind mounts, docker needs to have access to local file system,lecture 51.
+    b)for nodemon to pick changes, files should be stored inside, lecture 54.
+
 lecture 43 -
     Slide 1 shows different types of data. for permanent data, that we need to read and write. we use concept called volumnes.
     
