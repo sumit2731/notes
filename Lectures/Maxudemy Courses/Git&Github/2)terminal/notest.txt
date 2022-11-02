@@ -1,0 +1,67 @@
+3 Main Directories directories -
+
+    Root Directory - locations -> macintosh HD
+    Users Directory - you are inside users folder.
+    Home Directory - you clicked on one user and you come to home directory.
+
+    On starting terminal we enter home directory.
+
+symbols -
+    first / in outout of pwd means root directory.
+    ~ in terminl means home directory. 
+    when you move to a folder on left hand side of terminal always shows the folder name.
+
+1)pwd - print working directory
+    /Users/susood
+
+    here first / means we are in root directory
+
+2)cd -
+    cd /
+        takes to root directory
+    cd ~
+        takes to home directory
+    cd /Users
+        takes to users directory
+    cd ..
+        go one level up form current directory
+    
+    cd folder1/folder2
+    
+    cd someText - press tab
+        it will try to autocomplete based on folders in directory. if there are more than one match, it will show you options,
+            you can enter more text and then press tab.
+
+    cd absolutePath
+        cd /Users/susood/Postman
+            takes to this path, no matter which path you are in.absolte path always starts form root
+
+    special character -
+        1)space - \
+             folder 1 - cd folder\ 1
+
+3)clear 
+    clear the shell
+
+4)mkdir - creates a folder
+    mkdir "foldername"
+
+5)touch
+    touch "fileName1" "fileName2"
+    touch index.html app.js
+    it touches the files and chnages the last modified date but if it cannot find the fileName , then it creates new file.
+
+6)rm
+    removes single/multiple files
+    
+    rm "fileName1" "fileName2"
+    rm index.html app.js
+        permanently deletes the file.
+
+7)rmdir
+    removes the folder which do not have files in them.
+
+    rmdir project
+
+    to remove folder with space (test project)-
+        rmdir test\ project
