@@ -35,6 +35,6 @@ EXPOSE 80
 # keeping them around after a container was removed makes no sense.Anonymous volumes are closely attached to one specific 
 # container. Named volumes are not attached to a container.
 
-# VOLUME [ "/app/feedback" ]
+VOLUME [ "/app/feedback" ]
 
 CMD ["node", "server.js"]

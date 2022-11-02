@@ -12,22 +12,22 @@ COPY . /app
 
 EXPOSE 80
 
-# this will add annonymous volumes, here we give path in docker file system that we want to map with some path on our local file system. path in our 
-# filesystem which is mapped by this volume is not known to us, it is managed by docker. And the only way for us to get access to these volumes is 
-# with help of the Docker volume command. you can use "docker volume ls" command to show list of volume and will be shown there. 
-
-# if you use --rm flag on container then annononmous volume
-# will be removed when you stop the container(when we use rm flag it removes the container when we stop contaner), if you do not use this flag then
-# even annonymous volume will persist. more on this here - https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22181286#questions
-
-# so some path in our system is mapped with this path in container ,We just don't know which path because it's managed by Docker.I can tell you it's 
-# hidden somewhere on your computer,and it's not meant to be accessed by you. So it's hard to find out where exactly it is, but also we shouldn't 
-# access and work in that folder anyways.as we also saw that this path is hidden somewhere in your system, we are not supposed to find it and work 
-# with it.
-
-#There is use of annonymous volume where we use it saving the oeverrite of data by other volumes(see lectures 53), there annonymous volume
-# neeeds to be specified while creatng container in docker cli. specifying volume in dockerFile will not help there. 
-
-# VOLUME [ "/app/feedback" ]
-
 CMD ["npm", "start"]
+
+# for using named volume
+    # docker build -t feedback-node:volumes .
+    # docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
+
+
+# Along with bind mounts we have to use annonymous volumes. because if we do not use annoymous volume, then we have use case
+# where container filesystem has some data and bind mount is also have some data, then docker with overwrite the data in 
+# container because it cannot overwrire data in local file system.
+
+# Now to solve this problem, we kind of need to tell Docker,that there are certain parts in its internal file system, which 
+    # should not be overwritten from outside.  this can be achieved with anonymous volume. Docker always evaluates all volumes 
+    # you are setting on a container,and if there are clashes, the longer internal path wins, so here /app/nod_modules  is longer
+    # than /app. so /app/node_modules is mapped to annonymous volume and not bind mount, so it is not deleted
+
+# For bind mount
+    # docker build -t feedback-node:volumes .
+    # docker run -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2:/app" -v /app/nod_modules  feedback-node

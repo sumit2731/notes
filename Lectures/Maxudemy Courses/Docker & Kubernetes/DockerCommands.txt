@@ -104,7 +104,7 @@ commands -
                 8) -v
                     a)named volumne
                         -v nameofVolume:pathInContainerFileSystem
-                        It helps us to create a named volume and linked a local file system with path in container. named volume are not 
+                        It helps us to create a named volume and link a local file system with path in container. named volume are not 
                         destroyed when container is removed.but you cannot access the path on your local drive.
 
                         docker run -p 3000:80 -v feedback:/app/feedback feedback-node:volumes
@@ -112,11 +112,15 @@ commands -
                         -v "absolutePathInSystem:absolutePathInContainer"
                         docker run -d -p 3000:80  --rm --name feedback-app -v feedback:/app/feedback -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2/Dockerfile:/app" feedback-node
 
-                        instead of using full absolyte path we can use this -
+                        you can put path in "" so tat it does not break if you have special characters or space there.
+                        instead of using full absolute path we can use this -
 
                             macOS / Linux: -v $(pwd):/app
 
                             Windows: -v "%cd%":/app
+
+                        for using bind mount you need to make sure that docker has access to folder on your local system, it varies which os you use. refer to
+                        lecture 51 for details.
 
                     c)annonymous volume (see dockerFile of code1 in section 3)
                         -v "absolePathInDockerFileSystem"

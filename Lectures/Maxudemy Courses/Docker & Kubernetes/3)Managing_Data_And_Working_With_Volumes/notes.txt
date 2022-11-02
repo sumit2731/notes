@@ -3,6 +3,13 @@ Module content -
     b)dive into concept called volumne
     c)arguments and envirenment variables.
 
+Code -
+    Code 1 - annonymous volumes
+    Code 2 - Named Volume, Bind Mount and use of annonymous volume
+
+Important Concepts -
+    Lecture 53 - How we can use annonymous volumes to prevent overwriting of some folder in docker file system
+
 lecture 43 -
     Slide 1 shows different types of data. for permanent data, that we need to read and write. we use concept called volumnes.
     
