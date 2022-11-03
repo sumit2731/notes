@@ -23,6 +23,30 @@
     c)git checkout -b "branchName"
         creates a new branch a checkout to that branch.
 
+    d)git checkout "fileName"
+        git checkout -- fileName
+
+        used to revert unstaged chnages from tracked file. -- is optional.
+
+        explanation -
+        
+            it means revert given filename to state in which it was during last commit(HEAD) of current branch(we can specify branch also). 
+            here -- is optional it mean current barnch.
+
+            to git checkout we need to give specifci branch and specifc commit.Now, the cool thing is that the branch we refer to
+            is our current branch.Therefore, we can tell git that we don't refer to any specific branch in here by adding the two dashes.
+            This will simply mean that there is no specific branch I want to apply this checkout command to. It's just the current branch 
+            I'm working on.So you can also omit this here.
+
+            And now in this branch, I want to refer to the head(latest commit) of what? Well, of this initial-commit.txt file.
+
+    e)git checkout .
+        git checkout -- .
+        reverts the unstaged chnages from all tracked file.
+
+
+         
+
 6)git branch
     shows the branches on local.
 
@@ -30,6 +54,15 @@
         a)-r
             git branch -r
                 shows all branches on remote as well
+
+        b)-d
+            git branch -d "branch1Name" "branch2Name"
+
+            it deltes the mentioned branches only if they are merged into some other branch.
+
+        c)-D
+            git branch -D "branch1Name" "branch2Name"
+            deletes the branchName.
 
 7)git branch "branchName"
     creates a new branch with provided with name. branchName cannot have spaces
@@ -45,3 +78,53 @@
 
     b)git switch -c "BranchName"
         creates and checkout out to BranchName.
+
+
+10)git ls-files
+    It shows which files are part of staging area.
+
+11)git rm "fileName"
+    removes the file from staging area. this is required when file is added in staging area(file is part of some earlier commit) but 
+    you want to delete the file.instead of doing this you can also do - git add "fileName" or git add .
+
+    both of these update the staging area and in next commit, file is removed.
+
+12)git restore (avalible in git 2.23)
+
+    a)git restore fileName
+        same as -
+            git checkout "fileName" i.e it removes the unstage chnages from all tracked files.
+    b)git restore .
+        same as -
+            git checkout . i.e it removes the unstages from all tracked files.
+
+    flags -
+        a)staged
+            git --staged restore "filename"
+                it unstages the staged chnages from file. older way is to use - git reset "fileName"
+                older way is to use - git reset "fileName"
+
+
+13)git clean
+    flags -
+        a)-dn 
+            git clean -dn
+                This list all untracked files and directories
+
+        b)-df
+            deletes all untracked files and directories.
+
+
+14)git reset -
+    this helps us to reset the head of our branch i.e to undo the commit.
+
+    a)git reset "fileName"
+        This is used to unstage the staged chnages in file. so that later we can remove those using - git checkout "fileName"
+        copies the file state in latest commit into the staging area.
+
+    b)git reset --soft HEAD~1
+
+        flags -
+            a)soft - chnages are not made in file.Head is moved but chnages after specified commit are staged.
+            b)mix - chnages are unstaged but are not removed from file. this is default behaviour if you do not specify any flag.
+            c)hard - chnages are removed form files also.
