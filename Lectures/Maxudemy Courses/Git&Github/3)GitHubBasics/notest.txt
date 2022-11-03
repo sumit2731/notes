@@ -1,0 +1,13 @@
+Terms -
+    workin directory/tree - a folder under which all files are tracked by git.
+    repository - .git folder
+        2 areas -
+            Staging Area(index file)
+            commits(Objects folder)
+
+Options while installing git -
+
+    1)what should happen on git pull -
+        fast forward to merge
+        rebase
+        only ever fast forward

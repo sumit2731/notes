@@ -1,0 +1,47 @@
+1)git init
+
+2)git add
+    a)git add "nameOfFile"
+    b)git add .
+        adds all chnaged filed to staging area
+
+3)git commit -m "sime message"
+
+4)git log
+    shows the commit logs
+
+
+5)git checkout
+
+    a)git checkout "commitId"
+        form branch a takes you to dettach head. you can make commits here. these commits will be lost when you move back to
+        branch a. move to branch a - git checkout branch a
+
+    b)git checkout "branchName"
+        checkouts to existing branch
+
+    c)git checkout -b "branchName"
+        creates a new branch a checkout to that branch.
+
+6)git branch
+    shows the branches on local.
+
+    flag -
+        a)-r
+            git branch -r
+                shows all branches on remote as well
+
+7)git branch "branchName"
+    creates a new branch with provided with name. branchName cannot have spaces
+
+8)git merge
+    git merge "branchName"
+    merges the branchName into current branch.
+
+9)git switch (avaliable with git 2.23)
+
+    a)git switch "BranchName"
+        takes you to branch BranchName
+
+    b)git switch -c "BranchName"
+        creates and checkout out to BranchName.
