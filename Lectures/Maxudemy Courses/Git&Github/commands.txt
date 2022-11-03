@@ -65,7 +65,7 @@
             deletes the branchName.
 
 7)git branch "branchName"
-    creates a new branch with provided with name. branchName cannot have spaces
+    creates a new branch with provided with name. branchName cannot have spaces. new branch is not checkout
 
 8)git merge
     git merge "branchName"
@@ -74,7 +74,7 @@
 9)git switch (avaliable with git 2.23)
 
     a)git switch "BranchName"
-        takes you to branch BranchName
+        takes you to branch BranchName, if branchName does not exists then it creates the new branch.you wnt be moved to this branch.
 
     b)git switch -c "BranchName"
         creates and checkout out to BranchName.
@@ -112,6 +112,7 @@
                 This list all untracked files and directories
 
         b)-df
+            git clean -df
             deletes all untracked files and directories.
 
 

@@ -11,3 +11,9 @@ Options while installing git -
         fast forward to merge
         rebase
         only ever fast forward
+
+
+Things Learnt -
+    Head
+    Dettached Head
+    .gitignore file and patterns inside it.
