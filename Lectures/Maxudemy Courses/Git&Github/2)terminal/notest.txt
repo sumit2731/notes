@@ -19,7 +19,7 @@ symbols -
 2)cd -
     cd /
         takes to root directory
-    cd ~
+    cd ~ or cd
         takes to home directory
     cd /Users
         takes to users directory
@@ -40,6 +40,18 @@ symbols -
         1)space - \
              folder 1 - cd folder\ 1
 
+3)ls -
+    gives the list of files and folder in current directory.
+
+    flags -
+        a)-s
+            shows the size of files.
+        b)-l
+            gives the info in long format
+        c)combining flags -
+            ls -ls
+
+
 3)clear 
     clear the shell
 
@@ -58,6 +70,15 @@ symbols -
     rm index.html app.js
         permanently deletes the file.
 
+    flags -
+        a)-r 
+            recirsive flags it allows to remove folder with content.if folder is empty even then it can used to m=folders.
+
+            rmdir -r project.
+
+
+
+
 7)rmdir
     removes the folder which do not have files in them.
 
@@ -65,3 +86,38 @@ symbols -
 
     to remove folder with space (test project)-
         rmdir test\ project
+
+8)man
+    man commandName -> man ls
+    list all the flags for given command and explanation for flags.
+
+9)cp - copy comand
+    cp path1 path2 => copies file in path1 to path2
+    cp data/index.html copied/ => copies index.html to copied folder
+
+    only one file can be copied at a time
+
+    So if you want to refer to an existing folder,add the slash at the end of the folder name.
+
+
+
+    you cannot copy folders for that you need to use -r flag.also .
+    flags -
+        1)-r
+            r stands for reccursive, it copies the entire folder.
+
+            cp -r data copied 
+                copied folder will have data folder.
+            cp -r data/ copied 
+                copied folder will have contents of data folder, not data folder itself.
+            cp -r data/ copied/
+                same as above 
+10)mv
+    mv filePath1 filepath2 => moves file in location1 to location2.
+    mv folderpath1 folderPath2 => moves folder form one path to another.
+
+    we can move files and folder, but we cannot move contents of folder, like we saw with cp command.
+
+    So if you want to refer to an existing folder,add the slash at the end of the folder name.
+
+    using mv you can also do renaming of file => mv styles.css style.css
