@@ -1,4 +1,4 @@
-3 Main Directories directories -
+3 Main Directories-
 
     Root Directory - locations -> macintosh HD
     Users Directory - you are inside users folder.
@@ -11,108 +11,109 @@ symbols -
     ~ in terminl means home directory. 
     when you move to a folder on left hand side of terminal always shows the folder name.
 
-1)pwd - print working directory
-    /Users/susood
+commands -
 
-    here first / means we are in root directory
+    1)pwd - print working directory
+        /Users/susood
 
-2)cd -
-    cd /
-        takes to root directory
-    cd ~ or cd
-        takes to home directory
-    cd /Users
-        takes to users directory
-    cd ..
-        go one level up form current directory
-    
-    cd folder1/folder2
-    
-    cd someText - press tab
-        it will try to autocomplete based on folders in directory. if there are more than one match, it will show you options,
-            you can enter more text and then press tab.
+        here first / means we are in root directory
 
-    cd absolutePath
-        cd /Users/susood/Postman
-            takes to this path, no matter which path you are in.absolte path always starts form root
+    2)cd -
+        cd /
+            takes to root directory
+        cd ~ or cd
+            takes to home directory
+        cd /Users
+            takes to users directory
+        cd ..
+            go one level up form current directory
+        
+        cd folder1/folder2
+        
+        cd someText - press tab
+            it will try to autocomplete based on folders in directory. if there are more than one match, it will show you options,
+                you can enter more text and then press tab.
 
-    special character -
-        1)space - \
-             folder 1 - cd folder\ 1
+        cd absolutePath
+            cd /Users/susood/Postman
+                takes to this path, no matter which path you are in.absolte path always starts form root
 
-3)ls -
-    gives the list of files and folder in current directory.
+        special character -
+            1)space - \
+                whenever there is space in folder name , then you need to use escape character('\')
+                folder 1 - cd folder\ 1
 
-    flags -
-        a)-s
-            shows the size of files.
-        b)-l
-            gives the info in long format
-        c)combining flags -
-            ls -ls
+    3)ls -
+        Gives the list of files and folder in current directory.
+
+        flags -
+            a)-s
+                shows the size of files.
+            b)-l
+                gives the info in long format
+            c)combining flags -
+                ls -ls
+
+    4)clear 
+        clear the shell
+
+    5)mkdir - creates a folder
+        mkdir "foldername"
+
+    6)touch
+        touch "fileName1" "fileName2"
+        touch index.html app.js
+        it touches the files and changes the last modified date but if it cannot find the fileName , then it creates new file.
+
+    7)rm
+        removes single/multiple files
+        
+        rm "fileName1" "fileName2"
+        rm index.html app.js
+            permanently deletes the file.
+
+        flags -
+            a)-r 
+                recirsive flags it allows to remove folder with content.if folder is empty even then it can used to delete that
+                folder.
+
+                rmdir -r project.
+
+    8)rmdir
+        removes the folder which do not have files in them.
+
+        rmdir project
+
+        to remove folder with space (test project)-
+            rmdir test\ project
+
+    9)man
+        man commandName -> man ls
+        list all the flags for given command and explanation for flags.
+
+    10)cp - copy comand
+        cp path1 path2 => copies file in path1 to path2
+        cp data/index.html copied/ => copies index.html to copied folder
+
+        only one file can be copied at a time
+
+        So if you want to refer to an existing folder,add the slash at the end of the folder name.
 
 
-3)clear 
-    clear the shell
 
-4)mkdir - creates a folder
-    mkdir "foldername"
+        you cannot copy folders for that you need to use -r flag.also .
+        flags -
+            1)-r
+                r stands for reccursive, it copies the entire folder.
 
-5)touch
-    touch "fileName1" "fileName2"
-    touch index.html app.js
-    it touches the files and chnages the last modified date but if it cannot find the fileName , then it creates new file.
+                cp -r data copied 
+                    copied folder will have data folder.
+                cp -r data/ copied 
+                    copied folder will have contents of data folder, not data folder itself.
+                cp -r data/ copied/
+                    same as above 
 
-6)rm
-    removes single/multiple files
-    
-    rm "fileName1" "fileName2"
-    rm index.html app.js
-        permanently deletes the file.
-
-    flags -
-        a)-r 
-            recirsive flags it allows to remove folder with content.if folder is empty even then it can used to m=folders.
-
-            rmdir -r project.
-
-
-
-
-7)rmdir
-    removes the folder which do not have files in them.
-
-    rmdir project
-
-    to remove folder with space (test project)-
-        rmdir test\ project
-
-8)man
-    man commandName -> man ls
-    list all the flags for given command and explanation for flags.
-
-9)cp - copy comand
-    cp path1 path2 => copies file in path1 to path2
-    cp data/index.html copied/ => copies index.html to copied folder
-
-    only one file can be copied at a time
-
-    So if you want to refer to an existing folder,add the slash at the end of the folder name.
-
-
-
-    you cannot copy folders for that you need to use -r flag.also .
-    flags -
-        1)-r
-            r stands for reccursive, it copies the entire folder.
-
-            cp -r data copied 
-                copied folder will have data folder.
-            cp -r data/ copied 
-                copied folder will have contents of data folder, not data folder itself.
-            cp -r data/ copied/
-                same as above 
-10)mv
+    11)mv
     mv filePath1 filepath2 => moves file in location1 to location2.
     mv folderpath1 folderPath2 => moves folder form one path to another.
 

@@ -1,5 +1,5 @@
 Terms -
-    workin directory/tree - a folder under which all files are tracked by git.
+    working directory/tree - a folder under which all files are tracked by git.
     repository - .git folder
         2 areas -
             Staging Area(index file)
@@ -12,8 +12,21 @@ Options while installing git -
         rebase
         only ever fast forward
 
+Patterns in .gitignore file -
+
+    # pattern - ignores all files that end wiyh .log
+        *.log
+    
+    # ignore all .log file but do not ignore this one
+        !test.log
+    
+    # Ignore all files and folder inside this web-app
+        web-app/*
 
 Things Learnt -
-    Head
-    Dettached Head
+    
+    Head - This is latest commit in branch.
+    
+    Deattached Head - When we move to a commit.
+    
     .gitignore file and patterns inside it.

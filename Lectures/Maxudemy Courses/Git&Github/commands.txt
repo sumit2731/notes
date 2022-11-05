@@ -5,17 +5,29 @@
     b)git add .
         adds all chnaged filed to staging area
 
-3)git commit -m "sime message"
+3)git commit -m "some message"
 
 4)git log
-    shows the commit logs
+    shows the commit logs with commit message, data and commit id.
 
 
 5)git checkout
 
     a)git checkout "commitId"
-        form branch a takes you to dettach head. you can make commits here. these commits will be lost when you move back to
-        branch a. move to branch a - git checkout branch a
+        
+        from branch A, takes you to dettach head. you can make commits here. these commits will be lost when you move back to
+        branch A. move to branch A - git checkout branch a. 
+        
+        what if you want to merge changes made here in master? for that you need to commit your chnages in detacched state and 
+            create the branch with those commits and then merge that branch back to master.there 2 ways of creating the branch -
+
+            a)before moving to branch A -
+                in Deattached state run - git checkout -B branch1. you will create new branch and move to that branch.
+            
+            b)after moving to branch A, you will see message, that you can create new branch that will have commit that you had
+                in detacched state. command - 
+
+                git branch "branchName" "commitId"
 
     b)git checkout "branchName"
         checkouts to existing branch
@@ -45,8 +57,6 @@
         reverts the unstaged chnages from all tracked file.
 
 
-         
-
 6)git branch
     shows the branches on local.
 
@@ -64,33 +74,56 @@
             git branch -D "branch1Name" "branch2Name"
             deletes the branchName.
 
-7)git branch "branchName"
-    creates a new branch with provided with name. branchName cannot have spaces. new branch is not checkout
+    b)git branch "branchName"
+        creates a new branch with provided with name. branchName cannot have spaces. new branch is not checked out
 
-8)git merge
+7)git merge
     git merge "branchName"
-    merges the branchName into current branch.
+    merges the branchName into current branch. If there are no additionals commits in master branch then srategy used in fast forward.
 
-9)git switch (avaliable with git 2.23)
+    before merge -
+        master -> m1 -> m2
+        feature -> m1 -> m2 ->f1 ->f2
 
+    after (git merge feature)
+
+        master ->  m1 -> m2 ->f1 ->f2
+
+    flags -
+        a)--squash - 
+            git merge --squash feature
+                merges all commits in feature branch and applies them in master branch. no new commit is added in master as all chnages are 
+                unstaged, you can stage chnages and add your own commit.
+
+                    before merge -
+                        master -> m1 -> m2
+                        feature -> m1 -> m2 ->f1 ->f2
+
+                    after (git merge feature)
+
+                        master ->  m1 -> m2 ->custom_commit
+
+8)git switch (avaliable with git 2.23)
+    
+    This command is alternative to switching and creating branches by using git checkout.
+    
     a)git switch "BranchName"
         takes you to branch BranchName, if branchName does not exists then it creates the new branch.you wnt be moved to this branch.
 
     b)git switch -c "BranchName"
         creates and checkout out to BranchName.
 
-
-10)git ls-files
+9)git ls-files
     It shows which files are part of staging area.
 
-11)git rm "fileName"
-    removes the file from staging area. this is required when file is added in staging area(file is part of some earlier commit) but 
-    you want to delete the file.instead of doing this you can also do - git add "fileName" or git add .
+10)git rm "fileName"
+    Removes the file from staging area. this is required when file is added in staging area(file is part of some earlier commit)
+    but you want to delete the file.instead of doing this you can also do - git add "fileName" or git add .
 
     both of these update the staging area and in next commit, file is removed.
 
-12)git restore (avalible in git 2.23)
-
+11)git restore (avalible in git 2.23)
+    This is alternate of using git checkout on files.
     a)git restore fileName
         same as -
             git checkout "fileName" i.e it removes the unstage chnages from all tracked files.
@@ -105,7 +138,7 @@
                 older way is to use - git reset "fileName"
 
 
-13)git clean
+12)git clean
     flags -
         a)-dn 
             git clean -dn
@@ -116,7 +149,7 @@
             deletes all untracked files and directories.
 
 
-14)git reset -
+13)git reset -
     this helps us to reset the head of our branch i.e to undo the commit.
 
     a)git reset "fileName"
@@ -129,3 +162,67 @@
             a)soft - chnages are not made in file.Head is moved but chnages after specified commit are staged.
             b)mix - chnages are unstaged but are not removed from file. this is default behaviour if you do not specify any flag.
             c)hard - chnages are removed form files also.
+
+
+14)git stash
+
+    a)git stash
+        Stash the changes and gives a random name to stash.
+        
+        a)changes in existing files - It saves both staged and unstaged chnages. After applying the stash, files will be in staged or
+            unstaged state depending upon their state before stashing the changes.
+        
+        b)new files -
+            unstaged new file - In this case on staging new file is not removed.
+            stage file - new file is also stashed and on appying the stash new file will be in staged state.
+    
+    b)git stash push -m "customMessage"
+        It creates the stash and gives it custom message. this message will be avalaible when we see all stasheses using 
+        "git stash list".
+    
+    c)git stash list
+        shows the avalible stashes in repo along with index number. latest stash has index of 0.index can be used to decide which stash we 
+            want to use. 
+
+    d)git stash apply
+        it aplies the latest stash,but stash is not removed. we can also provide indexs for stash, in case multiple stashes
+        are avalible.
+
+        git stash apply 0
+        git stash apply 1
+    
+    e)git stash pop "indexNumber"
+        applies the stash and also removes the stash.
+
+
+    f)git stash drop "indexNumber"
+        It deletes the stash with given index.
+
+    g)git stash clear
+        deletes all stashes
+
+
+15)git reflog - The reflog is an ordered list of the commits that HEAD has pointed to: it's undo history for your repo. The reflog isn't part
+ of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones; it's purely local.
+    Aside: understanding the reflog means you can't really lose data from your repo once it's been committed. If you accidentally reset to 
+    an older commit, or rebase wrongly, or any other operation that visually "removes" commits, you can use the reflog to see where you were
+    before and git reset --hard back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history 
+    behind it.
+
+    Reflog shows data o last 30 days.
+
+    a)restoring a deleted commit -
+        lets say we made newCommit, later we deleted thiss commit and wen vack to some earlier commit by using git reset --hard "olderCommitId".
+        now run - git reflog, and copy the commit id of your new commit and run -
+
+            git reset --hard "commitId"
+
+    b)restoring the deleted branch - lets say you you are in branchA, here you have made commit1. now you moved to new other branch and deleted
+        the branchA. run git reflog, from get the last commitId(HEAD) of branchA. now do -
+            git checkout "commitId"
+        now you will be detached state, form here you can create a new branch and you will get chnages of branchA.
+
+
+
+
+    

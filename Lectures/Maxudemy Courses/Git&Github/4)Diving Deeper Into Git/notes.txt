@@ -1,0 +1,23 @@
+Topics -
+    git stash
+    git reflog
+    merge types in git -
+        fast forward merge -
+            see slide 33. for fast-forward merge master should not have any additional merge.if master is not having any additional commit,
+            on merging command -
+                git merge feature
+            git applies fastforward merge, it means it moves head to f2 commit without creating any additional commit.
+            
+            master -> m1 -> m2
+            feature -> m1 -> m2 ->f1 ->f2
+
+            on merging feature into master -
+
+                master ->  m1 -> m2 ->f1 ->f2
+
+
+        non-fast forward merge
+            recursive (we will cover this)
+            octopus
+            ours
+            subtree
