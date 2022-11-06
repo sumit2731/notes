@@ -79,21 +79,42 @@
 
 7)git merge
     git merge "branchName"
-    merges the branchName into current branch. If there are no additionals commits in master branch then srategy used in fast forward.
 
-    before merge -
-        master -> m1 -> m2
-        feature -> m1 -> m2 ->f1 ->f2
+    merging strategy used is displayed in logs that come after running merge command.
 
-    after (git merge feature)
+    case 1 - No new commits in master, only feature has new commits
+        By default uses the fast forward staregy. this strategy can be used only if there are no commits in 
+        master.merges the branchName into current branch. 
 
-        master ->  m1 -> m2 ->f1 ->f2
+        before merge -
+            master -> m1 -> m2
+            feature -> m1 -> m2 ->f1 ->f2
+
+        after (git merge feature)
+
+            master ->  m1 -> m2 ->f1 ->f2
+
+    Case 2 - Changes are in both master and feature branch.
+
+        before merge -
+            master  -> m1 -> m2 -> m3
+            feature -> m1 -> m2 ->f1 ->f2
+
+            Note timeline of commits -
+
+            m1 -> m2 -> f1 -> f2 -> m3
+
+        after merge -
+            master ->  m1 -> m2 -> -> f1 ->f2 -> m3 ->  "Merge branch 'feature' "
 
     flags -
         a)--squash - 
+
             git merge --squash feature
+                when used with fast-forward strategy -
+                
                 merges all commits in feature branch and applies them in master branch. no new commit is added in master as all chnages are 
-                unstaged, you can stage chnages and add your own commit.
+                unstaged state , you can stage chnages and add your own commit.
 
                     before merge -
                         master -> m1 -> m2
@@ -101,7 +122,42 @@
 
                     after (git merge feature)
 
-                        master ->  m1 -> m2 ->custom_commit
+                        master ->  m1 -> m2 -> custom_commit
+
+
+        b)--no-ff
+            git merge --no-ff feature
+
+            merge is done during recursive staretgy.
+
+            a)when master is not having extra commits but feature branch is having some extra commits i.e base
+                is same for both -
+
+                    Before merge -
+                        master -> m1 -> m2
+                        feature -> m1 -> m2 ->f1 ->f2
+
+                    After (git merge feature)
+
+                        master ->  m1 -> m2 -> - >f1 -> f2 ->custom_commit
+
+                lets say after merge you wanted to go revert merge, from git logs you can think that you need to go to
+                HEAD~3. but if you run it you get the this message -
+
+                git reset --hard HEAD~3
+                fatal: ambiguous argument 'HEAD~3': unknown revision or path not in the working tree.
+                Use '--' to separate paths from revisions, like this:
+                'git <command> [<revision>...] -- [<file>...]'
+
+                In order to revert merge you need to go to HEAD~1 as last commit is merge commit, so you only
+                need to get back one step. however you can also go to induival commit using reset commnad and commit
+                id, that will work. how this works is last commit will include all changes that are present in induival
+                commits of branch 1.
+
+            b)when there are additional commits in master as well as feature i.e base is different.
+
+                typically, the recursive merge occurs if you have changes in the feature branch,
+
 
 8)git switch (avaliable with git 2.23)
     
