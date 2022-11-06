@@ -1,7 +1,7 @@
 Topics -
     git stash
     git reflog
-    merge types in git -
+    merge types in git - see git merge command in commands.txt file, here you will get details.
         fast forward merge -
             see slide 33. for fast-forward merge master should not have any additional merge.if master is not having any additional commit,
             on merging command -
@@ -21,3 +21,5 @@ Topics -
             octopus
             ours
             subtree
+
+    rebasing
