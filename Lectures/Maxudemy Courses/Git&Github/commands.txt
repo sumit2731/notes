@@ -10,6 +10,12 @@
 4)git log
     shows the commit logs with commit message, data and commit id.
 
+    flags -
+
+        a)--merge -
+            git log --merge
+                logs the commits that we are trying to merge.
+
 
 5)git checkout
 
@@ -213,6 +219,10 @@
         c)-s
             we can specify the strtegy while merging.
 
+        d)--abort
+            In case you run git merge and then see conflits, you can abort the merge using this flag -
+                git merge --abort
+
 8)git switch (avaliable with git 2.23)
     
     This command is alternative to switching and creating branches by using git checkout.
@@ -332,7 +342,27 @@
             git checkout "commitId"
         now you will be detached state, form here you can create a new branch and you will get chnages of branchA.
 
+16)git rebase "branchName"
+    before rebase(see figure 9) -
+        master -    m1 -> m2 -> m3
+        feature -   m1 -> m2 -> f1 -> f2
+
+    after git rebase master(see fegure 10) -
+        
+        master -    m1 -> m2 -> m3
+        feature -   m1 -> m2 -> m3-> f1 -> f2
+
+        this to be noted here is f1 and f2, nw commits are created after rebase commit message is same but commit id is 
+        changed.
+
+    see slide 35,36,37 for details
+    now you can merge feature into master using merge command. you combined rebase and merge.
 
 
+17)git diff
+    In case of conflicts shows the diffrenecs in console.
 
+    see figure 11, this is intial state of branchs.
+    after doing git merge, we got conflicts, we resolved them and had a custom commit added in master, figure 12 shows
+    state of branches after this merge.
     

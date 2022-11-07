@@ -22,4 +22,4 @@ Topics -
             ours
             subtree
 
-    rebasing
+    git rebase
