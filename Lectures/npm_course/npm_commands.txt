@@ -1,0 +1,40 @@
+1)npm install
+    installs npm package.
+    params -
+
+        a)npm install package@version
+
+            It will install exact version in project. in package.json entry be with ^. but in package.lock.json
+            exact version will be there. 
+    flags -
+
+        a)--save-exact
+            npm install "packageName@version" --save-exact
+
+            npm install react@16.1.0 --save-exact
+
+                In packge.json exact this version of package will be added. if we do not add this then
+                "^" will be added.
+
+
+1)npm view "packageName"
+    shows the packaegInfo
+
+    params -
+
+        a)npm view "packageName" version
+            gives the list of all versions of given package
+
+2)npm update
+    this updates all packages listed in package.json, according to version constraint mentioned in 
+    package.json.
+        
+        a)package.json - here version will not chnage.In earlier versions of npm it was changed but now in 
+            later versions,it is not chnaged.
+        b)package-lock.json - here version will updated if some new veersion is avaliblee that satisfies
+            version constraint mentioned in package.json
+        c)node_modules folder
+
+    params -
+        a)npm update "packageName"
+            performs the specified actions only on mentioned package
