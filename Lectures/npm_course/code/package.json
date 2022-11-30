@@ -4,13 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "node ./src/prestart.js",
+    "start": "node ./src/myScript.js",
+    "custom1": "echo \"that's custom script\"",
+    "custom2": "node ./src/customScript.js",
+    "all": "npm-run-all --parallel start custom1 custom2"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "jquery": "^3.1.0",
     "react": "18.0.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

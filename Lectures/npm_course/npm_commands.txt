@@ -16,6 +16,9 @@
                 In packge.json exact this version of package will be added. if we do not add this then
                 "^" will be added.
 
+        b)-D
+            npm install -D "packageName"
+
 
 1)npm view "packageName"
     shows the packaegInfo

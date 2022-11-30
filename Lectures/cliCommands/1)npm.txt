@@ -1,17 +1,78 @@
 npm comands -
 
     1)npm init -y = create package.json file with all default options
+
+    2)npm root -g
+        Shows global node_modules directory.The “global node_modules” directory is a special directory where all modules installed with
+        npm install -g are stored.
+
+
+    3) npm prefix -g
+    gives global prefix
+    
+     Packages are installed at <prefix>/lib/node_modules.
+
     
     2)npm pack- To publish our library, we did this -
         generated build using "ng build" command of angular cli. then we generated single .tgz
         using this comamnd.
     
-    3)npm isntall-
+    3)npm install-
 
-        to install apckage from .tgz file-
+        to install a package from .tgz file-
 
-        npm install ../example-ng6-lib/dist/example-ng6-lib/example-ng6-lib-0.0.1.tgz
+            npm install ../example-ng6-lib/dist/example-ng6-lib/example-ng6-lib-0.0.1.tgz
+
+        to install a package form local file system -
+
+            npm install ../my-package
+
+            entry in package.json -
+
+             "MyPackage": "file:../my-package",
+
+        flags -
+
+
+            a)--package-lock-only
+                npm install --package-lock-only
+                
+                It will determine versions of packages to install using package.json, and then create a package-lock.json file with its
+                 resolved versions if none exists, or overwrite an existing one.
+
+                Significantly, it does not actually install anything, which is what distinguishes it from regular npm install (or the 
+                aliased npm i).
+
 
     4)npm publish - publishes yur package on npm.
 
         npm publish "path to .tgz file"
+
+    5)npm dedupe
+        Searches the local package tree and attempts to simplify the overall structure by moving dependencies further up the tree, 
+        where they can be more effectively shared by multiple dependent packages.
+
+        Note that this operation transforms the dependency tree, but will never result in new modules being installed.
+        
+        https://medium.com/learnwithrahul/understanding-npm-dependency-resolution-84a24180901b
+        https://docs.npmjs.com/cli/v8/commands/npm-dedupe
+
+    6)npm find-dupes
+
+    7)npm ls
+        shows the dependecy tree.
+
+        arguments -
+
+            a)"packageName" - npm ls "packageName" => npm package webpack
+                shows the dependecy trre for mentioned package. shows which pakage installed it.
+
+        Flags -
+            a)--depth=<n> 
+            b)--all
+
+
+    8)npm link 
+        https://medium.com/@alexishevia/the-magic-behind-npm-link-d94dcb3a81af
+
+    

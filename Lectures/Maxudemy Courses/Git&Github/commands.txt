@@ -366,3 +366,6 @@
     after doing git merge, we got conflicts, we resolved them and had a custom commit added in master, figure 12 shows
     state of branches after this merge.
     
+
+1)see output of git diff when there are more than 1  commits in both branches.
+2)try to chnage merging strategy while chnaging before having commits.

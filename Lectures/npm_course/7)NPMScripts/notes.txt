@@ -1,0 +1,45 @@
+default npm scripts -
+
+    built-in scripts -
+
+        a)start - by default will try to execute server.js.
+        b)stop
+        c)restart
+        d)test
+        e)prestart
+        f)poststart
+
+then we saw working of colors package. how there 2 methods of using it -
+
+    var colors = require('colors');
+    var colors = require('colors/safe');
+
+
+    we saw which file is executed when we require uisng above 2 methods.
+
+executing scripts in parallel using npm package  - 
+    npm-run-all
+
+role of .bin folder in node_modules
+.bin field in package.json
+
+Shebang line in executable scripts - 
+    #!/usr/bin/env node
+
+    in unix OS -
+
+        shebang - determines which interpreter should be used for file execution on unix-like operating system.
+        files in .bin folder have no extension,That's why a computer doesn't know how to execute those files.
+        That's why this special Shiban line is used on Unix like systems to give instructions to your computer
+        to how to launch certain file.
+
+        You also noticed that each file in the folder is just plain text file, and to make it executable on Unix like 
+        systems, we need to add this line at the very top.So this line must be the first line in executable file.
+
+        what does this command do, it uses env executable to launch certain interpreter, in this cse - node. node must
+        br in your path. so we launch node interpreter and inside node interpreter we execute the contents given executable
+        file.
+
+    In windows -
+
+        

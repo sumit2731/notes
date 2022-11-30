@@ -1,0 +1,5 @@
+1)main - This refers to a file. this file is executed when a require a module.
+2).bin - this contains key-value pair.when a package is installed,if bon field has value then -
+
+    new files are created in .bin folder of node_modules.name of these files are keys. 
+    value of key value pair is relative path of file whose contents will be copied intothis newly created files.
