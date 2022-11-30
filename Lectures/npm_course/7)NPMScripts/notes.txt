@@ -37,9 +37,16 @@ Shebang line in executable scripts -
         systems, we need to add this line at the very top.So this line must be the first line in executable file.
 
         what does this command do, it uses env executable to launch certain interpreter, in this cse - node. node must
-        br in your path. so we launch node interpreter and inside node interpreter we execute the contents given executable
+        be in your path. so we launch node interpreter and inside node interpreter we execute the contents given executable
         file.
 
+        if we run this - /usr/bin/env node on terminal then we enter into node console, where we can execute any js code.
+        this comamnd uses env executable to launch certain interpreter in this case node, and node must be in your path.
+
+
     In windows -
+        In windows file must have a extension to know which application will be used to execute it. if you open .bin folder
+        in node-modules in windows, then you will find that it contains 2 files with same name, one without extension and one
+        with .cmd extension. inside .cmd file it is using node to execute js files.
 
         
