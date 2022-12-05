@@ -1,0 +1,27 @@
+1)aria-labelledby
+
+    <>
+        <label id="field">Field</label>
+        <input aria-labelledby="field" />
+    </>
+
+    testCase -
+
+        expect(getByLabelText('Field'))
+
+2)aria-label
+
+    <div
+      aria-label="label"
+    />
+
+    testCase -
+
+        test('should return element based on its aria-label', () => {
+            const { getByLabelText } = render(<div aria-label="label" />);
+            expect(getByLabelText('label')).toMatchInlineSnapshot(`
+                <div
+                    aria-label="label"
+                />
+            `);
+        });

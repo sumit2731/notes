@@ -1,3 +1,10 @@
 1)mouseOut vs mouseLeave
     onMouseLeave event does not bubble
     mouseOut - anytime the mouse cursor leaves a decendant of that element, the event would trigger
+
+
+2)focus vs focusin
+    both are called when element gets focus. focus event does not bubble but focusin does.
+
+2)blur vs focusout
+    both are called when element loses focus. blur event does not bubble but focusout does
