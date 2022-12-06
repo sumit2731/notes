@@ -51,7 +51,8 @@ CMD ["npm", "start"]
     # with more specififc path, now are are able to write in temp folder also.
     
     # docker run 
-        # -v feedback:/app/feedback 
+        # -v feedback:/app/feedback (named volume so that this folder is not deleted even when container stops)
         # -v "/Users/susood/Desktop/notes/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/3)Managing_Data_And_Working_With_Volumes/code2:/app:ro"
-        # -v /app/temp
-        # -v /app/nod_modules  feedback-node
+        # -v /app/temp (annonymous volume to prevent the deletion)
+        # -v /app/nod_modules  (annonomous volume to prevent deletion of node_modules by overwriting form bind mount)
+        # feedback-node

@@ -19,7 +19,8 @@ a)Volumes & Bind Mounts -
             a)we can tell Docker that there are certain parts in its internal file system, which should not be overwritten
                 from outside, in case where both bind mount and docker have data. see lecture 53, slide 5.this lectures also
                 explains how docker handles clashes between different volumes i.e when diffrent bindmounts and volumes point
-                to same path inside docker.more specifci path wins.
+                to same path inside docker.more specifci path wins.In order to do this overwrite we need to define annonymous\
+                volume via cmd.
 
             b)anonymous volumes also still create a counterpart, a folder, on your host machine.Of course that's removed when the 
             container's removed,but that exists as long as the container is running.And that of course means that docker doesn't have
@@ -68,10 +69,20 @@ a)Volumes & Bind Mounts -
 
 b)using nodemon to restart server when js files chnages. lecture - 54.
 
+c)readonly volums - we can make the volume(bind mount) as read only for container, so that container cannot change anything. this can be
+    done by -
+
+    -v $(pwd):/app:ro
+
+
+d)volumes commands - see volume commands in docker command.txt
+
+e)copy vs bind mount - ca we remove copy command in docker config , since now we are using bind mount? in dev env yes but in prod 
+    env we cannot use bind mounts.
 
 Code -
     Code 1 - annonymous volumes
-    Code 2 - Named Volume, Bind Mount and use of annonymous volume
+    Code 2 - Named Volume, Bind Mount,use of annonymous volume, readonly volume, dockerignore file.
 
 Important Concepts -
     Lecture 53 - How we can use annonymous volumes to prevent overwriting of some folder in docker file system
