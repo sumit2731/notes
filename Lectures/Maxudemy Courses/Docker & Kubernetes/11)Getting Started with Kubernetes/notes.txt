@@ -42,6 +42,20 @@ worker node - lecture 175(slide 10). important terms -
 
 master node - lecture 176(slide 12) -
 
+    API Server - counter part of kubectl on worker node
+    scheduler - selects nodes on which new pods should be created either because of scaling or some pod went down
+    kube-controller manager - watches and controls worker nodes overall.sees if correct no of pods up and running.
+        works closely with scheduler and API Server.
+    cloud controller manager -specific version of kube-controller manager,which is doing the same thing,but this is 
+        cloud-provider specific.And this actually knows how to tell that cloud provider,for example AWS or Microsoft
+        Azure, what to do.So this cloud-controller manager basically just translates instructions to AWS or Azure or
+        whatever you're using.
+
+
+    The big cloud providers, which you are very likely to use in reality anyways, already got services which take all 
+    that away from you and where you therefore just needs to provide your kubernetes configuration and they do all the
+    heavy lifting.
+
 
 important terms and concepts -lecture 178 (slide 14) -
 
