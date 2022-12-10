@@ -1,3 +1,17 @@
+Highlights -
+    1)setup cluster on local system with kind.
+    2)understanding diffrent kubernetes object -
+        pods
+        deployments
+        services
+    3)deploying container into cluster setup in step 1. By sending instructions to cluster via kubectl. 
+    4)how to expose your conatiners to outisde world with service object.(when cluster is in cloud as well as local)
+    5)default bahviour of kubernetes(using imperative approach) is to restarted the pod when continer failed.
+    6)manual scaling when auto scaling is disbaled
+    7)updating the image used in running deployment.
+
+
+
 181)What kubernetes does not manage infrstaructure for you (slide1)
 
     you have to setup master and worker node and then install sofwares like Kubernetes API server,the kubelets and all
@@ -76,75 +90,58 @@
 
     important - A deployment manages one type of pod(pod with 2 containers). for different types of pods we ned to create multiple pods.
 
-187)deployment Object
-187)A First Deployment
-    here we wanted to deploy code1 in kubernetes cluster.
-    1)create docker image -
-        docker build -t kub-first-app
+187)First Deployment using imperative approach
+    folder - code1.
 
-    2)start kubernetes cluster , if it is not already running -
-        minikube status (checks status)
-        minikube start (starts cluster, needed if cluster is not running)
+    Steps -
+        1)create image -
+            docker build -t kub-first-app:1.0.0 .
+        2)start the cluster - 
+            kind create cluster
 
-    3)we can now send our image or send the instruction to create a deployment to that cluster.we use kubectl command to create deployment
-        object. with create command object is automatically created and sent to cluster. so we use kubectl create command to create 
-        deployment object, this is imperative way of creating the objects.
+            check the status of cluster -
+                kind get clusters
 
-        kubectl create typeofObject nameOfObject --image=nameOfImageUsedByContainerOfPodCreatedByThisDeployment
-        kubectl create deployment first-app --image="kub-first-app"
+                kubectl cluster-info --context kind-kind
+        3)make your image avalible inside cluster created by kind -
+            kind load docker-image "nameOfImage"  => kind load docker-image kub-first-app:1.0.0  
 
-        you will not get error here but this will not check. lets check how many deployment are in lcuster to which we are connected -
+        4)create and send the deployment object to cluster -
+            (this is imperative way of creating objects) -
+            kubectl create deployment first-app --image=kub-first-app:1.0.0
 
-            kubectl get deployments
+        5)we can check the deployment and pods by using -
 
-        By the way, kubectl was configured by minikube automatically connect to minikube so we don't need to tell the command that we
-        wanna interact with minikube here. we see we have 1 deploymet of which 0 is ready.this means 1 deployment failed. letse see 
-        status of pods-
+            kuctl get deployments
+            kuctl get pods
 
-            kubectl get pods.
 
-        here we see that 0 of 1 pods are ready. and we can also see the error- ImagePull error. reason for this is cluster is in 
-        virtual machine and image exist in local machine. so we need to pull image form docker hub. 
-        
-        so lets delete this dpeloyment -
+    So our container is running now inside cluster created by kind. but as of now we cannot reach it.
 
-            kubectl delete deployment first-app
 
-        In course we pushed image on docker hub and fetched the resources form there, but on office lapop it was not wrking. still
-        i was getting error in puling image. so i used this approach -
-            https://minikube.sigs.k8s.io/docs/handbook/pushing/
-             i used this way -
-
-                minikube cache add kub-first-app
-
-        now run -
-
-            kubectl create deployment first-app --image=kub-first-app
-
-    4) see the staus of deployments and pods -
-        kubectl get deployments
-        kubectrl get pods
-        
 188)kubectl:behind the scenes
+    see slide 7 explain what happened when ran the commands in last lecture
 
-    see slide 7.
-    Now on that Worker Node,we got this kubelet service,which I also mentioned in the last course section,
-    which now manages the Pod here,starts the Container in the Pod and basically also monitors this Pod and checks its health.
-
-189)Service Object
+189)Service Object(slide 6)
     To reach a pod and the container running in a pod,we need a service.Because a service object is another object Kubernetes knows,
-    which is responsible for exposing pods to other pods in the cluster, or very important to us here to visitors outside of the
-    cluster.So to the entire world.
+        which is responsible for exposing pods to other pods in the cluster, or very important to us here to visitors outside of the
+        cluster.
 
-    Now service, groups pods together and gives them a shared address a shared IP address.And this address then won't change.
-    So you can use a service to move multiple pods into that service and make them reachable on that service unchangeable IP 
-    address.And even better than that,you can also tell the service to expose this address which doesn't change not just inside
-    of the cluster,which you also can do,but also outside of the cluster.
+    Problem with reaching pod via IP address -
 
-    The default is that it's internal only but with a service, we can overwrite this.So without services, pods are very hard to reach
+        1)this IP cannot be used outsoide of cluster.
+        2)even within the cluster, when pod goes down and kubernetes brings it up again, this IP changes.
+
+
+    Service, groups pods together and gives them a shared address a shared IP address.And this address then won't change.
+    So you can use a service to move multiple pods into that service and make them reachable on that service unchangeable IP address.
+    And even better than that,you can also tell the service to expose this address which doesn't change not just inside of the cluster,
+    which you also can do,but also outside of the cluster.
+
+
 
 190)Exposing a deployment with a Service
-    we created the service using -
+    we can createdthe service using - kubectl create
 
         kubectl expose deployment first-app --type=LoadBalancer --port=8080
 
@@ -161,9 +158,10 @@
     the service by basically mapping a special port to an IP which we can reach from our local machine,and which identifies this virtual
     machine running on our local machine.
 
-        minikube service "nameOfService" => minikube service first-app
+        minikube service "nameOfService" => minikube service first-app (no equivalent possible for kind)
 
     this  shows the service name and ip that will be opened automatically in browser, here you can see your running application.
+
 191)restarting the continers
     Here we saw that containers are restarted automatically when some error occurs in our code.This the behaviour we get when we crate a 
     deployment. we can see how many times a pod has 
@@ -176,7 +174,8 @@
     here we ran this command - 
         kubectl scale deployment/first-app --replicas=3
 
-    it will create new replicas or instances of pod.since we have load balancer.at last we again chnaged replicas to 1
+    it will create new replicas or instances of pod.and now load balancer will direct traffic to diffrent pods.we verified it by,
+    crashing the server, still we were able to see the page because because was going to another pod.
 
 193)Updating the deployment
     1)chnage code.
@@ -184,7 +183,7 @@
     3)upload image on docker-hub.
     4)run this command -
 
-        kubectl set image deployment/"name of deployment" containerName="image name"
+        kubectl set image deployment/"name of deployment" containerName="image name"   (container name is same as image name with which i was started)
 
         kubectl set image deployment/first-app kub-first-app=kub-first-app
 
@@ -219,7 +218,7 @@
 
     at the bottom you can see contianer name and image name on which that container is based off of.
 
-
+----
 194)Deployment Rollbacks & History
 
     here we tried to use a image that does not exist - 

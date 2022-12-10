@@ -19,7 +19,7 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
         minikube delete --all -
             deletes all minibute clusters
 
-        minikube service "nameOfService"
+        minikube service "nameOfService" (lecture 190)
             this will give us access to the service by basically mapping a special port to an IP which we can reach from our local 
             machine,and which identifies this virtual machine running on our local machine. so we can reach the servivce via this IUP.
 kind -
@@ -35,7 +35,15 @@ kind -
             In order to interact with a specific cluster, you only need to specify the cluster name as a context in kubectl:
             
                 kubectl cluster-info --context kind-kind
+    2)kind get clusters
+        returns the clusters running.
 
+    3)kind load docker-image "image1" "image2"
+        makes images avalible into cluster
+
+        flags -
+            a)--name - If using a named cluster you will need to specify the name of the cluster you wish to load the images into: 
+                kind load docker-image my-custom-image-0 my-custom-image-1 --name kind-2
 
 kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
     node.
@@ -44,6 +52,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
         brew install kubectl
 
     commands -
+        1)kubectl cluster-info --context kind-kind
+            returns the info about cluster. context is name of cluster created by kind.
         1)kubectl create "objectName" "nameOfObject"
             It creates the mentioned object and sends it to cluster.
             kubectl create - you will get help with types of objects that you can create
@@ -67,18 +77,15 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
             exposes the pod,created by a deployment by creating a service.
 
             kubectl expose deployment first-app
-                a)--port = port that will be exposed
+                a)--port = port that will be exposed (lecture 190)
 
-                b)--type = type of service that we want to create, diffrent types are -
+                b)--type = type of service that we want to create, diffrent types are - (lecture 190)
                 
-                    a)ClusterIP - default type. This is means it will only be reachable from inside the cluster.Still, we will then at 
+                    a)ClusterIP - default type. This means it will only be reachable from inside the cluster.Still, we will then at 
                         least get an address which doesn't change.
 
                     b)NodePort - which actually means this deployment should be exposed with help off the IP address of the worker node
-                        on which it's running.this then will be accesssible form outside.LoadBalancer utilizes a LoadBalancer which has 
-                        to exist in the infrastructure on which our cluster runs.And then this LoadBalancer will actually generate
-                        a unique address for this service. LoadBalancer, this type hereis only available if your cluster and the 
-                        infrastructure on which the cluster runs supports it.
+                        on which it's running.this then will be accesssible form outside.
 
                     c)LoadBalancer -Now LoadBalancer utilizes a LoadBalancer which has to exist in the infrastructure on which our cluster
                         runs.And then this LoadBalancer will actually generate a unique address for this service.it will also evenly 
@@ -104,7 +111,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
 
                 kubectl rollout status deployment/"name of deployment"
 
-                output - prints the sttaus of rollout
+                output - prints the sttaus of rollout. this to check whether last deployment or uopdate to last deployment was successful 
+                or not.
 
             b)to see rollout hostory -
 
