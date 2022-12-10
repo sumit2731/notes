@@ -1,85 +1,82 @@
-181)Kubernetes in Action - Diving into Core concepts
-    ways to create infrastruture for kubernetes -
-        
-        a)kubermatic - built for kubernetes but not part of it
-        
-        b)elastic kubrnetes service (EKS) - That is a service which will allow you to bring your own Kubernetes configuration so that you
-        don't have to use the AWS specific configuration as you did have to use with ECS but EKS. So this Elastic Kubernetes Service will
-        then also set up all the resources neededby your Kubernetes configuration.
+181)What kubernetes does not manage infrstaructure for you (slide1)
+
+    you have to setup master and worker node and then install sofwares like Kubernetes API server,the kubelets and all
+    these different services.after all this is setup, then kubernetes will manage pods for you. it will help with
+    scaling,distributing pods across worker node, restarting pod when other pod goes down.
+
+    tools like kubermatic can help you with infrastructure creation, buit it is not part of kubernets.kubermatic helps you
+    to create instance(which will later become master and node) on cloud provider lets say for example on aws.
+
+    In addition, certain cloud providers like again,AWS do have dedicated services like in AWS,EKS, Elastic Kubernetes 
+    Service which actually helps you with that as well.That is a service which will allow you to bring your own 
+    Kubernetes configuration so that you don't have to use the AWS specific configuration as you did have to use with ECS.
+    Elastic Kubernetes Service will then also set up all the resources needed by your Kubernetes configuration.
+
+    wo this is tools like EKS and kubermatic that can help you to complete right side of picture.
 
 
-182)Kubenetes: Required Setup and installiyion steps
+182)Kubernetes: Required Setup & Installation Steps (slide 2)
 
-    refer slide 2
-
-    things we need to get started -
-
-        1)Cluster - Master and Worker Node, all softwares and services installed on them.
-        
-        2)kubectl or kube-control tool - we need another tool locally on our machine and that's the kubectl or kube-control tool. The 
-            kubectl tool is actually a tool which you then use to send instructions to the cluster for example, to create a new deployment,
-            delete a deployment or change our running deployment. kebectl sends instructions to master node, which in turn sends 
-            instruction to slave node.
+    kubectl - using this we send instructions to master node, like increase the number of pods. this how we set or chnage the 
+    configuration that needs to be maintained by kubernetes.this is tool that needs to be installed on our machine.
 
 
-    Mincube -
-        And for setting up this dummy cluster locally we can use a tool called minikube. Minikube is in the end a tool which you can 
-        install locally for playing around with Kubernetes and for testing it and it will use a virtual machine on your laptop on your
-        machine, on your local machine to create the cluster in there.So it simulates another machine on your machine by using such a
-        virtual machine and the this virtual machine then holds this cluster.
-
-
-        It will actually create a single node cluster which means there the worker and master node is combined into one single virtual 
-        machine, this is not someting we do in deployment bit here it is fine.
+    Minikube - this helps us to setup the cluster the local machine.Minikube is in the end a tool which you can install locally
+    for playing around with Kubernetes and for testing it and it will use a virtual machine on your laptop on your machine, on 
+    your local machine to create the cluster in there.It will actually create a single node cluster which means there the worker
+    and master node is combined into one single virtual machine.it is great tool for getting started with kubernetes and for 
+    testing things locally.
 
 
 183)MacOs setup
     see Kubenetes commands notes.
 
-    here we installed minikube and kubectl. then we started our cluster by - minikube start
+    here we installed 
+        minikube - Tool for setting worker and master node on local system.It creates cluster on locl system.
+        kubectl- This is always needed, this sends instructions from local system to cluster i.e master node.
+    
+    I faced issues with minikube , so I am using kind.
 
 184)Windows setup
 
-185)Understanding Kubernetes Object(Resources)
-    slide3
-    
-    now we need to understand which kind of commands, which kind of language Kubernetes understands,for example,create a new pod and 
-    start a new container.Kubernetes works with so called objects.Kubernetes knows a couple of objects, for example, pods, deployments,
-    services, volumes,and way more than that.
-
-    Now, the idea behind these objects,is simply that you can create such an object by executing a certain command.And then Kubernetes 
-    will take that object created by you,which of course is just a thing in code in the end,and it will then do something based on the
-    instructions encoded in that object, you could say.And these objects can actually be created in two different ways, 
-    
-        1)imperatively
-        2)declaratively.
-
-    Some key object kubernenets knows(slide 4) -
-
-    a)Pods - If you wanna tell Kubernetes,that it should create a pod,run a container and do that on some worker node in the cluster.
-        You would tell Kubernetes to do that,by creating a pod object in code or with help of a command,and sending that object to 
-        Kubernetes. pods are part of cluster therefore can commnunicate with other pods outside world.by default pod has cluster-internal
-        IP by default. we can chnage this and communicate with cluster even from outside the cluster.But by default, a pod has a cluster
-        internal IP address,which can be used to send requests to that pod and there for to the containers running in the pod. containers
-        inside same pod can communicate with each other with local host.
-
-    important things about pods -
-        1)pods are ephemeral,which basically means they don't persist.If a pod is replaced or removed by Kubernetes,all the resources in 
-            the pod,for example, data stored and created by a container is lost.
-
-        2)when working with Kubernetes,we can create pods on our own and start them on some worker node in our cluster,but that's typically
-            not what we will do.Instead, we want Kubernetes to manage these pods for us,We want Kubernetes to automatically create and 
-            remove and replace them.
-            
-        And that's why we typically don't just create pod objects and send them to the cluster,but why we create controller objects,
-            specifically the deployment object,which then actually will create pods for us.So therefore, let's next have a look at this
-            deployment object, and let's understand how that works.
 
 
+185)Understanding Kubernetes Object(slides 3,4)
+
+    kubernetes undestand some objects, you create these objects n code, then kubernetes performs some actions based on instructions
+    encoded in these objects. objects can be created in 2 ways -
+
+        a)imperatively
+        b)declaratively
+
+    deploymnt object- slide 4. pods have cluster internal ip addresses that can be used to communicate with them, send instruction.
+    containers within same pod can communicate with each other via local host.
+
+    a task in aws ecs is very similar to pod in kubernetes.
+
+    important thing about pods -
+
+    a)they are ephemeral -
+    b)we can create pods on some worker nodes manulayy. but we do'nt do this. we want kubernetes to automatically create,remove and
+        replace pods.The entire idea behind using Kubernetes is that it also manages the deployment for us.And that's why we typically
+        don't just create pod objects and send them to the cluster,but why we create controller objects,specifically the deployment 
+        object,which then actually will create pods for us.
 
 186)The "Deployment" object
     we genrally do not create pod objects but we create deployment objects. see slide 5.
 
+    you do not creates pods objects direectly, But instead you create a Deployment object,which you then give instructions about the 
+    number of Pods and the containers it should create and manage for you.
+
+    set desired statd - we tell that we need 2 pods with these container up and running.kuberenets will automatically select worker 
+        nodes reach this target state.
+
+    deloyment can be scaled - we can define number of pods required, we can also use autoscaling where set some scaling matrixs,
+    (on cpu utilization, incoming traffic) to decide scaling automatically.
+
+    important - A deployment manages one type of pod(pod with 2 containers). for different types of pods we ned to create multiple pods.
+
+187)deployment Object
 187)A First Deployment
     here we wanted to deploy code1 in kubernetes cluster.
     1)create docker image -

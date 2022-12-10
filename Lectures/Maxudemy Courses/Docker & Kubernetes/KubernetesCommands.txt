@@ -7,18 +7,34 @@ Minicube - sets the dummy cluster locally.it will use a virtual machine oon your
         brew install minikube
 
     commands -
-        minikube start - z
+        minikube start -
             creates the cluster
-        minikube dashboard -
-            shows the Ui in browser
+
         minikube status - 
             to check whether cluster is running or not
+        minikube dashboard -
+            brings up web dashboard of our cluster.
+            shows the Ui in browser
+        
         minikube delete --all -
             deletes all minibute clusters
 
         minikube service "nameOfService"
             this will give us access to the service by basically mapping a special port to an IP which we can reach from our local 
             machine,and which identifies this virtual machine running on our local machine. so we can reach the servivce via this IUP.
+kind -
+
+    1)kind create cluster
+        creates the cluster with name kind.
+
+        flags -
+            a)name -
+                kind create cluster --name kind-2
+
+        This is how kutctl with interact with this cluster -
+            In order to interact with a specific cluster, you only need to specify the cluster name as a context in kubectl:
+            
+                kubectl cluster-info --context kind-kind
 
 
 kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
