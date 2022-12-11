@@ -63,7 +63,11 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                         a)image
                             kubectl creeate deployment "nameOfDeployment" --image="name OfImage"
                                 creates a deployment object with a given name and containers in the pod in deployment object will be based
-                                on provided image name
+                                on provided image name. we can also define multiple images like this -
+                                    kubectl creeate deployment "nameOfDeployment" --image=img1,img2,img2
+
+                                    this will spin up diffrent containers in pod
+
 
         2)kubectl get deployments 
             we can see how many deployments we have in our cluster to which we connected here.
@@ -118,7 +122,7 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
 
                 kubectl rollout history deployment/"nameOfDeployment"
 
-            c)to get detials about the rollout -
+            c)to get detials of particulat rollout of particular deployment -
 
                 kubectl rollout history deployment/first-app --revision="identifier"
 
@@ -140,7 +144,14 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 a)--to-revision - takes user back to specific version.
                     kubectl rollout undo deployment/first-app --to-revision="revisionTag"
                     kubectl rollout undo deployment/first-app --to-revision=2
-                    
+
+        10)kubectl apply
+            it applies a deployed file to kubernetes cluster.
+
+            flags -
+                a)-f
+                    kubectl apply -f="pathToFile"        
+                    kubectl apply -f=deployment.yaml        
 
 
 

@@ -8,7 +8,21 @@ Highlights -
     4)how to expose your conatiners to outisde world with service object.(when cluster is in cloud as well as local)
     5)default bahviour of kubernetes(using imperative approach) is to restarted the pod when continer failed.
     6)manual scaling when auto scaling is disbaled
-    7)updating the image used in running deployment.
+    7)updating the image used in running deployment.how to see in events of pods that new image was downloaded and container was
+        started,based on that.
+    8)deployment rollouts -
+        when we update the deployment old contianer is not taken down untill new container comes up. you can see the status in dashboard.
+            old pods will be running statte and new pods are trying to comeup, once they comeup, old pods are killed.
+        see all deployment rollouts
+        how to go to particular rollout
+        how to see details of rollout like which image was used.
+
+    9)to create a deployment with declarative approach.
+
+Code -
+    folder 1 - create deployment and services by imperative approach
+    folder 2 - create deployment by declarative approach
+    folder 3 - create service by declarative approach
 
 
 
@@ -218,7 +232,6 @@ Highlights -
 
     at the bottom you can see contianer name and image name on which that container is based off of.
 
-----
 194)Deployment Rollbacks & History
 
     here we tried to use a image that does not exist - 
@@ -241,8 +254,9 @@ Highlights -
 
     now how can we go back to previous rollout-
 
-        1)get all rollout details - 
-            kubectl rollout undo deployment/first-app --to-revision=1
+        1)get all rollout details -
+            kubectl rollout history deployment/"nameOfDeployment"
+            kubectl rollout history deployment/first-app
 
         2)to see which image was used in a rollout -
             kubectl rollout history deployment/first-app --revision="identifier"
@@ -252,5 +266,25 @@ Highlights -
 
             kubectl rollout deployment/first-app --to-revision=1
 
-195)imperative vs declarative approach
+195)imperative vs declarative approach(slides 8,9)
     impretaive approach means using config file instead of commands to manage kubernetes.
+    And if we then for example, change a configuration file and reapply it, Kubernetes will have a look at what changed
+        and make the appropriate changes on our running cluster and the running application there.
+
+
+196,197)
+    here we defined a deployment.yaml. see code2 folder. at the end we tried to apply to that file by using command -
+
+        kubectl apply -f=deployment.yaml
+
+        but at while running the above command, we got the error - "missing required filed "selector""
+
+198)working with labels and selectors
+    here we added the seelctor in deployment spec. so that above error is gone and we are able to create a deployment, by -
+
+        kubectl apply -f=deployment.yaml
+
+    then we were able to check th deployment and pods by -
+
+        kubectl get deployments
+        kubectl get pods
