@@ -5,12 +5,12 @@ import { expect, it } from "vitest";
  * @Desc Wrong way - You cnt access the property unless you know that it is there. so we write the condition in different way.
  * within if block ts is sure about the type, hence it is not companining and even giving you IDE suggestions inside that block.
  */
-const coerceAmount2 = (amount: number | { amount: number }) => {
-  if (amount.amount) {
-    return amount.amount;
-  }
-  return amount;
-};
+// const coerceAmount2 = (amount: number | { amount: number }) => {
+//   if (amount.amount) {
+//     return amount.amount;
+//   }
+//   return amount;
+// };
 
 
 
