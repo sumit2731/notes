@@ -1,0 +1,28 @@
+What URL is madeup of - figure1.
+
+
+    defaultPorts -
+        https - 443
+        http - 80
+
+DNS system - figure2
+
+How client and Server Interact with each other - TCP(TRANSMISSION Control Protocol)
+    Information is sent via packets. packet is samll piece of data, which is part of bigger information.smalle packets can be combined to
+    send bigger piece of data.
+
+    Steps in connection
+
+        a)connection initiation - 3 way commnucation
+            synchronization packet
+            synchronizaton-acknowledgement packet - it;'s own synchronization + acknowledgement of getting syn packet
+            acknowledgement packet - acknowledgement that it got synchronization packet form other side
+
+        b)exchanging messages -now 2 computers are connected to each other via TCP and can start sending message back and forth usually
+            http messages.
+        c)connection termination - when user moves away form website one side sends fin message and other side sends acknowledgement.
+            this ends the connection from one side. same things needs to happen to end connection from other side also.
+
+            so technically you can have a TCP connection still open, where only one side of the connection is still able 
+            to send messages across the connection,but usually they are both closed out at the same time,so the connection
+            is completely terminated.
