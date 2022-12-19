@@ -35,6 +35,10 @@ Coding problem 1 - A currying function that convertes any function into curried 
 
 */
 
+/**
+ * Approach 1 - This is my Approach
+ */
+
 function curry(fn) {
     let arg = [];
     function dummyFuncion(argument) {

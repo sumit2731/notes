@@ -17,7 +17,7 @@ let arr = ["John", "Smith"]
 
  orignal array is not modified
 */
-let [firstName, surname] = arr;
+let [firstName, surname1] = arr;
 
 
 /* 
@@ -26,7 +26,7 @@ Ignore elements using commas -
     of the array items is also skipped (as there are no variables for them).
 */
 
-let [one , ,three] = [1,2,3,4,5,6];
+let [one1 , ,three1] = [1,2,3,4,5,6];
 
 
 /* 
@@ -54,7 +54,7 @@ let user = {};
 Useage in loops
 */
 
-let user = {
+let user2 = {
     name: "John",
     age: 30
   };
@@ -107,7 +107,7 @@ Default Values -
     so we cab provide default values
 */
 
-let [name = "Guest", surname = "Anonymous"] = ["Julius"];
+let [name3 = "Guest", surname3 = "Anonymous"] = ["Julius"];
 
 /* 
 Default values can be more complex expressions or even function calls. They are evaluated only if the value is not 

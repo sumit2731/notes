@@ -1,0 +1,32 @@
+Phase 1 -
+
+    Intrefaces -
+        Can be used for objects, functions.
+        ts performance wiki says inerfaces are faster than types.(speed of type checker)
+
+    Types -
+        types can be used for everything
+
+    Conclusion - Use interfaces everywhere.
+
+Phase 2 -
+    doe'nt matter if you use types or interfaces as long as you are consistent.
+        every object should be typed as interface and everything else should be types as type.
+        or use types for everything, then it should be fine.
+
+    interfaces has some of their own proeprties, they can do things which types can never do like -
+        inheriting a interface
+
+    Conclusion - they are basically the same.
+
+Phase 3-
+    interfaces comes with bundles of features, that you probably don'nr care about especially if you just use interface to 
+    define basic object types.
+
+        1)declarationMerging - if you define 2 interfaces with same name in same scope. they are merged togather.this is crtical feature
+        of ts if you want to support diffrent things appending to window object.
+
+    conclusion - use types until you need specifci feature of interfaces.
+
+        if you need a type that extends another type, use interface.
+        if you want to say this class extends interface, use interface

@@ -25,3 +25,15 @@
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties
 
+Summary - 
+
+
+ for ..in loop    - enumerable ,string
+ Object.keys(obj) - enumerable, string and self
+ Object.getOwnPropertyNames - Object's own string properties
+ Object.getOwnPropertySymbols - Objects's own symbol properties
+
+
+
+The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. 
+It returns the modified target object.

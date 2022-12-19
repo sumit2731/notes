@@ -8,7 +8,7 @@ Destructuring assignment is a special syntax that allows us to “unpack” arra
 */
 
 // name of variables and properties are same, order does not matter
-let {height, width, title} = { title: "Menu", height: 200, width: 100 }
+let {height, width1, title} = { title: "Menu", height: 200, width1: 100 }
 
 /* 
 We should have an existing object at the right side, that we want to split into variables. The left side contains an 
@@ -17,7 +17,7 @@ We should have an existing object at the right side, that we want to split into 
 */
 
 //here variable h,w and t are created. there no variables with name height, width and title
-let {height:h, width: w, title: t} = { title: "Menu", height: 200, width: 100 };
+let {height:h, width: w1, title: t} = { title: "Menu", height: 200, width: 100 };
 
 
 
@@ -26,8 +26,8 @@ Default values for missing properties can provided by using '='
 
 */
 
-let {height, width = 100, title} = { title: "Menu", height: 200 }
-let {height, width:w = 100, title} = { title: "Menu", height: 200 }
+let {height2, width = 100, title} = { title: "Menu", height2: 200 }
+let {height3, width:w = 100, title} = { title: "Menu", height3: 200 }
 
 /* 
 Just like with arrays or function parameters, default values can be any expressions or even function calls. They will 
@@ -167,7 +167,7 @@ Please note that such destructuring assumes that showMenu() does have an argumen
 
         showMenu({}); // ok, all values are default
 
-        showMenu(); // this would give an error
+        showMenu(); // this would give an error - TypeError: Cannot destructure property `title` of 'undefined' or 'null'.
 
     We can fix this by making {} the default value for the whole object of parameters:
 */
