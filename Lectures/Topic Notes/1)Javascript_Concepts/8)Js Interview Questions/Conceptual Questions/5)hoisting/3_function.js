@@ -1,9 +1,27 @@
 /**
  * Because of hoiting we can call functions before there declartion
  */
+/**
+ * Concept 1 -
+ * When function is called , it also undergoes 2 phases of execution - declaration and initialiazation.
+ * 
+ * here because of first phase, memeory is allocated for variable d inside function, as d is declared as function inside IIFE. 
+ * so outside variable is not used
+ * 
+ */
+var d = 1;
+
+(function(){
+  d = '2'
+  console.log(typeof d) //string
+  function d() {
+  }
+})()
+
+console.log(typeof d) //number
 
 /**
- * function declaration inside if blocks(conditional declaration)
+ * Concept 2 - function declaration inside if blocks(conditional declaration)
  */
 
 /**
@@ -34,18 +52,20 @@ console.log(typeof foo) //function
 console.log(typeof bar) //undefined
 
 /**
- * Complex problem based on above concept
+ * Complex problem based on above 2 concepts
  */
 
-// This is a JavaScript Quiz from BFE.dev
-
+/**
+ * Inside IIFE function declaration is inside if block. so memory is allocated for fn inside iife but value is undefined.
+ * so control goes inside if block and fn is declarated inside IIFE.
+ */
 (() => {
   if (!fn) {
     function fn() {
       console.log('2')
     }
   }
-  fn()
+  fn() //2
 })()
 
 function fn() {
@@ -62,8 +82,8 @@ function fn1() {
     function fn1() {
       console.log('4')
     }
-  }
-  fn1()
+  } 
+  fn1() //4
 })()
 
 

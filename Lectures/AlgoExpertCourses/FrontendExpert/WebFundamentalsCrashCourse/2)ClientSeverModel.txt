@@ -1,0 +1,4 @@
+This is briader that is used when 2 computers communicate with each other.
+
+    client - One that request information. eg - browser
+    server - one that sends information. eg - server.

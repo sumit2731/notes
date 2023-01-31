@@ -37,6 +37,7 @@ Coding problem 1 - A currying function that convertes any function into curried 
 
 /**
  * Approach 1 - This is my Approach
+ * 
  */
 
 function curry(fn) {
@@ -61,7 +62,9 @@ function threeNumberSum(a,b,c) {
 
 let newTwoNumberSum = curry(twoNumberSum);
 let newThreeNumberSum = curry(threeNumberSum);
-
+/**
+ *  * Limitations - For one time if you call function in wrong syntax your future inplemnetations are messed up , ex -
+ */
 console.log(newTwoNumberSum(1)(2)());
 console.log(newThreeNumberSum(1)(2)(3)());
 

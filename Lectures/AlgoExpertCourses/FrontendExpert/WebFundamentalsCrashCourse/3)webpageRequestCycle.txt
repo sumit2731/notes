@@ -1,11 +1,36 @@
 What URL is madeup of - figure1.
+    subdomain -
+        subdomain is domain inside domain.so you can think of www as domain inside algoexpert.io.generally we see www as subdomain and some browser 
+        add this as default subdomain if you do not request any sub domain.reality is we do not actually need this subdomain.Most of the website
+        treat the traffic as same whthet it has www or not, it can be treated differently.
+        www was used in old days to specify that this is subdomain for internet as suppose to other domain that hey might have like for email.
 
+    domain -
+        It has 2 parts - actual anem of website + TLD
+            TLD - mostly asosciated with countries.
+            .io - british indian ocean territtory
+            .com,.gov - they sound cool or fit with website.
 
-    defaultPorts -
-        https - 443
-        http - 80
+    port - this can be left blank. default ports will be used.
+        defaultPorts -
+            https - 443
+            http - 80
+
+    path - allows us to specify specific resource.
 
 DNS system - figure2
+    It is used to find IP address of domain.
+
+    when browser is lloking for IP address for domain(algoexpert.io),browser first checks it local cache. operating system on your computer is keeping
+    local cache of every IP address that is recently been found with Domain Name System.IN case it is not in cache, then a DNS request is made on network.
+    see figure 1.
+
+        Resolving name server is usually our Internet service Provider, but this is not always the case.
+        Root name servers - This server simply holds the mapping of top level domains such as .io to ip address of what we call top level domain name
+            servers.
+        Top Level Domain server - knows how to find ip adress for all domains under a top level domain.
+
+
 
 How client and Server Interact with each other - TCP(TRANSMISSION Control Protocol)
     Information is sent via packets. packet is samll piece of data, which is part of bigger information.smalle packets can be combined to
