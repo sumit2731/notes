@@ -1,0 +1,83 @@
+HTTP -
+    This answer how client and server communicate with each other once they are connected.
+
+        protocol for sending hyper-media (complex data) on web(see figure4.1).
+
+        StateLess -
+            This is stateless protocol means, each request is independent from previous request.one message is sent at time with no memory of previoius
+            messages.cookies can be used to create state with an http but by default it is stateless.
+
+
+        Usually used over TCP connection.
+
+
+        Different Request -
+            a)get request - figure 4.2. 
+                various parts -
+                    1)request line
+                        version - there are various versions of http.most common version of 1.1 and 2. advantage of version 2 is that it allows you 
+                        to make multiple request without waiting for response of previopus request.but that said version 1.1 is still used very frequently.
+
+
+                    2)headers - key value pair of extra info that we send with request.
+                        host - important if single server is hosting multiple diffrent domains or subdomains.required in http 1.1. 
+                        accept - text/html (mime type, which tells which type of response we want)
+
+            b)post request - figure 4.3
+                headers -
+                    accept - application/json - We want response in this format.
+                    content-type - application/json - what we are sending to the server.
+
+
+        Response (figure 4.4)- here we see response of get http call.
+            status code - way to indicate if request was successful or not or some other potentional pieces of infirmation.
+                there is status message associated with status code.status code of 200 means , ok.means everything worked suucessfully.
+            headers -
+                content-type - text/html (type of response content). here content type of response matches with aceept type of request.
+                    so response type is what request asked for.
+
+        Common Request methods - figure 4.6
+            head - same as get but response is not having any body.This is useful when we just want some header information.
+
+
+        Status Codes - figure 4.7
+            Status codes are grouped by first digit, they are 3 letters long.
+                100-199 is going to be informational status codes,we dnt see these that often.
+                200-299 - success message
+                3 - redirection code. resource that you are looking for has moved in some way.
+                4 - client error, client has done something wrong, it has requested resource that does not exist.
+                5 - server side error. request was correct but something went wrong on server.
+
+            so,me specific status code -
+                diffrenec between 301 vs 302 - https://stackoverflow.com/questions/1393280/http-redirect-301-permanent-vs-302-temporary
+                403 - you are signed in, but this service is forbidde.
+                404 - not found, when you go to path that does not exist.
+
+
+HTTPS(figure 4.8) -
+    S stands for secure. so this is secure version of HTTP. in HTTP everything is sent in form of plain text.there are tons of computers
+    involved in sending one request form one place to another.there are tons of places where hacker can intercept the message and read it
+     completely since it is plain text.but in HTTPS data is encrypted before sending it back and forth.
+
+     TLS (trnasport layer security) is new version of SSL.
+
+     This is how it works -
+
+     server first sends csertificate to client. this certificate contains a public key. so essentially the public key is something
+     that can be used to encrypt any message and only server can decrypt it.this certificate is going to be signed by a trusted certificate
+     authority.these are well known organisations that signed these certificates.
+
+     client then verified=s if certificate is signed by certificate autherity, it is able to do so as it as public key of trusted certificate
+     authority and using it is able to make sure that certificate is created using private key of that certificate authority.
+
+     now client knows that it can trust servre and it has public key of server.so it creates a session key.
+
+     after client creates the session key, session key is used throughout the session to encrypt the messages that are sent back and forth
+     between client and server.way that client gets this session key securely to server is by using the public key  that was included in
+     certificate.client sends session key back to server by encrypted it suing oublic, key so only server can decrypt it.
+
+     server decrypts it.so only client and server knows the session key and know one else knows it, they are able to communicated in 
+     encrypted manner.
+
+
+

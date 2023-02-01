@@ -6,7 +6,7 @@ What URL is madeup of - figure1.
         www was used in old days to specify that this is subdomain for internet as suppose to other domain that hey might have like for email.
 
     domain -
-        It has 2 parts - actual anem of website + TLD
+        It has 2 parts - actual name of website + TLD
             TLD - mostly asosciated with countries.
             .io - british indian ocean territtory
             .com,.gov - they sound cool or fit with website.
@@ -32,19 +32,20 @@ DNS system - figure2
 
 
 
-How client and Server Interact with each other - TCP(TRANSMISSION Control Protocol)
+How client and Server Interact(or connect) with each other - TCP(TRANSMISSION Control Protocol)
     Information is sent via packets. packet is samll piece of data, which is part of bigger information.smalle packets can be combined to
     send bigger piece of data.
 
-    Steps in connection
+    Steps in connection - 
 
-        a)connection initiation - 3 way commnucation
-            synchronization packet
+        a)connection initiation - 3 way handshake
+            one of 2 computers usually the client, initiates the connection by sending the synchronization packet.
             synchronizaton-acknowledgement packet - it;'s own synchronization + acknowledgement of getting syn packet
             acknowledgement packet - acknowledgement that it got synchronization packet form other side
 
         b)exchanging messages -now 2 computers are connected to each other via TCP and can start sending message back and forth usually
-            http messages.
+            http messages,that we will look in future video.
+        
         c)connection termination - when user moves away form website one side sends fin message and other side sends acknowledgement.
             this ends the connection from one side. same things needs to happen to end connection from other side also.
 
