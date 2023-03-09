@@ -32,8 +32,9 @@ if state of css
 
     Valid conditions - 
 
-        max-width and min-width are media feature. In the context of a media query, max-width is a “media feature”, not a CSS property. They just happen to share the same name.
-            Not all CSS properties have corresponding media features. For example, this snippet is not valid:
+        max-width and min-width are media feature. In the context of a media query, max-width is a “media feature”, not a CSS property. They
+        just happen to share the same name.Not all CSS properties have corresponding media features. For example, this snippet 
+        is not valid:
 
 
 

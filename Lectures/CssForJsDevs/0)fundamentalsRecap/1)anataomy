@@ -2,4 +2,4 @@ property
 value
 selector
 declaartion - cobmination of property and value
-rule - multiple decalartions combined
+rule - selector + declarations

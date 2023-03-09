@@ -1,4 +1,9 @@
 response headers -
+    content-type - text/html (type of response content). here type of content of response.
+    
+    cookie -
+
+        Set-Cookie
 
     CORS-
 
@@ -30,9 +35,7 @@ response headers -
 
         Access-Control-Allow-Credentials - allows client to set cookies and auth informtaion in CORS request.
 
-    cookie -
 
-        Set-Cookie
 
     security -
         Strict-Transport-Security (HSTS) - The HTTP Strict Transport Security header informs the browser that it 
@@ -67,9 +70,12 @@ response headers -
 
 
 request headers -
+    origin - tells from where the request came. (such as https://javascript.info)
+    accept: text/html - What type of response this request accepts.
+    content-type - application/json - what we are sending to the server.
     
     CORS-
-        Origin - tells from where the request came. (such as https://javascript.info)
+        
 
         headers allowed in safe request -
 

@@ -1,0 +1,14 @@
+Anatomy of CSS Rule -
+
+    .code-snippet {
+        padding: 32px;
+        white-space: pre-wrap;
+    }
+
+    terms -
+        1)property
+        2)value
+        3)selector
+        4)declaration - A declaration is a combination of a property and a value.
+        5)rule or style  - It is selcetor plus declarations.It is a collection of declarations, targeting one or more selectors. 
+            A stylesheet is made up of multiple rules.

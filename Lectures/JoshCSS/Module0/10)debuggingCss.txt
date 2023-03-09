@@ -1,0 +1,7 @@
+to change color format in browser -
+    shift + click on color
+
+to open color pallete(there you can see aspect ratio) -
+    click on color
+
+    here you can select the color and also see the contrast ratio.

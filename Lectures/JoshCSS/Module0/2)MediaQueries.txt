@@ -1,0 +1,25 @@
+It is like "if" condition in js -
+    
+    /* CSS */
+        @media (condition) {
+            /* Some CSS that'll run if the condition is met. */
+        }
+
+    ex 1- 
+        
+        @media (max-width: 300px) {
+            .small-only {
+                color: red;
+            }
+        }
+
+        @media (min-width: 300px) {
+            .large-screens {
+                display: block;
+            }
+            .small-screens {
+                display: none;
+            }
+        }
+
+    “media features can be used a queries inside media queries. We will see details about them in module 5.

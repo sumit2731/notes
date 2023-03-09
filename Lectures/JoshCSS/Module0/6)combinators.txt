@@ -1,0 +1,26 @@
+The term “combinator” refers to a character that combines multiple selectors. In this case, the space character combines nav and a to 
+create a descendant selector. types -
+
+    a)descendant selector (space)
+        .nav a {
+            color: red;
+        }
+
+    b)child selector (>)
+        .main-list > li {
+            border: 2px dotted;
+        }
+        
+        we are only targetting li tags which are direct childern of main-list. more complex setup -
+
+        .main-list ul > li {
+            border: 2px dotted;
+        }
+        
+        here we are targetting the li tags which are direct childern of ul(which is descendant of .main-list)
+
+
+extra form course -
+
+    c)adjacent sibling selector (+)
+    d)general sibling selector (~)

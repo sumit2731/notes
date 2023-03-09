@@ -1,0 +1,51 @@
+1)font-family
+2)font-weight
+3)font-style
+    values -
+        normal
+        italic
+        oblique
+4)text-decoration 
+    sample values - 
+        underline,
+        overline
+        line-through
+        underline blue, 
+        underline dotted blue
+        underline overline dotted blue
+
+    uses -
+        a)with value none it is used to remove the default underline caused by a tag.
+        b)with value, underline, it is used to prvide underline over text.
+
+5)text-alignement -
+    values -
+        left
+        right
+        center
+
+    use to align text, if there is empty spce in container.text-align is also capable of aligning other elements, like images.
+    In general, though, we'll use other tools for those kinds of jobs. We should reserve text-align for text.
+
+6)text-transform
+    values -
+        uppercase
+        capitalize
+
+7)letter-spacing
+    We can tweak the horizontal gap between characters using the letter-spacing property.
+    values - 5px 6px
+
+8)line-height
+    values - 1,2,3
+        We can tweak the vertical distance between lines using the line-height property.
+        
+        line-height is a bit of an odd duck because it takes a unitless number. This number is multiplied by the element's font-size
+        to calculate the actual line height.
+
+        By default, browsers come with a surprisingly small amount of line height. In Chrome, the default value is 1.15. In Firefox,
+        it's 1.2. according to WCAG 1.4.12, it's value should be 1.5.It's possible to pass other unit types (eg. pixels, rems), but I
+        recommend always using this unitless number, so that the line-height always scales with the element's font-size.
+
+
+

@@ -1,0 +1,47 @@
+Different formats -
+    a)Named Colors
+        HTML comes with 140 named colors. These are special keyword values like dodgerblue, hotpink, and tomato.
+        we generally don't use named colors in production applications. 140 colors just isn't enough
+
+    b)RGB - red green blue.
+        color: rgb(255 0 0);
+            here each value can range form 0 to 255 and represents the brightness of corrospnding color.
+            The rgb color format also allows us to specify a 4th optional value for the alpha channel, to control transparency.
+            The alpha channel ranges from 0 (fully invisible) to 1 (fully opaque).
+
+        background: rgb(255 0 0 / 0.5);
+
+    c)HexCodes - a 6-digit hex code contains three 2-digit values, one for each channel (red / green / blue). Instead of using a 10-digit 
+        decimal system, it uses a 16-digit hexadecimal system.Fundamentally, hex codes are the same as RGB values. In both cases, we're 
+        providing a value for red, green, and blue.
+
+        color: #2E0000
+        
+        And here's a fun fact: we can pass an eight digit hex code if we want to include an alpha channel(IE does not support)
+
+        background: #FFFF0080;
+
+    d)HSL(reccommneded one) -
+        This color format takes 3 different values:
+            
+            Hue: This is the pigment we want to use. Valid values range from 0 to 360.
+            
+            Saturation: How much pigment is in the color? Valid values range from 0% to 100%. At 0%, there is no pigment in the color,  and   it's totally grayscale. At 100%, the color is as vibrant as possible.
+
+            Lightness: how light/dark is the color? Valid values range from 0% to 100%. At 0%, the color is pitch black. At 100%, the color is pure white.
+                
+                background-color: hsl(360deg 42% 67%);
+
+            Like we saw with RGB, we can specify transparency with the / delimiter:
+
+                background: hsl(0deg 100% 50% / 0.5);
+
+
+Read this blog to see more cool things that can be done with HSL Format -
+    https://www.joshwcomeau.com/css/color-formats/
+
+
+
+
+
+

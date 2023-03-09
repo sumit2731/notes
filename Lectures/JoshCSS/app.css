@@ -4,9 +4,6 @@
   background: yellow;
 }
 
-.child {
-  width: 100px;
-  height: 100px;
-  background: red;
-  display: none;
+.parent > *:first-child {
+  color: red;
 }

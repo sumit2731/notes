@@ -1,0 +1,60 @@
+1)pixel
+2)em - The em unit is an interesting fellow. It's a relative unit, equal to the font size of the current element.
+3)rem - it is relative to font size of root element i.e <html> tag.it respects user preferences when it comes to increasing/decreasing 
+    default font sizes.you shouldn't actually set a px font size on the html tag. This will override a user's chosen default font size.
+    If you really want to change the baseline font size for rem units, you can do that using percentages:
+
+    html {
+        /* 20% bigger `rem` values, app-wide! */
+        font-size: 120%;
+    }
+
+Linked article - https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/#test-your-intuition-10 
+
+    Which unit to use for what -
+
+        How to decide -"Should this value scale up as the user increases their browser's default font size?"
+
+        when to use rem -
+            
+            font-size - use rem, so that it can scale when user increases the zoom size of machine or when user increases 
+                the default font-size in browser settings.
+            
+            media-queries -
+                
+                @media (min-width: 50rem) {
+                
+                }
+
+                this is because as font-size increases min-width should also increase. so it means to switch to desktop
+                size we need more width, this is what we require.
+
+                We're so used to thinking of media queries in terms of mobile/tablet/desktop, but I think it's more helpful to think
+                in terms of available space.A mobile user has less available space than a desktop user, and so we design layouts that
+                are optimized for that amount of space. Similarly, when someone cranks up their default font size, they reduce the 
+                amount of available space, and so they should probably receive the same optimizations.
+
+            
+            vertical margin - use rem, because it makes sense to compound these with increasing the font-size by user.even better
+                we can use em units.
+            
+            width -  it depends on the circumstances!
+                
+                if we use rem, then increasing size of text will also cause increase in width.which will prevent line brekage and
+                overflow of text
+                
+                line breakage and increase height of container, if we
+                do not use rem's.
+
+        when to use pixel -
+            padding
+            border
+            width - In some cases, though, pixels might be the better option. Maybe if you have a very specific layout in mind,
+            and vertical space is more plentiful than horizontal space.
+
+        when to use em -
+            useage of em's - top and bottom margin of headings and paragraph. see article.
+
+
+
+        Should this value scale up as the user increases their browser's default font size?

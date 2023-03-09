@@ -1,0 +1,2 @@
+Command to make current editor larger - 
+    Maximize Editor Group

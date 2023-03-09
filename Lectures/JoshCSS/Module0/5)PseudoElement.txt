@@ -1,0 +1,36 @@
+Pseudo-elements are like pseudo-classes, but they don't target a specific state. Instead, they target "sub-elements" within an element.
+In terms of syntax, pseudo-elements use two colons instead of one (::), though some pseudo-elements also support single-colon syntax.
+
+examples -
+
+    1)::placeholder
+        
+        css -
+            <style>
+                input {
+                    font-size: 1rem;
+                }
+                input::placeholder {
+                    color: goldenrod;
+                }
+            </style>
+
+
+        html -
+            
+            <label>
+                Postal Code:
+                <input
+                    type="text"
+                    placeholder="A1A 1A1"
+                />
+            </label>
+
+
+
+    If we stop and think about it, something pretty interesting is happening here. We haven't explicitly created a <placeholder> element, 
+    but by adding the placeholder attribute to the <input> tag, a pseudo-element is created.This is why they're called pseudo-elements 
+    — these selectors target elements in the DOM that we haven't explicitly created with HTML tags.
+
+    2)::before, ::after
+        These pseudo-elements are added inside the element, right before and after the element's content. see lecture of course for details.

@@ -1,17 +1,41 @@
-1)disabled
+
+
+1):disabled
     
     button:disabled {}
     button:disabled:hover {}
 
-2)first-child
+2):first-child
+    
+    li:first-child {
+        color: red;
+    }
+
+    :first-child pseudo-class will match the first child within a parent. p:first-child is looking for situations where a paragraph 
+    is the first child within a parent container
 
     selector:first-child {}
         element which matches this selector, but that element should be first child of its parent.
 
     selector >*:first-child {}
-        Apply this style to first child of element selected element.
+        Apply this style to first child of element selected by selector.
 
+6):first-of-type
+    
+    <style>
+        p:first-of-type {
+            color: red;
+        }
+    </style>
 
+    <section>
+    <h1>Hello world!</h1>
+    <p>This is a paragraph!</p>
+    <p>This is another paragraph!</p>
+    </section>
+
+    The :first-of-type pseudo-class ignores any siblings that aren't of the same type. In this case, p:first-of-type is going to 
+    select the first paragraph within a container, regardless of whether or not it's the first child.
 
 3):nth-of-type() -The :nth-of-type(n) selector matches every element that is the nth child, of the same type (tag name), of its parent.
     syntax - 

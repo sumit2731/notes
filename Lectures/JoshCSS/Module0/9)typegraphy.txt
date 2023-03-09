@@ -1,3 +1,6 @@
+
+
+
 To change font -
     font-family: Arial;
 
@@ -18,25 +21,28 @@ To change font -
         Sans-serif
         Monospace
 
-custom fonts -
+    To font-family property we can pass font name or font styles.By passing a category instead of a specific font, the operating 
+    system will use its default system font from this category. For example, when specifying sans-serif, Windows 11 will use 
+    “Segoe UI”, while MacOS Ventura uses SF Pro.
 
-    Alternatively, we can pick a custom font (AKA a web font)! In order for this to work, we'll need to instruct the 
-    browser to download the fonts we're missing.
-    
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+web fonts - A web font is a custom font that we load in our CSS, allowing us to use any font we like. For example, AirBnb developed 
+    its own font in-house, Cereal, and uses it across their web and native apps.
 
-        When using a web font, it's customary to surround it in quotation marks -
-            font-family: 'Roboto', sans-serif;
+    Using web fonts -
 
+        downloading web fonts -
 
-    When using a web font, it's customary to surround it in quotation marks. This is technically only required if the font name has multiple 
-    words, but it's a good convention regardless.
-    
-    Here's how we'd use that Google font:
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-            font-family: 'Roboto', sans-serif;
+        Using it -
+            font-family: 'Roboto', Arial, sans-serif;
 
+            name of web font is in ''.
+            font stack - multiple comma separated values for font-family.The idea is that the browser will use the first available 
+                font from the list. If Roboto isn't available (eg. because the download failed, or it's simply taking too long), we'll
+                use Arial instead. And if the user's device doesn't have Arial, it'll fall back to the system-default sans-serif font.
+see cssProperties.txt
 3 most common formatting options:
 
     a)bold - We can create bold text with the font-weight property:
@@ -68,6 +74,12 @@ custom fonts -
         a {
             text-decoration: none;
         }
+
+semantic html tags -
+
+    <strong>
+    <em>
+
 
 Alignment -
     We can shift characters horizontally using the text-align property. to see details of how text-align works, see this-
