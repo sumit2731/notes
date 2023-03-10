@@ -1,0 +1,2 @@
+it or test - these can be used intrchangebably in boh jest and vitest.can we used without exporting by adding --global 
+    flag. but importing gives better auto completion.

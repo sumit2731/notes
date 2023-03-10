@@ -1,0 +1,8 @@
+assertion Library - defines what is sucess and what is failure.
+
+JEST vs VITEST -
+    We will use VITEST in this course because JEST can be slow. and JEST has experimnetal support of ESMModules. codes get transpiled
+        behind the scenes.this is not good. we should always test the code that we are going to ship to prod. also VITEST syntax
+        is compatoble with JEST.
+
+    Vitest is both a test runner and an assertion library.
