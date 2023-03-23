@@ -2,3 +2,5 @@
 2)reverse vowel took some time to solve in single loop
 3)here remeber the expression to check if char is alphanumeric
 4)I solved the question but course solution is better.
+5)shortestDistance is excellent question, i solved it using more complexity. course solution is excellent one.
+6)you solved it but course solution was more elegent

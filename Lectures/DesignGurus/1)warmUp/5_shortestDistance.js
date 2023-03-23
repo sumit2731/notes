@@ -19,5 +19,18 @@ function shortestDistance(words, word1, word2) {
 }
 
 /**
- * @CourseSolution
+ * @CourseSolution - Better one
  */
+
+function shortestDistance2(words, word1, word2) {
+  let ptr1,
+    ptr2,
+    shortestDistance = Infinity;
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === word1) ptr1 = i;
+    else if (words[i] === word2) ptr2 = i;
+    if (ptr1 && ptr2)
+      shortestDistance = Math.min(shortestDistance, Math.abs(ptr1 - ptr2));
+  }
+  return shortestDistance;
+}
