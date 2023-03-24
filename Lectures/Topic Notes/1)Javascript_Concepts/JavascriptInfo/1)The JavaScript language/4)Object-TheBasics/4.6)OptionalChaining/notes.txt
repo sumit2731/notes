@@ -8,6 +8,7 @@ Optional chaining '?.'
 
     Don’t overuse the optional chaining - we should apply ?. carefully, only where it’s acceptable, according to our code logic, that 
         the left part doesn’t exist. So that it won’t hide programming errors from us, if they occur.
+    
     The variable before ?. must be declared
 
     Short-circuiting

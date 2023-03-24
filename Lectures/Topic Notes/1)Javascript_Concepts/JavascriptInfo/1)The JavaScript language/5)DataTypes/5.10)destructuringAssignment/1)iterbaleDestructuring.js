@@ -7,8 +7,7 @@ Destructuring assignment is a special syntax that allows us to “unpack” arra
 Array Detsruting
 */
 
-let arr = ["John", "Smith"]
-
+let arr = ["John", "Smith"];
 
 /* 
  it's just shorter ay to write - 
@@ -19,15 +18,13 @@ let arr = ["John", "Smith"]
 */
 let [firstName, surname1] = arr;
 
-
 /* 
 Ignore elements using commas -
     In the code above, the second element of the array is skipped, the third one is assigned to title, and the rest 
     of the array items is also skipped (as there are no variables for them).
 */
 
-let [one1 , ,three1] = [1,2,3,4,5,6];
-
+let [one1, , three1] = [1, 2, 3, 4, 5, 6];
 
 /* 
 Works with any iterable on the right-side.
@@ -39,7 +36,6 @@ That works, because internally a destructuring assignment works by iterating ove
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 
-
 /* 
 
 Assign to anything at the left-side.
@@ -48,20 +44,20 @@ Assign to anything at the left-side.
 */
 
 let user = {};
-[user.name, user.surname] = "John Smith".split(' ');
+[user.name, user.surname] = "John Smith".split(" ");
 
 /* 
 Useage in loops
 */
 
 let user2 = {
-    name: "John",
-    age: 30
-  };
-  
-  // loop over keys-and-values
+  name: "John",
+  age: 30,
+};
+
+// loop over keys-and-values
 for (let [key, value] of Object.entries(user)) {
-    console.log(`${key}:${value}`); // name:John, then age:30
+  console.log(`${key}:${value}`); // name:John, then age:30
 }
 
 /* 
@@ -78,8 +74,6 @@ let admin = "Pete";
 // Let's swap the values: make guest=Pete, admin=Jane
 [guest, admin] = [admin, guest];
 
-
-
 /* 
 
 The rest ‘…’
@@ -92,9 +86,17 @@ The rest ‘…’
 
 */
 
-let [name1, name2, ...titles] = ["Julius", "Caesar", "Consul", "of the Roman Republic"]; // The value of titles is the array of the remaining array elements.
+let [name1, name2, ...titles] = [
+  "Julius",
+  "Caesar",
+  "Consul",
+  "of the Roman Republic",
+]; // The value of titles is the array of the remaining array elements.
 
-
+// rest is array of items, starting from the 3rd one
+console.log(rest[0]); // Consul
+console.log(rest[1]); // of the Roman Republic
+console.log(rest.length); // 2
 
 /* 
 Default Values -
@@ -115,4 +117,4 @@ Default values can be more complex expressions or even function calls. They are 
 */
 
 // runs only prompt for surname
-let [name = prompt('name?'), surname = prompt('surname?')] = ["Julius"];
+let [name = prompt("name?"), surname = prompt("surname?")] = ["Julius"];

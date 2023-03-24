@@ -8,7 +8,7 @@ Destructuring assignment is a special syntax that allows us to “unpack” arra
 */
 
 // name of variables and properties are same, order does not matter
-let {height, width1, title} = { title: "Menu", height: 200, width1: 100 }
+let {height1, width1, title1} = { title: "Menu", height: 200, width1: 100 }
 
 /* 
 We should have an existing object at the right side, that we want to split into variables. The left side contains an 
@@ -17,38 +17,43 @@ We should have an existing object at the right side, that we want to split into 
 */
 
 //here variable h,w and t are created. there no variables with name height, width and title
-let {height:h, width: w1, title: t} = { title: "Menu", height: 200, width: 100 };
+let {height:h2, width: w2, title: t2} = { title: "Menu", height: 200, width: 100 };
 
 
 
 /* 
 Default values for missing properties can provided by using '='
 
-*/
-
-let {height2, width = 100, title} = { title: "Menu", height2: 200 }
-let {height3, width:w = 100, title} = { title: "Menu", height3: 200 }
-
-/* 
 Just like with arrays or function parameters, default values can be any expressions or even function calls. They will 
     be evaluated if the value is not provided.
 
 */
 
+let {height3, width3 = 100, title3} = { title: "Menu", height2: 200 }
+let {height4, width:w4 = 100, title4} = { title: "Menu", height3: 200 }
+
+/**
+ * We also can combine both the colon and equality:
+ */
+let options5 = {
+  title: "Menu"
+};
+
+let {width: w5 = 100, height: h5 = 200, title5} = options5;
+
 
 /* 
 If we have a complex object with many properties, we can extract only what we need:
-
 */
 
-let options = {
+let options6 = {
     title: "Menu",
     width: 100,
     height: 200
   };
   
   // only extract title as a variable
-  let { title } = options;
+  let { title6} = options6;
 
 /* 
 Rest pattern
@@ -57,7 +62,7 @@ We can use the rest pattern, just like we did with arrays. It’s not supported 
     to polyfill it), but works in modern ones.
 */
 
-let options = {
+let options7 = {
     title: "Menu",
     height: 200,
     width: 100
@@ -65,7 +70,7 @@ let options = {
   
 // title = property named title
 // rest = object with the rest of properties
-let {title, ...rest} = options; // rest is object with left proeprties
+let {title7, ...rest7} = options7; // rest is object with left proeprties
 
 
 /* 
@@ -85,10 +90,10 @@ To show JavaScript that it’s not a code block, we can wrap the expression in p
 
 */
 
-let title, width, height;
+let title8, width8, height8;
 
 // okay now
-({title, width, height} = {title: "Menu", width: 200, height: 100});
+({title8, width8, height8} = {title: "Menu", width: 200, height: 100});
 
 
 /* 
@@ -98,7 +103,7 @@ Nested destructuring -
     extract deeper portions.
 */
 
-let options = {
+let options9 = {
     size: {
       width: 100,
       height: 200
@@ -117,12 +122,12 @@ let options = {
 */
   let {
     size: { // put size here
-      width,
-      height
+      width9,
+      height9
     },
-    items: [item1, item2], // assign items here
+    items: [item91, item92], // assign items here
     title = "Menu" // not present in the object (default value is used)
-  } = options;
+  } = options9;
 
 
 let {
