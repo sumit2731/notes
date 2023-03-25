@@ -1,3 +1,3 @@
-let emp = {
-  name: "Sumeet",
-};
+let user5;
+
+user5.name = "sumeet";
