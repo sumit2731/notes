@@ -1,13 +1,24 @@
 /**
- * The optional chaining ?. stops the evaluation if the value before ?. is undefined or null and returns undefined.
+ * The optional chaining ?. is a safe way to access nested object properties, even if an intermediate property doesn’t exist.
+ * 
+ * Existing solition -
+ *  a)ternary Operand
+ *    let user = {};
+      console.log(user.address ? user.address.street ? user.address.street.name : null : null);
+ *  b)using &&
+      let user = {}; // user has no address
+      console.log( user.address && user.address.street && user.address.street.name ); //
+ * 
+ *  Drawback - property names are repeated and solution is not cleaner
  */
 
-let user = {}; // user has no address
-
-console.log(user?.address?.street); // undefined (no error)
 /**
+ * The optional chaining ?. stops the evaluation if the value before ?. is undefined or null and returns undefined.
+ * 
  * Please note: the ?. syntax makes optional the value before it, but not any further.
- */
+ * */      
+let user = {}; // user has no address
+console.log(user?.address?.street); // undefined (no error)
 
 /**
  * Don’t overuse the optional chaining
