@@ -1,1 +1,6 @@
 5)I solved the question after having a incorrect solution, my solution and course's solution were exactly same.
+6) quetsions was same as 5, but i took lot of time in solving, also some slight conditions were wrong, which i found while
+    debugging only. also course solution is shorter and eliminates the need of maintaining sum.
+    overall good problem.
+7)code was right, you missed a important condition. even coding editor was not able to track the error. good question
+8)totally blank with this question, need to visist it later

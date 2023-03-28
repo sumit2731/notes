@@ -1,21 +1,14 @@
-// let complexObject = [{ id: 1, name: "sume" }];
-
-// let [{ id: anyName }] = complexObject;
-
-// console.log(anyName);
-
-let emp = {
-  id: 100,
-  name: "Sumeet",
-  country: "Australia",
-};
-
-function dummyFunction({ id, name, country }) {
-  console.log(id);
-  console.log(name);
-  console.log(country);
+function dutchFlag(arr) {
+  let numDic = { 0: 0, 1: 0, 2: 0 };
+  for (let number of arr) numDic[number] += 1;
+  let startingPoints = {
+    0: 0,
+    1: numDic[0],
+    2: numDic[0] + numDic[1]
+  }
+  let currentIndex = 0;
+  while (currentIndex < arr.length) {
+    let currentNum = arr[currentIndex];
+    if() {}
+  }
 }
-
-dummyFunction(emp);
-
-//swapping variables
