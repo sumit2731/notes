@@ -3,4 +3,34 @@
     debugging only. also course solution is shorter and eliminates the need of maintaining sum.
     overall good problem.
 7)code was right, you missed a important condition. even coding editor was not able to track the error. good question
-8)totally blank with this question, need to visist it later
+8)totally blank with this question,visited it later.
+9)dutchFlag problem - problem was very simple. but i cnt solve it because algo wa sbit complex.
+10)solved this my myself but question was good. also in my solution there were some extra loops.
+11)initially i understood the quwstion wrong and solved it. but later took some time to solve this.
+12)algo wise i was blank. but when i saw algo in solution, then solved on my own. but dis'bt thought if edge case, i.e when array is
+    already sorted.
+
+
+
+
+
+good problem -
+
+    1)conert a roman string into number;
+
+
+other concepts to master -
+
+    a)image opimization, image upoad
+    b)drag and drop
+
+
+
+Courses to complete before interview -
+
+    a)grokking coding patterns
+    b)system design interview course
+    c)javascript projects
+    d)josh css courses
+    e)josh react courses
+    d)React blogs and atricles

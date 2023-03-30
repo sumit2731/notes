@@ -14,12 +14,12 @@ function pair_with_smaller_sum(arr, i, target, tripletArray) {
   while (left < right) {
     let currentSum = arr[left] + arr[right];
     if (currentSum < target) {
-      let dummyRight = right;
-      //missed this condition
-      while (dummyRight > left) {
-        tripletArray.push([arr[i], arr[left], arr[dummyRight]]);
-        dummyRight--;
-      }
+      //   let dummyRight = right;
+      //   while (dummyRight > left) {
+      //     tripletArray.push([arr[i], arr[left], arr[dummyRight]]);
+      //     dummyRight--;
+      //   }
+      tripletArray.push([arr[i], arr[left], arr[right]]); // commnetd out this one and uncommneted commnet one to get right output
       left++;
     } else right--;
   }
