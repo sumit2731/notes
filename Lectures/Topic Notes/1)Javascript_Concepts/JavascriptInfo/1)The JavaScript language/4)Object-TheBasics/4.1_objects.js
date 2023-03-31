@@ -66,6 +66,11 @@ console.log( user3[key3] ); // John (if enter "name")
  * 
  * Computed properties - We can use square brackets in an object literal, when creating an object. That’s called computed properties.
  */
+let fruit1 = prompt("Which fruit to buy?", "apple");
+
+let bag1 = {
+  [fruit1]: 5, // the name of the property is taken from the variable fruit
+};
 
 let user4 = {
     [key3]: "any value"

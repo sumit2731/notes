@@ -1,11 +1,11 @@
-function makeUser() {
-  "use strict";
-  return {
-    name: "John",
-    ref: this,
-  };
-}
+let obj5 = {
+  // toString handles all conversions in the absence of other methods
+  toString() {
+    return { name: "name1" };
+  },
+  valueOf() {
+    return { name: "name2" };
+  },
+};
 
-let user = makeUser();
-
-console.log(user.ref.name); // What's the result?
+console.log(+obj5);

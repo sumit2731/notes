@@ -64,6 +64,12 @@ admin3.sayHi(); // TypeError: Cannot read property 'name' of null
   chapter Global object). This is a historical behavior that "use strict" fixes.
  
  *Usually such call is a programming error. If there’s this inside a function, it expects to be called in an object context.
+
+ In JavaScript this is “free”, its value is evaluated at call-time and does not depend on where the method was declared, but rather 
+ on what object is “before the dot”.
+
+ The concept of run-time evaluated this has both pluses and minuses. On the one hand, a function can be reused for different objects.
+ On the other hand, the greater flexibility creates more possibilities for mistakes.
  */
 
 function sayHi() {

@@ -1,8 +1,9 @@
 1)Object.fromEntries(map) - Creates a object form iterables. like array, map ,set etc
 
-2)Irerate over properties-  
-    for-in- includes only enumerable string-keyed properties. Also includea properties in portotypal chain.
-    Object.keys- includes only own, enumerable, string-keyed properties; 
-    Object.getOwnPropertyNames - includes own, string-keyed properties even if non-enumerable; 
-    Object.getOwnPropertySymbols does the same for just Symbol-keyed properties, etc
+2)Iterate over properties-  
+    for-in- string-keyed, enumerable, includes properties in prototypal chain.
+    Object.keys- string-keyed,enumerable, , includes only own,
+    Object.getOwnPropertyNames - string-keyed ,includes even non-enumerable,includes only own
+    Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
     Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
+    Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.
