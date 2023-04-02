@@ -22,7 +22,7 @@
  * @Desc Named Import Syntax
  * @Simple Named Import
  */
-import {sayHi, sayBye} from './say.js';
+import { sayHi, sayBye } from "./say.js";
 
 /**
  * @Importing everything in single statement. disdvantage -
@@ -30,42 +30,43 @@ import {sayHi, sayBye} from './say.js';
     Modern build tools (webpack and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
  */
 
-import * as say from './say.js';
+import * as say from "./say.js";
 
-    say.sayHi('John');
-    say.sayBye('John');
-
+say.sayHi("John");
+say.sayBye("John");
 
 /**
  * @Import as syntax - you can asisgn alias to imports.
  */
 
-import {sayHi as hi, sayBye as bye} from './say.js';
+import { sayHi as hi, sayBye as bye } from "./say.js";
 
-hi('John'); // Hello, John!
-bye('John'); // Bye, John!
-
+hi("John"); // Hello, John!
+bye("John"); // Bye, John!
 
 /**
  * @Importing default exports - There is only one export default per file.
    import it without uisng curly braces. you can use any name for default import.
  */
 
-import User from './user.js'; // not {User}, just User
+import User from "./user.js"; // not {User}, just User
 
-new User('John');
-
+new User("John");
 
 /**
  * @Importing both default and named exports -
  */
 
-import Person,{abc, xyz} from './hello.js';
+import Person, { abc, xyz } from "./hello.js";
+
+//or
+
+import { default as Person, abc, xyz } from "./hello.js";
 
 /**
  * @desc Accessing default export in import * as syntax
  */
 
-import * as user from './users.js';
+import * as user from "./users.js";
 
 user.default();

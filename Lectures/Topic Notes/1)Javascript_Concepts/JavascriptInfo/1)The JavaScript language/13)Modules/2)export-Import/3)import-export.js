@@ -14,12 +14,12 @@
  */
 
 // import login/logout and immediately export them
-import {login, logout} from './helpers.js';
-export {login, logout};
+import { login, logout } from "./helpers.js";
+export { login, logout };
 
 // import default as User and export it
-import User from './user.js';
-export {User};
+import User from "./user.js";
+export { User };
 
 /**
  * @The syntax export ... from ... is just a shorter notation for such import-export:
@@ -30,16 +30,15 @@ export {User};
  * @exporting named exports
  */
 
- export {sayHi} from './say.js'; // re-export sayHi
+export { sayHi } from "./say.js"; // re-export sayHi
 
- /**
-  * @exporting default exports
-  */
+/**
+ * @exporting default exports
+ */
 
-  export {default as User} from './user.js';
+export { default as User } from "./user.js";
 
-  export {default as User, sayHI} from './user.js';
-
+export { default as User, sayHI } from "./user.js";
 
 /**
  * Re-exporting default export - We can come across two problems with it:

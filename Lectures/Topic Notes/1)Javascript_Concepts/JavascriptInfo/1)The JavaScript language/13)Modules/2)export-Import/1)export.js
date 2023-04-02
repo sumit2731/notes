@@ -8,7 +8,6 @@ Named Exports
 export const MODULES_BECAME_STANDARD_YEAR = 2015;
 
 /* 
-
     export after declaration
 */
 
@@ -25,6 +24,11 @@ function sayBye(user) {
  *  export sayHi;
  */
 export {sayHi, sayBye}; // 
+
+//or 
+
+export {sayHi}
+export {sayBye}
 
 
 /**
