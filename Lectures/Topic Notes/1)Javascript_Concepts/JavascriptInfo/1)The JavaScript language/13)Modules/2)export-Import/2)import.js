@@ -32,8 +32,9 @@ import { sayHi, sayBye } from "./say.js";
 
 import * as say from "./say.js";
 
-say.sayHi("John");
-say.sayBye("John");
+say.sayHi("John"); // using named export
+say.sayBye("John"); // using named export
+say.deafult("John"); // using default export
 
 /**
  * @Import as syntax - you can asisgn alias to imports.

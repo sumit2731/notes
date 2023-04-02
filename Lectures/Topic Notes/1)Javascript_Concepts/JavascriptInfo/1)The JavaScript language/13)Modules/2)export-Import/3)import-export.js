@@ -40,6 +40,11 @@ export { default as User } from "./user.js";
 
 export { default as User, sayHI } from "./user.js";
 
+export { default } from "./user.js"; // now this imporst default export of user.js and also exports it as it's default export.
+export {default, User} from "./user.js";
+export * from './user.js'; // to re-export named exports, default is not exported, => this how you this imoprt =>  import { sayHello } from "./index.js";
+
+export { default as function1, name as dummyName} from './fields.utils'; //renaming named export
 /**
  * Re-exporting default export - We can come across two problems with it:
  * 
