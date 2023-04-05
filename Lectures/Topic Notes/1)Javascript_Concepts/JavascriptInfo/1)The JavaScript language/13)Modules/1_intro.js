@@ -1,3 +1,28 @@
+/* 
+
+Synopsis - 
+
+Core module features
+
+    1)always use strict mode
+    2)they have their own top level scope and do not share with other modules
+    3)module code is evaluated only onc if.e in first import. same object is shared in all importScripts.
+    4)import.meta = path, function
+    5)this is undefined
+    6)does not work in file system
+
+
+Browser-specific features
+
+    1)scripts are defer by default
+    2)async works in inline scripts as well.
+    3) External Scripts -
+        a)External scripts with the same src run only once:
+        b)External scripts that are fetched from another origin (e.g. another site) require CORS headers.
+    4)No bare modules allowed
+    5)Compatibility, “nomodule”
+*/
+
 /*
     Modules, introduction
     

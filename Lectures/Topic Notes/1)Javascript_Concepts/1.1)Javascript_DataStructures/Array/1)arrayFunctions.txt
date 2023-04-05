@@ -114,8 +114,20 @@ Filling Values into Array -
         Return -
             The modified array, filled with value.
 
+        Code - 
+
+            let arr = Array(10).fill(false);
+
         Orignal Array Modified - Yes
 
+    2)Using Array.from
+
+        let arr = Array.from(Array(10), (val, index) => index)
+
+    3)Creating empty array then calling map on it
+        let arr = Array(10).map((val, index, array) => index) // map skips empty array so use this -
+
+        let arr = [...Array(10)].map((val, index, array) => index)
 
 
 Joining Arrays -

@@ -1,2 +1,2 @@
-1)was not able to think of solution in first attempt. later solved it using my approach. there were minor typo's, which i found
-    during dryrun.
+1)I was not able to think of solution in first attempt. later solved it using my approach with graph transversal algo's. there were 
+    minor typo's, which i found during dryrun. but optimal solution is uisng gpha transversal algo.
