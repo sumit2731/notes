@@ -2,15 +2,14 @@
 
 Synopsis - 
 
-Core module features
+Core Module Features
 
     1)always use strict mode
     2)they have their own top level scope and do not share with other modules
-    3)module code is evaluated only onc if.e in first import. same object is shared in all importScripts.
+    3)module code is evaluated only once if.e in first import. same object is shared in all importScripts.
     4)import.meta = path, function
     5)this is undefined
     6)does not work in file system
-
 
 Browser-specific features
 

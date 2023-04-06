@@ -26,8 +26,14 @@ import { sayHi, sayBye } from "./say.js";
 
 /**
  * @Importing everything in single statement. disdvantage -
- * At first sight, “import everything” seems such a cool thing, short to write, why should we ever explicitly list what we need to import?
-    Modern build tools (webpack and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
+ * At first sight, “import everything” seems such a cool thing, short to write, why should we ever explicitly list what we need to 
+ * import?Well, there are few reasons.
+
+      a)Explicitly listing what to import gives shorter names: sayHi() instead of say.sayHi().
+      b)Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and 
+            refactoring easier.
+   
+Modern build tools (webpack and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
  */
 
 import * as say from "./say.js";

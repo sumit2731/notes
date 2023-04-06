@@ -7,3 +7,9 @@
     Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
     Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
     Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.
+
+3)Ways to copy Object -
+    a)Copies all properties and the descriptors
+        let obj2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj1));
+    b)Copies all properties and descriptors as well as prototype of current object
+        let obj2 = Object.create(Object.getPrototype(obj1),Object.getOwnPropertyDescriptors(obj1))
