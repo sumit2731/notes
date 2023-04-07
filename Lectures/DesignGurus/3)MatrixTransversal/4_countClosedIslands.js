@@ -47,7 +47,7 @@ function BFS_Search_ITR(arr, row, column, visitedMatrix) {
 }
 
 /**
- * @Course Algo Using MyCode
+ * @Course My Algo Using DFS_Recursion
  */
 
 function count_closed_islands_DFS(arr) {
@@ -107,6 +107,61 @@ function is_closed_island_DFS(arr, visitedMatrix, row, column) {
   return isClosedIsland;
 }
 
+/**
+ * @CourseSolution using DFS Using Iteration
+ */
+
+function count_closed_islands_DFS_Itr(arr) {
+  let closedIslands = 0,
+    visistedMatrix = {};
+  for (let row = 0; row < arr.length; row++) {
+    for (let column = 0; column < arr[0].length; column++) {
+      if (
+        arr[row][column] === 1 &&
+        !visistedMatrix[`${row}${column}`] &&
+        is_closed_island_recursion(arr, row, column, visistedMatrix)
+      ) {
+        closedIslands++;
+      }
+    }
+  }
+  return closedIslands;
+}
+
+function is_closed_island_recursion(arr, row, column, visistedMatrix) {
+  let isClosedIsland = true;
+  if (row < 0 || column < 0 || row >= arr.length || column >= arr[0].length)
+    return false;
+  if (arr[row][column] === 1 && !visistedMatrix[`${row}${column}`]) {
+    visistedMatrix[`${row}${column}`] = true;
+    isClosedIsland &= is_closed_island_recursion(
+      arr,
+      row,
+      column - 1,
+      visistedMatrix
+    );
+    isClosedIsland &= is_closed_island_recursion(
+      arr,
+      row,
+      column + 1,
+      visistedMatrix
+    );
+    isClosedIsland &= is_closed_island_recursion(
+      arr,
+      row - 1,
+      column,
+      visistedMatrix
+    );
+    isClosedIsland &= is_closed_island_recursion(
+      arr,
+      row + 1,
+      column,
+      visistedMatrix
+    );
+  }
+  return isClosedIsland;
+}
+
 let arr1 = [
   [1, 1, 0, 0, 0],
   [0, 1, 0, 0, 0],
@@ -123,5 +178,5 @@ let arr2 = [
   [0, 0, 0, 0],
 ];
 
-console.log(count_closed_islands_DFS(arr1));
-console.log(count_closed_islands_DFS(arr2));
+console.log(count_closed_islands_DFS_Itr(arr1));
+console.log(count_closed_islands_DFS_Itr(arr2));
