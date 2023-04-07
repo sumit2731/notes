@@ -1,55 +1,51 @@
-function count_closed_islands_DFS(matrix) {
-  const rows = matrix.length;
-  const cols = matrix[0].length;
-  const visited = Array(rows)
-    .fill(false)
-    .map(() => Array(cols).fill(false));
-  let countClosedIslands = 0;
-
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < cols; j++) {
-      if (matrix[i][j] === 1 && !visited[i][j]) {
-        // only if the cell is a land and not visited
-        if (is_closed_island_DFS(matrix, visited, i, j)) countClosedIslands++;
+function find_distinct_islands(arr) {
+  let visisted = {}, dStringObj = {};
+  for (let row = 0; row < arr.length; row++) {
+      for (let column = 0; column < arr[0].length; column++) {
+          if (arr[row][column] === 1 && !visisted[`${row}${column}`]) {
+              let [island, dString] = BFS_Transversal(arr, row, column, visisted)
+              if(!dStringObj[dString]) dStringObj[dString] = []
+              dStringObj[dString].push(island);
+          }
       }
-    }
   }
-  return countClosedIslands;
+  console.log(dStringObj);
+  return Object.keys(dStringObj).length;
+
 }
 
-function is_closed_island_DFS(matrix, visited, x, y) {
-  if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length)
-    return false; // returning false since the island is touching an edge
-  if (matrix[x][y] === 0 || visited[x][y]) return true; // returning true as the island is surrounded by water
-
-  visited[x][y] = true; // mark the cell visited by making it a water cell
-
-  let isClosed = true; // counting the current cell
-  // recursively visit all neighboring cells (horizontally & vertically)
-  isClosed &= is_closed_island_DFS(matrix, visited, x + 1, y); // lower cell
-  isClosed &= is_closed_island_DFS(matrix, visited, x - 1, y); // upper cell
-  isClosed &= is_closed_island_DFS(matrix, visited, x, y + 1); // right cell
-  isClosed &= is_closed_island_DFS(matrix, visited, x, y - 1); // left cell
-
-  return isClosed;
+function BFS_Transversal(arr, row, column, visisted) {
+  let queue = [[row, column,'O']], resultArray = [], dString = '';
+  while (queue.length) {
+      let [currentRow, currentColumn, direction] = queue.shift();
+      if (currentRow < 0 || currentColumn < 0 || currentRow >= arr.length || currentColumn >= arr[0].length) continue;
+      else if (arr[currentRow][currentColumn] === 1 && !visisted[`${currentRow}${currentColumn}`]) {
+          resultArray.push([currentRow, currentColumn]);
+          dString += direction;
+          visisted[`${currentRow}${currentColumn}`] = true;
+          queue.push([currentRow, currentColumn - 1,'L']);
+          queue.push([currentRow, currentColumn + 1,'R']);
+          queue.push([currentRow - 1, currentColumn, 'U']);
+          queue.push([currentRow + 1, currentColumn, 'D']);
+      }
+  }
+  return [resultArray, dString]
 }
 
-console.log(
-  count_closed_islands_DFS([
-    [1, 1, 0, 0, 0],
-    [0, 1, 0, 0, 0],
-    [0, 0, 1, 1, 0],
-    [0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0],
-  ])
-);
+let arr1 = [
+  [1, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1],
+  [0, 0, 0, 0, 0],
+  [0, 1, 1, 0, 1],
+  [0, 1, 1, 0, 1]
+]
 
-console.log(
-  count_closed_islands_DFS([
-    [0, 0, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0],
-  ])
-);
+let arr2 = [
+  [1, 1, 0, 1],
+  [0, 1, 1, 0],
+  [0, 0, 0, 0],
+  [1, 1, 0, 0],
+  [0, 1, 1, 0]
+]
+console.log(find_distinct_islands(arr1));
+console.log(find_distinct_islands(arr2));

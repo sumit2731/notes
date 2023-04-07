@@ -1,2 +1,8 @@
 1)I was not able to think of solution in first attempt. later solved it using my approach with graph transversal algo's. there were 
     minor typo's, which i found during dryrun. but optimal solution is uisng gpha transversal algo.
+
+2)solutiion of 2 can be derived from 1. i solved it
+3)can be derived from 1. i solved it
+4)slight variation is conditions of  1.i solved it
+5)calculate perimeter needs to take approach mention here. good question. i was not able to solve it.
+6)solved using my solution, which was having higher complexity. course solution is good.

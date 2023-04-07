@@ -35,8 +35,8 @@ function BFS_Iterative(arr, row, column, visisted) {
     if (
       currentRow < 0 ||
       currentColumn < 0 ||
-      currentRow >= row.length ||
-      currentColumn >= column.length
+      currentRow >= arr.length ||
+      currentColumn >= arr[0].length
     )
       perimeter++;
     else if (arr[currentRow][currentColumn] === 0) perimeter++;
@@ -70,5 +70,5 @@ let arr2 = [
   [0, 1, 0, 0],
 ];
 
-//console.log(landPerimeter(arr1));
+console.log(landPerimeter(arr1));
 console.log(landPerimeter(arr2));
