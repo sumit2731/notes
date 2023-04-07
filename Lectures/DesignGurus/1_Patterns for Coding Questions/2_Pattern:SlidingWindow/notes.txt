@@ -1,2 +1,0 @@
-//solved problem 3 with alternate approach. time complexity not as good as course's solution
-//solved oribklem 5 with difficult apprioach
