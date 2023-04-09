@@ -1,0 +1,49 @@
+1)readable
+    if-else ladder is difficult in this case.
+2)Testable
+    chnaging behaviour of one animal, will chnage behaviour of other animals also, leading to
+    breaking of test cases.
+3)Extensible
+    If we have iported the code from library we cnt modify the code, because we dnt have access 
+    to it.for this reason we are unable to ectend the code.
+4)Maintainable
+    if multiple devs are working, this will lead to merge conflicys.
+
+Robert C. Martin, Uncle Bob
+
+
+S - Single Responsibility - 
+    Every Unit of code should have one simple well-defined responisibility.
+    Any unit of code should have excatly 1 reson to change.
+    if some peace code is serving multiple responisibilities- break it down into 
+
+    solution - mark the class as abstract.
+O - Open Closed
+ your code should be closed for modification and for extending.
+ instead of using if-else use cases, we can define classes, so that users of library can
+    extend my base class and implement new behaviours.
+
+then we have kiwi cannot fly example. solutions -
+    1)do not implemente method - code will not compile
+    2)throw exception - code breaks without chnaging code
+    3)redesign the system
+        we defined a new interface and only classes which needs fly method need to implement
+        this interface.kiwi does not fly, so it will implement this interface.now
+        compiler forces to object to be type interface before calling this method.
+    L - Liskov Substitution
+
+        Any functionality that works in parent class must also works for all child classes.
+        any extension to existing code should not break the existing code.
+    
+    
+    
+    I - Interface Segregation
+
+        code should not br forced to implement a method that it should not need
+
+    D - Dependency Inversion
+        
+        dnt create dependencies inject them.
+        high level module should not depend on low level details
+        instead hight level modules should only high level abstraction(interface/ classes)
+

@@ -28,7 +28,8 @@ let rabbit = Object.create(animal, {
 console.log(rabbit.jumps); // true
 
 /* 
-We can use Object.create to perform an object cloning more powerful than copying properties in for..in:
+We can use Object.create to perform an object cloning more powerful than copying properties in for..in.
+This sets the prottotype of new object to old one and copies all its proeprties also.
 */
 
 let clone = Object.create(
@@ -48,6 +49,30 @@ That’s an interesting question, requiring us to understand why __proto__ is ba
 /* 
 Don’t change [[Prototype]] on existing objects if speed matters.
 
-The __proto__ property is special: it must be either an object or null. A string can not become a prototype. That’s why an assignment
-a string to __proto__ is ignored.
+Changing a prototype “on-the-fly” with Object.setPrototypeOf or obj.__proto__= is a very slow operation as it breaks internal 
+optimizations for object property access operations
+
+*/
+
+/* 
+"Very plain"  or “pure dictionary” objects. we create them using -
+
+let obj = Object.create(null);
+
+now object is just key-value pair and it will be just used to store values.
+
+why ? because we do not want default behviour of object, like -
+
+  1)value to __proto__ can be null or an object
+
+*/
+
+
+/* 
+API -
+
+  a)Object.getPrototypeOf(obj)
+  b)Object.setPrototypeOf(onj,prototype)
+  c)Object.create(proto, [descriptors])
+
 */

@@ -1,0 +1,84 @@
+Interview Rounds -
+
+    DSA Rounds -
+    Easy outisde india.
+
+    Resources -
+        a)Dr Naveen Garg - https://www.youtube.com/watch?v=zWg7U0OEAoE&list=PLBF3763AF2E1C572F
+        https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+        https://www.scaler.com/topics/data-structures/merge-sort-algorithm/
+
+    Practice -
+        leetcode
+        interview bit(little more structured)
+        algoexpert
+
+
+    System Design(with years of experience difficulty increases) -
+
+        High Level Design(with experience difficulty level increases drastically) -
+            Resources -
+                https://bytebytego.com/
+                https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers
+
+            Practice -
+                https://www.amazon.in/System-Design-Interview-insiders-Second/dp/B08CMF2CQF
+                https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/
+                https://github.com/donnemartin/system-design-primer
+
+
+        LLD(Low Level Design) or machine Coding(with experince difficulty level increases but not that much) -
+            Take Home Assignments(running piece of code)
+            InPerson Round - 
+
+            resources -
+                https://github.com/gothinkster/realworld
+                https://workat.tech/machine-coding/practice
+                https://www.crio.do/
+
+
+    Culture Fit Round -
+
+        Situation -
+            When was last time you showed leadership?
+        Task
+        Action
+        Result
+
+        Resources -
+            https://www.pramp.com/#/
+            https://www.themuse.com/advice/star-interview-method
+
+Where to apply -
+    linkedin
+    https://wellfound.com/
+    career websites
+
+    to check compensation - 
+        https://www.levels.fyi/?compare=GPT,Microsoft,Accenture&track=Software%20Engineer
+
+
+Remote Jobs -
+
+Github Profiles -
+
+    https://github.com/abhisheknaiidu/awesome-github-profile-readme#github-actions-
+
+Remote jobs -
+
+    Turing(https://www.turing.com/) -
+        NO DSA Round, questions are mmainly on your skill set(like react , angular)
+    Toptal(they hire yoou on there payroll,fresher friendly) -
+        https://www.toptal.com/
+    https://arc.dev/
+
+Freelance -
+    upwork
+    crossover
+    https://www.fiverr.com/
+
+MicroFroneds -
+
+
+
+    

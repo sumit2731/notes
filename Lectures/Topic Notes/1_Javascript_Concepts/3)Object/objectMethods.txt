@@ -1,0 +1,81 @@
+1)Object.fromEntries(map) - Creates a object form iterables. like array, map ,set etc
+
+2)Iterate over properties-  
+    for-in- string-keyed, enumerable, includes properties in prototypal chain.
+    Object.keys- string-keyed,enumerable, , includes only own,
+    Object.getOwnPropertyNames - string-keyed ,includes even non-enumerable,includes only own
+    Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
+    Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
+    Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.
+
+3)Ways to copy Object -
+    a)all properties: enumerable and non-enumerable, data properties and setters/getters – everything
+        let obj2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj1));
+    b)all properties: enumerable and non-enumerable, data properties and setters/getters – everything, and with the right [[Prototype]]
+        let obj2 = Object.create(Object.getPrototype(obj1),Object.getOwnPropertyDescriptors(obj1))
+    c)Copies all own enumreable properties(strings and symbol)
+        let obj = Object.assign({}, obj);
+
+        copies all enumerable own properties(string as well as symbols) from one or more source objects to a target object. It returns the modified target object.
+
+4)Object Properties -
+
+    a)Object.getOwnPropertyDescriptor(obj, propertyName)
+        retuns the object which represents different flags for properties
+        {
+            "value": "John",
+            "writable": true,
+            "enumerable": true,
+            "configurable": true
+        }
+    
+    b)Object.defineProperty(obj, propertyName, descriptor)
+        adds(if does not exists) or modyfies the given property on object.
+    
+    c)Object.getOwnPropertyDescriptors(obj) - returns descriptors for all properties
+        {
+            prop1: descriptor1,
+            prop2: descriptor2
+            // ...
+        });
+
+    d)Object.defineProperties(obj, descriptors)  - same as 3 but creates multiple properties on object.
+        
+        Object.defineProperties(obj, {
+            prop1: descriptor1,
+            prop2: descriptor2
+            // ...
+        });
+
+       Object.defineProperties(user, {
+            name: { value: "John", writable: false },
+            surname: { value: "Smith", writable: false },
+            // ...
+        });
+
+    e)Object.preventExtension - frobids addition of new properties
+
+    f)Object.seal(obj) - It prevents addition/deletion of new properties. For all properties it sets the configurable flag as false.
+
+    g)Object.freeze(obj) - Forbids adding/removing/changing of properties. Sets configurable: false, writable: false for all existing properties.
+
+    
+
+4)Protype Functions -
+
+    1)Object.create - Object.create(proto, [propertiesObject])
+        method creates a new object, using an existing object as the prototype of the newly created object.second object wull create additional
+            properties in object. this is the same object returned by Object.getOwnPropertyDescriptors
+
+    2)Object.getPrototypeOf(obj) - It returns the prototype (i.e. the value of the internal [[Prototype]] property) 
+        of the specified object.
+
+    3)Object.setPrototypeOf(obj, prototype)
+
+
+    4)object1.hasOwnProperty('property1')
+
+    5)object1.prototype.isPrototypeOf(object3)
+
+    6)instanceof-
+        vehicle instanceof Truck2
