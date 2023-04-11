@@ -1,3 +1,6 @@
-1)4.4 shorter object method notion diffrence
+
 2)interview questions on object detsructuring
 3)reading this articles and interview questions on this
+
+
+4)second lecture of class - ClassInheritance. go through article link shared at last after you go through mixins.
