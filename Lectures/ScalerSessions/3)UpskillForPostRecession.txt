@@ -1,0 +1,39 @@
+Why DSA -
+    Efficient code leads to less cost.
+    Running solution in mind increases the  productivity.so pratice running code in mind.
+        try to make less mistakes.
+
+
+System Design -
+    High level Design - 
+    Low Level Design -
+
+
+Resources -
+    learning language -
+        Codeacademy
+        Hackerrank
+
+    DSA -
+        Intro to algo (cormen)
+        you tube - abdul bari, my code school, apna school
+    Practice -
+        leetcode(unstructured)
+        interview bit
+
+    High Lvel Design -
+        desiging data intensive application(book, requires patience)
+        You tube(no video talks about in depth) -
+            gaurav sen, tushar roy, arpitbayani (good channel to get started with)
+
+    Low level Design(OOPS) -
+
+        refactoring.guru
+        you tube videos
+
+    CS Fundamentals (DB, OS, network) - CS50, code with Mosh, hussain namar for backend
+
+Projects -
+    MVC DOCS
+
+
