@@ -75,22 +75,56 @@ Methods that do not modify the orignal Array -
 
 ----------------------------------------------------------------------------------------------------------------------
 
-Array Creation - 
+Array Creation -
 
-    1)const numbers = [1, 2, 3]
-
-    2)const numbers = new Array(1, 2, 3) // [1,2,3]
-
-    3)const numbers = new Array(3); // array with 3 empty value is creted
-
-    4)const numbers = Array.of(1,2,3); // to solve  problem  in point 3
-
-    5)Array.from - The Array.from() static method creates a new, shallow-copied Array instance from an array-like or iterable
-        object.Another application for the Array.from method is a scenario wherein you want to create a new array and fill it with 
-        elements.
+    1)Using assignment operator
+        var array = [];
+        var array2 = [1,2,3,4,5];
+        let arr = [...arr1];
         
-        Signature - Array.from(arrayLike [, mapFn [, thisArg]])
-            Array.from(arrayLike, function mapFn(element, index, array) { ... }, thisArg)
+    2. Using Array Constructor
+        Array can be called with or without new. both create new array instance.
+            
+            new Array()
+            new Array(element0)
+            new Array(element0, element1)
+            new Array(element0, element1, /* … ,*/ elementN)
+            new Array(arrayLength)
+
+            A JavaScript array is initialized with the given elements, except in the case 
+            where a single argument is passed to the Array constructor and that argument 
+            is a number. in that case adn empty array with length equal to that number is created.
+          
+    3)Using Array.from -
+        The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object.
+
+                
+        Signature - 
+            Array.from(arrayLike)
+            Array.from(arrayLike, mapFn)
+            Array.from(arrayLike, mapFn, thisArg)
+        
+            arrayLike - An iterable or array-like object to convert to an array.
+            mapFn signature - (element, index, thisArg) => derivedElement
+
+    4)Using Array.of
+
+        The Array.of() static method creates a new Array instance from a variable number of arguments, regardless of number or type of the arguments.
+
+            console.log(Array.of('foo', 2, 'bar', true));
+            // Expected output: Array ["foo", 2, "bar", true]
+
+            console.log(Array.of());
+            // Expected output: Array []
+
+        It is similar to Array constructor but difference is in handling of single argument.
+            
+            Array.of(5) → [5]
+            Array(5) → [empty x 5]
+
+
+
+
 
 Filling Values into Array -
 

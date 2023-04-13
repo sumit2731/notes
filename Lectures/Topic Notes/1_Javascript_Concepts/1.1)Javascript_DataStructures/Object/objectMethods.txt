@@ -61,7 +61,7 @@
 
     
 
-4)Protype Functions -
+4)Prototype Functions -
 
     1)Object.create - Object.create(proto, [propertiesObject])
         method creates a new object, using an existing object as the prototype of the newly created object.second object wull create additional
@@ -73,9 +73,9 @@
     3)Object.setPrototypeOf(obj, prototype)
 
 
-    4)object1.hasOwnProperty('property1')
+    4)objA.hasOwnProperty('property1')
 
-    5)object1.prototype.isPrototypeOf(object3)
+    5)objA.isPrototypeOf(objB) - returns true if objA is somewhere in the chain of prototypes for objB
 
     6)instanceof-
         vehicle instanceof Truck2

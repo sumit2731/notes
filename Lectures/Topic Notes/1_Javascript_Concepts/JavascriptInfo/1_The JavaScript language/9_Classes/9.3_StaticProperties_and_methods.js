@@ -21,6 +21,6 @@ c)Static properties and methods are inherited.These are defined directly on cons
 
 See question in last.
 
-important thing to remeber  - Object.[[Prototype]] === Function/prototype
+important thing to remeber  - Object.[[Prototype]] === Function.prototype
 
 */
