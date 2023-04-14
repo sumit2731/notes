@@ -1,0 +1,21 @@
+user-agent stylesheet
+CSS Reset - https://courses.joshwcomeau.com/css-for-js/treasure-trove/010-global-styles
+
+Inheritance - Most typography related properties are inherited. complete list -
+    https://www.sitepoint.com/css-inheritance-introduction/#list-css-properties-inherit
+
+property value - inherit. thi scan be used on any css property as value.child will take its
+    parent's value.
+
+Inheritance Article outside course -
+    https://web.dev/learn/css/inheritance/
+    https://elad.medium.com/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695(intial, inherit,unset,revert)
+        inehrit
+        initial
+        unset (it exist so that we can use all)
+            if property is inherited => inehrit
+            if proeprty is not inherited => initial
+        revert - takes the value from user agent style.
+
+        all: inherit || initial || unset
+            setting all: inherit, will make sure that all proeprty values are taken from parent.even non inherited ones.

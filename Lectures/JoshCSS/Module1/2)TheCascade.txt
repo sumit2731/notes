@@ -1,0 +1,47 @@
+Cascade - mechanism of deciding which styles to apply when multiple rules target same element.
+    order -
+        inheritedStyles
+        tag syles
+        class styles
+        id styles
+        inlinestyles
+        important styles
+
+    Extra from lecture -
+
+    Cascading Algo -
+        1)Importance - The first tier of the Cascade looks at the type of rule we’re looking at.
+            a)transition
+            b)important
+            c)animation
+            d)normal
+
+        2)Origin - The second tier of the Cascade looks at where the rule was defined.
+            rules can be defined in -
+                a)website (dev defined styles)
+                b)user (end user can define settings in browser, or in extensions, or styles from OS)
+                c)browser(user-agent stylesheet)
+
+            Funky fact alert! The hierarchy here is actually reversed for !important rules, meaning that an !important 
+            browser default rule wins over an !important website rule (whereas a website rule normally wins over a browser
+            default).
+        
+        3)Specificity -There are five levels of selectors:
+            a)inline (styles declared with style attribute)
+            b)layer(new)
+            3)id
+            4)class | attribute | pseudo-class
+            5)type | pesudo-element
+
+        4)Position - This looks at the order that the rules were defined in.Rules that are defined later in linked stylesheets 
+            or <style> tags will win, given that everything else in the Cascade is the same.
+
+Note - Being able to specify two values for the same property can be a simple way to create fallbacks for browsers that do 
+    not support a particular value. In this next example, font-size is declared twice. If clamp() is supported in the 
+    browser, then the previous font-size declaration will be discarded. If clamp() isn't supported by the browser, 
+    the initial declaration will be honored, and the font-size will be 1.5rem
+        
+
+
+
+

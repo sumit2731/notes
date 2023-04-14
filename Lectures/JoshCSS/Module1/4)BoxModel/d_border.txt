@@ -1,0 +1,43 @@
+border -
+    
+    There are three styles specific to border:
+
+        Border width (eg. 3px, 1em)
+        Border style (eg. solid, dotted)
+        Border color (eg. hotpink, black)
+
+    .box {
+        border: 3px solid hotpink;
+    }
+
+    The only required field is border-style. Without it, no border will be shown!
+
+    As with padding, you can overwrite broad properties with specific ones.This is useful for creating several "variants" of an element.
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 10px solid;
+        }
+
+        /*
+            I'm using .box.one instead of
+            .one purely for semantic purposes.
+            I like the way it reads!
+        */
+
+        .box.one {
+            border-color: deeppink;
+        }
+
+    If we don't specify a border color, it'll use the font's color by default.If you want to specify this behaviour 
+        explicitly, it can be done with the special currentColor keyword.
+
+border-radius - border-radius should have been corner-radius.It's not hard to understand the rationale; the border-radius 
+    property rounds an element even if it has no border!
+
+
+new things -
+    with border-style border wnt be visisble
+    default border color is text-color which is color proeprty.
+    we can refer to color property in all css proeprties by currentColor keywprd.

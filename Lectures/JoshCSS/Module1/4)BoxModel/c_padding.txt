@@ -1,0 +1,16 @@
+Padding -
+    units - preffred ones are px, for padding and other box model properties like margin/border.
+    see video. central idea is- we do not want padding/border/margin to chnage when font size is increased.
+        changing the zoom level automatically scales everything.if padding also gets increased with bumping
+        the font-size then height of container will increasing as there will be more lines of text.
+
+
+    shorthand properties-
+        we saw how to rest values are calculated when less than 4 values are provided
+            padding
+            margin
+            border-style : dotted solid dashed solid
+            border-radius: top-left, top-right, bottom-right, bottom-left
+
+new things - 
+    How to calculate remaining shorthand properties when all values are not given.

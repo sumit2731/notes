@@ -1,9 +1,6 @@
-.parent {
-  width: 200px;
+.box {
+  width: 500px;
   height: 200px;
-  background: yellow;
-}
-
-.parent > *:first-child {
-  color: red;
+  background-color: red;
+  border-radius: 10%;
 }

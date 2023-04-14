@@ -1,0 +1,16 @@
+box-sizing: content-box or border-box
+
+default - 
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+Why the pseudo-elements?
+    You might be wondering: why do we need to add *::before and *::after? Shouldn't the wildcard selector (*) select 
+    everything?
+
+    Well, yes and no. The * selector will select all elements, but ::before and ::after aren't considered elements.
+    They're pseudo-elements. And so we need to select them explicitly.

@@ -1,0 +1,16 @@
+CSS builds its sense of direction based on this system. It has -
+    a block direction (vertical)S
+    an inline direction (horizontal).
+
+
+    Logical properties -
+        margin-block - vertical axis
+        margin-inline - horizontal axis
+        
+        margin-top => margin-block-start
+        margin-bottom => margin-block-end
+        margin-left => margin-inline-start
+        margin-right => margin-inline-end
+
+        These alternatives are known as logical properties.It's not just margin: there are logical variants for padding,
+            border, and overflow as well.
