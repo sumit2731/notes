@@ -1,0 +1,46 @@
+Negative Margins -
+    With padding and border, only positive numbers (including 0) are supported. With margin, however, we can drop into the
+    negatives.
+
+    article - https://www.quirksmode.org/blog/archives/2020/02/negative_margin.html
+        points covered -
+            a)negative values of margin-top and margin-left allows you to draw the element closer to its top or left neighbour.
+            b)nagative values of margin-bottom and margin-right, draw its right and bottom neighbour closer to it
+            
+            Trick - This trick is useful for subtle tweaks, where the content of one element should slightly overlap the content 
+                of the one above it.
+            c)margin-collpasing and negative values -
+                a)If one is positive and one is negative, then negative is subtracted from positive.
+                b)If both values are negtaive, then more negative values is subtracted from 0 and other one is ignored.
+                In short negative margin-top and margin-bottom is not affected by margin collapsing.
+            d)negative values in margin-left and margin-right -
+                a)If width is fixed then negative left/right margin, works same as top/bottom negative margin.It just that
+                    margin collpasing does not work on left/right margin.
+                b)If width is auto, then other end does not move, but end on which negative margin is applied, moves such 
+                    that with of element increases. this is trick using which child can occupt the padding of parent.
+            Trick - . You give a container a padding so that its contents have some breathing space. However, you want the 
+                header to span the entire container, ignoring the padding. Negative margins are the way to go.
+    
+    A negative margin can pull an element outside its parent.
+    Negative margins can also pull an element's sibling closer.
+    It's easy to fall into the trap of thinking that margin is exclusively about changing the selected element's position. 
+        Really, though, it's about changing the gap between elements. Negative margin shrinks the gap below an element, 
+        causing the next element to scoot up closer.
+    negative margin can affect the position of all siblings.
+
+Margin-Auto -
+    The auto value seeks to fill the maximum available space. It works the same way for the width property. the byproduct
+    for this is that we end up horizontallyb centering the element by setting margin-left/right to auto. also we can push it to
+    right with margin-left: auto.
+
+    Two caveats:
+        This only works for horizontal margin. Setting top/bottom margin to auto is equivalent to setting it to 0px*.
+        This only works on elements with an explicit width. Block elements will naturally grow to fill the available 
+            horizontal space, so we need to give our element a width in order to center it.
+  
+    note - margin: auto has no effect on display: inline/inline-block.with flex-box it moves individual flex-items.
+
+    see question 2 at last, here trick is width: auto has a different meaning for replaced elements. It doesn't mean “stretch
+        out and fill all of the space”, it means “use your natural width”!
+    
+

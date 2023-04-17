@@ -34,10 +34,35 @@ border -
         explicitly, it can be done with the special currentColor keyword.
 
 border-radius - border-radius should have been corner-radius.It's not hard to understand the rationale; the border-radius 
-    property rounds an element even if it has no border!
+    property rounds an element even if it has no border!.
+
+    values - expects 4 values  for each corner.
+        border-top-left-radius
+        border-top-right-radius
+        border-bottom-right-radius
+        border-bottom-left-radius
+
+        also each value can be -
+            absoluteValues(non percentage value) -
+                single value
+                horizontalRadius vertical Radius
+            percentage values -
+                single values
+
+            / syntax -
+                border-radius: a b c d / e f g h;
+
+                values before left define the horizonal radius for all corners , values after /, define vertical radius.
+    see links of border radius in bookmarks.
+
+
+outline vs border - The core difference is that outline doesn't affect layout. Outline is kinda more like box-shadow; it's a 
+    cosmetic effect draped over an element, without nudging it around, or changing its size.Outlines are stacked outside 
+    border, and can sometimes be used as a "second border", for effect:
 
 
 new things -
     with border-style border wnt be visisble
     default border color is text-color which is color proeprty.
     we can refer to color property in all css proeprties by currentColor keywprd.
+    details of border radius works - https://prykhodko.medium.com/css-border-radius-how-does-it-work-bfdf23792ac2

@@ -1,0 +1,54 @@
+Every HTML element will have its layout calculated by a layout algorithm. These are known as “layout modes”, and there are 7
+    distinct ones.
+    
+    Flow layout -Flow layout is the default layout mode.A plain HTML document, with no CSS applied, uses Flow layout exclusively.
+    There are two main element types in Flow layout:
+
+    There are two main element types in Flow layout:
+        block elements - chunks of content.
+        inline elements - : things like links, or a string of bold text. Generally, inline elements are meant to highlight bits 
+            of text, or elements within a block container.
+
+    In flow layout, block elements stack in the block direction, and inline elements stack in the inline direction.
+
+    Inline elements don't want to make a fuss
+        these proeprties dnt work on inline element -
+
+            a)width
+            b)height
+            c)margin-top/bottom
+            d)padding-top/bottom - takes padding but padding overlaps upper and below elements.
+            e)margin-left/right does not take auto value
+
+
+        Relaced Element -
+            a replaced element includes foreign object. this includes -
+                img
+                video
+                canvas
+            these elements are inline bit they are special: they can affect block layout. you can give them explicit dimnesions
+                or add add some margin-top/bottom.
+    
+    Block Elements - When you place a block level element on the page, its content box greedily expands to fill the entire 
+        available horizontal space.you can give custom width to them they will respect. if you want your element to be as wide
+        as required then use 
+            width: fit-content;
+    
+        Elements that are display: block will stack in the block direction, regardless of their size.    
+
+    Inline elements have “magic space” - vertically below.
+        solution - set line-height: 0 or set display: block
+    space between inline elements
+    Inline Elements can line wrap - 
+
+    inline-block -it turns into a block element, as far as its own CSS declarations are concerned. But from the other layout's
+     (or parent's) perspective, it's an inline element. It lays it out as an inline element, in the inline direction beside 
+     the text.
+
+    Inline-block doesn't line-wrap - Here's the big downside with inline-block: It disables line-wrapping. as a result whole
+        element is moved down which leaves a weird gap.
+    
+
+
+New Things -
+    width: fit-content;

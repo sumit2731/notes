@@ -1,22 +1,22 @@
 % depends on width of parent -
-    
+    width
     margin(left/right/top/bottom)
     padding(left/right/top/bottom)
     left
     right
 
 % depends on height of parent -
+    height,min-height,max-height
     top
     bottom
-    height
-    min-height
-    max-height
 
 % depends on width of element -
+
     translate: transformX(50%)
+    first value of border-radius(border-box width)
 % depends on height of element -
     translate: transformY(50%)
-
+    second value of border radius(border-box height)
 
 % values are not allowed for -
     border-width

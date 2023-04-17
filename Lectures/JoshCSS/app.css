@@ -1,6 +1,5 @@
-.box {
-  width: 500px;
-  height: 200px;
-  background-color: red;
-  border-radius: 10%;
+h1 {
+      /* width: 100%; */
+      margin: 0 16px;
+      background-color: chartreuse;
 }
