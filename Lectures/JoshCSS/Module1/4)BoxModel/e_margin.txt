@@ -42,5 +42,11 @@ Margin-Auto -
 
     see question 2 at last, here trick is width: auto has a different meaning for replaced elements. It doesn't mean “stretch
         out and fill all of the space”, it means “use your natural width”!
+
+
+Questions asked by me -
+    https://codepen.io/sumit2714/pen/poxbRKQ
+
+    JoshAnswer -  Flow layout is designed for documents, and so the default vertical alignment is "baseline". It's essentially trying to line up the bottom of the text with the bottom of the image's margin:
     
 

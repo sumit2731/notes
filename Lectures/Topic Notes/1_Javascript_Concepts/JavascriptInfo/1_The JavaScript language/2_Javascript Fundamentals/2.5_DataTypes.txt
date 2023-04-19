@@ -1,0 +1,22 @@
+number -
+    Besides regular numbers, there are so-called “special numeric values” which also belong to this data type: 
+        Infinity, -Infinity and NaN.
+    NaN is sticky doing any mathematical operation on this gives undefined.here’s only one exception to that:
+     NaN ** 0 is 1).
+    
+    Mathematical operations are safe.
+
+BigInt -
+    numbers cannot represent values larger that pow(2,53)-1. so we have bigInt for same. reason - not all numbers
+    can be stored in 64 bit storage. so in js numbers are accurate up to 15 digites.BigInt is recent addition to js.
+    IE does not support it.
+
+    const bigInt = 1234567890123456789012345678901234567890n;
+
+    Remember, we cannot mix normal numbers with BigInts. If we try to, it will result in an error.
+
+null -
+    typeof null => object
+    this is legacy behaviour
+
+typeof x, but typeof(x)

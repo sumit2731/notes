@@ -97,6 +97,9 @@ Array Creation -
           
     3)Using Array.from -
         The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object.
+        In case of iterable individual values are values that we get in loop. In case of Array like objects, no of elements in array
+        are equal to length property and individual properties are taken from numbered properties. also for indexes which no values
+        are provided, undefined value ia taken. 
 
                 
         Signature - 

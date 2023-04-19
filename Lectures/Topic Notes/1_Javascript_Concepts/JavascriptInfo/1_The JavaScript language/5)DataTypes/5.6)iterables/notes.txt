@@ -1,40 +1,25 @@
-Objects that can be used in for..of are called iterable.Iterable objects are a generalization of arrays. That’s a concept 
-    that allows us to make any object useable in a for..of loop.
+1)Iterable objects are a generalization of arrays. That’s a concept that allows us to make any object useable in a for..of loop.If an object isn’t 
+    technically an array, but represents a collection (list, set) of something, then for..of is a great syntax to loop over it, so let’s see how
+    to make it work. known iterables -
+        array
+        string
+        map
+        set
 
-known itebales in js -
+2)To make the range object iterable (and thus let for..of work) we need to add a method to the object named Symbol.iterator (a special built-in symbol 
+    just for that)
 
-    array
-    keys
-    map
-    set
-    map.keys, map.values , map.entries
-    set.keys, set.values, set.entries
+    a)When for..of starts, it calls that method once (or errors if not found). The method must return an iterator – an object with the method next.
+    b)Onward, for..of works only with that returned object.
+    c)When for..of wants the next value, it calls next() on that object.
+    d)The result of next() must have the form {done: Boolean, value: any}, where done=true means that the loop is finished, otherwise value is the 
+        next value.
 
+3)Calling an iterator explicitly insteaad of using for of loop.
 
-How to define iterable -
-    a)we need to add a method to the object named Symbol.iterator (a special built-in symbol just for that).
-    b)he method must return an iterator – an object with the method next.
-    c)Onward, for..of works only with that returned object.
-    d)When for..of wants the next value, it calls next() on that object.
-    e)The result of next() must have the form {done: Boolean, value: any}, where done=true means that the iteration is 
-        finished, otherwise value is the next value.
+4)Creating arrays from iterables using Array.from. Array.from can be used to create 
 
+5)String iterator knows about surrogate pairs.We can even build surrogate-aware slice on it.
 
-Using iterable -
-
-    1)It can be used in for in loop.
-    2)we can get iterable using [Symbol.iterator] and use it in while loop.
-
-
-Iterables and array-like - 
-
-    Iterables are objects that implement the Symbol.iterator method, as described above.
-    Array-likes are objects that have indexes and length, so they look like arrays.
-
-    strinks are both iterable and array-like.
-
-
-Creating Array form (iterable or array like object) -
-    
-    use Array.from(iterable)
-    use Array.from(array_like_object)
+6)If we look inside the specification – we’ll see that most built-in methods assume that they work with iterables or array-likes instead of “real” 
+    arrays, because that’s more abstract.

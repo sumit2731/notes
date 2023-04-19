@@ -1,0 +1,7 @@
+1) how we can  call methods on primitives if they are not objects.Also js engines are optimized to create wrapper object.
+    so these operations are not costly.Also null and undefined have no corrosponding
+    wrapper object, so in turn no method can be called on them. they are most primitives.
+2)how does creative a primitve type normally and with constructor of that data type differ. it is advised to create
+    primitives without constructor or if you want to use constructor then do not use new. 
+
+3)see question in last.
