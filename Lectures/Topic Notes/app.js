@@ -1,40 +1,26 @@
-let eventMixin = {
-    /**
-     * Subscribe to event, usage:
-     *  menu.on('select', function(item) { ... }
-    */
-    on(eventName, handler) {
-      if (!this._eventHandlers) this._eventHandlers = {};
-      if (!this._eventHandlers[eventName]) {
-        this._eventHandlers[eventName] = [];
+function getMaxSubSum(arr) {
+  let maxSum = -Infinity, maxStart = 0, maxEnd = 0, currentSum = 0, currentStart = 0, currentEnd = 0;
+  for(i =0; i< arr.length; i++) {
+    currentSum += arr[i];
+    if(arr[i] >= 0) {
+      currentEnd = i;
+      if(currentSum > maxSum) {
+        maxSum = currentSum;
+        maxStart = currentStart
+        maxEnd = currentEnd
       }
-      this._eventHandlers[eventName].push(handler);
-    },
-  
-    /**
-     * Cancel the subscription, usage:
-     *  menu.off('select', handler)
-     */
-    off(eventName, handler) {
-      let handlers = this._eventHandlers?.[eventName];
-      if (!handlers) return;
-      for (let i = 0; i < handlers.length; i++) {
-        if (handlers[i] === handler) {
-          handlers.splice(i--, 1);
-        }
+    } else {
+      if(currentSum < 0) {
+        currentStart = i+1;
+        currentEnd = i+1;
+        currentSum = 0;
       }
-    },
-  
-    /**
-     * Generate an event with the given name and data
-     *  this.trigger('select', data1, data2);
-     */
-    trigger(eventName, ...args) {
-      if (!this._eventHandlers?.[eventName]) {
-        return; // no handlers for that event name
+      else {
+        currentEnd = i;
       }
-  
-      // call the handlers
-      this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
     }
-  };
+  }
+  return maxSum;
+}
+
+console.log(getMaxSubSum([100, -9, 2, -3, 5]));

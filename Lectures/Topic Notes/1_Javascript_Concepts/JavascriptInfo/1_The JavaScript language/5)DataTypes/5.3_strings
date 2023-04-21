@@ -1,0 +1,48 @@
+1)The internal format for strings is always UTF-16, it is not tied to the page encoding.
+
+2)special characters -
+
+    a)It is still possible to create multiline strings with single and double quotes by using a so-called “newline character”, 
+        written as \n, which denotes a line break:
+            
+            let str1 = "Hello\nWorld"; // two lines using a "newline symbol"
+            // two lines using a normal newline and backticks
+            let str2 = `Hello
+            World`;
+
+            alert(str1 == str2); // true
+
+    b)see lecture
+
+3)accessng characters -
+
+    str.at(pos) - negtaive values are counted from last.
+    str[pos]
+
+4)substring extracting methods
+
+5)comparing strings - The characters are compared by their numeric code.The greater code means that the character is greater.
+    a)lowercase letter is always greater than uppercase.
+    b)Letters with diacritical marks are “out of order”. i.e they come after all regular alphabets.
+
+    converting numbers(in decimal system) to other base => Number.toSTring()
+    parseInt => converts numbers in other number system to decimal number
+
+6)function for charcode -
+
+    char to charcode -
+        str.codePointAt(pos)
+
+    charcode to char -
+        String.fromCodePoint(code)
+
+
+7)order of strings depends on language, so right way to compare is - 
+
+str.localeCompare(str2)
+
+
+
+strings in js are encoded using UTF-16.that is each character has corrosponding numetic code.
+related features -
+    1)tagged templates, template functions

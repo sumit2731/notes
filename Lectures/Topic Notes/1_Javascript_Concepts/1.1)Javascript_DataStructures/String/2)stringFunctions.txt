@@ -1,77 +1,234 @@
-1)String.fromCharCode() - returns a string created from the specified sequence of UTF-16 code units.
-    String.fromCharCode(num1[, ...[, numN]]) - A string of length N consisting of the N specified UTF-16 code 
-    units.
+Finding substring in string -
 
-2)charAt() - method returns a new string consisting of the single UTF-16 code unit located at the specified offset 
-    into the string.
+    1)includes - The includes() method determines whether one string may be found within another string, returning true 
+        or false as appropriate.
 
-3)endsWith - The endsWith() method determines whether a string ends with the characters of a specified string, returning 
-    true or false as appropriate.
+        str.includes(searchString[, position])
 
-    str.endsWith(searchString[, length])
-    length - If provided, it is used as the length of str. Defaults to str.length.
+        searchString - Cannot be a regex. All values that are not regexes are coerced to strings, so omitting it or passing 
+            undefined causes includes() to search for the string "undefined", which is rarely what you want.
 
-4)includes - The includes() method determines whether one string may be found within another string, returning true 
-    or false as appropriate.
+        position - The position within the string at which to begin searching for searchString. (Defaults to 0.). negative
+            values are not allowed, if given it takes default value of 0.
 
-    str.includes(searchString[, position])
+        return value - true or false
 
-    position - The position within the string at which to begin searching for searchString. (Defaults to 0.)
+    2)indexOf - The indexOf() method returns the index within the calling String object of the first occurrence of the 
+        specified value, starting the search at fromIndex. Returns -1 if the value is not found.
 
-    return value - true or false
+        str.indexOf(searchValue [, fromIndex])
 
-5)indexOf - The indexOf() method returns the index within the calling String object of the first occurrence of the 
-    specified value, starting the search at fromIndex. Returns -1 if the value is not found.
+        searchValue - All values are coerced to strings, so omitting it or passing undefined causes indexOf() to search for 
+            the string "undefined".
 
-    str.indexOf(searchValue [, fromIndex])
+        fromIndex - default value is zero.does not take negative values.
 
+        return value - index or -1
 
-6)The lastIndexOf() method returns the index within the calling String object of the last occurrence of the specified 
-    value, searching backwards from fromIndex. Returns -1 if the value is not found.
-
-    str.lastIndexOf(searchValue[, fromIndex])
-
-        searchValue -A string representing the value to search for. If searchValue is an empty string, then fromIndex
-         is returned.
+    3)String.lastIndexOf
         
-        fromIndex -The index of the last character in the string to be considered as the beginning of a match. The 
-            default value is +Infinity. If fromIndex >= str.length, the whole string is searched. If fromIndex < 0,  
-            the behavior will be the same as if it would be 0.
+        str.lastIndexOf(searchString[, position])
+
+        searchString - Substring to search for. All values are coerced to strings, so omitting it or passing undefined causes 
+            indexOf() to search for the string "undefined", which is rarely what you want.
+
+        position - The method returns the index of the last occurrence of the specified substring at a position less than or 
+            equal to position,which defaults to +Infinity. If position is greater than the length of the calling string, the
+            method searches the entire string. If position is less than 0, the behavior is the same as for 0  — that is, the
+            method looks for the specified substring only at index 0.
+
+        return - The index of the last occurrence of searchString found, or -1 if not found.
+
+    4)endsWith - The endsWith() method determines whether a string ends with the characters of a specified string, returning 
+        true or false as appropriate.
+
+        str.endsWith(searchString[, length])
+
+        searchString - Cannot be a regex. All values that are not regexes are coerced to strings, so omitting it or passing undefined
+            causes endsWith() to search for the string "undefined"
+        length - The end position at which searchString is expected to be found (the index of searchString's last character plus 1). 
+            Defaults to str.length.
+
+        return - true or false
+
+    5)startsWith - The startsWith() method determines whether a string begins with the characters of a specified string
+
+        startsWith(searchString, position)
+
+        searchString - The characters to be searched for at the start of this string. Cannot be a regex. All values that are not 
+            regexes are coerced to strings, so omitting it or passing undefined causes startsWith() to search for the string 
+            "undefined", which is rarely what you want.
+
+        position - The start position at which searchString is expected to be found (the index of searchString's first character).
+        Defaults to 0.
+
+        return value - true or false.
+
+Getting a Substring -
+
+    1)str.slice - The slice() method extracts a section of a string and returns it as a new string, without modifying the original
+        string.changes in one string do not affect other.
+
+        slice(indexStart)
+        slice(indexStart[,indexEnd])
+
+        indexStart - The index of the first character to include in the returned substring.
+        indexEnd - The index of the first character to exclude from the returned substring.
+
+        returns - A new string containing the extracted section of the string.
+
+        cornerCases -
+            a)If indexStart >= str.length, an empty string is returned.
+            b)If indexStart < 0, the index is counted from the end of the string. More formally, in this case, the substring starts
+             at max(indexStart + str.length, 0).
+            c)If indexStart is omitted, undefined, or cannot be converted to a number (using Number(indexStart)), it's treated as 0.
+            d)If indexEnd is omitted, undefined, or cannot be converted to a number (using Number(indexEnd)), or if 
+                indexEnd >= str.length, slice() extracts to the end of the string.
+            e)If indexEnd < 0, the index is counted from the end of the string. More formally, in this case, the substring ends at 
+                max(indexEnd + str.length, 0).
+            f)If indexEnd <= indexStart after normalizing negative values (i.e. indexEnd represents a character that's before 
+                indexStart),an empty string is returned.
+    2)str.substring - The substring() method returns the part of the string from the start index up to and excluding the end index,
+        or to the end of the string if no end index is supplied.
+
+        syntax and param same as slice.
+
+        retuns - A new string containing the specified part of the given string.
+
+        Diffrences from slice -
+            1) negative arguments are treated as 0.
+            2)If indexStart is greater than indexEnd, then the effect of substring() is as if the two arguments were swapped.
+                slice returns empty string.
+
+    3)str.substr - This is deprecated
+        substr(start, length)
+        first argument can be neative to count from end.
+        if length is negative, then empty string is returned.
 
 
+Case Changing Methods -
+
+    1)str.toLowercase() - returns a new string(with all small chars) without chnaging existing string.
+    2)str.toUpperCase() - returns a new string(with all cap chars) without chnaging existing string.
 
 
+Get Chars from string -
 
+    1)str.at(index)
 
-1)split -The split() method divides a String into an ordered set of substrings, puts these substrings into an array, 
-    and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the 
-    first parameter in the method's call. for method details refer docs.
+        index - index at which we want to get character, negative values calculate from end.
+        return - A String consisting of the single UTF-16 code unit located at the specified position. Returns undefined if the 
+            given index can not be found.
+
+    2)str.charAt(index)
         
-        str.split([separator[, limit]])
-        "sumeet sood".split() => ["sumeet sood"]
-        "sumeet sood".split("") => ["s","u","m","e","e","t"," ","s","o","o","d"]
-        "sumeet sood".split(" ") => ['sumeet', 'sood']
-        "sumeet sood".split("t") => ['sumee', ' sood']
-        "sumeet sood".split("s") => ['','umeet ' ,'ood']
+        index - index at which we want to get character. negative values calculate char from last.
+        return - A string representing the character (exactly one UTF-16 code unit) at the specified index. If index is out of 
+            range, charAt() returns an empty string.
 
-2)slice - The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
-    str.slice(beginIndex[, endIndex])
+    3)str.charCodeAt(index) - The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit at 
+        the given index.
+        
+        The UTF-16 code unit matches the Unicode code point for code points which can be represented in a single UTF-16 code unit.
+        If the Unicode code point cannot be represented in a single UTF-16 code unit (because its value is greater than 0xFFFF) 
+        then the code unit returned will be the first part of a surrogate pair for the code point. If you want the entire code point value, use codePointAt().
+        
+        index - An integer greater than or equal to 0 and less than the length of the string. If index is not a number, it defaults
+            to 0.negative indexes returns -1.
+        returns -A number representing the UTF-16 code unit value of the character at the given index. If index is out of range, 
+            charCodeAt() returns NaN.negative index returns NaN.
 
-        beginIndex- 
-            the zero-based index at which to begin extraction. If negative, it is treated as str.length + beginIndex. 
-            (For example, if beginIndex is -3 it is treated as str.length - 3.)If beginIndex is greater than or equal to 
-            str.length, slice() returns an empty string.
+    4)str.codePointAt(index) - The codePointAt() method returns a non-negative integer that is the Unicode code point value at the 
+        given position. Note that this function does not give the nth code point in a string, but the code point starting at the 
+        specified string index.
 
-        endIndex -
-            The zero-based index before which to end extraction. The character at this index will not be included.If endIndex
-                is omitted, slice() extracts to the end of the string. If negative, it is treated as str.length + endIndex. 
-                (For example, if endIndex is -3 it is treated as str.length - 3.)
+        pos - Position of an element in str to return the code point value from.
+        Return value
+            A decimal number representing the code point value of the character at the given pos.
 
-3)substr - The substr() method returns a portion of the string, starting at the specified index and extending for a given number
-    of characters afterwards. 
-    str.substr(start[, length])
+            If there is no element at pos, returns undefined.
+            If the element at pos is a UTF-16 high surrogate, returns the code point of the surrogate pair.
+            If the element at pos is a UTF-16 low surrogate, returns only the low surrogate code point.
 
-4)substring
+    Difference between 3&4 - https://stackoverflow.com/questions/36527642/difference-between-codepointat-and-charcodeat
+
+    5)String.fromCharCode() - The String.fromCharCode() static method returns a string created from the specified sequence of UTF-16 
+        code units.
+
+        Syntax -
+            String.fromCharCode(num1)
+            String.fromCharCode(num1, num2)
+            String.fromCharCode(num1, num2, /* …, */ numN)
+
+        num1,num2 ,..., numN - A sequence of numbers that are UTF-16 code units. The range is between 0 and 65535 (0xFFFF). Numbers
+            greater than 0xFFFF are truncated. No validity checks are performed.
+
+        returns - A string of length N consisting of the N specified UTF-16 code units.
+    
+    6)String.fromCodePoint() - The String.fromCodePoint() static method returns a string created by using the specified sequence of 
+        code points.
+
+        String.fromCodePoint(num1)
+        String.fromCodePoint(num1, num2)
+        String.fromCodePoint(num1, num2, /* …, */ numN)
+
+        num1,.., numN - A sequence of code points.
+
+        returns - A string created by using the specified sequence of code points.
+
+Other methhods -
+
+    1)split -The split() method takes a pattern and divides a String into an ordered list of substrings by searching for the
+        pattern, puts these substrings into an array, and returns the array.
+
+        Syntax - 
+            split(separator)
+            split(separator, limit)
+            
+            str.split([separator[, limit]])
+            "sumeet sood".split() => ["sumeet sood"]
+            "sumeet sood".split("") => ["s","u","m","e","e","t"," ","s","o","o","d"]
+            "sumeet sood".split(" ") => ['sumeet', 'sood']
+            "sumeet sood".split("t") => ['sumee', ' sood']
+            "sumeet sood".split("s") => ['','umeet ' ,'ood']
+            "sumeet sood".split("d") => ['sumeet soo','']
+            "sumeet sood".split("e") => ['sum', '','t sood']
+
+        separator - The pattern describing where each split should occur. Can be undefined, a string, or an object with a 
+            Symbol.split method — the typical example being a regular expression. Omitting separator or passing undefined 
+            causes split() to return an array with the calling string as a single element. All values that are not undefined
+            or objects with a @@split method are coerced to strings.
+
+        limit - A non-negative integer specifying a limit on the number of substrings to be included in the array. If provided,
+            splits the string at each occurrence of the specified separator, but stops when limit entries have been placed in the 
+            array. Any leftover text is not included in the array at all.
+
+                The array may contain fewer entries than limit if the end of the string is reached before the limit is reached.
+                If limit is 0, [] is returned.
+
+    2)str.concat() - The concat() method concatenates the string arguments to the calling string and returns a new string.
+        concat(str1)
+        concat(str1, str2)
+        concat(str1, str2, /* …, */ strN)
+
+        str1,str2,...strn - One or more strings to concatenate to str.If the arguments are not of the type string, they are 
+            converted to string values before concatenating.
+
+        returns - A new string containing the combined text of the strings provided.
+
+    3)str.trim() -The trim() method removes whitespace from both ends of a string and returns a new string, without modifying 
+        the original string.
+
+    4)str.trimStart, str.trimEnd - removes the whiteSpace from just oneEnd
+
+    5)str.valueOf() - The valueOf() method returns the primitive value of a String object.
+
+    3)str.match - used to match regular expression. 
+        syntax - str.match(regExP)
+        retruns - array containing matches
+
+    4)str.matchAll - 
 
 
-3)charCodeAt() - returns an integer between 0 and 65535 representing the UTF-16 code unit at the given index.
+
+

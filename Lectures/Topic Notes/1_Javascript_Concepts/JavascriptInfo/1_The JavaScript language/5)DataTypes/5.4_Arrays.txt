@@ -1,0 +1,40 @@
+1)Array behaviour, when we add value to numeric property. if length of array is less, then length is automatically increased and
+    in-between elements will have value of undefined.
+
+2)push and unshift can add multiple elemnts.
+
+3)optimizations done for array and why it should not be used as normal object.The engine tries to store its elements in the 
+    contiguous memory area, one after another.there are other optimizations as well, to make arrays work really fast.But they
+    all break if we quit working with an array as with an “ordered collection” and start working with it as if it were a regular object.
+    The ways to misuse an array - 
+        Add a non-numeric property like arr.test = 5.
+        Make holes, like: add arr[0] and then arr[1000] (and nothing between them).
+        Fill the array in the reverse order, like arr[1000], arr[999] and so on.
+
+4)complexity of shift/unshift/push/pop.
+
+5)why we should not use for..in loop for iterating for arrays.
+    1)list non numeric properties also. this becomes problem when we are working with array like objects.
+    2)not optimized for arrays, its 10-100 times slower.
+
+6)lengthProperty -The length property automatically updates when we modify the array. To be precise, it is actually not the count of values
+    in the array, but the greatest numeric index plus one.a slo we can edit length property -
+
+    a)if we increase it, more elments are added in array with empty values.
+    b)if we decrease it then array is truncated.
+
+7)Conversion to primitive -
+    Array to do not implement, Symbol.toPrimitive or valueOf.they just implement .toString method.
+     so here [] becomes an empty string, [1] becomes "1" and [1,2] becomes "1,2". hence -
+
+        console.log( [] + 1 ); // "1"
+        console.log( [1] + 1 ); // "11"
+        console.log( [1,2] + 1 ); // "1,21"
+
+    When the binary plus "+" operator adds something to a string, it converts it to a string as well, so the next step looks like this:
+
+        alert( "" + 1 ); // "1"
+        alert( "1" + 1 ); // "11"
+        alert( "1,2" + 1 ); // "1,21"
+
+8)comparing arrays with ===

@@ -1,0 +1,15 @@
+Accessing the array elements -
+    1)arr.at(index) - return the element at given index, even supports negatives indexes.
+
+Adding Elements to Array -
+
+    1)arr.unshift(element) - adds element at begining of array and return length of array.can add multiple elements by taking 
+        multiple arguments.
+    2)arr.push(element) - adds element at last and return length of array.can add multiple elements by taking 
+        multiple arguments.
+    
+
+Removing elements -
+
+    1)arr.shift() - removes elment from starting and returns removed element.
+    2)arr.pop() - removes element from last and returns removed element.

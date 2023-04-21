@@ -1,0 +1,44 @@
+Most of the time, operators and functions automatically convert the values given to them to the right type.
+For example, alert automatically converts any value to a string to show it. Mathematical operations convert values to numbers.
+
+String Conversion
+
+    String conversion happens when we need the string form of a value.For example, alert(value) does it to show the value.
+    We can also call the String(value) function to convert a value to a string:
+    
+    null => "null"
+    undefined => "undefined"
+    true => "true"
+    false => "false"
+    1 => "1"
+    Symbol => 
+        alert(sym) => gives error- cannot convert symbol to string
+        String(sym) or sym.toString() => 'Symbol(test)'
+
+
+Number conversion - Numeric conversion in mathematical functions and expressions happens automatically.
+    For example, when division / is applied to non-numbers.We can use the Number(value) function to 
+    explicitly convert a value to a number:
+
+    null => 0
+    undefined => NaN
+    true => 1
+    false => 0
+    string => number or NaN
+    '' => 0
+    Symbol => Error
+
+    Note - + can work with both string and number. but its preference os to convert both args into number. if altready one arg is
+        string then it converts other int string also. if number conversion results in NaN the string conversion is done.
+
+
+Boolean -
+
+    0 => false
+    any other number(positive or negative) => true
+    null, undefined => false
+    emptyString => false
+    anyOtherString => true
+    Symbol => true
+   
+    

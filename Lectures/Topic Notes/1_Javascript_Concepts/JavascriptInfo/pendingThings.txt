@@ -4,3 +4,14 @@
 
 
 4)second lecture of class - ClassInheritance. go through article link shared at last after you go through mixins.
+
+
+Strings -
+    1)tagged templates, template functions. see 5.3 strings.
+
+    2)Strings also have methods for doing search/replace with regular expressions. But that’s big topic, so it’s explained in a 
+        separate tutorial section Regular expressions.
+    3)strings are based on Unicode encoding, and hence there’re issues with comparisons. There’s more about Unicode in the chapter Unicode, 
+        String internals.
+    4)regular expressions in string.prototype.split
+    5)str.match and str.matchAll
