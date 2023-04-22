@@ -12,3 +12,4 @@ Well known symbols -
         For arrays , sets and maps,a static method with this name can be added. output of this
         method decides the datatype of result some basic function of that datatype.(like for array- map, filter)
     6)Symbol.split - it s method that is called by String.prottype.split method.
+    7)Symbol.isConcatSpreadable - used in Array.prototype.concap method.

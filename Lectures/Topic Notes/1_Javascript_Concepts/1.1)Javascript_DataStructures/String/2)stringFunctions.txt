@@ -176,6 +176,7 @@ Get Chars from string -
 
         returns - A string created by using the specified sequence of code points.
 
+
 Other methhods -
 
     1)split -The split() method takes a pattern and divides a String into an ordered list of substrings by searching for the
@@ -205,6 +206,9 @@ Other methhods -
 
                 The array may contain fewer entries than limit if the end of the string is reached before the limit is reached.
                 If limit is 0, [] is returned.
+
+        Not - if you want to get induivaal chars of string itno array. do not use split metho. it will break in case of surragoate pairs.
+            for this exploit the iterable nature of string
 
     2)str.concat() - The concat() method concatenates the string arguments to the calling string and returns a new string.
         concat(str1)
