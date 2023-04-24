@@ -1,0 +1,6 @@
+5)you solved the problem but course solution is little better approach.
+7)I solved the questions but course solution is also good.have a look at it.
+8)After solving 7 this was natural, try to solve directly this one.
+9)good question, but i solved it.
+10)i solved the qquestion with same complexity as cousre solution, but got many typos on it. also curse solution is
+    alternate approach having same complexity.
