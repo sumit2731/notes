@@ -1,6 +1,6 @@
 /* Question1 */
 
-const promise = new Promise((resolve, reject) => {
+const promise1 = new Promise((resolve, reject) => {
     reject(Error('Some Error Occurred'));
   })
   // value returned by catch is used in next then block
@@ -16,8 +16,8 @@ undefined
 
 
 /* Question 2 */
-const promise = new Promise(res => res(2));
-promise.then(v => {
+const promise2 = new Promise(res => res(2));
+promise2.then(v => {
         console.log(v); 
         return v * 2;
     })
@@ -41,5 +41,5 @@ promise.then(v => {
 2
 4
 undefined
-40
+8
 */

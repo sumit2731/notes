@@ -1,30 +1,6 @@
-function loadScript(src, callback) {
-    let script = document.createElement('script');
-    script.src = src;
-  
-    script.onload = () => callback(null, script);
-    script.onerror = () => callback(new Error(`Script load error for ${src}`));
-  
-    document.head.append(script);
-}
-  
-/* 
-******* Promise based implementation of loadScript ****************************************
-*/
-
-function loadScriptPromise(src) {
-  return new Promise((resolve, reject) => {
-    loadScript(src, (error, result) => {
-      if (error) reject(error);
-      else resolve(result);
-    });
-  });
-}
-
-loadScriptPromise(src).then((script) => console.log("Loaded"));
-
 /*
  *******Function that converts callback based function to a promise based(My Implementation)****************************************
+ Missed the case for this
  */
 
 function promisify(fn) {
@@ -40,6 +16,7 @@ function promisify(fn) {
 
 /*
  *****Course Implementation ********************************
+ This is same as my solution, just that it covers that extra case for this
  */
 
 function promisify2(f) {

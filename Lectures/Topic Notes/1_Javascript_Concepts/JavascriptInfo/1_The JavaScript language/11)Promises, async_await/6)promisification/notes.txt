@@ -1,3 +1,3 @@
 1)Promisification - It’s the conversion of a function that accepts a callback into a function that returns a promise.
-2)a promise may have only one result, but a callback may technically be called many times.So promisification is only meant for functions \
-    that call the callback once. Further calls will be ignored.
+2)a promise may have only one result, but a callback may technically be called many times.So promisification is only meant for 
+    functions that call the callback once. Further calls will be ignored.

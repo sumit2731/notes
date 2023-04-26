@@ -1,24 +1,35 @@
-let p1 = new Promise((resolve,reject) => setTimeout(() => resolve(1),6000));
-let p2 = new Promise((resolve,reject) => setTimeout(() =>resolve(p1),3000));
-let p3 =  new Promise((resolve,reject) => setTimeout(() =>resolve(p2),3000));
+/* 
+When a a promise(p2) resolves to pending promise(p1). then p2 will also not be resolved until p1 is resolved.
+    result of p2 is same as p1.
 
-//1 when p1,p2 and p3 resolves
-//p3.then(val => console.log(val));
+*/
 
-let p4 = Promise.resolve(p3);
+let p1Result = 100;
 
-/* pending promise - this promise is resolved when final promise resloves i.e when p3 emitted value */
-//console.log(p4);
+let p1 = new Promise((resolve,reject) => setTimeout(() => resolve(p1Result),10000));
+let p2 = new Promise((resolve,reject) => resolve(p1)); // this will wait for p1 to get resolved and will use it's result.
 
-/* 1, p4e resolves when p1,p2,p3 are resolved */
-//p4.then(val => console.log(val));
+p2.then(val => {
+    console.log(`P2 Resolved with ${val}`) // p1Result
+});
+console.log(p2);
+console.log(p1);
 
-async function f1() {
-    let a = await p4;
-    console.log("await excuted");
-    return a;
-}
 
-let a = f1();
-a.then((val) => console.log(val));
-console.log("next line executed");
+/* 
+same can be extended to any level.
+when a prmomise(p22) resolves to a promise(p1), actually it resolves to value of p1, not p1 itself
+
+*/
+
+let p22 = new Promise((resolve,reject) => setTimeout(() => resolve(p1),15000)); // even on calling resolve, this will wait until
+//p1 is not resolved. but here p1 is already resolved, so it uses its value
+
+let p3 = new Promise((resolve,reject) => resolve(p22)); // this will wait until p22 is resolved
+
+
+
+
+p3.then(val => console.log(`P3 Resolved with ${val}`));
+p22.then(val => console.log(`P22 Resolved with ${val}`));
+p1.then(val => console.log(`P1 Resolved with ${val}`));

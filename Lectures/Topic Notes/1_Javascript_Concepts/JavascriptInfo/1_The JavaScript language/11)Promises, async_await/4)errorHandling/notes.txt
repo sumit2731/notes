@@ -1,11 +1,11 @@
-1)When a promise rejects, the control jumps to the closest rejection handler, skipping all then blocks in between. it enables us to define single
-    rejection handler for whole promise chain at the end of chain.even in the catch if we handle error, then block after are executed with value
-    returned by error handler or catch block.
+1)When a promise rejects, the control jumps to the closest rejection handler, skipping all then blocks in between. it enables us to
+    define single rejection handler for whole promise chain at the end of chain.even in the catch if we handle error, then block
+    after are executed with value returned by error handler or catch block.
 
 2).catch doesn’t have to be immediate. It may appear after one or maybe several then blocks. when error occurs in any of then block, all next then
-    blocks before catch or error hander are missed.control goes to nearest error handler directly.see exaple1 in code. Also if in error block if we 
-    handle the error, control goes to next then blocks.In that way we can recover failed promises in chain and continue. also in same way we can 
-    recover induival individual promises in Promise.all(dsicussed in next section)
+    blocks before catch or error hander are missed.control goes to nearest error handler directly.see exaple1 in code. Also if in 
+    error block if we handle the error, control goes to next then blocks.In that way we can recover failed promises in chain and
+    continue. also in same way we can recover induival individual promises in Promise.all(dsicussed in next section)
 
 3)implicit try catch block - The code of a promise executor and promise handlers has an "invisible try..catch" around it. 
     If an exception happens, it gets caught and treated as a rejection.
@@ -20,4 +20,6 @@
 is thrown. In the browser we can catch such errors using the event unhandledrejection. we should report these events to server , so 
 that our app just never dies.
 
-6)See question in last. also see question at last in previous section it also belongs to errors.
+6)read summary in javascript.info
+
+6)See question in last.it proves that async error in executor functions do not mean promise rejection.

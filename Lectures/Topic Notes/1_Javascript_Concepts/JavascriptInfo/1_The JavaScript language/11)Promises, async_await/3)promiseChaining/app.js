@@ -6,13 +6,13 @@ let p1 = function f1(val) {
 }
 
 // Example1 - handler return a value that gets wrapped up in a promise
-p1(1).then(val => val) //2
+p1(1).then(val => val) //2, here handler returns a value, so it is wrapped in a promise, which resolves with returned value. so next .then is called on wrapped promise
      .then(val => 3 * val)//2
      .then(val => 4* val) //6
      .then(val => console.log(val)); //24
 
 //Example2- handler is returning promise itself - output are same as Example 1 just delay is added
-p1(1).then(val => p1(val)) //4
+p1(1).then(val => p1(val)) //4, here handler returns promise itself, so returned value is not wrapped in a promise.so next .then is called on retruned promise
      .then(val => p1(val)) //8
      .then(val => p1(val)) //16
      .then(val => p1(val))// 32
@@ -33,7 +33,7 @@ This promises p2 resolves at same time as p1 but value is converted.logic behind
     resolves when orignal promises i.e p1 is resolved
 */
 let p2 = p1.then(resolveHandler, rejectHandler);
-p2.then((val) => console.log(val));
+p2.then((val) => console.log(val)); //({ status: 'fulfilled', value })
 
 
 //Use of promise chaining to load scripts in parallel ------------------------Block 2-------------------------------------------------------
@@ -97,3 +97,42 @@ p1(1).then(num1 => p1(num1)) //2
      .then(num2 => p1(num2)) //4
      .then(num3 => p1(num3)) //8
      .then(num4 => console.log(num4)) //16
+
+/* 
+*************************************Block 4 *****************************************************
+Even if executor throws error, result is same as rejected promise. this is true for only synchronous error.(see question in error handling chpater of jsonfo)
+Also second callback to then takes care of next .then chains.
+
+only diffrence between using catch and second callback to then is if first callback throws error, then catch block handles it.
+see question in js info.
+
+*/
+let p19 = new Promise((resolve, reject) => {
+    //resolve(1);
+    throw new Error("custome error");
+     //reject(10);
+})
+
+
+p19  
+    .then(val => {
+        console.log(`First Then called with value ${val}`);
+        return val;
+    })
+    .catch( err => {
+        console.log(`Catch Called with value ${err}`);
+        return 2
+    })
+    .then(val => {
+        console.log(`Second Then called with value ${val}`);
+    })
+
+p19.then(val => {
+    console.log(`First Then called with value ${val}`);
+    return val;
+},err => {
+    console.log(`Catch Called with value ${err}`);
+    return 2
+}).then(val => {
+    console.log(`Second Then called with value ${val}`);
+})

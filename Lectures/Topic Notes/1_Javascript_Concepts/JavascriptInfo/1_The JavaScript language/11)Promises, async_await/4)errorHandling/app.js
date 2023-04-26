@@ -19,14 +19,22 @@ function p1(num1) {
  */
 
     p1(1)
-      .then((num1) => p1(num1)) //2
-      .then((num2) => p1(num2)) //4
+      .then((num1) => {
+        return  p1(num1)
+      }) //2
+      .then((num2) => {
+        return p1(num2)
+      }) //4
       .then(
         (num3) => p1(num3),
         (error) => 8
       ) //control goes in error block
-      .then((num4) => console.log("control in then block" + num4)) //16 **
-      .catch((error) => console.log("Error " + error)); //***
+      .then((num4) => {
+        return console.log("control in then block" + num4);
+      }) //16 **
+      .catch((error) => {
+        return console.log("Error " + error)
+      }); //***
 
 //-------- Block2--------- rethrowing of error
 
@@ -44,3 +52,7 @@ p1(1).then(num1 => p1(num1)) //2
      .then(num4 => console.log(num4)) 
      .catch(error => console.log("Catch Block " +error)) //**  this catches the error. as catch blocks finishes normally,  So the next successful .then handler is called
      .then(() => console.log("Then is executed")) // *** this will be called
+
+
+
+// let p1 = new Promise((resolve, reject) => setTimeout(() => reject(1), 5000))
