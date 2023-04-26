@@ -65,7 +65,7 @@ if we explicitly want promise returned by asyn function to fail, then throw erro
 */
 
 
-async function f1() {
+async function f2() {
   let resut = 5;
   //result = await Promise.resolve(50);
   result = await Promise.reject("Rejected");
@@ -75,19 +75,19 @@ async function f1() {
   return result;
 }
 
-//f1().then(value => console.log(value));
-//f1().then(value => console.log(value),error => console.log("Inside Reject Block",error));
+//f2().then(value => console.log(value));
+//f2().then(value => console.log(value),error => console.log("Inside Reject Block",error));
 //console.log("Promise Executed");
 
 
 /* 
-Block 2 - Here promise evaluated by await is rejected and we are not handling rejection of promise returned by f4, so we will get
+Block 2 - Here promise evaluated by await is rejected and we are not handling rejection of promise returned by f3, so we will get
   warning on console. but since we are using try catch block inside async function, no error is thrown on console. here when promise 
   rejects control directly jumps to catch block.
-
-  If the Promise is rejected, the rejected value is thrown.here e is value rejected by promise
+  
+  catch handles rejection and returns 1 . so overall promise returned by asunc function resolves with value 1.
 */
-async function f4() {
+async function f3() {
   try {
     let result;
     //result = await Promise.resolve(1);
@@ -100,22 +100,16 @@ async function f4() {
   }
 }
 
-//f4().then(val => console.log(val));
-
-/* 
-Handling rejected promises in aync fucntion without try-ctahc block
-*/
-var response = await promisedFunction().catch((err) => { console.error(err); });
-// response will be undefined if the promise is rejected
+f3().then(val => console.log(val));
 
 /* Block 3
-Here in f2 promise is rejected so rest ilnes are not evaluated and proimse returned by function is rejected.\
-In f3 also promise evaluated by await is rejected so rest of lines are not executed and promise returned by f3
+Here in f4 promise is rejected so rest ilnes are not evaluated and proimse returned by function is rejected.\
+In f5 also promise evaluated by await is rejected so rest of lines are not executed and promise returned by f5
 also rejects
 
 */
 
-async function f2() {
+async function f4() {
   let resut = 5;
   //result = await Promise.resolve(50);
   result = await Promise.reject("Rejected");
@@ -125,14 +119,14 @@ async function f2() {
   return result;
 }
 
-async function f3() {
+async function f5() {
   let result2 = await f2();
   console.log("Inside f3");
   return result2;
 }
 
-//f3().then(value => console.log(value),error => console.log("Inside Reject Block",error));
-//console.log("Promise Executed");
+f5().then(value => console.log(value),error => console.log("Inside Reject Block",error));
+console.log("Promise Executed");
 
 
 

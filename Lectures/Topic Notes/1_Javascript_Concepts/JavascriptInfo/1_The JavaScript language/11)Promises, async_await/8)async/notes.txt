@@ -1,14 +1,22 @@
 1)The async keyword before a function has two effects:
 
-    a)Makes it always return a promise - async ensures that the function returns a promise, and wraps non-promises in it.We could explicitly
-        return a promise, which would be the same. basically it works in same way how returning from then works.
+    a)Makes it always return a promise - async ensures that the function returns a promise, and wraps non-promises in it.We 
+        could explicitly return a promise, which would be the same. basically it works in same way how returning from then works.
     b)Allows await to be used in it.
 
 2)The await keyword before a promise makes JavaScript wait until that promise settles, and then:
 
-    a)If it’s an error, the exception is generated — same as if throw error were called at that very place.
-    b)Otherwise, it returns the result.If the value of the expression following the await operator is not a Promise, it's converted to a
-        resolved Promise.
+    a)If promise is rejected(this is as good as throwing the error at that place) — The ppromise returned by async function
+        is rejected. thing to be noted it lines in function are skipped but outisde function execution continues as normal.
+        we can add catch block to handle the rejection of promise returned by asunc function.
+    b)inside asyn function we can use try catch block, now if promise before await fails, this is same as error is thrown
+        at that place so control goes to catch block. here we can handle error and then promise returned by async function
+        is not rejected.
+    c)throwing a error inside async function also means that function execution will be skipped and promise rerturned by
+        asyc function will be destroyed.throwing error is only way we can make function returned by async function to be
+        rejected.
+    d)Otherwise, it returns the result.If the value of the expression following the await operator is not a Promise, it's 
+        converted to a resolved Promise.
 
 
 3)await literally suspends the function execution until the promise settles, and then resumes it with the promise result. 
@@ -26,5 +34,6 @@
 
     New feature: starting from V8 engine version 8.9+, top-level await works in modules.
 
-5)await also works with thenable objects.
+5)await also works with thenable objects.when we use await in front of thenable objects, there then function is called.
+    within then when we call call resolve/reject decides when our promise will be resolved and rejected.
 

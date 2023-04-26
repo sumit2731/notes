@@ -14,25 +14,30 @@ async function add1(x) {
     const a = await resolveAfter2Seconds(20);
     const b = await resolveAfter2Seconds(30);
     return x + a + b;
+    //this also yields same result
+    //let result = x + await resolveAfter2Seconds(20) + await resolveAfter2Seconds(30);
 }
 
-// add1(10).then(v => {
-//     console.log("Add1");
-//     console.log(v);
-// });
+add1(10).then(v => {
+    console.log("Add1");
+    console.log(v);
+});
   
   
 async function add2(x) {
     const p_a = resolveAfter2Seconds(20);
     const p_b = resolveAfter2Seconds(30);
+    //this is fast at timer for both promises has started
     let result = x + await p_a + await p_b;
+    //this will be slow, because only when first await is evaluated, then control goes to second await
+    // let result = x + await resolveAfter2Seconds(20) + await resolveAfter2Seconds(30);
     return result;
 }
 
-// add2(10).then(v => {
-//     console.log("add 2");
-//     console.log(v);
-// });
+add2(10).then(v => {
+    console.log("add 2");
+    console.log(v);
+});
 
 
 /* 
@@ -55,7 +60,7 @@ const myPromise = () => Promise.resolve('I have resolved!');
 
 function firstFunction() {
     myPromise().then(res => console.log(res));
-    console.log('second');
+    console.log('first');
 }
 
 async function secondFunction() {
@@ -66,10 +71,7 @@ async function secondFunction() {
 firstFunction();
 secondFunction();
 
-console.log('second');
-"i have resolved"
-"i have resolved"
-console.log('second')
+
 
 
 

@@ -13,3 +13,10 @@ function f2() {
   console.log("Inside f2");
 }
 f2();
+
+/* 
+promise
+Inside f2
+Promise returned by f1 resolved with = 1
+
+*/
