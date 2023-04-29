@@ -13,5 +13,9 @@ JS Runtime(v8) - Heap(memory allocation) + Callstack (execution context and stac
 
 Browser - JS run time, web api + event loop, callback queue.
     webapi are provided by env in which we are running JS runtime.
+    JS run time can only only do one thing at a time.
 
     callstack - records where in program we are.
+
+
+here we looked at how even loop, web api, callback queue,rendering queue work togather.

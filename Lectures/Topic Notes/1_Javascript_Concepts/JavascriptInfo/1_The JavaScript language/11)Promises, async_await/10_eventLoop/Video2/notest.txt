@@ -1,0 +1,79 @@
+task Queue in context of -
+    a)browser
+    b)node
+    c)web worker
+
+microtasks - 99.9% of times microtasks is promise.
+
+Until Microtasks Queue - 
+    first queue is general task queue.
+    second queue is event handlers.
+    then we have rendering pipe line.renderpipeline runs 60 times in a second.
+    browsers can pickup any tasks from any queue(bothe queues have same priority).each tasks is picked up one at time, 
+        afer that task finishes, if it's time to render(render happens 60 times in a second i.e after 16.6 ms) then
+        rendering pipeline will run, otherwise next task from any queue will be picked up. thing to be noticed at
+        when atsk is being run, in middle of that rendering pipeline cannot run.only when task finishes then other task 
+        from quueue or rendering pipeline can run. because of this it makes sense to break the long running task into smaller
+        tasks. figure 2.
+    yellow is microtask queue. it has highest prieority.if there are tasks in microqueue, then they will run
+        one after another.without interuption by other queue tasks and even by rendering pipeline.even if we add more
+        taks in microtask queue during running a task from microtasks queue, this new added task will also run before
+        we can run tasks from any other queue or even run rendering pipeline.
+    code for event loop is in figure 3.
+
+    examples of tasks vs microtasks. - figure 4 & 5. here you can see that with micro task rendering does not happen.
+
+Until RequestAnimationFrame - 
+    we laso have request animation frame callback quueue (animation queue). we can add a callback to this queue using -
+        
+        requestAnimationFrame(callback). code for this queue -
+            
+            requestAnimationFrame(() => {
+                this.browser.classList.remove('slide'); 
+
+                requestAnimationFrame(() => {
+                    this.browser.classList.add('slide')
+                });
+            })
+
+            on removing the class it resets the frames. if we did it like this, browser wnt do anything -
+
+                this.browser.classList.remove('slide');
+                this.browser.classList.add('slide')
+
+            then browser wnt do anything.here we need to remove the class refresh the window, then add the class back.
+
+    this is green queue in figure.here we had callbacks in simple queue and in request animation frame queue.first simple queue 
+        callbacks are executed and request animatiion frame queue callbacks just sit over there, until browser is ready to paint.
+        when browser is about to paint task from is executed requestAnimationFrame queue and then then repaint happens. after
+        that normal queue can continue to run.properties of this queue -
+
+        1)If we have multiple things in requestAnimationFrame queue when it is ready to run, all of things will run.
+        2)but if we add moe things to animation queue while it is running,they wnt be run now. because while running
+            animation we need to tell what we want in this frame and what we want in next frame.next frame will come
+            after rendering pipeline.
+
+
+Node Event Loop -
+
+    types of queue(run in this same order) -
+
+        1)Event callbacks - XHR Request, Disk Read
+        2)there are Phases queue- second phase is check phases
+        3)timers queue
+
+    after finishing these if there is more stuff, it will loop back around and run through the queues again.
+    then there event nothing ot will end
+
+    we can add things to check phase by calling - setImmediate(callback) (do something on next tick)
+        setImmediate same as setTimeout(cb, 0). but because of queue sequence, setImmefiate runs first.
+
+    fourth queue is microtask queue- same as browser. after each task this queue is checked and all tasks in this queue run.
+
+    node also has another micro task queue which is nextTick queue. this is how you can add callback to this queue -
+        process.nextTick(callback) (do something setImmediately)
+    4th and 5th are same only diffrence is both of these have tasks then nextTick queue will run before.
+
+
+Web Workers - Each webworkers runs on its thread.each thread has its own call stack,webapi's,event loop,task queue.
+    they are not allowed to manipulate the DOM, so no animation frames.see figure 7. see figure 8 for web workers detail.
