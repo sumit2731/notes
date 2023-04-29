@@ -1,4 +1,3 @@
-
 2)interview questions on object detsructuring
 3)reading this articles and interview questions on this
 

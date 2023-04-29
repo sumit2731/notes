@@ -4,21 +4,25 @@ Asynchronous tasks need proper management. For that, the ECMA standard specifies
     The queue is first-in-first-out: tasks enqueued first are run first.
     Execution of a task is initiated only when nothing else is running.
 
-An “unhandled rejection” occurs when a promise error is not handled at the end of the microtask queue.
+An “unhandled rejection” occurs when a promise error is not handled at the end of the microtask queue.unhandledrejection is 
+    generated when the microtask queue is complete: the engine examines promises and, if any of them is in the “rejected” state,
+    then the event triggers.
 
 
-microtasks- 
+microtasks- Solely from our code.
     MutationObserver, 
     Promise.then() and Promise.catch(), 
-    other techniques based on Promise such as the fetch API, 
+    other techniques based on Promise such as the fetch API,
+    await
     V8 garbage collection process, 
     process.nextTick() in node environment.
 macrotasks - 
     initial script, 
     setTimeout, 
-    setInterval, 
+    setInterval,
+    UI rendering,
+    DispatchingEvents and Executing Event Handlers 
     setImmediate, 
-    I/O, 
-    UI rendering.
+    I/O,
 
 See this - 

@@ -1,0 +1,35 @@
+Main thing .then always returnes promise and how is that promise resolved.
+    1)if onFulfuilled and onRejected are not functions they are ignored.In that case promise returned by then resolves
+        with same values as with which source promise was resolved.
+    2)if any of these throw exception then promise is rejected.
+
+
+3 states - pending, fulfilled, rejectd
+
+then method - promise.then(onFulfilled, onRejected)
+    1)If any of arguments is not function then it is ignored.
+    2)onFulfilled and onRejected must be called as functions (i.e. with no this value).
+        That is, in strict mode this will be undefined inside of them; in sloppy mode, it will be the global object.
+    3)then must return a promise [3.3].
+        promise2 = promise1.then(onFulfilled, onRejected);
+
+Promise Resolution Procedure -
+    The promise resolution procedure is an abstract operation taking as input a promise and a value, which we denote as 
+        [[Resolve]](promise, x)
+
+    To run [[Resolve]](promise, x), perform the following steps:
+        1)If promise and x refer to the same object, reject promise with a TypeError as the reason.
+        2)If x is a promise, adopt its state
+        3)Otherwise, if x is an object or function -
+            a)Let then be x.then
+            b)If retrieving the property x.then results in a thrown exception e, reject promise with e as the reason.
+            c)If then is a function, call it with x as this, first argument resolvePromise, and second argument rejectPromise, where:
+                1)If/when resolvePromise is called with a value y, run [[Resolve]](promise, y).
+                2)If/when rejectPromise is called with a reason r, reject promise with r.
+                3)If both resolvePromise and rejectPromise are called, or multiple calls to the same argument are made, the first 
+                    call takes precedence, and any further calls are ignored.
+                4)If calling then throws an exception e -
+                    If resolvePromise or rejectPromise have been called, ignore it.
+                    Otherwise, reject promise with e as the reason.
+        4)If then is not a function, fulfill promise with x.
+        5)If x is not an object or function, fulfill promise with x

@@ -1,0 +1,17 @@
+A single threaded
+non blocking
+asynchronous
+concurrent
+language
+
+
+callstack
+eventloop
+callback queue
+
+JS Runtime(v8) - Heap(memory allocation) + Callstack (execution context and stack frames)
+
+Browser - JS run time, web api + event loop, callback queue.
+    webapi are provided by env in which we are running JS runtime.
+
+    callstack - records where in program we are.
