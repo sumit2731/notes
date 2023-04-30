@@ -6,15 +6,18 @@
 
 2)The await keyword before a promise makes JavaScript wait until that promise settles, and then:
 
-    a)If promise is rejected(this is as same as throwing the error at that place) — The ppromise returned by async function
+    a)If promise is rejected(this is as same as throwing the error at that place) — The promise returned by async function
         is rejected. thing to be noted it lines in function are skipped but outisde function execution continues as normal.
         we can add catch block to handle the rejection of promise returned by asunc function.
     b)inside asyn function we can use try catch block, now if promise before await fails, this is same as error is thrown
         at that place so control goes to catch block. here we can handle error and then promise returned by async function
         is not rejected.
     c)throwing a error inside async function also means that function execution will be skipped and promise rerturned by
-        asyc function will be destroyed.throwing error is only way we can make function returned by async function to be
-        rejected.
+        asyc function will be rejected.there are 2 ways to make promise returned by async function to be rejected -
+
+            a)promise for which await is waiting is rejected and there is no catch block.
+            b)from async function we throw an error
+    
     d)Otherwise, it returns the result.If the value of the expression following the await operator is not a Promise, it's 
         converted to a resolved Promise.if value returned is promise then aync function returns returns  anew promise that
         is resolved when actually returned promise resolves.
