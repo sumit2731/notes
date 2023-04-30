@@ -29,10 +29,12 @@ There are 6 static methods of Promise class:
 
     5)Promise.resolve(value) - creates a resolved promise with the result value.The method is used for compatibility, when a function 
         is expected to return a promise.if we pass a non promise value to it, it creates wrapper promise around it which resolve immediately
-        with wrapped value. however if promise object is passed to it, then it returns that object itself, without creating wrapper
+        with wrapped value. however if promise object is passed to it, then it returns that promise itself, without creating wrapper
         promise.
 
-        so when we need to make sure that value is promise use this.
+        also when we need to make sure that value is promise use this.instead of checking if value is promise or not directly pass
+            that value to this.
+        if p1 is promise then => Promise.resolve(p1) === p1
 
     6)Promise.reject(error) - creates a rejected promise with error.In practice, this method is almost never used.
 

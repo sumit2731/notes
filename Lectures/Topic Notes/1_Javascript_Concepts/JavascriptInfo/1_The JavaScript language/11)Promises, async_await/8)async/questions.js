@@ -43,7 +43,7 @@ add2(10).then(v => {
 /* 
 Question 2 - go through await js mdn docs.
 jere async function returns promise. that promise is resolved when whole async function is exected. value to which promise resolved 
-    is returned is value returned by async function
+    is value returned by async function
 */
 async function getData() {
     return await Promise.resolve('I made it!');
@@ -71,7 +71,12 @@ async function secondFunction() {
 firstFunction();
 secondFunction();
 
-
+/* 
+first
+I have resolved!
+I have resolved!
+second
+*/
 
 
 
@@ -97,3 +102,10 @@ async function check() {
 }
 
 check();
+
+/* 
+before
+after
+inside timeout 1000
+inside timeout 1001
+*/
