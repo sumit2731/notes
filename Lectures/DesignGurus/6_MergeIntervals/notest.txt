@@ -1,0 +1,6 @@
+1)I solved in n*n complexity but course solution is in n Logn complexity. course solution is better
+2)course solution is cleaner approach. but my solution also have same complexity.
+3)I solved this question, also course solution follows similar approach. howveer i missed i edge case.
+4)i solved it. but in 4.2 i missed a edge case, which i then corrected also. course solution also misses
+    that edge case.
+5)i solved it using array, course used minHeap. so course solution is better.
