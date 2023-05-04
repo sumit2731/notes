@@ -1,0 +1,30 @@
+Slides - https://cs.slides.com/colt_steele/heaps
+
+Binary heap 2 types - Min and max binary heap
+    It is type of tree. rules -
+        1)Each child has 2 nodes.
+        2)In max heap, parent is always larger than child nodes.
+        3)In min heap parent is always smaller than child nodes.
+
+Representing as array - 
+    see figure 4, how heap can be represented as array.
+    see fgure 5, how to find child of node at index n of array. = - 2n+1, 2n+2
+    see figure 6, how to find parent of child node
+
+How to insert values in heap -
+    we insert a element at end of array and then we bubble up that element to correct place.
+    bubbleup - see 184
+
+removing from heap - see 187
+    generally we remove - 
+        maximum from Maxheap i.e from root position
+        minimum from MinHeap i.e from root position
+
+    so we remove the root element and then insert last element to root. then we follow a procedure called
+        bubble-down,percolate-down,sift-down,trickle down, heapify-down, cascade-down and extract-min/max.
+        using this procedure element compared with both of its child and if any of them is greater than that
+        parent and that child are interchanged. this process is repeated, until, new element is at correct psotion.
+
+priority Queue - Each element has a priority, element with higher priority are served before elements with lower
+    priority.priority queues can be implmented on any type of list be it array, or linked list. but they are not efficient
+    as removing and adding a element takes O(log n) complexity where as binary heap add/remove complexity is O(log n)

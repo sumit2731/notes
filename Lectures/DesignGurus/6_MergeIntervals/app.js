@@ -43,7 +43,7 @@ class Heap {
   length() {
     return this.items.length;
   }
-  
+
   swap(index1, index2) {
     const temp = this.items[index1];
     this.items[index1] = this.items[index2];
