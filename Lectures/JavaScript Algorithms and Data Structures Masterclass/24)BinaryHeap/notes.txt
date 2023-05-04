@@ -6,6 +6,11 @@ Binary heap 2 types - Min and max binary heap
         2)In max heap, parent is always larger than child nodes.
         3)In min heap parent is always smaller than child nodes.
 
+Use of Binary Heap -
+    Binary Heaps are commonly used for implementing preiority queue.
+    also they are useful data structure, for storing list where elements, need to be sorted or we quickly need
+        large or min element. for parctical use see question 5 of merge intervals section of design gurur's.
+
 Representing as array - 
     see figure 4, how heap can be represented as array.
     see fgure 5, how to find child of node at index n of array. = - 2n+1, 2n+2

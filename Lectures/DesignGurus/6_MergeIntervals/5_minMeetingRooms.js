@@ -8,6 +8,7 @@ class Meeting {
   //my solution
   function min_meeting_rooms(meetings) {
     let minRooms = 1, inProgressMeetings = [], currentIndex = 0;
+    // O(nLog n)
     meetings.sort((meet1, meet2) => (meet1.start - meet2.start));
     //n
     while(currentIndex < meetings.length) {

@@ -4,6 +4,11 @@ class MaxBinaryHeap {
         this.values = [];
     }
     //O(Log n)
+    /**
+     * Here element is inserted at last index. then we compare element with it's parent and if parent is smaller
+     * then we switch parent and child. this process continues till inserted element reaches it right position.
+     * this process is called bubble up.
+     */
     insert(value) {
         this.values.push(value);
         let index = this.values.length - 1, parentNodeIndex = Math.floor((index - 1) / 2);
@@ -14,6 +19,11 @@ class MaxBinaryHeap {
         }
     }
     //O(Log n)
+    /**
+     * Here we extract element at root i.e first element and insert last element at first place. then we compare
+     * that eelement with it's child, and we swap it with greater child. this process continues till element moves to
+     * it's proper place. process is called sinking down
+     */
     extractMax() {
         const max = this.values[0];
         const lastElement = this.values.pop();
