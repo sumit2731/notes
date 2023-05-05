@@ -9,7 +9,7 @@ class Interval {
     }
   }
   /**
-   * My Solition- course solution misses a bug
+   * My Solition- course solution misses a bug. this solution wnt work when more than 2 meetings conflict.
    */
   function conflictingAppointMents(intervals) {
     intervals.sort((a,b) => a.start-b.start);

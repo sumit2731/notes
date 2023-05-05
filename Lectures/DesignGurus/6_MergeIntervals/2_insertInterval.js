@@ -11,36 +11,39 @@ class Interval {
   
   /**
    * Course Solution
+   * O(n)
    */
-  function insert(intervals, new_interval) {
-    let merged = [], currentIndex = 0;
-    while((currentIndex < intervals.length) && (new_interval.start > intervals[currentIndex].end)) {
-      merged.push(intervals[currentIndex]);
-      currentIndex++;
-    }
-    let start = new_interval.start, end = new_interval.end;
-    while((currentIndex < intervals.length) && (new_interval.end >= intervals[currentIndex].start)) {
-      start = Math.min(start, intervals[currentIndex].start);
-      end = Math.max(end, intervals[currentIndex].end);
-      currentIndex++;
-    }
-    merged.push(new Interval(start,end));
-    while((currentIndex < intervals.length)) {
-      merged.push(intervals[currentIndex]);
-      currentIndex++;
-    }
-    return merged;
-  }
+  // function insert(intervals, new_interval) {
+  //   let merged = [], currentIndex = 0;
+  //   while((currentIndex < intervals.length) && (new_interval.start > intervals[currentIndex].end)) {
+  //     merged.push(intervals[currentIndex]);
+  //     currentIndex++;
+  //   }
+  //   let start = new_interval.start, end = new_interval.end;
+  //   while((currentIndex < intervals.length) && (new_interval.end >= intervals[currentIndex].start)) {
+  //     start = Math.min(start, intervals[currentIndex].start);
+  //     end = Math.max(end, intervals[currentIndex].end);
+  //     currentIndex++;
+  //   }
+  //   merged.push(new Interval(start,end));
+  //   while((currentIndex < intervals.length)) {
+  //     merged.push(intervals[currentIndex]);
+  //     currentIndex++;
+  //   }
+  //   return merged;
+  // }
 
 /**
- * @MYSolution
+ * @MySolution
  */
-function insert2(intervals, new_interval) {
+function insert(intervals, new_interval) {
     let merged = [], currentIndex = 0;
-    while((intervals[currentIndex].start < new_interval.start)) {
+    while((intervals[currentIndex].end < new_interval.start)) {
       merged.push(intervals[currentIndex]);
+      currentIndex++;
     }
-    let start = intervals[currentIndex].start, end = Math.max(intervals[currentIndex].end, new_interval.end);
+    let start = Math.min(intervals[currentIndex].start, new_interval.start), 
+      end = Math.max(intervals[currentIndex].end, new_interval.end);
     currentIndex++;
     while(currentIndex < intervals.length) {
       if(end < intervals[currentIndex].start) {

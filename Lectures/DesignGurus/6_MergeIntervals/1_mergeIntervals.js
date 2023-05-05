@@ -73,6 +73,8 @@ function merge(intervals) {
     return mergedIntervals;
 }
 
+//variation of this problem - Given a array of intervals, find out all over-lapping intervals
+
 
 console.log('Merged intervals: ');
 let result = merge([new Interval(1, 4), new Interval(2, 5), new Interval(7, 9)]);

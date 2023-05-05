@@ -23,7 +23,7 @@ class Heap {
 
     sinkDown(index) {
         index = index || 0;
-        let leftChildIndex = 2*(this.values.length)+1, rightChildIndex = leftChildIndex+1;
+        let leftChildIndex = 2*(index)+1, rightChildIndex = leftChildIndex+1;
         while(leftChildIndex < this.values.length) {
             let swapIndex;
             if(!(this.compareFn(this.values[index], this.values[leftChildIndex]))) swapIndex = leftChildIndex;
@@ -33,7 +33,7 @@ class Heap {
             if(!swapIndex) break;
             [this.values[index], this.values[swapIndex]] = [this.values[swapIndex], this.values[index]];
             index = swapIndex;
-            leftChildIndex = 2*(this.values.length);
+            leftChildIndex = 2*(index)+1;
             rightChildIndex = leftChildIndex+1;
         }
 

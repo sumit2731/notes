@@ -42,7 +42,11 @@ Synopsis -
 
 */
 
+/* 
+Special Properties -
+    a function created by class is labelled by a special internal property [[IsClassConstructor]]: true
 
+*/
 
 
 
