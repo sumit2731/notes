@@ -5,7 +5,7 @@ class Meeting {
       this.end = end;
     }
   }
-  //my solution
+  //my solution - see course solution it is best. it uses binary heap to solve the problem
   function min_meeting_rooms(meetings) {
     let minRooms = 1, inProgressMeetings = [], currentIndex = 0;
     // O(nLog n)

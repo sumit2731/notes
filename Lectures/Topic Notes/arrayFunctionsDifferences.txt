@@ -1,0 +1,9 @@
+Array vs Normal Functions 
+    1)syntax
+    2)values of this
+    3)argumnets object is not avalible in array.
+    4)No prototype object is avalible for array functions.
+    5)Array functions cannot be invoked with new keyword.
+    6)cannot be used as generator function.
+    7)Duplicate-named parameters are not allowed
+    8)arrow functions do not have super. If accessed, it’s taken from the outer function

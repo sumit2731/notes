@@ -40,6 +40,7 @@
         Constructors in inheriting classes must call super(...), and (!) do it before using this.
 
         reson for above behaviour - because parent class creates the new object and sets this equal to that object.
+        see this link - https://forum.kirupa.com/t/js-tip-of-the-day-super-defines-this/643157/1
 
 5)overriding class fields
 
@@ -59,7 +60,7 @@
 
     we can also use super in normal objects(created using object literal syntax not with classes) to call methods on their prototypes.  
     but in normal objects super cannnot called as function.also [[HomeObject]] is only defined in methods which are defined as method(), 
-    not as "method: function(). so in later cases we cannot use super. if e use we get error no [[]]
+    not as "method: function(). so in later cases we cannot use super. if we use we get error no [[]]
         
     
 
@@ -90,6 +91,7 @@
 
 /* 
     External Links -
+        https://forum.kirupa.com/t/js-tip-of-the-day-super-defines-this/643157/1
         https://forum.kirupa.com/t/js-tip-of-the-day-super-in-object-literals/643138
         https://forum.kirupa.com/t/js-tip-of-the-day-a-functions-home-object/643187
 */

@@ -2,24 +2,29 @@
 Synopsis -
 
     a)Class Syntax
-    b)Behind the hood, Class is converted to function which is invoked in contructor mode to create objects.methods of class
-        are created on prototype of this function.
+    b)Behind the hood, Class is converted to function which is invoked in contructor mode to create objects. 
+        typeof className => "function"
+            a)code in constructor becomes code of that defined function.
+            b)methods of class are created on prototype of this function.
+            c)instance proeprties are not created on prototype, they are created on individual objects.
+            d)getters/setters are added on prototype.
     c)How class is not just synthetic sugar for function in constructor mode.
-        a)It has additional property [[IsClassConstructor]]: true.The language checks for that property in a variety of places.
+        a)It has additional property [[IsClassConstructor]]: true.The language checks for that property in a variety of places. for ex -
             a)function should always be called with new keyword. otherwise it throws error.
             b)Also, a string representation of a class constructor in most JavaScript engines starts with the “class…”.
         b)Class methods are non-enumerable. A class definition sets enumerable flag to false for all methods in the "prototype".
             That’s good, because if we for..in over an object, we usually don’t want its class methods.
-        c)All code is executed in strict mode.
+        c)classes always use strict.All code inside the class construct is automatically in strict mode.
+        d)top-down vs bottom up approach - https://forum.kirupa.com/t/js-tip-of-the-day-super-defines-this/643157/1
     d)Class Expression - we can store class experssion in varables like function.
-        1)named class expressions
+        1)named class expressions. class names of named class expressions are visisble only inside class.
         2)creating classes on the demand. we can return class expression from function and use it.
     e)getters/setters in class - they are also created in  Class.prototype
     f)Computed method names […]
         name of methods can be dynamic i.e it can be a function call, or any other js expression.
     g)class fields - these are new additions, old browsers may need polyfills
-        They are added on individual objects not prototype.
-        and complex expression are executed each time a object is created.
+        They are added on individual objects not prototype.values to these class fields can be assigned with complex expressions.
+        and these complex expression are executed each time a object is created.
 
     h)Making bound methods with class fields
 

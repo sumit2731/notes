@@ -128,6 +128,7 @@ class Meeting {
 
 function min_meeting_rooms(meetings) {
   // sort the meetings by start time
+  //O(n Logn)
   meetings.sort((a, b) => a.start - b.start);
 
   let minRooms = 0,
