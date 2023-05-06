@@ -1,0 +1,31 @@
+Syntax -
+
+    border-radius: all;
+    border-radius: top-left&bottom-right top-right&bottom-left;
+    border-radius: top-left top-right&bottom-left bottom-right;
+    /* Example: */
+    border-radius: 15px;
+    /* Equivalent to: */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+
+single values -
+    defines both horizontal and vertical diameter of circle.
+
+2 values -
+    horizontalRadius/verticalRadius
+
+radius of inner padding = outer-border-radius - border-thickness.
+
+percentage values -
+    horizontal perventage is taken from border-box width(2*border + 2* padding + content)
+    vertical width is taken from border-box height.
+
+A radius that exceeds the size of the border-box -
+    When the sum of any two adjacent border radii exceeds the size of the border-box (in our case, it’s the only radius 350px), 
+    the used values of all border radii must be proportionally reduced until none of them overlap. bevause of this reason
+    border-radius of 50% and 100% are exactlly same.
+

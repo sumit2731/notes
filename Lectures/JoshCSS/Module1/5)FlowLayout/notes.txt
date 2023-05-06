@@ -18,7 +18,7 @@ Every HTML element will have its layout calculated by a layout algorithm. These 
             b)height
             c)margin-top/bottom
             d)padding-top/bottom - takes padding but padding overlaps upper and below elements.
-            e)margin-left/right does not take auto value
+            e)margin-left/right does not take auto value. but margin-left moves them.
 
 
         Relaced Element -
@@ -36,9 +36,12 @@ Every HTML element will have its layout calculated by a layout algorithm. These 
     
         Elements that are display: block will stack in the block direction, regardless of their size.    
 
-    Inline elements have “magic space” - vertically below.
-        solution - set line-height: 0 or set display: block
-    space between inline elements
+    Inline elements have “magic space” - vertically below.this is because inline elements are treated as text.this space is proportional
+        to line height.
+        solution - set line-height: 0 or set display: block.
+    space between inline elements - this because of whitespaces in html.this is specififc to flow layout.
+    
+    
     Inline Elements can line wrap - 
 
     inline-block -it turns into a block element, as far as its own CSS declarations are concerned. But from the other layout's

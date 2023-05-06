@@ -4,7 +4,7 @@ CSS Reset - https://courses.joshwcomeau.com/css-for-js/treasure-trove/010-global
 Inheritance - Most typography related properties are inherited. complete list -
     https://www.sitepoint.com/css-inheritance-introduction/#list-css-properties-inherit
 
-property value - inherit. thi scan be used on any css property as value.child will take its
+property value - inherit. thsi scan be used on any css property as value.child will take its
     parent's value.
 
 Inheritance Article outside course -

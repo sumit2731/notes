@@ -5,6 +5,8 @@ border -
         Border width (eg. 3px, 1em)
         Border style (eg. solid, dotted)
         Border color (eg. hotpink, black)
+    
+    Shorthand - 
 
     .box {
         border: 3px solid hotpink;
@@ -31,7 +33,8 @@ border -
         }
 
     If we don't specify a border color, it'll use the font's color by default.If you want to specify this behaviour 
-        explicitly, it can be done with the special currentColor keyword.
+        explicitly, it can be done with the special currentColor keyword.currentColor is always a reference to the element's derived text 
+        color (whether set explicitly or inherited), and it can be used anywhere a color might be used:
 
 border-radius - border-radius should have been corner-radius.It's not hard to understand the rationale; the border-radius 
     property rounds an element even if it has no border!.
@@ -52,13 +55,19 @@ border-radius - border-radius should have been corner-radius.It's not hard to un
             / syntax -
                 border-radius: a b c d / e f g h;
 
-                values before left define the horizonal radius for all corners , values after /, define vertical radius.
-    see links of border radius in bookmarks.
+    values before left define the horizonal radius for all corners , values after /, define vertical radius.
+        see links of border radius in bookmarks.
+
+    value of 50% turns shape into complete circle.
 
 
 outline vs border - The core difference is that outline doesn't affect layout. Outline is kinda more like box-shadow; it's a 
     cosmetic effect draped over an element, without nudging it around, or changing its size.Outlines are stacked outside 
-    border, and can sometimes be used as a "second border", for effect:
+    border, and can sometimes be used as a "second border", for effect.
+
+    Outlines will follow the curve set with border-radius in all modern browsers. This is a relatively recent change, which landed in 
+        browsers between 2021 and 2023.
+    Outlines have a special outline-offset property. It allows you to add a bit of a gap between the element and its outline.
 
 
 new things -

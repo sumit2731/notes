@@ -1,52 +1,69 @@
 Negative Margins -
     With padding and border, only positive numbers (including 0) are supported. With margin, however, we can drop into the
-    negatives.
+    negatives.negative margins makes changes to sibling's layout also.
 
     article - https://www.quirksmode.org/blog/archives/2020/02/negative_margin.html
         points covered -
-            a)negative values of margin-top and margin-left allows you to draw the element closer to its top or left neighbour.
-            b)nagative values of margin-bottom and margin-right, draw its right and bottom neighbour closer to it
+
+            negative margin-top and margin-bottom -
+
+                a)Giving negative margin top moves the element closer to it's parent(if it's first element) or to its previous sibling sibling.
+                b)giving negative margin-bottom pulls next next siblong closer to element.If element is last child, then last child has
+                    no effect on next parent.
+                c)margin-collpasing and negative values -
+                    a)If one is positive and one is negative, then negative is subtracted from positive.
+                    b)If both values are negtaive, then more negative values is subtracted from 0 and other one is ignored.
             
-            Trick - This trick is useful for subtle tweaks, where the content of one element should slightly overlap the content 
-                of the one above it.
-            c)margin-collpasing and negative values -
-                a)If one is positive and one is negative, then negative is subtracted from positive.
-                b)If both values are negtaive, then more negative values is subtracted from 0 and other one is ignored.
-                In short negative margin-top and margin-bottom is not affected by margin collapsing.
-            d)negative values in margin-left and margin-right -
-                a)If width is fixed then negative left/right margin, works same as top/bottom negative margin.It just that
-                    margin collpasing does not work on left/right margin.
-                b)If width is auto, then other end does not move, but end on which negative margin is applied, moves such 
-                    that with of element increases. this is trick using which child can occupt the padding of parent.
-            Trick - . You give a container a padding so that its contents have some breathing space. However, you want the 
-                header to span the entire container, ignoring the padding. Negative margins are the way to go.
-    
-    A negative margin can pull an element outside its parent.
-    Negative margins can also pull an element's sibling closer.
-    It's easy to fall into the trap of thinking that margin is exclusively about changing the selected element's position. 
-        Really, though, it's about changing the gap between elements. Negative margin shrinks the gap below an element, 
-        causing the next element to scoot up closer.
-    negative margin can affect the position of all siblings.
+            negative margin-left and margin-right(with fixed width) -
+
+                d)negative margin-left moves the element to it's left(towards parent or towrds left sibling).for this element needs to have fixed wdith.
+                e)negative margin-right will only affect right child.for this also element needs to have fixed wdith.
+            
+            negative margin-left and margin-right(withh width:auto) -
+                f)with width auto, element take maximum width avalible, so they fill their parent comppletly.
+                g)with negative margins applied on left amd right, elements starts expanding into the parent's padding.
 
 Margin-Auto -
     The auto value seeks to fill the maximum available space. It works the same way for the width property. the byproduct
-    for this is that we end up horizontallyb centering the element by setting margin-left/right to auto. also we can push it to
+    for this is that we end up horizontally centering the element by setting margin-left/right to auto. also we can push it to
     right with margin-left: auto.
 
     Two caveats:
         This only works for horizontal margin. Setting top/bottom margin to auto is equivalent to setting it to 0px*.
         This only works on elements with an explicit width. Block elements will naturally grow to fill the available 
             horizontal space, so we need to give our element a width in order to center it.
+    Links - 
+        a)https://www.hongkiat.com/blog/css-margin-auto/
+            margin:auto either takes max value or is 0;
+            0 in case of inline elements, floated and absolute(position: fixed/absolute) elements.
+            how to get horizontal and vertical centering with margin: auto is case of absolute element.
+        b)https://www.youtube.com/watch?v=Azfj1efPAH0&t=1s
+            code pen link - https://codepen.io/sumit2714/pen/GRYyemo
+            a)flex items whose axis direction is row, also take auto value of margin-left and margin-right.
+            here we saw that in flexbox(even css grid), auto value margin-top or margin-bottom works same way as margin-left or
+                margin-right.
   
     note - margin: auto has no effect on display: inline/inline-block.with flex-box it moves individual flex-items.
 
-    see question 2 at last, here trick is width: auto has a different meaning for replaced elements. It doesn't mean “stretch
-        out and fill all of the space”, it means “use your natural width”!
+Extra from course -
+    margin collapsing -
+        1)https://www.smashingmagazine.com/2019/07/margins-in-css/
+            3 effects of this -
+                1)parent-first child, parent,lastChild
+                    here margin moves pout from parent.
+                2)adjcent siblings.
+                3)empty boxes, top and bottom margins are combined.
+            How to prevent this - 
+                1)add anything between margins like border, padding etc.
+                2)establish new block formatting context. read separate article for this.
+            margins do not collapse in flex and grid formatiing contextes.
 
 
-Questions asked by me -
+
+ Questions asked by me -
     https://codepen.io/sumit2714/pen/poxbRKQ
 
-    JoshAnswer -  Flow layout is designed for documents, and so the default vertical alignment is "baseline". It's essentially trying to line up the bottom of the text with the bottom of the image's margin:
+    JoshAnswer -  Flow layout is designed for documents, and so the default vertical alignment is "baseline". It's essentially trying to 
+    line up the bottom of the text with the bottom of the image's margin:
     
 

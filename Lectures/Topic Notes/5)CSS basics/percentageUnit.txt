@@ -20,3 +20,7 @@
 
 % values are not allowed for -
     border-width
+
+% values in border radius -
+    horizontal radius percentage means width of border box(left border + content-width + both sides padding + right border).
+    vertical radius percentage means height of border box.
