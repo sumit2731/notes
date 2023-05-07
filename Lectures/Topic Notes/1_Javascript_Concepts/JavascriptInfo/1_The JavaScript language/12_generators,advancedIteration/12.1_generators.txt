@@ -1,0 +1,33 @@
+1)generator syntax. -
+    * and yield 
+    using for loop to insert multiple yield statements.
+2)using generator functions as iterator.
+3)generator composition
+    yield*
+
+4)yield as 2 way street
+    passing values into generator using generator.next() - 
+
+5)throwing error into generator function -
+    gennerator.throw()
+
+    we can catch this in generator code using try ..catch.
+    if we do not do it then- If we don’t catch it, then just like any exception, it “falls out” the generator into the calling
+        code.
+
+    If we don’t catch the error there, then, as usual, it falls through to the outer calling code (if any) and, if uncaught, 
+        kills the script.
+
+6)generator.return
+    we can call return instead of next to end the execution.
+
+    this is useful if we want to stop generator.\
+
+
+7)where generators are used - 
+
+    a)In modern JavaScript, generators are rarely used. But sometimes they come in handy, because the ability of a function to
+        exchange data with the calling code during the execution is quite unique
+    b)they are great for making iterable objects.
+    c)n the next chapter we’ll learn async generators, which are used to read streams of asynchronously generated data 
+        (e.g paginated fetches over a network) in for await ... of loops.

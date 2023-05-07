@@ -12,4 +12,4 @@ console.log(arg1 + arg2);
 const foo1 = new Symbol(1)
 const foo2 = new Symbol(2)
 
-console.log(arg1 == arg2);
+console.log(foo1 == foo2);

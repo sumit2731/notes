@@ -1,0 +1,8 @@
+1)Syntax Difference
+2)this value
+3)No argument object
+4)cannot be used with new
+5)no protytype object
+6)can be called with duplicate param names
+7)can be used as generator function
+8)It does not have it's own HomeObject, so we cannot use super in these.

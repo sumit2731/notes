@@ -1,16 +1,10 @@
-function Button () {
-    this.enabled = true;
+let obj1 = {
+    0: 0,
+    1:1,
+    2:2,
+    length: 2
 }
 
-function ToggleButton () {
-    // this instance created
-    this.toggled = false;
-    Button.call(this); // superclass constructor
-}
+let arr = Array.from(obj1);
 
-// extends
-ToggleButton.prototype = Object.create(Button.prototype);
-ToggleButton.prototype.constructor = ToggleButton;
-
-let toggleButton = new ToggleButton();
-console.log(toggleButton.enabled); // true (from superclass)
+console.log(arr);

@@ -8,7 +8,8 @@ Interview Questions -
     3)how do you peform authentication? auth0, auth1?
     4)generator functions
 Javascript -
-    
+    caching
+    How browser works
     mutation observable
     intersection observable
     Resize Observable
@@ -16,10 +17,7 @@ Javascript -
     window.requestAnimationFrame() -- see videos
     webWorkers
     service workers
-    context api
-    1)order of properties of object in iteration
-    setImmediate
-    
+    context api    
     memory leak
     currying questions
     closure questions
@@ -55,9 +53,3 @@ Questions -
 
 
     2)How to get instance of servoce from depedency injection.
-
-
-    3)in customValidator, why fucntion accepts parameter of type abstractControl and not formControl? is it possible to create
-        validators on FormGroup or Array.
-
-    4)content projection in angular. multislot contnt projection.

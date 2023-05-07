@@ -14,8 +14,8 @@ class Bar extends Foo {
 const c = new Foo();
 const b = new Bar();
 
-console.log(c.foo, c.bar);
-console.log(b.foo, b.bar);
+console.log(c.foo, c.bar); // foo undefined
+console.log(b.foo, b.bar); //
 
 
 //2

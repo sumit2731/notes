@@ -104,3 +104,24 @@ Special Properties -
             object to which that method belongs. it is used to resolve value of super.
 
 */
+
+
+/* 
+MDN Docs on super - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
+
+1)Uses of super -
+    a)In constructor, it calls constrictor of super class.
+    b)In Static methods, it can be used to access static fields of parent or call static methods.
+    c)In class fields declaration it calls function on parent class's prototype.
+    d)IN class's methods it calls methods defined on prototype of parent class.
+
+
+2) instance fields are set on the instance instead of the constructor's prototype, so you can't use super to access the 
+    instance field of a superclass.
+
+3)Deleting super properties will throw an error.
+
+4)Setting super.prop sets the property on this instead. it uses  Reflect.set(Object.getPrototypeOf(objectLiteral), "x", 1, this).
+
+*/
+

@@ -6,20 +6,22 @@
         map
         set
 
-2)To make the range object iterable (and thus let for..of work) we need to add a method to the object named Symbol.iterator (a special built-in symbol 
-    just for that)
+2)To make the range object iterable (and thus let for..of work) we need to add a method to the object named Symbol.iterator (a
+    special built-in symbol just for that)
 
-    a)When for..of starts, it calls that method once (or errors if not found). The method must return an iterator – an object with the method next.
+    a)When for..of starts, it calls that method once (or errors if not found). The method must return an iterator – an object 
+        with the method next.
     b)Onward, for..of works only with that returned object.
     c)When for..of wants the next value, it calls next() on that object.
-    d)The result of next() must have the form {done: Boolean, value: any}, where done=true means that the loop is finished, otherwise value is the 
-        next value.
+    d)The result of next() must have the form {done: Boolean, value: any}, where done=true means that the loop is finished, 
+        otherwise value is the next value.
 
 3)Calling an iterator explicitly insteaad of using for of loop.
 
-4)Creating arrays from iterables using Array.from. Array.from can be used to create 
+4)Creating arrays from iterables using Array.from.
 
-5)String iterator knows about surrogate pairs.We can even build surrogate-aware slice on it.
+5)String iterator knows about surrogate pairs.We can even build surrogate-aware slice from this.also in for of loop, we get
+    correct strings even for sarrogate pairs.Array.from does this only internally, so Array.from is also surrogate aware.
 
-6)If we look inside the specification – we’ll see that most built-in methods assume that they work with iterables or array-likes instead of “real” 
-    arrays, because that’s more abstract.
+6)If we look inside the specification – we’ll see that most built-in methods assume that they work with iterables or array-
+    likes instead of “real” arrays, because that’s more abstract.
