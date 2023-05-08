@@ -1,0 +1,9 @@
+1)failed to solve 1, but logic was very simple.
+2)2 and 3 -> have a look at them
+4)have a look at similar problem after you cover fast and slow pointers
+6)I solved this
+7)solved this but missed one condition
+8)good question - see this. after lot of thinking I was able to solve this.
+
+
+Important - 4)have a look at similar problem after you cover fast and slow pointers
