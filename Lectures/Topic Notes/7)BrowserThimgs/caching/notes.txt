@@ -1,0 +1,5 @@
+To be covered -
+    1)covered headers and cdn.
+
+to be covered - 
+    cache api, service workers and articles.

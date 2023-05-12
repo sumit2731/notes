@@ -1,0 +1,144 @@
+Status -
+    200
+    304 - Not Modified. This status is used when revalidate cache after cache is expires and browser wants to tell that content
+        is not chnaged and you can reuse cached response.It says copy that browser has in it's cache is latest one.It is the 
+        equivalent of "Hey, keep using what you've already got!.
+
+    412 - Preconditional failure. returns if request method is non safe. and it uses headers like If-UnModified-Since and
+        If-None-Match
+
+
+Validation Request Headers - Stale responses are not immediately discarded. HTTP has a mechanism to transform a stale response 
+    into a fresh one by asking the origin server. This is called validation, or sometimes, revalidation.Validation is done by 
+    using a conditional request that includes an If-Modified-Since or If-None-Match request header.
+    
+    Request headers that affect checking for freshness, like 
+        a)If-Modified-Since - This request is sent when cache is expired and response that was cached has Last-Modified header.
+            the value of Last-Modified header is used as value of this header.
+        
+        
+            The If-Modified-Since request HTTP header makes the request conditional: the server sends back the requested resource,
+                with a 200 status, only if it has been last modified after the given date. If the resource has not been modified 
+                since, the response is a 304 without any body.
+             
+             Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD.
+
+            When used in combination with If-None-Match, it is ignored, unless the server doesn't support If-None-Match.
+            The most common use case is to update a cached entity that has no associated ETag.
+            
+            if client sends new response then old cache is discarded and new response is saved in cache.
+
+            Why this is not preffered -
+
+                The server can obtain the modification time from the operating-system file system, which is relatively easy to do
+                for the case of serving static files.However, there are some problems; for example, the time format is complex and
+                difficult to parse, and distributed servers have difficulty synchronizing file-update times.
+
+                To solve such problems, the ETag response header was standardized as an alternative.
+
+            this can only be used with get methods.
+
+        b)If-None-Match :- The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the 
+            server will return the requested resource, with a 200 status, only if it doesn't have an ETag matching the given ones.
+            For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of
+            the values listed.
+
+            Value of this header is value of ETTag in cached request.
+
+            When the condition fails for GET and HEAD methods, then the server must return HTTP status code 304 (Not Modified). 
+            For methods that apply server-side changes, the status code 412 (Precondition Failed) is used.
+
+
+Response Headers - 
+   cache-control - see separate notes 
+    expires - this gives cache expire date. it is from older HTTP 1.0 days.this header provides an expiration date after
+                which asset is considered invalid.The browser will ignore this field if there’s a max-age directive in 
+                Cache-Control.The Expires header specifies the lifetime of the cache using an explicit time rather than by 
+                specifying an elapsed time.
+
+                Expires: Tue, 28 Feb 2022 22:22:22 GMT
+
+                However, the time format is difficult to parse,therefore, max-age — for specifying an elapsed time — was adopted
+                for Cache-Control in HTTP/1.1.
+
+    Both of these serve the same purpose -
+        
+        a)ETag - The ETag (or Entity Tag) is a string that serves as a cache validation token. This is usually a hash of the file 
+            contents.The server can include an ETag in its response, which the browser can then use this in a future request 
+            (after the file has expired) to determine if the cache contains a stale copy.
+
+            If the hash is the same, then the resource hasn’t changed and the server responds with a 304 response code (Not 
+            Modified) with an empty body. This lets the browser know it’s still safe to use the cached copy.
+
+            Note that ETag is only used in requests whenever the file has expired from cache.
+            This tag also tell browser that it can store the response in cache.cache 
+
+
+            When the browser finds an expired cached response, it can send a small token (usually a hash of the file's contents) 
+                to the server to check if the file has changed. If the server returns the same token, then the file is the same,
+                and there's no need to re-download it.
+
+        b)Last-Modified - The Last-Modified response HTTP header contains a date and time when the origin server believes the 
+            resource was last modified. It is used as a validator to determine if the resource is the same as the previously
+            stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing 
+            If-Modified-Since or If-Unmodified-Since headers make use of this field.
+
+            Last-Modified is also used by crawlers to adjust crawl frequency, by browsers in heuristic caching, and by content 
+            management systems (CMS) to display the time the content was last modified.
+
+            RFC9110 prefers that servers send both ETag and Last-Modified for a 200 response if possible. During cache revalidation,
+            if both If-Modified-Since and If-None-Match are present, then If-None-Match takes precedence for the validator. If you 
+            are only considering caching, you may think that Last-Modified is unnecessary. However, Last-Modified is not just useful 
+            for caching; it is a standard HTTP header that is also used by content-management (CMS) systems to display the last-modified
+             time, by crawlers to adjust crawl frequency, and for other various purposes. So considering the overall HTTP ecosystem, it
+             is better to provide both ETag and Last-Modified.
+
+    age - When a response is stored in a shared cache, it is necessary to inform the client of the response's age. Continuing 
+        with the example, if the shared cache stored the response for one day, the shared cache would send the following response
+        to subsequent client requests.
+            HTTP/1.1 200 OK
+            Content-Type: text/html
+            Content-Length: 1024
+            Date: Tue, 22 Feb 2022 22:22:22 GMT
+            Cache-Control: max-age=604800 (7 days)
+            Age: 86400 (1 Day)
+
+            <!doctype html>
+            …
+        The client which receives that response will find it to be fresh for the remaining 518400 seconds, the difference between
+        the response's max-age and Age.
+
+    vary - see mdn docs. (https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#overview)
+
+Clearing cache -
+    1)Clear-Site-Data -  not all browsers support it — and even when it's used, it only affects browser caches and has no effect 
+        on intermediate caches.
+        Clear-Site-Data: "cache", "cookies", "storage", "executionContexts"
+
+
+Common Cache Strategies -
+    1)Defalut settings -he default behavior for caching (that is, for a response without Cache-Control) is not simply "don't 
+    cache" but implicit caching according to so-called "heuristic caching".To avoid that heuristic caching, it's preferable to 
+    explicitly give all responses a default Cache-Control header.
+
+    To ensure that by default the latest versions of resources will always be transferred, it's common practice to make the 
+    default Cache-Control value include no-cache:
+        Cache-Control: no-cache
+
+    In addition, if the service implements cookies or other login methods, and the content is personalized for each user, private
+    must be given too, to prevent sharing with other users:
+        Cache-Control: no-cache, private
+
+
+    2)cache Busting -  you can serve the JavaScript and CSS with URLs that include a changing part based on a version number or 
+        hash value.
+
+        Therefore, you can serve the JavaScript and CSS with URLs that include a changing part based on a version number or hash
+        value. Some of the ways to do that are shown below.
+
+    3)Validation - Last-Modified and ETag headers, so that you don't have to re-transmit a resource when reloading.
+        In addition, immutable can be added to prevent validation on reload.
+
+    4)Main resources - For that case, no-cache would be appropriate — rather than no-store — since we don't want to store HTML, 
+        but instead just want it to always be up-to-date.Furthermore, adding Last-Modified and ETag will allow clients to send
+        conditional requests, and a 304 Not Modified can be returned if there have been no updates to the HTML.

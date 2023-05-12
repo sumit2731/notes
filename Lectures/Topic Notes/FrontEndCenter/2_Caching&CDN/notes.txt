@@ -1,0 +1,69 @@
+Caching and how certsain http headers controls behaviour of CDN
+
+caching that we know today was introduced in Http/1.1 in 1997 and is largely untouched today. key contribution of http/1.1 is
+    cache control header.
+
+Cachhing only applies to safe http headers like get, options and head.
+
+Before HTTP/1.1 only 2 types of get requests were there.
+    a)normal get request if no cache is there. this will have header last-modified.
+    b)conditional get request with header If-Modified-Since header.
+
+Staretgy 1 -
+    Cache-Control: no-store
+
+Strategy 2 -
+    Cache-Control: no-cache
+
+    downside - relationship between assets is not cached. for ex for image in css, we again need to verify with server.
+        so one more round trip is required. so round trip is required for each asset.
+
+    to speed up things we need to tell browser that cipy it is having is latest one. we can do that with max-age directive.
+
+Startegy 3 - 
+    cache-control: max-age=10
+    In order to save that round trip we need to tell browser that copies that it has are latest.
+
+    refreshing a browser puts the html into stale mode.but other files are still fresh. this behaviour varies across browsers.
+
+    but there is a tradeoff if you update your css, customer cabn still be using old copy of css file from cache. only way
+        to fresh new file is to do hard reload. but many customers might not be aware of this.
+    
+    solution is to generate name of file based on its contetnt, it is called content-adressable storage.so we treat assets as
+    immutable , tell browser to cache to them forever and our build system can keep url's upto date.then we saw that we can use
+    gulp to have hash in file names and then in expresee server we can use condition that if file has hashes then we can add
+    large max-age directives to them.
+
+    html is not having max-age, all other files which have hashes in their name have large max-age.
+
+Caching For CDN's -
+
+    we put CDN in front of heroku deployed server. then we hard refershed the page, we saw that html code is fetched from orignal
+        server,but other resources are fetched from CDN(even for hard refresh).for asset max-age is of 1 year.now we dnt want browser
+        to cache this file we want to keep it stale, so that each request check with server if anything has changed. but we want
+        to check with closest server not with orignal server. there 2 things to be done fro this -
+
+            1)we need to tell cloudflare to respect cache headers on html file.by default only cache things that it considers
+                static like css, js and images. we added a new rule. which says cache everything.
+            2)then we reloaded html file and from headers we saw that cloudfare was not able to add it to cache as max-age was 
+                less.
+            3)then we added these directives to cache control - max-age and s-maxage. so s-maxage sets max age for public cache.
+                so after some time browser might find cache stale, cdn will still have it as fresh. to make cdn, data stale,
+                we will have some diffrent mechanism.
+
+            4)to invalidate everything you can do it via cloudflare UI. this is very blunt approach. better approach would be to
+                only invalidate html file and do that during deployment. for this we can use cloudflare-cli npm package.
+
+
+
+Setup we had at end -
+
+    1)we used cloudfare cdn in front of our server. 
+    2)For css, js files, these were cached at browser cache with large max-age. also we had immutable directive to prevent validation
+        during hard refresh.even for validation, only cloudfare was reached. so request never reaches orignal server even for
+        html file, even with hard reload.
+    3)for non hashed file names we use - max-age=0, s-maxage = 1 day(html also).so browser reaches cdn for validation and max-age
+        for cdn is very large.
+    4)in build process we had mechanism of invalidating cache. so new html file is returned by cache after deployment.
+
+

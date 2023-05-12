@@ -8,6 +8,7 @@ Binary heap 2 types - Min and max binary heap
 
 Use of Binary Heap -
     Binary Heaps are commonly used for implementing preiority queue.
+    They are also used in Graph transversal algo's.
     also they are useful data structure, for storing list where elements, need to be sorted or we quickly need
         large or min element. for parctical use see question 5 of merge intervals section of design gurur's.
 

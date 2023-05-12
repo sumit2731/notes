@@ -77,6 +77,7 @@ class EmployeeInterval {
  *O( n * Log(k) )
  */
 function find_employee_free_time (schedules) { 
+    //parent's start time is smaller
     let scheduleHeap = new Heap((parentJob, childJob) => (parentJob.interval.start < childJob.interval.start)); // parent, child
     let freeTime = [];
     for(let i = 0; i< schedules.length; i++) {
@@ -118,7 +119,7 @@ let input = [
     [new Interval(2, 4)],
     [new Interval(6, 8)],
   ];
-  process.stdout.write('Free intervals: ', end = '');
+  console.log('Free intervals: ', end = '');
   result = find_employee_free_time(input);
   for (i = 0; i < result.length; i++) {
     result[i].print_interval();
@@ -130,7 +131,7 @@ let input = [
     [new Interval(2, 4)],
     [new Interval(3, 5), new Interval(7, 9)],
   ];
-  process.stdout.write('Free intervals: ', end = '');
+  console.log('Free intervals: ', end = '');
   result = find_employee_free_time(input);
   for (i = 0; i < result.length; i++) {
     result[i].print_interval();

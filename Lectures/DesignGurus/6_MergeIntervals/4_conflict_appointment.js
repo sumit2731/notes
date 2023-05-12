@@ -9,8 +9,8 @@ class Interval {
     }
   }
   /**
-   * this is course as well as my solution. but if we need to find the intervals,
-   * then this approach is not enough, see 4.2 solution
+   * this is course as well as my solution. but if we need to find the conflicting intervals also
+   * then see minMeetingRoom problem
    */
   function can_attend_all_appointments(intervals) {
     intervals.sort((a,b) => a.start-b.start);

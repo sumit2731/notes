@@ -9,7 +9,8 @@ class Interval {
     }
   }
   /**
-   * My Solition- course solution misses a bug. this solution wnt work when more than 2 meetings conflict.
+   * My Solition- course solution misses a bug. 
+   * this solution wnt work when more than 2 meetings conflict.
    */
   function conflictingAppointMents(intervals) {
     intervals.sort((a,b) => a.start-b.start);
@@ -28,11 +29,14 @@ class Interval {
     return result;
   }
   
-  
-  console.log(`These Meetinga Has Conflict: ${conflictingAppointMents([
+  const conflicts = conflictingAppointMents([
     new Interval(4,5),
     new Interval(2, 3),
     new Interval(3,6),
     new Interval(5,7),
     new Interval(7,8),
-  ])}`);
+  ])
+
+for(let conflict of conflicts) {
+  console.log(conflict)
+}

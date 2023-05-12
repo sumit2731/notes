@@ -1,0 +1,62 @@
+Latency vs Bandwidth
+    Time taken for download is direct function of bandwidth for large files,for smaller sizes large bandwidth does'nt offer much 
+    of speed up. for smaller files latency plays a mjor role.All webpage assets are smaller in size.
+
+
+Experiment -
+    file size - 100kb
+    bandwidth - 12 MB/s
+
+    see figure 1.
+    here increase in latency of 150ms created a delay of over 700ms?it looks like download speed depedns upon how far away our 
+        server is.experiment with files of diffrent sizes shows us the pattern, see figure 2.for sydney download time increases
+        slowly and steadly with size of that file, since we have bandwidth, it is false. but for other 2 far away locations
+        time increases in big discrete steps.also each steps goes up by roughly the same amount as latency for that location.
+
+    THis gives us the hint of what is happening. for some reasons as files gets bigger at certain pints  we stast incurring extra
+    delays of one round trip. this is one of fundamantal chacarteristics of TCP.
+
+
+    see figure 3 for chacarteristics of TCP, it is last characteristic that causes the last behaviour.
+    figure 4 shows how data is transmitted in TCP. so time required to send the file heavily depends upon how many back and 
+    fourth's you need, particularly if your computer and server are far apart. so want to maximize the data that you sent each 
+    time.
+
+    figure 5 -so when server does not receive the acknowledgement of a packet it sends that packet again. this is how TCP makes sure that
+    this are deleivered eventually. but if netwrok is not able to handle such a traffic and server keep on retrying and so does
+    everybody else then nothing can actually get through, networks can totally breakdown.
+
+
+    figure 6 - it is for this reason, TCP starts slow and makes sure that it os deleivered correctly. it packet is deleivered
+    then next time it sends more data(increasing window size), if not then next time it sends less data(decreasing the window).
+    this is reason mobile networks and sketchy wifi fels so slow, you needs series of trips wiyhout interruption for connection 
+    to build speed.
+
+    now this does not happen for all files once TCP connection is established, you can use to make multiple http request.
+
+    but it does mean that effect of latency is more at begining of uers's visit. this is also the time when user is decidieng to
+    whther to wait for your website or not.
+
+    now graph of figure 2 makes sense, everytime response time increases it is because of another round trip.
+
+
+    window sizes are hard to predict, they depend on browser, server and network equipment in between and congestion in network.
+    most browser start with intial window size of 14kb. that is why graph is flat for first 14 kb.any file smaller that that
+    will arrive in first round trip.that is why you hear this number 14kb in performace reccomendations.that is why some tools
+    inline things like css and small images in html.
+
+
+    where you host your code is deciding factor in latency.
+
+    cloudPing.info gives you latency between you san some localtions aroundthe world.
+    if you audience is distributed across globe where should you host your server? most static host even does not give you this 
+    choice.this is where CDN provides comes in play. see figure 7.
+
+    firstly they have lot more locations, so you are most likely to reach user from server nearby.
+    secondly each of those locations host their own cache, so for most or all the assets on your site users do not need to go 
+    to orignal server. so where server is hosted becomes lot less important.
+
+    CDN works'by intercepting requests for your server, returning either a diffrent IP address depending upon where request is 
+        coming from or a single IP address that resolves to closest  server.
+
+    
