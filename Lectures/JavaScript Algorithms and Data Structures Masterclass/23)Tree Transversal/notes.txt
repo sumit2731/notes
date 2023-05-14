@@ -1,14 +1,31 @@
 Intro-
 
-    Here we will see how we can trnaverse any tyoe of tree.THis is classical computer promlem, there are many ways of 
+    Here we will see how we can traverse any type of tree.THis is classical computer promlem, there are many ways of 
         doing it. here we will focus on 4 very commonly used approaches. In this section we will take advantage of reccursion
         more than any section. 2 main approaches are -
             
             a)Breadth-First(Figure 1)
             b)Depth- First(there are 3 main orders for depth first serach). these are-
                 1)In Order(Figure 2)
+                    Traverse the Left Tree
+                    visit the root
+                    traverse the right Tree
                 2)Pre Order(Figure 3)
+                    Visit Root
+                    Traverse Left SubTree
+                    Traverse Right Subtree
+
+                    uses -
+                        1)it can be used to create copy of tree
+                        2)prefix expressions on an expression tree.
                 3)Post Order(Figure 4)
+                    Left Subtree
+                    Right Subtree
+                    Visit Root
+
+                    uses -
+                        1)It is used to delete the tree - https://www.geeksforgeeks.org/write-a-c-program-to-delete-a-tree/
+                        2)Postorder traversal is also useful to get the postfix expression of an expression tree
 
     it really depends on what you're trying to do and I'll have a video where I address that.There are certain situations where 
     you might want to use one versus the other. we talk about this in last section, once you know about all of them.

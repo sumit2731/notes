@@ -65,7 +65,7 @@ class BinarySearchTree {
   }
   /* 
   node-left-Right
-  Recursion Solution
+  Recursion Solution - Udemy
   Time Coplexity - O(n)
   Space Compleity - O(1)
   */
@@ -102,7 +102,7 @@ class BinarySearchTree {
   }
 
   //left-node-right
-  //Recursive Solution
+  //Recursive Solution - from udemy lecture
   postOrder() {
     let data = [];
     function transverse(node) {
@@ -142,7 +142,7 @@ class BinarySearchTree {
   }
 
   /* 
-  This is iterative solution using 1 stack
+  This is iterative solution using 1 stack - By Tushat Roy
   Algo-
     1)current points to root
     2)push root into stack1
@@ -153,6 +153,7 @@ class BinarySearchTree {
 
   Time Complexity - O(n)
   Space Complexity -O(h), where h is height of arraymax heigtn can be O(h)
+  This solution can also be used to find height of the tree, whch is max length of stack
   */
   postOrder3() {
     if(!this.root) return [];
@@ -207,6 +208,9 @@ class BinarySearchTree {
     return data;
   }
 
+  /**
+   * Recurvive solution - udemy lecture
+   */
   inOrder() {
     let data = [],
       node = this.root;
@@ -245,10 +249,143 @@ class BinarySearchTree {
   }
 }
 
-function treeHeight(node) {
-  if (!node) return 0;
-  return Math.max(treeHeight(node.left), treeHeight(node.right)) + 1;
-} 
+/**
+ * Compares whther 2 binary trees are same or not
+ * TusharVideos
+ */
+function isSame(node1,nod2) {
+  if((node1 == null) && (node2 == null)) return true;
+  if((node1 == null) || (node2 == null)) return false;
+  return (node1.value == node2.value) && isSame(node1.left, node2.left) && isSame(node1.right, node2.right);
+}
+
+/**
+* number of nodes on binay tree
+* TusharVideos
+*/
+function sizeOfTree(node) {
+  if(node == null) return 0;
+  return 1 + sizeOfTree(node.left) + sizeOfTree(node.right);
+}
+
+/**
+* height of binary tree -recurrsive
+* TusharVideos
+* Best Solution is third
+*/
+
+function heightOfTree(node) {
+  if(!node) return 0;
+  return 1+ Math.max(heightOfTree(node.left) , heightOfTree(node.right))
+}
+
+/**
+ * Height using BFS(iterative)
+ * GeekForGeeks
+ */
+
+function heightOfTree2(node) {
+  let queue = [node, null], tempNode, depth = 0;
+  while(queue.length) {
+    tempNode = queue.shift();
+    if(tempNode == null) depth++;
+    else {
+      if(tempNode.left) queue.push(tempNode.left);
+      if(tempNode.right) queue.push(tempNode.right);
+    }
+    if((tempNode == null) && (queue.length > 0)) queue.push(null);
+  }
+  return depth;
+}
+
+/**
+ * Height using BFS(iterataive)
+ * Geek for Geeks
+ */
+function heightOfTree3(node) {
+  let queue = [node], depth = 0;
+  while(queue.length) {
+    let size = queue.length;
+    for(let i = 0; i<size ;i++) {
+      let firstNode = queue.shift();
+      if(firstNode.left) queue.push(firstNode.left);
+      if(firstNode.right) queue.push(firstNode.right);
+    }
+    depth++;
+  }
+  return depth;
+}
+
+/**
+* sum of binaryTree from root to leaf
+* TusharVideos
+*/
+
+function sumOfAllNodes(node) {
+  if(!node) return 0;
+  return node.value + sumOfAllNodes(node.left) + sumOfAllNodes(node.right)
+}
+
+/**
+ * Check whther sum of  root to leaf of anyPath of tree is equal to given number
+ */
+function sumOFCompletePath(node, sum) {
+  if(!node) return false
+  if((node.left == null) && (node.right == null)) {
+    return (node.value == sum)
+  }
+  let remainingSum = sum - node.value;
+  return sumOFOnePath(node.left,remainingSum) || sumOFOnePath(node.right, remainingSum)
+
+}
+
+/**
+ * same as above but we also need path
+ * Tushar Videos
+ */
+function rootToLeafSum(node, sum, path) {
+  if(!node) return false;
+  if((node.left == null) && (node.right == null)) {
+      if(node.value == sum) {
+          path.push(node.value);
+          return true;
+      } else return false;
+  }
+  let remainingSum = sum - node.value;
+  if(rootToLeafSum(node.left, remainingSum, path) || rootToLeafSum(node.right, remainingSum, path)) {
+      path.push(node.value);
+      return true;
+  }
+  return false;
+}
+
+/**
+ * check whether sum from root to any node is equal to given number
+ */
+
+function sumofAnyPath(node, sum) {
+  if(!node) return false;
+  if((node.left == null) && (node.right == null)) {
+    return (node.value == sum)
+  }
+  let remainingSum = sum - node.value;
+  if(remainingSum == 0) return true;
+  return sumofAnyPath(node.left,remainingSum) || sumofAnyPath(node.right, remainingSum)
+}
+
+/**
+ * Check if given binary tree is binary search tree. see the catch herewatch video
+ * https://www.youtube.com/watch?v=MILxfAbIhrE&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=8
+ */
+function ifBInaryTree(node) {
+  if(!node) return true;
+  if(node.left && node.left.value >= node.value) return false;
+  if(node.right && node.right.value <= node.value) return false;
+  return (ifBInaryTree(node.left) && ifBInaryTree(node.right))
+}
+
+
+
 
 let tree = new BinarySearchTree();
 tree.insert(10);
@@ -258,17 +395,28 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 tree.insert(25);
-tree.insert(23);
-tree.insert(35);
-tree.insert(7);
-tree.insert(9);
-tree.insert(45);
-tree.insert(2);
-tree.insert(1);
-tree.insert(0);
-tree.insert(-1);
-tree.insert(55);
-tree.insert(65);
+// tree.insert(23);
+// tree.insert(35);
+// tree.insert(7);
+// tree.insert(9);
+// tree.insert(45);
+// tree.insert(2);
+// tree.insert(1);
+// tree.insert(0);
+// tree.insert(-1);
+// tree.insert(55);
+// tree.insert(65);
 
 
-console.log(treeHeight(tree.root));
+//console.log(heightOfTree(tree.root));
+console.log(heightOfTree2(tree.root));
+//console.log(heightOfTree3(tree.root));
+// console.log(sumOfAllNodes(tree.root));
+// console.log(sizeOfTree(tree.root));
+// let path = [];
+// rootToLeafSum(tree.root,70,path);
+// if(path.length) {
+//   console.log(path)
+// }
+
+// console.log(ifBInaryTree(tree.root));

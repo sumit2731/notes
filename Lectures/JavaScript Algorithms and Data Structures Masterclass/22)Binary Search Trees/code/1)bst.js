@@ -11,7 +11,7 @@ class BinarySearchTree {
     this.root = null;
   }
   /*
-   *My solution using iteration
+   *My solution using iteration - course soliton is also same
    */
   insert(value) {
     let newNode = new Node(value);
@@ -34,7 +34,7 @@ class BinarySearchTree {
 
   /* My solution using reccursion*/
 
-  /*  insert2(value) {
+  insert2(value) {
     let newNode = new Node(value);
 
     if (!this.root) {
@@ -50,12 +50,11 @@ class BinarySearchTree {
       else node[property] = newNode;
     }
     innerFunction(value, this.root);
-  } */
+  }
 
-  /* 
-  *It can be solved by iteration as well as reccursion
-
-  */
+  /**
+   * @MySolution and Course Solution using iteration
+   */
   find(value) {
     if (!this.root) return false;
     let node = this.root;
@@ -69,26 +68,23 @@ class BinarySearchTree {
     return false;
   }
   
-  /* 
-  Course Solution
-  */
-
-/*   find(value) {
-    if (this.root === null) return false;
-    var current = this.root,
-      found = false;
-    while (current && !found) {
-      if (value < current.value) {
-        current = current.left;
-      } else if (value > current.value) {
-        current = current.right;
-      } else {
-        found = true;
-      }
+  
+  /**
+   * @MySolution using Recursion
+   */
+  find2(value) {
+    function innerFunction(node, value) {
+      if(!node) return node;
+      let property = '';
+      if (node.value == value) return node
+      else if(node.value > value) property = 'left';
+      else property = 'right';
+      node = node[property]
+      return innerFunction(node, value);
     }
-    if (!found) return undefined;
-    return current;
-  } */
+    return innerFunction(this.root, value)
+  }
+  
 }
 
 let tree = new BinarySearchTree();
@@ -99,5 +95,5 @@ tree.insert(25);
 tree.insert(75);
 tree.insert(125);
 tree.insert(175);
-console.log(tree.find(25));
-console.log(tree.find(175));
+console.log(tree.find2(250));
+console.log(tree.find2(175));

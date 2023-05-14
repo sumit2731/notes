@@ -15,7 +15,7 @@ Use of Binary Heap -
 Representing as array - 
     see figure 4, how heap can be represented as array.
     see fgure 5, how to find child of node at index n of array. = - 2n+1, 2n+2
-    see figure 6, how to find parent of child node
+    see figure 6, how to find parent of child node - Math.floor((n-1)/2)
 
 How to insert values in heap -
     we insert a element at end of array and then we bubble up that element to correct place.
