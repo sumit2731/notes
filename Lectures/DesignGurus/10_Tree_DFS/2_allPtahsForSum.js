@@ -30,7 +30,7 @@ function find_paths(root, sum) {
  * but we are copying the path array for each iteration.
  * see course solution which is most optimized
  */
-function find_paths(root, sum) {
+function find_paths2(root, sum) {
   let allPaths = [];
   function traverse(root, sum, path) {
     if (!root) return false;
@@ -48,33 +48,10 @@ function find_paths(root, sum) {
 }
 
 /**
- * @MySolutionWithMultiPlepaths - It uses same path array. just adds and removes current node from it
+ * @CourseSolution - It uses same path array. just adds and removes current node from it
  * Course solution is 0.1 % better as it declares less variable
  */
-function find_paths2(root, sum) {
-  let allPaths = [];
-  function traverse(root, sum, path) {
-    if (!root) return false;
-    if (!root.left && !root.right && (sum == root.val)) {
-      allPaths.push(newPath);
-      return;
-    }
-
-    if (traverse(root.left, sum - root.val, newPath)) {
-      allPaths.push(root.value);
-    }
-    if (traverse(root.right, sum - root.val, newPath)) {
-      allPaths.push(root.value);
-    }
-  }
-  traverse(root, sum, [])
-  return allPaths
-}
-
-/**
- * @CourseSolution - This i sbest amoungst the lot
- */
-function find_paths(root, sum) {
+function find_paths3(root, sum) {
   allPaths = [];
   function traverse(root, sum, currentPath) {
     if (!root) return false;
@@ -89,6 +66,36 @@ function find_paths(root, sum) {
     currentPath.pop();
   }
   traverse(root, sum, []);
+  return allPaths;
+}
+
+/**
+ * Iterative solution using 2 stacks - One Stack has Nodes, second one has path till current node and sum till current node
+ * https://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/
+ */
+function find_paths4(root, requiredSum) {
+  let nodeStack = [root], nodeDataStack = [{sum: root.val , path: [root.val]}], allPaths = [];
+  while(nodeStack.length) {
+      let currentNode = nodeStack.pop(), currentDataObject = nodeDataStack.pop();
+      if(!currentNode.left && !currentNode.right && requiredSum == currentDataObject.sum)  {
+          allPaths.push(currentDataObject.path);
+      }
+      
+      if(currentNode.right) {
+          nodeStack.push(currentNode.right);
+          nodeDataStack.push({
+              sum : currentDataObject.sum + currentNode.right.val,
+              path : [...currentDataObject.path, currentNode.right.val]
+          })
+      }
+      if(currentNode.left) {
+          nodeStack.push(currentNode.left);
+          nodeDataStack.push({
+              sum: currentDataObject.sum + currentNode.left.val,
+              path : [...currentDataObject.path,currentNode.left.val]
+          });
+      }
+  }
   return allPaths;
 }
 

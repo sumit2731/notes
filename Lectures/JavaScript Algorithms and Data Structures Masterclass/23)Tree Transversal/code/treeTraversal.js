@@ -342,7 +342,7 @@ function sumOFCompletePath(node, sum) {
 /**
  * same as above but we also need path
  * Tushar Videos
- * See Question 2 of DFS pattern of Design Guru. it prints all paths and also have iterative
+ * See Question 2 of DFS pattern of Design Guru. That prints all paths and also have iterative solution for this
  *  solution for this
  */
 function rootToLeafSum(node, sum, path) {

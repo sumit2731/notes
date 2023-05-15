@@ -1,4 +1,7 @@
 1)solved it easily
 2)solved it for having one path. but just by reading solution i solved the question.
     but course solution is slightly better.
-    also similar questions that are mentioned in ccourse for this.
+    also similar questions that are mentioned in course practice them.
+
+3)solved on my onw, similar to problem 2, but just see course solution for that numbers trick.
+4)solved 4 but have a look at course solution.
