@@ -300,7 +300,7 @@ function heightOfTree2(node) {
 
 /**
  * Height using BFS(iterataive)
- * Geek for Geeks
+ * Geek for Geeks, this is also used in Grokking Interview Patterns
  */
 function heightOfTree3(node) {
   let queue = [node], depth = 0;
@@ -342,6 +342,8 @@ function sumOFCompletePath(node, sum) {
 /**
  * same as above but we also need path
  * Tushar Videos
+ * See Question 2 of DFS pattern of Design Guru. it prints all paths and also have iterative
+ *  solution for this
  */
 function rootToLeafSum(node, sum, path) {
   if(!node) return false;
