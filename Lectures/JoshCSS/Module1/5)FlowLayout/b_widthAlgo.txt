@@ -1,0 +1,50 @@
+width:100%  vs width:auto
+
+    percentage width - When we use percentage-based widths, those percentages are based on the parent element's content space.
+    auto - it's a hungry value that will grow as much as it's able to, but no more
+
+    see example in coourse to see diffrence.
+
+keywords for width value -
+    auto
+    min-content - we're specifying that we want our element to become as narrow as it can, based on the child contents.
+    max-content - This value is similar in principle, but it takes an opposite strategy: it never adds any line-breaks. The
+        element's width will be the smallest value that contains the content, without breaking it up.
+    fit-content: like min-content and max-content, 
+         = max-content(if current element can fit into its parent)
+         = auto(for all other cases)
+
+        if we use max-content and element cannot fit inside container, in that case it's width will increase and content 
+        will move out from container.that uis where fit-content comes handy.
+
+min-width
+max-width
+
+
+Problem 1 -
+    solution 1 -
+        width: max-content
+        max-width: 100%
+    result - worked for while.but fails when element has margin, then also giving 100% will atke it out of container. because
+        100% does not factor in margin. while fit content factors it in.
+
+    solution 2 -
+        display: inline-block.
+        result - diffrent heading come on same row.
+        one more approach - you can wrap your h1 inside div. now as div is block level element, diffrent h1 wnt come on
+            same line.
+
+
+    solution 3 -
+        display: table
+
+        By default, tables will shrink to hold their contents, but are still block-level elements.
+        result - works fine.
+
+    solution 4 -
+        max-width: max-content;
+        min-width: min-content;
+        result - works fine.
+
+
+

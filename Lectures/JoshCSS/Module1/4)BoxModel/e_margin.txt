@@ -5,23 +5,37 @@ Negative Margins -
     article - https://www.quirksmode.org/blog/archives/2020/02/negative_margin.html
         points covered -
 
-            negative margin-top and margin-bottom -
+            1)negative margin-top and margin-bottom (elements have fixed width) -
 
-                a)Giving negative margin top moves the element closer to it's parent(if it's first element) or to its previous sibling sibling.
-                b)giving negative margin-bottom pulls next next siblong closer to element.If element is last child, then last child has
-                    no effect on next parent.
+                a)giving negative margin-bottom, browser moves the point(from where next element was to be placed) closer to
+                    element, from there on all other elements are laid out normal.so this does not move current element but
+                    moves next one closer ot it.
+
+                    This trick is useful for subtle tweaks, where the content of one element should slightly overlap the content
+                        of the one above it.
+
+                b)giving negative margin-top, moves the element up towards its previous sibling or parent.
+                    Giving negative margin-top moves the elment closer to container bypassing even padding, this can be used to have a
+                    overlapping of child on its parent container.
+
+            2)margin-collpasing -
+
                 c)margin-collpasing and negative values -
                     a)If one is positive and one is negative, then negative is subtracted from positive.
                     b)If both values are negtaive, then more negative values is subtracted from 0 and other one is ignored.
             
-            negative margin-left and margin-right(with fixed width) -
+            3)negative margin-left and margin-right(with fixed width) -
 
-                d)negative margin-left moves the element to it's left(towards parent or towrds left sibling).for this element needs to have fixed wdith.
-                e)negative margin-right will only affect right child.for this also element needs to have fixed wdith.
+                d)negative margin-left moves the element to it's left(towards parent or towrds left sibling).for this element 
+                    needs to have fixed wdith.
+                e)negative margin-right will only affect right child, given element is un affected by this..for this also element 
+                    needs to have fixed wdith.
             
-            negative margin-left and margin-right(withh width:auto) -
-                f)with width auto, element take maximum width avalible, so they fill their parent comppletly.
+            4)negative margin-left and margin-right(with width:auto) -
+                
+                f)with width auto, element take maximum width avalible, so they fill contentn area of their parent completly.
                 g)with negative margins applied on left amd right, elements starts expanding into the parent's padding.
+                    This is also a useful effect when we want some childern to negate the padding of parent.
 
 Margin-Auto -
     The auto value seeks to fill the maximum available space. It works the same way for the width property. the byproduct
@@ -36,34 +50,50 @@ Margin-Auto -
         a)https://www.hongkiat.com/blog/css-margin-auto/
             margin:auto either takes max value or is 0;
             0 in case of inline elements, floated and absolute(position: fixed/absolute) elements.
-            how to get horizontal and vertical centering with margin: auto is case of absolute element.
+            for block elements in horizontal direction, it takes max-value.for vertical margins auto means 0.
+            how to get horizontal and vertical centering with margin: auto is case of absolute element -
+                horizontal - values of width, left and right should be should'nt be auto. now giving auto value to both
+                    margin-left and margin-right, solve the equation under the extra constraint that the two margins get 
+                    equal values, which centers the element horizontally.also we can also move element to one end.
+                veritcal - values of height,left and right should not be auto.If both “margin-top” and “margin-bottom” are 
+                    “auto”, solve the equation under the extra constraint that the two margins get equal values…”.apart
+                    from centering you can also move element to its either end.
         b)https://www.youtube.com/watch?v=Azfj1efPAH0&t=1s
             code pen link - https://codepen.io/sumit2714/pen/GRYyemo
-            a)flex items whose axis direction is row, also take auto value of margin-left and margin-right.
-            here we saw that in flexbox(even css grid), auto value margin-top or margin-bottom works same way as margin-left or
-                margin-right.
+            flex-box specific -
+                a)flex-items shrink their size just to fit there contents. by default block elemnts occupy all width.
+                b)what what we want a flex-items to occupy all width?
+                    a)use flex-basis: 100%, it cnt be 100% as there are other items also, it will take up as much as it can.
+                    b)flex-grow: 1.
+            margin-auto trick(flex-direction: row) -
+                a)flex-direction is row. individual flex-items take auto value of margin-left and margin-right to move flex
+                    item along main axis.
+                b)pushing a flex-item will margin:auto, also pushes childs that come after it.
+                c) also you can give multiple flex-childs value of margin-left/right: auto.
+
+                to be checked - see how margin-top/bottom works here.
+            margin-auto tick(flex-direction: column), also works with css grid -
+                a)flex-direction is column. induival flex item take auto value of margin-top and margin-bottom to flex
+                    items along main axis.
+                b)rest things are same as what is explained in last point
   
-    note - margin: auto has no effect on display: inline/inline-block.with flex-box it moves individual flex-items.
+        note - margin: auto has no effect on display: inline/inline-block.with flex-box it moves individual flex-items.
 
 Extra from course -
     margin collapsing -
         1)https://www.smashingmagazine.com/2019/07/margins-in-css/
-            3 effects of this -
-                1)parent-first child, parent,lastChild
-                    here margin moves pout from parent.
-                2)adjcent siblings.
-                3)empty boxes, top and bottom margins are combined.
-            How to prevent this - 
-                1)add anything between margins like border, padding etc.
-                2)establish new block formatting context. read separate article for this.
-            margins do not collapse in flex and grid formatiing contextes.
-
-
-
- Questions asked by me -
-    https://codepen.io/sumit2714/pen/poxbRKQ
-
-    JoshAnswer -  Flow layout is designed for documents, and so the default vertical alignment is "baseline". It's essentially trying to 
-    line up the bottom of the text with the bottom of the image's margin:
+            3 effects of margin collpasing
+                1)Margin collapsing between adjcent siblings.
+                2)In completely empty boxes top and bottom margins are combined.
+                    even adding padding or border will prevent margin collapsing.
+                3)parent-first child, parent,lastChild
+                    here margin moves out from parent.
+            How to prevent this -
+                1)Margin collpasing does not happen on item that has absolute positioning or it floated.
+                2)add anything between margins like border, padding etc.
+                3)establish new block formatting context. read separate article for this.
+            where does margin does not collapse -
+                margins do not collapse in flex and grid formatiing contextes.
+                Floats, and elements with overflow other than visible
     
 

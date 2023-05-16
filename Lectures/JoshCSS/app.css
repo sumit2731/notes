@@ -1,0 +1,18 @@
+.narrow-wrapper {
+  width: 100px;
+  border: 2px solid;
+}
+.fit {
+  width: fit-content;
+}
+.max {
+  max-width: max-content;
+  min-width: min-content;
+  /* Enable this line to see the difference: */
+  /* min-width: min-content; */
+}
+h2 {
+  background-color: peachpuff;
+  margin-bottom: 16px;
+  padding: 8px;
+}
