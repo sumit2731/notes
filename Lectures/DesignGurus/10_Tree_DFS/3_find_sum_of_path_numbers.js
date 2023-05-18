@@ -13,15 +13,21 @@ class TreeNode {
     function calculateRootToLeafNumbers(root) {
       
       function traverse(root, digits) {
-        if((root.val != 0) && !root.val) return;
+        if((root.val != 0) && !root.val) return 0;
         if(!root.left && !root.right) {
-          rootToLeafNumbers.push(+digits);
+          rootToLeafNumbers.push(digits);
         }
-        if(root.left) traverse(root.left, digits.toString() + root.left.val.toString())
-        if(root.right) traverse(root.right, digits.toString() + root.right.val.toString())
+        if(root.left) {
+          let leftTreeSum = (root.val * 10) + root.left.val
+          traverse(root.left, leftTreeSum)
+        }
+        if(root.right) {
+          let rightTreeSum = (root.val * 10) + root.right.val
+          traverse(root.left, rightTreeSum)
+        }
       }
       
-      traverse(root,root.val.toString());
+      traverse(root,root.val);
     }
     
     calculateRootToLeafNumbers(root);

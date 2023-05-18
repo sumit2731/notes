@@ -5,61 +5,41 @@ class TreeNode {
       this.right = right;
     }
   }
-  
-  /**
-   * @Course_Solution
-   */
-  function find_path(root, sequence) {
-    sequence = sequence.reduce((accum, num) => accum.toString() + num.toString());
-    function traverse(root, path) {
-        if(!root.left && !root.right) {
-            if(path == sequence) return true;
-            else return false;
-        }
-        if(path !== sequence.slice(0, path.length)) return false;
-        let isSequencePresent = false;
-        if(root.left) isSequencePresent = traverse(root.left, ((path.toString()) + (root.left.val.toString())))
-        if(isSequencePresent) return true;
-        if(root.right)isSequencePresent = traverse(root.right, ((path.toString()) + (root.right.val.toString())));
-        return isSequencePresent;
+  //recursive solution
+   function find_path(root, sequence) {
+    function traverse(node, sequence, index) {
+      if(!node) return false;
+      if((sequence.length < index) || (sequence[index] != node.val)) return false;
+      if(!node.left && !node.right && (index == sequence.length-1)) return true;
+      return traverse(node.left, sequence, index+1) || traverse(node.right, sequence, index+1)
     }
-    return traverse(root, root.val.toString());
+    
+    return traverse(root, sequence,0);
   }
 
-  /**
-   * @CourseSolution
-   */
-  function find_path(root, sequence) {
-    if (root === null) {
-      return sequence.length === 0;
+  //iterative solution
+  function find_path2(root, sequence) {
+    let nodeStack = [root], pathStack = [[root.val]];
+    while(nodeStack.length) {
+      let currentNode = nodeStack.pop(), currentPath = pathStack.pop();
+      let currentIndex = currentPath.length -1;
+      if(sequence[currentIndex] == currentPath[currentIndex]) {
+        if(!currentNode.left && !currentNode.right) return true;
+        else {
+          if(currentNode.right) {
+            nodeStack.push(currentNode.right);
+            pathStack.push([...currentPath, currentNode.right.val]);
+          }
+          if(currentNode.left) {
+            nodeStack.push(currentNode.left);
+            pathStack.push([...currentPath, currentNode.left.val]);
+          }
+        }
+      }
     }
-  
-    return find_path_recursive(root, sequence, 0);
+    return false;
   }
   
-  
-  function find_path_recursive(currentNode, sequence, sequenceIndex) {
-    if (currentNode === null) {
-      return false;
-    }
-  
-    const seqLen = sequence.length;
-    if (sequenceIndex >= seqLen || currentNode.val !== sequence[sequenceIndex]) {
-      return false;
-    }
-  
-    // if the current node is a leaf, add it is the end of the sequence, we have found 
-    // a path!
-    if (currentNode.left === null && currentNode.right === null 
-                                  && sequenceIndex === seqLen - 1) {
-      return true;
-    }
-  
-    // recursively call to traverse the left and right sub-tree
-    // return true if any of the two recursive call return true
-    return find_path_recursive(currentNode.left, sequence, sequenceIndex + 1) ||
-      find_path_recursive(currentNode.right, sequence, sequenceIndex + 1);
-  }
   
   const root = new TreeNode(1);
   root.left = new TreeNode(0);
@@ -68,6 +48,6 @@ class TreeNode {
   root.right.left = new TreeNode(6);
   root.right.right = new TreeNode(5);
   
-  console.log(`Tree has path sequence: ${find_path(root, [1, 0, 7])}`);
-  console.log(`Tree has path sequence: ${find_path(root, [1, 1, 6])}`);
+  console.log(`Tree has path sequence: ${find_path2(root, [1, 0, 7])}`);
+  console.log(`Tree has path sequence: ${find_path2(root, [1, 1, 6])}`);
   

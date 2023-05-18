@@ -101,6 +101,36 @@ class BinarySearchTree {
     return data;
   }
 
+  /**
+   * Morris PreOrder Traversal
+   */
+  morrisPreOrderTraversal() {
+    let current = root, result = [];
+    while(current) {
+        if(!current.left) {
+            result.push(current.val);
+            current = current.right;
+        }
+        else {
+            let predecessor = current.left;
+            while((predecessor.right != null) && (predecessor.right != current)) {
+                predecessor = predecessor.right;
+            }
+            //predessor is not visisted so establish a link
+            if(!predecessor.right) {
+                predecessor.right = current;
+                result.push(current.val);
+                current = current.left;
+            }
+            //predessor is already visisted, remove link and visist current
+            else {
+                predecessor.right = null;
+                current = current.right;
+            }
+        }
+    }
+    return result;
+}
   //left-node-right
   //Recursive Solution - from udemy lecture
   postOrder() {
@@ -246,6 +276,37 @@ class BinarySearchTree {
       }
     }
     return data;
+  }
+
+  /**
+   * Tushar Videos - https://www.youtube.com/watch?v=wGXB9OWhPTg&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=20
+   */
+  morrisInOrderTraversal(root) {
+    let current = root, result = [];
+    while(current) {
+        if(!current.left) {
+            result.push(current.val);
+            current = current.right;
+        }
+        else {
+            let predecessor = current.left;
+            while((predecessor.right != null) && (predecessor.right != current)) {
+                predecessor = predecessor.right;
+            }
+            //predessor is not visisted so establish a link
+            if(!predecessor.right) {
+                predecessor.right = current;
+                current = current.left;
+            }
+            //predessor is already visisted, remove link and visist current
+            else {
+                predecessor.right = null;
+                result.push(current.val);
+                current = current.right;
+            }
+        }
+    }
+    return result;
   }
 }
 
