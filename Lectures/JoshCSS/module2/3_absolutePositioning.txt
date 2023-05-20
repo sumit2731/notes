@@ -1,0 +1,54 @@
+So far, all of the elements we've seen are laid out in an orderly fashion, one on top of the other. We generally refer to 
+    this as “in flow”, a reference to Flow layout (though, these days, it can also refer to other layout modes like Flexbox).
+    What if we want to break the rules, though? What if we want to take an element out of this orderly flow, and stick it 
+    wherever we want? In these cases, absolute positioning is our friend.
+
+We generally uses asolte positioning for cases like -
+
+    a)UI elements that need to float above the UI, like tooltips or dropdowns.
+    b)Decorative elements that need to be stuck in certain positions (eg. abstract illustrations).
+    c)Stacking multiple elements in the same place, like a deck of cards.
+
+Notice how this is a totally different mechanism from relative positioning? Absolutely-positioned elements are adjusted based
+on their container, not based on their in-flow position.
+
+Things to keep in mind -
+
+1)absolute position elements are removed from current layer and moved to one layer above that. so they are moved out from 
+    document flow.so other elements take up space of positioned elements.
+
+Default placement -
+    1)if we do not give any left,right, top and bottom properties to Absolutely positioned element, then it sits at its normal
+        flow positioned, just it is moved one layer above that and other elements in previous layer occupy its position.
+
+Being able to take elements out-of-flow is super handy. Any time you want an element to be "floating above" the content, like
+    a tooltip or a dropdown or a modal, absolute positioning is your friend.
+
+Absolute Size(video, points) -
+    1)display property does not do anything in postioned layout.howver display: none removes the element in all layouts.
+        diffrent layouts use diffrent properties in their own way. In flow layout ,display:block/inline are vital ingredients
+        for ultimate layout of element.
+
+    2)only exception to rule is relative positioned elemnts, where you can chnage display property and it has effects.relative
+        positioned elements inherit a lot of thier layout from whatever layout they are used in. so reltive position is middle
+        ground between position layout and other layout.this is excption. all others elements are rendered using single 
+        layout modules only.
+
+    3)third questions is then how does width of asolute psoitioned element is decided.
+
+        a)if width is specified then that is used.
+        b)if width is not sspecified, and if we set left and right values then width is adjusted according to those values.
+        c)width depnds upon content.max it can go is till edge of its containing block absolue positioned elements wants to
+            be as small as possible.so they are as wide as as required to have content in single line.
+            
+        If content is too large, for element width then there will be line wrap. if it's not able to lin wrap then content
+            will out from absolutely placed element but element will not extend beyond it's width;
+
+absolute positioning trick -
+    if left and right given, element takes width accordingly
+    if left,right and width are given, left and width are respected.
+
+    same happens for top, bottom and height(like right bottom is ignored)
+
+inset css property
+        

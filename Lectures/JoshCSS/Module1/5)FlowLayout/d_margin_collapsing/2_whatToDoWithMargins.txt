@@ -1,0 +1,5 @@
+In fact, a growing trend amongst JavaScript developers is to forego margin altogether, and use a combination of padding and
+ layout components instead. 
+
+
+Layout Components

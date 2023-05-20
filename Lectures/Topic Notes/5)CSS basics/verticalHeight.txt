@@ -1,0 +1,38 @@
+line box - Inline-level elements are laid out next to each other in lines.Once there are more elements than fit into the 
+    current line, a new line is created beneath it. All these lines have a so-called line box, which encloses all the 
+    content of its line.The line boxes trace out the field we are playing on. Inside these line boxes the property vertical-align is responsible for aligning the individual elements.
+
+baseline, top and bottom of inline Element -
+    The inline element’s outer edges align themselves with the top and bottom edge of its line height.
+    The inline element’s baseline is the line, the characters are sitting on.Roughly speaking, the baseline is somewhere below the middle of the font’s height
+
+baseline, top and bottom of inline-block Element -
+    The Inline-block element’s outer edges are the top and bottom edge of its margin-box.
+    baseline -
+        1)In case of in-flow content the baseline of the inline-block element is the baseline of the last content
+         element in normal flow.For this last element its baseline is found according to its own rules.
+        2)In case of in-flow content but an overflow property evaluating to something other than visible,the baseline is the bottom edge of the margin-box.So, it is the same as the inline-block element’s bottom edge.
+        3)In case of no in-flow content the baseline is, again, the bottom edge of the margin-box.
+
+line box -
+    The line box has a top edge aligned to the top edge of the top-most element of this line and a bottom edge aligned to the bottom edge of the bottom-most element of the line. This is the box indicated by the red lines in the figure above.
+
+    The line box’s baseline is variable.he baseline is placed where ever it needs to be to fulfil all other conditions like vertical-align and minimizing the line box’s height. It is a free parameter in the equation.
+
+Text Box -
+    Around its baseline the line box has what we might call its text box. The text box can simply be thought of as an inline element inside the line box without any alignment. Its height is equal to the font-size of its parent element.
+    Therefore, the text box only just encloses the unformatted text of the line box.Since this text box is tied to the baseline, it moves when the baseline moves. 
+
+
+Summary - 
+
+    a)There is an area called line box. This is the area in which vertical alignment takes place. It has a baselline,
+     a text box and a top and bottom edge.
+    b)There are inline-level elements. These are the objects that are aligned. They have a baseline and a top and bottom   edge.
+
+vertical-align values -
+    middle: The midpoint between the element’s top and bottom edge is aligned to the line box’s baseline plus half of the 
+        x-height.
+    top: The element’s top edge is aligned to the line box’s top edge.
+    bottom: The element’s bottom edge is aligned to the line box’s bottom edge.
+

@@ -1,4 +1,0 @@
-1)how percentage works
-2)centering things - https://www.w3.org/Style/Examples/007/center.en.html#text
-3)how margin:auto works
-4)removing white space from inline-block elemnts

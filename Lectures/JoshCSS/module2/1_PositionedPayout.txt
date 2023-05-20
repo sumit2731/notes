@@ -1,0 +1,9 @@
+The defining feature of positioned layout is that items can overlap. The Flow Layout algorithm tries very hard to make sure 
+    that multiple elements never occupy the same pixels. With positioned layout, however, we can break out of the box.We 
+    can opt into Positioned layout using the position property. It can be set to relative, absolute, fixed, or sticky.
+
+
+How to opt out from positioned layout -
+    position: static or intial
+
+default value of position is static only.

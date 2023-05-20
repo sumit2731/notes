@@ -1,18 +1,37 @@
-.narrow-wrapper {
-  width: 100px;
-  border: 2px solid;
+header {
+  height: 60px;
+  line-height: 60px;
+  background: pink;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
-.fit {
-  width: fit-content;
+main {
+  position: relative;
+  /*
+    Toggle this property to
+    create/destroy the stacking
+    context
+  */
+  z-index: 1;
+  padding: 32px;
 }
-.max {
-  max-width: max-content;
-  min-width: min-content;
-  /* Enable this line to see the difference: */
-  /* min-width: min-content; */
-}
-h2 {
-  background-color: peachpuff;
-  margin-bottom: 16px;
+.tooltip {
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+  width: 90px;
+  text-align: center;
   padding: 8px;
+  background: white;
+  box-shadow: 1px 2px 8px hsl(0deg 0% 0% / 0.25);
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 999999;
+  top: -12px;
+}
+/* Additional styles: */
+body {
+  background: #eee;
 }

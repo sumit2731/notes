@@ -8,4 +8,4 @@ inherit - The keyword value of inherit tells the browser to search for the close
 unset - if property is inherited then it is equivaltent to inherit.
         if property is not inheritable then this is equivalent to initial.
 
-revert - same as unset but instead of going to default value od css property, it uses the value defined in user-style sheet.
+revert - same as unset but instead of going to default value of css property, it uses the value defined in user-style sheet.

@@ -8,6 +8,7 @@ width:100%  vs width:auto
 keywords for width value -
     auto
     min-content - we're specifying that we want our element to become as narrow as it can, based on the child contents.
+        we can use this to have container that fit iamges of any child.
     max-content - This value is similar in principle, but it takes an opposite strategy: it never adds any line-breaks. The
         element's width will be the smallest value that contains the content, without breaking it up.
     fit-content: like min-content and max-content, 
@@ -45,6 +46,10 @@ Problem 1 -
         max-width: max-content;
         min-width: min-content;
         result - works fine.
+
+Problem 2 -
+    here we used min-content with images, to have container width equal to underlying image. again here we are basing container
+    width on child content.
 
 
 

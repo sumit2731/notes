@@ -1,0 +1,66 @@
+Flow Layout -
+    
+    In Flow layout,elements don't overlap much,but we can force it with negative margin.In this case, the DOM order matters.
+        element which comes later in the DOM,is painted on top.There is one catch, though: in Flow layout, content is painted
+        separately from the background.so we might not see the background of underlying element, but contant is visisble.
+
+    In Flow layout, background colors and borders are truly meant to be in the background. The content will float on top.
+        That's why the letter A shows up on top of the pink box.The truth is that Flow layout isn't really built with layering
+        in mind. Most of the time, when we want to layer elements, we'll want to use positioned layout.
+
+
+Position Layout -
+    
+    As a general rule, positioned elements will always render on top of non-positioned ones. 
+    We can think of it as a two-stage process: 
+        first, all of the non-positioned elements are rendered (everything using Flow, Flexbox, Grid…). 
+        Next, all of the positioned elements are rendered on top (relative, absolute, fixed, sticky).
+
+    What if we set both elements to use relative positioning? In that case, the DOM order wins.
+
+That's how the stacking order is calculated by default, but CSS gives us a tool to override this default behaviour. Let's 
+    talk about the z-index property.
+
+z-index
+
+    If we want the layered order to be different from the DOM order, we can use the z-index property to manually reorder them.
+    z-index only works with positioned elements. It will have no effect on an element being rendered in Flow layout.
+
+    The z in z-index refers to the z axis:
+
+        x is left/right
+        y is up/down
+        z is forward/backward
+
+    The default value of the z-index property is auto, which is equivalent to the number 0. Therefore, any value greater than
+    0 can be used to "promote" an element to sit in front of its siblings.
+
+
+    Negative z-indexes -
+        z-index values must be integers, and they're allowed to be negative. z-index: -1 is a valid declaration.
+        In my experience, though, negative z-indexes introduce additional complexity without offering much benefit. Every time
+            I've tried to use negative z-index values, I've wound up regretting it.As such, we won't cover them in this course.
+
+
+Introducing Stacking Contexts
+
+    Go throught video.
+
+    Ways to create static Context -
+        1)set position to value other than static and give a value to z-index.
+
+    Creating New Stacking Contexts -
+
+        Setting opacity to a value less than 1
+        Setting position to fixed or sticky (No z-index needed for these values!)
+        Adding a z-index to a child inside a display: flex or display: grid container
+        
+        Applying a mix-blend-mode other than normal
+        Using transform, filter, clip-path, or perspective
+        Explicitly creating a context with isolation: isolate (More on this soon!)
+
+
+My Notes -
+    So always remeber when a element creates a new stacking context, childern of that child cannot complete with some element
+    which is outside that parent element(based on z-index).see chrome stcak inspector tool in josh example.
+

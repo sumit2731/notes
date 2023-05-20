@@ -1,0 +1,15 @@
+horizontal margins do not collpase.
+switching language writing mode, switches the margin collpasing direction.
+
+it would be more accurate to say that only block-direction margins collapse.
+
+Margin collapse is unique to Flow layout. If you have children inside a display: flex parent, those children's margins will
+    never collapse.
+
+
+margin collpasing behaviour -
+
+    a)Nesting doesn't prevent collapsing
+    b)but empty space between last child and parent stop's margin collpasing.
+    c)Blocked by a scroll container
+    d)positive and negative margins cancel each other.

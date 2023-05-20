@@ -1,0 +1,39 @@
+In CSS, every HTML element has a “containing block”. A containing block is a rectangle that forms the bounds of the 
+element's container.
+
+In Flow layout, elements are contained by their parents. For example, this paragraph is contained by its parent <section>:
+
+    <section class="container">
+        <p>Hello World!</p>
+    </section>
+
+Flow layout uses containing blocks to figure out where on the screen to place the element.When it comes to absolute 
+    positioning, however, containing blocks work a little bit differently.
+
+When we set the position of an element using top / left / right / bottom, we're positioning the element based on the element's
+    containing block. If our element sets top: 0; left: 0, the element will be nestled in the top-left corner of the 
+    containing block.
+
+Absolute elements can only be contained by other elements using Positioned layout.
+
+
+Here's how the algorithm works: 
+    When deciding where to place an absolutely-positioned element, it crawls up through the tree,looking for a Positioned 
+    ancestor. The first one it finds will provide the containing block.
+
+    What if it doesn't find one? 
+        In many of the examples we've seen so far, there aren't any Positioned ancestors.In this case, the element will be 
+            positioned according to the “initial containing block”. This is a box the size of the viewport, right at the
+            top of the document.
+
+    Also note that when parent is positioned i.e absolte positioned element has a containing block then, giving left 0,
+    takes absolute positioned element to corner of parent, it does not respect padding.The way to think about this: padding
+    is used in Flow layout calculations, and absolute elements are taken out-of-flow. Those rules don't apply.
+
+
+    Also percentage values given as width are taken from this "containing block" not immediate parent.
+
+
+
+Exercises -
+    see second exercise, there we can see the concept, why we used em units for border radius.
