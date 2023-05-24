@@ -87,13 +87,14 @@ Extra from course -
                 2)In completely empty boxes top and bottom margins are combined.
                     even adding padding or border will prevent margin collapsing.
                 3)parent-first child, parent,lastChild
-                    here margin moves out from parent.
+                    here margin moves out from parent.isntead of gap between child and parent, there will be gap between
             How to prevent this -
                 1)Margin collpasing does not happen on item that has absolute positioning or it floated.
                 2)add anything between margins like border, padding etc.
                 3)establish new block formatting context. read separate article for this.
             where does margin does not collapse -
                 margins do not collapse in flex and grid formatiing contextes.
-                Floats, and elements with overflow other than visible
+                Floats, and elements with overflow other than visible.
+                margin collaapsing also happens in position layout.
     
 

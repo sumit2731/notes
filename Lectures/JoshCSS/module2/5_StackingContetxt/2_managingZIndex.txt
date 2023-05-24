@@ -1,0 +1,24 @@
+In some cases, we can avoid setting z-index, relying on DOM order instead. 
+And in other cases, we can bundle up our layers into an isolated stacking context.
+
+Strategies to avoid z-index conflict -
+    a)Swapping DOM order
+        Keep in mind - When we swap the order of two DOM nodes, we also swap their order in the tab index. For folks who 
+            navigate with a keyboard, they encounter elements based on the DOM order.In the example above, this isn't a 
+            problem, since the decorative images aren't interactive. Keyboard users will skip right past them no matter 
+            where in the DOM they are.But if we were to swap the order of an element containing interactive elements — 
+            links, buttons, form inputs — it can have a jarring effect on the user experience for keyboard navigators.
+
+    b)Isolated stacking contexts
+
+        Here we give z--index to element which wants to come on top and comes before certain element. here we usse z-index
+        to bump that up, but we also create a separate stakcing context in parent and dnt use any z-index on that. this is 
+        basically done so that we do not get into z-index wars.
+        
+        This is a key strategy when it comes to fighting the z-index wars. By intentionally bundling layered elements into 
+        stacking contexts, we reduce the number of "top-level" elements with z-index values.But there's one more thing that
+        makes this strategy even better.
+
+        isolate property - 
+            The isolation property does precisely 1 thing: creates a stacking context.but it does so without requiring that 
+            we also set a z-index on the parent. It's the lightest-touch way to create a stacking context.

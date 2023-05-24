@@ -25,6 +25,9 @@ z-index
 
     If we want the layered order to be different from the DOM order, we can use the z-index property to manually reorder them.
     z-index only works with positioned elements. It will have no effect on an element being rendered in Flow layout.
+    later we will see in the coursez-index also works in flex box and css grid layouts.Flexbox algorithm uses the z-index 
+    property in the same way that the Positioned layout algorithm does. z-index doesn't work in Flow layout, but it does in 
+    Flexbox (as well as Grid).
 
     The z in z-index refers to the z axis:
 
@@ -41,6 +44,8 @@ z-index
         In my experience, though, negative z-indexes introduce additional complexity without offering much benefit. Every time
             I've tried to use negative z-index values, I've wound up regretting it.As such, we won't cover them in this course.
 
+    
+
 
 Introducing Stacking Contexts
 
@@ -54,10 +59,10 @@ Introducing Stacking Contexts
         Setting opacity to a value less than 1
         Setting position to fixed or sticky (No z-index needed for these values!)
         Adding a z-index to a child inside a display: flex or display: grid container
+        Explicitly creating a context with isolation: isolate (More on this soon!)
         
         Applying a mix-blend-mode other than normal
         Using transform, filter, clip-path, or perspective
-        Explicitly creating a context with isolation: isolate (More on this soon!)
 
 
 My Notes -

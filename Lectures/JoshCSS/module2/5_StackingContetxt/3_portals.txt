@@ -1,0 +1,7 @@
+here we saw that for popup etc we should use librray's like reach UI. these libarries use portals to render dialogs as a 
+    result these porats will be rendered on top of any component that is in main app and not having any z-index(because later
+    element comes on top, and portals are rendered after root element).
+    
+    then we saw that sometimes we have to use z-index in some elements inside root component. for these
+    cases we can create a separate stacking context for root elmement and not give it some z-index. now as portal has zindex, 
+    it will always come above any element in root component.

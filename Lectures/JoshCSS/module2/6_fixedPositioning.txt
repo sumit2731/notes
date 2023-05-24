@@ -1,0 +1,36 @@
+Fixed position is a close cousin to absolute positioning. The main difference is that it's even more rebellious: it can only
+    be contained by the viewport. It doesn't care about containing blocks.The main advantage of fixed-position elements is 
+    that they're immune to scrolling.
+
+In many ways, “fixed” can be thought of as spicy absolute. It's very similar in principle — it's taken out-of-flow and 
+    positioned according to some sort of parent boundary — but the boundary it uses is different. Instead of the closest 
+    non-static ancestor, it listens to the “initial containing block”, a box the size and position of the viewport?.
+
+
+    margin:auto centering trick works for fixed position also.
+
+default positioning - 
+
+    If we do not give any left,right,top and bottom properties then by default fixed position element will be at its default
+        position if no position property would have been applied.however it is taken out from document flow.
+
+percentage values - these are based on viewport width and height. not on
+    
+    
+Incompatibility with certain CSS properties
+    a)if an ancestor (parent, grandparent, …) uses the transform property, it stops being locked to the viewport.
+        Here's what's happening here: By applying a transform to .container, it becomes the containing block for this 
+        fixed-position child. As a result, it functions like an absolutely-positioned child.
+
+    b)The same thing happens when we use the filter CSS property, as well as the will-change property.
+
+    here is what happens -
+        1)parent or grand parent with above properties becomes the containing block for absolute and fixed positioned 
+            descendents.
+        2)descendents with position fixed, do not remains fixed to viewport, they behave like position:absolute.
+
+How to resolve the problem -
+    
+    a)You can try to remove or replace the CSS property (eg. for filter: drop-shadow, you can use box-shadow instead).
+    b)If you can't change the CSS, you can use a portal, like we saw in the previous lesson, or otherwise find a way to
+        move the fixed element to a different container.
