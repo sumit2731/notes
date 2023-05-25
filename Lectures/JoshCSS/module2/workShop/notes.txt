@@ -1,0 +1,14 @@
+problem 3 - it is tricky how to move scroll outside the container.
+    we used negative margin to extend child beyond the padding of parent.
+    then we introduced padding in child to have that extra sapce.
+    now scroll starts from staring of container.
+
+    then we removed the downward padding of parent by using negative margin-bottom on child.
+
+problem 4 - here we added a extra layer.
+
+see extra scroll bar problem - 
+    https://courses.joshwcomeau.com/css-for-js/video-archive/014-character-creator-scrollburglars.
+
+see details of sticky position - 
+    https://courses.joshwcomeau.com/css-for-js/video-archive/015-sticky-trouble

@@ -1,0 +1,10 @@
+Positioned elmenets and overflow
+    
+    position:absolute -
+        positioned elements respect the overflow property of their containing block.This is pretty surprising! In general, 
+            absolute positioning is ignored by standard layout algorithms, and yet overflow: auto treats it just like any 
+            other element!
+    position: fixed -
+        No effect on fixed position element.In order for a child to "trigger" the overflow, it needs to be contained by it.
+        Setting position: relative is enough to contain an absolute child, but fixed children are only ever contained by 
+        the “initial containing block”, a box that exists outside the DOM structure.

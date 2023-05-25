@@ -1,0 +1,43 @@
+display:none 
+    Element is effectively removed from the DOM.
+    other elements take it's position.
+    cannot be clicked or focused
+
+visibility:hidden
+    The visibility property allows you to hide an element, but in a slightly different way. It's like a cloak of invisibility;
+    the item can't be seen, but it's still there, taking up space.
+    It can be selectively undone by children.
+
+opacity -
+    An item needs to be semi-visible
+    An item's visibility needs to be animated, fading in and out
+
+
+Accessibility -
+
+    Hiding from visusal Users -
+    
+        display: none or visibility: hidden? In fact, these properties are too effective; they hide the contents from screen-reader
+        users as well!
+    
+        some times we want to hide text from visual user but make it avalible for normal users. above 3 methods also hides them screen reader.
+        this is css do to same -
+
+            .visually-hidden {
+                position: absolute;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                width: 1px;
+                margin: -1px;
+                padding: 0;
+                border: 0;
+            }
+
+    Hiding from screen readers -
+        aria-hidden="true"
+
+    then we saw how to inert attribute
+
+
+

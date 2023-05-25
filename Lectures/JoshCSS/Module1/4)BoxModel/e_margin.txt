@@ -11,8 +11,8 @@ Negative Margins -
                     element, from there on all other elements are laid out normal.so this does not move current element but
                     moves next one closer ot it.
 
-                    This trick is useful for subtle tweaks, where the content of one element should slightly overlap the content
-                        of the one above it.
+                    giving negative margin-bottom to last child, pull the padding of parent inwards along with pulling next element towards itself.
+                    this trick is used in assignment of module2.
 
                 b)giving negative margin-top, moves the element up towards its previous sibling or parent.
                     Giving negative margin-top moves the elment closer to container bypassing even padding, this can be used to have a

@@ -1,0 +1,7 @@
+Unfortunately, it's very common to apply position: sticky to an element, only for nothing to happen; the element won't stick!
+Let's look at some common reasons for this.
+
+    a)A parent is hiding/managing overflow
+    b)The container isn't big enough
+    c)The sticky element is stretched
+    d)There's a thin gap above my sticky header!

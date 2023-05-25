@@ -18,18 +18,22 @@ accepted values -
 
         Should we pop this declaration onto all elements? I don't think so.we often want content to overflow, as we saw in
         the negative-margins and absolute-positioning lessons.when we apply overflow:auto to parent then childern going out
-        from this parent (either via position property or negative margin), putgoing poriton is cut.this behaviour is same 
-        for following values of overflow properties -auto,scroll and hidden.
+        from this parent (either via position property or negative margin), outgoing poriton is cut.in similar case behaviour
+        of diifferent values of overflow -
+            a)auto - when content overflows, we have scroll bar.
+            b)scroll - scroll is always added
+            c)hidden - outside content is hidden
 
 
         where to use scroll?
-            when we know that there will be scroll.
+            when we know that there will be scroll.so that we already factor in the chnage in width of width because of scroll
+                bar and there is no UI flickering.
 
     hidden - This option truncates anything that extends beyond the bounds of the container. when to use hidden property -
 
-        Hidden overflow is a necessary ingredient for truncating text with an ellipsis (…). We'll learn all about that in 
+        a)Hidden overflow is a necessary ingredient for truncating text with an ellipsis (…). We'll learn all about that in 
             Module 6.
-        We can hide overflow for artistic purposes, on decorative elements.
+        b)We can hide overflow for artistic purposes, on decorative elements.
 
 
         sometime shidden property help us to avoid undesirable scrollbar.Accidental horizontal scrollbars are awful. We'll 

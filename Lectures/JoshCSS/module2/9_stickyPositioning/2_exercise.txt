@@ -1,0 +1,5 @@
+problem 1 -
+    thngs learned - sticky never leaves its parent.
+
+problem 2 -
+    same

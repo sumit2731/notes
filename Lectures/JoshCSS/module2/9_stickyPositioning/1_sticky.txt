@@ -1,0 +1,21 @@
+position: sticky is the newest addition to the crew. The idea is that as you scroll, an element can "stick" to the edge.
+At that moment, it transitions from being relatively-positioned to being fixed-positioned.
+
+In addition to setting position: sticky, you also need to pick at least one edge to stick to (top, left, right, bottom).
+Most commonly, this is done with top: 0px (or top: 0; the unit is optional when it's zero).
+
+
+There's a lot of subtlety with position: sticky. Let's go through some of the details.
+    a)Stays in their box
+    b)offset -
+        With sticky positioning, the value controls the minimum gap between the element and the edge of the viewport while 
+            the container is in-frame.
+
+    c)Not incorporeal
+
+Horizontal stickiness
+
+
+Extra things -
+    1)position:sticky does not do anything until and unless you mention some offset like top: 0px.
+    2)negative values also work

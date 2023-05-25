@@ -1,0 +1,6 @@
+Module 2 -
+
+    isolation: isolate
+    overflow:clip
+    whitespace: nowrap;
+        horizontal overflow

@@ -1,0 +1,20 @@
+Summary -
+    a)When we use overflow: scroll, overflow: auto, or overflow: hidden, we create a scroll container. This is true whether we
+        set the property on the X axis, the Y axis, or both.
+    b)A scroll container is like a portal to a pocket dimension. When an element is contained by a scroll container, it's 
+        guaranteed to be stuck inside. It will never overflow beyond the 4 corners of the scroll container.
+    c)Setting overflow: hidden creates a scroll container and then hides the scrollbars. It follows all the same rules as 
+        overflow: scroll. while from UI we cannot scroll, we can scroll using tab and with JS.
+
+
+overflow:clip
+    overflow: clip works quite a bit like overflow: hidden, but it doesn't create a scroll container. Essentially, it acts
+        the way most developers think overflow: hidden should work. It trims off any overflow, in one or both directions.
+
+
+    tradeoffs for clip value. see section.
+
+then we saw how we can do that without overflow:clip property.
+
+    The trick here is that scroll containers only scroll when there's overflow. Because .outer-wrapper doesn't have a 
+    constrained height, the container is free to grow and shrink as much as it wants.
