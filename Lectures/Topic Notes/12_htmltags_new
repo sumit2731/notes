@@ -1,0 +1,13 @@
+article tag - 
+    needs to be used like article of clothing
+    one thing of many
+
+
+details and summary tag -
+
+    <details className="faq">
+        <summary>{question}</summary>
+        <div className="answer">
+            {answer}
+        </div>
+    </details>

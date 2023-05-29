@@ -28,8 +28,8 @@ Removing elements -
 
         return value - An array containing the deleted elements.
 
-    4)arr.toSplice - The toSpliced() method of an Array instance is the copying version of the splice() method. It returns a new array with some elements removed and/or 
-        replaced at a given index.
+    4)arr.toSplice - The toSpliced() method of an Array instance is the copying version of the splice() method. It returns a
+        new array with some elements removed and/or replaced at a given index.
 
 
 Extracting Subrray -

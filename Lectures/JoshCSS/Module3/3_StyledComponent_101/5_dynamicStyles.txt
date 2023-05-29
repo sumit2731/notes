@@ -1,0 +1,2 @@
+see lecture notes.
+not mentioned in written content - css variables can be set through css also.

@@ -1,0 +1,81 @@
+This library uses an obscure JavaScript feature called tagged template literals. styled.button is a function, and it gets 
+passed a template string as an argument. This is syntactic sugar?, and we'll see in a bit why it's so useful.
+
+
+
+styled-components also uses a Sass-like preprocessor behind the scenes called stylis. It automatically adds vendor prefixes
+    for maximum browser compatibility. It also allows us to use the ampersand character (&) to reference the 
+    soon-to-be-created class.The & character can be thought of as a placeholder: it will be replaced by a class name, once that
+    class is generated. This allows us to use additional selectors, like &:hover or &:first-of-type. It allows us to use the full
+    power of CSS even though we aren't typically specifying a selector.also styled components supports nesting.
+
+
+    const Button = styled.button`
+        
+        display: flex;
+
+        &:hover {
+            color: red;
+        }
+    `;
+
+    generated css -
+
+    .abc123 {
+        /* Vendor prefixes for legacy browsers: */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    /* Plucks out the `hover` pseudo-class:  */
+    
+    .abc123:hover {
+        color: red;
+    }
+
+
+
+Quote Component -
+    pseudo element before and after are used to insert text that are not in markup.
+    pseudo elements need ::
+    it is created when add content property to it.
+    it is isnerted inside element but before and after content of element.
+    also you need to use '' for giving content.
+    text inserted using before and after is not selected when selecting rest text.
+
+
+css prop -
+    
+    const Title = ({ id, children }) => {
+        return (
+            <h1
+                id={id}
+                css={`
+                    font-size: 2rem;
+                    font-weight: bold;
+                `}
+                >
+                {children}
+            </h1>
+        )
+    };
+
+
+This method is similar in appearance to inline styles, but it's full-fat CSS — the same bag of tricks is available, including 
+    using pseudoclasses and media queries, things that aren't possible with inline styles. It's a bit closer to utility-first 
+    frameworks like Tailwind.I personally don't love this style of writing CSS — it bloats the JSX and feels messy to me. But
+    ultimately, it's a subjective, aesthetic choice. We still reap all the same benefits around specificity and scoping. So if
+    you prefer this style, go for it!
+
+
+
+extra from lecture -
+ properties of styled components -
+
+    a)nesting
+    b)using &
+    c)dynamic styling using string interpolation.
+    d)compositin
+    e)as prop

@@ -1,0 +1,13 @@
+Problem -
+    a)we cannot predict a html element will have which styles by looking at it.
+    b)we cannot predict that which element will be targeted by CSS selectors, so it unsafe to chnage a selector.what if 
+        we want to chnage style applied to one element but we ended up styles of all other elements.
+
+
+    React introduced the concept of reusability of complonents rather than sharing of css through classes, js thrpugh functions
+        and html through templates. one component should not affect the second component. then we saw a Example where this
+        princuple was getting broken in css in react.
+
+Solution -
+    here we saw that main goal is to avoid specififcity wars, complexity wars.
+    we saw BEM naming. then we saw styles components. in this article we will be using styled components.

@@ -1,0 +1,96 @@
+Web accessibility refers to making websites and applications accessible to people with disabilities. It is about removing 
+    barriers to access, so that websites and applications can be accessed and used by people with disabilities.
+
+
+    On the Web, there are several things you might do that can potentially impede access to information for people with 
+        disabilities.
+
+        Absence of keyboard focus indicators
+        Absence of labels on form controls
+        Buttons, links and UI widgets that can’t be operated with a keyboard
+        Images without alternative (alt) text
+        Videos without captions, transcripts, or audio descriptions
+        Low color contrast and small fonts
+        And certain types of motion and animations that can’t be paused or stopped
+
+
+What is a11y?
+
+    Accessibility is often referred to as “a11y” in the web community. see figure 1.
+    also it it looks like "ally".
+
+Accessibility vs inclusivity on web
+
+    It addresses issues specifically related to disability, and it does not try to address broader issues.
+
+    On the other hand, inclusive web design is about encapsulating a wide range of people from various backgrounds and 
+        cultures, ages, abilities and disabilities, genders, geographical locations, languages, computer literacy, and
+        more. It tries to address diverse issues so that all users are involved to the greatest extent possible—and that
+        includes people with disabilities. So inclusive design encompasses accessibility. A product isn’t inclusive if 
+        it is not accessible.
+
+    Internationalization is example of inclusivity.
+    Web Performance is another example of inclusivity.
+
+
+Accessibility also benefits normal users.
+    video caption example
+    high contrast example
+
+
+Accessibility vs Usability
+    see course
+
+
+So accessibility implementation is the first step in making truly inclusive and usable products, and it should always be 
+    followed by usability testing.
+
+“Think of accessibility as the lowest bar; it works with assistive technology, but to go beyond ‘it works’ to ‘it’s enjoyable
+ and easy to use’ you’ll need to test with real users.”
+
+
+Types of disabilities-
+    visual
+    hearing
+    mobility
+    cognititive
+
+How people with disabilities access web -
+    they use assistive technologies -
+
+        Keyboards, screen readers, braille displays, voice recognition software, switch controls, and screen magnifiers.
+
+        Operating system and browser accessibility display modes (such as dark mode, and Windows High Contrast Mode) are
+            also a form of assistive technology.
+
+    This means that users accessing the Web might:
+
+        use a keyboard instead of a mouse,
+        change browser or OS settings to make content easier to read,
+        use a screen reader to ‘read’ (speak) content out loud,
+        use a screen magnifier to enlarge part or all of a screen,
+        use voice commands to navigate a website
+
+
+    It’s practically impossible to predict all the ways your visitors may choose to browse your website or use your product.
+    
+    Furthermore, people might use more than one AT at a time. There are people who navigate the Web using on-screen keyboard,
+        mouse headband, and voice recognition software at the same time.
+        
+    Accessibility design and development considers the wide range of AT that people use to extend their capabilities.
+
+    Understanding how people with disabilities browse the web using assistive technologies is critical to designing and 
+        implementing accessible and inclusive products and services.for that you can see videos linked with this page.
+
+    It should be clear at this point that Web accessibility is therefore about more than making a site work with screen readers.
+
+We’ll mention quite a few ATs in this course, and you’ll learn how to design and write code in a way that makes your product
+    accessible to as many of them as possible. We’ll focus on some ATs more than others — such as screen readers, voice 
+    controls, keyboard (and keyboard-like), as well as forced color modes.
+
+Simulating disabilities is not enough, you need real users to test them.
+
+In order to design and develop for accessibility, we need to have some standard or universal guidelines to, well, guide us.
+If you want to start creating accessible products, the Web Content Accessibility Guidelines is where you need to start.
+
+    

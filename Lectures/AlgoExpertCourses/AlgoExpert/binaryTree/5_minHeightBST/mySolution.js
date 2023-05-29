@@ -54,23 +54,24 @@ class BST {
 }
 
 /**
- * 
+ * @BetterSolution
  */
 function minHeightBst(array) {
     let root = null;
-    function constructMinHeightBst(array, startIndex, endIndex, parentNode) {
+    function constructMinHeightBst(array, startIndex, endIndex, lastInsertedNode) {
         let middleIndex = Math.floor((startIndex + endIndex) / 2);
-        if (!root) {
-            root = new BST(array[middleIndex]);
-            parentNode = root;
+        let currentInsertedNode;
+        if (lastInsertedNode) {
+            currentInsertedNode = new BST(array[middleIndex]);
+            root = currentInsertedNode;
         }
-        else parentNode.insert(array[middleIndex]);
+        else currentInsertedNode = lastInsertedNode.insert(array[middleIndex]);
         if (startIndex !== endIndex) {
-            if (startIndex <= (middleIndex - 1)) constructMinHeightBst(array, startIndex, middleIndex - 1,parentNode);
-            if ((middleIndex + 1) <= endIndex) constructMinHeightBst(array, middleIndex + 1, endIndex, parentNode);
+            if (startIndex <= (middleIndex - 1)) constructMinHeightBst(array,startIndex,middleIndex-1,currentInsertedNode);
+            if ((middleIndex + 1) <= endIndex) constructMinHeightBst(array, middleIndex + 1, endIndex, currentInsertedNode);
         }
     }
-    constructMinHeightBst(array, 0, array.length-1, root);
+    constructMinHeightBst(array, 0, array.length-1);
     return root;
 }
 

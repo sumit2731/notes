@@ -1,81 +1,16 @@
-// Do not edit the class below except for
-// the insert, contains, and remove methods.
-// Feel free to add new properties and methods
-// to the class.
-class BST {
-    constructor(value) {
-      this.value = value;
-      this.left = null;
-      this.right = null;
+function sameBsts(arrayOne, arrayTwo) {
+    if((arrayOne.length == 0) && (arrayTwo.length == 0)) return true;
+    if((arrayOne.length != arrayTwo.length) || (arrayOne[0] != arrayTwo[0])) return false;
+    let leftSubArray1 = [], rightSubArray1 = [], leftSubArray2= [], rightSubArray2 = [];
+    for(let i = 1; i< arrayTwo.length; i++) {
+      if(arrayOne[i] < arrayOne[0]) leftSubArray1.push(arrayOne[i]);
+      else rightSubArray1.push(arrayOne[i]);
+      if(arrayTwo[i] < arrayTwo[0]) leftSubArray2.push(arrayTwo[i]);
+      else rightSubArray2.push(arrayTwo[i]);
     }
-  
-    insert(value) {
-      let node = this;
-      while(true) {
-        let property;
-        if(value < node.value) property = 'left';
-        else property = 'right';
-        if(!node[property]) {
-          node[property] = new BST(value);
-          return this;
-        }
-        else node = node[property]
-      }
-      return this;
-    }
-  
-    contains(value) {
-      let node = this;
-      while(node) {
-        if(node.value == value) return true;
-        else if(node.value > value) node = node.left;
-        else node = node.right;
-      }
-      return false;
-    }
-  
-    remove(value) {
-      let node = this, parentNode = null;
-      //find the node
-      while(node) {
-        if(node.value = value) break;
-        else if(node.value > value) {
-            parentNode = node;
-            node = node.right;
-        }
-        else {
-            parentNode = node;
-            node = node.right;
-        }
-      }
-      if(parentNode) {
-        
-      }
-      
-      
-      
-    }
-  
-    getleftMostNodeinRightSubtree(node) {
-      if(!node.right) return node;
-      node = node.right;
-      let targetNode;
-
-      if(node.left?.left) {
-        while(node.left.left) node = node.left;
-        targetNode = node.left;
-        node.left = null;
-        return targetNode;
-      }
-      else if(!node.left) {
-        
-      }
-      while(node.left) {
-        node = node.left
-      }
-      return node;
-    }
+    return (leftSubArray1.length == leftSubArray2.length) && (rightSubArray1.length == rightSubArray2.length) && sameBsts(leftSubArray1, leftSubArray2) && sameBsts(rightSubArray1, rightSubArray2)
+  }
   
   // Do not edit the line below.
-  exports.BST = BST;
+  exports.sameBsts = sameBsts;
   

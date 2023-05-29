@@ -1,4 +1,4 @@
-Array vs Normal Functions 
+Arrow vs Normal Functions 
     1)syntax
     2)values of this
     3)argumnets object is not avalible in array.

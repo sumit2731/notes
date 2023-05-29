@@ -1,0 +1,18 @@
+babel plugin - for easy to read class names.
+
+using plugin with create-react-app -
+
+    install npm package -
+
+        npm install --save-dev babel-plugin-styled-components
+
+    imports -
+
+        // From this:
+        import styled from 'styled-components';
+
+        // ...to this:
+        import styled from 'styled-components/macro'
+
+
+server side rendering suppport

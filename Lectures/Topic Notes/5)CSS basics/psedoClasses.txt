@@ -1,18 +1,63 @@
-
-
 1):disabled
     
     button:disabled {}
     button:disabled:hover {}
 
-2):first-child
+2):first-of-type
+
+    The :first-of-type selector in CSS allows you to target the first occurence of an element within its container.
+    Using :first-of-type is very similar to :nth-child but with one critical difference: it is less specific. In the example 
+    above, if we had used p:nth-child(1), nothing would happen because the paragraph is not the first child of its parent 
+    (the <article>).
+    
+    <article>
+        <h1>A Title</h1>
+        <p>Paragraph 1.</p>
+        <p>Paragraph 2.</p>
+        <p>Paragraph 3.</p>
+    </article>
+
+    to select first p -
+        p:first-of-type {
+            font-size: 1.25em;
+        }
+
+3):nth-of-type() - from elements that matches the given selector, it selects elements based on params passed
+
+    li {
+        background: slategrey;
+    }
+    
+    /* select alternating items starting with the second item */
+    
+    li:nth-of-type(2n) {
+        background: lightslategrey;
+    }
+
+    arguments - 
+        single integer - If an integer is specified only one element is selected
+        the keywords “even” or “odd”, 
+        or a formula as shown above - an + b
+
+    :nth-of-type(3n) {
+        // from given elements it selects every 3rd element.
+    }
+
+    trick - 
+        selecting only first 3.
+
+        p:nth-of-type(-n +3) {}
+
+3)selector:first-child
+
+    selects the element with given selector which is also first child of its parent.
     
     li:first-child {
         color: red;
     }
 
-    :first-child pseudo-class will match the first child within a parent. p:first-child is looking for situations where a paragraph 
-    is the first child within a parent container
+    The :first-child selector allows you to target the first element immediately inside another element.
+        p:first-child is looking for situations where a paragraph is the first child within a parent container
 
     selector:first-child {}
         element which matches this selector, but that element should be first child of its parent.
@@ -20,47 +65,16 @@
     selector >*:first-child {}
         Apply this style to first child of element selected by selector.
 
-6):first-of-type
-    
-    <style>
-        p:first-of-type {
-            color: red;
-        }
-    </style>
-
-    <section>
-    <h1>Hello world!</h1>
-    <p>This is a paragraph!</p>
-    <p>This is another paragraph!</p>
-    </section>
-
-    The :first-of-type pseudo-class ignores any siblings that aren't of the same type. In this case, p:first-of-type is going to 
-    select the first paragraph within a container, regardless of whether or not it's the first child.
-
-3):nth-of-type() -The :nth-of-type(n) selector matches every element that is the nth child, of the same type (tag name), of its parent.
-    syntax - 
-        selector:nth-of-type()
-
-        All siblings are matched by selector are further filtered by condition provided by this selector.
-
-    p::nth-of-type(2)
-    p::nth-of-type(odd)
-    p::nth-of-type(even)
-    p::nth-of-type(2n+1)
-
-    If an integer is specified only one element is selected—but the keywords or a formula will iterate through all the children of the 
-    parent element and select matching elements.
-
-    /* Selects every fourth <p> element among any group of siblings */
-    p:nth-of-type(4n) {
-        color: lime;
-    }
-
-    .child::nth-of-type(2) {}
-
-
 4)selector:nth-child()
+
+    see css trick
     
-    :nth-child(3) - Selects every third element among any group of siblings
+    :nth-child(3n) - Selects every third element among any group of siblings
     li:nth-child(3) - Selects the second li element in a list
     div:nth-child(3)Selects the second element of div siblings
+
+
+
+5):not()
+
+    The :not() pseudo-class requires a comma-separated list of one or more selectors as its argument. The list must not contain another negation selector or a pseudo-element.

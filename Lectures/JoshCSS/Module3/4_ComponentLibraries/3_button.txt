@@ -1,0 +1,54 @@
+composition in styled component -
+    import styled from 'styled-components';
+
+    export default function App() {
+        return (
+            <PrimaryButton>Button</PrimaryButton>
+        );
+    }
+
+    const Base = styled.button`
+        font-size: 21px;
+    `;
+
+    const PrimaryButton = styled(Base)`
+        background: blue;
+        color: white;
+    `;
+
+    in dev tools this happens -
+
+        <button class="iaGSPX coOzpk">Button</button>
+
+        <style>
+            
+            /* Base */
+            .iaGSPX {
+                font-size: 21px;
+            }
+
+            /* PrimaryButton: */
+            .coOzpk {
+                background: #00f;
+                color: #fff;
+            }
+        </style>
+
+
+exercise -
+
+    size in figma was in px but we wanted to use rem so we did this -
+
+        fontSize: ${18/16} rem
+
+
+    way we solved variations -
+        1)way 1 - 
+            nested if else syntax in template literals.
+
+        2)way 2 -
+            define style objects and use style prop.
+
+        3)use css custom properties
+
+        4)composition

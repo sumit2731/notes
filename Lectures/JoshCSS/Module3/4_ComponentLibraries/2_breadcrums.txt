@@ -1,0 +1,5 @@
+first we saw how to design it accessibility wise. https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/.
+
+accessibiility things -
+    we used nav elmenebt ,then ol then li elements.
+    for "/" ideally these shuld be added by ::before, by adding border and then tilting it towards right

@@ -1,0 +1,8 @@
+css reset -
+    2 jobs -
+        a)make css across all browser.
+        b)flatten the css, overwrite the global browser defaults.
+
+Also here josh showed instead of specify global styles we can define component and use. but that becomes a bit hectic.
+    also josh explained we should not write lot of things in global stylesheet i.e write only those things that we are
+    able to remeber.

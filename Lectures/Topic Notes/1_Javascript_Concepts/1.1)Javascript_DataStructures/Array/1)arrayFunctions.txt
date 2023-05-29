@@ -196,13 +196,15 @@ Getting subSrray -
 
         Signature - arr.slice([start[, end]])
 
-        Both start end end are optional.If starting index is larger than indexes avalible then emty array is returned.If end is omitted,
-        slice extracts through the end of the sequence (arr.length).If end is greater than the length of the sequence, slice extracts 
-        through to the end of the sequence (arr.length).
+        Both start end end are optional.If starting index is larger than indexes avalible then emty array is returned.If end is
+        omitted,slice extracts through the end of the sequence (arr.length).If end is greater than the length of the sequence, slice 
+        extracts through to the end of the sequence (arr.length).
 
         A negative index can be used, indicating an offset from the end of the sequence.
-        
-        
+
+        empty array is returned when -
+            both start and end Indxes are same.
+            starting index is more than length of array
         
             let arr = [0,1,2,3,4,5]
             slice(1,4); // [1,2,3]

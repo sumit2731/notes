@@ -1,0 +1,10 @@
+exercise 2-
+    if we want to set property only in certain condition use this -
+
+
+        const Icon = styled.span`
+            display: block;
+            color: ${p => p.isCurrent && 'deeppink'}
+        `;
+
+    how it is work is if a function returns a falsy value(except 0) then that property will not be set.

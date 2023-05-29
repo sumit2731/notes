@@ -1,0 +1,18 @@
+aria-roledescription
+    possible roles -
+        carousel
+        slide
+
+aria-label
+arai-controls -
+    id of element which is controled by this
+
+aria-live -
+    polite - Any region which receives updates that are important for the user to receive, but not  so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle.
+
+    off -the assumed default for elements, it should not be necessary to set this explicitly, unless you're trying to suppress the announcement of elements which have an implicit live region role (such as role="alert").
+
+
+    assertive - should only be used for time-sensitive/critical notifications that absolutely require the user's immediate attention. Generally, a change to an assertive live region will interrupt any announcement a screen reader is currently making. As such, it can be extremely annoying and disruptive and should only be used sparingly.
+
+

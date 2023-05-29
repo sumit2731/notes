@@ -1,0 +1,9 @@
+design tokens
+using a pre existing component library -
+    we saw that these are good for hackathons, poc etc. but in long term it is always better to build your own component. because
+        libaries are built with certain design in mind, since your designer will have diffrent philosipy, you will face issues later.
+
+    With these things in mind,there are some libaries that in middle, they solve the problems like accessibility, like
+        you can you focus to only remin inside opened dialog and after closing it it should go back to from where it came.
+        some libraries solves only these problems they focus on functionlity rather than design. see lecture to see examples
+        of these.

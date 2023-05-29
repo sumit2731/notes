@@ -1,19 +1,18 @@
-$(function() {
-  // whenever we hover over a menu item that has a submenu
-  $('li.parent').on('mouseover', function() {
-    var $menuItem = $(this),
-        $submenuWrapper = $('> .wrapper', $menuItem);
-    console.log($menuItem);
-    console.log($submenuWrapper);
-    
-    // grab the menu item's position relative to its positioned parent
-    var menuItemPos = $menuItem.position();
-    console.log(menuItemPos);
-    
-    // place the submenu in the correct position relevant to the menu item
-    $submenuWrapper.css({
-      top: menuItemPos.top,
-      left: menuItemPos.left + Math.round($menuItem.outerWidth() * 0.75)
-    });
-  });
-});
+const person = "Mike";
+const age = 28;
+
+function myTag(strings, personExp, ageExp) {
+  const str0 = strings[0]; // "That "
+  const str1 = strings[1]; // " is a "
+  const str2 = strings[2]; // "."
+
+  const ageStr = ageExp > 99 ? "centenarian" : "youngster";
+
+  // We can even return a string built using a template literal
+  return `${str0}${personExp}${str1}${ageStr}${str2}`;
+}
+
+const output = myTag`That ${person} is a ${age}.`;
+
+console.log(output);
+// That Mike is a youngster.
