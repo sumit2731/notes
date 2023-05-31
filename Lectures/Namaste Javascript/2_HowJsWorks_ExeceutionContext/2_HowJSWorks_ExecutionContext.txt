@@ -1,0 +1,8 @@
+Everything in js happens inside execution AudioContext. It has 2 components -
+    Memeoty component (Variable Enviroment) - All varibles and functions are stoted here as key value pair.
+    Code component(thread of execution) - here code is executed one line at a time
+
+Javascript is a synchronous, single threaded language - 
+    Single Threaded - It means js can execute one command at a time
+    Synchronous Single Threaded - Js can execute one command at a time and in a specififc order.It can only go to next line when
+        currennt line has been executed.

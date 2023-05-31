@@ -1,0 +1,262 @@
+{
+    "accounts": [
+        {
+            "create_time": "2022-10-19T05:20:43Z",
+            "update_time": "2022-10-19T05:20:43Z",
+            "id": "502712683257707794",
+            "organisation_id": "474969069576486336",
+            "product_id": "112120028149989642",
+            "name": "qwert1749",
+            "domain": "qwert1749.freshbots.ai",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://qwert1749.freshbots.ai"
+            ],
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshbots",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-10-19T05:20:45Z",
+            "update_time": "2022-10-19T05:20:45Z",
+            "id": "502712690547507825",
+            "organisation_id": "474969069576486336",
+            "product_id": "60735412357513604",
+            "name": "santosh amines",
+            "domain": "qwert1749.freshcaller.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://qwert1749.freshcaller.com"
+            ],
+            "bundle_identifier": "502712662515523553",
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshcaller",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-10-19T05:20:44Z",
+            "update_time": "2022-10-19T05:20:44Z",
+            "id": "502712685000080819",
+            "organisation_id": "474969069576486336",
+            "product_id": "105244803164542146",
+            "name": "qwert1749",
+            "domain": "qwert1749.freshchat.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://qwert1749.freshchat.com"
+            ],
+            "bundle_identifier": "502712662515523553",
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "Freshchat",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-05T15:18:30Z",
+            "update_time": "2022-08-05T15:18:30Z",
+            "id": "475684027939523621",
+            "organisation_id": "474969069576486336",
+            "product_id": "66069886861266193",
+            "name": "santoshsood3127",
+            "domain": "santoshsood3127-699f8191bfc7cdc.freshsales.io",
+            "status": "ACTIVATED",
+            "external_id": "586612",
+            "urls": [
+                "https://santosh30.myfreshworks.com/crm/sales"
+            ],
+            "bundle_identifier": "475684022391700700",
+            "anchor": true,
+            "alias": "crm/sales",
+            "unified_url_enabled": true,
+            "unified_url": "https://santosh30.myfreshworks.com/crm/sales",
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshsales",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-05T15:18:31Z",
+            "update_time": "2022-08-05T15:18:31Z",
+            "id": "475684034408930490",
+            "organisation_id": "474969069576486336",
+            "product_id": "112120028149989642",
+            "name": "santoshsood3127-699f8191bfc7cdc16598024",
+            "domain": "santoshsood3127-699f8191bfc7cdc16598024.freshbots.ai",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://santoshsood3127-699f8191bfc7cdc16598024.freshbots.ai"
+            ],
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshbots",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-05T15:18:32Z",
+            "update_time": "2022-08-05T15:18:32Z",
+            "id": "475684036823781052",
+            "organisation_id": "474969069576486336",
+            "product_id": "105244803164542146",
+            "name": "santoshsood3127-699f8191bfc7cdc16598024",
+            "domain": "santoshsood3127-699f8191bfc7cdc16598024.freshchat.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://santosh30.myfreshworks.com/crm/messaging"
+            ],
+            "bundle_identifier": "475684022391700700",
+            "alias": "crm/messaging",
+            "unified_url_enabled": true,
+            "unified_url": "https://santosh30.myfreshworks.com/crm/messaging",
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "Freshchat",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-05T15:18:31Z",
+            "update_time": "2022-08-05T15:18:31Z",
+            "id": "475684035086617643",
+            "organisation_id": "474969069576486336",
+            "product_id": "60735412357513604",
+            "name": "santosh amines",
+            "domain": "santoshsood3127.freshcaller.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://santosh30.myfreshworks.com/crm/phone"
+            ],
+            "bundle_identifier": "475684022391700700",
+            "alias": "crm/phone",
+            "unified_url_enabled": true,
+            "unified_url": "https://santosh30.myfreshworks.com/crm/phone",
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshcaller",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-04T08:10:20Z",
+            "update_time": "2022-08-04T08:10:20Z",
+            "id": "475213892282537531",
+            "organisation_id": "474969069576486336",
+            "product_id": "55919062480617498",
+            "domain": "santoshsood3127.freshconnect.io",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://santosh30.myfreshworks.com/connect"
+            ],
+            "alias": "connect",
+            "unified_url_enabled": true,
+            "unified_url": "https://santosh30.myfreshworks.com/connect",
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshconnect",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-08-05T15:18:30Z",
+            "update_time": "2022-08-05T15:18:30Z",
+            "id": "475684030932896499",
+            "organisation_id": "474969069576486336",
+            "product_id": "119321760701761820",
+            "domain": "santoshsood3127.freshmarketer.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://santosh30.myfreshworks.com/crm/marketer"
+            ],
+            "bundle_identifier": "475684022391700700",
+            "alias": "crm/marketer",
+            "unified_url_enabled": true,
+            "unified_url": "https://santosh30.myfreshworks.com/crm/marketer",
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshmarketer",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-12-09T03:07:09Z",
+            "update_time": "2022-12-09T03:07:13Z",
+            "id": "521160851840722164",
+            "organisation_id": "474969069576486336",
+            "product_id": "88600661585094606",
+            "name": "soodhello",
+            "domain": "soodhello.freshservice.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://soodhello.freshservice.com/support/login"
+            ],
+            "bundle_identifier": "521160867486532602",
+            "anchor": true,
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshservice",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-10-19T05:18:33Z",
+            "update_time": "2022-10-19T05:18:33Z",
+            "id": "502712135639637918",
+            "organisation_id": "474969069576486336",
+            "product_id": "112120028149989642",
+            "name": "testsumeet27",
+            "domain": "testsumeet27.freshbots.ai",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://testsumeet27.freshbots.ai"
+            ],
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshbots",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-10-19T05:18:34Z",
+            "update_time": "2022-10-19T05:18:34Z",
+            "id": "502712143289188237",
+            "organisation_id": "474969069576486336",
+            "product_id": "60735412357513604",
+            "name": "santosh amines",
+            "domain": "testsumeet27.freshcaller.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://testsumeet27.freshcaller.com"
+            ],
+            "bundle_identifier": "502712113390169138",
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "freshcaller",
+            "sandbox": false
+        },
+        {
+            "create_time": "2022-10-19T05:18:33Z",
+            "update_time": "2022-10-19T05:18:33Z",
+            "id": "502712137728401313",
+            "organisation_id": "474969069576486336",
+            "product_id": "105244803164542146",
+            "name": "testsumeet27",
+            "domain": "testsumeet27.freshchat.com",
+            "status": "ACTIVATED",
+            "urls": [
+                "https://testsumeet27.freshchat.com"
+            ],
+            "bundle_identifier": "502712113390169138",
+            "unified_url_enabled": false,
+            "account_transfer_enabled": true,
+            "shared": false,
+            "product_name": "Freshchat",
+            "sandbox": false
+        }
+    ],
+    "total_size": "13",
+    "page_number": 1,
+    "page_size": 13,
+    "has_more": false
+}

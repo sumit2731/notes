@@ -1,0 +1,21 @@
+Document Object Model
+    This is an object-based representation of the entire HTML page.
+    Every browser takes some time to parse the above HTML. Clean semantic markup helps in reducing the time required for the 
+        browser to parse the HTML.
+
+CSS Object Model
+
+How to Cut Down on Render-Blocking Resources CSS?
+    Make sure that the styles of any content before the fold are loaded. These are critical styles. The rest of the styles can 
+    load later on.
+
+How to Cut Down on Parser Blocking Resources?
+
+    Lazy Loading - overlay example.  Any media, CSS, JavaScript, Images, and even HTML can be loaded lazily.
+    
+        lets start with images -
+
+        a)loading="lazy" attribute on images.
+        b)In browsers where you cannot leverage loading=lazy, you can use IntersectionObserver
+
+        Async, Defer, Preload

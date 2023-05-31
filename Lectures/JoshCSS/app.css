@@ -1,32 +1,30 @@
-/* .container {
-  width: 500px;
-  height: 120vh;
-  background: red;
-}
-
-.block {
-  width: 100px;
-  height: 100px;
-  background: blue;
-  position: sticky;
-  top: calc(100vh - 100px)
-} */
-
-
-
-
 html, body {
   height: 100%;
 }
-section {
-  border: 1px solid;
-  height: 100%;
+ol {
+  min-height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
-
-aside {
-  padding-top: 16px;
-  padding-bottom: 16px;
-  background-color: aqua;
-  position: sticky;
-  top: calc(100vh - 100px)
+.message {
+  display: block;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 6px;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 70%;
+}
+.message.sent {
+  background: hsl(240deg 100% 47%);
+  color: white;
+  align-self: flex-start;
+}
+.message.received {
+  background: hsl(0deg 0% 90%);
+  color: black;
+  align-self: flex-end;
 }

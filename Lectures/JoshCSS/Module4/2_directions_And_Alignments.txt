@@ -1,0 +1,2 @@
+one thing - only items of main container are put into the flex layout mode. their childern of children are not in flexbox layout,
+    it means flexbox does that have recursive effect.

@@ -1,0 +1,14 @@
+2 types of companies -
+    Startup - 
+        Just wanted to get work done quickly
+        also skips ds and algo rounds, directly asked questions on react, dnt bother about js indepth questions.
+        dnt care wthether candidte will stay for them for long
+    Matured -
+        cares for indepth knowledge
+        want engineer that can create react
+
+
+Difference between levels -
+    
+
+Time - 16:00

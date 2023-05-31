@@ -1,0 +1,20 @@
+1)placing breakpoint on DOM on chnage of attributes, subtree, nodeRemoval
+2)monitor/unmonitor function.
+3)copy part of api responses to clipboard.
+    1)in network header , go to preview, select part of response and right click and select store as global varible.
+    2)now copy variable using ccopy function
+
+4)Copy Full Response data from XHR request
+    right click on resuest, copy -> copy response
+
+5)console methods -
+    1)use object insted of logging simple variables.
+    2)console.table(Array)
+    3)onsole.count()
+
+6)preserve log - network and console logs
+
+7)screenshot - 4 options
+
+8)copy node path
+    Right click on the element -> Click copy -> Click copy JS path

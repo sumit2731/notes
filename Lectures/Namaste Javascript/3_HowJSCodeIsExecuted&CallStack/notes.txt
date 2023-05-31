@@ -1,0 +1,45 @@
+what happens when we run a js program? an execution context is created.
+when we run the code in figure 1 , a global execution context is created.Execution context is creataed in 2 pahses -
+    1)Memory Creation Phase - memory is allcated to all variables and functions.
+        whne memory is allocated to varibles it stores undefined value in memory.
+        In case of functions it stores the whole code.
+        see figure 2, this at the end of phase 1.
+    2)Code execution phase - JS again runs through this whole program line by line and executes the code now.
+        now it starts actual value to variables.
+        In case of fucntion as it has already copied all function into memory it do nothing.
+        now a function is called. functions are like mini programs, when a function is called a new execution contect is created.
+        see figure 3. again all the steps for execution context created are followed.
+            
+            memory creation phase - memory is allocated to all variables and function inside the function, fucntion params are 
+                also variables, memory is allocated to them too.even function params are given undefined placeholders.
+                in figure 1, num is parameter and n and 4 are arguments.
+
+            Execution phase - here first step is params with which function is called are assigned to variables in memory component
+                of execution context. in next step we need a calculation of num*num, this calculation will happen inside execution
+                component and result will be assigned to memory placeholder for ans.
+
+                return keyword says that return the control to execution context where function was invoked. also whole execution
+                context for returned function will be deleted.
+
+                now again we are invoking a same function, so again new execution context will be created.
+                once everything is executed, even global execution context goes off.
+
+How JS engine manages creation of execution context, then these nested execution context, nesting can go to any level.JS engine
+    manages a stack(call stack) to handles everything to manage this EC creation,deletion and control.
+
+Call Stack -
+
+    This is stack, at bottom of this we have global execution context.so everytime a program is run, this call stack is populated 
+    with global execution context.when a new execution context is created, it is put inside the stack.when EC is destroyed then
+    that execution context is moved out from callsatck and control goe sback to previous EC.This callstack is only for managing
+    these execution contexts.so everytime a new execution context is created, it is pushed inside callstack, everytime EC is 
+    deleted, it is moved out from callstack.
+
+Callstask maintains the order of execution of execution contexts.
+
+Othernames of callsatck -
+    EC stack
+    program stack
+    control stack
+    runtime stack
+    machine stack

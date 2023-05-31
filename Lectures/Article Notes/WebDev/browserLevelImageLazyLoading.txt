@@ -1,0 +1,93 @@
+Previously there were 2 ways to defer the image loading -
+
+    a)Using the Intersection Observer API
+    b)Using scroll, resize, or orientationchange event handlers
+
+    Browser-level lazy loading also ensures that deferred loading of images still works even if JavaScript is disabled on the 
+    client.
+
+
+default behaviour - Chrome loads images at different priorities depending on where they're located with respect to the device 
+    viewport. Images below the viewport are loaded with a lower priority, but they're still fetched as soon as possible.
+
+
+img
+
+    attributes -
+        loading -
+            a)lazy - this can completely defer the loading of offscreen images that can be reached by scrolling.
+            b)eager -Default loading behavior of the browser, which is the same as not including the attribute and means the image is 
+            loaded as soon as possible,regardless of where it's located on the page. it is same as when you not give eager 
+            attribute.
+
+Images that are highly likely to be in-viewport, and in particular LCP images, should not be lazy-loaded.
+
+Relationship between the loading attribute and fetch priority
+
+    Browsers prioritize resources based on various heuristics, and the loading attribute just states when the image resource is 
+    queued, not how it is prioritized in that queue. eager just implies the usual eager queueing browsers use by default.
+
+    If you want to increase the fetch priority of an important image (for example the LCP image), then Fetch Priority should be 
+    used with fetchpriority="high".
+
+    Note that an image with loading="lazy" and fetchpriority="high" will still be delayed while it is off-screen, and then 
+    fetched with a high priority when it is nearly within the viewport. It would likely be fetched with a high priority in this
+    case anyway, so this combination should not really be needed nor used.
+
+Distance-from-viewport thresholds - 
+    All images that are above the fold—that is, immediately viewable without scrolling—load normally. Those that are far below
+    the device viewport are only fetched when the user scrolls near them.
+
+    The distance threshold is not fixed and varies depending on several factors:
+
+        The type of image resource being fetched
+        The effective connection type
+
+improved threshholds
+
+Images should include dimension attributes
+
+    While the browser loads an image, it does not immediately know the image's dimensions, unless these are explicitly 
+    specified. To enable the browser to reserve sufficient space on a page for images, it is recommended that all <img> tags 
+    include both width and height attributes. Without dimensions specified, layout shifts can occur, which are more noticeable 
+    on pages that take some time to load.
+
+    The best practice of setting dimensions applies to <img> tags regardless of whether or not they are being loaded lazily. 
+    With lazy loading, this can become more relevant. Setting width and height on images in modern browsers also allows browsers
+    to infer their intrinsic size.
+
+    In most scenarios images still lazy-load if dimensions are not included, but there are a few edge cases you should be aware 
+    of. Without width and height specified, image dimensions are 0×0 pixels at first. If you have a gallery of such images, the 
+    browser may conclude that all of them fit inside the viewport at the start, as each takes up practically no space and no 
+    image is pushed offscreen. In this case the browser determines that all of them are visible to the user and decides to load
+    everything.
+
+Images that are defined using the <picture> element can also be lazy-loaded.
+
+Avoid lazy loading images that are in the first visible viewport
+
+    It is recommended to only add loading=lazy to images which are positioned below the fold, if possible. Images that are eagerly
+    loaded can be fetched right away, while images which are loaded lazily the browser currently needs to wait until it knows 
+    where the image is positioned on the page, which relies on the IntersectionObserver to be available.
+
+Graceful Disgradation
+
+    Browsers that do not yet support the loading attribute will ignore its presence. While these browsers will of course not get
+        the benefits of lazy loading, including the attribute has no negative impact on them.
+
+Questions -
+    How does the loading attribute work with images that are in the viewport but not immediately visible (for example: behind a 
+        carousel, or hidden by CSS for certain screen sizes)?
+
+best practices -
+    include image dimensions in image tag
+    Avoid lazy loading images that are in the first visible viewport
+
+
+Snippet to check if loading attribute is supported -
+    if('loading' in HTMLImageElement.prototype)
+
+Linked -
+    https://web.dev/fetch-priority/
+    https://web.dev/carousel-best-practices/
+    https://web.dev/lcp-lazy-loading/ (why not to be lazy attribute to inport images especially LCP images)

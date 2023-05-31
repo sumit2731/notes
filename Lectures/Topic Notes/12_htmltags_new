@@ -1,9 +1,11 @@
-article tag - 
+a)article tag - 
     needs to be used like article of clothing
     one thing of many
 
 
-details and summary tag -
+b)details and summary tag -
+
+    when we click on summary, then we next tag.
 
     <details className="faq">
         <summary>{question}</summary>
@@ -11,3 +13,14 @@ details and summary tag -
             {answer}
         </div>
     </details>
+
+c)picture tag
+    
+    <picture>
+        <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
+        <source media="(min-width:465px)" srcset="img_white_flower.jpg">
+        <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
+    </picture>
+
+
+    source - https://www.w3schools.com/tags/tag_picture.asp
