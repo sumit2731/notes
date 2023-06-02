@@ -1,0 +1,3 @@
+undefined is a placeholder, in first phase of execution, variables are assigned value of undefined.
+js is loosly/weekly typed language, it does not attach data types to variables.
+you should never assign undefined value to any variable in code. undefined should'nt be assigned manually.

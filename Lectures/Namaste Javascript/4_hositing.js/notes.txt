@@ -1,0 +1,3 @@
+here we saw that how hoisting differs between function and variable.
+variables are assigned undefined in memory while function are copied as it is in memory, in first phase of execution
+    only.

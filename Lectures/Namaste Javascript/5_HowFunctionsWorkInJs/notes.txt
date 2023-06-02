@@ -1,0 +1,6 @@
+Here we saw that while execution each function has its own variable env which is different from variable envirenment
+    of other execution contexts, so diffrent EC can have variables of same name.then we saw call stack and this 
+    varible env in browser debugger tools.
+
+    see figure1.Here we can see, how variables of outer scope are avalible as closure.Also this closure is only shown
+    if we are using outer variables inside function.

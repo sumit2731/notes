@@ -1,0 +1,23 @@
+In empty program also JS engines creates the following -
+    window - This is big object with various properties with values as functions and methods.all these are created
+        by js into global space.you can access all properties anywhere in your js program.This functionality is 
+        given by js engine.
+    this
+
+    global EC
+
+window is global object which is created along with EC.when ever any js progam is executed these are created -
+    global EC
+    global object -
+        In case of browser, this is window. JS Engine will create this. IN diffrent JS engine global object will be
+        different.
+    this -
+        Whenever you create a EC, this is created along with it. this is true even for global EC.
+
+
+Global Space - anything(variables, functions) which is not in function, is in global space.Any variables and 
+    functions that we create in global space gets attached to global object, it is added as 
+    property of global object. we can access them by -
+
+
+    window.a or a

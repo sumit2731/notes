@@ -1,0 +1,45 @@
+Here in this code we are able to access b and c -
+
+    function a() {
+        var c= 2;
+        function c() {
+            console.log(b);
+            console.log();
+        }
+    }
+
+    var b = 1;
+
+Scope - It means where you can access a specific variable or function in code.
+    what is scope of b => where can i access b.
+    is b inside inside scoppe of function c => can i access b inside function c.
+
+Scope directly depends upon lexical envirement
+
+Lexical Env -
+
+    Whenever EC is created lexical env is also created. LE is local memeory along with Lexical envirenment of parent.
+    Lexical as a term means in-hierarchy or in-sequence.we can say that c function is lexically sitting inside a
+    function.in code terms it means that where code is present physically inside the code.function c is present
+    physically inside a.a is lexically isnide global scope.
+
+    by parent we mean lexical parent.see figure 1, so in memory part of EC along with variable we also get a refrence 
+    to the lexical env of its parent, so lexical parent of c is a. so C has access to lexical env of a also.
+    lexical env of a is its memory space along with LE of parent. parent of A is global env. In global refrence
+    to LE of prent is null so this chain ends here.
+
+this is what happens when we print b in c -
+    JS engines seraches for b inside local memory of its EC, it does not find it there.then JS engine goes to
+    it's lexical parent's memory using the refrence in its memory part of EC. here we find it value of b is printed.
+
+
+    if b had not been present in EC of a, then it will go to lexical env of a's lexical parent(global EC). this will 
+    continue till we reach Global EC. if varible is not even there, then error is thrown, this is because global EC
+    does not have any lexical parent.
+
+Scope Chain -
+    This way of finding variables i.e (first searching in local memory of current EC, then in local memory of lexical
+    parent's EC) is called scope chain. the scope chain is chain of all these lexical envs and parent refrences.
+    so if a varible is not found inside scope chain, we say that it is not in scope.
+
+let and const behave very differently in terms of scope and hositing.
