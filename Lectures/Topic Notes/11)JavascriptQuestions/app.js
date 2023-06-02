@@ -1,31 +1,18 @@
-Array.prototype.myFilter = function (callbackFn, thisArg) {
-    if (
-      typeof callbackFn !== 'function' ||
-      !callbackFn.call ||
-      !callbackFn.apply
-    ) {
-      throw new TypeError(`${callbackFn} is not a function`);
-    }
-  
-    const len = this.length;
-    const A = [];
-    let k = 0;
-    let to = 0;
-  
-    while (k < len) {
-      // Ignore index if value is not defined for index (e.g. in sparse arrays).
-      const kPresent = Object.hasOwn(this, k);
-      if (kPresent) {
-        const kValue = this[k];
-        const selected = Boolean(callbackFn.call(thisArg, kValue, k, this));
-        if (selected === true) {
-          A[to] = kValue;
-          to += 1;
-        }
-      }
-      k += 1;
-    }
-  
-    return A;
-  };
-  
+function isObject(value) {
+    //this is check for null
+    // if(!value) return false;
+    // return (typeof value == 'object') || (typeof value == 'function')
+    //this returns false for primitives, null and undefined
+    //true for functions,array,pojo
+    return value instanceof Object;
+}
+
+
+function isPlainObject(value) {
+    //null and undefined cannot get prototype
+    if(!value) return false;
+    return (Object.getPrototypeOf(value) == Object.prototype || Object.getPrototypeOf(value) == null)
+}
+
+console.log(isObject(null));
+console.log(isObject(undefined));

@@ -1,7 +1,85 @@
-1) how we can  call methods on primitives if they are not objects.Also js engines are optimized to create wrapper object.
-    so these operations are not costly.Also null and undefined have no corrosponding
-    wrapper object, so in turn no method can be called on them. they are most primitives.
-2)how does creative a primitve type normally and with constructor of that data type differ. it is advised to create
-    primitives without constructor or if you want to use constructor then do not use new. 
+1) how we can  call methods on primitives if they are not objects?
+    a)in the moment of accessing its property, a special object is created that knows the value of the string, 
+        and has useful methods, like toUpperCase().
+    b)That method runs and returns a new string.
+    c)The special object is destroyed, leaving the primitive str alone.
 
-3)see question in last.
+    So primitives can provide methods, but they still remain lightweight.Also js engines are optimized to create 
+    wrapper object.so these operations are not costly.Also null and undefined have no corrosponding wrapper object, so in
+    turn no method can be called on them. they are most primitives.
+
+2)Constructors String/Number/Boolean are for internal use only.
+    In JavaScript, this supported for historical reasons, but highly unrecommended. Things will go crazy in 
+    several places -
+        1)Values created using new with constructor are always true
+        2)typeof operator always returns object.
+
+    On the other hand, using the same functions String/Number/Boolean without new is totally fine and useful 
+        thing.They convert a value to the corresponding type: to a string, a number, or a boolean (primitive).
+
+3)null/undefined have no methods
+
+    The special primitives null and undefined are exceptions. They have no corresponding “wrapper objects” and 
+    provide no methods. In a sense, they are “the most primitive”.An attempt to access a property of such value 
+    would give the error.
+
+4)see question in last.this adds a property on primitive data rype.
+
+
+Code Output -
+
+    let name1 = new String("Sumeet");
+
+    let name2 = String("Sumeet")
+
+    let name3 = Object("Sumeet")
+
+    console.log(name1); //[String: 'Sumeet']
+    console.log(typeof name1); //object
+    console.log(name1 instanceof String); // true
+
+    console.log(name2); // Sumeet
+    console.log(typeof name2); //string
+    console.log(name2 instanceof String); //false
+
+    console.log(name3); //[String: 'Sumeet']
+    console.log(typeof name3); //object
+    console.log(name3 instanceof String); //true
+
+
+Additional article -
+
+    https://2ality.com/2022/02/wrapper-objects.html
+
+    notes - 
+        
+        a)The wrapper classes BigInt (ES2020) and Symbol (ES6) are relatively new and can’t be instantiated,
+            using new keyword.
+        
+        b)use of Object function() without new to created warpper classes.
+            a)Object('abc') instanceof String => true
+
+            b)With Object(), we can even create instances of BigInt and Symbol (even though those classes can’t 
+                be new-invoked):
+
+                Object(123n) instanceof BigInt
+                Object(Symbol('MY_SYMBOL')) instanceof Symbol
+                    note - typeof return object in all cases
+
+                As an aside, if the argument of Object() is an object, it is simply returned without any changes:
+
+            c)Unwrapping primitive values
+                The generic way of unwrapping a wrapper object is method .valueOf():
+
+                    > new String('abc').valueOf()
+                    'abc'
+                    > new Number(123).valueOf()
+                    123
+
+            d)Function-calling wrapper classes
+                Function-calling wrapper classes provides us with a descriptive way of converting arbitrary values to primitives:
+                this as good as creating primitives normally. typeof and instanceof opeartor also works in same way as values are
+                created nirmally.
+
+                Symbol() has a special status in that it is more of a factory function for symbols (whose parameter is a string
+                    that describes the created symbol) than a conversion function:

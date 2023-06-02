@@ -1,0 +1,13 @@
+1 _ Solved it using few misses, no need to see again.
+2_ used which is bit of overkill, but map can be used when we want to save results. so see one time
+3_ -3,4,5 I solved them all but cases of spaerse and how these functions behave is imp, so visist once again.
+6_see how bind behaves and also your solution is more robus than course. so visit this.
+8_more missed case when one of args in not promise
+9_sum, see course solution, it provides pattern for lot of other questions.
+
+
+questions to be visisted -
+
+9,86
+
+questions to be revised - 4,5,6

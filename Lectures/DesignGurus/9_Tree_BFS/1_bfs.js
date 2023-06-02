@@ -7,7 +7,7 @@ class TreeNode {
   }
   
   /**
-   * @MySolution - Course solution aarranges element level wise
+   * @MySolution - Course solution arranges element level wise
    */
   function traverse(root) {
     let result = [], queue = [root];
