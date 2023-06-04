@@ -1,0 +1,36 @@
+In flex-grow,flex-shrink,flex-basis all respect min-width/max-width, min-height/max-height.
+
+In Main Axis we set the hypothetical width, height. actualu height depends on flex-grow, flex-shrink and container size. but it will
+    constraint by min-width/max-width.
+
+In Cross axis we set align-items is stretch but a height is given then that height will be respected. similarly min/max-height is
+    also respected.
+
+
+Exercise 1 -
+
+    here again wanted one column to be 1/3rd of total width. so used flex-basis:0 trick. to solve it. also we gave max-width to both
+        columns.
+
+Exercise 2 -
+    This is important exercise. see it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

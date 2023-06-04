@@ -1,0 +1,9 @@
+here we saw the trick to make equal size column, this can be used to divide sapce between any no of columns.
+    we set flex-basis: 0 and then use flex-grow:1 to make them equal size.
+
+Exercises -
+    Here we has 3 columns of equal size using flexbox. On very small sizes we noticed that one column stops shrinking first 
+    than others. this is because each column has implicit min-width depending on length of largest word.In solution we solved
+    it using flex-basis:0px. now content started overflowing out from cflex-items.In real life we will solve these by -
+        a)use media queries to use resolution on smaller screens
+        b)use flex wrap to split them across multiple lines on smaller viewports.

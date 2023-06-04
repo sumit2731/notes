@@ -1,5 +1,0 @@
-allignment trick for aligning placeholder and input in safari.
-
-exercise 1 -
-
-    see concept of line-height centering,nested flexboxs and mathematical centering vs optical centering.

@@ -1,0 +1,45 @@
+Properties of flex-container -
+
+    flex-direction
+        row(default)
+        column
+        row-reverse
+        column-reverse
+
+    justify-content(alignment along main axis) -
+        flex-start
+        flex-end
+        center
+        space-between
+        space-around
+        space-evenly(not avalible in IE)
+
+
+    align-items(alignment along cross axis, in case of single line) -
+        flex-start
+        flex-end
+        center
+        stretch
+        baseline
+
+    gap - The gap property explicitly controls the space between flex items. It applies that spacing only between items not on the 
+        outer edges.
+    
+    flex-wrap - nowrap | wrap | wrap-reverse
+
+Properties of flex-items -
+
+    align-self(align a item across cross axis) -
+        flex-start
+        flex-end
+        center
+        strtech
+        baseline
+
+    flex-basis
+    flex-grow
+    flex-shrink
+    order
+
+    flex: flex-grow flex-shrink flex-basis; (note second and third values are optional, but even using flex property sets the 
+        flex-basis to 0%)

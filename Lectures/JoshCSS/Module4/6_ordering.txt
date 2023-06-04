@@ -1,0 +1,19 @@
+flex-directipn: row | row-reverse| column |column-revrese
+
+When we flip the order of flex children, it's important to know that we're only changing things cosmetically.For users who navigate
+    with the keyboard and/or use a screen reader, they'll still be going through items in the order laid out in the DOM / written in
+    your HTML. row-reverse and column-reverse don't change anything for them.This can actually be a boon, as we'll see shortly. But
+    it's worth keeping in mind, to make sure we don't accidentally make things worse for them.
+
+other mechanism -
+    order property
+    flex-wrap:wrap-reverse
+
+
+In a world without CSS Grid, these methods would be worth exploring. Honestly, though, CSS Grid is a better tool for the job when 
+    we have complex ordering requirements. For that reason, we won't be looking at order or flex-wrap: wrap-reverse in this course.
+
+
+Exercise -
+    Here we saw how to chnage order of flex-items with order property or flex-direction property and how it can work in our
+     favour that it does not change the order for screenreaders and keyboards. 

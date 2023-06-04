@@ -1,0 +1,45 @@
+1)when flex-box does not have enough space to fit all items, all items begin to shrink. but they do not shrink below their min-width/
+    min-height. in case of text only content , this is length of longest word. multi word text starts getting splitted into multiple
+    lines.there are 2 types of sizes -
+
+    hypothetical size - Hypothetical size of flex-items if it is not acted by any other force. this hpothtical size -
+        flex-basis proeprty
+        width property
+        width of content is above 2 are not specified
+
+        now if there is enough space in conatiner then this hypothtical size is actual size, but when container size is not
+        enough to provide this then items start shrinking.Setting width in a flex row (or height in a flex column) sets the 
+        hypothetical size. It isn't a guarantee, it's a suggestion.
+    
+    min-content size - smallest an item can get without its contents overflowing.size below which flex-items cannot shrink.
+
+
+flex-basis - 
+    same as width and height but changes when we change main axis direction.
+    If both are there flex-basis is given priority over width/height.
+
+    There is one more difference between width and flex-basis: flex-basis can't scale an element below its minimum content size, but
+    width can.Both width and flex-basis will change the hypothetical size of an element, but width can set that value below the 
+    minimum content size. flex-basis can't.
+
+    when both width and flex-basis atre samller than min-content width, then whatever is larger is taken into account.
+
+
+flex-grow - it comes to picture if there is extra spave in container after hypothtical size is given to all flex-items.
+    different flex-items will try to occupy this extra space based on proportion of flex-grow proeprty.
+
+flex-shrink - It comes into picture when container does not have enough width to have all items inside it. it is ratio in which
+    items will shrink. note that items do not shrink below min-width.so once items hit their min-width, they stop shrinking.
+    so flex-shrink only does something when items are between their minimum size to hypothetical size.
+
+    min width of elements that have text content is width of largest word.
+    however we can also set it manually using min-width property
+
+    flex-shrink can't shrink an item below its minimum content size.
+
+
+Exercise -
+    we do not want one flex-item to shrink below its given width. solution -
+        1)set flex-shrink to really high number for other item.
+        2)set min-width instead of height, element cannot shrink below min-width.
+    we want icon to remain at top even after decreasing width of container.

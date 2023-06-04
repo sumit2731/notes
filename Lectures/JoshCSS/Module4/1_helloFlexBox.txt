@@ -1,1 +1,12 @@
-see course notes
+see course notes.
+
+
+extra from course -
+
+1)applying flexbox to container does following things -
+    a)layout mode of all childern changes to flexbox.
+    b)Along main axis flex-items take as much space as given by flex-basis/width/height. if none is given, then 
+        flex-items takes only that much width/height which is enough to contains its content.
+    c)above is the ideal cases when flex-container has enough width. when there is not enough width, items start 
+        shrinking, but they do not shrink below their min-width/min-height. they might even start going outside 
+        their container.
