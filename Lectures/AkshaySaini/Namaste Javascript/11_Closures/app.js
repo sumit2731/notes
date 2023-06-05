@@ -9,10 +9,10 @@ function x() {
 x();
 
 /* 
-Closure means a function bundled togather with refrences to its surrounding state (lexical env/scope).
-see figure1. so inside y it forms a closure witha  varible which is part of x's lexical scope.
-function y was bind to variables of x. it means it forms a closure, it has access to its parent lexical scope.
-let's see a bit more complaicated example.
+Closure means a function bundled togather with refrences to its surrounding state (lexical env/scope).we often say
+    function forms a clousre over it's outer envirenment.see figure1. so inside y it forms a closure with a variable 
+    which is part of x's lexical scope.function y was bind to variables of x. it means it forms a closure, it has 
+    access to its parent lexical scope.let's see a bit more complaicated example.
 */
 
 function x2() {
@@ -47,10 +47,9 @@ function x2() {
  /**
   * uses of closures 
   * 
-  * Module Pattern
+  * Module Pattern - Data Hiding and Encapsulation
   * currying
-  * Functions like once
-  * memoize
+  * Used in higher order functions like -memoize,once
   * maintaining state in async world
   * setTimeout
   * Iterators

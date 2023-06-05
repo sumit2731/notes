@@ -1,0 +1,32 @@
+4 rounds - 2 days.
+
+Round 1 -
+    General UI concepts.
+        Application - Small Email Client. 
+            Folders like inbox, sent etc.on clicking on folder emails in that folder opened. then clicking on induival email
+                opened up email.you can come up with your own design.you can assume emails to be in json if you want to.
+        main focus on -
+            use of vanilla js
+            how well i can manage things
+            how good i can write code
+            Am being modular?
+        Few feature that were asked to developed mainly focused on -
+            persisting the state of application
+            Making the dynamic behaviour -
+                suppose If a new mail comes, i.e new mail is added to json, how your UI should 
+                    render, 
+                how dynamically everything should be modularized. 
+                each mail can be read or unread
+
+        Main ourpose was checking whether i can properly use local storage, what should i use, what i am using too maintain
+        the state and what I am using to write the code.
+
+        time given one hour. he did it in 15 minutes. rest time was to apply some css and all.
+
+Round 2 -
+    Mainly focussed on DS.Problem was like this -
+        youhave menu of ecommerce website, which can nested at any level.It has catalog of products. how will you search a product.
+        he wrote some recursive solution to traverse that thing and then serach and sort accordingly.
+
+    No trees and graphs questions.
+

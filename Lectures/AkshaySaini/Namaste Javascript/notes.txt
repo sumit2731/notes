@@ -1,0 +1,5 @@
+Things to do -
+
+    1)when should we use var keyword(9)
+    2)uses of closure(11)
+    3)disadvantgaes of closures and how closures can lead to memeory leak.(13)
