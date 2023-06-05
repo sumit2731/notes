@@ -1,0 +1,117 @@
+Block - create by {}. block is also called compound statement.block is used to combine multiple js statements into one group.
+    why do we want to group statements? we need to group statements so that we can use multiple statements at place where js 
+    expects one statement. ex -
+
+    if() expects a single statement.but if we want to run multiple statements we can do that only by grouping them togather.
+    we do similar things in for loop, while loop etc.
+
+block scope - what variables and functions we can access inside this block.
+
+    {
+        var a = 1;
+        let b = 20;
+        const c = 30;
+    }
+
+    see figure1, we got b and c in block scope.this is separate space where b and c are hosited.this is separate memory space reserved
+        for this block.also a is hoisted inside the global scope.
+
+    that is where that statement comes - "let and constant are block scoped". this means they are stored in separate memory space, which
+        is reserved for this block.after we move line }, let and const are no longer accessible.so we cannot access these outisde block.
+        where as var can be accessed even outisde of this block, because it is global scope.
+
+
+Shadowing in js 
+    If we have variable with same name in block as well as outside the block, variable inside the block shadows the varible outisde 
+        the block. so if we try to access variable in block, we will get it from block scope only. same happens in function.
+
+
+    var a = 100;
+    {
+        var a = 10;
+        let b = 20;
+        const c = 30;
+        console.log(a) // 10
+        console.log(b)
+        console.log(c)
+    }
+    console.log(a); //10
+
+
+    we get this output because a is stored in window object and once we chnage it's value inside block. value changes everywhere because
+        it points to same meory location.
+
+
+    what happens for let?
+    
+    let b = 100;
+    {
+        var a = 10;
+        let b = 20;
+        const c = 30;
+        console.log(a)
+        console.log(b) //20
+        console.log(c)
+    }
+    console.log(b); //100
+
+
+    It is because b outside block and b inside the block had diffrent scope and outisde one had different scope. they point to 
+        different memeory locations. see figure 2.we 3 types of scopes-
+            a)global scope - where variable declared with var attaches.
+            b)script space is separate memory space where let and const are hoisted and put. it is b outside block.
+            c)we have separate scope for block.
+
+    when we print b inside block it is picked from block scope, b outside block is picked from script scope.
+
+    this is what shadowing is, internal b is hadiwing the outisde b.similar things happens with const also.
+
+    shadwing is not concept of block, even in functions it behaves the same.same name variables inside the function shadow the variables
+    with same name declared outside.
+
+Illegal Shadowing -
+
+    this is not valid(illegal shadowing) - 
+        
+        let a = 1;
+        {
+            var a = 2;
+        }
+    
+    but this is valid -
+        let a = 1;
+        {
+            let a = 2;
+        }
+
+    this is also valid -
+
+        var a = 1;
+        {
+            let a = 1;
+        }
+
+    If a varible is shadowing something then it should not cross the boundaries of its scope.In a particular scope let cannot be 
+    redeclared. but in first case, var is function scope and it crosses the boundaries of block scope.first case will work fine
+    if you use function instead of creating block scope.
+
+
+Block Scope also follows the lexical scope. lexical means one inside another.
+
+    const a = 1;
+    console.log(a);//1
+    {
+        const a = 2;
+        console.log(a)//2
+        {
+            const a = 3;
+            console.log(a) //3
+        }
+    }
+
+    lexical scope means that a will be printed from neaarest scope.
+
+    if you see chrome dev tools, you will see that each and every block has its own lexical scope.figure3. and it follows the lexical
+    scope chain pattern.so lexical scope works same way inside block also.
+
+

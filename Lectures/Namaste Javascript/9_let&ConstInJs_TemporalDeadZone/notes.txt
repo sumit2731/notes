@@ -1,0 +1,56 @@
+let & const are hoisted but they are hoisted in different way. they are in temporal dead zone.
+    console.log(a);
+    let a = 10;
+    var b = 10;
+
+    => Uncaught Refrence Error: cannot access a before initialization.
+
+    In browser we can see that a and b are in different places in debugger section. figure 1.
+    memory was assigned to b and variable b was attached to global object. a is also allocated memory(this is called hoisted) but 
+    they are stored in diffrent memory space than global and we cannot access these variables until we have initialized them i.e we
+    have put some value into them.
+
+    Temporal dead zone is time, since when this let variable was hosited and till it was assigned some value.
+
+    also variables declared with var are attached with window object for example, we can access b as window.b. but wimdow.a is
+    undefined. this is because let is stored in different space which is specially reserved for let keyword.In other env's
+    window can be replaced by respective global object.
+
+    let is more strict than var -
+
+        a)you cannot declare same variable again.
+
+            let a = 1;
+            let a = 10;
+            => syntaxError : Identifier 'a' has already been declared. syntax error means even single line of code wnt run.js returns
+             it upfront.
+
+             this also throws error -
+
+             let a = 10;
+
+             var a = 100;
+
+const -
+
+    const a;
+
+    => Uncaught Syntax Error: Missing initializer in const declaration.
+
+    const a = 10;
+    a= 20;
+
+    => Uncaught Type Error: Assignment to constant variable
+
+
+Syntax Error vs Type Error vs Refrence Error
+
+which one should be used ? const, let or var
+
+    const - this should be first priority if value is not changed later. this is more strict and you dnt run into unexpected errors.
+    let - for values that are chnaged later, use let.this is beacuse let has temporal dead zone, so you run into errors of undefined
+        and all.
+    var - dnt use it keep it aside.dnt use it now. there are some cases where you might want to use it. but use it very consiously.
+
+To avoid error because of temporal dead zone always put your decalations in the starting of the code.this means we are shrinking the
+    temporal dead zone to 0.

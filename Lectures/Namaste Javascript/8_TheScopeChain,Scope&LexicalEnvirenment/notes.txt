@@ -20,7 +20,7 @@ Lexical Env -
 
     Whenever EC is created lexical env is also created. LE is local memeory along with Lexical envirenment of parent.
     Lexical as a term means in-hierarchy or in-sequence.we can say that c function is lexically sitting inside a
-    function.in code terms it means that where code is present physically inside the code.function c is present
+    function a.in code terms it means that where code is present physically inside the code.function c is present
     physically inside a.a is lexically isnide global scope.
 
     by parent we mean lexical parent.see figure 1, so in memory part of EC along with variable we also get a refrence 
@@ -28,7 +28,7 @@ Lexical Env -
     lexical env of a is its memory space along with LE of parent. parent of A is global env. In global refrence
     to LE of prent is null so this chain ends here.
 
-this is what happens when we print b in c -
+This is what happens when we print b in c -
     JS engines seraches for b inside local memory of its EC, it does not find it there.then JS engine goes to
     it's lexical parent's memory using the refrence in its memory part of EC. here we find it value of b is printed.
 

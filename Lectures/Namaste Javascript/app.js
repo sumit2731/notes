@@ -1,23 +1,15 @@
-function a() {
-    var a= 1;
-    function b() {
-        var b = 2;
+var a = 10;
+let b = 2;
+function f1() {
+    let a1 = 1;
+    var c = 3;
+    console.log(b);
+    function f2() {
+        let d =1;
+        var e = 1;
         console.log(a);
-        console.log(b);
-        function c() {
-            var c = 3;
-            function d() {
-                debugger;
-                console.log(a);
-                console.log(b);
-                console.log(c);
-            }
-            d();
-        }
-        c();
+        console.log(c);
     }
-    b();
+    f2();
 }
-
-
-a();
+f1();
