@@ -4,6 +4,9 @@ aria-roledescription
         slide
 
 aria-label
+        <div
+            aria-label="label"
+        />
 arai-controls -
     id of element which is controled by this
 
@@ -13,6 +16,8 @@ aria-live -
     off -the assumed default for elements, it should not be necessary to set this explicitly, unless you're trying to suppress the announcement of elements which have an implicit live region role (such as role="alert").
 
 
-    assertive - should only be used for time-sensitive/critical notifications that absolutely require the user's immediate attention. Generally, a change to an assertive live region will interrupt any announcement a screen reader is currently making. As such, it can be extremely annoying and disruptive and should only be used sparingly.
+    assertive - should only be used for time-sensitive/critical notifications that absolutely require the user's immediate attention. 
+    Generally, a change to an assertive live region will interrupt any announcement a screen reader is currently making. As such, it
+    can be extremely annoying and disruptive and should only be used sparingly.
 
 
