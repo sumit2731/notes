@@ -19,14 +19,18 @@ function removeDuplicates(arr) {
  * @Course Solution
  */
 
-function removeElement(numbers, key) {
-  let endPtr = -1,
-    currentPtr = 0;
-  while (currentPtr < numbers.length) {
-    if (numbers[currentPtr] !== key) {
-      endPtr++;
-      numbers[endPtr] = numbers[currentPtr];
+function remove_duplicates(arr) {
+  // index of the next non-duplicate element
+  let nextNonDuplicate = 1;
+
+  let i = 0;
+  while (i < arr.length) {
+    if (arr[nextNonDuplicate - 1] !== arr[i]) {
+      arr[nextNonDuplicate] = arr[i];
+      nextNonDuplicate += 1;
     }
+    i += 1;
   }
-  return endPtr + 1;
+
+  return nextNonDuplicate;
 }

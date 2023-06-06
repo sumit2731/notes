@@ -1,32 +1,33 @@
-function findClosestValueInBst(tree, target) {
-    // Write your code here.
-    let node = tree, closestDifference = Infinity, closestValue;
-    while(node) {
-      let currentDifference = Math.abs(target-node.value);
-      if(closestDifference > currentDifference) {
-        closestDifference = currentDifference;
-        closestValue = node.value
-        if(node.value == target) return node.value
-        else if(node.value >target) node = node.left
-        else node = node.right
-      }
-      else {
-        return closestValue;
-      }
-      
-    }
-    return closestValue;
+function backspace_compare(str1, str2) {
+  let index1 = str1.length-1, index2= str2.length-1, char1, char2;
+ while((index1 >= 0) && (index2 >=0)) {
+  index1 = getNextChar(str1,index1);
+  index2 = getNextChar(str2,index2);
+  if((index1 == -1) && (index2 == -1)) return true;
+  if((index1 == -1) || (index2 == -1)) return false;
+  if(str1[index1] != str2[index2]) return false;
+  index1--;
+  index2--;
+ }
+ if((index1 == -1) && (index2 == -1)) return true;
+ if((index1 == -1) || (index2 == -1)) return false;
+  
 }
-  
-  // This is the class of the input tree. Do not edit.
-  class BST {
-    constructor(value) {
-      this.value = value;
-      this.left = null;
-      this.right = null;
-    }
+
+
+function getNextChar(str,index) {
+  if(str[index] != '#') return index;
+  let backSpaceCount = 1;
+  index--;
+  while((backSpaceCount != 0) && (index > -1)) {
+    if(str[index] != '#') backSpaceCount--;
+    else backSpaceCount++;
+    index--;
   }
-  
-  // Do not edit the line below.
-  exports.findClosestValueInBst = findClosestValueInBst;
-  
+  return index;
+}
+
+console.log(backspace_compare('xy#z', 'xzz#'));
+console.log(backspace_compare('xy#z', 'xyz#'));
+console.log(backspace_compare('xp#', 'xyz##'));
+console.log(backspace_compare('xywrrmp', 'xywrrmu#p'));

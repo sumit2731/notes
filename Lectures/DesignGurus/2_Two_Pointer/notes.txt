@@ -10,27 +10,14 @@
 12)algo wise i was blank. but when i saw algo in solution, then solved on my own. but dis'bt thought if edge case, i.e when array is
     already sorted.
 
+2nd take -
+5)solved it but has some typos.
+6)I solve it. but i was doing lot of calculations to see difference and all, course solution maintains only difference, which makes
+    calculations easier.Also i choose to solve it in same function instead of splitting it across 2 functions which reduced the number
+    of comparisons.
 
-
-
-
-good problem -
-
-    1)conert a roman string into number;
-
-
-other concepts to master -
-
-    a)image opimization, image upoad
-    b)drag and drop
-
-
-
-Courses to complete before interview -
-
-    a)grokking coding patterns
-    b)system design interview course
-    c)javascript projects
-    d)josh css courses
-    e)josh react courses
-    d)React blogs and atricles
+7)I solved it, but just remeber that since we only need count, we can avoid one extra loop whch actually finds extra elements.
+8)solved it.
+9)Dutch problem - I solved it after making some mistakes. now i have more clarity on this
+10)solved it. but approach was copied from ealrier triplet problems
+11)i solved it on my own
