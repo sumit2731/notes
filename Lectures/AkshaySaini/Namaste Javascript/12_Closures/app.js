@@ -29,11 +29,11 @@ function x2() {
  function is inside another function, we know about lexical scope, lexical bindings, lexical parent and scope chain.
  
  x2 returns the funcction y.now EC of x2 is destroyed and removed from call satck. so all variables and all are gone. but we have 
- returned y from x2. now y no longer resides inside x2.so will y bheave inside another lexical scope? now we can call y outside
+ returned y from x2. now y no longer resides inside x2.so how will y behave inside another lexical scope? now we can call y outside
  x2. how will y find a? because x is gone, it's EC is destroyed.
 
  so when functions are returend from another functions they still maintain their lexical scope.they remember where they were actually
- present.so althrough x2 function no longer exists, y  remebers its lexical scope from it came from.so it has binding to a. so when we
+ present.so althrough x2 function no longer exists,y  remembers its lexical scope from it came from.so it has binding to a. so when we
  return a function, not just that function is returned but that closure is returned. closure is function with its lexical scope.
 
  so y has refrence to a, and that way it uses it.
@@ -54,7 +54,4 @@ function x2() {
   * setTimeout
   * Iterators
   * many ...more
-  * 
-  * 
-  * 
   */

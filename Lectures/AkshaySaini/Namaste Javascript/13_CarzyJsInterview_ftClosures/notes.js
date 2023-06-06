@@ -1,3 +1,7 @@
+/**
+ * How to use closures to have data encapsulation?
+ */
+
 function counter () {
     var count = 0;
     return function incrementCounter() {
@@ -22,7 +26,9 @@ function counter2() {
 
 
 /* 
-disadvantages of closures -
+
+Disadvantages of closures -
+
 1)Overconsumption of memory. everytime closure is formed, lot of memoery is consumed.those closed over variables 
     are not garbage collected, so it is like accumulating lot of memoty if we create lot of closures.because
     those variables are not garbage collectoed untill that program expires.If not handled properly it can even

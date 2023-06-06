@@ -21,7 +21,7 @@ block scope - what variables and functions we can access inside this block.
         where as var can be accessed even outisde of this block, because it is global scope.
 
 
-Shadowing in js 
+Shadowing in js
     If we have variable with same name in block as well as outside the block, variable inside the block shadows the varible outisde 
         the block. so if we try to access variable in block, we will get it from block scope only. same happens in function.
 
@@ -38,7 +38,7 @@ Shadowing in js
     console.log(a); //10
 
 
-    we get this output because a is stored in window object and once we chnage it's value inside block. value changes everywhere because
+    we get this output because a is stored in window object and once we change it's value inside block. value changes everywhere because
         it points to same meory location.
 
 
@@ -64,12 +64,12 @@ Shadowing in js
 
     when we print b inside block it is picked from block scope, b outside block is picked from script scope.
 
-    this is what shadowing is, internal b is hadiwing the outisde b.similar things happens with const also.
+    this is what shadowing is, internal b is hiding the outisde b.similar things happens with const also.
 
     shadwing is not concept of block, even in functions it behaves the same.same name variables inside the function shadow the variables
     with same name declared outside.
 
-Illegal Shadowing -
+Illegal Shadowing(IN same name vriables with same name cannot exist(can exist for var)) -
 
     this is not valid(illegal shadowing) - 
         
@@ -77,12 +77,14 @@ Illegal Shadowing -
         {
             var a = 2;
         }
+        this is because let and var are stored at separate memory even for same global scope and it would lead to conmfiusion about which a should be accessed.
     
     but this is valid -
         let a = 1;
         {
             let a = 2;
         }
+        this is because ememory location of both are diffrent. as b is block scoped.
 
     this is also valid -
 
