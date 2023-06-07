@@ -1,21 +1,58 @@
-A single threaded
-non blocking
-asynchronous
-concurrent
-language
+JS Runtime(for ex v8) has these(figure1) -
+    CallStack, 
+    Heap(where memory allocation happens)
+
+THings like setTimeout,DOM,xmlhttp request are not there in js runtime(v8).
+
+figure 2 is bigger picture. web api's are extra things that browser providdes.then we have event loop and 
+    callback queue.
+
+figure 3 - callstack is data struture which keeps records where in the code we are.
+
+Blocking - code that is slow.then we saw what would happen happen if javascript was synchronous language.Then we saw why it is
+    problem in browsers.
+
+    while there is some code running in call stack,we cnt do aanything.even rendering of click effect on button has not rendered.
+    browser is blocked, it is stuck, it cnt do anything. It can't render, it can't run any other code, it's stuck. Not ideal, right 
+    if we want people to have nice fluid UIs, we can't block the stack.
+
+     So, how do we handle this? Well the simplest solution we're provided with is asynchronous callbacks, there's almost no blocking
+     functions in the browser, equally in node, they're all made asynchronous, which basically means we run some code, give it a 
+     callback, and run that later.this looks lke figure 4.what happens is setTime is put into stack, then removed. next statements
+     are exceuted and after some time,callback passed to setTimeout appears in call stack.so lets see how this works.
+
+Event Loop
+    JS run time can only do one thing at a time.we can do things concurrently in browser because browser is morethan js runtime.
+    see figure 2.the JavaScript Runtime can do one thing at a time, but the browser gives us these other things, gives us these web 
+    APIs, these are effectively threads,you can access like threads, you can just make calls to, and those pieces of the browser are
+    where concurrency kicks in.
+
+    If you're back end person this diagram looks basically identical for node, instead of web APIs we have C++ APIs and the threading
+    is being hidden from you by C+.
+
+    so these web api's are extra stuff that we get in env where we are running our js run time. here that env is browser.
+
+    now lets see setTime example that we saw earlier. when setTieout is encoubtered it is given to webapi for execution, meantime
+    call stack executes another code, now after sometime callstack is empty.when 5 second elapses, now webapi cannot add callback 
+    directly yo call stack.that is where task queue kicks in.see video from 13:30 to see how this happens. see till 15:25.
+
+then we saw why we give some callback to event loop with 0 delay. then we saw some example on platform called loupe.
+main thing to remeber is event loop sees if callstack is empty and callback queue has something. then it picks first item(one at a 
+time)and adds it to callstack, where this is executed.
+
+similary setTimeout time is not guarneed time for execution, it is minimum time in which it can be executed.
+
+then at 21:20, we saw a small example to splitinng large task using settimeout. see figure6.here instead of blocking the caallstack
+    for each item callback is added to queue which is added to callback by event loop one at aa time, meantime other high priority
+    tasks can run.
+
+next we saw that we have a render queue also(22:30). it is executed after 16.6ms if main callstack is empty.it is given priority over
+callback queue. but render can only happen when callstack is empty.see figure6.so when we have large task running, render is blocked,
+we cannot select the text, we cnr click.but in example we show how async tasks give chnace to render.
+
+this why image processing and putting too much animations make your browser sluggish.
+at 24:30, we saw the example with scroll handlers.scroll events triggers a lot, even though they add callback to callback queue
+not to main stack but still callback queue is flooded. we should use debounce to reduce these events.why we should use debounce.
 
 
-callstack
-eventloop
-callback queue
-
-JS Runtime(v8) - Heap(memory allocation) + Callstack (execution context and stack frames)
-
-Browser - JS run time, web api + event loop, callback queue.
-    webapi are provided by env in which we are running JS runtime.
-    JS run time can only only do one thing at a time.
-
-    callstack - records where in program we are.
-
-
-here we looked at how even loop, web api, callback queue,rendering queue work togather.
+loupe - http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D

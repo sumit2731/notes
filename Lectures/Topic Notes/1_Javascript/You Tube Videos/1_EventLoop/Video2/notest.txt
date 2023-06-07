@@ -3,58 +3,95 @@ task Queue in context of -
     b)node
     c)web worker
 
-microtasks - 99.9% of times microtasks is promise.
+Browsers -
+    
+    See figure 1 here we have single task queue. figure 2 has event loop code for single task queue.
 
-Until Microtasks Queue - 
-    first queue is general task queue.
-    second queue is event handlers.
-    then we have rendering pipe line.renderpipeline runs 60 times in a second.
-    browsers can pickup any tasks from any queue(bothe queues have same priority).each tasks is picked up one at time, 
-        afer that task finishes, if it's time to render(render happens 60 times in a second i.e after 16.6 ms) then
-        rendering pipeline will run, otherwise next task from any queue will be picked up. thing to be noticed at
-        when atsk is being run, in middle of that rendering pipeline cannot run.only when task finishes then other task 
-        from quueue or rendering pipeline can run. because of this it makes sense to break the long running task into smaller
-        tasks. figure 2.
-    yellow is microtask queue. it has highest prieority.if there are tasks in microqueue, then they will run
-        one after another.without interuption by other queue tasks and even by rendering pipeline.even if we add more
-        taks in microtask queue during running a task from microtasks queue, this new added task will also run before
-        we can run tasks from any other queue or even run rendering pipeline.
-    code for event loop is in figure 3.
+    Rendering pipe line is responsible for painting things in browser window. you make chnages in DOM,update styles, then rendering 
+        pipeline runs and shows it on screen.rendering pipeline can run callstack is empty.browser runs rendering pipeline only when 
+        screen is about to refresh which is 60 times in a second which is once every 16.6 ms. see figure 3.
+        rendering pipeline will run when there is nothing in callstack. so if we have long running tasks then rednering pipeline
+        has to wait till callstack is empty.
 
-    examples of tasks vs microtasks. - figure 4 & 5. here you can see that with micro task rendering does not happen.
+        if you have longrunning tasks then you need to split them up. see figure 4.second part of task will be run by setTimeout,
+        so after first part rendering pipeline can run. second solution is to use web workers only.
 
-Until RequestAnimationFrame - 
-    we laso have request animation frame callback quueue (animation queue). we can add a callback to this queue using -
+        see figure 5 for updated code of eventLoop with single task queue and rendering pipline.so it picks up the task runs it,after
+        finishing tasks(i.e when callstack is empty) eventLoop checks if it is time to run rendering pipeline, if yes then it is run, 
+        othet it picks up next task.
+
+    EventLoop has more than 1 tasks queue.this is example from spec.
+        this browser priorities the mouseClick events.
+
+        1 queue is for mouseClick and second queue is for everything else.so first everything in mousClick queue runs then other queue.
+        rendering pipeline runs as it is, no chnages there.
+
+        browser cannot execute queues things in any order, but they need to follow somethings, see figure 7.see figure 8 for updated
+        event loop code, first ot picks the queue, then rest of things remains same as they were before.
+
+    Microtasks
+        microtasks - 99.9% of times microtasks is promise.there are other things that generates microtasks.
+        figure 9, microtasks queue is yellow.microatsks has special proeprties -
+
+            a)It runs after every tasks.you finish the tasks, then you run microtasks queue.Even if renderingPipeline has to run,
+                it needs to wait for microtasks queue finishes.
+            b)if we have multiple tasks in microtasks queue, they all are going to run before rederingPipeline or any other taskQueue
+                is executed. Even tasks of microtasks queue adds more tasks into microatsks(while they are running), they are also 
+                run before other task queue and rendering pipeline.
+            This above things have implications, let see how tasks and microTasks runs.see figure 10 amd 11.
+    
+
+        yellow is microtask queue. it has highest prieority.if there are tasks in microqueue, then they will run
+            one after another.without interuption by other queue tasks and even by rendering pipeline.even if we add more
+            tasks in microtask queue during running a task from microtasks queue, this new added task will also run before
+            we can run tasks from any other queue or even run rendering pipeline.
+        code for event loop is in figure 3.
+
+        examples of tasks vs microtasks. - figure 4 & 5. here you can see that with micro task rendering does not happen.
+
+            when you execute macrotasks, UI is updated inbetween.
+            butt in microatsks, even unclick effect on button(which triggers micro task) is not shown.even cursor is still in hand
+                shape.either we have to kill page or after some time chrome will kill it.
+
+        see figure 12 to see updated event loop code.
+
+    AnimationFrameCallback queue -
+        we can add things to this queue by - requestAnimationFrame(callback). 
         
-        requestAnimationFrame(callback). code for this queue -
-            
+        where we use it? here we use it to run animation -
+
+        requestAnimationFrame(() => {
+            this.browser.classList.remove('slide'); 
             requestAnimationFrame(() => {
-                this.browser.classList.remove('slide'); 
-
-                requestAnimationFrame(() => {
-                    this.browser.classList.add('slide')
-                });
-            })
-
-            on removing the class it resets the frames. if we did it like this, browser wnt do anything -
-
-                this.browser.classList.remove('slide');
                 this.browser.classList.add('slide')
+            });
+        })
 
-            then browser wnt do anything.here we need to remove the class refresh the window, then add the class back.
+        if we did it like this, browser wnt do anything -
 
-    this is green queue in figure.here we had callbacks in simple queue and in request animation frame queue.first simple queue 
-        callbacks are executed and request animatiion frame queue callbacks just sit over there, until browser is ready to paint.
-        when browser is about to paint task from is executed requestAnimationFrame queue and then then repaint happens. after
-        that normal queue can continue to run.properties of this queue -
+            this.browser.classList.remove('slide');
+            this.browser.classList.add('slide')
+        
+        because during rendering nothing has changed.so we need to do something, let window refresh then do next thing.figure 13 shows
+        requestAnimationFrame pipeline. it is green.this is green queue in figure.here we had callbacks in simple queue and in request animation frame queue.first simple queue 
+            callbacks are executed and request animatiion frame queue callbacks just sit over there, until browser is ready to paint.
+            when browser is about to paint tasks from animationqueue is executed and then repaint happens. after
+            that normal queue can continue to run.
+            
+            properties of this queue -
 
-        1)If we have multiple things in requestAnimationFrame queue when it is ready to run, all of things will run.
-        2)but if we add moe things to animation queue while it is running,they wnt be run now. because while running
-            animation we need to tell what we want in this frame and what we want in next frame.next frame will come
-            after rendering pipeline.
+            1)If we have multiple things in requestAnimationFrame queue when it is ready to run, all of things will run.
+            2)but if we add moe things to animation queue while it is running,they wnt be run now. because while creating
+                animations, we want to say this what I want to do in this frame and then you setup what is going to happen in next 
+                frame.but we dnt want to run it, we want to wait untill window is refreshed.
+                
+                we need to tell what we want in this frame and what we want in next frame.for next task we want to wait
+                untill window is refreshed.next frame will come after rendering pipeline.
+
+            see figure 14 for updated event loop.
 
 
-Node Event Loop -
+Node Event Loop(figure 8) (see from 14:30) -
 
     types of queue(run in this same order) -
 
@@ -72,8 +109,14 @@ Node Event Loop -
 
     node also has another micro task queue which is nextTick queue. this is how you can add callback to this queue -
         process.nextTick(callback) (do something setImmediately)
-    4th and 5th are same only diffrence is both of these have tasks then nextTick queue will run before.
+    4th and 5th are same only diffrence is both of these have tasks then nextTick queue will run before.new thinsg in node -
+
+        setImmediate(): do something on the next tick
+        process.nextTick(): do something immediately
+
+    see figure 2.1 and 2.2. code of node event loop is shown in figure2.2.
 
 
 Web Workers - Each webworkers runs on its thread.each thread has its own call stack,webapi's,event loop,task queue.
-    they are not allowed to manipulate the DOM, so no animation frames.see figure 7. see figure 8 for web workers detail.
+    see figure 3.1,
+    they are not allowed to manipulate the DOM, so no animation frames.see figure 7. see figure 3.2 for web workers detail.
