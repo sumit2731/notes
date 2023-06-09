@@ -3,10 +3,12 @@
 2)Iterate over properties-  
     for-in- string-keyed, enumerable, includes properties in prototypal chain.
     Object.keys- string-keyed,enumerable, , includes only own,
-    Object.getOwnPropertyNames - string-keyed ,includes even non-enumerable,includes only own
+    Object.getOwnPropertyNames - returns array of string-keyed ,includes even non-enumerable,includes only own
     Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
+    Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.returns all own 
+        property descriptors of a given object.
     Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
-    Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.
+    
 
 3)Ways to copy Object -
     a)all properties: enumerable and non-enumerable, data properties and setters/getters – everything

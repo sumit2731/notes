@@ -93,7 +93,7 @@ Array Creation -
 
             A JavaScript array is initialized with the given elements, except in the case 
             where a single argument is passed to the Array constructor and that argument 
-            is a number. in that case adn empty array with length equal to that number is created.
+            is a number. in that case an empty array with length equal to that number is created.
           
     3)Using Array.from -
         The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object.

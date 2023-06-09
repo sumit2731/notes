@@ -4,7 +4,7 @@ function landPerimeter(matrix) {
   for (let row = 0; row < matrix.length; row++) {
     for (let column = 0; column < matrix[0].length; column++) {
       if (matrix[row][column] === 1 && !visited[`${row}${column}`]) {
-        //perimeter += DFS_Iterative(matrix, row, column, visited);
+        //perimeter += DFS_Recursive(matrix, row, column, visited);
         perimeter += BFS_Iterative(matrix, row, column, visited);
       }
     }
@@ -12,10 +12,9 @@ function landPerimeter(matrix) {
   return perimeter;
 }
 
-function DFS_Iterative(arr, row, column, visited) {
+function DFS_Recursive(arr, row, column, visited) {
   let perimeter = 0;
-  if (row < 0 || column < 0 || row >= arr.length || column >= arr[0].length)
-    return 1;
+  if (row < 0 || column < 0 || row >= arr.length || column >= arr[0].length) return 1;
   else if (arr[row][column] === 0) return 1;
   else if (arr[row][column] === 1 && !visited[`${row}${column}`]) {
     visited[`${row}${column}`] = true;
@@ -59,7 +58,7 @@ let arr1 = [
   [0, 1, 0, 0, 0],
   [0, 1, 0, 0, 0],
   [0, 1, 1, 0, 0],
-  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ];
 
 let arr2 = [

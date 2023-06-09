@@ -7,3 +7,21 @@
 5)calculate perimeter needs to take approach mention here. good question. i was not able to solve it.
 6)solved using my solution, which was having higher complexity. course solution is good.
 7)i have to see algo in course but then implemented solution of my own. course solution is more elegent. while implementing DFS i made lot of mistakes.
+
+
+
+
+2nd Round -
+
+1)solved it, but missed condition to add edgecases for boundary elemnets. however i found it by looking at my code.
+2)solved it.
+3)solved it
+4)solved it
+5)was able to solve it only after seeing algo form course.
+6)solved it after seeing algo
+7)not able to solve it after seeing explanation. have to see code.
+
+
+not able to solve in second try -
+
+a)5,6,7

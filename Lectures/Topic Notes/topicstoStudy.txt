@@ -8,6 +8,7 @@ Interview Questions -
     3)how do you peform authentication? auth0, auth1?
     4)generator functions
 Javascript -
+    webAnimationAPI(onlyChrome)
     caching
     How browser works
     mutation observable

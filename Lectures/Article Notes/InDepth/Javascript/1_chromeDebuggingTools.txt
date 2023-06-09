@@ -18,3 +18,12 @@
 
 8)copy node path
     Right click on the element -> Click copy -> Click copy JS path
+
+
+New Features -
+
+    1)use this instead of having consol.log. you can even add multiple expressions.
+        right click on line -> Add LogPoints.
+
+    2)improving stack trace -
+        right click on file or folder, then click on "Add directory to ignore list".

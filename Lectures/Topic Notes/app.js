@@ -1,17 +1,24 @@
-let name1 = new String("Sumeet");
+var Benchmark = require('benchmark');
 
-let name2 = String("Sumeet")
+var suite = new Benchmark.Suite;
 
-let name3 = Object("Sumeet")
+var handleCb = cb => cb(null);
 
-console.log(name1); //[String: 'Sumeet']
-console.log(typeof name1); //object
-console.log(name1 instanceof String); // true
-
-console.log(name2); // Sumeet
-console.log(typeof name2); //string
-console.log(name2 instanceof String); //false
-
-console.log(name3); //[String: 'Sumeet']
-console.log(typeof name3); //object
-console.log(name3 instanceof String); //true
+// add tests
+suite.
+  add('new function', function() {
+    handleCb(function(error, res) {});
+  }).
+  add('new promise', function() {
+    return new Promise((resolve, reject) => {});
+  }).
+  add('promise resolve', function() {
+    Promise.resolve().then(() => {});
+  }).
+  on('cycle', function(event) {
+    console.log(String(event.target));
+  }).
+  on('complete', function() {
+    console.log('Fastest is ' + this.filter('fastest').map('name'));
+  }).
+  run();

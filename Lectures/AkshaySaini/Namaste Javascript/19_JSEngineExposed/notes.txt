@@ -1,0 +1,74 @@
+JS Run time envirenemnt - It is big container that has all the things required to run js code.Javascript runtime envirenment has
+    following things -
+
+        a)JS Engine- It is heart of JS Runtime enivirenment.
+        2)API's to connect to outer envirenment(in case of browser, these are web API's, they are exposed through global js)
+        3)EventLoop, Callback queue
+
+
+Anywhere you want to run js code , you need Javascript RunTime Envirenment.Node js runs it outside browser.we can run js code on water
+cooler, all we need is jS runtime. there API's will be different.
+
+In nodejs and in browser, API's are different. some api's names are same also like setTimout. but their implementation can be entirely
+different.so you can access outer envirement through set of api's.
+
+
+Diffrent JS Engines -
+    chrome - v8
+    mozilla firefox - spider money
+    microsoft edge - chakra
+
+    All js Engines need to flow ECMAScript Standards.ECmascript is a organization.
+
+
+JS Engine is a piece of code which is written in low level languages.JS Engines take high level language(js) code and spits out
+machine level(which can be executed by machine) code.
+
+Steps inside JS Engine -
+
+    a)Parsing -
+        Program is broken into tokens.see figure 2.Then syntax parse generates asbtract syntax tree.
+    b)Compilation - Compilation and execution go hand in hand.
+        Interpreter - code is executed line by line. we do not know what will happen in next line.
+            Advantage - code can be started executing more quickly.
+        Compiler - First code is converted to more optmized version of code.then this optimized version is executed.
+            Advantage - code is executed more efficiently
+
+        JS can behave as interpreted as well as compiled language , it all depends upon JS Engine.Initially when js was developed, it 
+            was supposed to be interpreted as browser cannot wait for it to be compiled.but today almost all of the browser's use 
+            interpreter plus compiler both.so now it all depends upon js engine whether it is purely interpreted or JIT(Just In Time) 
+            compiled.
+
+        JIT Compiler - It is best of both worlds.It uses both interpreter plus compiler to execute the code.
+            AST gnerated in step1, goes to interpreter, interpreter convertrs this high level code to byte code.which then goes to 
+            execution step.while Interpreter is doing so it takes help of compiler to optomize it.so it is not one step process but it
+            can happen in multiple phases.All js engines have their own algorithms for doing so. Job of compiler is to optimize the code as
+            much as it can on the run time.That is why it is called JIT compilation.
+
+            Some js engines have Ahead of Time compilation.Here compiler takes a piece of code that is going to be executed later and 
+            tries to optimize as much as it can.It also produces byte code, which then goes to execution phase.
+            
+            All js engines have their own algorithms to do it.
+    c)Execution - it has 2 major components memory heap and call stack.memeory heap is where memory is stored.is is constantly in sync 
+        with callstack,garbage collector and lot of other things.then we have garbage collector, which in sync with memory and uses mark
+        and sweep algorithm. there are many optimization that complier does for code, these are -
+            
+            1)Inlining
+            2)Copy Elision
+            3)Inline Caching
+
+
+        names in v8 -
+            interpreter - v8
+            compiler - turbo fan optimizing compiler
+
+            garbage collectors -
+                orinoco - uses mark and sweep
+                oil pamp - itt is used for diffrent purpose
+
+
+        at 23:00 v8 engine architectural diagram -
+
+
+
+

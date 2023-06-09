@@ -1,5 +1,5 @@
 /**
- * @MySolution Using Course Algo
+ * @MySolution Using Course Algo. but course solution is better
  */
 
 function findCycle(arr) {

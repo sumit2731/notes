@@ -42,8 +42,12 @@ let arr2 = [
   [0, 0, 1, 0, 0],
 ];
 
+/**
+ * your solutions are good but course solution is sufficient for this
+ */
+
 /* 
- Course Solution 1 - Using BFS and Visisted Matrix (My Solution with Course Algo)
+ Modified version of Course Solution 1 - Used BFS to tarverse the array. Also counted all the connected nodes
 */
 
 function count_islands2(arr) {
@@ -55,7 +59,7 @@ function count_islands2(arr) {
     for (let column = 0; column < arr[0].length; column++) {
       let currentNode = arr[row][column];
       if (currentNode === 1 && !visitedMatrix[row][column]) {
-        let islands = BFSSearch(arr, row, column, visitedMatrix);
+        let islands = BFSSearch2(arr, row, column, visitedMatrix);
         islandArray.push(islands);
       }
     }

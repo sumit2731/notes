@@ -20,10 +20,12 @@ let arr2 = [
  */
 
 function find_distinct_islands(arr) {
+
     let isLandObject = {}, visisted = {}, uniqueIslandCount = 0;
+
     for (let row = 0; row < arr.length; row++) {
         for (let column = 0; column < arr[0].length; column++) {
-            if (arr[row][column] === 1 && !visisted[`${row}${column}`]) {
+            if (arr[row][column] == 1 && !visisted[`${row}${column}`]) {
                 let island = BFS_Transversal(arr, row, column, visisted)
                 if (!isLandObject[island.length] || ((isLandObject[island.length] > 0) && isUnique(isLandObject[island.length], island))) {
                     isLandObject[island.length] = (isLandObject[isLandObject.length] || [])
@@ -32,15 +34,19 @@ function find_distinct_islands(arr) {
             }
         }
     }
+
     for (let isLandArray in isLandObject) {
         uniqueIslandCount += isLandArray.length
     }
+
     return uniqueIslandCount;
 
 }
 
 function BFS_Transversal(arr, row, column, visisted) {
+
     let queue = [[row, column]], resultArray = [];
+
     while (queue.length) {
         let [currentRow, currentColumn] = queue.shift();
         if (currentRow < 0 || currentColumn < 0 || currentRow >= arr.length || currentColumn >= arr[0].length) continue;
@@ -53,6 +59,7 @@ function BFS_Transversal(arr, row, column, visisted) {
             queue.push([currentRow + 1, currentColumn]);
         }
     }
+
     return resultArray;
 }
 
@@ -69,14 +76,29 @@ function isUnique(islandArray, isLand) {
             if (!((nextRow1 - currentRow1) === (nextRow2 - currentRow2)) && ((nextColumn1 - currentColumn1) === (nextColumn2 - currentColumn2))) {
                 return false;
             }
-
         }
     }
     return true;
 }
 
+console.log(find_distinct_islands([
+    [1, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1],
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 1],
+    [0, 1, 1, 0, 1]
+]));
+
+console.log(find_distinct_islands([
+    [1, 1, 0, 1],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0],
+    [1, 1, 0, 0],
+    [0, 1, 1, 0]
+]));
+
 /**
- * @Exact Course Solution
+ * @Exact_Course_Solution
  */
 
 function find_distinct_islands_DFS(arr) {
@@ -89,20 +111,20 @@ function find_distinct_islands_DFS(arr) {
             }
         }
     }
-    for(let island of islandsSet) console.log(island);
+    for (let island of islandsSet) console.log(island);
     return islandsSet.size;
 }
 
 function traverse_island_DFS(arr, row, column, visited, direction) {
     let resultTrStr = '';
-    if(row < 0 || column < 0 || row >= arr.length || column >= arr[0].length) return '';
-    else if((arr[row][column] ===1) && !visited[`${row}${column}`]) {
+    if (row < 0 || column < 0 || row >= arr.length || column >= arr[0].length) return '';
+    else if ((arr[row][column] === 1) && !visited[`${row}${column}`]) {
         resultTrStr += direction;
         visited[`${row}${column}`] = true;
-        resultTrStr += traverse_island_DFS(arr,row, column-1,visited,'L');
-        resultTrStr += traverse_island_DFS(arr,row, column+1,visited,'R');
-        resultTrStr += traverse_island_DFS(arr,row-1, column,visited,'U');
-        resultTrStr += traverse_island_DFS(arr,row+1, column,visited,'D');
+        resultTrStr += traverse_island_DFS(arr, row, column - 1, visited, 'L');
+        resultTrStr += traverse_island_DFS(arr, row, column + 1, visited, 'R');
+        resultTrStr += traverse_island_DFS(arr, row - 1, column, visited, 'U');
+        resultTrStr += traverse_island_DFS(arr, row + 1, column, visited, 'D');
     }
     return resultTrStr;
 }
@@ -122,18 +144,18 @@ function find_distinct_islands(arr) {
         for (let column = 0; column < arr[0].length; column++) {
             if (arr[row][column] === 1 && !visisted[`${row}${column}`]) {
                 let [island, dString] = BFS_Transversal(arr, row, column, visisted)
-                if(!dStringObj[dString]) dStringObj[dString] = []
+                if (!dStringObj[dString]) dStringObj[dString] = []
                 dStringObj[dString].push(island);
             }
         }
     }
     console.log(dStringObj);
     return Object.keys(dStringObj).length;
-  
-  }
-  
-  function BFS_Transversal(arr, row, column, visisted) {
-    let queue = [[row, column,'O']], resultArray = [], dString = '';
+
+}
+
+function BFS_Transversal(arr, row, column, visisted) {
+    let queue = [[row, column, 'O']], resultArray = [], dString = '';
     while (queue.length) {
         let [currentRow, currentColumn, direction] = queue.shift();
         if (currentRow < 0 || currentColumn < 0 || currentRow >= arr.length || currentColumn >= arr[0].length) continue;
@@ -141,11 +163,11 @@ function find_distinct_islands(arr) {
             resultArray.push([currentRow, currentColumn]);
             dString += direction;
             visisted[`${currentRow}${currentColumn}`] = true;
-            queue.push([currentRow, currentColumn - 1,'L']);
-            queue.push([currentRow, currentColumn + 1,'R']);
+            queue.push([currentRow, currentColumn - 1, 'L']);
+            queue.push([currentRow, currentColumn + 1, 'R']);
             queue.push([currentRow - 1, currentColumn, 'U']);
             queue.push([currentRow + 1, currentColumn, 'D']);
         }
     }
     return [resultArray, dString]
-  }
+}

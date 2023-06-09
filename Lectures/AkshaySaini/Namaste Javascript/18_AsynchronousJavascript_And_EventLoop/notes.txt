@@ -1,0 +1,9 @@
+Figure 1 Shows the JS engine has call stack and browser has other superpowers like timers, geolocation,localStorage, can communicate with 
+    outside world.
+Figure 2,shows how JS engine can access these super powers, these are via web api's.Web api's are not part of js engine.we can use all these
+    web api's inside call stack. Thease are provided by window object. so we can use window.setTimeout inside call stack.
+    so browser wraps up all these window api's inside window object and gives them to js engine.
+
+Following things consist of microtasks -
+    a)Promises
+    b)Mutation Observer

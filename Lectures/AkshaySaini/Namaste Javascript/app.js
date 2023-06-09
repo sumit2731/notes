@@ -1,9 +1,5 @@
-function outer() {
-    function inner() {
-        console.log(a);
-    }
-    inner();
-    let a = 1;
+function f1() {
+    console.log("Hello F1");
 }
 
-outer();
+f1();

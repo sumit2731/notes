@@ -1,0 +1,13 @@
+If you have code that has anything to do with rendering,task si really wrong place to do it.
+we should run code in render steps, browser lets us do that using request animationFrame callback.
+example of box(13:00).
+
+requestAnimation frame comes before processing css and before painting.Imlications of that
+
+
+microtasks -
+    dom mutation events
+
+
+Famous JS Quiz.
+    How clicking on DOM elements with js works
