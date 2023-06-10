@@ -1,0 +1,130 @@
+within a browser, there’s a piece of software that figures out what to display to you based on the files it receives. 
+    This is called the browser engine.
+
+
+    Chrome - Blink
+    Firefox - Gecko
+
+1)conversion of bytes to characters
+    This conversion is done based on the character encoding of the HTML file.
+    
+    This is how char encoding is specified in html -
+        <meta charset="UTF-8"> 
+
+
+2)Parsing of chactarer file, conversion into token
+
+    When you save a file with the .html extension, you signal to the browser engine to interpret the file as an HTML
+    document. The way the browser interprets this file is by first parsing it. In the parsing process, and particularly
+    during tokenization, every start and end HTML tag in the file is accounted for.
+
+    The parser understands each string in angle brackets (e.g., <html>, <p>) and understands the set of rules that 
+    apply to each of them. For example, a token that represents an anchor tag will have different properties from
+    one that represents a paragraph token.
+
+    Conceptually, you may see a token as some sort of data structure that contains information about a certain HTML tag.
+    Essentially, an HTML file is broken down into small units of parsing called tokens. This is how the browser begins
+    to understand what you’ve written.
+
+3)conversion of token into node
+
+    After the tokenization is done, the tokens are then converted into nodes. You may think of nodes as distinct objects with
+    specific properties. In fact, a better way to explain this is to see a node as a separate entity within the document object
+    tree.
+
+
+4)Gennetarion of DOM
+
+    Upon creating these nodes, the nodes are then linked in a tree data structure known as the DOM. The DOM establishes the 
+    parent-child relationships, adjacent sibling relationships, etc. The relationship between every node is established in
+    this DOM object.
+
+
+5)Fetching of CSS File
+
+    While the browser receives the raw bytes of data and kicks off the DOM construction process, it will also make a request to
+    fetch the main.css stylesheet linked. As soon the browser begins to parse the HTML, upon finding a link tag to a CSS file,
+    it simultaneously makes a request to fetch that.
+
+
+6)From raw bytes of CSS to CSSOM
+
+    as from raw html file bytes, browser generates.
+
+    CSS has something called the cascade. The cascade is how the browser determines what styles are applied to an element. 
+    Because styles affecting an element may come from a parent element (i.e., via inheritance), or have been set on the element
+    themselves, the CSSOM tree structure becomes important.
+
+    Why? This is because the browser has to recursively go through the CSS tree structure and determine the styles that affect 
+    a particular element.
+
+7)The render tree
+
+    What we have right now are two independent tree structures that don’t seem to have a common goal.
+    The DOM and CSSOM tree structures are two independent structures. The DOM contains all the information about the page’s 
+    HTML element’s relationships, while the CSSOM contains information on how the elements are styled.
+
+    OK, the browser now combines the DOM and CSSOM trees into something called a render tree.
+
+    DOM + CSSOM = Render tree
+
+    The render tree contains information on all visible DOM content on the page and all the required CSSOM information for the
+        different nodes. Note that if an element has been hidden by CSS (e.g., by using display; none), the node will not be 
+        represented in the render tree.
+
+    The hidden element will be present in the DOM but not the render tree. This is because the render tree combines information
+    from both the DOM and the CSSOM, so it knows not to include a hidden element in the tree.
+
+
+8)Layout
+
+    With the render tree constructed, the next step is to perform the layout. Right now, we have the content and style 
+    information of all visible content on the screen, but we haven’t actually rendered anything to the screen.
+
+    Well, first, the browser has to calculate the exact size and position of each object on the page. It’s like passing on the
+    content and style information of all elements to be rendered on the page to a talented mathematician. This mathematician
+    then figures out the exact position and size of each element with the browser viewport.
+
+    This layout step (which you’ll sometimes hear called the “reflow” step) takes into consideration the content and style 
+    received from the DOM and CSSOM and does all the necessary layout computing.
+
+9)Layout Stage
+    With the information on the content (DOM), style (CSSOM), and the exact layout of the elements computed, the browser now 
+    “paints” the individual node to the screen. Finally, the elements are now rendered to the screen!
+
+
+
+Render blocking resources - We need both html and css for rendering something on screen.
+
+
+What about Javascript?
+
+    What happens to this flow once we introduce JavaScript? Well, one of the most important things to remember is that 
+    whenever the browser encounters a script tag, the DOM construction is paused! The entire DOM construction process
+    is halted until the script finishes executing.
+
+
+    This is because JavaScript can alter both the DOM and CSSOM. Because the browser isn’t sure what this particular 
+    JavaScript will do, it takes precautions by halting the entire DOM construction altogether.
+
+
+    This brings us to another important point: the location of your script matters.
+
+    If the network is slow, and it takes thousands of milliseconds to fetch app.js, the DOM construction will be halted for the
+        thousands of milliseconds as well! That’s a big performance concern, and still, that’s not all. Remember that JavaScript
+        can also access the CSSOM and make changes to it. For example, this is valid JavaScript:
+
+    document.getElementsByTagName("body")[0].style.backgroundColor = "red";
+    So, what happens when the parser encounters a script tag but the CSSOM isn’t ready yet?
+
+    Well, the answer turns out to be simple: the Javascript execution will be halted until the CSSOM is ready.
+
+    So, even though the DOM construction stops until an encountered script tag is encountered, that’s not what happens with 
+    theCSSOM.
+
+    With the CSSOM, the JS execution waits. No CSSOM, no JS execution.
+
+
+The critical rendering path (CRP)
+    This entire process is called the critical rendering path (CRP).Optimizing your websites for performance is all about 
+    optimizing the CRP. A well-optimized site should undergo progressive rendering and not have the entire process blocked.

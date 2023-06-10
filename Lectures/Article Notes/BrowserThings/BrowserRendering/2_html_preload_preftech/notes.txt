@@ -1,0 +1,73 @@
+ The rel="preload" attribute value is used to preload assets. It can be applied to several file formats, including CSS, JS,
+ fonts, images, and more. Depending on the type of file you would like to preload, the corresponding as attribute may also
+ need to be included along with rel="preload". For CSS, as= will need to be set equal to "style". For JavaScript, as= will
+ need to be set equal to "script".
+
+<link
+    rel="preload"
+    as="style"
+    href='https://fonts.googleapis.com/css?family=Roboto:400,600|Material+Icons'
+>
+
+ However, you may have noticed that the CSS style hasn’t been applied to the text. That’s because using preload or prefetch
+ only fetches the resource, but it doesn’t apply it. Instead, preload and prefetch will keep the resource in memory. You have
+ to define when the resource will be loaded.
+    
+The font needs to be applied as soon as it loads. To make this happen, add the onload attribute to the <link> tag. Set onload
+equal to "this.rel = 'stylesheet'".
+
+
+<link
+  rel="preload"
+  as="style"
+  onload="this.rel = 'stylesheet'"
+  href='https://fonts.googleapis.com/css?family=Roboto:400,600|Material+Icons'
+>
+
+By setting the rel attribute to stylesheet in onload, the browser is told to use the resource. Since it’s been already 
+downloaded in memory, it doesn’t download it again.
+
+Since the onload solution relies on JavaScript, add <noscript> tags which contain the original <link> tags with rel set to 
+"stylesheet":
+
+<link
+  rel="preload"
+  as="style"
+  onload="this.rel = 'stylesheet'"
+  href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'>
+
+<noscript>
+  <link
+    rel="stylesheet"
+    href='https://fonts.googleapis.com/css?family=Roboto:400,600|Material+Icons'>
+</noscript>
+
+This will ensure that the font displays if JavaScript is disabled or fails to load.
+
+
+Step 3 -Prefetching Resources
+
+    Prefetching works similarly to preloading.The difference is that,when prefetching a resource, the browser considers the 
+        resource to be low priority. This means that the resource or asset will load a bit later. Because of this, prefetching is 
+        usually implemented with resources that are not required initially, but are used at a later point.
+
+        To implement prefectching in your HTML page, change the value of rel to "prefetching":
+
+            <link
+                rel="prefetch"
+                as="style"
+                onload="this.rel = 'stylesheet'"
+                href='https://fonts.googleapis.com/css?family=Roboto:100,900|Material+Icons'
+            >
+
+
+Step 4 - Preloading Javascript
+
+    <link rel="preload" href="used-later.js" as="script">
+    <!-- ... -->
+    <script>
+    var usedLaterScript = document.createElement('script');
+    usedLaterScript.src = 'used-later.js';
+    document.body.appendChild(usedLaterScript);
+    </script>
+

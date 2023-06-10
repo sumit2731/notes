@@ -1,0 +1,149 @@
+Defination
+
+    origin -  triplet of protocol/domain/port
+
+    “CORS”: Cross-Origin Resource Sharing
+        Cross-origin requests – those sent to another domain (even a subdomain) or protocol or port – require special headers from
+        the remote side.
+
+History
+
+    For many years a script from one site could not access the content of another site.
+    JavaScript also did not have any special methods to perform network requests at that time. It was a toy language to decorate a
+        web page.But web developers demanded more power. A variety of tricks were invented to work around the limitation and make 
+        requests to other websites.
+
+    Tricks used to make cross origin requests in past - 
+
+        1)using forms - Form was created in iframe submitted. Uisng some tricks, somehow we were able to read data receiced from
+            server in frame.
+
+        2)Using Scripts - It’s possible to execute a script from any website.
+            “JSONP (JSON with padding)” protocol was used.
+
+            If a website, e.g. another.com intended to expose data for this kind of access, then a so-called “JSONP (JSON with 
+                padding)” protocol was used.
+
+            a)we define a function with a given name.
+            b)we inject a script tag into DOM, with src set to a url from where we want to fetch info. in query params we give
+                name fo function.
+            c)server generates a script, whch will call given function with required data.
+            d)when this remote script runs, our function is called.
+
+        That works, and doesn’t violate security, because both sides agreed to pass the data this way. And, when both sides agree,
+        it’s definitely not a hack. There are still services that provide such access, as it works even for very old browsers.
+
+    After a while, networking methods appeared in browser JavaScript.
+    At first, cross-origin requests were forbidden. But as a result of long discussions, cross-origin requests were allowed, but 
+    with any new capabilities requiring an explicit allowance by the server, expressed in special headers.
+
+CORS -
+    2 types of CORS request -
+        a)safe
+            1)method - get,post or head
+            2)headers -
+                accept
+                accept-language
+                content-language
+                content-type - with the value application/x-www-form-urlencoded, multipart/form-data or text/plain.
+        b)All others - request other from safe request.When we try to make a unsafe request, the browser sends a special 
+            “preflight” request that asks the server – does it agree to accept such cross-origin requests, or not?
+            And, unless the server explicitly confirms that with headers, an unsafe request is not sent.
+
+    The essential difference is that a safe request can be made with a <form> or a <script>, without any special methods.
+    So, even a very old server should be ready to accept a safe request.
+
+
+
+CORS for Safe Request -
+    a)If a request is cross-origin, the browser always adds the Origin header to it.Origin header contains exactly the origin
+        (domain/protocol/port), without a path.
+
+    b)The server can inspect the Origin and, if it agrees to accept such a request, add a special header Access-Control-Allow-
+        Origin to the response.That header should contain the allowed origin (in our case https://javascript.info), or a 
+        star *. Then the response is successful, otherwise it’s an error.
+
+
+    The browser plays the role of a trusted mediator here:
+
+        a)It ensures that the correct Origin is sent with a cross-origin request.
+        b)It checks for permitting Access-Control-Allow-Origin in the response, if it exists, then JavaScript is allowed to 
+            access the response, otherwise it fails with an error.
+
+    Response Headers -
+        For cross-origin request, by default JavaScript may only access so-called “safe” response headers:
+
+            Cache-Control
+            Content-Language
+            Content-Length
+            Content-Type
+            Expires
+            Last-Modified
+            Pragma
+        Accessing any other response header causes an error.
+    Access-Control-Expose-Headers header - It contains a comma-separated list of unsafe header names that should be made 
+        accessible.
+
+
+CORS for Unsafe Request -  
+
+    Step -1 (Preflight Request)
+
+        the browser does not make such requests right away. First, it sends a preliminary, so-called 
+        “preflight” request, to ask for permission.A preflight request uses the method OPTIONS, no body and three headers:
+
+        Access-Control-Request-Method header has the method of the unsafe request.
+        Access-Control-Request-Headers header provides a comma-separated list of its unsafe HTTP-headers.
+        Origin header tells from where the request came. (such as https://javascript.info)
+
+    Step -2 (Preflight Response)
+        If the server agrees to serve the requests, then it should respond with empty body, status 200 and headers:
+
+            Access-Control-Allow-Origin must be either * or the requesting origin, such as https://javascript.info, to allow it.
+            Access-Control-Allow-Methods must have the allowed method.
+            Access-Control-Allow-Headers must have a list of allowed headers.
+            Access-Control-Max-Age may specify a number of seconds to cache the permissions. So the browser won’t have to send a 
+                preflight for subsequent requests that satisfy given permissions.
+
+        If headers are matched then communication is allowed,otherwise an error is triggered.
+        If the server expects other methods and headers in the future, it makes sense to allow them in advance by adding them to 
+            the list.
+
+    Step -3 (Actual Request)
+        When the preflight is successful, the browser now makes the main request. The process here is the same as for safe requests.
+        Request has Origin header.
+
+    Step- 4(Actual Response)
+        The server should not forget to add Access-Control-Allow-Origin to the main response. A successful preflight does not 
+        relieve from that.
+
+        Then JavaScript is able to read the main server response.
+
+
+Credentials
+
+    A cross-origin request initiated by JavaScript code by default does not bring any credentials (cookies or HTTP 
+        authentication).
+
+    Why?
+
+    That’s because a request with credentials is much more powerful than without them. If allowed, it grants JavaScript the 
+        full power to act on behalf of the user and access sensitive information using their credentials.
+
+    Does the server really trust the script that much? Then it must explicitly allow requests with credentials with an 
+        additional header.
+
+    To send credentials in fetch, we need to add the option credentials: "include", like this:
+
+    fetch('http://another.com', {
+        credentials: "include"
+    });
+    
+    Now fetch sends cookies originating from another.com with request to that site.
+
+    If the server agrees to accept the request with credentials, it should add a header Access-Control-Allow-Credentials: true
+    to the response, in addition to Access-Control-Allow-Origin.
+
+    Please note: Access-Control-Allow-Origin is prohibited from using a star * for requests with credentials. Like shown above, 
+    it must provide the exact origin there. That’s an additional safety measure, to ensure that the server really knows who it 
+    trusts to make such requests.

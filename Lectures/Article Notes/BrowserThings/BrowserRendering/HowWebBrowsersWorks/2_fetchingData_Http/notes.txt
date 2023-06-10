@@ -1,0 +1,17 @@
+HTTP - THis is protocol for sending data over internet.URL parts -
+    1)scheme - http or https
+    2)domain - example.com
+    3)path
+    4)query
+    5)fragment
+
+
+    HTTP header fields
+
+
+    The response for this initial request contains the first byte of data received. Time to First Byte (TTFB) is the time 
+        between when the user made the request (by typing the website's name in the address bar) and the receipt of the 
+        first packet of HTML (which is usually 14kb).
+
+
+TCP Slow Start and congestion algorithms

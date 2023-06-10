@@ -1,0 +1,18 @@
+how Harsing of html starts. harsing is done by browser engine. diffrent browser engines -
+    chrome - blink
+    safari - webkit
+
+Even if the request page's HTML is larger than the initial 14KB packet, the browser will begin parsing and attempting to 
+    render an experience based on the data it has.
+
+
+first bytes are converted into characters using character encoding specified in html.
+then bytes are convered into tokens.
+tokens are converted into nodes.
+the node into DOM Tree.
+
+
+ When the parser will encounter non-blocking resources (for example images), the browser will request those images from the
+ server and continue parsing. On the other hand, if it encounters blocking-resources (CSS stylesheets, Javascrpt files added
+ in the <head> section of the HTML or fonts added from a CDN ), the parser will stop execution until all those blocking
+ resources are downloaded.

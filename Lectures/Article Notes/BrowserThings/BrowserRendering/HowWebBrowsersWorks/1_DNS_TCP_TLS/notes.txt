@@ -1,0 +1,55 @@
+1)DNS Lookup - After this initial lookup, the IP address will probably be cached for a while, so next visits on the same website
+    will happen faster since there's no need for a DNS lookup (remember, a DNS lookup only happens the first time we visit a 
+    website).
+2)TCP (Transmission Control Protocol) Handshake - It is protocol which is for communicating between 2 computers on web.
+    It is designed to send packets (of data) across the Internet and ensure the successful delivery of data and messages over 
+    networks.
+
+    The TCP Handshake is a mechanism designed so that two entities (in our case the browser and the server) that want to pass
+    information back and forth to each other can negotiate the parameters of the connection before transmitting data.
+
+
+    TCP is designed to send information in bytes over network and is designed to deliver the information on web.
+    It starts sending information in small packets and waits for broser ackowldgement to send next one. first packet is of 
+    size 14 kb.TCP three-way handshake (also called SYN-SYN-ACK, or more accurately SYN, SYN-ACK, ACK,
+    
+        1)SYNK -browser sends message to server that it wants to open a connection.
+        2)SYNK-ACK -server accepts it and opens the connection, and sends a message back to browser saying it also wants to open 
+            a connection.
+        3)ACK - browser again sends a message that connection has been opened.
+
+3)TLS Negotiation - For secure connections established over HTTPS, another handshake is needed. This handshake (TLS negotiation)
+    determines which cipher will be used to encrypt the communication, verifies the server and establishes that a secure 
+    connection is in place before beginning the actual transfer of data.
+
+    Successor of SSL. decides the cipher to use. steps involved -
+    
+    1)browser says hello - browser sends message which has -
+        a)which TLS version and cipher suite it supports 
+        b)string of random bytes known as the client random.
+
+    2)Server hello and certificate - The server sends a message back, which has -
+        a)Server's SSL certificate
+        b)Server's chosen cipher suite
+        c)String of random bytes called server random
+
+    3)Verification and Premaster Secret - 
+        a)Client verifies the certificate with authority that issued it.This way the browser can be sure that the server is who 
+            it says it is.
+        b)Premaster Secret - Client again sends a random string,but encrypts it with public key which browser takes from SSL
+            certificate.this can only be decrypted with private key by browser.
+
+    4)The server decrypts the premaster secret.
+    5)The browser and server generate session keys from the client random, the server random and the premaster secret.
+    6)Finished - first client and then browser sends message to each other stating that they have finished.
+    7)The handshake is completed and communication can continue using the session keys.
+
+    
+    
+    
+
+
+    3)browser verifies the certificate with issuing authority and sends a string which encyrted by key which is certificate.
+        this is called premaster secret.
+    4)server decrpts this key.
+    5)bith client and server generates session keys.

@@ -11,14 +11,14 @@ In many ways, “fixed” can be thought of as spicy absolute. It's very similar
 
 default positioning - 
 
-    If we do not give any left,right,top and bottom properties then by default fixed position element will be at its default
+    If we do not give any left,right,top and bottom Properties then by default fixed position element will be at its default
         position if no position property would have been applied.however it is taken out from document flow.
 
 percentage values - these are based on viewport width and height. not on
     
     
-Incompatibility with certain CSS properties
-    a)if an ancestor (parent, grandparent, …) uses the transform property, it stops being locked to the viewport.
+Incompatibility with certain CSS Properties
+    a)If an ancestor (parent, grandparent, …) uses the transform property, it stops being locked to the viewport.
         Here's what's happening here: By applying a transform to .container, it becomes the containing block for this 
         fixed-position child. As a result, it functions like an absolutely-positioned child.
 

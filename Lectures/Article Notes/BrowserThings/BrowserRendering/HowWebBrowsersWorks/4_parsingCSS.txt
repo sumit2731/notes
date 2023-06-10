@@ -1,0 +1,7 @@
+The browser does something called selector machting which means that each set of styles will be matched against all nodes
+    (elements) on the page.
+
+The browser starts with the most general rule applicable to a node (e.g: if a node it's the child of the body element, then 
+all body styles are inherited by that node) and then recursively refines the computed styles by applying more specific rules.
+This is why we say that the style rules are cascading.
+see figure 1 for cssom.

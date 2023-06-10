@@ -1,0 +1,40 @@
+COMBINING THE DOM WITH THE CSSOM
+
+    The browser will start doing its magic at the root of the DOM tree and traverse every visible node. Some of the nodes,
+    like script or meta tags are not visible, so they are ignored. There are also nodes that will be hidden with the use of
+    CSS (the display: "none" property for example) and they will also be ignored. We are only interested in the visible nodes
+    because only they matter for the input on the screen.
+
+    For each visible node that's found in the DOM, the coresponding rules will be found in the CSSOM and they will be applied.
+
+
+THE LAYOUT (REFLOW) STAGE
+
+        The output of this process is a box like model which captures exactly where each element needs to be on a screen and
+        its size. After this step is finished, the output is ready to be passed to the next step called the painting stage.
+
+
+Painting
+
+    To ensure repainting can be done even faster than the initial paint, the drawing to the screen is generally broken down
+    into several layers. If this occurs, then compositing is necessary.
+
+
+LAYERING AND COMPOSITING
+
+    Traditionally, web browsers relied entirely on the CPU to render web page content. But nowadays even the smallest devices 
+    have performant GPUs, so the attention has turned on finding ways to use this piece of hardware to achieve better 
+    performance.
+
+    Compositing is a technique to separate parts of a page into layers, painting them separately and composite as a page in a
+    separate thread called the compositor thread. When sections of the document are drawn in different layers, overlapping each
+    other, compositing is necessary to ensure they are drawn to the screen in the right order and the content is rendered 
+    correctly.
+
+    Generally, only specific tasks get redirected to the GPU and those are the tasks that can be handled by the compositor 
+    thread alone. Read from article.
+
+
+
+
+

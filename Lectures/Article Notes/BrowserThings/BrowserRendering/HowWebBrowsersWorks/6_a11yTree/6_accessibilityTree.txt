@@ -1,0 +1,5 @@
+The accessibility tree is built using the DOM and it will be later used by the assistive devices to parse and interpret the 
+content of the webpage we are visiting.ACT is like a semantic version of the DOM and it gets updated every time the DOM gets
+updated. Each DOM element that needs to be exposed to assistive technologies will have a corespondent node in the ACT. Until
+the ACT is not built.
+see figure 1

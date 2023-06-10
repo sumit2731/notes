@@ -1,5 +1,12 @@
 response headers -
-    content-type - text/html (type of response content). here type of content of response.
+    content-type - The Content-Type representation header is used to indicate the original media type of the resource (prior to
+        any content encoding applied for sending).
+
+        In responses, a Content-Type header provides the client with the actual content type of the returned content. This 
+        header's value may be ignored, for example when browsers perform MIME sniffing; set the X-Content-Type-Options header
+        value to nosniff to prevent this behavior.
+
+    Content-Language - Accept- Language
     
     cookie -
 
@@ -67,11 +74,36 @@ response headers -
                     cookies attributes - marking all cookies with the secure attribute and providing automatic redirects
                      from HTTP pages to their HTTPS counterparts.
         
+        X-Content-Type-Options response HTTP header-This is a marker used by the server to indicate that the MIME types 
+            advertised in the Content-Type headers should be followed and not be changed. The header allows you to avoid MIME
+            type sniffing by saying that the MIME types are deliberately configured.
 
 
 request headers -
+    accept: text/html - The Accept request HTTP header indicates which content types, expressed as MIME types, the client is 
+        able to understand. The server uses content negotiation to select one of the proposals and informs the client of the 
+        choice with the Content-Type response header.Browsers set required values for this header based on the context of the
+        request. For example, a browser uses different values in a request when fetching a CSS stylesheet, image, video, or a
+        script.
+
+        example -
+            Accept: text/html
+
+            Accept: image/*
+
+            // General default
+            Accept: */*
+
+            // Default for navigation requests
+            Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8
+    Accept-Language -This request HTTP header indicates the natural language and locale that the client prefers. The server uses
+        content negotiation to select one of the proposals and informs the client of the choice with the Content-Language 
+        response header. Browsers set required values for this header according to their active user interface language. Users
+        rarely change it, and such changes are not recommended because they may lead to fingerprinting.
+
+        Accept-Language: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
+    
     origin - tells from where the request came. (such as https://javascript.info)
-    accept: text/html - What type of response this request accepts.
     content-type - application/json - what we are sending to the server.
     
     CORS-
@@ -84,10 +116,10 @@ request headers -
             Content-Language,
             Content-Type with the value application/x-www-form-urlencoded, multipart/form-data or text/plain.
         
-        Access-Control-Request-Method - header has the method of the unsafe request.
+        Access-Control-Request-Methods - header has the method of the unsafe request.
         Access-Control-Request-Headers - header provides a comma-separated list of its unsafe HTTP-headers.
 
-        Referer - The Referer HTTP request header contains an absolute or partial address of the page that makes the 
+    Referer - The Referer HTTP request header contains an absolute or partial address of the page that makes the 
             request.can be controlled by response header - Referrer Policy
 
 

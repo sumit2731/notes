@@ -1,14 +1,20 @@
-function* pseudoRandom(number) {
-  let previous = number;
-  while(true) {
-    previous = previous* 16807 % 2147483647;
-    yield previous;
-  }
-}
+let element = document.getElementById('sumit');
+
+let observer = new MutationObserver((mutationRecords) => {
+  console.log(mutationRecords);
+});
+
+observer.observe(element,{
+  childList: true, // observe direct children
+  subtree: true, // and lower descendants too
+  characterDataOldValue: true // pass old data to callback
+});
 
 
-let generator = pseudoRandom(1);
+let span = document.createElement('span');
+span.id = 'span1';
+element.append(span);
 
-console.log(generator.next().value); // 16807
-console.log(generator.next().value); // 282475249
-console.log(generator.next().value); // 1622650073
+let span2 = document.createElement('span');
+span2.id = 'span2';
+span.append(span2);
