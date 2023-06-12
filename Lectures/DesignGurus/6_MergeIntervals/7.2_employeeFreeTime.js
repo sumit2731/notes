@@ -126,7 +126,7 @@ let input = [
   }
   console.log();
   
-  input = [
+input = [
     [new Interval(1, 3)],
     [new Interval(2, 4)],
     [new Interval(3, 5), new Interval(7, 9)],

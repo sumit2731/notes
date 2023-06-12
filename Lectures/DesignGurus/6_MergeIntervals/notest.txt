@@ -7,3 +7,20 @@
     see simliar problems for this. they tend to be non intitutive.
 
 7)not able to solve question. course solution offers diffrent approaches.
+
+
+
+2nd try -
+
+1)solved
+2)solved it
+3)missed one condition -
+    Even if intervals overlap, we need to increment only 1 pointer, i increment both.
+    also instead of writing long condition in if statement, we can use variables.
+
+4)I solved it, even implemented heap by myself. it was just that course solution was bit shrter. approach was same.
+    see similar problem, this solution might not be that obvious if we read those statements.
+
+5)solved
+6)solved
+7)solved after seeing the algo, that too made some mistake

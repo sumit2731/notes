@@ -22,7 +22,7 @@ flex-basis -
     width can.Both width and flex-basis will change the hypothetical size of an element, but width can set that value below the 
     minimum content size. flex-basis can't.
 
-    when both width and flex-basis atre samller than min-content width, then whatever is larger is taken into account.
+    when both width and flex-basis are samller than min-content width, then whatever is larger is taken into account.
 
 
 flex-grow - it comes to picture if there is extra spave in container after hypothtical size is given to all flex-items.

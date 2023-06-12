@@ -1,0 +1,2 @@
+Regsiter with main page - 
+    navigator.serviceWorker.register("/game/kolohe.js")

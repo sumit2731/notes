@@ -1,0 +1,158 @@
+questions to be answered -
+    1)justify -content and align-items, why some proprties differ.
+    2)why noo justify self?
+        When we're talking about alignment in the cross axis, each item can do whatever it wants. In the 
+        primary axis, though, we can only think about how to distribute the group.
+Why FlexBox 
+    Flexbox is all about arranging a group of items in a row or column, and giving us a ridiculous amount of control over the
+    distribution and alignment of those items. As the name suggests, Flexbox is all about flexibility. We can control whether
+    items grow or shrink, how the extra space is distributed, and more.
+
+Flexbox vs CSS
+    Flexbox still reigns supreme when it comes to dynamic, fluid UIs that arrange items in a vertical or horizontal list. We'll
+    see an example in this guide, the deconstructed pancake, that can't easily be accomplished with CSS Grid.
+
+
+Flex direction
+    In Flexbox, everything is based on the primary axis. The algorithm doesn't care about vertical/horizontal, or even 
+    rows/columns. All of the rules are structured around this primary axis, and the cross axis that runs perpendicularly.
+
+
+Alignment
+
+    justify — to position something along the primary axis.
+    align — to position something along the cross axis.
+    content — a group of “stuff” that can be distributed.
+    items — single items that can be positioned individually.
+
+    bow we get the names justify-content, align-items.
+    also align-items sets the align-self on all items.
+    That is why there is no justify-items and justify-self.
+
+HypoThetical Size
+
+    In Flexbox, however, the width property is implemented differently. It's more of a suggestion than a hard constraint.
+    The specification has a name for this: the hypothetical size. It's the size an element would be, in a perfect utopian
+    world, with nothing getting in the way.
+
+Growing and shrinking
+
+    flex-basis - 
+        In a Flex row, flex-basis does the same thing as width. In a Flex column, flex-basis does the same thing as height.
+        As we've learned, everything in Flexbox is pegged to the primary/cross axis.
+
+        width and height don't follow this rule, though! width will always affect the horizontal size. It doesn't suddenly 
+        become height when we flip flex-direction from row to column.And so, the Flexbox authors created a generic “size” 
+        property called flex-basis. It's like width or height, but pegged to the primary axis, like everything else.
+
+        there is a slight diffrence between width and flex-basis.Also, width can reduce an item below its minimum size, while
+            flex-basis can't.
+
+    Flex Grow(depends upon relative flex-grow) -The xtra space left after all items have hypothetical size is divided amoung 
+        childern in ratio of their flex-grow.
+
+        Hypothetical_Size       300     150
+        Actual_Size             525     375
+        Extra Space Given       225     225
+        flex-grow               1       1
+
+
+        Hypothetical_Size       300     150
+        Actual_Size             600     300
+        Difference              300     150
+        flex-grow               2       1
+
+
+        Hypothetical_Size       300     150
+        Actual_Size             450     450
+        Difference              150     300
+        flex-grow               1       2
+
+
+    Flex Shrink(depends on relative ration of flex-basis and flex-shrink) -
+        Elements cannot shrink after min-width/min-height
+
+        Hypothetical_Size       300     150
+        Actual_Size             200     100
+        Difference              100     50
+        Percentage Shrink       33%     33%
+        flex-shrink               1       1
+
+
+        Hypothetical_Size       300     150
+        Actual_Size             180     120
+        Difference              120     30
+        Percentage Shrink       40%      20%
+        flex-shrink               2       1
+
+
+        Hypothetical_Size       300     150
+        Actual_Size             225     75
+        Difference              75      75
+        Percentage Shrink       25%     50%
+        flex-shrink               1       2
+
+        ratio of shrink space -
+            (width1/width2) * (flex-shrink-1/flex-shrink-2)
+
+
+        Note - when flex-shrink is same,  width/height ratio between flex-items is preserved.if item1 was 2x of width of item2.
+            then even after shrinking this ite,1 will be 2x. i.e preserving the ratio between both elements.percentage by which
+            each flex-items is reduced is same. reduced by percentage -
+                (hyptheticalSize - Actual_Size)/hyptheticalSize
+            see this - https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#flex-shrink-9
+
+Preventing Shrinking -
+    2 ways -
+        1)set flex-basis to 0(preferred one) - The Flexbox algorithm will treat flex-basis (or width) as a hard minimum limit.
+        2)set min-wdith explicitly(over writes default min-width)
+
+
+
+min-size gotcha -
+    flex-shrink cannot shrink elements beyond min-size. The content will overflow rather than shrink further.
+
+    we saw that input has a implicit min-width set.In some other cases it can be flex-items content.For an element containing 
+        text, the minimum width is the length of the longest unbreakable string of characters.
+
+    As a solution we can use min-width:0, but use it responsibility as min-width exist for a reason.
+
+    By setting min-width: 0px directly on the Flex child, we tell the Flexbox algorithm to overwrite the “built-in” minimum 
+        width. Because we've set it to 0px, the element can shrink as much as necessary.
+
+    
+
+
+Auto Margins
+
+    This serves as a justify-self. when flex-direction is row, it can move single flex-item and items after it in a direction.
+    In flex-direction column, it can do so for items in vertical direction also.
+
+    https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#the-minimum-size-gotcha-11
+
+Wrapping -
+
+    Most of the time when we work in two dimensions, we'll want to use CSS Grid, but Flexbox + flex-wrap definitely has its 
+    uses! This particular example showcases the “deconstructed pancake” layout, where 3 items stack into an inverted pyramid
+    on mid-sized screens.
+    
+    When we set flex-wrap: wrap, items won't shrink below their hypothetical size. At least, not when wrapping onto the next 
+    row/column is an option!
+
+    With flex-wrap: wrap, we no longer have a single primary axis line,each row acts as its own mini flex container.
+    All of the rules we've learned so far continue to apply, within this reduced scope. justify-content, for example, will 
+    distribute the two pieces on each stick.align-items will move each item up or down within the invisible box that wraps
+    around each row.
+
+    we have these two rows within a single Flex context! The cross axis will now intersect two rows, not one. And so, we can't
+     move the rows individually, we need to distribute them as a group.we're dealing with content, not items. 
+     so we can use align-content property now.
+
+    How does align-items works in case of multiple rows?
+        Each row is its own mini Flexbox environment. align-items will move each item up or down within the invisible box that
+        wraps around each row. for alignning all rows align-content property comes into picture.
+
+
+
+
+

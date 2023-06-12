@@ -25,9 +25,11 @@ function find_employee_free_time(schedules) {
       allIntervals.push(interval);
     }
   }
+  //nk(lognk)
   allIntervals.sort((intA, intB) => (intA.start - intB.start));
 
   let start = allIntervals[0].start, end = allIntervals[0].end;
+  //nk
   for (let i = 1; i < allIntervals.length; i++) {
     let currentInterval = allIntervals[i];
     if (currentInterval.start > end) {
@@ -37,6 +39,43 @@ function find_employee_free_time(schedules) {
     } else {
       end = Math.max(end, currentInterval.end);
     }
+  }
+  // TODO: Write your code here
+  return result;
+}
+
+//my solution better than course solution1
+
+function find_employee_free_time(schedules) {
+  let result = [], currentIntervals = [], intervalNo = 0, lastEnd;
+  //n
+  while(true) {
+    //k
+    for(let schedule of schedules) {
+      if(schedule.length-1 >= intervalNo) {
+        currentIntervals.push(schedule[intervalNo]);
+      }
+    }
+    if(currentIntervals.length == 0) break;
+    //k logk
+    currentIntervals.sort((a,b) => a.start - b.start);
+    let start = currentIntervals[0].start, end = currentIntervals[0].end;
+    if(lastEnd < start) result.push(new Interval(lastEnd,start));
+    //k
+    for(let i = 1 ; i < currentIntervals.length; i++) {
+      let currentInterval = currentIntervals[i];
+      if(currentInterval.start > end) {
+        result.push(new Interval(end, currentInterval.start));
+        start = currentInterval.start;
+        end = currentInterval.end
+      }
+      else {
+        end = Math.max(end,currentInterval.end);
+      }
+    }
+    currentIntervals = [];
+    intervalNo++;
+    lastEnd = end;
   }
   // TODO: Write your code here
   return result;
