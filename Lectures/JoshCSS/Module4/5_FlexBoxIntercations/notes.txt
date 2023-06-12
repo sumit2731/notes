@@ -1,0 +1,49 @@
+1)when flex childern has positioned layout
+    When there is a conflict between layout modes, positioned layout always wins. Our help button will become fixed to the 
+    bottom-right corner of the viewport, and the .row Flex container will ignore it, and act as though it only has one child 
+    (<main>).
+
+2)Margin collapse is exclusive to Flow layout. It doesn't happen when elements are laid out inside a flexbox parent.
+
+3) Flexbox algorithm also supports z-index. If our element is being laid out with Flexbox, it uses z-index as if it was rendered with Positioned 
+    layout. Positioned, Flexbox, and Grid all implement support for z-index. Flow layout does not.
+
+
+
+Exercise 1 -
+    Problem - We have content in 2 columns. content in columns 2 has more height than content in column1. we have 
+        following constratints -
+
+        a)Two equal width columns
+        b)The container should be the height of the first column.
+        c)The second column should scroll vertically, since it won't fit in the shorter container.
+
+
+    Solution 1 -
+        container is given position:relative.
+        column2 is given position: absoloute. now height of parent is determined only by column1.
+
+        arrange column2 on right hand side of container and give it height that is 100%(now parent has height so we can use %) -
+
+        column1 is given margin-right: 50%. column 2 is given width:50% and positioned with right:0, top:0
+        column2 is given height: 100% and overflow:auto.
+
+        https://codepen.io/guglielmodanna/pen/bGqqPbG
+
+        Note - This solution will work even without flexbox.this is genral thing. but here main constraint is no of items,
+            needs to be known in advanced.
+
+    Solution 2-
+        Equal columns - use flex-basis:0 and flex-grow:1.
+        
+        col2 is given position:relative and overflow:auto. ol inside col2 is given position:absolute.
+
+        Since ol has position absolute, its content is not considered to be part of flexbox. it is not considered in
+            deciding height of container. but other parts of col has say in height of container. since col1 height
+            will always be more that col2 height -minus ol height. container height is decided by col1.
+
+        once we get the container height, because of align-items:stretch, col2 has haight equal to cotainer.
+        this is ol has has same height. for rest content, we have overflow.
+
+        https://stackblitz.com/edit/js-fagkqf?file=index.html
+            

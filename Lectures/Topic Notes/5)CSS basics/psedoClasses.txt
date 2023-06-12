@@ -48,6 +48,8 @@
 
         p:nth-of-type(-n +3) {}
 
+4)selector:last-of-type 
+    selects the last occurance of element with provided selector in its contaoner
 3)selector:first-child
 
     selects the element with given selector which is also first child of its parent.

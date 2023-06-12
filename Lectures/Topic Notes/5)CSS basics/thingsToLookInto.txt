@@ -15,3 +15,4 @@ Pending-
 Things to look into-
 1)pseudo classes and pseudo elements
 2)BEM naming convention
+3)layers.
