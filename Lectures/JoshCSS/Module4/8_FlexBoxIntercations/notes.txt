@@ -42,8 +42,14 @@ Exercise 1 -
             deciding height of container. but other parts of col has say in height of container. since col1 height
             will always be more that col2 height -minus ol height. container height is decided by col1.
 
-        once we get the container height, because of align-items:stretch, col2 has haight equal to cotainer.
-        this is ol has has same height. for rest content, we have overflow.
-
+        once we get the container height, because of align-items:stretch, col2 has height equal to container.
+        since ol has height larger than its parent, now overflow of container kicks in.
+        
         https://stackblitz.com/edit/js-fagkqf?file=index.html
+    
+    Solution 3 -
+        1)Equal width column - flex-basis: 0, flex-grow:1.
+        2)Height depends on column1 - Set height of column2 equal to 0. because we have over-flow set on whole container, we
+            will have scroll in cntainer.
+        3)then we used position:sticky to fix position of column1.
             

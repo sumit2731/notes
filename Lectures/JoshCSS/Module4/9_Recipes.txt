@@ -1,0 +1,9 @@
+1)Holy Grail Layout
+2)Stciky work inside flex box.we just need to chnage default value of align-items from stretch to flex-start. so that sticky 
+    has some space to stick.
+
+    this problem can also be solved by giving height:fit-content to sticky element. as it will overwrite align-items value.
+
+3)cenetring when content overflow
+    we used align-items: center. this centers the content even when flex-items overflow container.
+    justify-content, also does same.
