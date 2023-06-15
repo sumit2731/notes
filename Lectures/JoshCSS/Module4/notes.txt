@@ -1,1 +1,51 @@
-see exercise 2in 3.3.
+Flexbox Tricks -
+    1)how to handle images in images in flexbox. see exercise 1 of 3.2.
+        1)intrinsic width/height of image is min-wdith/min-height.So if even with flex-basis: 0, image cannot shrink below 
+            this size and we will have scroll bar.
+        2)in order to fix it wrap image in container and set width: 100%. now container will scale with flexbox and width will
+            overwrite intrinsic width of image.
+    2)Give very high value of flex-shrink, which gives a feeling that other item is not shrinking.
+        see execrcise 2 of 3.3
+    3)Using margin:auto to move flex-items along main axis.
+    4)If we do not want one flex-item to contribute to height of container we can move it out of flow. we can take it at one
+        more nested level by making some content of flex-items go out of flow, then flex-items will not take that content into
+        account and height of flex-container will not be determined by it.see section 8, execrcise 1.
+
+    5)Position sticks works in flex box, just make that by default height of flex-items is determined by align-items:stretch.
+        so we wnt see anything. use use align-items:flex-start to see changes in place.
+        alternate things is to give height:fit content to flex-items. height will overwrite align-items.
+
+    6)justify-content amd align-content centers the element in flex contair, even when items overflow from container.
+
+
+
+From workshop -
+
+1)exercise 2 - 
+    Problem - we want 1 column to be ceneterd. but within left side of column there is some item placed. from corners
+        it should be centered.
+    Solution - Insert 2 columns with flex:1. layout will be -
+        <Filler><column><Filler>
+        now you can place your first item within Filler1. that column will always be ceneterd.
+
+2)exercise 3 -
+    Here we learnnt that,if flex-container has align-items:baseline, then first word of all flex-items comes in same line.
+
+
+3)execrcise 4 -
+
+    a)We had decisison of creating a extra wrapper in Shoegrid.js and add flexbox over there, this is because we might reuse Shoegrid in
+        non-flexbox related contexts.
+    b)here see the trick of how we used margin property as replacement of gap(this is needed if we want to supported older 
+        browsers).for side elements we used negative margin in container to cancel the effect.
+
+
+
+
+4)Exercise 5 -
+    This was not related to flexbox but was related to styled components.
+
+    ways to make styles dynamic -
+        a)using css variables(set different values using style prop and then refer to those values in temporal literals)
+        b)composition, define one general component, then add or overwrite some additional styles.
+

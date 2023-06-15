@@ -1,23 +1,23 @@
-justify-content -
-    flex-start
-    flex-end
-    center
-    space-between
-    space-around
-    space-evenly(not avalible in IE)
+Video1 - It is everything that I already new.
+
+    justify-content -
+        flex-start
+        flex-end
+        center
+        space-between
+        space-around
+        space-evenly(not avalible in IE)
 
 
-align-items -
-    flex-start
-    flex-end
-    center
-    stretch
-    baseline
+    align-items -
+        flex-start
+        flex-end
+        center
+        stretch
+        baseline
 
-
-
-
-
+Video 3 - centering a flex-items. trick here was that container needs to have some height.we saw why setting 100vh solution,
+    is not good for mobile.
 
 one thing - only items of main container are put into the flex layout mode. their childern of children are not in flexbox layout,
     it means flexbox does that have recursive effect.

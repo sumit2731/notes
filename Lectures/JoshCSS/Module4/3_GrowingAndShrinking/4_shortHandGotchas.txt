@@ -1,5 +1,8 @@
-always use flex proprty do not use width or height.
+always use flex property do not use width or height.
 
 This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis)
-    are optional. The default is 0 1 auto, but if you set it with a single number value, like flex: 5;, that changes the flex-basis
-    to 0%, so it’s like setting flex-grow: 5; flex-shrink: 1; flex-basis: 0%;.
+    are optional. The default is 0 1 auto, but if you set it with a single number value, like flex: 5;, that changes the 
+    flex-basis to 0%, so it’s like setting flex-grow: 5; flex-shrink: 1; flex-basis: 0%;.
+
+Also if we use flex-shorthand first and then set some width, it will not work as flex-basis overwrite sthe width and flex:1
+    sets the flex-basis to 0.

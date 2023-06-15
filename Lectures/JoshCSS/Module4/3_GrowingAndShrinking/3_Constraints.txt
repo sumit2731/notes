@@ -1,10 +1,10 @@
 In flex-grow,flex-shrink,flex-basis all respect min-width/max-width, min-height/max-height.
 
-In Main Axis we set the hypothetical width, height. actualu height depends on flex-grow, flex-shrink and container size. but it will
-    constraint by min-width/max-width.
+In Main Axis we set the hypothetical width, height. actualu height depends on flex-grow, flex-shrink and container size. but it
+    will constraint by min-width/max-width.
 
-In Cross axis we set align-items is stretch but a height is given then that height will be respected. similarly min/max-height is
-    also respected.
+In Cross axis we set align-items is stretch but a height is given then that height will be respected. similarly min/max-height 
+    is also respected.
 
 
 Exercise 1 -
@@ -12,25 +12,21 @@ Exercise 1 -
     here again wanted one column to be 1/3rd of total width. so used flex-basis:0 trick. to solve it. also we gave max-width to both
         columns.
 
-Exercise 2 -
-    This is important exercise. see it.
+Exercise 2(imp) -
+    Problem -
+        1)we have 3 columns as shown in video. when one column disappears, then for some time, right side bar should shrink.
+            after some shrinking, then it stops and then middle columns starts shrink.middle content is main area.
+        2)At very large width only middle one shrinks. but after shrinking for some time, then main stops and nav and aside
+            one starts shrinking.
 
+    Solution -
+        why one column stops shrinking(main column is not shrinking for some time when first column disappears) -
+            a)It has already its min-width. now this cannot be case beacuse after some time column again starts shrinking.
+            b)other column has very high value of flex-shrinking.
 
+        so situtaion is when first column disapapears, 3rd column is between its flex-basis and min-width. middle column
+            is also at flex-basis.since flex-shrink of 2nd column is very so it starts shrinking. after some time it hits
+            its min size, so it stops shrinking and middle column starts shrinking.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        so we need to set flex-basis for both columns in such a way when one column disapears width is slightly less than their
+         flex basis so that shrinking is happening.

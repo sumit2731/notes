@@ -1,15 +1,10 @@
-we want to have equal size columns so we set flex-basis:0 and flex:grow to one. but when we decrease the window size, items 
-    cannot shrink below their min-width(length of longest word) and we had scroll bar, in order to avoid this, we used 
-    flex-wrap:wrap property,now instead of having scroll bar some flex-items go to next row.note here flex-basis:0, content 
-    moves to next row purely depending upon min-width.
+THis is how flex-wrap works -
+    a)When item has a flex-basis set to non zero value, here when we have multiple items in row, insated of shrinking below
+        flex-basis size, they move to next row.item will only shrink where there single item in row.
 
-but really small columns does not look good so we set some flex-basis instead of 0%. now element line wraps when there is not 
-    enough width to give hypothetical size to element.For single element still flex-shrink comes to picture and if flex-shrink
-    is 0 then we will have scroll bar.
-
-but still when there is single element in row it occupies whole row(as we have flex-grow:1 to make columns in same row of equal size)
-    and looks bit weird. there is no perfect solution to this but we can use max-width to make it bit more managable.
-
+    b)when flex-basis is zero,even them flex-item cannot shrink below its min-size, so we will have scroll bar. but with
+        flex-wrap applied, instead of having scroll bar item will go to next row.
+    
 align-items vs align-content
 
     justify - along main axis
@@ -23,7 +18,7 @@ align-items vs align-content
 
 flex-shrink vs flex-wrap
 
-    If we also have flex-shrink with flex-wrap, then sinfle item is in row, it's size will shrink.
+    If we also have flex-shrink with flex-wrap, then single item is in row, it's size will shrink.
     so wrapping is done on basis for flex-basis not on flex-shrink. flex-shrink comes into picture when there is a single item
     in row.
 

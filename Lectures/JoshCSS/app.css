@@ -1,24 +1,12 @@
-body {
-  padding: 32px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .wrapper {
-  border: 2px solid;
-  margin: 16px auto;
-}
-.wrapper {
-  width: 50vw;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-img {
-  display: block;
-  width: 300px;
-  margin-top: 16px;
+
+nav {
+  position: sticky;
+  top: 0;
+}
+
+main {
+  flex: 1;
 }

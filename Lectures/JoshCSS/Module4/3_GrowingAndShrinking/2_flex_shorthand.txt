@@ -1,9 +1,30 @@
+flex takes 3 individual values:
+    flex-grow, as a unitless value (eg. 1)
+    flex-shrink, as a unitless value (eg. 5)
+    flex-basis, as a length unit (eg. 200px)
+
+    flex: 1 will assign flex-grow: 1, but it will also set flex-basis: 0. It won't affect the default value for flex-shrink, 
+        which is 1.()
+
+    if we sepcify only single value then it chnages flex-grow and flex-basis(sets flex-basis to 0).
+    if we specify 2 values , it affects flex-grow, flex-shrink and flex-basis.
+
+
 here we saw the trick to make equal size column, this can be used to divide sapce between any no of columns.
     we set flex-basis: 0 and then use flex-grow:1 to make them equal size.
 
-Exercises -
-    Here we has 3 columns of equal size using flexbox. On very small sizes we noticed that one column stops shrinking first 
-    than others. this is because each column has implicit min-width depending on length of largest word.In solution we solved
-    it using flex-basis:0px. now content started overflowing out from cflex-items.In real life we will solve these by -
-        a)use media queries to use resolution on smaller screens
-        b)use flex wrap to split them across multiple lines on smaller viewports.
+Exercise 1 -
+
+    problem -
+        We had 3 child, each child contains a image and some text. we want to be arrange in 3 equal sized columns.
+        also images should scale depending upon width of columns.
+    solution -
+        regarding image scaling read this - https://courses.joshwcomeau.com/css-for-js/06-typography-and-media/15-flexbox-interactions
+
+        later we saw that for very smaller size, we do not have equal widths.this happens because smallest word in columns
+            is of equal size and flex-basis: 0px, cannot set width smaller than min-content width. we can overcome this problem
+            by setting min-width:0, now columns are always of equal width but now content overflows. which looks ugly.there
+            are 2 solutions to problem -
+
+            a)use flex-wrap, so that each content goes to separate row.
+            b)use @media queries to change layout for smaller screens.

@@ -11,7 +11,7 @@
 
 
 Exercise 1 -
-    Problem - We have content in 2 columns. content in columns 2 has more height than content in column1. we have 
+    Problem - We have content in 2 columns. content in column2 has more height than content in column1. we have 
         following constratints -
 
         a)Two equal width columns
@@ -19,9 +19,11 @@ Exercise 1 -
         c)The second column should scroll vertically, since it won't fit in the shorter container.
 
 
-    Solution 1 -
-        container is given position:relative.
-        column2 is given position: absoloute. now height of parent is determined only by column1.
+    Solution 1(does not need flexbox) -
+        
+        Container is given position:relative.
+        Column2 is given position: absoloute. now height of parent is determined only by column1 as column2 is taken out
+            from document flow.
 
         arrange column2 on right hand side of container and give it height that is 100%(now parent has height so we can use %) -
 
@@ -30,26 +32,32 @@ Exercise 1 -
 
         https://codepen.io/guglielmodanna/pen/bGqqPbG
 
-        Note - This solution will work even without flexbox.this is genral thing. but here main constraint is no of items,
-            needs to be known in advanced.
+        Learning - when child is moved out from document flow,parent does not depends on its height. but child can use %
+            value in height i.e child can use parent's heigth to decides ots own height.
 
-    Solution 2-
+    Solution 2(needs flexbox)-
         Equal columns - use flex-basis:0 and flex-grow:1.
         
-        col2 is given position:relative and overflow:auto. ol inside col2 is given position:absolute.
+        col1 determines container height -col2 is given position:relative and overflow:auto. ol inside col2 is given 
+            position:absolute.That means col2 will not look at ol for its height.its height will only be determined by p tag.but
+            col1 has more height. so height of container is dicdated by col1 only.
 
-        Since ol has position absolute, its content is not considered to be part of flexbox. it is not considered in
-            deciding height of container. but other parts of col has say in height of container. since col1 height
-            will always be more that col2 height -minus ol height. container height is decided by col1.
+            col1 dicdates height, now because of align-items:stretch, col2 has height equal to container.
 
-        once we get the container height, because of align-items:stretch, col2 has height equal to container.
-        since ol has height larger than its parent, now overflow of container kicks in.
-        
+        col2 has scroll:auto, for content exceeding col2 height, we will have scroll bar.
+
         https://stackblitz.com/edit/js-fagkqf?file=index.html
+
+        Learning -
+            1)In flexbox(or in any other layout) if one of child is taken out from flow, it does not dicdate height.
+            2)Even in flex-items if one of child is taken put from flow, it does not dicdate height of flex-iten.
     
-    Solution 3 -
+    Solution 3(Used by josh in course) -
         1)Equal width column - flex-basis: 0, flex-grow:1.
-        2)Height depends on column1 - Set height of column2 equal to 0. because we have over-flow set on whole container, we
-            will have scroll in cntainer.
-        3)then we used position:sticky to fix position of column1.
+        2)Height depends on column1 - Set height of column2 equal to 0.now as flexbox height depends upon its tallest 
+            flex-childern, column1 will dicdate height of container now. but contents of col2 are moving out from container,
+            but still they do not dicdate the height of column.
+        3)col1 should be fixed and col2 should have scroll bar - use overflow:auto on parent, now parent will have scroll bar.
+            but now col1 is also scrolled out.
+        4)fixing col1 - use position:sticky on col1, to fix it.
             

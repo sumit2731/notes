@@ -1,14 +1,9 @@
-questions to be answered -
-    1)justify -content and align-items, why some proprties differ.
-    2)why noo justify self?
-        When we're talking about alignment in the cross axis, each item can do whatever it wants. In the 
-        primary axis, though, we can only think about how to distribute the group.
 Why FlexBox 
     Flexbox is all about arranging a group of items in a row or column, and giving us a ridiculous amount of control over the
     distribution and alignment of those items. As the name suggests, Flexbox is all about flexibility. We can control whether
     items grow or shrink, how the extra space is distributed, and more.
 
-Flexbox vs CSS
+Flexbox vs CSS Grid
     Flexbox still reigns supreme when it comes to dynamic, fluid UIs that arrange items in a vertical or horizontal list. We'll
     see an example in this guide, the deconstructed pancake, that can't easily be accomplished with CSS Grid.
 
@@ -25,7 +20,7 @@ Alignment
     content — a group of “stuff” that can be distributed.
     items — single items that can be positioned individually.
 
-    bow we get the names justify-content, align-items.
+    now we get the names justify-content, align-items.
     also align-items sets the align-self on all items.
     That is why there is no justify-items and justify-self.
 
@@ -45,10 +40,10 @@ Growing and shrinking
         become height when we flip flex-direction from row to column.And so, the Flexbox authors created a generic “size” 
         property called flex-basis. It's like width or height, but pegged to the primary axis, like everything else.
 
-        there is a slight diffrence between width and flex-basis.Also, width can reduce an item below its minimum size, while
-            flex-basis can't.
+        there is a slight diffrence between width and flex-basis.width can reduce an item below its minimum size, while
+            flex-basis can't.Also they differ slightly with respect how they behave on images.
 
-    Flex Grow(depends upon relative flex-grow) -The xtra space left after all items have hypothetical size is divided amoung 
+    Flex Grow(depends upon relative flex-grow) -The extra space left after all items have hypothetical size is divided amoung 
         childern in ratio of their flex-grow.
 
         Hypothetical_Size       300     150
@@ -97,20 +92,20 @@ Growing and shrinking
 
 
         Note - when flex-shrink is same,  width/height ratio between flex-items is preserved.if item1 was 2x of width of item2.
-            then even after shrinking this ite,1 will be 2x. i.e preserving the ratio between both elements.percentage by which
+            then even after shrinking this item1 will be 2x. i.e preserving the ratio between both elements.percentage by which
             each flex-items is reduced is same. reduced by percentage -
                 (hyptheticalSize - Actual_Size)/hyptheticalSize
             see this - https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#flex-shrink-9
 
 Preventing Shrinking -
     2 ways -
-        1)set flex-basis to 0(preferred one) - The Flexbox algorithm will treat flex-basis (or width) as a hard minimum limit.
+        1)set flex-shrink to 0(preferred one) - The Flexbox algorithm will treat flex-basis (or width) as a hard minimum limit.
         2)set min-wdith explicitly(over writes default min-width)
 
 
 
 min-size gotcha -
-    flex-shrink cannot shrink elements beyond min-size. The content will overflow rather than shrink further.
+    flex-shrink cannot shrink elements beyond min-size.
 
     we saw that input has a implicit min-width set.In some other cases it can be flex-items content.For an element containing 
         text, the minimum width is the length of the longest unbreakable string of characters.

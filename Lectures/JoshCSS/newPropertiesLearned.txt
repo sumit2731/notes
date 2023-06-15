@@ -4,3 +4,6 @@ Module 2 -
     overflow:clip
     whitespace: nowrap;
         horizontal overflow
+
+Module 4-
+    object-fit

@@ -1,4 +1,7 @@
-flex-directipn: row | row-reverse| column |column-revrese
+flex-direction: row | row-reverse| column |column-revrese
+    methods -
+        a)flex-direction:row-reverse
+        b)flex-direction:row-reverse, justify-content:flex-end
 
 When we flip the order of flex children, it's important to know that we're only changing things cosmetically.For users who navigate
     with the keyboard and/or use a screen reader, they'll still be going through items in the order laid out in the DOM / written in
@@ -6,7 +9,7 @@ When we flip the order of flex children, it's important to know that we're only 
     it's worth keeping in mind, to make sure we don't accidentally make things worse for them.
 
 other mechanism -
-    order property
+    order property - Higher order flex-items will appear first.default order is 0.
     flex-wrap:wrap-reverse
 
 
@@ -15,5 +18,6 @@ In a world without CSS Grid, these methods would be worth exploring. Honestly, t
 
 
 Exercise -
-    Here we saw how to chnage order of flex-items with order property or flex-direction property and how it can work in our
-     favour that it does not change the order for screenreaders and keyboards. 
+    Here we saw how to change order of flex-items with order property or flex-direction property and how it can work in our
+     favour that it does not change the order for screenreaders and keyboards. we also use of tab-order and why we should
+     only use to make a element not selectable by keyboard.

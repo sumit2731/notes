@@ -1,13 +1,25 @@
-allignment trick for aligning placeholder and input in safari.
+align-items:baseline.
+    this can be used to algn a logo of company to navbar.
+    THis even works with html elements like input and button
+
+
+    Safari bug when there is no text in input box. workarounds -
+        a)use placeholder
+        b)If design does not allow for placeholder, then use empty placeholder.
+        c)align-items:center will do the trick if label and inputsize are of same length.it's good to keep the sizing 
+            consistent anyway. Use font-weight or color to add contrast between them, if desired.
 
 exercise 1 -
+    Here we had 3 items. Bigger item we want to place at center and rest 2 we want to center by baseline.
 
-    See concept of line-height centering(text is always centered in line box,)
-    nested flexboxs
+    Approach1 - use lineheight equal to container, bigger item will be centered. in felx, box use baseline alignment.
+    Apparoach 2(right one) - use nested flex box. outer flexbox centers container. container height is eqal to bigger text.
+        so now bigger item is centered, in inner flexbox use align-items:center.
+    
     mathematical centering vs optical centering(in line more space is left at top than bottom)
 
 align-self proeprty
 
 why justify-self does not exist -
-    We can solve for primary-axis positioning using other properties we'll discover, like flex-grow, flex-shrink, flex-basis, and 
-        order. These properties offer much more flexibility than justify-self would!
+    We can solve for primary-axis positioning using other properties we'll discover, like flex-grow, flex-shrink, flex-basis, 
+        and order. These properties offer much more flexibility than justify-self would. also we have margin trick.
