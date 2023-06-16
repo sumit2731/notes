@@ -1,20 +1,9 @@
 import React from 'react';
-
-const hiddenStyles = {
-  display: 'inline-block',
-  position: 'absolute',
-  overflow: 'hidden',
-  clip: 'rect(0 0 0 0)',
-  height: 1,
-  width: 1,
-  margin: -1,
-  padding: 0,
-  border: 0,
-};
+import styled from 'styled-components/macro';
 
 const VisuallyHidden = ({ children, ...delegated }) => {
   const [forceShow, setForceShow] = React.useState(false);
-  
+
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       const handleKeyDown = (ev) => {
@@ -22,28 +11,37 @@ const VisuallyHidden = ({ children, ...delegated }) => {
           setForceShow(true);
         }
       };
-      const handleKeyUp = (ev) => {
-        if (ev.key === 'Alt') {
-          setForceShow(false);
-        }
+
+      const handleKeyUp = () => {
+        setForceShow(false);
       };
+
       window.addEventListener('keydown', handleKeyDown);
       window.addEventListener('keyup', handleKeyUp);
+
       return () => {
         window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
+        window.removeEventListener('keydown', handleKeyUp);
       };
     }
   }, []);
-  
+
   if (forceShow) {
     return children;
   }
-  return (
-    <span style={hiddenStyles} {...delegated}>
-      {children}
-    </span>
-  );
+
+  return <Wrapper {...delegated}>{children}</Wrapper>;
 };
+
+const Wrapper = styled.div`
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+`;
 
 export default VisuallyHidden;

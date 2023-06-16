@@ -1,12 +1,25 @@
-aria-roledescription
+aria-roledescription - https://accessibilityinsights.io/info-examples/web/aria-roledescription/
     possible roles -
         carousel
         slide
 
 aria-label
+    Gives a name to control.
         <div
             aria-label="label"
         />
+
+aria-labelledby="dialog-header" 
+    Value is id of element which labels this. can be useful if you want to use other html node other than label.
+    
+    <div role="dialog" aria-labelledby="dialog-header">
+        <button aria-label="Close"></button>
+        <h2 id="dialog-header">
+            Do you want to allow notifications from this website?
+        </h2>
+        <button>No</button>
+        <button>Yes</button>
+    </div>
 arai-controls -
     id of element which is controled by this
 
@@ -22,5 +35,15 @@ aria-live -
 
 
 aria-disable="true"
+
+
+aria-expanded="false"
+
+
+
+HTML Attributres -
+
+    a)role - let you change the semantics of an element so it will be announced properly by a screen reader
+        https://www.w3schools.com/accessibility/accessibility_role_name_value.php
 
 

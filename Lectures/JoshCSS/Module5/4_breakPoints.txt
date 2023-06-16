@@ -1,0 +1,35 @@
+mobile - upto 550px
+tablet - upto 1100px
+laptop - upto 1500px
+desktop - grwteer than 1500.
+
+
+How we can maintain breaking points dynamically in react -
+
+    const BREAKPOINTS = {
+        tabletMin: 550,
+        laptopMin: 1100,
+        desktopMin: 1500
+    }
+
+
+    const QUERIES = {
+        'tabletAndUp': `(min-width: ${BREAKPOINTS.tabletMin}px)`,
+        'laptopAndUp': `(min-width: ${BREAKPOINTS.laptopMin}px)`,
+        'desktopAndUp': `(min-width: ${BREAKPOINTS.desktopMin}px)`
+    }
+
+
+    useage -
+        const wrapper = styled.div`
+            padding: 16px;
+
+            @media ${QUERIES.laptopAndUp} {
+                padding: 32px
+            }
+        `;
+
+
+styled-component themes
+
+    

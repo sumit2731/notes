@@ -1,0 +1,47 @@
+“Interaction Media Features” -  They allow us to apply styles based on which input mechanism the user is using. see table
+    @media (hover: hover) and (pointer: fine)
+
+    this media query will help us to avoid hover state in mobile.
+
+    hover is the ability for a device to move the cursor without also triggering a click/tap on the element underneath
+    pointer refers to the level of control the user has over the position of the cursor.
+
+
+Boolean logic in media queries  
+    @media (hover: hover) and (pointer: fine) 
+    @media screen and (min-width: 600px) - screen is a “media type”. In this case, we're saying that the styles should only 
+        apply when displaying the site/app on a screen. We can also specify print styles which apply when the page is printed
+        onto paper or saved as a PDF.
+  
+if we want to specify that any of the conditions can be met, we can use a comma:
+
+    @media (max-width: 600px), (min-width: 800px) {
+        /* styles */
+    }
+
+    This is effectively the same as creating two entirely-separate media queries:
+
+    @media (max-width: 600px) {
+        /* styles */
+    }
+
+    @media (min-width: 800px) {
+        /* Repeated styles */
+    }
+
+Preference-based media queries
+
+    @media (prefers-color-scheme: dark) {
+        /* Dark-mode styles here */
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        /* Animations here */
+    }
+
+
+Orientation -
+
+    @media (orientation: portrait) {
+        /* Styles for windows that are taller than they are wide */
+    }

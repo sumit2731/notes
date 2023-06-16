@@ -1,0 +1,94 @@
+Media Queries
+
+
+    Styles -
+        .signup-button {
+            color: deeppink;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 400px) {
+            .signup-button {
+            font-size: 2rem;
+            }
+        }
+
+    The @media keyword is known as an "at-rule". at-rules are a special kind of CSS statement that changes behaviour.There are a 
+        handful of at-rules that all do different things; another example is @keyframes, which allows you to define an animation
+        sequence.
+
+    Media queries selectively apply rules based on one or more conditions. In this case, we're saying that the .signup-button 
+    selector should adopt an additional declaration when the viewport is 400px wide or less.
+
+    Notice that the button always has pink text. Media queries allow us to merge rules together.
+
+    It's also important to note that media queries don't affect specificity. The only reason that font-size: 2rem beats 
+        font-size: 1rem is because it comes later. 
+
+
+    With styled-components
+
+        const SignupButton = styled.button`
+            color: deeppink;
+            font-size: 1rem;
+
+            @media (max-width: 400px) {
+                font-size: 2rem;
+            }
+        `;
+
+        With styled-components, all of the declarations for an element are in the same spot.This pattern makes it way easier to 
+         reason about which styles apply to which elements. Everything you need to know, in 1 place.I suggest using this pattern
+         if your tool allows for it.
+
+
+
+    Mobile-first vs desktop-first
+
+        These are two different roads to the same place. But the mental model is different.
+        
+        mobile first use min-width media query
+        desktop first use max-width media query
+
+        if you designing the project,it can be helpful to think in mobile-first terms, because it's easier to add than to take 
+        away. If you start from a desktop perspective, you'll need to find a way to shrink everything for mobile, which can be
+        really tricky. Better to start from mobile, and work your way up.
+
+        Ultimately, though, the most important thing is to be consistent with the approach. If you decide to build mobile-first,
+        you should almost always use min-width media queries. It can be very confusing if you mix min-width and max-width media
+        queries.
+
+
+    Mixing patterns - Try these to avoid
+
+        here we would saw that we should avoid mixing pattern and should either use mobile first or desktop first.That said, 
+            there are exceptions. Sometimes, it's just too much trouble to structure things this way.For example, if we have a
+            completely different layout that only exists on tablet, it can be nice to wrap it in a "tablet only" media query:
+
+    Media queries and units
+
+        we should rem or em units of emdia queries
+        refer to this josh article fro details -
+            https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/#media-queries
+
+
+    Exercise 1 - Simple
+    Execrcise 2.1 - Making amodal mobile frinedly.
+    Exercise 2.2 - accessibility problem -
+        a)when modal is opened, then focus should be inside modal. how would a keyborad user use it?
+        b)keyboard focus shoul be locked within modal. i.e from last element in modal, it should go back to first element.
+            i.e it should move in loop.
+        c)Modal should be closed by pressing escape.
+        d)When modal is closed, then focus should go back to where it was when modal was opened.This is generally modal 
+            triggered i.e button that opeend the modal.
+        e)We want to annonate our markup , so that people with screenreader know that this is modal.
+
+     In code we used a third party library solution for this. usee app.jsx to see how we can do tab locking in react.
+
+Extra form course -
+    
+    Types of media queries
+        @media(min-wdth: 500px)
+        @media(max-width: 600px)
+        @media (min-width: 500px) and (max-width: 1023px)
+

@@ -1,0 +1,6 @@
+1)keydown event. event object has these properties -
+    shiftKey: true // whether shift kay was pressed or not
+    altKey: true // same as above
+    charCode:
+    code: 'KeyA', 'Tab', 'ShiftLeft
+    key : 'a','Tab','Shift'

@@ -1,0 +1,84 @@
+For almost a decade now, CSS has had the ability to do math - 
+
+    .something {
+        width: calc(100px + 24px);
+        height: calc(50px + 25px * 4);
+    }
+
+operators that can be used -
+
+    a)addition(+)
+    b)subtraction(-)
+    c)multiplication(*)
+    d)division(/)
+
+
+Why would we want to do this?
+
+
+    a)which of these two declarations make it clearer that you want .something to take up 1/7th of the available space?
+
+        .something {
+            width: 14.286%;
+            width: calc(100% / 7);
+        }
+
+    b)The real magic of calc, though, is that it allows us to mix units:
+        
+        .something {
+            width: calc(50% + 32px);
+        }
+
+The more-practical benefit of calc comes when we combine it with CSS variables.
+
+    article {
+        padding: var(--spacing);
+        border-radius: calc(var(--spacing) / 2);
+        /*
+            8px -> 4px
+            16px -> 8px
+        */
+        border-radius: calc(var(--spacing) / 2 + 2px);
+    }
+
+Unit conversion
+
+    h2 {
+        /* 24 / 16 = 1.5 */
+        font-size: 1.5rem;
+        font-size: calc(24 / 16 * 1rem);
+    }
+    The very first number, 24, is our value in pixels. We can use this pattern anywhere we want to be responsible and use the rem 
+        unit, without having to change our mental model.
+
+
+Calculating colors and gradients
+
+    Calculating colors -
+
+        :root {
+            --red-hue: 0deg;
+            --intense: 100% 50%;
+    
+            --red: hsl(
+                var(--red-hue) var(--intense)
+            );
+            
+            --orange: hsl(
+                calc(var(--red-hue) + 20deg)
+                var(--intense)
+            );
+        }
+
+    Calculating gradients -
+
+        see course
+
+
+Exercise -
+    Problem - This was just to play around with css custom properties and calc function.
+    Solution - 
+        a)Here we provided different index value to custom css property on different boxes.we did that using nth-of-type()
+            selector
+        b)then in common class we used this value to geneate different angle and colors for gradient.
+        c)then we used this property to provide animation times to give different time to animation.

@@ -32,9 +32,6 @@ Element Only Navigation-
 
 Some types of DOM elements, e.g. tables, provide additional properties and collections to access their content.
 
-
-
-
 1)Node.contains() method returns a Boolean value indicating whether a node is a descendant of a given node, i.e. 
     the node itself, one of its direct children (childNodes), one of the children's direct children, and so on.
 
@@ -43,3 +40,9 @@ Some types of DOM elements, e.g. tables, provide additional properties and colle
 2)ParentNode.prepend() -  method inserts a set of Node objects or DOMString objects before the first child of the
   ParentNode. DOMString objects are inserted as equivalent Text nodes.
     ParentNode.prepend(...nodesToPrepend);
+
+
+  Triggering Events on DOM Node -
+
+    1)element.click()
+    2)element.focus()

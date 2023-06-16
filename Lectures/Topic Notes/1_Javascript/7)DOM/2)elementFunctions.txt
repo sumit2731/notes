@@ -71,3 +71,20 @@ HTMLTableRowElement
     is not given or is -1, it appends the cell to the row. If the given position is greater (or equal as it starts at zero) 
     than the amount of cells in the row, or is smaller than -1, it raises a DOMException with the IndexSizeError value. 
     Returns a reference to a HTMLTableCellElement [en-US].
+
+
+
+Changing Inline Style of elements -
+
+    a)Setting Single Property -
+        
+        a)element.style.color = 'red';
+        b)element.style.setProperty(propertyName, value)
+    
+    b)Setting Multiple Properties -
+
+        a)element.setAttribute('style','color:red;background-color:yellow');
+        a)element.style.cssText = 'color:red;background-color:yellow';
+        c)
+            let content = document.querySelector('#content');
+            css(content, { background: 'yellow', border: 'solid 1px red'});

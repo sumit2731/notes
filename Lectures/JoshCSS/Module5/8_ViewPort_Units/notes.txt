@@ -1,0 +1,26 @@
+ViewPort units can be used anywhere where we expect length property like width,height,padding and margin.
+    vw,vh
+
+
+Then mobile vh problem and solutions.
+    a)use a js based unit (not reccommended)
+    b)use percentages to pass height from html and body.
+    c)have a design such that centering is not required
+
+Dynamic viewport units (In Mobile)
+    
+    svh — Small Viewport Height
+    lvh — Large Viewport Height
+    dvh — Dynamic Viewport Height
+
+    they are avalible for 86 percent users. for 14% users, we can add a fallback -
+
+        .some-element {
+            height: 100vh; /* Fallback for legacy users */
+            height: 100dvh;
+        }
+
+
+Desktop Scrollbar Issue
+
+vmin and vmax

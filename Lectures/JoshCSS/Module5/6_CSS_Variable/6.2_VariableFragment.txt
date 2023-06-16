@@ -1,0 +1,57 @@
+Variable Fragments -
+
+    One of the coolest things about CSS variables is that they're like lego blocks. We can use them as pieces or fragments.
+    We can combine multiple variables to form a single property value
+
+    example -
+    
+        body {
+            --standard-border-width: 4px;
+        }
+
+        strong {
+            --border-details: dashed goldenrod;
+            border:
+                var(--standard-border-width)
+                var(--border-details);
+        }
+
+    This works because CSS variables are evaluated when they're used, not when they're defined.
+
+
+CSS variables are composable:
+    varaible can be defined by using another variable
+
+    body {
+        --pink-hue: 340deg;
+        --blue-hue: 275deg;
+        --intense: 100% 50%;
+        
+        --color-primary: hsl(
+        var(--pink-hue)
+        var(--intense)
+        );
+        --color-secondary: hsl(
+        var(--blue-hue)
+        var(--intense)
+        );
+    }
+
+    strong {
+        color: var(--color-primary);
+    }
+    a {
+        color: var(--color-secondary);
+    }
+
+    The --color-primary variable is built up using the variables --pink-hue and --intense. This helps us keep our code DRY, and 
+    makes it possible to build rich structures that make it easy to tweak entire color themes!
+
+Exercise 1 -
+    one of primary uses of css variables are in color theming.here we defined some css variables and used them in colors.
+
+Exercise 2 -
+    Here we work on color switching thing.
+
+    1)In browser you can emulate preference mode.
+    2)While switching from light to dark and vice versa we should change the last value in hsl format i.e lightness
