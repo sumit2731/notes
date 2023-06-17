@@ -1,0 +1,36 @@
+Cornell Notes -
+    Step 1 - 
+        a)media query syntax.
+        b)media query merges rules does not exclude earlier rules
+        c)media query does not affect specificity. so media query styles should come after normal styles, otherwise 
+            media queries, wnt be able to replace them.
+        d)using media query in styled components
+            advantage- All styles that apply to a component are avalible at single place only.
+
+        e)mobile vs desktop first approach -
+            mobile first approach is preferred if you are also designing the project,but it depends on your use case.
+            the most important thing is to be consistent with the approach.
+
+
+        f)mixing patterns - shuld be avoided
+
+            a)I believe that our applications should be either mobile-first or desktop-first. If we consistently use a single
+                set of media queries, it'll help us quickly scan chunks of CSS to understand the structure.
+
+            b)code snippet to avoid mixing pattern. use of revert keyword.
+            c)sometimes its okay to avoid mobile first and desktop first approach, for ex- tablet approach.
+                only goal - shoud be easy to understand
+
+        g)media query units - earlier josh used px now he uses rem's. this means media query should be affected by user's
+            choosen font-size.
+            example - his own website
+
+
+    Step 2 -
+        questions - 
+            a)syntax of screen width media queries?
+            b)where media queries should be written as relative to normal quesries?
+            c)how to write media quesries in case of styled components? 
+            c)approachs to write media quesries?
+            d)units of writing media quesries and why they should be used?
+

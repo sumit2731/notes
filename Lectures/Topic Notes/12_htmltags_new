@@ -15,7 +15,7 @@ b)details and summary tag -
     </details>
 
 c)picture tag
-    
+
     <picture>
         <source media="(min-width:650px)" srcset="img_pink_flowers.jpg">
         <source media="(min-width:465px)" srcset="img_white_flower.jpg">
@@ -24,3 +24,5 @@ c)picture tag
 
 
     source - https://www.w3schools.com/tags/tag_picture.asp
+
+d)img

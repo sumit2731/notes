@@ -10,6 +10,28 @@
     c)element.getBoundingClientRect() - Gives a rectangle that represenets bot lement distnace as well as element size.
 
 
+    1.2)elementWidth -
+
+        clientWidth - content + padding
+        offsetWidth - content + padding + border + scrollbar
+        getBoundingClientRect() (offset width) - To get the width & height of an element as floating-point after CSS transformation.
+
+    1.2)margin,border width
+        let box = document.querySelector('.box');
+        let style = getComputedStyle(box);
+        
+        let marginLeft = parseInt(style.marginLeft);
+        let borderTopWidth = parseInt(style.borderTopWidth) || 0;
+
+
+
+2)text of element -
+    node.textContent - text content of element and all its childern.As you can see clearly from the output, the textContent 
+        property returns the concatenation of the textContent of every child node, excluding comments. It has textContent even of
+        hidden chidles.
+    innerText returns the human-readable text that takes CSS into account.
+
+
 
 1)Element.closest() -The closest() method traverses the Element and its parents (heading toward the document root) 
     until it finds a node that matches the provided selector string. Will return itself or the matching ancestor. 

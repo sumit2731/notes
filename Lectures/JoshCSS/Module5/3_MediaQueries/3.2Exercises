@@ -1,0 +1,15 @@
+    Exercise 1 - Simple
+    Execrcise 2.1 - Making a modal mobile frinedly - simple.
+    Exercise 2.2 - accessibility problem -
+        a)when modal is opened, then focus should be inside modal. how would a keyborad user use it?
+        b)keyboard focus shoul be locked within modal. i.e from last element in modal, it should go back to first element.
+            i.e it should move in loop.
+        c)Modal should be closed by pressing escape.
+        d)When modal is closed, then focus should go back to where it was when modal was opened.This is generally modal 
+            triggered i.e button that opeend the modal.
+        e)We want to annonate our markup , so that people with screenreader know that this is modal.
+
+     In code we used a third party library solution for this. usee app.jsx to see how we can do tab locking in react.
+
+
+

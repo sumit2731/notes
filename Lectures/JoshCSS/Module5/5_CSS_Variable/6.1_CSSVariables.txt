@@ -143,7 +143,7 @@ Custom properties
             reads a reactive value, and uses that value.
 
 Exercise 1 -
-    Here we saw a exercise here we are setting multiple properties in media queries. instead of doing all that we used custome,
+    Here we saw a exercise here we are setting multiple properties in media queries. instead of doing all that we used custom,
     proeprty and only chnaged that in media query. but here all proerties were units of 16 so a single custom property did the
     job.later we will see how do this if all properties all not multiples of same numebr.
 

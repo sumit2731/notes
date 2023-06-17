@@ -1,0 +1,17 @@
+Cornell Notes -
+    Step 1-
+        1)Interactive media Features - Hover and pointer.
+        2)Booleans in media quesries -
+            1)and
+            2) or - comma
+
+        3)perefernce based media quesries.
+            @media(prefers-color-theme: light)
+            @media(prefers-reduced-motion: preference)
+        4)orintation based media quesries
+    Step 2 - 
+        1)how should you write a media quesry for having hover affect?
+        2)what Boolean operator we have in media queries?
+        3)apart from screen media type what other media queries do we have.
+
+

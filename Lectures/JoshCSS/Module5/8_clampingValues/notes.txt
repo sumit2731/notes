@@ -1,0 +1,14 @@
+clamp - clamp takes 3 values:
+
+    The minimum value
+    The ideal value
+    The maximum value
+
+uses of clamp -
+    1)In width we can give 2 max-widths.
+    2)it works with all proeprties
+
+min, max functions
+
+
+see execrise this is tricky. this is huse of min max functions

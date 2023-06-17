@@ -1,59 +1,47 @@
-:root {
-  --hue: 0deg;
-  --range: 20deg;
-}
-
-.box {
-  --angle: 45deg;
-  --start-color: calc(
-    var(--hue) - var(--range)
-  );
-  --end-color: calc(
-    var(--hue) + var(--range)
-  );
-  --radius: 4px;
-  --rotate: 5deg;
-
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(
-    var(--angle),
-    hsl(var(--start-color) 100% 50%),
-    hsl(var(--end-color) 100% 50%)
-    );
-  border-radius: var(--radius);
-  transform: rotate(var(--rotate));
-}
-
-.row {
+.hero {
+  background: url('https://courses.joshwcomeau.com/cfj-mats/night-sky.jpg');
+  background-size: cover;
+  background-position: bottom center;
   display: flex;
-  flex-wrap: wrap;
-  width: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-shadow: 0px 0.3em 1em hsl(295deg 100% 10%);
 }
 
-.box:nth-of-type(2n) {
-  --hue: 30deg;
+.max-width-wrapper {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 32px;
 }
-.box:nth-of-type(3n) {
-  --hue: -30deg;
-  --rotate: 120deg;
 
+h1 {
+  font-size: 4rem;
 }
-.box:nth-of-type(9n - 3) {
-  --hue: -90deg;
-  --rotate: 50deg;
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+main {
+  padding: 64px 0;
+  font-size: 1.4rem;
+}
+p {
+  margin-bottom: 1.5em;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background: black;
+  color: white;
+}
+* {
+  box-sizing: border-box;
+}
 
-}
-.box:nth-of-type(3n + 1) {
-  --angle: -60deg;
-  --rotate: 150deg;
-}
-.box:nth-of-type(2n + 1) {
-  --range: 50deg;
-}
-.box:nth-of-type(7n - 6) {
-  --range: 120deg;
-}
-.box:nth-of-type(14) {
-  --radius: 50%;
+.hero {
+  /* Change me: */
+  height: 80vh;
+  max-height: 500px;
 }

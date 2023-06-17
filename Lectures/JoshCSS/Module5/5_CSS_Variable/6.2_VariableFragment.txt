@@ -50,8 +50,18 @@ CSS variables are composable:
 Exercise 1 -
     one of primary uses of css variables are in color theming.here we defined some css variables and used them in colors.
 
+    a)created a hue nd refreed it in diferent color variables -
+
+        --grey: 270deg;
+        --color-gray-100: hsl(var(--grey) 20% 95%);
+
+    b)hue and saturation in separate variables - 
+        --secondary: 245deg 90%;
+        --color-primary: hsl(var(--secondary) 50%)
+
+
 Exercise 2 -
     Here we work on color switching thing.
 
     1)In browser you can emulate preference mode.
-    2)While switching from light to dark and vice versa we should change the last value in hsl format i.e lightness
+    2)While switching from light to dark and vice versa we should change the last value in hsl format i.e lightness.

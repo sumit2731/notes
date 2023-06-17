@@ -22,5 +22,8 @@ Dynamic viewport units (In Mobile)
 
 
 Desktop Scrollbar Issue
+    how server side rendering come into picture here
+
+    to be checked - how we can solve this issue with css grid.
 
 vmin and vmax

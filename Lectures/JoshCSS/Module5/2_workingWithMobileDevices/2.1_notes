@@ -1,0 +1,30 @@
+Step1 - 
+    History of diffrent device widths
+    Adaptive designs - diffrent css files
+    Responsive design - sme css file
+    Mobile quirks -
+        1)more pixels- "High DPI" display.same px length is different in mobile and desktop, becaue of difference in number of 
+            pixels.
+            console.log(window.devicePixelRatio);
+
+        2)magical meta tag -
+            
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+            >
+
+            without thiis tag this happens - the website as if it was a desktop browser window with a width of 980px, and then 
+                scale it down to fit on its 320px-wide screen.This gave users a 30,000-foot view of the page, and they could 
+                pinch-to-zoom when they spotted the content they were interested in, sort of like a mini-map.
+
+            width=device-width instructs the browser to set the viewport width to match the device's width (so, 320px instead of 980px). 
+            initial-scale=1 says that we should start at 1x zoom.
+
+            more options with this tag - helps to disable zooming
+
+
+Step 2 -
+    a)Why there was need of responsive designs? How it was handled in begining?
+    b)How mobiles differs from desktop?
+    c)Which meta tag is generally used in mobiles and what does it do.

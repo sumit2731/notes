@@ -4,6 +4,9 @@ laptop - upto 1500px
 desktop - grwteer than 1500.
 
 
+How to implement it in browser.
+
+
 How we can maintain breaking points dynamically in react -
 
     const BREAKPOINTS = {
@@ -30,6 +33,27 @@ How we can maintain breaking points dynamically in react -
         `;
 
 
+These names are a lie
+
 styled-component themes
+
+
+Maintaining breakpoints in rem(In React) -
+
+    // constants.js
+
+    // Values in pixels:
+    const BREAKPOINTS = {
+        tabletMin: 550,
+        laptopMin: 1100,
+        desktopMin: 1500
+    }
+
+    // Converted to rems:
+    const QUERIES = {
+        'tabletAndUp': `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`,
+        'laptopAndUp': `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`,
+        'desktopAndUp': `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`,
+    }
 
     

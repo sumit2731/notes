@@ -41,6 +41,8 @@ The more-practical benefit of calc comes when we combine it with CSS variables.
         border-radius: calc(var(--spacing) / 2 + 2px);
     }
 
+    now in media queries we just need to update a single value.
+
 Unit conversion
 
     h2 {
@@ -48,11 +50,15 @@ Unit conversion
         font-size: 1.5rem;
         font-size: calc(24 / 16 * 1rem);
     }
-    The very first number, 24, is our value in pixels. We can use this pattern anywhere we want to be responsible and use the rem 
-        unit, without having to change our mental model.
+    The very first number, 24, is our value in pixels. We can use this pattern anywhere we want to be responsive and use the rem 
+        unit, without having to change our mental model.snote in end how you use *1rem to convert units in rem.
 
 
 Calculating colors and gradients
+
+    hsl has 3 parts - hue, saturation and intensity. hue is color. it is sepcofied in degres after 360 we come back to degress.
+    we cah even specify the negatove values.
+    using this we can use css varibles and calc to have custom properties.
 
     Calculating colors -
 
@@ -71,8 +77,12 @@ Calculating colors and gradients
         }
 
     Calculating gradients -
-
-        see course
+        gradients has 3 parts - degree, color1, color2
+        background: linear-gradient(
+            45deg,
+            hsl(-30deg 100% 50%),
+            hsl(30deg 100% 50%)
+        );
 
 
 Exercise -
