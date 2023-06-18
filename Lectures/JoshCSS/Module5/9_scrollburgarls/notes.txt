@@ -1,0 +1,33 @@
+exercise 1 -
+    Here we have given max-width of 26rem to image, on larger screens it was fine but it was causing scroll on smaller screen.
+    we could have used width:100%, but that it not what we wanted on desktop. we can use media query for same, figuring out 
+    breakpoint is challenging , so we used this .
+
+    max-width: min(26 rem, 100%)
+
+exercise 2 -
+    here we saw that scrollbar was because of negative margin.solutions -
+        a)we could have removed element with negative margin as it was doing anything.
+        b)use max-width:100% on element.
+        c)but in course we used overflow:hidden on parent. it has some implications like position:sticky will not work on
+            any childernn now.
+
+
+exercise 3.1 -
+    Porblem - we had a scroll on mobile and it was because of paralleograms were coming out from view.
+
+    solution -
+        constraints was that we need to have that design.
+        1)first we place overflow:hidden on parent, but since parent was placed inside wrapper which had some padding, content was
+            cur before touching the sides.
+        2)so we moved overflow:hidden to parent's parent. this solved issue. but problem was parent's parent was having a another
+            child with position:sticky.position:sticky does not work if its parent is overflow other than visisble. we have 2
+            solution -
+
+                a)Go to designer and change position:sticky to position:fixed
+                b)since social media icons are not displayed at mobile layouts,and overflow:hidden is only needed at mobile layout
+                    that means we do not need both position:sticky behaviour and overlfow:hidden behaviour at same time, so we can
+                    use media query to add overflow:hidden on parent at mobile widths only.
+
+
+Exercise 3.2 - 
