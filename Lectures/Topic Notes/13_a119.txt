@@ -8,6 +8,8 @@ aria-label
         <div
             aria-label="label"
         />
+    Uses -
+        a)It is added on content of modal to give description of modal
 
 aria-labelledby="dialog-header" 
     Value is id of element which labels this. can be useful if you want to use other html node other than label.

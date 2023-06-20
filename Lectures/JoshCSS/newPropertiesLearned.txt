@@ -7,3 +7,6 @@ Module 2 -
 
 Module 4-
     object-fit
+
+Module 6 -
+    pointer-events

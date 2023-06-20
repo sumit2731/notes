@@ -1,0 +1,8 @@
+Fluid Design
+
+    In the last lesson,we saw how we have two choices when it comes to scaling text based on the viewport:
+
+        1)We can define specific sizes at specific breakpoints using media queries (“responsive”).
+        2)We can proportionally grow/shrink text based on the viewport width using the vw unit (“fluid”).
+        
+    Here are the two strategies side-by-side.

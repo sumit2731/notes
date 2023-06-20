@@ -1,0 +1,7 @@
+Exercise 3 -
+    Here we saw th trick of comparis the design of our website with dosign in figma doc. we made the layer tarnsparent.
+
+Exercise 5 -
+    Here we fixed 2 issues -
+        a)scollbar in headers
+        b)Fluid design gap in header.

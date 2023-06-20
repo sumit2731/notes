@@ -1,0 +1,6 @@
+body text - No need to scale
+smaller tax - If important then we can scale
+form fields - IOS Safari will zoom to field on focus,If fontSize is less than 16px.
+Headings - On smaller devices we should decrease font-size. how to decerase size -
+    a)use media queries.
+    b)fluid typography - discussed in next section

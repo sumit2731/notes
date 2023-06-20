@@ -14,7 +14,7 @@ exercise 2 -
 
 
 exercise 3.1 -
-    Porblem - we had a scroll on mobile and it was because of paralleograms were coming out from view.
+    Problem - we had a scroll on mobile and it was because of paralleograms were coming out from view.
 
     solution -
         constraints was that we need to have that design.
@@ -31,3 +31,15 @@ exercise 3.1 -
 
 
 Exercise 3.2 - 
+
+    Problem - Here we want to consider a the possibility that we want overflow:hidden and position:sticky at 
+        same time. 
+           
+    Solution -
+        So what we did was we created a another layer on top of existing layer, we mover our logo there.
+        we created 2 elements in wrapper. one element was moved out of flow(with position: absolute, in another
+        layer),so height of wrapper depends upon second child. but we gave height to absolitely position element
+        as 100%, so that both childern have same height. on another layer we have logo and all. but in main layer
+        we have set overflow: hidden on wrapper.
+
+        later we adjusted the click behaviour using pointer-events css property.

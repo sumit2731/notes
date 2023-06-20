@@ -39,8 +39,8 @@ Exercise 1 -
         Equal columns - use flex-basis:0 and flex-grow:1.
         
         col1 determines container height -col2 is given position:relative and overflow:auto. ol inside col2 is given 
-            position:absolute.That means col2 will not look at ol for its height.its height will only be determined by p tag.but
-            col1 has more height. so height of container is dicdated by col1 only.
+            position:absolute.That means col2 will not look at ol for its height.its height will only be determined by p tag.
+            but col1 has more height. so height of container is dicdated by col1 only.
 
             col1 dicdates height, now because of align-items:stretch, col2 has height equal to container.
 

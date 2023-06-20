@@ -1,0 +1,56 @@
+transition allows us to smooth out the changes that occur in our application. Instead of an element teleporting from one 
+spot to another, it glides between the two.
+
+Syntax -
+    As we'll discover, the transition property is highly configurable, but only two values are required:
+
+        a)The name of the property we wish to animate
+
+            a)Multiple properties -
+      
+                If you plan on animating multiple properties, you can pass it a comma-separated list:
+
+
+                .btn {
+                    transition: transform 250ms, opacity 400ms;
+                }
+
+                .btn:hover {
+                    transform: scale(1.2);
+                    opacity: 0;
+                }
+
+            b)all keyword
+            
+                transition-property takes a special value: all. When all is specified, any CSS property that changes will 
+                    be transitioned. but it is not reccommneded to use it
+          
+        b)The duration of the animation
+
+
+Timing Functions -
+    syntax -
+        .btn {
+            transition: transform 250ms;
+            transition-timing-function: linear;
+        }
+        
+        or
+
+        .btn {
+            transition: transform 250ms linear;
+        }
+
+    a)linear
+    b)ease-out - Fast Start, Slow End
+        use - It's most commonly used when something is entering from off-screen (eg. a modal appearing). It produces the 
+            effect that something came hustling in from far away, and settles in front of the user.
+    c)ease-in - Slow start, fast end.
+        use - Note that ease-in is pretty much exclusively useful for animations that end with the element offscreen or 
+            invisible; otherwise, the sudden stop can be jarring.
+
+            It can be worthwhile to combine ease-in and ease-out when something enters and exits the viewport, like a modal.
+
+    d)ease-in-out
+
+    e)ease - start slowly, speed up, and then end slowly.

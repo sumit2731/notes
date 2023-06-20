@@ -1,0 +1,74 @@
+transform allows us to change a specified element in some way. It comes with a grab-bag of different transform functions 
+    that allow us to move and contort our elements in many different ways.
+
+    Transform functions
+
+        a)Translation
+            Syntax -
+
+                transform: translate(21px, -5px);
+                When we want to move an element along a single axis, we can use translateX and translateY - 
+
+                .box {
+                    transform: translateY(20px);
+
+                    /* It's equivalent to: */
+                    transform: translate(0px, 20px);
+                }
+            
+            Critically, the item's in-flow position doesn't change. As far as our layout algorithms are concerned, from Flow
+             to Flexbox to Grid, this property has no effect.
+
+            There's one thing that makes translate ridiculously powerful, though. Something totally unique in the CSS 
+            language.When we use a percentage value in translate, that percentage refers to the element's own size, instead
+            of the available space in the parent container.
+
+            With the magic of calc, we can even mix relative and absolute units:
+                transform: translateX(calc(100% + -2px));
+
+        b)scale - grows or shrinks a element. takes a number. 1 means normal size of element.
+            We can also pass multiple values, to scale the x and y axis independently:
+                transform: scale(2, 2);
+
+            How it diffres from setting height and width on element?
+                The text scales up and down with the element. We aren't just transforming the size and shape of the box, 
+                we're transforming the entire element and all of its descendants.
+
+            Simpler Calculations - See Lecture
+
+            it's possible to use scale to increase an element's size without distorting its child
+
+
+        c)rotate
+            transform: rotate(188deg);
+            transform: rotate(-0.25turn);
+
+        d)skew
+            skew(x-angle,y-angle) //45deg
+            skewX(angle)
+            skewY(angle)
+
+    transform-origin
+        Every element has an origin, the anchor that the transform functions execute from. we can chnage it with 
+         transform origin.The transform functions are applied from right to left, like composition in functional
+         programming.
+
+         transform-origin: left top;
+         this expects 3 values each for x,y and z axis.
+
+         values allowed -
+            keywords - top, bottom,left,right.
+            values - like px units etc.(x axis is measure from left edge and y axis from top edge)
+            percentages: they are relative to size of element
+
+
+    Multiple operations in transform -
+            transform: translateX(69px) rotate(72deg);
+            The order is important: the transform functions will be applied sequentially. 
+            The transform functions are applied from right to left, like composition in functional programming.
+
+
+    Inline Elements
+        Inline Elements are not affected by transform proeperty in flow layout. solution -
+            1)turn them into inline-block
+            2)use diffrent layout
