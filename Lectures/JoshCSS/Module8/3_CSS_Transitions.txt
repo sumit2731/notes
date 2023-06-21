@@ -41,16 +41,58 @@ Timing Functions -
             transition: transform 250ms linear;
         }
 
-    a)linear
+    a)linear - This means that the element moves at a constant pace; our circle moves by the same amount each frame.
     b)ease-out - Fast Start, Slow End
         use - It's most commonly used when something is entering from off-screen (eg. a modal appearing). It produces the 
             effect that something came hustling in from far away, and settles in front of the user.
     c)ease-in - Slow start, fast end.
         use - Note that ease-in is pretty much exclusively useful for animations that end with the element offscreen or 
             invisible; otherwise, the sudden stop can be jarring.
-
             It can be worthwhile to combine ease-in and ease-out when something enters and exits the viewport, like a modal.
 
-    d)ease-in-out
+    d)ease-in-out - Starts slow, accelerates and then solws down in end.
+        This timing function is symmetrical. It has an equal amount of acceleration and deceleration.
+        It's a big improvement over linear.
+        use - I find this curve most useful for anything that happens in a loop (eg. an element fading in and out, over and
+            over).
 
-    e)ease - start slowly, speed up, and then end slowly.
+    e)ease - ease is very similar to ease-in-out, with one key difference: it isn't symmetrical. It features a brief ramp-up,
+        and lots of deceleration.
+        ease is the default value — if you don't specify a timing function, ease gets used. This tends to be a good thing: ease
+            is a great option in most cases. Unless you're specifically going for a different effect, ease makes a lot of sense.
+
+Custom Curves -
+    
+    .btn {
+        transition: transform 250ms cubic-bezier(0.1, 0.2, 0.3, 0.4);
+    }
+
+Delay -
+    
+    .dropdown {
+        opacity: 0;
+        transition: opacity 250ms 300ms;  // property durationOfTimming delay
+    }
+
+    or we can use trasition-delay property
+
+Transition syntax -
+    trnasition: propertyName animationDuration timmingFunction(optional) delayDuration(optional)
+    transition-timing-function
+    cubic-bezier(0.1, 0.2, 0.3, 0.4)
+    trasition-delay
+
+
+Doom Flicker -
+    Here we saw in animation we get into infinite loop with hover. In order to make it better, this is trick -
+        a)hover event and tranform should happen on different element.
+        b) so what we did was we created a child in parent, all contents is in parent only.
+        c)hover effect is on parent, but transaition happens on child.
+
+Exerciuse 1 -
+    Here we saw that anchor tag is just a wrapper, all content is in article. so we moved the article.
+    thig to be noticed is that while hovering out also we want animation. so transition proeprty should not have dependey
+    on hover.
+Exercise 2 -
+    same as 1, but here we saw how we can zoom into photo, without picture leaking to adjacent elements.basically we used
+    overflow: hidden on paret element.
