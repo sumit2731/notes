@@ -1,0 +1,38 @@
+Different CSS properties will trigger different steps in the pixel pipeline. 
+
+
+If we animate an element's height, we'll need to recalculate the layout, since an item shrinking might mean that its siblings scoot up 
+    to fill the space.For this reason, it's best to try and avoid animating any properties that affect layout: this is things like width,
+    height, padding, margin.
+
+Properties like background-color will never affect layout, because there aren't any colors that change an element's position on the page.
+    So it'll be faster than animating a property that does affect layout.
+
+The transform property, however, is special: it can animate a property without even triggering a paint step! Like with scrolling, it can
+    reuse the work done on previous steps.
+
+    There are only two properties that can be animated with compositing alone: transform and opacity. In Chrome, filter can also be 
+    composited, and they're working on supporting more properties, like clip-path and background-color.
+
+
+Does that mean that you can only ever animate transform and opacity? Personally, I think we can be a little bit more flexible than that.
+    Not all repaints / layout-recalculations are created equal! For example, tweaking the height of an absolutely-positioned element 
+    tends to be quicker, since there's no chance that it will cause siblings to be shifted.
+
+
+Hardware Acceleration
+
+    will-change is a property that allows us to hint to the browser that we're going to animate the selected element, and that it should
+        optimize for this case.In practice, what this means is that the browser will let the GPU handle this element all the time. No 
+        more handing-off between CPU and GPU, no more telltale “snapping into place”.will-change lets us be intentional about which 
+        elements should be hardware-accelerated. Browsers have their own inscrutable logic around this stuff, and I'd rather not leave 
+        it up to chance.
+
+    Alternate Properties -
+        transform: translateZ(0px)
+        backface-visibility: hidden.
+
+
+
+Josh Talk -
+    

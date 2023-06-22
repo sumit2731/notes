@@ -1,0 +1,74 @@
+Define a keyframe -
+    
+    @keyframes slide-in {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+    .box {
+        animation: slide-in 1000ms; // keyFrameName duartionOfAnimation
+    }
+
+    properties -
+
+        animation-timming-function
+        animation-iteration-count: infinite
+
+
+use of liner timming function -  for spinners, we generally want to use a linear timing function so that the motion 
+    is constant (though this is somewhat subjective—try changing it and see what you think!).
+
+
+Multi-step animations
+
+    @keyframes fancy-spin {
+        
+        0% {
+            transform: rotate(0turn) scale(1);
+        }
+        25% {
+            transform: rotate(1turn) scale(1);
+        }
+        50% {
+            transform: rotate(1turn) scale(1.5);
+        }
+        75% {
+            transform: rotate(0turn) scale(1.5);
+        }
+        100% {
+            transform: rotate(0turn) scale(1);
+        }
+    }
+
+    Importantly, the timing function applies to each step. We don't get a single ease for the entire animation:
+
+
+Animation Direction(animation-direction)
+    values - 
+        normal (goes from 0% to 100%)
+        reverse - This will play the animation backwards, going from 100% to 0%.
+        alternate - which ping-pongs between normal and reverse on subsequent iterations.
+
+
+Syntax -
+    .box {
+  /*
+  From this:
+    animation: grow-and-shrink 2000ms;
+    animation-timing-function: ease (default)ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+  ...to this:
+  */
+  animation: grow-and-shrink 2000ms ease-in-out infinite alternate;
+
+  Here's a piece of good news, as well: the order doesn't matter. For the most part, you can toss these properties in any order you want.
+
+This works because different properties accept different values; alternate, for example, isn't a valid 
+    timing-function or iteration-count, so the browser can deduce that you mean to assign it to animation-direction.
+}

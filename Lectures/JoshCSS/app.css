@@ -1,21 +1,28 @@
-.wrapper {
+html, body {
+  height: 100%;
+}
+body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 8px;
+  place-content: center;
 }
-.thumbnail {
-  display: block;
-  width: 100%;
+@keyframes waving {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(30deg);
+  }
 }
 
-.thumbnail-wrapper {
-  overflow: hidden;
-}
+/* p {
+  transform: translateX(200px);
+} */
 
-.thumbnail-wrapper:hover .thumbnail {
-  transform: scale(1.2);
-}
-
-.thumbnail {
-  transition: transform 500ms;
+.wave {
+  display: flex;
+  font-size: 3rem;
+  /* transform-origin: 75% 80%; */
+  transform-origin: 80% 75%;
+  animation: waving 1000ms 1 alternate ease-in-out;
 }

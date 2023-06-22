@@ -1,3 +1,134 @@
+1)Navigation in DOM -
+    parentElement
+    previousElementSibling, nextElementSibling 
+    children
+    firstElementChild, lastElementChild
+
+2)searchingElement - 
+
+    document.getElementById(id)
+    elem.querySelector(css) - returns the first element for the given CSS selector.If new elements are added after this runs, then those
+        are not added in collection.
+    elem.querySelectorAll('') - returns all elemnts. Static Collection.
+        can query pseudo classes as well, :hover returns all elemnts with hover starting from document.
+
+    
+
+    element.closest('cssSelector') - Ancestors of an element are: parent, the parent of parent, its parent and so on. The 
+        ancestors together form the chain of parents from the element to the top.For that chain this selcts the closes 
+        element.element itself is also included.when a element matches , then serach is stopped and element is returned.
+
+    getElementsBy - return Live Collection i.e newNodes that are added in DOM after query are also added to live Collection
+
+        elem.getElementsByTagName(tag)
+        elem.getElementsByClassName(className) - If given class is present in element then result is retirned.
+        document.getElementsByName(name)
+
+
+3)Methods to check if element matches a given selector or not -
+    a)element.matches("cssSelector") - It checks whether a CSS selectir matches the element or not.
+        returns tru or false.
+    b)elemA.contains(elemB) returns true if elemB is inside elemA (a descendant of elemA) or when elemA==elemB.
+
+
+4)attbibutes -
+
+    elem.hasAttribute(name) – checks for existence.
+    elem.getAttribute(name) – gets the value.
+    elem.setAttribute(name, value) – sets the value.
+    elem.removeAttribute(name) – removes the attribute.
+
+    elem.attributes: a collection of objects that belong to a built-in Attr class, with name and value properties.
+
+
+5)element content properties -
+
+    element.tagName/nodeName
+    element.innerHTML (text is inserted as html, chnaging it rerenders whole element)
+    element.outerHTML (inner html + current element, changing it replaces the element)
+    element.textContent (text content of element + all descendents)
+    node.nodeValue/data - Gives value of text node, useful when element has some descendents and we want to replace
+        text content of element
+    element.hidden
+    element.id
+    element.href
+
+6)class
+    element.className - Assigning some values to it replaces whole string of classes.
+    element.classList - It is a special object with methods to add/remove/toggle/contains a single class.
+        This is iterable.
+
+7)inserting into DOM -
+
+    Note - here string is inserted as string not html
+    node.append(...nodes or strings) – append nodes or strings at the end of node,
+    node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+    node.before(...nodes or strings) –- insert nodes or strings before node,
+    node.after(...nodes or strings) –- insert nodes or strings after node,
+    node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+    To insert string as HTMLElement- 
+        elem.insertAdjacentHTML/Text/Element
+
+8)removal -
+    node.remove()
+
+9)cloningNode 
+    elem.cloneNode(true) creates a “deep” clone of the element – with all attributes and subelements. 
+    If we call elem.cloneNode(false), then the clone is made without child elements.
+
+
+10)DocumentFramgment -
+
+    How to create it -
+
+        a)let fragmnet = new DocumentFragment();
+
+
+
+11)styles (read/write)
+
+    Setting Single Styles -
+
+        a)element.style.cssProp = value
+            element.style is read only object, but in react we can reset the sty;e 
+        b)element.style.setProperty(propertyName, value) - used to set css variable on style prop
+
+
+
+    Setting Multiple Styles -
+        a)div.style.cssText=`color: red !important;
+            background-color: yellow;
+            width: 100px;
+            text-align: center;
+        `;
+
+        b)div.setAttribute('style', 'color: red...')
+
+        This property is rarely used, because such assignment removes all existing styles: it does not add, but replaces
+        them. May occasionally delete something needed. But we can safely use it for new elements, when we know we won’t
+        delete an existing style.
+
+12)getComputedStyle(element,[pseudo])
+    styles property return only inline styles, how do we read styles applied through classes?
+
+Changing Inline Style of elements -
+
+    a)Setting Single Property -
+        
+
+        b)element.style.setProperty(propertyName, value)
+    
+    b)Setting Multiple Properties -
+
+        c)
+            let content = document.querySelector('#content');
+            css(content, { background: 'yellow', border: 'solid 1px red'});
+
+        
+
+    
+
 1)Element Dimension -
 
     a)Element.clientLeft -The width of the left border of an element in pixels. It includes the width of the vertical scrollbar
@@ -96,17 +227,3 @@ HTMLTableRowElement
 
 
 
-Changing Inline Style of elements -
-
-    a)Setting Single Property -
-        
-        a)element.style.color = 'red';
-        b)element.style.setProperty(propertyName, value)
-    
-    b)Setting Multiple Properties -
-
-        a)element.setAttribute('style','color:red;background-color:yellow');
-        a)element.style.cssText = 'color:red;background-color:yellow';
-        c)
-            let content = document.querySelector('#content');
-            css(content, { background: 'yellow', border: 'solid 1px red'});

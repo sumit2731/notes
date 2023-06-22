@@ -1,0 +1,54 @@
+See figure 1 for how to move in DOM.
+
+Top Most Elements -
+    html - document.docuentElement
+    head - document.head
+    body - document.body
+
+
+Children: childNodes, firstChild, lastChild
+
+    childNodes - It gives a DOM collection, a speacial array like object. it is iterable.even text nodes are listed here.
+
+DOM Collection -
+    a)Read only(All Navigation methods are read only)
+    b)Live
+    c)Iterable
+
+
+parentNode
+childNodes,firstChild,lastChild
+nextSibling
+previousSibling
+
+
+Element only Navigation (Figure 2)
+    
+    parentElement
+    previousElementSibling, nextElementSibling 
+    children
+    firstElementChild, lastElementChild
+
+
+parentNode vs parentElement
+
+More Links -
+    table -
+        table.rows
+        table.caption/tHead/tFooter
+        table.tBodies
+
+    <thead>, <tfoot>, <tbody> elements provide the rows property.
+        tbody.rows – the collection of <tr> inside.
+    <tr> -
+        tr.cells – the collection of <td> and <th> cells inside the given <tr>.
+        tr.sectionRowIndex – the position (index) of the given <tr> inside the enclosing <thead>/<tbody>/<tfoot>.
+        tr.rowIndex – the number of the <tr> in the table as a whole (including all table rows)
+    <td> and <th>:
+        td.cellIndex – the number of the cell inside the enclosing <tr>.
+
+    many more
+
+
+
+

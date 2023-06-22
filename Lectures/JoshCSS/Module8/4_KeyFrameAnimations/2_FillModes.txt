@@ -1,0 +1,38 @@
+Specificity of animation styles?
+    Theyare treated from different origin
+
+animation-delay
+
+animation-fill-mode
+    none
+    forwards - The target will retain the computed values set by the last keyframe encountered during execution. The last keyframe 
+        depends on the value of animation-direction and animation-iteration-count.
+
+        animation-direction	        animation-iteration-count	    last keyframe encountered
+        normal	                    even or odd	                    100% or to
+        reverse	                    even or odd	                    0% or from
+        alternate	                even	                        0% or from
+        alternate	                odd	                            100% or to
+        alternate-reverse	        even	                        100% or to
+        alternate-reverse	        odd	                            0% or from
+
+
+    backwards - The animation will apply the values defined in the first relevant keyframe as soon as it is applied to the target, and 
+        retain this during the animation-delay period. The first relevant keyframe depends on the value of animation-direction.
+
+        animation-direction	            first relevant keyframe
+        
+        normal or alternate	            0% or from
+        reverse or alternate-reverse	100% or to
+
+    both - The animation will follow the rules for both forwards and backwards, thus extending the animation properties in both 
+        directions.
+    intial (none)
+    inherit
+
+    Like all of the animation properties we're discussing, it can be tossed into the animation shorthand:
+
+    .box {
+        animation: slide-in 1000ms ease-out both;
+        animation-delay: 500ms;
+    }

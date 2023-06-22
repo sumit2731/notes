@@ -10,6 +10,7 @@ aria-label
         />
     Uses -
         a)It is added on content of modal to give description of modal
+        b)When rendering images, we give aria-lablel, to give description of imogi.
 
 aria-labelledby="dialog-header" 
     Value is id of element which labels this. can be useful if you want to use other html node other than label.
@@ -47,5 +48,8 @@ HTML Attributres -
 
     a)role - let you change the semantics of an element so it will be announced properly by a screen reader
         https://www.w3schools.com/accessibility/accessibility_role_name_value.php
+
+        uses -
+            1)when rendering imagies, we need to give role="images".
 
 

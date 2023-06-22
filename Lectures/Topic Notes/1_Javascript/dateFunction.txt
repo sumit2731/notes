@@ -1,0 +1,4 @@
+1)date.getYear()
+2)date.getMonth()
+3)date.getDate()
+34)date.getDay()

@@ -1,0 +1,10 @@
+Functionalities provided by window object -
+    a)DOM
+    b)BOM(browser window and methods to control it) - The Browser Object Model (BOM) represents additional objects provided by the 
+        browser (host environment) for working with everything except the document.
+
+        a)navigator object - object provides background information about the browser and the operating system
+        b)location object - object allows us to read the current URL and can redirect the browser to a new one.
+        c)The functions alert/confirm/prompt are also a part of the BOM: they are not directly related to the document, but represent 
+            pure browser methods for communicating with the user.
+    c)variables and functions that are built into the language or the environment.

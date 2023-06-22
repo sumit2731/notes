@@ -1,0 +1,14 @@
+1)here we learn that we can set css varible s in element selector and then we can use those in css animation(in @keyframes) that way
+    our animations can be reused.
+
+
+2)here were animating a hi gesture.
+    1)transform does not work on inline elements.
+    2)With alternate ease timming function looks a bit weird. because ease is not symetrical timming function. little bit of 
+        acceleartion and then lot deacceleration.problem is when we use alternate we not only flipping the animation,like starting
+        and ending points, we are also flipping the timming functions.so it has all this deacceleartion, then this accelartion(when it
+        turns around other way) and it looks kind of funny.so we changed it to ease-in-out, which is symetrical.
+
+        how we do not having weird stalling at rotate point.
+    3)Selecting right rotating point - we saw that which part of image is element. then we seleted a custom origin to imitate waving.
+    1)Selecting right angle.

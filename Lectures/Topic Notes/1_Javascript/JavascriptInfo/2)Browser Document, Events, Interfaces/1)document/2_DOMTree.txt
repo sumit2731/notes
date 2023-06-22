@@ -1,11 +1,8 @@
-While generating the DOM, browsers automatically process errors in the document, close tags and so on.
-
-
+Autocorrection
+    While generating the DOM, browsers automatically process errors in the document, close tags and so on.
+    It auto adds tags like html and body
 
 there’s a rule – if something’s in HTML, then it also must be in the DOM tree. so even comments are part of DOM.
-
-Even the <!DOCTYPE...> directive at the very beginning of HTML is also a DOM node. It’s in the DOM tree right before <html>.
-
 
 There are 12 node types. In practice we usually work with 4 of them:
 
@@ -13,3 +10,16 @@ There are 12 node types. In practice we usually work with 4 of them:
     element nodes – HTML-tags, the tree building blocks.
     text nodes – contain text.
     comments – sometimes we can put information there, it won’t be shown, but JS can read it from the DOM
+
+
+Dev Tools tricks -
+    a)from dev tools to console - $0, $1
+    b)from console to DOM - inspect(varibel_name)
+
+
+
+
+
+
+
+

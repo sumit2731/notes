@@ -1,0 +1,98 @@
+There are generally two ways to style an element:
+
+    Create a class in CSS and add it: <div class="...">
+    Write properties directly into style: <div style="...">.
+
+
+    JS Can chnage both.
+
+    We should always prefer CSS classes to style. The latter should only be used if classes “can’t handle it”.
+    For example, style is acceptable if we calculate coordinates of an element dynamically and want to set them from 
+        JavaScript, like this:
+
+            let top = /* complex calculations */;
+            let left = /* complex calculations */;
+
+            elem.style.left = left; // e.g '123px', calculated at run-time
+            elem.style.top = top; // e.g '456px'
+
+
+className proeprties corropsonds to class attribute
+    element.className - If we assign something to elem.className, it replaces the whole string of classes. Sometimes 
+        that’s what we need, but often we want to add/remove a single class.
+
+
+element.classList
+    The elem.classList is a special object with methods to add/remove/toggle a single class.
+    elem.classList.add/remove("class") – adds/removes the class.
+    elem.classList.toggle("class") – adds the class if it doesn’t exist, otherwise removes it.
+    elem.classList.contains("class") – checks for the given class, returns true/false.
+
+
+Element Style
+    elem.style is an object that corresponds to what’s written in the "style" attribute
+
+    for multiworld property, camelcase is used  -
+
+        background-color  => elem.style.backgroundColor
+        z-index           => elem.style.zIndex
+        border-left-width => elem.style.borderLeftWidth
+
+    Prefixed properties -
+        -moz-border-radius, -webkit-border-radius
+
+        button.style.MozBorderRadius = '5px';
+        button.style.WebkitBorderRadius = '5px';
+
+
+
+Resetting the style property
+    Instead of deleting assiging empty value.
+
+    elem.style.display = ""
+
+    If we set style.display to an empty string, then the browser applies CSS classes and its built-in styles normally, as 
+        if there were no such style.display property at all.
+
+    Also there is a special method for that, elem.style.removeProperty('style property'). So, We can remove a property 
+        like this:
+
+        document.body.style.background = 'red'; //set background to red
+
+        document.body.style.removeProperty('background') // remove background after 1 second
+
+element.style is read only
+
+    to set all styles in once use cssTest and setAttribute properties.
+
+    div.style.cssText=`color: red !important;
+        background-color: yellow;
+        width: 100px;
+        text-align: center;
+    `;
+
+    div.setAttribute('style', 'color: red...').
+
+    This property is rarely used, because such assignment removes all existing styles: it does not add, but replaces them. 
+    May occasionally delete something needed. But we can safely use it for new elements, when we know we won’t delete an 
+    existing style.
+
+Mind the UNits
+    values without units are ignored
+
+
+Reading styles
+    The style property operates only on the value of the "style" attribute, without any CSS cascade.
+    So we can’t read anything that comes from CSS classes using elem.style.
+
+    getComputedStyle(element, [pseudo])
+
+        element - Element to read the value for.
+
+        pseudo - A pseudo-element if required, for instance ::before. An empty string or no argument means the element 
+            itself.The result is an object with styles, like elem.style, but now with respect to all CSS classes.
+
+        
+
+
+    

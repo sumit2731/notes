@@ -1,0 +1,89 @@
+See Node Hierachy chart.
+
+Important see difference between Element and HTMLElement.
+
+Some html element elements like span, scetion and article are instances of HTMLElement class. Some elements are instances of more
+    specific classes derived from HTMLElement.
+
+Node event EventTarget inherits from Object class.so methods like hasOwnProperty are also avalible.
+
+
+to see name of class of which object is instance of -
+    obj.constructor.name
+        or
+    alert(obj) // use toStringMethod
+
+    instanceof operator
+
+
+console.log vs console.dir
+    console.log - Shows element DOM Tree
+    console.dir - Shows element as DOM Object.
+
+
+nodeType Property
+
+    elem.nodeType == 1 for element nodes,
+    elem.nodeType == 3 for text nodes,
+    elem.nodeType == 9 for the document object
+
+
+nodeName and tagName
+    they are almost same.
+    tagName - for htmlelement
+    nodeName - for nodes
+    In HTML mode tagName/nodeName is always uppercased: it’s BODY either for <body> or <BoDy>.
+
+innerHTML (read/write)
+    The innerHTML property allows to get the HTML inside the element as a string.We can also modify it
+    Prints everything inside element.It's content as well as its childern. with formatiing(Spaces and next line element)
+
+    We can try to insert invalid HTML, the browser will fix our errors.
+    If innerHTML inserts a <script> tag into the document – it becomes a part of HTML, but doesn’t execute.
+
+    Beware: “innerHTML+=” does a full overwrite
+        As the content is “zeroed-out” and rewritten from the scratch, all images and other resources will be reloaded.
+        There are other side-effects as well. For instance, if the existing text was selected with the mouse, then most 
+            browsers will remove the selection upon rewriting innerHTML. And if there was an <input> with a text entered 
+            by the visitor, then the text will be removed. And so on.
+        
+        Luckily, there are other ways to add HTML besides innerHTML, and we’ll study them soon.
+
+outerHTML(read/write) - innerHTML plus the element 
+    Beware: unlike innerHTML, writing to outerHTML does not change the element. Instead, it replaces it in the DOM.
+    see example
+
+nodeValue/data - innerHTML is valid for HtMLElements.Other node types, such as text nodes, have their counterpart: nodeValue and 
+    data properties. These two are almost the same for practical use.
+
+    note these also give fomratted data, we can write values to these also.
+
+    useful when child has childern and we want to replace the textContent
+
+
+textContent(read/write) - gives only text of element and all it's descendents. read/write. but givs formatting also.
+    Writing to textContent is much more useful, because it allows to write text the “safe way”.
+
+    Let’s say we have an arbitrary string, for instance entered by a user, and want to show it.
+
+        With innerHTML we’ll have it inserted “as HTML”, with all HTML tags.
+        With textContent we’ll have it inserted “as text”, all symbols are treated literally.
+
+
+hidden property
+
+More properties -
+    value
+    href
+    id
+
+    Most standard HTML attributes have the corresponding DOM property, and we can access it like that.
+
+
+How to search for properties of HTML -
+
+    a)If we want to know the full list of supported properties for a given class, we can find them in the specification. For instance,
+        HTMLInputElement is documented at https://html.spec.whatwg.org/#htmlinputelement.
+    b)output the element using console.dir(elem) and read the properties
+    c)“DOM properties” in the Elements tab of the browser developer tools.
+

@@ -1,0 +1,36 @@
+Here we are aoplying animation property dynamically through js. we are using using style prop.
+
+
+
+Handling interruptions(play states) -
+    animation-play-state
+
+
+    Before, we were dynamically applying and removing the animation altogether. In this updated example, the animation is always applied 
+        (inside the Box styled-component), but we dynamically toggle it between running and paused.
+
+    paused works like the pause button on a remote control. Everything freezes in place. Toggling it back to running will pick up from 
+        where it left off.
+    Not many animations require "pause" functionality, but it's a neat property to have in your back pocket!
+
+
+Complete syntax -
+    animation: 
+        name (required)
+        duration (required)
+        timing-function - liner | ease | ease-in | ease-out | cubic-bezier(0.1, 0.2, 0.3, 0.4)
+        delay 
+        iteration-count - 1 |2 |infinite
+        direction - normal(default) | reverse | alternate |alternate-reverse
+        fill-mode - none(default) |forward | backwards | both
+        play-state: running| pause
+
+    separate properties -
+        animation-timing-function
+        animation-delay
+        animation-iteration-count
+        animation-direction
+        animation-fill-mode
+        animation-play-state
+
+
