@@ -80,8 +80,9 @@ Some Examples -
     when data types is same but attribute and property differs -
         href - attributes can be relative url, proeprty will be full url
     When attribute namd and property name are different
-        class attribute and classname proeprties
+        class attribute and classname proeprties, this is because In the ancient time, there was a limitation in 
+            JavaScript: a reserved word like "class" could not be an object property
 
 questions -
     1)attbibutes vs properties
-    2)way to access no standrd attributes
+    2)way to access non standrd attributes

@@ -1,0 +1,64 @@
+Element dimensions(Geomatrical Properties are zero for element not displayed, unless specified, all of these are 
+    read-only) -
+
+    When can geomatical properties be null or zero -
+        when element is hidden
+        we have created the element but it not inserted into DOM
+
+    a)offsetParent
+
+        The offsetParent is the nearest ancestor that the browser uses for calculating coordinates during rendering.
+        That’s the nearest ancestor that is one of the following:
+
+            CSS-positioned (position is absolute, relative, fixed or sticky), or
+            <td>, <th>, or <table>, or
+            <body>.
+
+        offsetParent can be null for follwoing -
+            For not shown elements (display:none or not in the document).
+            For <body> and <html>.
+            For elements with position:fixed.
+
+
+        Properties offsetLeft/offsetTop provide x/y coordinates relative to offsetParent upper-left corner.
+
+    b)offsetLeft/offsetTop - Properties offsetLeft/offsetTop provide x/y coordinates relative to offsetParent upper-left 
+        corner.
+
+    c)offsetWidth/offsetHeight
+        content + padding + scrollbar + border
+
+        It does not include the height of pseudo-elements such as ::before or ::after
+
+    d)clientTop/clientLeft - leftBorder/topBorder
+        …But to be precise – these properties are not border width/height, but rather relative coordinates of the inner 
+        side from the outer side.
+
+        useful when language is right to left
+
+
+    e)clientWidth/clientHeight
+        content + padding(scrollbar not included)
+
+        note - scrollbar width is taken from content width(not true for all browser)
+        It can also include the height of pseudo-elements such as ::before or ::after
+
+        Doubt - Even for scroll bar.
+
+    f)scrollHeight/scrollWidth - It is the full inner height of the content area including the scrolled out parts.
+        this is min length that element would need so that it will not need scrollbar.
+
+    g)scrollTop/scrollTop - How much we have scroll inside element. w ecan chnage this properties to have element
+        scrolled.so this can be modified.
+
+
+
+Don’t take width/height from CSS -
+
+    do not take height from getComputedStyle, becaus eof follwoing -
+
+        a)CSS width/height depend on another property: box-sizing that defines “what is” CSS width and height. A change in
+            box-sizing for CSS purposes may break such JavaScript.
+
+        b)CSS width/height may be auto, for instance for an inline element.
+        c)Scrollbar - read from blog

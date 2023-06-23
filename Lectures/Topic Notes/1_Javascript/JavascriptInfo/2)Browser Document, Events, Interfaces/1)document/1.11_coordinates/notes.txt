@@ -1,0 +1,46 @@
+2 types of corrdinate system -
+    a)relatve to window(change on scroll) - clientX,clientY
+    b)relative to document - pageX, pageY
+
+
+relative to window -
+
+    getBoundingClientRect (relative to window) -
+
+        Main DOMRect properties:
+
+            x(not supported by IE) -
+            y (not upported by IE)-
+            width -
+            height -
+            left/right -
+            top/bottom -
+
+            Coordinates may be negative. For instance, if the page is scrolled so that elem is now above the window, then 
+                elem.getBoundingClientRect().top is negative.
+
+            This can be used for fixed positioning a element directly below some other element. but when we scroll then
+                given element scrolls with document but fixed elements remains there.
+
+
+
+    elementFormPoint(x,y) - 
+        document.elementFromPoint(x, y) returns the most nested element at window coordinates (x, y).
+
+        he method document.elementFromPoint(x,y) only works if (x,y) are inside the visible area.
+        If any of the coordinates is negative or exceeds the window width/height, then it returns null.
+
+
+relative to document -
+
+    There is no direct way of finding the position of element with respect to document. but we can find these using these -
+
+        element.getBoundingClientRect().top + window.pageYOffset
+        element.getBoundingClientRect().left + window.pageXOffset
+
+    using this coordinates we can position a element using position: absolute. and it will come directly below element.
+    even on scroll it will scroll with the element.
+    
+
+
+    

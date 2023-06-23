@@ -1,0 +1,62 @@
+Width/height of the window -
+
+    a)document.documentElement.clientWidth , document.documentElement.clientHeight
+        It gives width/height minus scrollbar.
+
+    b)window.innerWidth, window.innerHeight gives content area(content +padding) + scrollbar width
+
+Please note: top-level geometry properties may work a little bit differently when there’s no <!DOCTYPE HTML> in HTML. Odd 
+    things are possible In modern HTML we should always write DOCTYPE.
+
+
+Width/height of the document
+
+    let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+
+
+Get the current scroll
+
+    Ideally For document scroll, document.documentElement.scrollLeft/scrollTop works in most browsers, except older
+    WebKit-based ones, like Safari (bug 5991), where we should use document.body instead of document.documentElement.
+    so use -
+
+        window.pageXOffset is an alias of window.scrollX.
+        window.pageYOffset is an alias of window.scrollY.
+
+Scrolling 
+
+    Regular elements can be scrolled by changing scrollTop/scrollLeft.
+    We can do the same for the page using 
+        document.documentElement.scrollTop/scrollLeft (except Safari, where 
+            document.body.scrollTop/Left should be used instead).
+
+    Alternatively, there’s a simpler, universal solution: special methods 
+        window.scrollBy(x,y) - scrolls the page relative to its current position
+        window.scrollTo(pageX,pageY).
+
+
+    element.scrollIntoView() - scrollthe window so that element is in view.
+        if top = true then top of window aligns with top of button
+        if top = false, then bottom of widnow aligns with bottom of window
+
+
+Disabling Scroll
+
+    element.style.overflow = 'hidden'
+
+    on window -
+
+        document.body.overflow = 'hidden'
+
+    The drawback of the method is that the scrollbar disappears. If it occupied some space, then that space is now free 
+        and the content “jumps” to fill it.
+    That looks a bit odd, but can be worked around if we compare clientWidth before and after the freeze. If it increased
+        (the scrollbar disappeared), then add padding to document.body in place of the scrollbar to keep the content width
+        the same.
+
+
+

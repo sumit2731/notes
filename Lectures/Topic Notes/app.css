@@ -1,13 +1,17 @@
-table {
-    border-collapse: collapse;
+.parent {
+    width: 400px;
+    height: 110vh;
+    padding: 10px;;
+    border: 1px solid red;
+    overflow: auto;
+    box-sizing: border-box;
 }
 
-tr,td,th {
-    border: 1px solid black;
-}
 
-th,td {
-    width: 50px; 
-    height: 50px;
+.child {
+    width: 10px;
+    height: 1000px;
+    border: 5px solid green;
+    background: blue;
+    padding: 5px;
 }
-

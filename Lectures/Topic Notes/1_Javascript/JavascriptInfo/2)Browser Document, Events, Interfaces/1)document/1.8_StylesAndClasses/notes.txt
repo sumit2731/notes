@@ -81,18 +81,24 @@ Mind the UNits
     values without units are ignored
 
 
-Reading styles
+Reading Styles
     The style property operates only on the value of the "style" attribute, without any CSS cascade.
     So we can’t read anything that comes from CSS classes using elem.style.
 
-    getComputedStyle(element, [pseudo])
+    getComputedStyle(element, [pseudo]) - returns the object. where all css proeprties are prsent you can read them.
 
         element - Element to read the value for.
 
         pseudo - A pseudo-element if required, for instance ::before. An empty string or no argument means the element 
             itself.The result is an object with styles, like elem.style, but now with respect to all CSS classes.
 
-        
+        Computed Styles(1 rem) vs Resolved Styles(32 px) - getComputedStyle returns resolved styles
+
+        getComputedStyle requires the full property name. for padding we need paddingLeft etc, padding can return anything
+            there is no fix rule.
+
+        Styles applied to :visited links are hidden!. this for security so that someone is not able to know whether user
+            has visisted some other website or not.
 
 
     
