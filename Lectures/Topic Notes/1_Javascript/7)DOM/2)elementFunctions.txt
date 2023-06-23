@@ -162,3 +162,10 @@
 
             pageY = clientY + height of the scrolled-out vertical part of the document.         
             pageX = clientX + width of the scrolled-out horizontal part of the document
+
+
+
+
+Useful DOM API's -
+    a)document.flementFormPoint(x,y) - document.elementFromPoint(x, y) returns the most nested element at window 
+        coordinates (x, y).

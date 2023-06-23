@@ -39,8 +39,4 @@ relative to document -
         element.getBoundingClientRect().left + window.pageXOffset
 
     using this coordinates we can position a element using position: absolute. and it will come directly below element.
-    even on scroll it will scroll with the element.
-    
-
-
-    
+    even on scroll it will scroll with the element. 
