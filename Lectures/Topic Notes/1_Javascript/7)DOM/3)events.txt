@@ -1,6 +1,28 @@
-1)keydown event. event object has these properties -
-    shiftKey: true // whether shift kay was pressed or not
-    altKey: true // same as above
-    charCode:
-    code: 'KeyA', 'Tab', 'ShiftLeft
-    key : 'a','Tab','Shift'
+Event Properties -
+
+    1)General Event -
+        a)type - "click"
+        b)currentTarget - element on which handleed is attached. it can also be accessed by using this.
+        c)target - element on which actual event happened.This does not change during bubbling phase.
+        d)phase -  the current phase (capturing=1, target=2, bubbling=3).
+        d)event.clientX/ event.clientY - Window-relative coordinates of the cursor, for pointer events.
+
+
+    2)keydown event. event object has these properties -
+        shiftKey: true // whether shift kay was pressed or not
+        altKey: true // same as above
+        charCode:
+        code: 'KeyA', 'Tab', 'ShiftLeft
+        key : 'a','Tab','Shift'
+
+Event Methods -
+    a)event.stopPropagation() - Stops the further travelling of event(both capturing and bubbling).but other event
+        handlers on same element will be called
+    b)event.stopImmediatePropagation() - To stop the further travelling of event and prevent other handlers on the current 
+        element from running.
+
+
+2)events that do not bubble -
+    focus
+
+

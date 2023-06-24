@@ -1,0 +1,67 @@
+Bubbling - When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way 
+    up on other ancestors.
+
+    
+
+
+    Almost all events bubble - Like focus event do not bubble
+
+    event.target - element on which event actually event happened (not one who is processing it)
+
+
+Stop Bubbling -
+
+    A bubbling event goes from the target element straight up. Normally it goes upwards till <html>, and then to document 
+        object, and some events even reach window, calling all handlers on the path.
+
+    But any handler may decide that the event has been fully processed and stop the bubbling.
+
+    event.stopPropagation()
+
+    To stop the bubbling and prevent handlers on the current element from running, there’s a method - 
+        event.stopImmediatePropagation()
+
+Never Stop Bubbling -
+
+    How bubbling is used in analytics
+
+    Allternates to stop bubbling -
+        a)Use Custom events
+        b)we can write our data into the event object in one handler and read it in another one, so we can pass to 
+            handlers on parents information about the processing below.
+
+
+Capturing
+    Rarely used in real code
+
+    3 Phases of Event Propagation -
+        Capturing Phase
+        Target Phase
+        Bubble Phase
+
+    All the ways where we saw to add event listener to DOM elements, added them for Capturing and Bubbling phase.
+    To add Event listener for capture phase -
+
+        elem.addEventListener(..., {capture: true})
+        // or, just "true" is an alias to {capture: true}
+        elem.addEventListener(..., true)
+
+    the 2nd phase (“target phase”: the event reached the element) is not handled separately: handlers on both capturing 
+        and bubbling phases trigger at that phase.see example in code, it is called 2 times.
+
+
+event.eventPhase that tells us the number of the phase on which the event was caught
+
+
+To remove the handler, removeEventListener needs the same phase
+    If we addEventListener(..., true), then we should mention the same phase in removeEventListener(..., true) to 
+        correctly remove the handler.
+
+Listeners on the same element and same phase run in their set order
+
+event.stopPropagation() during the capturing also prevents the bubbling
+
+
+
+
+

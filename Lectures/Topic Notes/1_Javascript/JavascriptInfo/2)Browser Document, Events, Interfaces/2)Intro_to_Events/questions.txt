@@ -1,0 +1,10 @@
+Lecture 1 -
+
+    1)positioning the ball
+
+    2)Accordian -
+        Trick - you just need to toggle a class in js
+
+    3)Carousel questions in lecture 1
+        use negative margin-left to move to left as well as right
+        for animation, use transition of margin-left property

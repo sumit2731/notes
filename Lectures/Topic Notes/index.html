@@ -1,94 +1,65 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="app.css">
 </head>
 
-<body style="height: 2000px">
+<body>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
-    esse sequi officia sapiente.</p>
-
-  <blockquote>
-    Teacher: Why are you late?
-    Student: There was a man who lost a hundred dollar bill.
-    Teacher: That's nice. Were you helping him look for it?
-    Student: No. I was standing on it.
-  </blockquote>
-
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
-    esse sequi officia sapiente.</p>
+  <div id="carousel" class="carousel">
+    <button class="arrow prev">⇦</button>
+    <div class="gallery">
+      <ul>
+        <li><img src="https://en.js.cx/carousel/1.png"></li>
+        <li><img src="https://en.js.cx/carousel/2.png"></li>
+        <li><img src="https://en.js.cx/carousel/3.png"></li>
+        <li><img src="https://en.js.cx/carousel/4.png"></li>
+        <li><img src="https://en.js.cx/carousel/5.png"></li>
+        <li><img src="https://en.js.cx/carousel/6.png"></li>
+        <li><img src="https://en.js.cx/carousel/7.png"></li>
+        <li><img src="https://en.js.cx/carousel/8.png"></li>
+        <li><img src="https://en.js.cx/carousel/9.png"></li>
+        <li><img src="https://en.js.cx/carousel/10.png"></li>
+      </ul>
+    </div>
+    <button class="arrow next">⇨</button>
+  </div>
 
   <script>
-    function getCoords(elem) {
-      let box = elem.getBoundingClientRect();
-
-      return {
-        top: box.top + window.pageYOffset,
-        left: box.left + window.pageXOffset
-      };
+    /* label the images, just for convenience, to visually track them */
+    let i = 1;
+    for(let li of carousel.querySelectorAll('li')) {
+      li.style.position = 'relative';
+      li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+      i++;
     }
 
-    function showNote(anchor, position, html) {
+    /* configuration */
+    let width = 130; // image width
+    let count = 3; // visible images count
 
-      let note = document.createElement('div');
-      note.className = "note";
-      note.innerHTML = html;
-      document.body.append(note);
+    let list = carousel.querySelector('ul');
+    let listElems = carousel.querySelectorAll('li');
 
-      positionAt(anchor, position, note);
-    }
+    let position = 0; // ribbon scroll position
 
-    function positionAt(anchor, position, elem) {
+    carousel.querySelector('.prev').onclick = function() {
+      // shift left
+      position += width * count;
+      // can't move to the left too much, end of images
+      position = Math.min(position, 0)
+      list.style.marginLeft = position + 'px';
+    };
 
-      let anchorCoords = getCoords(anchor);
-
-      switch (position) {
-        case "top-out":
-          elem.style.left = anchorCoords.left + "px";
-          elem.style.top = anchorCoords.top - elem.offsetHeight + "px";
-          break;
-
-        case "right-out":
-          elem.style.left = anchorCoords.left + anchor.offsetWidth + "px";
-          elem.style.top = anchorCoords.top + "px";
-          break;
-
-        case "bottom-out":
-          elem.style.left = anchorCoords.left + "px";
-          elem.style.top = anchorCoords.top + anchor.offsetHeight + "px";
-          break;
-
-        case "top-in":
-          elem.style.left = anchorCoords.left + "px";
-          elem.style.top = anchorCoords.top + "px";
-          break;
-
-        case "right-in":
-          elem.style.width = '150px';
-          elem.style.left = anchorCoords.left + anchor.offsetWidth - elem.offsetWidth + "px";
-          elem.style.top = anchorCoords.top + "px";
-          break;
-
-        case "bottom-in":
-          elem.style.left = anchorCoords.left + "px";
-          elem.style.top = anchorCoords.top + anchor.offsetHeight - elem.offsetHeight + "px";
-          break;
-      }
-
-    }
-
-
-    let blockquote = document.querySelector('blockquote');
-
-    showNote(blockquote, "top-in", "note top-in");
-    showNote(blockquote, "top-out", "note top-out");
-    showNote(blockquote, "right-out", "note right-out");
-    showNote(blockquote, "bottom-in", "note bottom-in");
+    carousel.querySelector('.next').onclick = function() {
+      // shift right
+      position -= width * count;
+      // can only shift the ribbbon for (total ribbon length - visible count) images
+      position = Math.max(position, -width * (listElems.length - count));
+      list.style.marginLeft = position + 'px';
+    };
   </script>
-
 
 </body>
 </html>

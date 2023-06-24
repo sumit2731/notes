@@ -89,7 +89,7 @@
     Setting Single Styles -
 
         a)element.style.cssProp = value
-            element.style is read only object,so in js we cannot chnage the whole object but in react we can reset the 
+            element.style is read only object,so in js we cannot change the whole object but in react we can reset the 
             style prop. 
         b)element.style.setProperty(propertyName, value) - used to set css variable on style prop
 
@@ -132,7 +132,8 @@
 15)scrolling -
 
     Getting scroll position of window -
-        1)
+        1)window.pageXOffset => window.scrollX
+          window.pageYOffset => window.scrollY
     Regular elements can be scrolled by changing scrollTop/scrollLeft.
 
     window scrolling -
@@ -160,11 +161,14 @@
 
         The two coordinate systems are connected by the formula:
 
-            pageY = clientY + height of the scrolled-out vertical part of the document.         
-            pageX = clientX + width of the scrolled-out horizontal part of the document
+            pageY = clientY + window.scrollY(height of the scrolled-out vertical part of the document).         
+            pageX = clientX + window.scrollX (width of the scrolled-out horizontal part of the document)
 
-
-
+12)Events -
+    adding events -
+        a)element.addEventListener(event,handler,[options]) (preferred way)
+        b)DOM Property -
+            element.eventName = function
 
 Useful DOM API's -
     a)document.flementFormPoint(x,y) - document.elementFromPoint(x, y) returns the most nested element at window 

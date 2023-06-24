@@ -34,28 +34,29 @@ Element dimensions(Geomatrical Properties are zero for element not displayed, un
         …But to be precise – these properties are not border width/height, but rather relative coordinates of the inner 
         side from the outer side.
 
-        useful when language is right to left
+        when language is right to left, then scrollbar is on left, then it includes border + scrollBar
 
 
     e)clientWidth/clientHeight
         content + padding(scrollbar not included)
 
-        note - scrollbar width is taken from content width(not true for all browser)
-        It can also include the height of pseudo-elements such as ::before or ::after
+        note - scrollbar width is taken from content width(not true for all browser)It can also include the height of 
+            pseudo-elements such as ::before or ::after
 
         Doubt - Even for scroll bar.
 
     f)scrollHeight/scrollWidth - It is the full inner height of the content area including the scrolled out parts.
-        this is min length that element would need so that it will not need scrollbar.
+        this is min length that element would need so that it will not need scrollbar.If there is no scrollbars then
+        this is equal to clientWidth/clientHeight.
 
-    g)scrollTop/scrollTop - How much we have scroll inside element. w ecan chnage this properties to have element
+    g)scrollTop/scrollLeft - How much we have scroll inside element. w ecan chnage this properties to have element
         scrolled.so this can be modified.
 
 
 
 Don’t take width/height from CSS -
 
-    do not take height from getComputedStyle, becaus eof follwoing -
+    do not take height from getComputedStyle, because of follwoing -
 
         a)CSS width/height depend on another property: box-sizing that defines “what is” CSS width and height. A change in
             box-sizing for CSS purposes may break such JavaScript.

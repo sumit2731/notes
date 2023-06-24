@@ -1,65 +1,32 @@
-function getCoords(elem) {
-  let box = elem.getBoundingClientRect();
+field.onclick = function(event) {
 
-  return {
-    top: box.top + window.pageYOffset,
-    left: box.left + window.pageXOffset
+  // window-relative field coordinates
+  let fieldCoords = this.getBoundingClientRect();
+
+  // the ball has position:absolute, the field: position:relative
+  // so ball coordinates are relative to the field inner left-upper corner
+  let ballCoords = {
+    top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+    left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
   };
-}
 
-function showNote(anchor, position, html) {
+  // prevent crossing the top field boundary
+  if (ballCoords.top < 0) ballCoords.top = 0;
 
-  let note = document.createElement('div');
-  note.className = "note";
-  note.innerHTML = html;
-  document.body.append(note);
+  // prevent crossing the left field boundary
+  if (ballCoords.left < 0) ballCoords.left = 0;
 
-  positionAt(anchor, position, note);
-}
 
-function positionAt(anchor, position, elem) {
-
-  let anchorCoords = getCoords(anchor);
-
-  switch (position) {
-    case "top-out":
-      elem.style.left = anchorCoords.left + "px";
-      elem.style.top = anchorCoords.top - elem.offsetHeight + "px";
-      break;
-
-    case "right-out":
-      elem.style.left = anchorCoords.left + anchor.offsetWidth + "px";
-      elem.style.top = anchorCoords.top + "px";
-      break;
-
-    case "bottom-out":
-      elem.style.left = anchorCoords.left + "px";
-      elem.style.top = anchorCoords.top + anchor.offsetHeight + "px";
-      break;
-
-    case "top-in":
-      elem.style.left = anchorCoords.left + "px";
-      elem.style.top = anchorCoords.top + "px";
-      break;
-
-    case "right-in":
-      elem.style.width = '150px';
-      elem.style.left = anchorCoords.left + anchor.offsetWidth - elem.offsetWidth + "px";
-      elem.style.top = anchorCoords.top + "px";
-      break;
-
-    case "bottom-in":
-      elem.style.left = anchorCoords.left + "px";
-      elem.style.top = anchorCoords.top + anchor.offsetHeight - elem.offsetHeight + "px";
-      break;
+  // // prevent crossing the right field boundary
+  if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+    ballCoords.left = field.clientWidth - ball.clientWidth;
   }
 
+  // prevent crossing the bottom field boundary
+  if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+    ballCoords.top = field.clientHeight - ball.clientHeight;
+  }
+
+  ball.style.left = ballCoords.left + 'px';
+  ball.style.top = ballCoords.top + 'px';
 }
-
-
-let blockquote = document.querySelector('blockquote');
-
-showNote(blockquote, "top-in", "note top-in");
-showNote(blockquote, "top-out", "note top-out");
-showNote(blockquote, "right-out", "note right-out");
-showNote(blockquote, "bottom-in", "note bottom-in");

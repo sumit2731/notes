@@ -24,8 +24,8 @@ Get the current scroll
     WebKit-based ones, like Safari (bug 5991), where we should use document.body instead of document.documentElement.
     so use -
 
-        window.pageXOffset is an alias of window.scrollX.
-        window.pageYOffset is an alias of window.scrollY.
+        window.pageXOffset (window.scrollX)is an alias of window.scrollX.
+        window.pageYOffset (window.scrollY)is an alias of window.scrollY.
 
 Scrolling 
 
@@ -57,6 +57,35 @@ Disabling Scroll
     That looks a bit odd, but can be worked around if we compare clientWidth before and after the freeze. If it increased
         (the scrollbar disappeared), then add padding to document.body in place of the scrollbar to keep the content width
         the same.
+
+
+
+
+width/height of window -
+    
+    a)document.documentElement.clientWidth(works for all browses,does not include scroll bar)
+    b)window.innerWidth, window.innerHeight(Includes scrollbar also)
+
+window/height of document -
+
+    a)math.max of 3 values
+
+
+get current scroll in window -
+
+    window.pageXOffset => window.scrollX
+    window.pageYOffset => window.scrollY
+
+
+
+scroll in window -
+
+    window.documentElment.scrollTop(all browser execpt safari)
+    window.body.scrollTop(safari)
+
+    window.scrollBy()
+    window.scrollTo()
+
 
 
 

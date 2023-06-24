@@ -18,7 +18,7 @@ There are generally two ways to style an element:
 
 
 className proeprties corropsonds to class attribute
-    element.className - If we assign something to elem.className, it replaces the whole string of classes. Sometimes 
+    element.className - If we assign something to element.className, it replaces the whole string of classes. Sometimes 
         that’s what we need, but often we want to add/remove a single class.
 
 
@@ -99,6 +99,3 @@ Reading Styles
 
         Styles applied to :visited links are hidden!. this for security so that someone is not able to know whether user
             has visisted some other website or not.
-
-
-    
