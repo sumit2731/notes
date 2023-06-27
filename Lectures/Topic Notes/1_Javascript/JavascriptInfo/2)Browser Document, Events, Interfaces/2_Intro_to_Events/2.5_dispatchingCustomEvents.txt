@@ -30,7 +30,7 @@ event.isTrusted
     The property event.isTrusted is true for events that come from real user actions and false for script-generated events.
 
 
-THings about Custom Events -
+Things about Custom Events -
 
     We should use addEventListener for our custom events, because on<event> only exists for built-in events, document.onhello 
         doesn’t work.
