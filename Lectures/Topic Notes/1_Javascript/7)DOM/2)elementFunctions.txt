@@ -14,9 +14,11 @@
 
     
 
-    element.closest('cssSelector') - Ancestors of an element are: parent, the parent of parent, its parent and so on. The 
-        ancestors together form the chain of parents from the element to the top.For that chain this selcts the closes 
+    element.closest('cssSelector') - Ancestors of an element are: parent, the parent of parent, its parent and so on.The 
+        ancestors together form the chain of parents from the element to the top.from that chain,this selects the closest 
         element.element itself is also included.when a element matches , then serach is stopped and element is returned.
+
+        THis is useful in event delagation pattern, to identify whether target ic child of desired element.
 
     getElementsBy - return Live Collection i.e newNodes that are added in DOM after query are also added to live Collection
 
@@ -29,6 +31,8 @@
     a)element.matches("cssSelector") - It checks whether a CSS selectir matches the element or not.
         returns tru or false.
     b)elemA.contains(elemB) returns true if elemB is inside elemA (a descendant of elemA) or when elemA==elemB.
+        used in event delagation pattern.to check closes element of target is contained inside ellement on which event handler
+        is attached.
 
 
 4)attbibutes -

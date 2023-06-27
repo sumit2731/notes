@@ -30,8 +30,8 @@ nodeType Property
 
 nodeName and tagName
     they are almost same.
-    tagName - for htmlelement
-    nodeName - for nodes
+    tagName - for htmlelement // returns in uppercase
+    nodeName - for nodes // return in uppercase
     In HTML mode tagName/nodeName is always uppercased: it’s BODY either for <body> or <BoDy>.
 
 innerHTML (read/write)

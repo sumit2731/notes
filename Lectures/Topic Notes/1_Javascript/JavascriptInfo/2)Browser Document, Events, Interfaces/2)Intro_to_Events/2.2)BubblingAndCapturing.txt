@@ -6,7 +6,8 @@ Bubbling - When an event happens on an element, it first runs the handlers on it
 
     Almost all events bubble - Like focus event do not bubble
 
-    event.target - element on which event actually event happened (not one who is processing it)
+    event.target - Element on which event actually event happened (not one who is processing it)
+    event.currentTarget - Element on which current event handler is being called. currentTarget keeps changing.
 
 
 Stop Bubbling -
@@ -16,7 +17,8 @@ Stop Bubbling -
 
     But any handler may decide that the event has been fully processed and stop the bubbling.
 
-    event.stopPropagation()
+    event.stopPropagation() - When called it prevents the event to propogate to thet elements in both phases bubbling and 
+        capturing.
 
     To stop the bubbling and prevent handlers on the current element from running, there’s a method - 
         event.stopImmediatePropagation()
@@ -50,7 +52,8 @@ Capturing
         and bubbling phases trigger at that phase.see example in code, it is called 2 times.
 
 
-event.eventPhase that tells us the number of the phase on which the event was caught
+event.eventPhase that tells us the number of the phase on which the event was caught.
+    (capturing=1, target=2, bubbling=3)
 
 
 To remove the handler, removeEventListener needs the same phase

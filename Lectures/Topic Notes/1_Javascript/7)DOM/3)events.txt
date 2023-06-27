@@ -2,10 +2,13 @@ Event Properties -
 
     1)General Event -
         a)type - "click"
-        b)currentTarget - element on which handleed is attached. it can also be accessed by using this.
-        c)target - element on which actual event happened.This does not change during bubbling phase.
-        d)phase -  the current phase (capturing=1, target=2, bubbling=3).
-        d)event.clientX/ event.clientY - Window-relative coordinates of the cursor, for pointer events.
+        b)currentTarget - The current element on which handleed is attached. it can also be accessed by using this.
+        c)target - the deepest element that originated the event.
+        d)eventPhase -  the current phase (capturing=1, target=2, bubbling=3).
+        e)event.defaultPrevented - The property event.defaultPrevented is true if the default action was prevented, and false 
+            otherwise.
+        f)event.isTrusted - True if event is coming from browser(because of user action), false in case of custom events.
+        f)event.clientX/ event.clientY - Window-relative coordinates of the cursor, for pointer events.
 
 
     2)keydown event. event object has these properties -
@@ -21,8 +24,20 @@ Event Methods -
     b)event.stopImmediatePropagation() - To stop the further travelling of event and prevent other handlers on the current 
         element from running.
 
+    c)event.preventDefault() - Stops the browser to take default action.For events added via attributes and DOM properties
+        if we return false from handler, this is equivalent to it.
+
+
+2)Events -
+    mouse -
+        click
+        mouseover
+        mouseout
+
 
 2)events that do not bubble -
     focus
+    mouseenter
+    mouseleave
 
 

@@ -1,0 +1,25 @@
+The idea is that if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them –
+ we put a single handler on their common ancestor.
+
+ Event Delegation Pattern 1(when same actions needs to be taken for all children) -
+    Code example of Event Delegation and use of closest and contains in it.
+
+ Event Delegation Pattern 2(when different actions needs to be taken for different children) -
+    we can add custom attributes on children, in handler attached to parent element,we can retrieve these handlers to understand
+    what actions needs to be taken.
+
+
+Advantages of Event Delagation - 
+
+    a)We don’t need to write the code to assign a handler to each button. Just make a method and put it in the markup.
+    b)The HTML structure is flexible, we can add/remove buttons at any time.
+
+
+The “behavior” pattern
+
+
+Questions -
+    a)Tree Menu
+        Since event needed to be only placed on li'text. we needed to take li text and create new element out of it.
+    b)Tooltip
+        Trick - How to center element and how to decide where element should be displayed.

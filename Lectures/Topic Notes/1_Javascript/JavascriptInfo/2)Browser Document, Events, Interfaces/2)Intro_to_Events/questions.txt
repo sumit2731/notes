@@ -8,3 +8,11 @@ Lecture 1 -
     3)Carousel questions in lecture 1
         use negative margin-left to move to left as well as right
         for animation, use transition of margin-left property
+
+
+Lecture 3 -
+
+    1)tree menu
+        trick - how to create and insert separate node which contains text w=that text was in other element
+    2)tooltip
+        How to always center the tooltip element.how to decide psition of tooltip based on window position.
