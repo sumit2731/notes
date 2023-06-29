@@ -1,0 +1,9 @@
+Line Length -
+    max-width: 50ch;
+
+    ch units -
+        1ch is equal to the width of the 0 character, at the current font size.
+
+
+text Alignment -
+    difference between cetering of text with flexbox and text-align

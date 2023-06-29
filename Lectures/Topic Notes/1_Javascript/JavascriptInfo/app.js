@@ -1,32 +1,60 @@
-field.onclick = function(event) {
+let currentDroppable = null;
 
-  // window-relative field coordinates
-  let fieldCoords = this.getBoundingClientRect();
+ball.onmousedown = function(event) {
 
-  // the ball has position:absolute, the field: position:relative
-  // so ball coordinates are relative to the field inner left-upper corner
-  let ballCoords = {
-    top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
-    left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
+  let shiftX = event.clientX - ball.getBoundingClientRect().left;
+  let shiftY = event.clientY - ball.getBoundingClientRect().top;
+
+  ball.style.position = 'absolute';
+  ball.style.zIndex = 1000;
+  document.body.append(ball);
+
+  moveAt(event.pageX, event.pageY);
+
+  function moveAt(pageX, pageY) {
+    ball.style.left = pageX - shiftX + 'px';
+    ball.style.top = pageY - shiftY + 'px';
+  }
+
+  function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+
+    ball.hidden = true;
+    let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+    ball.hidden = false;
+
+    if (!elemBelow) return;
+
+    let droppableBelow = elemBelow.closest('.droppable');
+    if (currentDroppable != droppableBelow) {
+      if (currentDroppable) { // null when we were not over a droppable before this event
+        leaveDroppable(currentDroppable);
+      }
+      currentDroppable = droppableBelow;
+      if (currentDroppable) { // null if we're not coming over a droppable now
+        // (maybe just left the droppable)
+        enterDroppable(currentDroppable);
+      }
+    }
+  }
+
+  document.addEventListener('mousemove', onMouseMove);
+
+  ball.onmouseup = function() {
+    document.removeEventListener('mousemove', onMouseMove);
+    ball.onmouseup = null;
   };
 
-  // prevent crossing the top field boundary
-  if (ballCoords.top < 0) ballCoords.top = 0;
+};
 
-  // prevent crossing the left field boundary
-  if (ballCoords.left < 0) ballCoords.left = 0;
-
-
-  // // prevent crossing the right field boundary
-  if (ballCoords.left + ball.clientWidth > field.clientWidth) {
-    ballCoords.left = field.clientWidth - ball.clientWidth;
-  }
-
-  // prevent crossing the bottom field boundary
-  if (ballCoords.top + ball.clientHeight > field.clientHeight) {
-    ballCoords.top = field.clientHeight - ball.clientHeight;
-  }
-
-  ball.style.left = ballCoords.left + 'px';
-  ball.style.top = ballCoords.top + 'px';
+function enterDroppable(elem) {
+  elem.style.background = 'pink';
 }
+
+function leaveDroppable(elem) {
+  elem.style.background = '';
+}
+
+ball.ondragstart = function() {
+  return false;
+};

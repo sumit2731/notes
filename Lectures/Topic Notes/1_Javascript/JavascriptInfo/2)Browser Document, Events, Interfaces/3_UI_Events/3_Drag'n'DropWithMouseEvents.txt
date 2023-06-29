@@ -1,0 +1,17 @@
+Here we’ll see how to implement Drag’n’Drop using mouse events.
+
+    Drag’n’Drop algorithm
+        The basic Drag’n’Drop algorithm looks like this:
+
+        a)On mousedown – prepare the element for moving, if needed (maybe create a clone of it, add a class to it 
+            or whatever).
+        b)Then on mousemove move it by changing left/top with position:absolute.
+        c)On mouseup – perform all actions related to finishing the drag’n’drop.
+
+
+Potential drop targets (droppables)
+
+    We need to know:
+
+        where the element was dropped at the end of Drag’n’Drop – to do the corresponding action,
+        and, preferably, know the droppable we’re dragging over, to highlight it.

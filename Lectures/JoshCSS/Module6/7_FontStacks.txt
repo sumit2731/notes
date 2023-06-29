@@ -1,0 +1,3 @@
+.title {
+  font-family: 'Lato', Futura, Helvetica, Arial, sans-serif;
+}

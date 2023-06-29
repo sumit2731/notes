@@ -1,33 +1,32 @@
-function find_word_concatenation(str, patterns) {
-    let patternsDic = {}, windowEnd = 0, windowStart = 0, matchedWordCount = 0, resultIndexes = [], patternWordLength = patterns[0].length;
-    for(let word of patterns) patternsDic[word] = (patternsDic[word] || 0) + 1;
-    let currentPatternDic = {...patternsDic};
-    while(windowStart <= (str.length - (patterns.length * patterns[0].length))) {
-        let leftWord = str.slice(windowEnd, windowEnd+patternWordLength);
-        if(currentPatternDic[leftWord]) {
-            currentPatternDic[leftWord]--;
-            if(currentPatternDic[leftWord] == 0) {
-                matchedWordCount++;
-                if(matchedWordCount == patterns.length) {
-                    resultIndexes.push(windowStart);
-                    windowStart++;
-                    windowEnd = windowStart;
-                    currentPatternDic = {...patternsDic}
-                    matchedWordCount = 0;
-                }
-            }
-            windowEnd += patternWordLength;
-        }
-        else {
-            windowStart++;
-            windowEnd= windowStart;
-            currentPatternDic = {...patternsDic}
-            matchedWordCount = 0;
-
-        }
+function find_word_concatenation(str, words) {
+    const resultIndices = [], wordDic = {};
+    let wordDicClone = {}, matchCount = 0;
+    for(let word of words) {
+        wordDic[word] = (wordDic[word] || 0) + 1;
     }
-    return resultIndexes;
-
+    let windowStart = 0, windowEnd = 0, wordLength = words[0].length, totalCharLength = wordLength * words.length;
+    //
+    while(str.length-totalCharLength+1 >= windowStart) {
+        windowEnd = windowStart;
+        wordDicClone = {...wordDic};
+        matchCount = 0;
+        while(true) {
+            let word = str.slice(windowEnd,windowEnd+wordLength);
+            if(wordDicClone[word]) {
+                wordDicClone[word]--;
+                if(wordDicClone[word] < 0) break;
+                if(wordDicClone[word] == 0) matchCount++;
+                if(matchCount == Object.keys(wordDic).length) {
+                    resultIndices.push(windowStart);
+                    break;
+                }
+            } else break;
+            windowEnd += wordLength;
+        }
+        windowStart++;
+    }
+    // TODO: Write your code here
+    return resultIndices;
 }
 
 console.log(find_word_concatenation('catfoxcat', ['cat', 'fox']));

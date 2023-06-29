@@ -1,5 +1,5 @@
 /**
- * @CourseAs_well_as_my_solution
+ * @my_solution
  */
 
 function find_substring(str, pattern) {
@@ -9,9 +9,9 @@ function find_substring(str, pattern) {
         let rightChar = str[windowEnd];
         if(rightChar in patternDic) {
             patternDic[rightChar]--;
-            if(patternDic[rightChar] == 0) matchedCharacters++;
+            if(patternDic[rightChar] == 0) matchedCharacters++; // this condition is chnaged in course
         }
-        while(matchedCharacters == Object.keys(patternDic).length) {
+        while(matchedCharacters == Object.keys(patternDic).length) { // thic condition is changed in codde
             if(!(smallestSubstr) ||(smallestSubstr.length > windowEnd-windowStart+1)) {
                 smallestSubstr = str.slice(windowStart,windowEnd+1);
             }
@@ -30,7 +30,3 @@ console.log(find_substring('aabdec', 'abc'));
 console.log(find_substring('aabdec', 'abac'));
 console.log(find_substring('abdbca', 'abc'));
 console.log(find_substring('adcad', 'abc'));
-
-/**
- * @
- */

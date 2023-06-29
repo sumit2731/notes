@@ -1,12 +1,26 @@
-const max_sub_array_of_size_k = function(k, arr) {
-    let maxSum = Infinity, currentPointer = 0;
-    while(currentPointer < arr.length) {
-        
-    }
-  };
-  
-  console.log(
-      `Maximum sum of a subarray of size K: ${max_sub_array_of_size_k(3, [2, 1, 5, 1, 3, 2])}`);
-  console.log(
-      `Maximum sum of a subarray of size K: ${max_sub_array_of_size_k(2, [2, 3, 4, 1, 5])}`);
+function find_missing_number(nums) {
+   let i = 0;
+   const n = nums.length;
+   while (i < n) {
+     j = nums[i];
+     if (nums[i] < n && nums[i] !== nums[j]) {
+       [nums[i], nums[j]] = [nums[j], nums[i]]; // swap
+     } else {
+       i += 1;
+     }
+   }
+ 
+   // find the first number missing from its index, that will be our required number
+   for (i = 0; i < n; i++) {
+     if (nums[i] !== i) {
+       return i;
+     }
+   }
+ 
+   return n;
+ }
+ 
+
+
+ console.log(find_missing_number([2, 0, 3, 1]));
   

@@ -1,0 +1,8 @@
+lecture 2 -
+    see the table over example with mouseover and mouseout.
+    
+    Questions -
+        a)impoved tooltip behaviour
+        b)smart tooltip
+
+lecture 2 -

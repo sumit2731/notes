@@ -2,11 +2,39 @@ Module 2 -
 
     isolation: isolate
     overflow:clip
-    whitespace: nowrap;
-        horizontal overflow
+    whitespace:
+        normal
+        nowrap - does not llow content to come to next line
+        pre
+        pre-line
+        pre-wrap
 
 Module 4-
     object-fit
+
+
+Module 5 -
+    font-kerning - 
+    oveflow-wrap (word-wrap in IE)
+        break-word (breaks te word that is coming out from container)
+
+     hyphens: 
+        none
+        auto
+        manual
+
+    text-overflow (need overflow:hidden to work)
+        ellipsis
+        clip
+
+    text-indent: 2px
+        first letter is given some space before starting
+
+    text-align -
+        left
+        right
+        center
+        justify
 
 Module 6 -
     pointer-events

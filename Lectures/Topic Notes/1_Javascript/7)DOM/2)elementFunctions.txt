@@ -177,3 +177,5 @@
 Useful DOM API's -
     a)document.flementFormPoint(x,y) - document.elementFromPoint(x, y) returns the most nested element at window 
         coordinates (x, y).
+
+        used in mouse drag and drop

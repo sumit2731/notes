@@ -1,0 +1,31 @@
+2 legacy Layout modes -
+    a)columns
+
+
+        .wrapper {
+            columns: 3;
+            column-gap: 16px;
+            padding: 16px;
+            break-inside: avoid;
+        }
+
+
+    The algorithm's chief concern is distributing content evenly so that all columns are the same height. It's very good 
+    at its job; it re-evaluates whenever new content is added, to find the ideal distribution. This obscure layout mode 
+    can accomplish things that no other layout mode can.
+
+
+    b)float
+        helps in wrapping text around elements like images.
+
+
+    c)Indentation
+        a)
+            p::first-letter {
+                margin-left: 2rem;
+            }
+
+        b)    
+            p {
+                text-indent: 2rem;
+            }

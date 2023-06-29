@@ -1,0 +1,31 @@
+Suppose we want to add a space to our paragraph, but in a way that doesn't create a soft wrap opportunity. In other words,
+    a space that can't be used to line-break.
+
+    There is a special HTML entity that can be used in this case: &nbsp;
+
+
+oveflow-wrap (word-wrap in IE)
+    break-word: tweaks the text-placing algorithm. If the browser realizes that it can't fit the current word, and it 
+        doesn't have any spare soft wrap opportunities, this declaration gives the browser permission to break after any 
+        character.
+
+hyphens: auto;
+    
+    /* Prefix for Safari */
+    -webkit-hyphens: auto;
+
+
+text-oveflow (need overflow:hidden to work)
+    ellipsis
+    clip
+
+multiline ellipsis
+    p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin-bottom: 1em;
+  }
+
+

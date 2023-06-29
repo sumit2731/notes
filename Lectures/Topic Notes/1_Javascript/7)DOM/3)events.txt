@@ -10,6 +10,30 @@ Event Properties -
         f)event.isTrusted - True if event is coming from browser(because of user action), false in case of custom events.
         f)event.clientX/ event.clientY - Window-relative coordinates of the cursor, for pointer events.
 
+    2)mouseEvent -
+
+        types of mouse event -
+            a)mouseover/mouseout
+            b)mouseenter/mouseleave
+            c)mousedown
+            d)mouseup
+            e)click
+            f)dblclick
+            g)contextmenu
+
+        Properties of mouseEvents -
+
+            a)even.button
+            b)event.buttons
+            c)modifiers -
+                event.shiftKey
+                event/altKey
+                event.ctrlKey
+                metaKey - cmd on mac
+            d)clientX /clientY (windowRelative)
+            e)pageX / pageY (pageRelative)
+            g)event.relatedTarget - used in mouseover/mouseout event. in mouseover gives element over mouseout happened
+                and vice-versa
 
     2)keydown event. event object has these properties -
         shiftKey: true // whether shift kay was pressed or not

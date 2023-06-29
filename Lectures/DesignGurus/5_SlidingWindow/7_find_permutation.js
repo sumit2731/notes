@@ -6,9 +6,14 @@ function find_permutation(str,pattern) {
     for(let char of pattern) patternDic[char] = (patternDic[char] || 0) + 1;
     for(windowEnd = 0; windowEnd <str.length; windowEnd++ ) {
         let currentChar = str[windowEnd];
+        /**
+         * (Current Char is not present in pattern) || (required cound of currentChar is already compleeted)
+         * // so decrease the window size winodwStart = windowEnd
+         */
         while((!(currentChar in patternDic) ||(patternDic[currentChar] < 1)) && (windowEnd > windowStart)) {
             let leftChar = str[windowStart];
             if(patternDic[leftChar] == 0) matchedCharCount--;
+            //leftChar is expected to be part of pattern, otherwise we could have adjusted the window
             patternDic[leftChar]++;
             windowStart++;
         }
@@ -24,10 +29,10 @@ function find_permutation(str,pattern) {
     
 }
 
-console.log(`Permutation exist: ${find_permutation('oidbcaf', 'abc')}`);
+// console.log(`Permutation exist: ${find_permutation('oidbcaf', 'abc')}`);
 console.log(`Permutation exist: ${find_permutation('odicf', 'dc')}`);
-console.log(`Permutation exist: ${find_permutation('bcdxabcdy', 'bcdyabcdx')}`);
-console.log(`Permutation exist: ${find_permutation('aaacb', 'abc')}`);
+// console.log(`Permutation exist: ${find_permutation('bcdxabcdy', 'bcdyabcdx')}`);
+// console.log(`Permutation exist: ${find_permutation('aaacb', 'abc')}`);
 
 
 /**

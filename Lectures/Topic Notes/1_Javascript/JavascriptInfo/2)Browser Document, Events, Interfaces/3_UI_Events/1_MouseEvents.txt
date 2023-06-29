@@ -1,0 +1,42 @@
+MouseEvents Type -
+    
+    mouseover/mouseout
+    mouseenter/mouseleave
+    mousemove
+
+    mousedown/mouseup
+    click
+    dblclick
+    contextmenu
+
+
+Events Order
+
+    mousedown → mouseup → click
+    mousedown => mouseup => contextmenu
+
+
+MouseEvent Properties -
+    a)event.button
+        0 - Left Button
+        1 - Middle Button
+        2 - Right Button
+        3
+        4
+
+    b)event.buttons
+
+    c)modifiers -
+        shiftKey: Shift
+        altKey: Alt (or Opt for Mac)
+        ctrlKey: Ctrl
+        metaKey: Cmd for Mac
+
+    d)clientX /clientY (window Relative)
+    e)pageX/Y (document Relative)
+
+
+Preventing Selection
+    The default browser action of mousedown is text selection, if it’s not good for the interface, then it should be prevented.
+
+onCopy

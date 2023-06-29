@@ -1,0 +1,23 @@
+Why text differes between browsers - kerning
+    Kerning refers to the spacing between individual characters.
+    Properties -
+        font-kerning
+        letter-spacing
+
+
+Text Rasterization
+    "bitmap font"
+
+    It's much more common for fonts to use vector formats like ttf, otf, svg, and woff/woff2. In a vector font, we store 
+        a mathematical set of instructions for each character.
+
+    In order to turn a vector font into characters on a screen, though, the browser has to figure out which color to 
+        make each pixel, a process known as rasterization.
+
+    As you might imagine, this method of rasterization produces sharp, pixellated text:
+
+    To make the text appear smoother, the browser can apply "anti-aliasing"
+
+
+Font Smoothing
+    -webkit-font-smoothing

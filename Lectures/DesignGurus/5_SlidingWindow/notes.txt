@@ -4,3 +4,20 @@
 9)good question, but i solved it.
 10)i solved the qquestion with same complexity as cousre solution, but got many typos on it. also curse solution is
     alternate approach having same complexity.
+
+
+
+2nd try -
+    3)I solved it but course solution is better.
+    10)Solved it but missed a edge case. also course solution is clean.
+
+
+
+Start Problems -
+    3)
+    5)
+    7) see patteern for finding permutations in another string with charDic -. 
+        we maintain count of matchedChars, when matched chars = count of chars in pattern, we have a count.
+    8) AFter solving 7, you get idea. try solving this directly
+    9)
+    10)course solution is better

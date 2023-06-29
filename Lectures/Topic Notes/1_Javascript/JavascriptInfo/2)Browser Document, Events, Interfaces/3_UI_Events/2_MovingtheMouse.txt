@@ -1,0 +1,29 @@
+mouseover & mouseout
+
+
+relatedTarget
+
+    For mouseover:
+
+        event.target – is the element where the mouse came over.
+        event.relatedTarget – is the element from which the mouse came (relatedTarget → target).
+
+    For mouseout the reverse
+
+        event.target – is the element that the mouse left.
+        event.relatedTarget – is the new under-the-pointer element, that mouse left for (target → relatedTarget).
+
+
+Skipping elements
+    If mouseover triggered, there must be mouseout
+
+Mouseout when leaving for a child
+    According to the browser logic, the mouse cursor may be only over a single element at any time – the most nested one and top by z-index.
+
+Events mouseenter and mouseleave
+
+    Events mouseenter/mouseleave are like mouseover/mouseout. They trigger when the mouse pointer enters/leaves the element.
+    But there are two important differences:
+
+        Transitions inside the element, to/from descendants, are not counted.
+        Events mouseenter/mouseleave do not bubble.
