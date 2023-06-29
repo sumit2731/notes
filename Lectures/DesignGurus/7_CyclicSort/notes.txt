@@ -5,5 +5,18 @@
 7)solved this but missed one condition
 8)good question - see this. after lot of thinking I was able to solve this.
 
+2nd Iteration -
 
-Important - 4)have a look at similar problem after you cover fast and slow pointers
+2) Solved but modified orignal array
+3)My algo was wrong
+4)course solution is better, does need to complete 1 iteration
+8)algo was wrong, later corrected it on my own.
+
+
+
+Star Questions -
+    1)8 (It becomes easy after attempting 7, so directly attempt this)
+
+
+Important - 
+    4)have a look at similar problem after you cover fast and slow pointers
