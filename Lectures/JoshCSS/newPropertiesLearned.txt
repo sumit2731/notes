@@ -38,3 +38,6 @@ Module 5 -
 
 Module 6 -
     pointer-events
+    object-fit
+    object-psotion
+    

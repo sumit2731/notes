@@ -5,6 +5,15 @@ class Node {
     }
 }
 
+/**
+ * We are implementing stack using single linked list
+ * 
+ * Since  complexity of pop in singly linked list is O(n), we will add remove items from begining of the list
+ * so shift and unshift for linked list becomes push and pop for stack
+ * Itemms are added and removed from begining of linked list
+ * 
+ * If we use doubly linked list then we can add or removed for any end
+ */
 class Stack {
   constructor() {
     this.first = null;
@@ -12,10 +21,9 @@ class Stack {
     this.size = 0;
   }
 
-  /* 
-    this is actually unshift for linked list, since this is stack
-    so we are calling it push 
-    */
+  /**
+   * Here we are adding element at begining of linked list
+   */
   push(value) {
     let newNode = new Node(value);
     if (!this.first) this.first = this.last = newNode;

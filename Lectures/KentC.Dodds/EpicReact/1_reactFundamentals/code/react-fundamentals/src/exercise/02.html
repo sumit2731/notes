@@ -1,0 +1,27 @@
+<!-- Intro to raw React APIs -->
+<!-- http://localhost:3000/isolated/exercise/02.html -->
+
+<body>
+  <div id="root"></div>
+
+  <!-- 🐨 add React and ReactDOM on the page.
+       💰 Here are script tags that'll do the job: -->
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+ 
+
+  <script type="module">
+    const rootElement = document.getElementById('root')
+    const elementType = 'div';
+    const elementProps = {childern:  'Hello World'}
+    //Second arguments is prop passed to react component
+    //const reactElement = React.createElement(elementType,{className: 'container', children: 'HelloWorld'});
+    //const reactElement = React.createElement(elementType,{className: 'container'}, 'HelloWorld');
+    const reactElement = React.createElement(elementType,{className: 'container'}, 
+      React.createElement('span',null,'Hello'),
+      React.createElement('span',null,'World')
+    );
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(reactElement);
+  </script>
+</body>

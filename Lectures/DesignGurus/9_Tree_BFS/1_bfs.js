@@ -6,24 +6,11 @@ class TreeNode {
     }
   }
   
+
   /**
-   * @MySolution - Course solution arranges element level wise
+   * CoUrse Solution
    */
   function traverse(root) {
-    let result = [], queue = [root];
-    while(queue.length > 0) {
-        let firstNode = queue.shift();
-        if(firstNode.left) queue.push(firstNode.left);
-        if(firstNode.right) queue.push(firstNode.right);
-        result.push(firstNode.val);
-    }
-    // TODO: Write your code here
-    return result;
-  }
-  /**
-   * CoUrse Solution - I also solved it
-   */
-  function traverse2(root) {
     let result = [], queue = [root];
     while(queue.length > 0) {
         let size = queue.length, currentLevelNodes = [];

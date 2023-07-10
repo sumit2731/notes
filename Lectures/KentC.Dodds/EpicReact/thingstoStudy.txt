@@ -1,0 +1,2 @@
+1)Why attributes and prop names differ
+2)why react uses sythetic event

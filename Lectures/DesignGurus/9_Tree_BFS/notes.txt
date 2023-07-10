@@ -8,4 +8,11 @@
 
 
 questions that caught me -
-    1)question 3
+    1)2 reverse BFS
+    2)spiralOrder traversal
+
+
+Notes -
+    Main take away from section -
+        a)how we can arrange node of a level in a array. see question 1.
+        b)second approach to arrange is height question in colt steel lectire(question is from tushar roy, but i have noted there)

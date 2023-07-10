@@ -82,6 +82,12 @@ export default function () {
 export default [1,2,3];
 
 /**
+ * Another thing to note about default export is that the export default keyword cannot come before variable declaration like
+ */
+
+export default const NAME ="abc";
+
+/**
  * @Syntax 3 - default export after declaration.
  */
 

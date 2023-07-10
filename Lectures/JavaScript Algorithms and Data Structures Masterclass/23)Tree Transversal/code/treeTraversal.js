@@ -102,7 +102,7 @@ class BinarySearchTree {
   }
 
   /**
-   * Morris PreOrder Traversal
+   * Morris PreOrder Traversal - Left for now
    */
   morrisPreOrderTraversal() {
     let current = root, result = [];
@@ -131,7 +131,7 @@ class BinarySearchTree {
     }
     return result;
 }
-  //left-node-right
+  //left-righ-nodet
   //Recursive Solution - from udemy lecture
   postOrder() {
     let data = [];
@@ -144,12 +144,12 @@ class BinarySearchTree {
     return data;
   }
   /* 
-  This is iterative solution by using 2 stacks.see postOrder31, it's my solution
+  This is iterative solution by using 2 stacks
   https://www.youtube.com/watch?v=qT65HltK2uE&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=10
-  Algo - 1)pop from stack1, push into stack2
-        2)Push left onto stack1
-        3)Push right onto stack1
-     Stack 2 has all elements in right order   
+  Algo -
+    Stack 1 contains Elements whose children are yet to be processed
+    Stack 2 contains elements whose children are already processed, they are either in stack1 or in satck2.
+    this contains the right order in which elements should be moved out 
   Space Complexity - O(n) as we traverse each array once
   Time Complexity - O(n) as at last second aray will have all elements
   */
@@ -173,6 +173,7 @@ class BinarySearchTree {
 
   /* 
   This is iterative solution using 1 stack - By Tushat Roy
+  (https://www.youtube.com/watch?v=xLQKdq0Ffjg&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=18)
   Algo-
     1)current points to root
     2)push root into stack1
@@ -195,48 +196,23 @@ class BinarySearchTree {
         stack.push(node);
         node = node.left;
       } else {
-        let tempNode = stack[stack.length - 1];
-        if (tempNode.right) {
-          node = tempNode.right;
+        let lastNodeInStack = stack[stack.length - 1];
+        if (lastNodeInStack.right) {
+          node = lastNodeInStack.right;
         } else {
-          tempNode = stack.pop();
-          data.push(tempNode.value);
-          while (stack.length && tempNode == stack[stack.length - 1].right) {
-            tempNode = stack.pop();
-            data.push(tempNode.value);
+          let poppedNode = stack.pop();
+          data.push(poppedNode.value);
+          //if last popped node is right child of last current node in stack - If yes, pop that out to
+          while (stack.length && poppedNode == stack[stack.length - 1].right) {
+            poppedNode = stack.pop();
+            data.push(poppedNode.value);
           }
         }
       }
     }
     return data;
   }
-  /* 
-  This is my solution using 2 stacks.
-  Algo- First stack stores node and second stack stores node, whose childern are pushed
-    ito first stack
-  */
-  postOrder31() {
-    if (!this.root) return [];
-    let nodeStack = [],
-      parentStack = [],
-      data = [];
-    nodeStack.push(this.root);
-    let node;
-    while (nodeStack.length) {
-      node = nodeStack[nodeStack.length - 1];
-      if (node.left || node.right) {
-        if (node == parentStack[parentStack.length - 1]) {
-          data.push(nodeStack.pop().value);
-          parentStack.pop();
-        } else {
-          if (node.right) nodeStack.push(node.right);
-          if (node.left) nodeStack.push(node.left);
-          parentStack.push(node);
-        }
-      } else data.push(nodeStack.pop().value);
-    }
-    return data;
-  }
+
 
   /**
    * Recurvive solution - udemy lecture
@@ -254,7 +230,7 @@ class BinarySearchTree {
   }
 
   /* 
-  Reccursive Solution
+  Itertive Solution
   https://www.youtube.com/watch?v=nzmtCFNae9k&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=12
   Time Complexity - O(n),Since Each Node is visisted Once
   Space Complexity - depends upon size of stack, in worst case, size of stack will be height if tree that is O(h)
@@ -279,6 +255,7 @@ class BinarySearchTree {
   }
 
   /**
+   * Left for now
    * Tushar Videos - https://www.youtube.com/watch?v=wGXB9OWhPTg&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=20
    */
   morrisInOrderTraversal(root) {
@@ -323,6 +300,7 @@ function isSame(node1,nod2) {
 /**
 * number of nodes on binay tree
 * TusharVideos
+*Can be done by using BFS, here we are doing recursion
 */
 function sizeOfTree(node) {
   if(node == null) return 0;
@@ -378,7 +356,7 @@ function heightOfTree3(node) {
 }
 
 /**
-* sum of binaryTree from root to leaf
+* sum of binaryTree from root to leaf -
 * TusharVideos
 */
 
@@ -389,22 +367,25 @@ function sumOfAllNodes(node) {
 
 /**
  * Check whther sum of  root to leaf of anyPath of tree is equal to given number
+ * https://www.youtube.com/watch?v=Jg4E4KZstFE&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=7
+ * 
+ * 
+ * 2 variations -
+ *  a)Find path also (given below)
+ *  b)Find all paths(more than 1)(in design guru's)
  */
-function sumOFCompletePath(node, sum) {
-  if(!node) return false
-  if((node.left == null) && (node.right == null)) {
-    return (node.value == sum)
-  }
-  let remainingSum = sum - node.value;
-  return sumOFOnePath(node.left,remainingSum) || sumOFOnePath(node.right, remainingSum)
-
+function rootToLeafSum(node, sum) {
+  if(!node) return false;
+  if(!node.left && !node.right && node.value == sum) return true;
+  return rootToLeafSum(node.left, sum-node.value) || rootToLeafSum(node.right, sum-node.value);
 }
 
 /**
- * same as above but we also need path
- * Tushar Videos
- * See Question 2 of DFS pattern of Design Guru. That prints all paths and also have iterative solution for this
- *  solution for this
+ * Tushar Videos - https://www.youtube.com/watch?v=Jg4E4KZstFE&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=7
+ * Same as above here we also need path. we start inserting path from bottom, when we have match, then for each match
+ *  we continue this.
+ * See Question 2 of DFS pattern of Design Guru. That prints all paths(better solution), that too from starting from root
+ *  and also I have iterative solution for thissolution for this
  */
 function rootToLeafSum(node, sum, path) {
   if(!node) return false;
@@ -440,11 +421,13 @@ function sumofAnyPath(node, sum) {
  * Check if given binary tree is binary search tree. see the catch herewatch video
  * https://www.youtube.com/watch?v=MILxfAbIhrE&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=8
  */
-function ifBInaryTree(node) {
-  if(!node) return true;
-  if(node.left && node.left.value >= node.value) return false;
-  if(node.right && node.right.value <= node.value) return false;
-  return (ifBInaryTree(node.left) && ifBInaryTree(node.right))
+function isBInaryTree(node) {
+  function binaryTreeHelper(node, minValue, maxValue) {
+    if(!node) return true;
+    if(node.value < minValue || node.value > maxValue) return false;
+    return binaryTreeHelper(node.left,minValue,node.value) && binaryTreeHelper(node.right,node.value,maxValue)
+  }
+  return binaryTreeHelper(node, -Infinity, Infinity)
 }
 
 

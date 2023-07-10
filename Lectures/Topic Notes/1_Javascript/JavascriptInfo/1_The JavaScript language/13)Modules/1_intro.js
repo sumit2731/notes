@@ -5,21 +5,29 @@ Synopsis -
 Core Module Features
 
     1)always use strict mode
-    2)they have their own top level scope and do not share with other modules
-    3)module code is evaluated only once if.e in first import. same object is shared in all importScripts.
+    2)they have their own top level scope and do not share with other modules.
+    3)module code is evaluated only once if.e in first import. same object is shared in all import Scripts.
+        Here’s the classical pattern:
+            A module exports some means of configuration, e.g. a configuration object.
+            On the first import we initialize it, write to its properties. The top-level application script may do that.
+            Further imports use the module.
     4)import.meta = path, function
     5)this is undefined
     6)does not work in file system
 
 Browser-specific features
 
-    1)scripts are defer by default
+    1)scripts are defer by default. inlinee scripts are also deffered
     2)async works in inline scripts as well.
     3) External Scripts -
-        a)External scripts with the same src run only once:
+        a)External scripts with the same src run only once. i.e duplicate external scripts are ignored.
         b)External scripts that are fetched from another origin (e.g. another site) require CORS headers.
-    4)No bare modules allowed
+    4)No bare modules allowed - import {simething} from "somefile".
+        path should be absolute or relative
     5)Compatibility, “nomodule”
+
+
+What Bundler tools does
 */
 
 /*

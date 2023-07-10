@@ -33,7 +33,7 @@ removing from heap - see 187
 
 priority Queue - Each element has a priority, element with higher priority are served before elements with lower
     priority.priority queues can be implmented on any type of list be it array, or linked list. but they are not efficient
-    as removing and adding a element takes O(log n) complexity where as binary heap add/remove complexity is O(log n).
+    as removing and adding a element takes O(n) complexity where as binary heap add/remove complexity is O(log n).
 
     then we implemented a priority queue using minHeap. we used node instead of stnadalone values. see slide 47.
 

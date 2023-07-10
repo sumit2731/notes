@@ -1,0 +1,44 @@
+Understanding WCAG standards
+
+
+WCAG - set of standards or measurable criteria. And the standards for measuring accessibility on the Web are the Web 
+    Content Accessibility Guidelines (or WCAG).
+
+
+    version -
+        WCAG 1.0 - only html, 14 guideline
+        WCAG 2.0 -
+            WCAG 2.1 (stable,will be used in course)
+            WCAG 2.2 (WIP)
+        WCAG 3.0 (work in progress)
+
+
+4 Design Principles -
+
+    Perceivable means that users must be able to perceive Web content in some way, using one or more of their senses (it can’t 
+        be invisible to all of their senses)
+    Operable means that users must be able to control UI elements (e.g. buttons must be activated in some way — mouse, keyboard, 
+        voice command, etc.). The user interface cannot require interaction that a user cannot perform.
+    Understandable means that the content must be understandable to its users.
+    Robust means that the content must be developed using well-adopted web standards that will work across different browsers, 
+        now and in the future.
+
+To guide you towards applying these principles in your work, each principle is supported by a set of guidelines.
+
+
+Success Criteria ()78 -
+    A success criterion (SC) is a testable, technical statement that targets one or more specific accessibility issue(s). 
+    They’re kind of like antibodies in that sense.
+
+    lang attributes in html
+
+conforming to WCAG
+    3 Levels -
+        A
+        AA
+        AAA
+
+    Every success criterion is assigned one of these three conformance levels
+
+    SC criteria 1.4.3- AA - contrast ration 4.5:1
+    SC criteria 1.4.6 -AAA - contrast ratio 7:1

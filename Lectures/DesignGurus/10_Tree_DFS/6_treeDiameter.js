@@ -21,20 +21,32 @@ class TreeNode {
      * CourseSolution - Just prints Diameter
      */
     find_diameter(root) {
-      let largestDiameter = 0;
-      
-      function findHeight(node) {
-        if(!node) return 0;
-        let leftSubtreeHeight = findHeight(node.left);
-        let rightSubtreeHeight = findHeight(node.right);
-        if(leftSubtreeHeight && rightSubtreeHeight) {
-          largestDiameter = Math.max(largestDiameter, leftSubtreeHeight + rightSubtreeHeight +1);
-        }
-        return Math.max(leftSubtreeHeight, rightSubtreeHeight) +1;
-
+      this.calculate_height(root);
+      return this.treeDiameter;
+    }
+  
+    calculate_height(currentNode) {
+      if (currentNode === null) {
+        return 0;
       }
-      findHeight(root);
-      return largestDiameter;
+  
+      const leftTreeHeight = this.calculate_height(currentNode.left);
+      const rightTreeHeight = this.calculate_height(currentNode.right);
+  
+      // if the current node doesn't have a left or right subtree, we can't have
+      // a path passing through it, since we need a leaf node on each side
+      if (leftTreeHeight !== 0 && rightTreeHeight !== 0) {
+        // diameter at the current node will be equal to the height of left subtree +
+        // the height of right sub-trees + '1' for the current node
+        const diameter = leftTreeHeight + rightTreeHeight + 1;
+  
+        // update the global tree diameter
+        this.treeDiameter = Math.max(this.treeDiameter, diameter);
+      }
+  
+      // height of the current node will be equal to the maximum of the heights of
+      // left or right subtrees plus '1' for(the current node
+      return Math.max(leftTreeHeight, rightTreeHeight) + 1;
     }
 
     /**
@@ -135,6 +147,7 @@ class TreeNode {
         let currentNode = nodeStack[nodeStack.length-1]
         //this means childNodes are not processed
         if(nodeHeightMap.get(currentNode) != null && nodeHeightMap.get(currentNode) == 0) {
+          //setting one to indiacte that children will be processed now
           nodeHeightMap.set(currentNode, 1);
           if(currentNode.right) {
             nodeStack.push(currentNode.right);

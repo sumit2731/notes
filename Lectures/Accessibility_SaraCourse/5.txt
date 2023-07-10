@@ -1,0 +1,46 @@
+The accessibility tree is the structure that carries accessibility information about your page and exposes it to assistive 
+    technologies like screen readers. It plays a key role in understanding just how accessible your work is. And understanding
+    it is critical to creating accessible web content.
+
+
+Not all HTML elements ‘carry’ information that is relevant to assistive technologies. There are a lot of elements that are not
+    essential for the understanding of the page. So, modern browsers expose the accessibility information that is relevant in a
+    separate tree structure. We refer to this tree as the accessibility tree.
+
+
+A11y tree is subset of accessibility tree -
+    a) <div>s and <span>s are “generic” elements which are not always exposed in the accessibility tree by default. They are 
+        not exposed because they don’t carry useful information (or meaningful semantics) that assistive technology users need
+        to understand the page.
+
+    b)Other elements may not be reported in the accessibility tree because they have been explicitly hidden (using HTML, CSS, 
+        or ARIA).
+
+
+    The browser parses the HTML markup of a page and uses the semantics as well as the styles applied to an element to determine
+    if it is important to accessibility. Elements that are important to understanding and navigating the page are exposed as 
+    objects in the accessibility tree. For example, the browser will include <button>s, <input>s, and other form controls, as 
+    well as headings, lists, landmarks, and other important UI components.
+
+
+    Some CSS properties can also affect accessibility information. Not only can you hide the presence of an element altogether 
+    from the accessibility tree (for example, using display: none will hide an element’s presence from the accessibility tree),
+    some properties may also modify element semantics.
+
+
+What HTML elements are included in the accessibility tree?
+
+    For an element to be included in the accessibility tree, it needs to:
+
+        map to a meaningful role, and
+        not be hidden in a way that removes it from the accessibility tree.
+    
+    Conversely, an element will be excluded from the accessibility tree if it:
+
+        is not mapped to a meaningful role, or
+        is explicitly removed from the accessibility tree using HTML, CSS, or ARIA.
+
+
+
+HTML elements to role mapping list can be found in - 
+    https://www.w3.org/TR/html-aam/#input-type-text-input-type-password-input-type-number-input-type-search-input-type-tel-input-type-email-input-type-url-and-textarea-element-accessible-name-computation

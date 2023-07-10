@@ -12,8 +12,10 @@
     10)Solved it but missed a edge case. also course solution is clean.
 
 
+3rd try -
+    solved all
 
-Start Problems -
+Star Problems -
     3)
     5)
     7) see patteern for finding permutations in another string with charDic -. 
@@ -21,3 +23,27 @@ Start Problems -
     8) AFter solving 7, you get idea. try solving this directly
     9)
     10)course solution is better
+
+
+
+Pattern Notes -
+    Mainly 2 patterns -
+        a)size of window is fixed, so while expanding the window, check if size is greater that required, yes contract the window
+            until condition that you are evaluating remians true.then calculating length of wwidnow
+        b)sometimes we need find maxSize , in that case contract the window until condition becomes false.while contracting the
+            window ,calculate maxSize
+
+    In Some questions we need to find if all charcsters are present in str or not(even permutations), we use this approach -
+        1)we maintain charDic object, with char as properties, value of these properties is frequency of chars in pattern.
+            we decrement their count on each match in main string. when count of one char becomes 0, we increment the 
+            match count. when match count == no. of distinct chars in string, then we have our match.note if know
+            length of pattren, then we can keep length of window fixed. also while shriniking window, we need to increase
+            the charCount frequency. if length of window is fixed then we dnt need to worry about chars in str that are not in
+            pattern.
+            
+            7 - need to check if permutation of pattern is present or not
+            8 - find all matches of pattern in string. same as 7 as we are maintaining the charCount in each widnow of pattern 
+                length, this is same 7
+
+        2)Even if we need to find all characters of pattrn in str , where window length is avarible, it can be done by finding
+            all matches first then decreasing the window.

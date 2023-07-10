@@ -1,0 +1,32 @@
+DEfault Behavviour -
+    Browser leavs parsing of html, downloads the script and executes it. After that it continues with parsing.
+
+
+defer attribute -
+    Downloads the script in parallel with html parsing, executes it when DOM is ready.But before DOMContentLoaded Event.
+
+    
+    
+    In Non module - 
+        a)The defer attribute is ignored if the <script> tag has no src.
+    In Module - 
+        a)All modules scripts re defer by default.both inline and external
+
+async attribute -
+    In other words, async scripts load in the background and run when ready.
+    
+    In Non Module -
+        a)Works only on external scripts
+    Module -
+        a)Works on inline and external scripts.
+
+    Dynamic Scripts -
+        BY default Dynamic scripts are async
+        
+        This can be changed if we explicitly set script.async=false. Then scripts will be executed in the document order, just like defer.
+
+
+
+Things to refer later -
+
+    1)In React Fragment docs, see concept of resetting the state

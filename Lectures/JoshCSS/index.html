@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="./app.css">
 </head>
-
 <body>
-	  
-	<main class="wrapper">
-		<p>
-		  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-		</p>
-		<p>
-		  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		</p>
-		<p>
-		  Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-		</p>
-		<p>
-		  Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-		</p>
-		<p>
-		  Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-		</p>
+	
+	<!-- <img
+  		alt=""
+		srcset="
+			/images/black.png 480w,
+			/images/white.png 800w
+			"
+		sizes="(max-width: 600px) 480px,
+            (max-width: 1000px) 800px,
+            1000px"
+	/> -->
+	<main>
+		<h2>Responsive Images Using <code>srcset</code> and <code>sizes</code></h2>
+		
+		<p>Load this page on different devices and the browser will request one of three images, depending on the size of the viewport. However, resizing the window won't change the image that's initially loaded and a desktop browser with a small window will likely still load the larger image.</p>
+<!-- 
+		<img
+  		alt=""
+		srcset="
+			/images/black.png 480w,
+			/images/white.png 800w
+			"
+		
+		/> -->
+		
+		<!-- <img srcset="https://www.codeinwp.com/wp-content/uploads/2021/09/leopard-480.png 480w,
+				   https://www.codeinwp.com/wp-content/uploads/2021/09/leopard-800.png 800w,
+				   https://www.codeinwp.com/wp-content/uploads/2021/09/leopard.png 2000w"
+			
+			sizes="(max-width: 600px) 480px,
+				   (max-width: 1000px) 800px,
+				   1000px"
+			 
+			 src="https://www.codeinwp.com/wp-content/uploads/2021/09/leopard.png"
+			 alt="Leopard on a tree branch"
+			 width="1000" height="666.5"       > -->
+		<p class="footer">Photo by <a href="https://unsplash.com/@aboeka">Gwen Weustink</a>.</p>
 	  </main>
 </body>
-
 </html>

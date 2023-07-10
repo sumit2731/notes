@@ -1,0 +1,20 @@
+default size of images are their minimum width, so flex-shrink and flex-grow cannot shrink below that.
+
+We can solve it by givng intrinisic width or min-width of 0%.
+
+
+but better solution is to not use images as direct child of flexbox, instead wrap them in a div and then use them. we gave width of
+    100% to image. Now container will adjust it's width according to flex-grow or shrink, image will also adjust alomg with it.
+    also container will be stretched to occupy all, height of container.but image will maintain its aspect ratio.
+
+Exercise -
+    Problem image should scale with screen as of now its locked on particular width.
+    After some min width image and reviews should come in different rows.
+    top edge of image should be hidden or oved out.
+
+    solution -
+        a)img has its default size as min-width and cannot shrink below that.It was solved with using a wrapper around image and 
+            giving it width of 100%.
+        b)this was solved using giving min-width to img using flex-wrap: wrap on container.
+        c)since image always scaled to fill its container, as we have not given height then image maintains it's aspect ratio.
+            we can use ibject-position to move the image.so we used negative value to move it to right.

@@ -5,6 +5,12 @@ class Node {
     }
 }
 
+
+/**
+ * We are implementing  Queue using singly linked list
+ * 
+ * items are added in end removed from begining
+ */
 class Queue{
     constructor() {
         this.first = null;

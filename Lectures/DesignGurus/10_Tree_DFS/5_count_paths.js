@@ -7,7 +7,7 @@ class TreeNode {
 }
 
 /**
- * @MYSolution Iterative One
+ * @My_Solution Iterative One
  */
 function count_paths(root, requiredSum) {
   let nodeStack = [root], dataStack = [{ sum: root.val, path: [root.val] }], allPaths = [];
@@ -44,8 +44,45 @@ function count_paths(root, requiredSum) {
 
 }
 
+
+
 /**
- * @courseSoluion
+ * @CourseSolution
+ */
+function count_paths(root, S) {
+  return count_paths_recursive(root, S, []);
+}
+
+function count_paths_recursive(currentNode, S, currentPath) {
+  if (currentNode === null) {
+    return 0;
+  }
+
+  // add the current node to the path
+  currentPath.push(currentNode.val);
+  let pathCount = 0,
+    pathSum = 0;
+  // find the sums of all sub-paths in the current path list
+  for (i = currentPath.length - 1; i >= 0; i--) {
+    pathSum += currentPath[i];
+    // if the sum of any sub-path is equal to 'S' we increment our path count.
+    if (pathSum === S) {
+      pathCount += 1;
+    }
+  }
+  // traverse the left sub-tree
+  pathCount += count_paths_recursive(currentNode.left, S, currentPath);
+  // traverse the right sub-tree
+  pathCount += count_paths_recursive(currentNode.right, S, currentPath);
+
+  // remove the current node from the path to backtrack
+  // we need to remove the current node while we are going up the recursive call stack
+  currentPath.pop();
+  return pathCount;
+}
+
+/**
+ * My Solution on top of @courseSoluion
  * Time Complexity - O(n*n)
  */
 function count_paths2(root, requiredSum) {

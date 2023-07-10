@@ -1,0 +1,11 @@
+There are three main supporting documents for WCAG 2.1:
+
+    a)Understanding WCAG 2.1 - https://www.w3.org/WAI/WCAG21/Understanding/
+    b)Techniques for WCAG 2.1 - https://www.w3.org/WAI/WCAG21/Techniques/
+    c)How to Meet WCAG (Quick Reference) - https://www.w3.org/WAI/WCAG21/quickref/
+
+
+    This also emphasizes the fact that a deep understanding of HTML and ARIA, as well as proper and frequent testing, is often 
+    more reliable than following a checklist of techniques.
+
+    example aria-required and html required attribute

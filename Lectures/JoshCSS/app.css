@@ -1,9 +1,25 @@
-.wrapper {
-  columns: 3;
-  column-gap: 16px;
-  padding: 16px;
+body {
+  background-image:
+    url('https://courses.joshwcomeau.com/cfj-mats/geometric-pattern.png');
+  background-size: 450px;
 }
 
-p {
-  margin-bottom: 16px;
+@media
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx)
+{
+  body {
+    background-image:
+      url('https://courses.joshwcomeau.com/cfj-mats/geometric-pattern@2x.png');
+  }
+}
+
+@media
+  (-webkit-min-device-pixel-ratio: 3),
+  (min-resolution: 3dppx)
+{
+  body {
+    background-image:
+      url('https://courses.joshwcomeau.com/cfj-mats/geometric-pattern@3x.png');
+  }
 }

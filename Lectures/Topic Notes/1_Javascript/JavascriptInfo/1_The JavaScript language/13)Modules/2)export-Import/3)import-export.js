@@ -1,7 +1,7 @@
 /**
  * @export ... from ..... syntax means import something just to import it.
  * used when we want end user to import everything from one place. we can also chnage name while
- * exporting by uisng 'as' syntax. syntax -
+ * exporting by using 'as' syntax. syntax -
  * 
     export {x [as y], ...} from "module"
     export * from "module" (doesn’t re-export default).

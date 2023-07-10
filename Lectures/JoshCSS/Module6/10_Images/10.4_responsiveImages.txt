@@ -1,0 +1,105 @@
+Imgae optimization -
+    1)loading high-res variant and apply them automatically
+    2)using next gen formats like webp and avif and gracefully falling back to jpg/png on unsupported browsers.
+    3)they implement lazy loading.
+
+1)srcset attributes -
+
+    a)The Display Density Descriptor Method
+        <img
+            alt=""
+            src="https://courses.joshwcomeau.com/cfj-mats/responsive-diamond.png"
+            srcset="
+                https://courses.joshwcomeau.com/cfj-mats/responsive-diamond.png 1x,
+                https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@2x.png 2x,
+                https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@3x.png 3x
+            "
+        />
+
+    b)specifying image width -
+        For image width, you use a w instead of an x.
+
+        <img 
+            srcset=" /wp-content/uploads/flamingo4x.jpg 4025w, 
+                    /wp-content/uploads/flamingo3x.jpg 3019w,
+                     /wp-content/uploads/flamingo2x.jpg 2013w, 
+                     /wp-content/uploads/flamingo1x.jpg 1006w " 
+            src="/wp-content/uploads/flamingo-fallback.jpg" 
+        >
+
+        It assumes that image width is equal to viewport and loads the image
+
+    c)sizes attributes
+        If you are using a srcset to specify width, the browser has to make some decisions about which image to download. 
+        Unfortunately, it can’t figure that out until it knows the rendered size of the image — how large it will actually 
+        appear on the screen.
+
+        You can let the browser wait to figure this out (once it has parsed all the CSS), or you can give it enough information ahead
+        of time so that it can start loading the correct image right away. This information can be provided with the width and height
+        attributes.
+
+        <img 
+            
+            srcset="/img/html/vangogh-sm.jpg 120w,
+             /img/html/vangogh.jpg 193w,
+             /img/html/vangogh-lg.jpg 278w"
+            sizes="
+                (max-width: 710px) 120px,
+                (max-width: 991px) 193px,
+                278px">
+
+b)Using picture element(srcset and size attributes works exactly as they work on img) -
+    a)we can spevify different file formats as well
+
+
+        <picture>
+            <source
+                type="image/avif"
+                srcset="
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond.avif 1x,
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@2x.avif 2x,
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@3x.avif 3x
+                "
+            />
+            <source
+                type="image/webp"
+                srcset="
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond.webp 1x,
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@2x.webp 2x,
+                    https://courses.joshwcomeau.com/cfj-mats/responsive-diamond@3x.webp 3x
+                "
+            />
+            <img
+                alt=""
+            src="https://courses.joshwcomeau.com/cfj-mats/responsive-diamond.png"
+            />
+        </picture>
+
+    b)adding media queries also
+
+        <picture>
+            <source 
+                media="(min-width:600px) and (max-width:1200px)"
+                srcset="images/sinai-medium-screen.jpg">
+            <source media="(min-width:1201px)"
+                srcset="images/sinai-large-screen.jpg">
+            <img src="images/sinai-small-screen.jpg" alt="Unicorn Pool Float">
+        </picture>
+
+
+Extra from lecture -
+    
+    art direction problem(picture element) - The general problem whereby you want to serve different cropped images in that way, for
+        various layouts,is commonly known as the art direction problem.
+
+        use srcset attribute.
+            For different screen resolutions (width size attribute)
+            Fpr diffrent DPI
+
+    resolution switching problem - Ideally, multiple resolutions would be made available to the user's web browser. The browser could
+        then determine the optimal resolution to load based on the screen size of the user's device. This is called the resolution 
+        switching problem.
+
+
+
+    <img src="small.jpg" srcset="medium.jpg 1000w, large.jpg 2000w" alt="yah">

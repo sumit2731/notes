@@ -147,3 +147,17 @@ Credentials
     Please note: Access-Control-Allow-Origin is prohibited from using a star * for requests with credentials. Like shown above, 
     it must provide the exact origin there. That’s an additional safety measure, to ensure that the server really knows who it 
     trusts to make such requests.
+
+
+
+Request Headers -
+    Access-Control-Request-Headers
+    Access-Control-Request-Method
+
+response Headers -
+    Access-Control-Allow-origin
+    Access-Control-Allow-Methods
+    Access-Control-Allow-Headers
+    Access-Control-Max-Age
+    Access-Control-Allow-Credentials
+    Access-Control-Expose-Headers

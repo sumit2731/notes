@@ -6,6 +6,11 @@ class TreeNode {
     }
   }
   
+/**
+ * @CourseSolution
+ * Can also be solved by recursion, see Data &AlgoRithms
+ */
+
   function find_maximum_depth(root) {
     let queue = [root], currentDepth = 0;
     while(queue.length) {

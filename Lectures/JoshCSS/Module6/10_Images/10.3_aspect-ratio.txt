@@ -1,0 +1,19 @@
+aspect-ratio: 3 / 2;
+
+
+Not supported in Internet Explorer.
+
+padding trick to support this bheaviour in internet Explorer.
+    Inside flex-items container, we defined a box which has padding-top: 100%, that means height is linked with width. width is 100%.
+    but problem is inside it we cannot place image as content size is 0, as we have given it height: 0px.
+    we solved this problem by making position as absolute.
+
+
+Then we learnt about @supports feature query.and how we can have a fallback for browser that do not support aspect-ratio.
+
+    @supports (aspect-ratio: 1 / 1) {
+        img {
+            height: revert;
+            aspect-ratio: 1 / 1;
+        }
+    }

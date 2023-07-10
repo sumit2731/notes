@@ -7,38 +7,9 @@ class TreeNode {
     }
   }
   /**
-   * @MySolution - Bit overdo, use course solution
-   */
-  function traverse(node) {
-    let queue = [node], result = [], level = 0;
-    while(queue.length) {
-        let levelSize = queue.length, currentLevelNodes = [], currentNode;
-        for(let i = 0; i< levelSize; i++) {
-            if((level % 2) == 0) {
-                currentNode = queue.shift();
-                currentLevelNodes.push(currentNode.val);
-            }
-            else currentNode = queue[i];
-            if(currentNode.left) queue.push(currentNode.left);
-            if(currentNode.right) queue.push(currentNode.right);
-            
-        }
-        if((level % 2) != 0) {
-            for(let i = levelSize-1; i >= 0; i --) {
-                let removedNodes = queue.splice(i, 1);
-                currentLevelNodes.push(removedNodes[0].val);
-            }
-        }
-        result.push(currentLevelNodes);
-        level++;        
-    }
-    return result;
-  }
-
-  /**
    * @CourseSolution - use this one
    */
-  function traverse2(root) {
+  function traverse(root) {
     result = [];
     if (root === null) {
       return result;
@@ -75,6 +46,56 @@ class TreeNode {
   
     return result;
   }
+
+  /**
+   * 
+   * //ccourse solution will not wwork if we not want array in result. see tushar solution, here we have clear distiction between 
+   *  what is in current level and what is next level, so this can used in other problems 
+   * Tushar Solutions - https://www.youtube.com/watch?v=vjt5Y6-1KsQ&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=16
+   *  a) 2 Stack Solution (1 stack contains current level nodes, second one contains next level, can used )
+   *    1)insert root in stack 1
+   *    2)run loop until both stacks are not empty
+   *    3)If stack1 is not empty, then pop from that stack and print element. push left chiild in stack 2, then right  in stack2. print the node.
+   *    4)when stack 1 is empty then do same with stack 2, 1 diffrent through first insert right child in stack1, then left child to stack1.
+   *    5)when either staack is empty, switch between stacks.Until and unless one stack is not empty do not move to another stack. one stack
+   *      contains items of current level and other stack has items of next level.
+   *    6)when both stacks are empty then move out from loop.  
+   * 
+   * b) uses deque with null as division to create 2 stacks.
+   * 
+   * c)uses a deque and a counter soltion
+   */
+
+  function zigZagTraverse(root) {
+    const stack1 = [root], stack2 = [], resultArray = [];
+    const configObjects = [
+      {
+        firstStack: stack1,
+        firstChild: 'left',
+        secondChild: 'right',
+        secondStack: stack2,
+        secondStackIndex: 1
+      },
+      {
+        firstStack: stack2,
+        firstChild: 'right',
+        secondChild: 'left',
+        secondStack: stack1,
+        secondStackIndex: 0
+      }
+    ]
+    let configObject = configObjects[0];
+
+    while( stack1.length || stack2.length) {
+      let currentNode = configObject.firstStack.pop();
+      resultArray.push(currentNode.val);
+      if(currentNode[configObject.firstChild]) configObject.secondStack.push(currentNode[configObject.firstChild]);
+      if(currentNode[configObject.secondChild]) configObject.secondStack.push(currentNode[configObject.secondChild]);
+      if(configObject.firstStack.length == 0) configObject = configObjects[configObject.secondStackIndex];
+      
+    }
+    return resultArray; 
+  }
   
   
   const root = new TreeNode(12);
@@ -86,12 +107,4 @@ class TreeNode {
   root.right.left.left = new TreeNode(20);
   root.right.left.right = new TreeNode(17);
   console.log(`Zigzag traversal: ${traverse(root)}`);
-  
-
-
-
-
-
-function zigZag(node) {
-    
-}
+  console.log(zigZagTraverse(root));

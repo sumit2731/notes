@@ -1,0 +1,8 @@
+object-fit -
+    fill(default) - respect width and height given, dnt care about distortion of image.
+    contain - conserve aspect ratio, let their be emty space in container of any,
+    cover - Conserve aspect ration, crop the part that goees out of image.
+    none - Keep the orignal width height of image. crop the part that foes out.
+
+object position
+    this moves the image in conatiner. even if image is not cropped it can be used to move image, see exercise of next lecture.

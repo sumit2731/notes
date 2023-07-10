@@ -1,0 +1,5 @@
+uses of useRef hook -
+
+    a)remember previous props, in kent's key prop blog.
+    b)remebring previous param to custom hook, in exersice 2 of react hooks.
+    c)In react deocs we saw that it can be used to remeber setTinterval id.
