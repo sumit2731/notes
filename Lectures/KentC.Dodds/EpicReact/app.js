@@ -1,24 +1,46 @@
-function _extends() {
-  _extends =
-    Object.assign ||
-    function (target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
-        for (var key in source) {
-          if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-          }
-        }
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+
+const initialState = {
+  posts: [],
+  status: 'idle',
+  error: null
+}
+
+const postsSlice = createSlice({
+  name: 'posts',
+  initialState,
+  reducers: {
+    postAdded: {
+      reducer(state, action) {
+        state.posts.push(action.payload)
+      },
+      prepare(title, content, userId) {
+        // omit prepare logic
       }
-      return target;
-    };
-  return _extends.apply(this, arguments);
-}
+    },
+    reactionAdded(state, action) {
+      const { postId, reaction } = action.payload
+      const existingPost = state.posts.find(post => post.id === postId)
+      if (existingPost) {
+        existingPost.reactions[reaction]++
+      }
+    },
+    postUpdated(state, action) {
+      const { id, title, content } = action.payload
+      const existingPost = state.posts.find(post => post.id === id)
+      if (existingPost) {
+        existingPost.title = title
+        existingPost.content = content
+      }
+    }
+  }
+})
 
+export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions
 
+export default postsSlice.reducer
 
-let obj = {
-  class: 1
-}
+export const selectAllPosts = state => state.posts.posts
 
-let class = {}
+export const selectPostById = (state, postId) =>
+  state.posts.posts.find(post => post.id === postId)

@@ -1,20 +1,25 @@
-import * as React from 'react'
-import ReactDOM from 'react-dom'
-
-function Logger(props) {
-  console.log(`${props.label} rendered`)
-  return null // what is returned here is irrelevant...
-}
-
-function Counter() {
-  const [count, setCount] = React.useState(0)
-  const increment = () => setCount(c => c + 1)
+function DogName({time}) {
+  const [dog, setDog] = React.useState('')
   return (
     <div>
-      <button onClick={increment}>The count is {count}</button>
-      <Logger label="counter" />
+      <DogInput dog={dog} onChange={setDog} />
+      <DogFavoriteNumberDisplay time={time} dog={dog} />
     </div>
   )
 }
 
-ReactDOM.render(<Counter />, document.getElementById('root'))
+function DogInput({dog, onChange}) {
+  return (
+    <>
+      <label htmlFor="dog">Dog Name</label>
+      <br />
+      <input id="dog" value={dog} onChange={e => onChange(e.target.value)} />
+    </>
+  )
+}
+
+function DogFavoriteNumberDisplay({time, dog}) {
+  return (
+    <p>{dog ? `${dog}'s favorite number is ${time}.` : 'enter a dog name'}</p>
+  )
+}

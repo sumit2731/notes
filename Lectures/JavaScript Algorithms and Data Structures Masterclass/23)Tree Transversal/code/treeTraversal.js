@@ -83,7 +83,8 @@ class BinarySearchTree {
   /* 
   Iterative Solution
   There is a slightly better solution space complexity wise -https://www.geeksforgeeks.org/iterative-preorder-traversal/
-  Algo - pop node from stack,push rightChild, then leftChild on Stack
+  Algo of better one - current= current.left, pusg right onto stack
+  Algo of this one - pop node from stack,push rightChild, then leftChild on Stack
   Time Compelxity - O(n) As we visit Each Node exactly Once
   Space Complexity - O(h), h is height of binary tree. in worst case, height can be O(n)
   */
@@ -356,6 +357,19 @@ function heightOfTree3(node) {
 }
 
 /**
+ * Level by Level Printing of binary tree (each level is printed on new line)
+ * Tushar videos - https://www.youtube.com/watch?v=7uG0gLDbhsI&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=13
+ * see Design Guru questions 1 of BFS. also see iterative appraoch of finding height of binary tree here(using null in queue)
+ * 
+ * Solution 1 - Using 2 queues(one queue has element of currentNode, when we dequeue from queue1, children areinserted in queue 2)
+ * Solution 2 - Solution 2 of height of tree here
+ * Solution 3 - 1 Queue and 2 Counters (CurrentLevelNodeCount and nextLevelCNodeount)
+ */
+function levelByPrintingOfBinaryTree(node) {}
+
+
+
+/**
 * sum of binaryTree from root to leaf -
 * TusharVideos
 */
@@ -429,6 +443,86 @@ function isBInaryTree(node) {
   }
   return binaryTreeHelper(node, -Infinity, Infinity)
 }
+
+/**
+ * Given 2 nodes in a binary tree, find lowest common ancestor in binary tree
+ * link - https://www.youtube.com/watch?v=TIoCCStdiFo&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=16
+ */
+function lowestCommonAncestor(node, node1, node2) {
+  if(root.val < Math.min(node1.value, node2.value)) return lowestCommonAncestor(node.right,node1, node2);
+  else if(root.val > Math.max(node1.value, node2.value)) return lowestCommonAncestor(node.left,node1,node2);
+  else return node;
+}
+
+/**
+ * Find Lowest Common ancestor in binary tree (Not binary search tree)
+ * 
+ * https://www.youtube.com/watch?v=13m9ZCB8gjw&list=PLrmLmBdmIlpv_jNDXtJGYTPNQ2L1gdHxu&index=17
+ * 
+ * Approach 1 - Find the paths of both and then find common node in it.
+ *    Not optimal one as it requires, extra search.
+ * Approach 2 - see video
+ * 
+ * complexity - O(n)
+ */
+
+function lowestCommonAncestorinBinaryTree(node, node1, node2) {
+  
+  if(!node) return null;
+  //If node1 or node2 is found return it
+  if((node.value == node1.value) || (node.value == node2.value)) return node;  
+  let leftNodeVal = lowestCommonAncestorinBinaryTree(node.left, node1,node2)
+  //if some value other than node1 and node2 is returned that means we have LCA, no need to evaluate right subtree
+  if(leftNodeVal && (leftNodeVal.value != node1.value && leftNodeVal.value != node2.value)) return leftNodeVal;
+  
+  let rightNodeVal = lowestCommonAncestorinBinaryTree(node.right, node1, node2);
+  //if there is no match in both trees than retutn null
+  if(!leftNodeVal && !rightNodeVal) return null;
+  //If both subtree has match it means each each is found in each subtree, which means we have lowset common ancestor
+  //return the current node
+  if(leftNodeVal && rightNodeVal) return node;
+  //if only one match is ffound in either tree, then we return the found node
+  if(leftNodeVal) return leftNodeVal;
+  if(rightNodeVal) return rightNodeVal;
+
+}
+
+/**
+ * Find the Largest BST in a binary Tree
+ * 
+ * Approach 1 - For Each node check if it is BST or not, along with checking also calculate the length.If tree is not bst then
+ *  calculate for its children
+ * Approach 2 - Each node returns some value to node. complexity - O(n)
+ */
+
+function largestBSTLength(root) {
+  function largestBSTHelper(node) {
+    if(!node) return {isBST: true, length: 0, minValue: -Infinity, maxValue: Infinity}
+    if(!node.left && !node.right) return ({isBST: true,length:1, minValue: node.value,maxValue: node.value});
+    const leftSubTree = largestBSTHelper(node.left);
+    const rightSubTree = largestBSTHelper(node.right);
+    let isBST = true, length = 0,minValue = node.value, maxValue = node.value;
+    if(!leftSubTree.isBST || rightSubTree.isBST || (leftSubTree.maxValue > node.value) || (rightSubTree.minValue <= node.value)) {
+      isBST = false;
+      length = Math.max(leftSubTree.length,rightSubTree.length);
+      return {isBST,length,minValue,maxValue}
+    }
+    length = 1 + leftSubTree.length + rightSubTree.length;
+    minValue = leftSubTree.length ? leftSubTree.minValue : node.value;
+    maxValue = rightSubTree.length ? rightSubTree.maxValue : node.value;
+    return {isBST,length,minValue,maxValue};
+  }
+  let {length} = largestBSTHelper(root);
+  return length;
+}
+
+/**
+ * Data Structure wise solution -
+ * 
+ * Iterative Post Order - 2 stacks
+ * Level by Level printing of nodes - 2 Queues 
+ * Spiral Level order Traversal - 2 Stacks,1 Double Ended Queue and delimeter, 1 double ended queue with counter
+ */
 
 
 

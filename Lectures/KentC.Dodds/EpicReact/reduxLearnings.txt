@@ -1,0 +1,13 @@
+connect - creates a wrapper component and sets up componentShould update in such a way that, mapToProps is called only when
+    sate value is different than last one.
+
+    connect(mapStateToProps)(App); 
+
+mapToProps - component re renders when this returns a diffrent value than last one.It should be in expensive to run. for complex
+    computations use memorized selectors.
+
+selectors - these should have transafomation logic in them. they can trsnform state into data required by component.
+    Component is rerendered when selector returns object with different values.This takes our mapToProps function, which
+    was earlier passed to connect.
+
+memorizedSelectors - How they avoid complex computations and component re renders.
