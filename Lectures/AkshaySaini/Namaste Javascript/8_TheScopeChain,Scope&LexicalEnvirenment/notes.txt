@@ -4,7 +4,7 @@ Here in this code we are able to access b and c -
         var c= 2;
         function c() {
             console.log(b);
-            console.log();
+            console.log(c);
         }
     }
 

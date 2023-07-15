@@ -32,7 +32,7 @@ Disadvantages of closures -
 1)Overconsumption of memory. everytime closure is formed, lot of memoery is consumed.those closed over variables 
     are not garbage collected, so it is like accumulating lot of memoty if we create lot of closures.because
     those variables are not garbage collectoed untill that program expires.If not handled properly it can even
-    lead to memory leak.it can also freeze the browser.see lecture 17, it talks about closures in event lsiteners
+    lead to memory leaks.it can also freeze the browser.see lecture 17, it talks about closures in event lsiteners
     and why we remove event listeners.
 
 */

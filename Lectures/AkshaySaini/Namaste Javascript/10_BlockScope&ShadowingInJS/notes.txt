@@ -84,7 +84,7 @@ Illegal Shadowing(IN same name vriables with same name cannot exist(can exist fo
         {
             let a = 2;
         }
-        this is because ememory location of both are diffrent. as b is block scoped.
+        this is because memory location of both are diffrent. as b is block scoped.
 
     this is also valid -
 

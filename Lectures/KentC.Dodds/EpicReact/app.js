@@ -1,46 +1,49 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
-
-const initialState = {
-  posts: [],
-  status: 'idle',
-  error: null
+function ContactList({contacts}) {
+  return (
+    <div>
+      <ul>
+        {contacts.length &&
+          contacts.map(contact => (
+            <li key={contact.id}>
+              {contact.firstName} {contact.lastName}
+            </li>
+          ))}
+      </ul>
+    </div>
+  )
 }
 
-const postsSlice = createSlice({
-  name: 'posts',
-  initialState,
-  reducers: {
-    postAdded: {
-      reducer(state, action) {
-        state.posts.push(action.payload)
-      },
-      prepare(title, content, userId) {
-        // omit prepare logic
-      }
-    },
-    reactionAdded(state, action) {
-      const { postId, reaction } = action.payload
-      const existingPost = state.posts.find(post => post.id === postId)
-      if (existingPost) {
-        existingPost.reactions[reaction]++
-      }
-    },
-    postUpdated(state, action) {
-      const { id, title, content } = action.payload
-      const existingPost = state.posts.find(post => post.id === id)
-      if (existingPost) {
-        existingPost.title = title
-        existingPost.content = content
-      }
-    }
+function ContactList({contacts}) {
+  return (
+    <div>
+      <ul>
+        {contacts.length
+          ? contacts.map(contact => (
+              <li key={contact.id}>
+                {contact.firstName} {contact.lastName}
+              </li>
+            ))
+          : null}
+      </ul>
+    </div>
+  )
+}
+
+
+function Error({error}) {
+  return error && <div className="fancy-error">{error.message}</div>
+}
+
+
+
+
+
+
+
+function throwTheCandy(candyNames) {
+  for (const candyName of candyNames) {
+    throwCandy(candyName)
   }
-})
+}
 
-export const { postAdded, postUpdated, reactionAdded } = postsSlice.actions
-
-export default postsSlice.reducer
-
-export const selectAllPosts = state => state.posts.posts
-
-export const selectPostById = (state, postId) =>
-  state.posts.posts.find(post => post.id === postId)
+throwTheCandy(candies.length && candies.map(c => c.name))

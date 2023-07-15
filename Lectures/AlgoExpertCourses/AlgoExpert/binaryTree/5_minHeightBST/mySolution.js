@@ -61,7 +61,7 @@ function minHeightBst(array) {
     function constructMinHeightBst(array, startIndex, endIndex, lastInsertedNode) {
         let middleIndex = Math.floor((startIndex + endIndex) / 2);
         let currentInsertedNode;
-        if (lastInsertedNode) {
+        if (!lastInsertedNode) {
             currentInsertedNode = new BST(array[middleIndex]);
             root = currentInsertedNode;
         }
@@ -76,6 +76,9 @@ function minHeightBst(array) {
 }
 
 
+/**
+ * Changed the code to return node where insertion is amde
+ */
 class BST {
     constructor(value) {
         this.value = value;

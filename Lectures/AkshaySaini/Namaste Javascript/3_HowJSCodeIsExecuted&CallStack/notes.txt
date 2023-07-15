@@ -1,7 +1,7 @@
 what happens when we run a js program? an execution context is created.
-when we run the code in figure 1 , a global execution context is created.Execution context is creataed in 2 pahses -
-    1)Memory Creation Phase - memory is allcated to all variables and functions.
-        whne memory is allocated to varibles it stores undefined value in memory.
+when we run the code in figure 1 , a global execution context is created.Execution context is created in 2 phases -
+    1)Memory Creation Phase - memory is allocated to all variables and functions.
+        when memory is allocated to variables it stores undefined value in memory.
         In case of functions it stores the whole code.
         see figure 2, this at the end of phase 1.
     2)Code execution phase - JS again runs through this whole program line by line and executes the code now.
@@ -12,7 +12,7 @@ when we run the code in figure 1 , a global execution context is created.Executi
             
             memory creation phase - memory is allocated to all variables and function inside the function, fucntion params are 
                 also variables, memory is allocated to them too.even function params are given undefined placeholders.
-                in figure 1, num is parameter and n and 4 are arguments.
+                In figure 1, num is parameter and n and 4 are arguments.
 
             Execution phase - here first step is params with which function is called are assigned to variables in memory component
                 of execution context. in next step we need a calculation of num*num, this calculation will happen inside execution

@@ -5,25 +5,32 @@ function minHeightBst(array) {
 /**
  * Solution 1
  * Time - O(n), space- O(n)
+ * 
+ * This is diffrent from solution1 as here we do not have to iterate through tree to insert value at correct position
+ * 
+ * Note - Trick here is how we get back the value of bst
  */
-function constructMinHeightBst(array,bst,startIndex, endIndex) {
-    if(startIndex > endIndex) return;
-    const middleIndex = Math.floor((startIndex + endIndex)/2);
-    if(bst == null) bst = new BST(array[middleIndex]);
-    else {
-        if(array[middleIndex] < bst.value) {
-            bst.left = new BST(array[middleIndex]);
-            bst = bst.left
-        }
-        else {
-            bst.right = new BST(array[middleIndex])
-            bst = bst.right;
-        }
-    }
-    constructMinHeightBst(array,bst,startIndex,middleIndex-1);
-    constructMinHeightBst(array,bst,middleIndex+1,endIndex);
-    return bst;
+function minHeightBst(arr) {
+  return minHeightBstHelper(arr,0,arr.length-1,null);
 }
+
+function minHeightBstHelper(arr,startIndex,endIndex,bst) {
+  if(startIndex > endIndex) return;
+  let middleIndex = Math.floor((endIndex+startIndex)/2);
+  const newBstNode = new BST(arr[middleIndex]);
+  if(!bst) bst = newBstNode;
+  else {
+      let childProperty = 'left'
+      if(bst.value <= arr[middleIndex]) childProperty = 'right';
+      bst[childProperty] = newBstNode;
+      bst = bst[childProperty]
+  }
+  minHeightBstHelper(arr,startIndex,middleIndex-1,bst);
+  minHeightBstHelper(arr,middleIndex+1,endIndex,bst);
+  return bst;
+}
+minHeightBstHelper(0,arr.length-1,bstTree);
+return bstTree;
 
 
 

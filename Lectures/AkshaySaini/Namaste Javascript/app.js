@@ -1,5 +1,11 @@
-function f1() {
-    console.log("Hello F1");
-}
 
-f1();
+setTimeout(() => {
+    console.log("timer");
+}, 2000)
+
+function a() {
+    console.log("a");
+}
+function b() {
+    console.log("b");
+}

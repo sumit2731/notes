@@ -1,0 +1,26 @@
+A service worker is a special type of web worker in JavaScript that runs in the background and acts as a proxy between a web
+    browser and the internet.
+
+    The service worker file is a JavaScript file that contains instructions for the service worker to follow. It includes an
+    event listener for the install event, which is fired when the service worker is first installed.
+
+    In the install event listener, the service worker can cache files and assets that are needed for the web application to
+    work offline. This is done using the caches.open() and caches.addAll() methods.
+
+
+
+    Service worker feature -
+        a)push notification
+        b)background sync
+        c)caching -  A core feature of a service worker is the ability to intercept and handle network requests, including 
+            programmatically managing a cache of responses.
+
+            caching API -
+                cache.open
+                cache.add
+                cache.addAll
+                cache.put
+                cache.match
+                cache.matchAll
+                cache.delete
+

@@ -1,4 +1,10 @@
 // This is an input class. Do not edit.
+
+/**
+ * Given a binary tree return kth largest number in it
+ */
+
+
 class BST {
     constructor(value) {
         this.value = value;
@@ -8,18 +14,22 @@ class BST {
 }
 
 /**
- * O(n) time | O(n) space
+ * Time Complexity - O(n) time | O(n) space
+ * Space Complexity - O(n)
+ *  n - no of nodes in Tree
  */
 function findKthLargestValueInBst(tree, k) {
     let sortedArray = [];
-    function inOrderTraversal(node) {
-        if (!node) return;
-        if (node.left) inOrderTraversal(node.left);
-        sortedArray.push(node.value);
-        if (node.right) inOrderTraversal(node.right);
-    }
-    inOrderTraversal(tree);
-    return sortedArray[sortedArray.length - 1 - k + 1];
+    
+    inOrderTraversal(tree, sortedArray);
+    return sortedArray[sortedArray.length- k];
+}
+
+function inOrderTraversal(node,sortedArray) {
+    if (!node) return;
+    if (node.left) inOrderTraversal(node.left);
+    sortedArray.push(node.value);
+    if (node.right) inOrderTraversal(node.right);
 }
 
 // Do not edit the lines below.

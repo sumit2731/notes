@@ -1,3 +1,9 @@
+/**
+ * Given a array, construct a min height binary tree for it
+ */
+
+
+
 function minHeightBst(array) {
     return constructMinHeightBst(array,null,0,array.length-1);
 }
@@ -15,10 +21,6 @@ function constructMinHeightBst(array,bst,startIndex, endIndex) {
     constructMinHeightBst(array,bst,middleIndex+1,endIndex);
     return bst;
 }
-
-
-
-
 class BST {
     constructor(value) {
       this.value = value;

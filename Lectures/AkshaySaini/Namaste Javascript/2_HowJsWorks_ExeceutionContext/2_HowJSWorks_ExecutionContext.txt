@@ -1,5 +1,5 @@
-Everything in js happens inside execution AudioContext. It has 2 components -
-    Memeoty component (Variable Enviroment) - All varibles and functions are stoted here as key value pair.
+Everything in js happens inside execution Context. It has 2 components -
+    Memory component (Variable Enviroment) - All varibles and functions are stoted here as key value pair.
     Code component(thread of execution) - here code is executed one line at a time
 
 Javascript is a synchronous, single threaded language - 

@@ -1,4 +1,4 @@
-JS Run time envirenemnt - It is big container that has all the things required to run js code.Javascript runtime envirenment has
+JS Run time envirenement - It is big container that has all the things required to run js code.Javascript runtime envirenment has
     following things -
 
         a)JS Engine- It is heart of JS Runtime enivirenment.
@@ -6,11 +6,13 @@ JS Run time envirenemnt - It is big container that has all the things required t
         3)EventLoop, Callback queue
 
 
-Anywhere you want to run js code , you need Javascript RunTime Envirenment.Node js runs it outside browser.we can run js code on water
-cooler, all we need is jS runtime. there API's will be different.
+Anywhere you want to run js code , you need Javascript RunTime Envirenment.Node js runs it outside browser.
+Figure 1 shows the Javascript Run time envirement for browser.
 
-In nodejs and in browser, API's are different. some api's names are same also like setTimout. but their implementation can be entirely
-different.so you can access outer envirement through set of api's.
+we can run js code on water cooler, all we need is jS runtime. there API's will be different.
+
+In nodejs and in browser, API's are different. some api's names are same also like setTimout. but their implementation can be
+    entirely different.so you can access outer envirement through set of api's.
 
 
 Diffrent JS Engines -
@@ -27,11 +29,12 @@ machine level(which can be executed by machine) code.
 Steps inside JS Engine -
 
     a)Parsing -
-        Program is broken into tokens.see figure 2.Then syntax parse generates asbtract syntax tree.
+        Program is broken into tokens.see figure 2.Then syntax parse generates Asbtract Syntax Tree.
     b)Compilation - Compilation and execution go hand in hand.
         Interpreter - code is executed line by line. we do not know what will happen in next line.
             Advantage - code can be started executing more quickly.
-        Compiler - First code is converted to more optmized version of code.then this optimized version is executed.
+        Compiler - First code is converted to more optmized version of code. this optimized code runs very fast and some performance
+            improovements. then this optimized version is executed.
             Advantage - code is executed more efficiently
 
         JS can behave as interpreted as well as compiled language , it all depends upon JS Engine.Initially when js was developed, it 
@@ -41,17 +44,20 @@ Steps inside JS Engine -
 
         JIT Compiler - It is best of both worlds.It uses both interpreter plus compiler to execute the code.
             AST gnerated in step1, goes to interpreter, interpreter convertrs this high level code to byte code.which then goes to 
-            execution step.while Interpreter is doing so it takes help of compiler to optomize it.so it is not one step process but it
-            can happen in multiple phases.All js engines have their own algorithms for doing so. Job of compiler is to optimize the code as
-            much as it can on the run time.That is why it is called JIT compilation.
+            execution step.while Interpreter is doing so it takes help of compiler to optomize it. so compiler talks to interpreter
+            and while code is interpreted line by line, the compiler also tried to optimize as much code as it can.
+            
+            so it is not one step process but it can happen in multiple phases.All js engines have their own algorithms for doing 
+            so. Job of compiler is to optimize the codeas much as it can on the run time.That is why it is called JIT compilation.
 
-            Some js engines have Ahead of Time compilation.Here compiler takes a piece of code that is going to be executed later and 
-            tries to optimize as much as it can.It also produces byte code, which then goes to execution phase.
+            Some js engines have Ahead of Time compilation.Here compiler takes a piece of code that is going to be executed later
+                and tries to optimize as much as it can.It also produces byte code, which then goes to execution phase.
             
             All js engines have their own algorithms to do it.
-    c)Execution - it has 2 major components memory heap and call stack.memeory heap is where memory is stored.is is constantly in sync 
-        with callstack,garbage collector and lot of other things.then we have garbage collector, which in sync with memory and uses mark
-        and sweep algorithm. there are many optimization that complier does for code, these are -
+    c)Execution - it has 2 major components memory heap and call stack.Both of them are part of js engine only.memeory heap is 
+        where memory is stored.iT is constantly in sync with callstack,garbage collector and lot of other things.then we have 
+        garbage collector, which in sync with memory and uses mark and sweep algorithm. there are many optimization that complier
+        does for code,read about them, in figure they are presented by 'O'.
             
             1)Inlining
             2)Copy Elision
@@ -59,7 +65,7 @@ Steps inside JS Engine -
 
 
         names in v8 -
-            interpreter - v8
+            interpreter - Ignition
             compiler - turbo fan optimizing compiler
 
             garbage collectors -

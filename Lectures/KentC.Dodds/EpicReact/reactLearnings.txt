@@ -1,0 +1,77 @@
+uses of useRef hook -
+
+    a)remember previous props, in kent's key prop blog.
+    b)remebring previous param to custom hook, in exersice 2 of react hooks.
+    c)In react deocs we saw that it can be used to remeber setTinterval id.
+
+Other learnings in react -
+    1)component should be pure
+    2)sideEffect should go in event handlers and as a last resort can go in useEffect.
+    3)do not mutate props or state. always return new instance.
+    4)In useReducer hook also always return new State, do not modidy existing state.
+    5)
+
+
+
+State is tied with position in UI -
+    a)IN react component state is kep in react,and is tied with component based on its position in UI tree.
+        React will keep the state around for as long as you render the same component at the same position in UI Tree.
+        If it gets removed, or a different component gets rendered at the same position, React discards its state.
+
+    b)Same component at the same position preserves state
+         {isFancy ? (
+            <Counter isFancy={true} /> 
+            ) : (
+            <Counter isFancy={false} /> 
+        )}
+
+        even if we render diffrent isntance of component at same position, state of previous component is allocated to
+            new one.this is because you always have a <Counter /> as the first child of the div returned from the root
+            App component.It’s the same component at the same position, so from React’s perspective, it’s the same counter.
+            what is happening under the hood is that new component is not mounted, older instance is used.
+
+    c)Position in UI tree matters not in JSX markup
+        Remember that it’s the position in the UI tree—not in the JSX markup—that matters to React! This component has two 
+            return clauses with different <Counter /> JSX tags inside and outside the if. no matter which tag renders,for
+            react same component is rendered.This is because both of these <Counter /> tags are rendered at the same position.
+            React doesn’t know where you place the conditions in your function. All it “sees” is the tree you return.
+
+
+        In both cases, the App component returns a <div> with <Counter /> as a first child. To React, these two counters have
+        the same “address”: the first child of the first child of the root. This is how React matches them up between the 
+        previous and next renders, regardless of how you structure your logic.
+
+    d)when we load a diffrent component at same position, component is unmounted and state is destroyed.
+    e)when you render a different component in the same position, it resets the state of its entire subtree.
+
+        {isFancy ? (
+        <div>
+          <Counter isFancy={true} /> 
+        </div>
+      ) : (
+        <section>
+          <Counter isFancy={false} />
+        </section>
+      )}
+      As a rule of thumb, if you want to preserve the state between re-renders, the structure of your tree needs to “match up” 
+        from one render to another. 
+    f)why componnets should not be defined inside another components, because in each render , a new component type is rendered,
+        so mounting happens again.
+
+    g)Resetting state at the same position -
+        1)Render components in different positions -
+            By default, React uses order within the parent (“first counter”, “second counter”) to discern between components.
+            render null before your component solves the problem.null is also considered as valid child.as position is changed,
+            component is destroyed.
+        2)Give each component an explicit identity with key
+            You might have seen keys when rendering lists. Keys aren’t just for lists! You can use keys to make React 
+            distinguish between any components.By default, React uses order within the parent (“first counter”, “second counter”)
+            to discern between components. 
+            so what happens is when a component is re-rendered, even if it's all props chnage, it is not unmounted. but if key prop
+                changes, then it is unmounted.
+
+            Specifying a key tells React to use the key itself as part of the position, instead of their order within the parent.
+            This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so 
+            they will never share state. 
+
+        

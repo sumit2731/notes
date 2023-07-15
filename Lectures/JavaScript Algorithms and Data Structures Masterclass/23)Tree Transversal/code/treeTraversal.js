@@ -560,3 +560,48 @@ console.log(heightOfTree2(tree.root));
 // }
 
 // console.log(ifBInaryTree(tree.root));
+
+
+
+/**
+ * Small Tree
+ */
+
+// const root = new TreeNode(10);
+
+// root.left = new TreeNode(2);
+// root.left.left = new TreeNode(1);
+// root.left.right = new TreeNode(5);
+// root.left.right.right = new TreeNode(7);
+
+
+// root.right = new TreeNode(14);
+// root.right.left = new TreeNode(13);
+// root.right.right = new TreeNode(15);
+// root.right.right.right = new TreeNode(15);
+
+
+
+/**
+ * large tree
+ */
+
+// const root = new TreeNode(25);
+
+// root.left = new TreeNode(18);
+// root.left.left = new TreeNode(19);
+// root.left.left.right = new TreeNode(15);
+// root.left.right = new TreeNode(20);
+// root.left.right.left = new TreeNode(18);
+// root.left.right.right = new TreeNode(25);
+
+// root.right = new TreeNode(50);
+// root.right.left = new TreeNode(35);
+// root.right.left.left = new TreeNode(20);
+// root.right.left.right = new TreeNode(40);
+// root.right.left.left.right = new TreeNode(25);
+
+
+// root.right.right = new TreeNode(60);
+// root.right.right.left = new TreeNode(55);
+// root.right.right.right = new TreeNode(70);

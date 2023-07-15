@@ -11,7 +11,6 @@ var a = function() {
 
 /* 
 Anonymous Functions - functions without name
-
 */
 //syntax error - Function Statement requires the name
 function() {}
@@ -25,7 +24,7 @@ var c = function() {}
 //named function expression
 
 
-var d = function f1() {} // function caannot be called using f1 name. but inside the function we can eefer to f1
+var d = function f1() {} // function caannot be called using f1 name. but inside the function we can refer to f1
 
 
 //parameters vs arguments - params are defined when we define function. argumnets are passed when we call function

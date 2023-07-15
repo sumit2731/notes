@@ -1,0 +1,32 @@
+creating web worker -
+    const worker = new Worker("<worker_file>.js");
+
+communication -
+    a)post message -
+        In main script-
+            sending-
+                worker.postMessage('Hello Worker'); 
+            listening messages form main thread -
+                worker.onmessage = function(message)
+
+        In worker script -
+            listening -
+                self.onmessage = function(message){}
+            sending -
+                self.postMessage(sum);
+
+    b)broadcast API -
+        Broadcast Channel, also known as the Broadcast Channel API, allows basic communication between browsing contexts 
+            (like windows, frames, tabs, or iframes)
+        
+        const bc = new BroadcastChannel('newChannel'); 
+        bc.postMessage('Message is sent through a broadcast channel'); 
+        bc.onmessage = (event)=>{ console.log(event);}
+        bc.close(); 
+
+
+
+
+NOTE: A thread is created once a Worker call is initiated. This thread only communicates with its creator, that is the file 
+    which created this thread.
+

@@ -6,7 +6,7 @@ let & const are hoisted but they are hoisted in different way. they are in tempo
     => Uncaught Refrence Error: cannot access a before initialization.
 
     In browser we can see that a and b are in different places in debugger section. figure 1.
-    memory was assigned to b and variable b was attached to global object. a is also allocated memory(this is called hoisted) but 
+    memory was assigned to b and variable b was attached to global object.a is also allocated memory(this is called hoisted) but 
     they are stored in diffrent memory space than global and we cannot access these variables until we have initialized them i.e we
     have put some value into them.
 

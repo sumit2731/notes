@@ -262,4 +262,4 @@ similar pattern -
         It only expects the this value to have a length property and integer-keyed properties.
 
     3)methods that do not skip sparse arrays -find, findIndex,findLast,findLastIndexOf ,includes, join
-    4)methods that skips sparse arrays - forEach,filter, map, reduce,indexOf,lastIndexOf
+    4)methods that skips sparse arrays - forEach,filter,map, reduce,indexOf,lastIndexOf

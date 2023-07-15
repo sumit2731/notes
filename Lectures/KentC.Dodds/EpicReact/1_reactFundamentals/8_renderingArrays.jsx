@@ -3,7 +3,9 @@
  * key prop
  *  Read exercise
  *  read kent's blog (3 bolgs)
- *  read recat docs
+ *  read react docs -
+ *      https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key
+ *      https://react.dev/learn/preserving-and-resetting-state
  *  developer article
  * 
  * The key prop has less to do with arrays, and more to do with controlling when a component is reused or disposed of and created anew.

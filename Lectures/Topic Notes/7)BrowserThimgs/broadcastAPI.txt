@@ -1,0 +1,3 @@
+but as it applies to communication within the same browsing context or same origin.
+This is performed using the Broadcast Channel API and channel.postMessage().
+It can be used to detect user actions in other tabs within a same site origin environment or browsing context.

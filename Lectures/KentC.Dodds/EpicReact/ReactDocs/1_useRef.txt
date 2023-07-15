@@ -4,7 +4,7 @@ useRef is a React Hook that lets you reference a value that’s not needed for r
     a)Should not store a value that is needed for rendering.for that use useState.
     b)value is preserved across re renders.Initial value is used only during intial render. across subsequent renders,useRef returns
         same object.object returned can be mutated.
-    c)can used in ref prop to JSX. for custom component forward ref needs to be used.
+    c)can be used in ref prop to JSX. for custom component forward ref needs to be used.
     d)Changing ref.current does not lead to rerender
     e)do not read or write ref.current during rendering.You can read or write refs from event handlers or effects instead.
         If you have to read or write something during rendering, use state instead.
@@ -15,3 +15,4 @@ useRef is a React Hook that lets you reference a value that’s not needed for r
     Examples of use of useRef -
         a)click counter, which is printed on console(not used on UI)
         b)store setInterval id
+        c)was used to preseve previous prop to component

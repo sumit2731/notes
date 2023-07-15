@@ -1,0 +1,12 @@
+Problems missed in second iteration -
+
+    5) solved it but i was passing slice array in eacg iteartion, insted pass indexes.
+    6)kth largestNumber, solved with inOrder but efficient one is reverse in order, does not iterate all nodes and
+        does not solve store all nodes.that I was not able to solve.
+    7)not able to solve.
+        Solved using apporach of 5 but optimal solution is not that.
+    8)solved only after i saw the algo
+
+
+Patterns -
+    Questions 5 and 7 involve constructing the binary tree.so see 5 to see how we construct the pattern

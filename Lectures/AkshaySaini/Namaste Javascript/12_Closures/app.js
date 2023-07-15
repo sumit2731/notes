@@ -25,7 +25,7 @@ function x2() {
  let z = x2();
 
  /* 
- what happens we  execute x2? EC is created, in variable part of EC diffrent variables are created. we know what happnes when a 
+ what happens when we  execute x2? EC is created, in variable part of EC diffrent variables are created. we know what happnes when a 
  function is inside another function, we know about lexical scope, lexical bindings, lexical parent and scope chain.
  
  x2 returns the funcction y.now EC of x2 is destroyed and removed from call satck. so all variables and all are gone. but we have 

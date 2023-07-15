@@ -53,6 +53,8 @@ class BST {
 }
 
 /**
+ * best solution is course solution 2
+ * Course Solution - 1
  * time - O(n*n ) - This is because recursion function will be called n times and within each time we execute loop
  * space - O(h) this used by callstack
  */
@@ -69,6 +71,74 @@ function reconstructBst(preOrderTraversalArray) {
     let rightSubTree = reconstructBst(preOrderTraversalArray.slice(rightSubTreeIndex));
     return new BST(currentRootValue, leftSubTree, rightSubTree);
 }
+
+
+
+/**
+ * Based on course solution but a bit better (uses approach of question 5), instead of creating new array, we pass indexes
+ * 
+ * time - O(n*n ) - This is because recursion function will be called n times and within each time we execute loop
+ * space - O(h) this used by callstack
+ */
+
+function reconstructBst2(arr) {
+  return reconstructBstHelper(arr,0,arr.length-1)
+}
+
+function reconstructBstHelper(arr, startIndex, endIndex,bst) {
+  if(startIndex > endIndex) return null;
+  const newBstNode = new BST(arr[startIndex]);
+  if(!bst) bst = newBstNode;
+  else {
+    let property = 'left';
+    if(bst.value < newBstNode.value) property = 'right';
+    bst[property] = newBstNode;
+    bst = bst[property];
+  }
+  let leftSubTreeEndIndex = endIndex;
+  for(let i = startIndex+1; i<= endIndex; i++) {
+      if(arr[i] >= arr[startIndex]) {
+          leftSubTreeEndIndex =  i-1;
+          break;
+      }
+  }
+  reconstructBstHelper(arr,startIndex+1, leftSubTreeEndIndex,bst);
+  reconstructBstHelper(arr,leftSubTreeEndIndex+1,endIndex,bst);
+  return bst;
+}
+
+
+/**
+ * My solution based on appraoch of quetion 5.
+ * here instead of passing tree last tree, we are retuning tree and constructing left and right subtreess
+ * 
+ * time - O(n*n ) - This is because recursion function will be called n times and within each time we execute loop
+ * space - O(h) this used by callstack
+ */
+function reconstructBst3(arr) {
+  return reconstructBstHelper2(arr,0,arr.length-1)
+}
+
+function reconstructBstHelper(arr, startIndex, endIndex) {
+    if(startIndex > endIndex) return null;
+    const newBst = new BST(arr[startIndex]);
+    let leftSubTreeEndIndex = endIndex;
+    for(let i = startIndex+1; i<= endIndex; i++) {
+        if(arr[i] >= arr[startIndex]) {
+            leftSubTreeEndIndex =  i-1;
+            break;
+        }
+    }
+    newBst.left = reconstructBstHelper(arr,startIndex+1, leftSubTreeEndIndex);
+    newBst.right = reconstructBstHelper(arr,leftSubTreeEndIndex+1,endIndex);
+    return newBst;
+}
+
+
+/**
+ * Course Solution 2
+ */
+
 
 // Do not edit the lines below.
 exports.BST = BST;

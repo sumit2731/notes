@@ -53,25 +53,32 @@ class BST {
 }
 
 class TreeInfo {
-    constructor(rootIdx) {
-        this.rootIdx = rootIdx;
-    }
+  constructor(rootIdx) {
+    this.rootIdx = rootIdx;
+  }
+}
+/**
+ * Course Solution 2
+ * Complexity - time - (n)
+ *  Space - O(h) - For recursive calls
+ */
+function reconstructBst(arr) {
+  return reconstructBstHelper(arr,-Infinity,Infinity,new TreeInfo(0));
 }
 
-function reconstructBst(preOrderTraversalArray) {
-    let treeInfo = new TreeInfo(0);
-    return reconstructBstFromRange(-Infinity,Infinity,treeInfo, preOrderTraversalArray);
-}
 
-function reconstructBstFromRange(minBound,maxBound,treeInfo, preOrderTraversalArray) {
-    if(treeInfo.rootIdx == preOrderTraversalArray.length) return null;
-    let currentIndex = treeInfo.rootIdx, currentRootValue = preOrderTraversalArray[currentIndex];
-    if((currentRootValue < minBound) || (currentRootValue >= maxBound)) return null;
-    treeInfo.rootIdx++;
-    let leftSubTree = reconstructBstFromRange(minBound,currentRootValue,treeInfo,preOrderTraversalArray);
-    let rightSubTree = reconstructBstFromRange(currentRootValue,maxBound,treeInfo,preOrderTraversalArray);
-    return new BST(currentRootValue,leftSubTree,rightSubTree);
+function reconstructBstHelper(arr,minValue,maxValue, treeInfo) {
+  if(treeInfo.rootIdx >= arr.length) return null;
+  const currentNodeValue = arr[treeInfo.rootIdx];
+  if(currentNodeValue >= maxValue || currentNodeValue < minValue) return null;
+  const currentNode = new BST(currentNodeValue);
+  treeInfo.rootIdx++;
+  currentNode.left = reconstructBstHelper(arr,minValue, currentNodeValue,treeInfo);
+  currentNode.right = reconstructBstHelper(arr,currentNodeValue,maxValue,treeInfo);
+  return currentNode;
 }
+console.log(reconstructBst([10,4,2,1,5,17,19,18]));
+console.log(reconstructBst([10,4,2,1,5,17,19,18]).left);
 
 // Do not edit the lines below.
 exports.BST = BST;

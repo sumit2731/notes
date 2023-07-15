@@ -6,78 +6,30 @@ class TreeNode {
   }
 }
 
-const root = new TreeNode(25);
+const root = new TreeNode(10);
 
-root.left = new TreeNode(18);
-root.left.left = new TreeNode(19);
-root.left.left.right = new TreeNode(15);
-root.left.right = new TreeNode(20);
-root.left.right.left = new TreeNode(18);
-root.left.right.right = new TreeNode(25);
-
-root.right = new TreeNode(50);
-root.right.left = new TreeNode(35);
-root.right.left.left = new TreeNode(20);
-root.right.left.right = new TreeNode(40);
-root.right.left.left.right = new TreeNode(25);
+root.left = new TreeNode(2);
+root.left.left = new TreeNode(1);
+root.left.right = new TreeNode(5);
+root.left.right.right = new TreeNode(7);
 
 
-root.right.right = new TreeNode(60);
-root.right.right.left = new TreeNode(55);
-root.right.right.right = new TreeNode(70);
+root.right = new TreeNode(14);
+root.right.left = new TreeNode(13);
+root.right.right = new TreeNode(15);
+root.right.right.right = new TreeNode(22);
 
 
-
-function largestBSTLength(root) {
-  function largestBSTHelper(node) {
-    //if this is root node
-    if(!node.left && !node.right) return ({isBST: true,length:1, minValue: node.value,maxValue: node.value});
-    let leftSubTree , rightSubTree ;
-    if(node.left) leftSubTree = largestBSTHelper(node.left);
-    if(node.right) rightSubTree = largestBSTHelper(node.right);
-    let isBST = true, length = 0,minValue = node.value, maxValue = node.value;
-    if(leftSubTree) {
-      if((!leftSubTree.isBST) || (leftSubTree.maxValue > node.value)) isBST = false;
-      else {
-        minValue = leftSubTree.minValue;
-        length += leftSubTree.length;
-      }
-    }
-    if (rightSubTree) {
-      if(!(rightSubTree.isBST) && (rightSubTree.minValue < node.value)) isBST = false;
-      else {
-        maxValue = rightSubTree.maxValue;
-        length += rightSubTree.length;
-      }
-    }
-    if(!isBST) {
-      if(leftSubTree && leftSubTree.isBST) length = leftSubTree.length;
-      else if(rightSubTree && rightSubTree.isBST && (rightSubTree.length > leftSubTree.length)) length = rightSubTree;
-      else length = 1;
-    }
-    return {isBST,length,minValue,maxValue};
+function reverseInOrder(root) {
+  let data = [];
+  function transverse(node) {
+    if (node.right) transverse(node.right);
+    data.push(node.value);
+    if (node.left) transverse(node.left);
   }
-  let {length} = largestBSTHelper(root);
-  return length;
+  transverse(root);
+  return data;
 }
 
-function largestBSTLength(root) {
-  function largestBSTHelper(node) {
-    if(!node) return {isBST: true, length: 0, minValue: -Infinity, maxValue: Infinity}
-    if(!node.left && !node.right) return ({isBST: true,length:1, minValue: node.value,maxValue: node.value});
-    const leftSubTree = largestBSTHelper(node.left);
-    const rightSubTree = largestBSTHelper(node.right);
-    let isBST = true, length = 0,minValue = node.value, maxValue = node.value;
-    if(!leftSubTree.isBST || rightSubTree.isBST || (leftSubTree.maxValue > node.value) || (rightSubTree.minValue <= node.value)) {
-      isBST = false;
-      length = Math.max(leftSubTree.length,rightSubTree.length);
-      return {isBST,length,minValue,maxValue}
-    }
-    length = 1 + leftSubTree.length + rightSubTree.length;
-    minValue = leftSubTree.length ? leftSubTree.minValue : node.value;
-    maxValue = rightSubTree.length ? rightSubTree.maxValue : node.value;
-    return {isBST,length,minValue,maxValue};
-  }
-  let {length} = largestBSTHelper(root);
-  return length;
-}
+console.log(reverseInOrder(root));
+
