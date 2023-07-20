@@ -12,11 +12,11 @@ p1(1).then(val => val) //2, here handler returns a value, so it is wrapped in a 
      .then(val => console.log(val)); //24
 
 //Example2- handler is returning promise itself - output are same as Example 1 just delay is added
-p1(1).then(val => p1(val)) //4, here handler returns promise itself, so returned value is not wrapped in a promise.so next .then is called on retruned promise
+p1(1).then(val => p1(val)) //2, here handler returns promise itself, so returned value is not wrapped in a promise.so next .then is called on retruned promise
+     .then(val => p1(val)) //4
      .then(val => p1(val)) //8
-     .then(val => p1(val)) //16
-     .then(val => p1(val))// 32
-     .then(val => console.log(val))
+     .then(val => p1(val))// 16
+     .then(val => console.log(val)) //32
 
 
 //Trick to change value emitted by a promise i.e mapping------------------Block 1.2 ------------------------------------------------
@@ -100,7 +100,8 @@ p1(1).then(num1 => p1(num1)) //2
 
 /* 
 *************************************Block 4 *****************************************************
-Even if executor throws error, result is same as rejected promise. this is true for only synchronous error.(see question in error handling chpater of jsonfo)
+Even if executor throws error, result is same as rejected promise. this is true for only synchronous error.(see question in error 
+    handling chpater of jsonfo)
 Also second callback to then takes care of next .then chains.
 
 only diffrence between using catch and second callback to then is if first callback throws error, then catch block handles it.

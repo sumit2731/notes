@@ -13,6 +13,8 @@ overflow:clip
 
 
     tradeoffs for clip value. see section.
+        browser support
+        incompatibility with border-radius
 
 then we saw how we can do that without overflow:clip property.
 

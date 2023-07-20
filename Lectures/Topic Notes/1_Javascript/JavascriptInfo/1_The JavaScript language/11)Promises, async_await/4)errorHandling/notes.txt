@@ -1,13 +1,4 @@
-1)When a promise rejects, the control jumps to the closest rejection handler, skipping all then blocks in between. it enables us to
-    define single rejection handler for whole promise chain at the end of chain.even in the catch if we handle error, then block
-    after are executed with value returned by error handler or catch block.
-
-2).catch doesn’t have to be immediate. It may appear after one or maybe several then blocks. when error occurs in any of then block, all next then
-    blocks before catch or error hander are missed.control goes to nearest error handler directly.see exaple1 in code. Also if in 
-    error block if we handle the error, control goes to next then blocks.In that way we can recover failed promises in chain and
-    continue. also in same way we can recover induival individual promises in Promise.all(dsicussed in next section)
-
-3)implicit try catch block - The code of a promise executor and promise handlers has an "invisible try..catch" around it. 
+1)implicit try catch block - The code of a promise executor and promise handlers has an "invisible try..catch" around it. 
     If an exception happens, it gets caught and treated as a rejection.
 
     a)If error ocuurs in executor then it is treated as promise has been rejected. only synchronous errors are handled
@@ -56,5 +47,26 @@ Notes on Promise.prototype.catch() on MDN -
             console.error(e); // This is never called
             });
 
-        c)in b even if errors are thrown after calling resolve
+        c)catch() is not called if the promise is fulfilled
+
+            // Create a promise which would not call onReject
+            const p1 = Promise.resolve("calling next");
+
+            const p2 = p1.catch((reason) => {
+                // This is never called
+                console.error("catch p1!");
+                console.error(reason);
+            });
+
+            p2.then(
+                
+                (value) => {
+                    console.log("next promise's onFulfilled");
+                    console.log(value); // calling next
+                },
+                (reason) => {
+                    console.log("next promise's onRejected");
+                    console.log(reason);
+                },
+            );
 

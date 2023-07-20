@@ -1,18 +1,3 @@
-/**
- * To remove a property, we can use the delete operator:
- */
-
-delete user1.age;
-
-/**
- * We can also use multiword property names, but then they must be quoted:
- */
-
-let user1 = {
-  name: "John",
-  age: 30,
-  "likes birds": true, // multiword property name must be quoted
-};
 
 /**
  * For multiword properties, the dot access doesn’t work:
@@ -39,7 +24,8 @@ delete user2["likes birds"];
 
 
 /**
- * Square brackets also provide a way to obtain the property name as the result of any expression – as opposed to a literal string – like from a variable as follows:
+ * Square brackets also provide a way to obtain the property name as the result of any expression – as opposed to a literal 
+ * string – like from a variable as follows:
  */
 
 let key = "likes birds";
@@ -89,7 +75,7 @@ let bag = {
  * As we already know, a variable cannot have a name equal to one of the language-reserved words like “for”, “let”, “return” etc.
     But for an object property, there’s no such restriction:
 
- *   In short, there are no limitations on property names. They can be any strings or symbols .Other types are automatically 
+ * In short, there are no limitations on property names. They can be any strings or symbols .Other types are automatically 
         converted to strings.
  */
 

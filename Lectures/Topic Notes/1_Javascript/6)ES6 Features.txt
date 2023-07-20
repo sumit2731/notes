@@ -1,9 +1,12 @@
-1)Arraow functions, default arguments
-2)Tempral Literals
-3)Spread and Rest Operators
-4)Object and Array Destructing
-5)Class Syntax
-6)Array.from method
+1)Arrow functions
+2)Object and Array Destructing
+3)Tempral Literals
+4)let and const
+5)Optional Chaining
+6)nullish coalish
+7)Spread and Rest Operators
+
+8)Class
+9)Modules
+6)promises
 7)Enhanced Object Literals
-8)Optional Chaining
-9)nullish coalish

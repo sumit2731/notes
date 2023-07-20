@@ -1,2 +1,6 @@
+psedo classes - :not,:first-of-type
+
+
+
 Virtualization
 css layers

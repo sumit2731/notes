@@ -1,0 +1,61 @@
+button -
+    needs javascript to do something
+    tabindex=0
+    keyboard operable - It firs on enter and space
+
+link -
+    if href is present, then this represents the hyperlu=ink. link role is only assigned if href is present.
+    if not then then this is not part of accessibility tree.
+
+    link (with href) -
+        FOCUSABLE
+        fires on enter key only
+        right click on it see other option
+
+    how to disable link -
+        remove href(now link has no role, so screen readers wnt tell)
+        to disable link remove href attribute, add rol="link" and aria-disabled="true" (as there are no disable attribute for link)
+        that way screen readers will know that this is dsiabled link
+
+
+Link vs button -
+    Does the element take the user to another page or a section within the page? If the URL changes when the element is clicked,
+        then what you want is a link: <a href=".."></a>.
+    Does the element change something on the current page (for example: does it change the layout, or open a dialog, or present them with a new view)? If the answer is yes, you probably need a button.
+    Can you right-click the element to open it in a new Window? If not, then it’s probably not a link.
+    Does the element do anything without JavaScript?
+
+Enhaning link into button
+
+    1)give role="button" to link
+    2)Add a click handler.
+    3)click handler will be executed on enter, then add a space handler also. because button is fired on space handler also.
+
+    diffrence in space and enter on button -
+        1)enter - event is firect on keydown.if you keep pressing key, handlers will be fired multiple time.
+        2)space -event is fired on keyup. if you keep presseing key and use tab to move other link, button wnt be fired.
+
+    var btn = document.querySelectorAll('a[role="button"]');
+
+    btn.addEventListener('click', doSomething);
+
+    function doSomething(e) {
+        e.preventDefault();
+        alert('Chirp chirp!');
+    }
+
+    btn.addEventListener("keydown", function(e) {
+        // enter key
+        if (e.keyCode === 13) {
+            doSomething(e);
+        }
+    });
+    btn.addEventListener("keyup", function(e) {
+        // space key
+        if (e.keyCode === 32) {
+            doSomething(e);
+        }
+    });
+
+
+Not all assistive technology get information form a11y tree. like  forced color mode. for this you need the style the element.

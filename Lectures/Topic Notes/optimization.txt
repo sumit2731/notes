@@ -1,0 +1,72 @@
+1)SSG with SWR (State while revalidate) (The Fastest & Most Optimized Rendering Pattern)
+    CSR - Client side rendering
+    SSR - Server Side rendering
+        Server side rendering involves two renders, first the server executes the data fetches and creates a fully rendered
+        page to send to the browser. The browser renders that HTML file and also downloads the JavaScript file. The browser
+        then executes the JavaScript file and now the page is interactable.
+
+        Server side rendering can provide faster rendering, particularly for users with slower internet connections as most of
+        the work was done by the application’s server. It is also an effective rendering method for SEO as search engines can
+        easily index and crawl content as an already rendered page is loaded when a request is made rather than a blank page
+        that is returned in client side rendering.
+    SSG - Static Site Generation.
+        pre-built pages are served to the client with the data being fetched at build time.For the dynamic aspects of an 
+        application that cannot be handled at build time, there’s client-side JavaScript (this handles authentication
+        and frequently updated data). Furthermore, a stale-while-revalidate pattern (SWR) can be used so that the skeleton
+        is served and updated with data from cache (stale), then a fetch request is sent (revalidate), and UI updates where
+        required are made.
+
+        As a result, you are providing a far better user experience than serving a blank page followed by loading spinners
+        that you get with client side rendering or rendering the complete page but with a significant delay that you get with
+        server side rendering.
+
+        Static site generation is much faster than server sider rendering and client side rendering. Static site generation 
+        does all of the data fetching and HTML generation at build time. The pre-built HTML pages are then deployed to a web
+        server. Browsers make requests to the web server and are given lightweight HTML files that are able to be rendered in
+        milliseconds. This is blazingly fast and great for SEO.
+
+
+2)analyzing client side performance
+
+3)Static Assets
+    a)pictures -
+        1)compress images
+        2)use webP format
+        3)serve images according to size(responsive images using srcset and size attribute on img, and picture tag).
+            This allows the delivery of different-sized images based on the size of the accessing device.
+        4)Cloud-provided image processing solution like AWS Serverless Image Handler.
+            SIH allows you to request and manipulate images on the fly — meaning you can request different-sized images based
+            on varying device widths, and rather than having to create and store all those different sized images, you only
+            have one image and SIH will process the image on request to give you the size requested
+
+    b)assets - Minify, Compress, & Serve Your Static Code Files via a CDN
+
+
+4)prefetch - Prefetching allows a browser to silently fetch the necessary resources needed to display content that a user 
+    might access in the near future. The browser is able to store these resources in its cache enabling it to deliver the 
+    requested data faster.Therefore, once a web page has finished loading and the idle time has passed, the browser begins
+    downloading other resources. Once a user clicks on a particular link that has already been prefetched, they will see the
+    content instantly.
+
+    a)Link Prefetching
+        The browser will look for prefetch in either an HTML <link> or the HTTP header Link, for example:
+
+            HTML: <link rel="prefetch" href="/uploads/images/pic.png">
+            HTTP header: Link: </uploads/images/pic.png>; rel=prefetch
+
+    b)dns prefetch
+        <link rel="dns-prefetch" href="https://www.keycdn.com">
+    c)pre rednering
+         instead of just downloading the required resources, prerendering actually renders the entire page in the background.
+         The page is hidden, although if the user navigates to the page, the hidden page will replace the current tab and will
+         display the page the user requested.
+
+5)lazy loading - It involves only loading the required section of a page and delaying the remaining until it is needed by the
+    user.
+        a)infinite scroll
+        b)code splitting using lazy loading
+
+
+6)caching
+    a)browser caching
+    b)cahing using service worker

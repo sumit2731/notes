@@ -1,10 +1,10 @@
 Module 2 -
 
-    isolation: isolate
-    overflow:clip
+    isolation: isolate (creates new stacking context)
+    overflow:clip (avoids creating scroll containers)
     whitespace:
         normal
-        nowrap - does not llow content to come to next line
+        nowrap - does not allow content to come to next line (we used it when we want all images on single line)
         pre
         pre-line
         pre-wrap

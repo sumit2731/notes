@@ -1,5 +1,6 @@
 problem 1 -
-    thngs learned - sticky never leaves its parent.
+    Things learned - using negative values if you want some part to be scrolled away.
 
 problem 2 -
-    same
+    Sticky position will not leave its container.
+    

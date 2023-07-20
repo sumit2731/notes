@@ -1,0 +1,7 @@
+https://courses.joshwcomeau.com/css-for-js/02-rendering-logic-2/05-dom-puzzle
+
+2)How dialog component will solve z-index problem
+    https://courses.joshwcomeau.com/css-for-js/02-rendering-logic-2/10-portals
+
+3)One blog -
+    https://courses.joshwcomeau.com/css-for-js/02-rendering-logic-2/13-fixed

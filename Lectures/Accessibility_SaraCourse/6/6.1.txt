@@ -1,0 +1,48 @@
+headings - these are very useful for navigation
+    Jaws -
+        'r' key - visit regions of page(navigation region,search region, main region, banner area)
+            this is all picked up by html 5 sectioning tags  like header, nav,footer,main etc.
+
+        'h' - use headings as a way of navigating through the page
+
+        then press enter to enter the heading.
+
+
+Implementing an effective heading structure
+
+    a)One h1 per page (document outline algo does not work)
+        when to use section element -
+            So go ahead and use the <section> element as if it contributes to the document outline, but remember to use the 
+            appropriate heading level for each nested section.My recommendation would be to use <section> to mark up new sections
+            (or sub-sections) of content, and prefer using it over using a <div> for the same purpose.
+
+    b)use h2 to h6 to create hierarchy.use headings isntead of using spans or something else.
+
+    c)don’t choose the level by the visual size of the text (or by how large the text is rendered). Choose a heading level that 
+        appropriately reflects the content hierarchy.
+
+    c)dnt use heading levels purely for styling purpose.plan content before you style and and tweak css as you see fit.
+
+    d)If it looks like heading it should be implemented as heading
+
+Tools for visualizing and testing page's heading structure -
+
+    bookmarketer - https://hinderlingvolkart.github.io/h123/
+    web developer page extension
+    W3C markup Validation service
+
+
+Heading Text Describes the content it proceeds
+
+
+SC linked with headeings -
+
+    1)1.3.1 - If a text is styled to look like a heading, it must also be implemented using semantic heading element.
+        and vice-versa.
+    2)2.4.6 -heading should describe the content it prceeds
+    3)2.4.10(AAA) - Sections headings are used to organize the content - when content is divided into section, heading must be 
+        provided.
+
+Fixing headings without chnaging markup -
+    role="heading" aria-level="1"
+    Note - do not apply these on focusable elements.

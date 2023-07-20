@@ -1,4 +1,4 @@
-//1
+//1 error cannot convert symbol to number
 
 const arg1 = Symbol(1)
 const arg2 = Symbol(2)

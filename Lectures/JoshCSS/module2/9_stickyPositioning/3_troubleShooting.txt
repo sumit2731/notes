@@ -1,7 +1,11 @@
-Unfortunately, it's very common to apply position: sticky to an element, only for nothing to happen; the element won't stick!
+Unfortunately, it's very common to apply position: sticky to an element, only for nothing to happen; the element won't stick!.
 Let's look at some common reasons for this.
 
     a)A parent is hiding/managing overflow
+        Here's how to think about it: position: sticky can only stick in one "context". If it's within a scroll container, it can
+            only stick within that container.
     b)The container isn't big enough
+         A sticky element will only follow the viewport as long as it remains inside its parent container.
+            Make sure that your sticky element has room to move within its parent container.
     c)The sticky element is stretched
     d)There's a thin gap above my sticky header!

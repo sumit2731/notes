@@ -1,28 +1,9 @@
-So far, all of the elements we've seen are laid out in an orderly fashion, one on top of the other. We generally refer to 
-    this as “in flow”, a reference to Flow layout (though, these days, it can also refer to other layout modes like Flexbox).
-    What if we want to break the rules, though? What if we want to take an element out of this orderly flow, and stick it 
-    wherever we want? In these cases, absolute positioning is our friend.
+lecture notes -
+    a)taken out of flow, collapsing parents.
+    b)Default Placement
+    c)effect on layout
+    d)how sizing of abslote lemnets is controlled(video)
 
-We generally uses asolte positioning for cases like -
-
-    a)UI elements that need to float above the UI, like tooltips or dropdowns.
-    b)Decorative elements that need to be stuck in certain positions (eg. abstract illustrations).
-    c)Stacking multiple elements in the same place, like a deck of cards.
-
-Notice how this is a totally different mechanism from relative positioning? Absolutely-positioned elements are adjusted based
-on their container, not based on their in-flow position.
-
-Things to keep in mind -
-
-1)absolute position elements are removed from current layer and moved to one layer above that. so they are moved out from 
-    document flow.so other elements take up space of positioned elements.
-
-Default placement -
-    1)if we do not give any left,right, top and bottom properties to Absolutely positioned element, then it sits at its normal
-        flow positioned, just it is moved one layer above that and other elements in previous layer occupy its position.
-
-Being able to take elements out-of-flow is super handy. Any time you want an element to be "floating above" the content, like
-    a tooltip or a dropdown or a modal, absolute positioning is your friend.
 
 Absolute Size(video, points) -
     1)display property does not do anything in postioned layout.howver display: none removes the element in all layouts.
@@ -49,6 +30,14 @@ absolute positioning trick -
     if left,right and width are given, left and width are respected.
 
     same happens for top, bottom and height(like right bottom is ignored)
+
+margin-auto trick(used for centering modals and all) -
+    here are 4 important ingredients for this trick to work:
+
+        absolute positioning (position: absolute)
+        Equal distances from each edge (ideally 0px)
+        A fixed size (defined width and height properties)
+        Hungry margins (margin: auto)
 
 inset css property
         

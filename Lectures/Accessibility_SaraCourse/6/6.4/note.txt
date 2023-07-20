@@ -1,0 +1,84 @@
+<nav> has role="navigation". it is landmark region also. so use it.
+
+Then use <a> for link, they have role of links, label is there content.some screenreaders can even read the url of link.
+
+    <nav aria-label="Site">
+        <a href="/about/">About</a>
+        <a href="/work/">Work</a>
+        <a href="/contact/">Contact</a>
+    </nav>
+
+Technically, this could be enough. But there’s a way we can dramatically improve the experience for assistive technology users 
+    even further. 
+
+
+    a)tell no of links and order
+        <nav>
+            <ul>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+
+        now user gets no of link on which he is and total no of links.
+
+    b)also adding list has made user to reach to links faster. now user can -
+        navigate to link using landmarks
+        navigate to links within the navigation using links
+        navigate to navigation list using list keyboard shortcuts
+
+    c)Labelling multiple navigations -
+        diffrentiate between breadcrubs and main navigation by giving them accessible labels.
+
+        <nav aria-label="Site">
+            <ul>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- ... -->
+
+        <nav aria-label="Breadcrumbs">
+            <ol>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ol>
+        </nav>
+
+    d)how css affects -
+        when we use list-style: none
+        some versions of safari remove list semantics.
+        new versions of safari will also remove list semantics unless list is container in <nav>.
+
+        so for older versions we need to add role="list" to ul element.
+
+    e)conveying state
+        We can convey state in HTML using ARIA attributes. ARIA attributes provide stateful and semantic information where HTML 
+            semantics fall short.
+
+        we want to tell user ablout which one active link.This can be done by aria-current attribute.
+
+         <nav aria-label="Site">
+            <ul>
+                <li><a href="/about/" aria-current="true">About</a></li>
+                <li><a href="/work/">Work</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+
+
+        We can use aria-current attributes to style a link in css instead of attaching a class.
+
+
+outro -
+    Stateful information is but one piece of accessibility information that can be supplemented using ARIA attributes.
+
+    Semantics should provide three main pieces of information:
+
+        the role of an element, which describes what the element is/does
+        the name of an element, which identifies the element and its purpose
+        the state of the element (where applicable), which determines the current state of the element.

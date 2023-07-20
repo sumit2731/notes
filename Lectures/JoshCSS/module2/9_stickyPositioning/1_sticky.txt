@@ -6,12 +6,12 @@ Most commonly, this is done with top: 0px (or top: 0; the unit is optional when 
 
 
 There's a lot of subtlety with position: sticky. Let's go through some of the details.
-    a)Stays in their box
+    a)Stays in it's box.
     b)offset -
         With sticky positioning, the value controls the minimum gap between the element and the edge of the viewport while 
             the container is in-frame.
 
-    c)Not incorporeal
+    c)Not incorporeal - It is their in document flow.
 
 Horizontal stickiness
 

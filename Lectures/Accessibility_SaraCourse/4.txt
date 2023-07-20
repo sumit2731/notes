@@ -1,1 +1,14 @@
 Setting Up Screen reader
+
+    Setting up Windows screen readers
+
+        JAWS - JAWS will run in full in demo mode for 40 minutes at a time, until it is activated on your computer.
+        NVDA free
+
+
+    Which browser and screen reader pairings should you test on?
+
+        JAWS — the most popular of all screen readers on Windows — works best with Chrome and Firefox. When perfoming testing,
+            pair it with Chrome.
+
+        NVDA works best and is commonly paired with Firefox.

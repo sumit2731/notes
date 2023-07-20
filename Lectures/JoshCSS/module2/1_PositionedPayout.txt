@@ -6,4 +6,4 @@ The defining feature of positioned layout is that items can overlap. The Flow La
 How to opt out from positioned layout -
     position: static or intial
 
-default value of position is static only.
+pusging element with relative posittion vs margin-top

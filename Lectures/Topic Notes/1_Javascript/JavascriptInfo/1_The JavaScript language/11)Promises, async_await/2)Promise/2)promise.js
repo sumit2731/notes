@@ -28,8 +28,6 @@ let p22 = new Promise((resolve,reject) => setTimeout(() => resolve(p1),15000)); 
 let p3 = new Promise((resolve,reject) => resolve(p22)); // this will wait until p22 is resolved
 
 
-
-
 p3.then(val => console.log(`P3 Resolved with ${val}`));
 p22.then(val => console.log(`P22 Resolved with ${val}`));
 p1.then(val => console.log(`P1 Resolved with ${val}`));

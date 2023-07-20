@@ -1,0 +1,24 @@
+wallmart -
+    1)DS & Algo - Problem Solving
+    2)FrontEnd Specific Technologies - JS,React
+    3)Desgin Round -UI Architect
+    4)Managerial Round - Some technical Also
+    5)HR
+
+
+Paypal -
+    1)implement async/await
+
+
+Questions -
+    Code a calender
+    same email should open different promotion going on
+
+System Design -
+    Very limited resources, he prepared from you tube but those links are not there
+
+Google -
+    Round 1 - CSS Questions,Infinite Scroll Assignmnet
+
+
+No Complex react coding questions,

@@ -1,0 +1,49 @@
+button -
+    aria-pressed - if true, button is announed as toggke button
+
+    <button aria-pressed="true">Dark theme</button>
+
+hiding content to aria -
+    aria-hidden="true"
+
+roles -
+    role="heading", aria-level="1"
+    role="button" (<button>)
+    role="link" (<a> tag)
+    role="list" (ul tag has default role but when we remove list styles using css then some older versions of safari remove list
+        semantics also. so use this. this allows screen readers to read no of items also. see 6.4)
+
+state -
+    aria-current = used within links to tell which one one is active link.see 6.4
+
+giving names to elements -
+
+    aria-label
+    aria-labeledBy
+
+link -
+    aria-disabled ="true" (when we want to disable link)
+
+
+landmark-rolename mapping -
+    LandMark(role)                html tags that have this implicit role
+    
+
+    
+    heading                    h1 to h6
+    banner                     header(only when it is direct child of body, you can use  header to semantically grouo content in section but they wnt be exposed as banner)
+    navigation(nav)            <nav>. multiple nav can be there. use labeledBy.each navigation should have an accessible name (or label) that describes its purpose to the user.
+    main                       main(but should be direct child of body) 
+    contentinfo                footer(but shoudld be direct child of body). you can use footer to semantically organize content within sections. but these wnt be exposed as contentinfo
+    complementary(aside)              aside.A complementary landmark region should be either a sibling or a child of the main landmark. And a good practice is to label the content in an <aside> using a descriptive heading.
+                                    more than one complimentary sections can be present, but you need to give them name.
+    form                        <form> element is not exposed as a form landmark by default. It is only exposed as a form landmark when it is given an accessible name. 
+                                    Not all forms need to be exposed as landmarks.If the form is the primary content of a page, exposing it as a landmark will not be necessary.
+    search                      No html tag has this role
+
+    region                      <section> will have this role if accessible name is provided to it.even if you use role attribute, accesssible name needs to be given
+
+
+
+semantic html tags left -
+    article

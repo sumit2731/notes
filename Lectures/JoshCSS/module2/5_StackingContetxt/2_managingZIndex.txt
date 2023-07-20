@@ -19,6 +19,8 @@ Strategies to avoid z-index conflict -
         stacking contexts, we reduce the number of "top-level" elements with z-index values.But there's one more thing that
         makes this strategy even better.
 
-        isolate property - 
+        isolate property (Not Supported in IE) - 
             The isolation property does precisely 1 thing: creates a stacking context.but it does so without requiring that 
             we also set a z-index on the parent. It's the lightest-touch way to create a stacking context.
+
+            isolation: isolate

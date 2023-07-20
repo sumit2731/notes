@@ -1,42 +1,21 @@
-You can often slap position: relative on an element, and observe zero difference. It appears to have no effect!.It does
-    2 things - 
-
-        Constrains certain children (we'll get to this shortly!)
-        Enables additional CSS properties to be used.
-
-When we opt into Positioned layout, we enable a handful of new CSS properties, including:
-
-    top
-    left
-    right
-    bottom
-
-We can use those directional values to shift the element around. 
-With relative positioning, those values are relative to its natural position.
-
-It's common to use top and left to push things along the vertical and horizontal axes respectively. 
-
-Setting left: 10px pushes the element 10px to the right.
-
-You can also use negative numbers to push the element in the opposite direction; for relatively-positioned nodes, 
-    left: -10px has the same effect as right: 10px.
+lwcture notes -
+    effects of giving relative position -
+        a)some proeprties are eunlocked - relments moves from its positon without disturing surrounding layout
+        b)becomes containing block
 
 
-margin vs position:relative
 
-    1)The big difference is that position doesn't impact layout.When using position relative other elements are not 
-        affected while with margin next siblings are also moved.When we push a relatively-positioned element around 
-        with top/left/right/bottom, the browser acts like the element is still in its original position.
 
-    2)By default block items have width:auto. it means they will atke up full width avalible. now if we add margin-left to
-        it, width of element is adjusted so that we have empty space in container and element also stays inside container.
-        but with position:relative and left, width remains unchnaged and element moves out from container.
+Extra from lecture -
+    We can use percentage values for left,top,right and bottom. left and right depend upon width of parent.
+        top and bottom depend upon height of parent. 
 
-Finally, it's important to note that relative positioning can be applied to both block and inline elements.
 
-We can use percentage values for left,top,right and bottom. left and right depend upon width of parent.
-top and bottom depend upon height of parent. 
+    percentage values -
 
-can we say this? -so we can say that parent is the containing block of absolte positioned 
-element. given the fact that element is positoned(left,right,top and bottom) with respect to its own
-position.
+        top,bottom,height - % of parent's height.
+        left,right,width - % of parent's width.
+
+    can we say this? -so we can say that parent is the containing block of relatively positioned 
+    element. given the fact that element is positoned(left,right,top and bottom) with respect to its own
+    position.

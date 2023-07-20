@@ -24,7 +24,7 @@ That's how the stacking order is calculated by default, but CSS gives us a tool 
 z-index
 
     If we want the layered order to be different from the DOM order, we can use the z-index property to manually reorder them.
-    z-index only works with positioned elements. It will have no effect on an element being rendered in Flow layout.
+    z-index only works with positioned elements(and flexbox and grid). It will have no effect on an element being rendered in Flow layout.
     later we will see in the coursez-index also works in flex box and css grid layouts.Flexbox algorithm uses the z-index 
     property in the same way that the Positioned layout algorithm does. z-index doesn't work in Flow layout, but it does in 
     Flexbox (as well as Grid).

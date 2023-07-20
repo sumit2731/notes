@@ -1,0 +1,25 @@
+Semantic HTML is as useful to screen readers as its ARIA role mappings. ex -
+    nav, headings, img, button
+
+
+
+
+114 semantic elements in html.
+
+semantic html is useful in -
+    SEO rankings
+    a11y
+
+Semantic HTML are as useful to screen readers as their aria role mappings.
+
+    The <nav> element is mapped to a navigation role. So it is exposed as a navigation region to screen reader users.
+
+    The <h2> element is mapped to a heading role, with the aria-level property set to the number in the element’s tag name, so the
+        screen reader knows this is a level 2 heading.
+
+    The <img> element is mapped to an img role, so users know that this is an image.
+
+    The <button> is mapped to a button role, so users know it is a button. Since native HTML controls also come with functionality 
+        baked in, the button also has attributes indicating that it is focusable, for example.
+
+    All html elements are provided in accebility mapping doc but for day to day work "aria in html", provides more friendly mapping.

@@ -1,22 +1,30 @@
-1)Object.fromEntries(map) - Creates a object form iterables. like array, map ,set etc
+1)Object.fromEntries(map) - Creates a object form iterables. like array, map ,set etc.
 
-2)Iterate over properties-  
-    for-in- string-keyed, enumerable, includes properties in prototypal chain.
-    Object.keys- string-keyed,enumerable, , includes only own,
-    Object.getOwnPropertyNames - returns array of string-keyed ,includes even non-enumerable,includes only own
-    Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
-    Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.returns all own 
-        property descriptors of a given object.
-    Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
+2)Iterate over properties -
+    Only String properties -
+        Object.getOwnPropertyNames - String ,Own Properties.
+        Object.keys- string,own,enumerable
+        for-in- string,enumerable,Even properties on prototype chain
+        
+    
+    Both Strings and iterables -
+        Object.getOwnPropertySymbols - does the same for just Symbol-keyed properties, etc
+        Object.getOwnPropertyDescriptors() - string and symbol, enumerable and non-enumrable, only own.returns all own 
+            property descriptors of a given object.
+        Reflect.ownKeys() - Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
     
 
 3)Ways to copy Object -
-    a)all properties: enumerable and non-enumerable, data properties and setters/getters – everything
-        let obj2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj1));
-    b)all properties: enumerable and non-enumerable, data properties and setters/getters – everything, and with the right [[Prototype]]
-        let obj2 = Object.create(Object.getPrototype(obj1),Object.getOwnPropertyDescriptors(obj1))
-    c)Copies all own enumreable properties(strings and symbol)
-        let obj = Object.assign({}, obj);
+
+    a)Object.assign
+    b)Object.create
+    Techniques to copy all properties -
+        a)all properties: enumerable and non-enumerable, data properties and setters/getters – everything
+            let obj2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj1));
+        b)all properties: enumerable and non-enumerable, data properties and setters/getters – everything, and with the right [[Prototype]]
+            let obj2 = Object.create(Object.getPrototype(obj1),Object.getOwnPropertyDescriptors(obj1))
+        c)Copies all own enumreable properties(strings and symbol)
+            let obj = Object.assign({}, obj);
 
         copies all enumerable own properties(string as well as symbols) from one or more source objects to a target object. It returns the modified target object.
 

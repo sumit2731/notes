@@ -1,10 +1,13 @@
-1)a call to promise.then returns a promise, so that we can call the next .then on it.
+1) .then and .catch calls return a promise, which is resolved with value returned by callback passed to these.
+    if callback returns a normal value then, it is wrapped in a a promsie which resolved immediately.
+    if these callbacks returns a promise then, that promise is return without creating awrapper promise.
 2)When a handler returns a value, It becomes the result of that promise(promise is resolved immediately), so the next .then is 
     called with it.
 3)this is called promise chaining, see example1 in code.
 4)A handler, used in .then(handler) may create and return a promise.In that case further handlers wait until it 
     settles, and then get its result. see exmale 2.
 5)above said things are true for second callback of then also, Infact it is true for catch block also.
+    (second callback to then) and catch, handles errors and can return new promise after handling it.
 6)now use of promise chaining to load scripts, one after another. code block 2
 7)cases where instead of promise chaining we have to promise nesting. code block3.
 
@@ -14,4 +17,4 @@
 
 10)see question at the last, difference between -
     promise.then(f1).catch(f2);
-    promise.then(f1, f2);
+    promise.then(f1, f2);   

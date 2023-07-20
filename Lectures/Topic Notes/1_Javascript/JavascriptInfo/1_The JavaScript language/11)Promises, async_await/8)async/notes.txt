@@ -1,48 +1,18 @@
-1)The async keyword before a function has two effects:
-
-    a)Makes it always return a promise - async ensures that the function returns a promise, and wraps non-promises in it.We 
-        could explicitly return a promise, which would be the same. basically it works in same way how returning from then works.
-    b)Allows await to be used in it.
-
-2)The await keyword before a promise makes JavaScript wait until that promise settles, and then:
-
-    a)If promise is rejected(this is as same as throwing the error at that place) — The promise returned by async function
-        is rejected. thing to be noted it lines in function are skipped but outisde function execution continues as normal.
-        we can add catch block to handle the rejection of promise returned by asunc function.
-    b)inside asyn function we can use try catch block, now if promise before await fails, this is same as error is thrown
-        at that place so control goes to catch block. here we can handle error and then promise returned by async function
-        is not rejected.
-    c)throwing a error inside async function also means that function execution will be skipped and promise rerturned by
-        asyc function will be rejected.there are 2 ways to make promise returned by async function to be rejected -
-
-            a)promise for which await is waiting is rejected and there is no catch block.
-            b)from async function we throw an error
-    
-    d)Otherwise, it returns the result.If the value of the expression following the await operator is not a Promise, it's 
-        converted to a resolved Promise.if value returned is promise then aync function returns returns  anew promise that
-        is resolved when actually returned promise resolves.
-
-
-3)await literally suspends the function execution until the promise settles, and then resumes it with the promise result. 
-    That doesn’t cost any CPU resources, because the JavaScript engine can do other jobs in the meantime: execute other scripts, 
-    handle events, etc.It’s just a more elegant syntax of getting the promise result than promise.then. And, it’s easier to read 
-    and write.
-
-4)to use await in top level code wrap it in annoous function and use async -
-
-    (async () => {
-        let response = await fetch('/article/promise-chaining/user.json');
-        let user = await response.json();
-        ...
-    })();
-
-    New feature: starting from V8 engine version 8.9+, top-level await works in modules.
+1)top level await allowed in modules.
+2)async await works in modules
 
 5)await also works with thenable objects.when we use await in front of thenable objects, there then function is called.
     within then when we call call resolve/reject decides when our promise will be resolved and rejected.
 
     An await acts on an expression. When the expression is a promise, the evaluation of the async function halts until the promise
     is resolved. When the expression is a non-promise value, it is converted to a promise using Promise.resolve and then resolved.
+
+4)when we are awaiting a promise and it fails, then it is equivalent to throing the error. promise returned by async function is
+    rejected.how to handle it?
+        use try ,catch block in your code.
+
+Extra from Blog -
+    If you manually want the promise, returned by asyn function to fail, throw the Error from function.
 
 
 From article - https://blog.bitsrc.io/understanding-javascript-async-and-await-with-examples-a010b03926ea
