@@ -148,4 +148,13 @@ Exercise 1 -
     job.later we will see how do this if all properties all not multiples of same numebr.
 
     but this pattern is strong.
+
+
+Extra from lecture -
+    Common problems that CSS properties solve -
+        a)Theme toggle - based on prefernce mode and toggle button
+        b)increasing the button and input size(there is a better trick using ::before and after) - we set the single varibel in media
+            query and use that min-height all over the code.this varible in media query
+        c)change the single variable in media query and use it as value for multiple properties.we can combine it with calc. 
+        d)define css colors. do it using variable fragments. chnage primary color and all variatns(dark, light) are chnaged
         

@@ -1,17 +1,42 @@
-Cornell Notes -
-    Step 1-
-        1)Interactive media Features - Hover and pointer.
-        2)Booleans in media quesries -
-            1)and
-            2) or - comma
+“Interaction Media Features”.
 
-        3)perefernce based media quesries.
-            @media(prefers-color-theme: light)
-            @media(prefers-reduced-motion: preference)
-        4)orintation based media quesries
-    Step 2 - 
-        1)how should you write a media quesry for having hover affect?
-        2)what Boolean operator we have in media queries?
-        3)apart from screen media type what other media queries do we have.
+    hover - It is the ability for a device to move the cursor without also triggering a click/tap on the element underneath; a 
+        mouse can do this, but your finger or a stylus can't.
+
+    pointer - pointer refers to the level of control the user has over the position of the cursor.
+
+
+    @media (hover: hover) and (pointer: fine) {
+        button:hover {
+            text-decoration: underline;
+        }
+    }
+
+
+Preferance based Media Queries
+    Another feature of media queries is that they can "hook in" and access user preferences.
+
+    @media (prefers-color-scheme: dark) {
+        /* Dark-mode styles here */
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        /* Animations here */
+    }
+
+
+orientation -
+
+    @media (orientation: portrait) {
+        /* Styles for windows that are taller than they are wide */
+    }
+
+    @media (orientation: landscape) {
+        /* Styles for windows that are wider than they are tall */
+    }
+
+
+I've done some pretty extensive experimentation with this media query, and have found that it's not usually worth using
+
 
 

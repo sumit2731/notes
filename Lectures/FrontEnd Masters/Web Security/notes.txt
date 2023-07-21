@@ -1,0 +1,20 @@
+XSS (Cross Side Scripting Attack)
+
+    Types -
+        1)Reflected XSS 
+            Reflected XSS arises when an application takes some input from an HTTP request and embeds that input into the immediate response in an unsafe way
+            
+            (https://portswigger.net/web-security/cross-site-scripting/reflected)
+
+        2)persistent
+        3)DOM Based (https://portswigger.net/web-security/cross-site-scripting/dom-based)
+    Prevent -
+        
+        a)validating Input on arrival(INput given by user)
+            block invalid input do not clean it
+        b)Validate data received from server
+        c)To prevent XSS in HTTP responses that aren't intended to contain any HTML or JavaScript, you can use the Content-Type and X-Content-Type-Options headers to ensure that browsers interpret the responses in the way you intend.
+        d)Use CSP POlicy
+            things CSP can do -
+                whether inline script will be executed
+                external script will be loaded

@@ -1,0 +1,3 @@
+quiz - 
+    how confident are you in xss protect of OSS libraries
+    how carefulyy you scrutinize borowser plugins

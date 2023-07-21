@@ -97,6 +97,13 @@
             style prop. 
         b)element.style.setProperty(propertyName, value) - used to set css variable on style prop
 
+            const button = document.querySelector('button');
+  
+            button.addEventListener('click', () => {
+                fontSize += 0.25;
+                button.style.setProperty('--inflated-size',fontSize + 'rem');
+            });
+
     resetting styles -
 
         a)element.style.cssProp = ''
