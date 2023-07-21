@@ -1,0 +1,48 @@
+1)Dialog -
+    1)should be focused when dilog is opened.
+    2)when closed focus should go back to where it was before opening.
+    3)focus trapping.
+    4)pressing escape should close it.
+
+2)Good heading strucure.
+    One h1 per page
+    if you cnt change html use role="heading" and level.
+    
+3)Have proper landmarks
+    banner - header (can be multiple, only inside body is main)
+    navigation - navbar
+    main - main (should be direct child of body)
+    contentInfo - footer(durect child of body)
+    complimantary - aside
+    form - role="form", with accessible name
+    search - no html element, role="search"
+    region - 
+        role="region" and give it accessible name. it does not describe the content it contains, so you need to give it a 
+                    accessible name, that describes the purpose of content inside of it.prefably it shuld have a heading which we
+                    can refer by aria-labeledby.
+                section tag - there is no html elment for this role but section element is exposed as landmark when prrovided with
+                    accessible name. section tag does not affect the poutline of document anymore.
+
+4)even when you use link as  button, all corrosponding behaviour should be implemented.
+
+5)implementing navigation bar -
+    1)use nav tag
+    2)give it a name, so that it can tell what is purpose of this like breadcrums, main navigation etc
+    3)links should be inside ul so that count is announced.
+    4)mark current area by using aria-current="true"
+
+
+6)implementing tab -
+
+    <div role="tablist">
+        <button role="tab">Overview</button>
+        <button role="tab">Specifications</button>
+        <button role="tab">..</button>
+        ..
+
+        <section role="tabpanel">
+            ..
+        </section>
+    </div>
+
+

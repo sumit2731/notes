@@ -1,0 +1,25 @@
+1)audio,video
+2)header,footer
+3)input tag kinds have been expanded -
+    HTML with new values such as 
+        email, 
+        month, 
+        number, 
+        range, 
+        search, 
+        tel, 
+        color, 
+        week, 
+        URL, 
+        time, 
+        date, 
+        DateTime-local, 
+        and so on.
+
+4)contentEditable,progress
+5)figure and figcaption
+6)placeholder property, pattern proeprty in inputs
+7)Cryptographic Nonces
+8)Canvas in HTML5
+
+9)storage api - local and session storage

@@ -1,0 +1,21 @@
+Semantic HTML Tags for structure - 
+    https://www.codecademy.com/resources/docs/html/semantic-html/article
+
+    header
+    nav
+    main
+    footer - small (copyright info or disacliamers)
+        You use <footer> at the bottom of a page. It usually includes contact information, copyright information, and some site 
+        navigation
+    aside - An aside element defines content that’s less important. It’s often used for sidebars—areas that add complementary but
+        nonessential information.
+
+    article - The article tag defines content that could stand independently of the page or site it’s on. It does not necessarily 
+        mean a “blog post.” Think of it more as “an article of clothing”—a self-contained item that can be used in various 
+        contexts.
+    section - Using <section> is a way of grouping nearby content of a similar theme. A section tag differs from an article tag. 
+        It isn’t necessarily self-contained, but it forms part of something else. 
+
+HTML Semantic Tags for Text
+    figure, figcaption
+    details, summary

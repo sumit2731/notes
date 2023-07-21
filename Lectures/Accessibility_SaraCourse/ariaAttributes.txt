@@ -8,18 +8,32 @@ hiding content to aria -
 
 roles -
     role="heading", aria-level="1"
-    role="button" (<button>)
+    role="button" (<button>,<summary>)
     role="link" (<a> tag)
     role="list" (ul tag has default role but when we remove list styles using css then some older versions of safari remove list
         semantics also. so use this. this allows screen readers to read no of items also. see 6.4)
-
+    role="dialog" (used in josh css course, along with it aria-modal was also used)
+    role="tablist" (not avalible natively). see 7.1
+    role="tab" (not html element has this role,these represents tabs in tablist),see 7.1
+    role="tabpanel" (not html, see7.1)
 state -
-    aria-current = used within links to tell which one one is active link.see 6.4
+    aria-current = represenst current element within set of  related element. ex- used within links to tell which one one is active link.see 6.4
+    aria-pressed="true" (ndicates that this button is in fact a toggle button that is either currently pressed or not pressed,7.1)
 
-giving names to elements -
 
+properties -
+    aria-controls - see7.1
+    aria-hidden - element will not be included in accessibility tree.
     aria-label
     aria-labeledBy
+    aria-describedBy
+
+    to be seen -
+
+    aria-live="off | assertive | polite |"
+
+modal -
+    aria-modal="true"
 
 link -
     aria-disabled ="true" (when we want to disable link)

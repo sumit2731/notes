@@ -1,0 +1,137 @@
+ARIA - Accessible Rich Internet Application. ARAI attruibutes
+    role
+    state
+    properties(name etc)
+
+    role -
+        tablist and tab role -
+
+        <div role="tablist">
+            <button role="tab">Overview</button>
+            <button role="tab">Specifications</button>
+            <button role="tab">..</button>
+            ..
+
+            <section role="tabpanel">
+                ..
+            </section>
+        </div>
+
+
+        tablist is composite. used with tabs and tabpanel.
+        see figure 1 for role type. if you use semantic html, you will rarely need aria roles.HTML aready has document structuring roles
+            likes list images, it also provides landmark roles.it also provides landmark roles.
+
+    state - (prefixed by aria-, need update by js)
+
+        1)<!-- aria-pressed indicates that this button is in fact a toggle button that is either currently pressed or not pressed -->
+            <button aria-pressed="true">Dark theme</button>
+
+        2)Similarly, aria-expanded (state) indicates that the thing the button controls, such as a disclosure, is expanded (“open”) or 
+            collapsed (“closed”).
+        
+            <nav>
+                <button class="nav__toggle" aria-expanded="false">Menu</button>
+                <ul class="nav__list">..</ul>
+            </nav>
+
+        3)aria-expanded was used in conjection with aria-controls proeprty, which is no longer exposed by screen readers
+            <button aria-expanded="false" aria-controls="agreement">Show license agreement</button>
+            
+            <div id="agreement">
+                <!-- license agreement -->
+            </div>
+
+
+    properties -ARIA properties describe the properties of an element — such as its name, description, current value, or its 
+        relationship to other elements.most proeprties do not change frequently.
+
+        aria-controls - see above
+        aria-hidden
+        aria-label
+        aria-labeledBy
+        aria-describedBy
+
+
+There are strict rules that govern ARIA attributes -
+    a)Roles, states and properties are not all applicable on all HTML elements -
+        see table in (ARIA in HTML docs, it has table that list all html element, implicit roles and roles that can be asigned.
+        wrong role example -
+            heading role is not primitted on button
+
+    b)There are strict parent-child relationships between some ARIA attributes
+        1)The use of some attributes is restricted to specific contexts or parents. Some roles can only be used as a child to a specific —
+            usually composite — role.
+
+            For example, the tab role is only valid in the context of a tablist (which is a composite role).
+
+            <ul role="tablist">
+                <button role="tab">Tab One</button>
+                <button role="tab">Tab Two</button>
+                <button role="tab">Tab Three</button>
+                <button role="tab">Tab Four</button>
+            </ul>
+
+
+        2)Similarly, elements with the menuitem role are expected to be children of an element with a menu or menubar role. And
+            menuitem can have no interactive children, so a button or link, or an element with implicit button or link roles, would
+            be invalid.
+
+        3)ARIA is finite: You cannot make up your own role values
+            there is no slider or breadcrumb role.
+
+            to make breadcrubs accessible use this -
+
+                <nav aria-label="Breadcrumb">
+                    <ul>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </nav>
+
+        4)ARIA attributes may have unwanted side effects
+            For example, using role="button" on an element will “erase” the semantics of all of that element’s children. This is 
+            also true for native HTML elements that map to the button role like <button> and <summary>.
+
+
+            <div role="button">
+                <h3>My semantics should be suppressed because I am contained in a button</h3>
+            </div>
+
+            <button>
+                <h3>My semantics should be suppressed because I am contained in a button</h3>
+            </button>
+
+            this can be found under Childern presentational property of html element in ARIA docs
+                https://www.w3.org/TR/wai-aria/#button
+            if this value is true then all children will ahve presentational role i.e they will not have implicit role.
+
+
+
+The ARIA specification already documents the requirements for ARIA roles in the definition of each role and attribute. Each role 
+also includes a list of attributes that are supported by the role, and how that role may affect an element’s descendants.
+https://www.w3.org/TR/wai-aria/#button
+
+And the ARIA in HTML specification defines the conformance rules for using ARIA in HTML. These rules define what conformance 
+testing tools should check for and flag in case of a violation or misuse. As a developer, you should also be aware of these rules
+ so that you avoid using ARIA in ways it is not intended to.
+
+What aria does not do
+
+    ARIA does not impact how content is presented by all assistive technologies
+
+
+        ARIA only affects the semantics exposed via the accessibility tree. This means that the accessibility information you 
+        expose using ARIA will not be exposed to assistive technologies that don’t get their information from the accessibility 
+        tree. Those assistive technologies will still rely on native, semantic HTML to properly present your content to the user.
+
+        ex - windows high contrast modde.
+
+
+How well is ARIA supported across screen readers?
+
+    Rule of thumb - keep aria use to minimum
+
+    first tool - semantic html
+    secodn tool - ARIA.

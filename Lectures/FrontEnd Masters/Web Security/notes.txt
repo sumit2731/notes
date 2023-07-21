@@ -13,8 +13,22 @@ XSS (Cross Side Scripting Attack)
         a)validating Input on arrival(INput given by user)
             block invalid input do not clean it
         b)Validate data received from server
+        c)Allowing same html
         c)To prevent XSS in HTTP responses that aren't intended to contain any HTML or JavaScript, you can use the Content-Type and X-Content-Type-Options headers to ensure that browsers interpret the responses in the way you intend.
         d)Use CSP POlicy
             things CSP can do -
                 whether inline script will be executed
                 external script will be loaded
+
+
+Dangling Markup Injection
+
+
+CSRF (Cross site request forgery)
+
+    Defences -
+        CSRF Token
+        Same Site Cookies
+        Referer-based validation 
+
+
