@@ -1,0 +1,9 @@
+implicit grid - We haven't told the engine what the rows and columns should be, and so it's come up with its own grid, based on 
+    the number of children.By default, it creates 1 new row for each element.mplicit grids want to fill the available space. Notice
+    that the elements stretch across the horizontal space like block-level elements in Flow.
+
+
+
+    grid-auto-flow - row(default) | column
+        grid-auto-flow from row to column, we're not fundamentally changing the orientation of our grid; everything stays the same, 
+            except for the fact that our grid will have multiple columns instead of multiple rows.

@@ -153,8 +153,10 @@ Exercise 1 -
 Extra from lecture -
     Common problems that CSS properties solve -
         a)Theme toggle - based on prefernce mode and toggle button
-        b)increasing the button and input size(there is a better trick using ::before and after) - we set the single varibel in media
+        b)Increasing the button and input size(there is a better trick using ::before and after) - we set the single varibel in media
             query and use that min-height all over the code.this varible in media query
         c)change the single variable in media query and use it as value for multiple properties.we can combine it with calc. 
-        d)define css colors. do it using variable fragments. chnage primary color and all variatns(dark, light) are chnaged
+        d)define css colors. do it using variable fragments. chnage primary color and all variatns(dark, light) are chnaged.
+        e)later art pattern covered in next section where we use css variable to define animations in common class and then use
+            induival element seletor to provide diffrent values of css properties to these.
         

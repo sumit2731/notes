@@ -71,7 +71,7 @@ Calculating colors and gradients
             );
             
             --orange: hsl(
-                calc(var(--red-hue) + 20deg)
+                calc(var(--red-hue) + 20deg) // note if we want to mathematical operation then calc is required
                 var(--intense)
             );
         }

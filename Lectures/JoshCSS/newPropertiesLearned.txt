@@ -40,4 +40,13 @@ Module 6 -
     pointer-events
     object-fit
     object-psotion
+
+
+new CSS Functions -
+    clamp: (minValue, normalValue, maxValue)
+    min: (min1, min2)
+    max:(val1, val2)
+
+
+
     

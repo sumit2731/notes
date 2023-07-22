@@ -5,3 +5,11 @@ https://courses.joshwcomeau.com/css-for-js/02-rendering-logic-2/05-dom-puzzle
 
 3)One blog -
     https://courses.joshwcomeau.com/css-for-js/02-rendering-logic-2/13-fixed
+
+4)use of clampValue -
+
+    https://courses.joshwcomeau.com/css-for-js/05-responsive-css/12-clamping-values
+
+
+5)scrollBurglars -
+    https://courses.joshwcomeau.com/css-for-js/05-responsive-css/13-scrollburglars
