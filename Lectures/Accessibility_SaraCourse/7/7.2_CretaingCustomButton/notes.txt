@@ -1,0 +1,10 @@
+Behaviours added -
+    1)role="button"
+    2)it should be focusable , added tabIndex="0"
+    3)click handler should be called when bhtton is pressable and user presses space or enter.
+        enter is fired on keydown
+        space is fired on keyup
+    4)disabled state, using aria-disabled
+
+
+Using aria guide provides checklost of requirements of custom control

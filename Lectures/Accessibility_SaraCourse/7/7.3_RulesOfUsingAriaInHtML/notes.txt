@@ -1,0 +1,48 @@
+Using ARIA guide provides 5 rules
+    1)use semantic html when possible. see exceptions in figures folder.
+    2)Do not change native semantics, unless you really have to.
+        
+        <h2 role="tab">Tab panel title</h2> wrong
+        <div role="tab"><h2>Tab panel title</h2></div> right
+
+        custom accordian -
+            <h2 role="button" aria-expanded="false">heading that toggles a panel</h2> (wrong)
+            <h2><button aria-expanded="false">heading that toggles a panel</button></h2> (right)
+
+
+        Exception of this - In other words, you can use JavaScript to add ARIA roles and behavior that enhance meaningful 
+            elements to more interactive versions of those elements.
+
+    3)All interactive ARIA controls must be usable with the keyboard.
+        ex- last lectures we created div from button
+
+    4)
+    
+        Do not use role="presentation" or aria-hidden="true" on a focusable element .
+        Using either of these on a focusable element will result in some users focusing on ‘nothing’.
+
+
+        aria-hidden - hides it from a11y tree, so it not announced by screen readers but user can still focus on this.
+
+        <!-- this link will not be announced as a link by some screen readers because its link semantics have been suppressed 
+            using role="presentation" -->
+        
+            <a href=".." role="presentation">Go somewhere</a>
+
+            here screen reader can see the link, read its text but cannot announce that this is button
+
+
+    5)All INteractive Elements must have an accessible name. 
+
+
+Extra Notes -
+    1)Redundant ARIA.
+        Adding explicit roles that match the implicit roles of interactive elements such as buttons:
+            <button role="button">press me</button>
+        Adding ARIA state or property attributes in addition to their native HTML counterparts:
+            <input type="text" required aria-required="true">
+            <div hidden aria-hidden="true">
+
+    2)No ARIA is better than Bad ARIA.
+        role is a promise - make sure you fulfill it
+        ARIA is a only polyfills for HTML semantic. you probably don't aria as often you think you do

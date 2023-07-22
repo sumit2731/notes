@@ -27,6 +27,7 @@ properties -
     aria-label
     aria-labeledBy
     aria-describedBy
+    aria-dsiabled - used to express that button or link is disabled
 
     to be seen -
 
@@ -35,8 +36,7 @@ properties -
 modal -
     aria-modal="true"
 
-link -
-    aria-disabled ="true" (when we want to disable link)
+
 
 
 landmark-rolename mapping -
