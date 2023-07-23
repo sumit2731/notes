@@ -1,28 +1,3 @@
-/**
- * For Deep cloning (or structural cloning) of object
- */
-let user = {
-  name: "John",
-  sizes: {
-    height: 182,
-    width: 50,
-  },
-};
-
-let clone = structuredClone(user);
-
-/**
- * The structuredClone method can clone most data types, such as objects, arrays, primitive values.
- *   It also supports circular references, when an object property references the object itself (directly or via a chain or
- *      references).
- *   As you can see, clone.me references the clone, not the user! So the circular reference was cloned correctly as well.
- */
-
-let user2 = {};
-// let's create a circular reference:
-// user.me references the user itself
-user2.me = user2;
-
 let clone2 = structuredClone(user2);
 console.log(clone2.me === clone2); // true
 

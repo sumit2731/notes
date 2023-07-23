@@ -56,7 +56,7 @@ Additional article -
         a)The wrapper classes BigInt (ES2020) and Symbol (ES6) are relatively new and can’t be instantiated,
             using new keyword.
         
-        b)use of Object function() without new to created warpper classes.
+        b)use of Object function() without new to created wrapper classes.
             a)Object('abc') instanceof String => true
 
             b)With Object(), we can even create instances of BigInt and Symbol (even though those classes can’t 

@@ -1,0 +1,4 @@
+//Good read lecture
+All functions remember the Lexical Environment in which they were made. Technically, there’s no magic here: all functions have the 
+    hidden property named [[Environment]], that keeps the reference to the Lexical Environment where the function was created.
+The [[Environment]] reference is set once and forever at function creation time.

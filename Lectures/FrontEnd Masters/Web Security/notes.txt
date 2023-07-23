@@ -29,6 +29,23 @@ CSRF (Cross site request forgery)
     Defences -
         CSRF Token
         Same Site Cookies
-        Referer-based validation 
+        Referer-based validation
+
+
+Clickjacing
+    displaying anaother webstite on top of ours.
+    prevention -
+        a)X-Frame-Options : deny
+            The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a
+                page in a <frame>, <iframe>, <embed> or <object>. Sites can use this to avoid click-jacking attacks, by ensuring 
+                that their content is not embedded into other sites.
+                
+                X-Frame-Options: deny
+                X-Frame-Options: sameorigin
+                X-Frame-Options: allow-from https://normal-website.com
+        b)CSP Policy -
+            Content-Security-Policy: frame-ancestors 'self';
+            Content-Security-Policy: frame-ancestors normal-website.com;
+        c)Frame bursting scripts - can be disabled easily with sandbox attribute
 
 

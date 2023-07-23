@@ -1,14 +1,12 @@
 /**
  * Symbols are skipped by - for in loop(string, enumrebable proeprties), OBject.keys(string, enumrable, own)
  * 
- * Object.assign copies both string and assign proeprties(Object.assign copies all enumrable and own properties)
- * 
+ * Object.assign copies both string and symbol proeprties(Object.assign copies all enumrable and own properties)
  * 
  * global symbol registry - 
  *  Symbol.for(key)
  *  Symbol.keyFor
  *  
- * 
  */
 
 

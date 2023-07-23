@@ -78,6 +78,9 @@ response headers -
             advertised in the Content-Type headers should be followed and not be changed. The header allows you to avoid MIME
             type sniffing by saying that the MIME types are deliberately configured.
 
+        X-Frame-Options - The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be 
+            allowed to render a page in a <frame>, <iframe>, <embed> or <object>. Sites can use this to avoid click-jacking attacks,
+            by ensuring that their content is not embedded into other sites. 
 
 request headers -
     accept: text/html - The Accept request HTTP header indicates which content types, expressed as MIME types, the client is 
@@ -121,6 +124,10 @@ request headers -
 
     Referer - The Referer HTTP request header contains an absolute or partial address of the page that makes the 
             request.can be controlled by response header - Referrer Policy
+
+
+    Referrer-Policy - The Referrer-Policy HTTP header controls how much referrer information (sent with the Referer header) should
+        be included with requests. Aside from the HTTP header, you can set this policy in HTML.
 
 
 
