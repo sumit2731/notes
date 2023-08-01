@@ -1,0 +1,11 @@
+changing elements based on real DOM measurements like the size or position of an element.
+
+
+Before useLayoutEffect -
+    we can hide the navigation bar then do calculations
+
+
+Why don’t we just use it everywhere instead of useEffect? The docs explicitly say that useLayoutEffect can hurt performance and should
+    be avoided. Why is that? It also says that it is fired “before the browser repaints the screen”, which implies that useEffect is
+    fired after. But what exactly does this mean from a practical sense? Do I need to think about low-level concepts like browser 
+    painting when writing simple dropdowns now 🤯?

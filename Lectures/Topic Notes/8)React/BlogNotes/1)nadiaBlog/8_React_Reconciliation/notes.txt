@@ -1,0 +1,59 @@
+Virtula DOM -
+
+    And it does so by creating and modifying what we sometimes call the "Virtual DOM". This Virtual DOM is just a giant object with all
+    the components that are supposed to render, all their props, and their children - which are also objects of the same shape. Just a
+    tree. 
+
+
+And then, when React gets a command to mount the app (initial render), it iterates over that tree and does the following:
+
+    If the "type" is a string, it generates the HTML element of that type.
+    If the "type" is a function (i.e., our component), it calls it and iterates over the tree that this function returned.
+
+
+2 Ways to fix the behaviur -
+
+    a)reconciliation of Arrays
+        When a element return a fragment and that fragment has multiple elements, this is also treated as array of elements.
+        change the position of elements
+
+        return (
+            <>
+                <Checkbox onChange={() => setIsCompany(!isCompany)} />
+                {isCompany ? <Input id="company-tax-id-number" ... /> : null}
+                {!isCompany ? <Input id="person-tax-id-number" ... /> : null}
+            </>
+        )
+
+        now since type is different input will unmounted, when checkbox is toggled.
+
+    b)using key
+        Elements which have same type and key will be reused regardless of their position in array.this is why key is
+            needed with dynamic arrays.keys behave in same way whether arrays are dynamic or static.
+            
+        how to use it to solve our bug -
+
+            We can use key prop tell react to unmount and remount same element even if its position is not chnaged in DOM 
+                tree, by changing key.so we need to provide differeent keys 
+        
+        
+        Even if position of a element chnage in DOM tree of component, if we provide same kwy, unmounting will not happen.
+            it will think that that element just chnaged its position
+            <>
+                <Checkbox onChange={() => setIsCompany(!isCompany)} />
+                {isCompany ? <Input id="company-tax-id-number" key="tax-input" ... /> : null}
+                {!isCompany ? <Input id="person-tax-id-number" key="tax-input" ... /> : null}
+            </>
+
+
+Wht react asks for key
+
+Dynamic arrays and normal elements together
+
+    Dynamics elements are presents as first eelemnt(array) of children array
+    Static elements comes after them. that means there will not be unmounting of static elements when dynamic items 
+        change.
+
+
+Wht we cannot define components inside other components
+

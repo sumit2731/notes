@@ -1,34 +1,40 @@
-class HttpError extends Error {
-  constructor(response) {
-    super(`${response.status} for ${response.url}`);
-    this.name = 'HttpError';
-    this.response = response;
-  }
-}
+// function curry(fn) {
+//   let allArgs =[], requiredArgLength = fn.length;
+//   return function wrapper(...args) {
+//     allArgs = allArgs.concat(args);
+//     if(allArgs.length == requiredArgLength) {
+//       let result = fn(...allArgs);
+//       allArgs = [];
+//       return result;
+//     }
+//     return wrapper;
+//   }
+// }
 
-async function loadJson(url) {
-  let response = await fetch(url);
-  if(response.status == 200) return response.json();
-  else new HttpError(response);
-}
+function curry(func) {
 
-// Ask for a user name until github returns a valid user
-async function demoGithubUser() {
-  let name = prompt("Enter a name?", "iliakan");
-
-  let user = await loadJson(`https://api.github.com/users/${name}`)
-    .then(user => {
-      alert(`Full name: ${user.name}.`);
-      return user;
-    })
-    .catch(err => {
-      if (err instanceof HttpError && err.response.status == 404) {
-        alert("No such user, please reenter.");
-        return demoGithubUser();
-      } else {
-        throw err;
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    } else {
+      return function(...args2) {
+        return curried.apply(this, args.concat(args2));
       }
-    });
+    }
+  };
+
 }
 
-demoGithubUser();
+
+
+
+
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+let curriedSum = curry(sum);
+
+// console.log( curriedSum(1, 2, 3) ); // 6, still callable normally
+// console.log( curriedSum(1)(2,3) ); // 6, currying of 1st arg
+console.log( curriedSum(1)(2)(3) ); // 6, full currying

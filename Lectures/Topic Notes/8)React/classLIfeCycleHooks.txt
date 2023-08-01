@@ -1,0 +1,108 @@
+//life cycle methods
+
+Mounting
+    a)constructor
+         you would initialize state and bind event handlers methods within the constructor method.
+          The constructor is not where you would introduce any side effects or subscriptions, such as
+          event handlers.
+    b)static getDerivedStateFromProps (replaced componentWillReceiveProps)
+          
+          static getDerivedStateFromProps(props, state) { 
+                return {
+                    points: 200 // update state with this
+                }
+            }
+            takes in props and state:  
+            returns an -
+                a)object to update the state of the component:
+                b)you can return null to make no updates.
+            This method is called (or invoked) before the component is rendered to the DOM on initial mount.
+            Note that this pattern requires you to keep a previous value of the prop (like userID) in state (like prevUserID).
+            should not blindly update the state.
+            This can lead to bugs, alternatives -
+                a)using Fully Controlled Components
+                b)Fully uncontrolled component with key
+    c)render
+        It can return these things -
+            a)plain striing
+            b)arrays and fragments
+            c) to not render anythingreturn a boolean or null
+            d)return a portal -
+                createPortal(this.props.children, document.querySelector("body"))
+        Important thing about render method is that the render function should be pure i.e do not attempt to use 
+            setState or interact with the external APIs.
+    d)componentdidMount
+        use it to -
+            a)grab a DOM node from the component tree immediately after it’s mounted.
+            b)If you also want to make network requests as soon as the component is mounted to the DOM, this is a 
+                perfect place to do so.
+            c)You could also set up subscriptions such as timers
+
+Updating
+    a)static getDerivedStateFromProps(props,state)
+    b)shouldComponentUpdate(nextProps,nextState,nextContext) => boolean (defaukts to true)
+        In most cases, you’ll want a component to rerender when state or props changes. However, you do have control 
+            over this behavior. you can return a boolean  —  true or false — and control whether the component gets 
+            rerendered (e.g., upon a change in state or props).you can compare nextProps with this.props(oldProps)
+            to decide whether render is allowed or not.
+
+        This lifecycle method is mostly used for performance optimization measures. However, this is a very common 
+        use case, so you could use the built-in React.PureComponent when you don’t want a component to rerender if
+        the state and props don’t change.
+
+    c)render
+    d)getSnapshotBeforeUpdate(prevProps, prevState) -
+        The getSnapshotBeforeUpdatelifecycle method stores the previous values of the state after the DOM is updated.
+        Any value returned by this lifecycle method will be passed as a parameter to componentDidUpdate.
+
+        For example, you can use it in a UI like a chat thread that needs to preserve its scroll position during updates.
+
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+            if (this.state.chatList > prevState.chatList) {
+                const chatThreadRef = this.chatThreadRef.current;
+                return chatThreadRef.scrollHeight - chatThreadRef.scrollTop;
+            }
+            return null;
+        }
+    e)componentDidUpdate(prevProps, prevState, snapshot?)
+        componentDidUpdate(prevProps, prevState, snapshot) {
+            if (snapshot !== null) {
+            const chatThreadRef = this.chatThreadRef.current;
+            chatThreadRef.scrollTop = chatThreadRef.scrollHeight - snapshot;
+            }
+        }
+
+
+Unmounting
+    componentWillUnmount() {}
+
+
+Error handling lifecycle methods
+
+    a)static getDerivedStateFromError(error)
+        Param - The error that was thrown. In practice, it will usually be an instance of Error but this is not guaranteed because 
+            JavaScript allows to throw any value, including strings or even null.
+        Return - should return the state telling the component to display the error message.
+        If you define static getDerivedStateFromError, React will call it when a child component (including distant children) throws
+            an error during rendering. This lets you display an error message instead of clearing the UI.
+
+        static getDerivedStateFromError should return the state telling the component to display the error message.
+
+        static getDerivedStateFromError should be a pure function. If you want to perform a side effect (for example, to call an 
+            analytics service), you need to also implement componentDidCatch.
+
+    b)componentDidCatch(error, info) 
+
+     A components with getDerivedStateFromError and componentDidCatch methods is called an error boundary.
+     called when lower component throws the error.
+
+     Params -
+        a)error: The error that was thrown
+        b)info: An object containing additional information about the error. Its componentStack field contains a stack trace with 
+            the component that threw, as well as the names and source locations of all its parent components. In production, the 
+            component names will be minified. If you set up production error reporting, you can decode the component stack using
+            sourcemaps the same way as you would do for regular JavaScript error stacks.
+
+        return - This should not return anything
+
+

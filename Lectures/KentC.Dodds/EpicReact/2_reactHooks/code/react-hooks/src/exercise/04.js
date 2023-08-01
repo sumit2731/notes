@@ -1,13 +1,17 @@
 // useState: tic tac toe
 // http://localhost:3000/isolated/exercise/04.js
 
-import * as React from 'react'
+import * as React from 'react';
+import {useLocalStorageState} from '../utils'
 
 function Board() {
 
-  const initialSquares = Array(9).fill(null);
+  const [squares,setSquares] = useLocalStorageState('squares',() => Array(9).fill(null));
 
-  const [squares,setSquares] = React.useState(initialSquares);
+
+  React.useEffect(() => {
+    localStorage.setItem('squares',JSON.stringify(squares));
+  },[squares]);
 
   // 🐨 We'll need the following bits of derived state:
   const nextValue = calculateNextValue(squares);
@@ -23,7 +27,7 @@ function Board() {
   }
 
   function restart() {
-    setSquares(initialSquares);
+    setSquares( Array(9).fill(null));
   }
 
   function renderSquare(i) {

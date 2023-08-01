@@ -1,0 +1,83 @@
+Let’s see how it can be done with the three patterns we identified at the beginning:
+
+    passing as an Element
+    passing as a Component
+    passing as a Function (functions returns react element)
+        We need to create a prop that starts with render to indicate it’s a render function, i.e. a function that returns an element, 
+            call the function inside the button and add the result to component’s render function as any other element.
+
+
+
+    Test for API -
+        a)Modifying shape and size of icon (modying icon from outside component)
+            a)passing as an Element - we can add some props to react element
+            b)passing as a Component - Define a new component that passes some props to your component
+            c)passing as a Function - In function pass the props to element
+
+        b)Default values for the icon size in the button (passing params from inside component)
+            a)passing as element- use React.cloneElement to clone element and then override some props.we can also provide a default
+                value.
+
+                    <ButtonWithIconElement icon={<AccessAlarmIconGoogle color="warning" fontSize="large" />} />
+
+                    const clonedIcon = React.cloneElement(icon, {
+                        fontSize: icon.props.fontSize || 'small',
+                    });
+
+            b)icon as a component - since we have defined a wrapper component to pass some props to our components, our wrapper
+                component needs to take that props and pass it down to underlying component.
+
+                
+                
+                <ButtonWithIconElement icon={<AccessAlarmIconGoogle color="warning" fontSize="large" />} />
+                const AccessAlarmIcon = (props) => <AccessAlarmIconGoogle {...props} color="error" />;
+                export const ButtonWithIconComponent = ({ children, Icon }: ButtonProps) => {
+                    return (
+                        <button>
+                        <Icon fontSize="small" />
+                        {children}
+                        </button>
+                    );
+                };
+
+                While this pattern seems complicated, it actually gives us perfect flexibility: the button can easily set its own props, 
+                and the consumer can choose whether they want to follow the direction buttons gives and how much of it they want, or whether
+                they want to do their own thing.
+
+            c)icon as function
+                
+                const icon = renderIcon({
+                    fontSize: 'small',
+                });
+
+                <ButtonWithIconRenderFunc renderIcon={(settings) => <AccessAlarmIconGoogle fontSize={settings.fontSize} color="success" />}>
+                    button here
+                </ButtonWithIconRenderFunc>
+
+        c)Changing the icon when the button is hovered
+
+you Tube videos -
+    a)Paasing elements as props(https://www.youtube.com/watch?v=D7DC9pEaLFo&list=PL6dw1BPCcLC7nf1hUXp5bHSjV6zBepOEb&index=4) -
+        1)use cloneElement api to chnage props.
+        2)elements are not rendered until they come in render part.
+
+    b)renderProps pattern(https://www.youtube.com/watch?v=njYc-boHHZc) -
+        1)Consuming components can decide whther to use values coming from library component.
+        render function -function as prop that returns react element, is called render Function.
+        we can also pass render props as children
+        this pattern is used to pass data between components.
+        This pattern is useful when you want to share state between components wothout lifting state.
+            Example - WindowResize detector
+                how components share state withput render props, separte state needs to be maintained
+                how rebder props simplifies it, figure 1
+
+        but same thing can be done by using hooks, see figure 2. so why learn render props-
+            a)Easy configuration for components as props, even recommended in react docs.
+            b)old code base have this pattren, this was very popular before hooks took over.
+            c)It can still be useful for sharing logic even today,if that logic is attached to DOM elements.
+            be used to share logic even today, if logic is tied to DOM element.(figure 3)
+
+            such logic cannot be moved to hook, state and div are tied togather.with render props it is very easy.see figure 4,5
+
+            what is shown in figure 5, should be used in prod, because state is updated too frequently. so either use debounce that scroll,
+            or save only some thershholds.

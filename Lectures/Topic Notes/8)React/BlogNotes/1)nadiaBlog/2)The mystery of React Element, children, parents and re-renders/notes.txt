@@ -1,0 +1,21 @@
+children are just like normal props.
+
+
+When you create react element then, component function is not called, it is called when that same react elements ends up in render tree.
+When a react elements is already in render tree, it will be called only when you re-create that react element.
+    Reason for same is react components are suposed to be pure, for same props same output shuld be returned.jsx is replaced by -
+    
+    React.createElement(componentType, {});
+
+    when we recreate react elemnt then,here props object is created newly each time, hence component function will be called.
+    however if do not create react element again, then component function won't be called again.
+
+Only way when a react element will re-render is, when you recreate the react element. so here re-render will not happen, because react
+    element is not recreated.
+    
+    const Parent = () => {
+        const child = useMemo(() => <Child />, []);
+        return <div>{child}</div>;
+    };
+
+question - Although the last one probably shouldn’t do, no one on your team will appreciate it.

@@ -1,0 +1,1 @@
+1)When something can be calculated from the existing props or state, don’t put it in state. Instead, calculate it during rendering. 

@@ -1,0 +1,161 @@
+1)via style proeprty
+2)getComputerStyles
+    // dot notation, same as above
+    window.getComputedStyle(el).backgroundColor;
+
+    // square bracket notation
+    window.getComputedStyle(el)['background-color'];
+
+    // using getPropertyValue()
+    window.getComputedStyle(el).getPropertyValue('background-color');
+
+3)getting computed styles of pseudi elements(::before,::after,::placeholder,::first-line) -
+
+    let box = document.querySelector('.box');
+    window.getComputedStyle(box, '::before').width;
+
+
+4)The CSSDeclaration API -
+    element.style and window.getComputedStyle(element) return CSSStyleDeclaration
+
+    methods on element.style object -
+        a)The setProperty() method. This takes two arguments, each a string: The property (in regular CSS notation) and the value you wish to assign to the property.
+        b)The getPropertyValue() method. This takes a single argument: The property whose value you want to obtain. This method was used in a previous example using getComputedStyle(), which, as mentioned, likewise exposes a CSSStyleDeclaration object.
+        c)The item() method. This takes a single argument, which is a positive integer representing the index of the property you want to access. The return value is the property name at that index.
+
+
+            let box = document.querySelector('.box');
+
+            box.style.setProperty('color', 'orange');
+            box.style.setProperty('font-family', 'Georgia, serif');
+            op.innerHTML = box.style.getPropertyValue('color');
+            op2.innerHTML = `${box.style.item(0)}, ${box.style.item(1)}`;
+
+        d)document.body.style.removeProperty('font-size');
+
+        e)box.style.getPropertyPriority
+
+
+5)The CSSStyleSheet Interface
+
+    A much more useful API that allows you to retrieve a stylesheet that has readable and writable values, and not just for inline 
+    styles, is the CSSStyleSheet API. The simplest way to access information from a document’s stylesheets is using the styleSheets
+    property of the current document. This exposes the CSSStyleSheet interface.
+
+    document.styleSheets.length; 
+    document.styleSheets[0];
+
+
+    properties of stylesheet -
+        a)cssRules - This property provides a list of all CSS rules (including declaration blocks, at-rules, media rules, etc.)
+
+            1)types of rules -
+                I want rules that are type 1, which represents the STYLE_RULE constant. 
+                Other constants include -
+                    IMPORT_RULE (3),
+                    MEDIA_RULE (4), 
+                    KEYFRAMES_RULE (7)
+
+            2)style proeprty, it repreents the styles in this rule. here we can use methods that we used on style property of DOM.
+                setProperty(), getPropertyValue(), item(), removeProperty(), and getPropertyPriority()
+
+
+            3)selectorText - can be changed
+
+                printing selector of each rule -
+                    let myRules = document.styleSheets[0].cssRules,
+                    p = document.querySelector('p');
+                    for (i of myRules) {
+                        if (i.type === 1) {
+                            p.innerHTML += `<c​ode>${i.selectorText}</c​ode><br>`;
+                        }
+                    }
+
+                changing selectors -
+                    if (i.selectorText === 'a:hover') {
+                        i.selectorText = 'a:hover, a:active';
+                    }
+
+        b)media rules -
+
+            a)conditionText - (max-width: 800px)
+
+            code to print all rules - 
+
+                let myRules = document.styleSheets[0].cssRules,
+                p = document.querySelector('.output');
+
+                for (i of myRules) {
+                    if (i.type === 4) {
+                        for (j of i.cssRules) {
+                            p.innerHTML += `<c​ode>${j.selectorText}</c​ode><br>`;
+                        }
+                    }
+                }
+
+        c)Accessing @keyframes Rules with the CSSOM
+            a)keyText - keys of keyframes like 0%,50%. these can be changed. 
+            b)name - Name of keyFrame
+            c)grabbing styles inside each keyfram -
+                let myRules = document.styleSheets[0].cssRules,
+                p = document.querySelector('.output');
+
+                for (i of myRules) {
+                    if (i.type === 7) {
+                        for (j of i.cssRules) { // this is each rule for each keyframe
+                            p.innerHTML += `<c​ode>${j.style.color}</c​ode><br>`; // how to access css property in rule
+                        }
+                    }
+                }
+
+
+            Printing keyText - inside single keyFrame rule. we have multiple cssRules.
+            they have keytext which is like 0%,20%,50%. this can also be chnaged
+
+
+
+        d)Adding and Removing CSS Declarations
+            a)adding -
+                document.styleSheets[0].insertRule('article { line-height: 1.5; font-size: 1.5em; }', myStylesheet.cssRules.length);
+                //second optional parameter is index at which you want to insert rule
+
+            b)removing -
+                let myStylesheet = document.styleSheets[0];
+                console.log(myStylesheet.cssRules.length); // 8
+                myStylesheet.deleteRule(3);
+
+
+API -
+    a)The CSS StyleDeclaration Interface
+        Methods on style object(element.style and element.getComputedStyle()) -
+            1)setProperty(propertyName, value)
+            2)getPropertyValue(propertyName)
+            3)item(index)
+            4)removeProperty(propertyName)
+            5)box.style.getPropertyPriority('font-size');
+
+    CSS StyleSheet Interface -
+        1)document.stylesheet
+        2)document.stylesheet.href
+        3)document.stylesheet.media
+        4)document.stylesheet.ownerNode
+        5)document.stylesheet.cssRules
+            Each CSS rule has -
+                document.stylesheet.cssRules[0].type (1 - normal rule, 4 - media query, 7 @keyframe)
+                document.stylesheet.cssRules[0].cssText (actual CSS Written)
+                document.stylesheet.cssRules[0].selectorText (can be chnaged also)
+                document.stylesheet.cssRules[0].conditionText (condition of media query)
+                document.stylesheet.cssRules[0].media (return media object, if query is media)
+                document.stylesheet.cssRules[0].parentRule (returns the cssMediaRule. If this is not present, it returns a null)
+                document.stylesheet.cssRules[0].parentStyleSheet (stylesheet object where this rule is defined)
+                document.stylesheet.cssRules[0].cssRules(IN case of media query,@keyframe this has further rules)
+                document.stylesheet.cssRules[0].style (all css proeprties in css rules are proeprties of this object, value is proeprtyValue)
+        6)CSS Media Rule - An important rule in the CSS Object Model is the CSSMediaRule interface that represents a single CSS 
+            @media rule of the CSS at-rule object.
+        7)keyFrame Rule -
+            document.stylesheet.cssRules[0].name (name of keyframe)
+            document.stylesheet.cssRules[0].cssRules[0].keyText (0%, 25%)
+
+        9)Adding removing rule -
+            document.styleSheets[0].insertRule("ruleText")
+            document.styleSheets[0].deleteRule(3)

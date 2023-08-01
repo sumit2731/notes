@@ -83,9 +83,9 @@
     3)Object.setPrototypeOf(obj, prototype)
 
 
-    4)objA.hasOwnProperty('property1')
+    4)obj.hasOwnProperty('property1')
 
-    5)objA.isPrototypeOf(objB) - returns true if objA is somewhere in the chain of prototypes for objB
+    5)obj.isPrototypeOf(objB) - returns true if objA is somewhere in the chain of prototypes for objB
 
     6)instanceof-
         vehicle instanceof Truck2

@@ -1,0 +1,21 @@
+1)ref is not an actual prop, it's kinda a “reserved” name. In the old days, when we were still writing class components, if we passed 
+    ref to a class component, this component’s instance would be the .current value of that Ref.
+    But functional components don’t have instances. So instead, we just get a warning in console “Function components cannot be given
+    refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?”
+
+    In order for this to work, we need to signal to React that this ref is actually intentional, we want to do stuff with it. We can do
+    it with the help of forwardRef function: it accepts our component and injects the ref from the ref attribute as a second argument 
+    of the component’s function. Right after the props.
+
+
+    Whether you should use forwardRef or just pass ref as a prop is just a matter of personal taste: the end result is the same.
+
+
+Notes -
+    1)ref to access DOM element in current component.
+    2)how to use ref to access DOM nodes innnested component, without forwardRef.
+    3)use of forwardRef and why it is required.
+    4)useImperativeHandle, - provides imperative handle.
+    5)same thing without imeperativeHandle
+
+

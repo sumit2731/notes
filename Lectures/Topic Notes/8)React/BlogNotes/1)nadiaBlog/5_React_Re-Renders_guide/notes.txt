@@ -1,0 +1,122 @@
+Reason for Re-Render -
+    a)state change(current component) - Unpreventive Re-render.
+    b)State change (Parent Component) - (There are a few caveats and edge cases here -
+        https://www.developerway.com/posts/react-elements-children-parents
+    c)When the value in Context Provider changes, all components that use this Context(useContext hook) will re-render.
+        Those re-renders can not be prevented with memoization directly, but there are a few workarounds that can simulate it
+    d)hook changes
+        Everything that is happening inside a hook “belongs” to the component that uses it. The same rules regarding Context and 
+            State changes apply here.
+            Hooks can be chained. Every single hook inside the chain still “belongs” to the “host” component, and the same rules 
+            apply to any of them.
+
+What does not cause re-render -
+    a)Change in props - It doesn’t matter whether the component’s props change or not when talking about re-renders of not memoized 
+        components.
+
+        Only when memoization techniques are used (React.memo, useMemo), then props change becomes important.
+
+
+Anti Patterns -
+    a)Creating components inside render function
+
+
+
+a) Preventing re-renders with composition.
+    a)moving state down - This pattern can be beneficial when a parent component that has heavy component manages state, and this
+        state is only used on a small isolated portion of the render tree.
+    b)children as props - here is that state is used on an element that wraps a slow portion of the render tree, so it can’t be 
+        extracted that easily. A typical example would be onScroll or onMouseMove callbacks attached to the root element of a 
+        component.
+    c)components as prop
+        Pretty much the same as the previous pattern, with the same behavior: it encapsulates the state inside a smaller 
+        component, and heavy components are passed to it as props.Props are not affected by the state change, so heavy components 
+        won’t re-render.
+        Can be useful when a few heavy components are independent from the state, but can’t be extracted as children as a group.
+
+b)Preventing re-renders with React.memo
+    a)compoennts without props
+    b)component with props - useMemo and useCallback
+    c)components as props or children.
+        These props also need to be memorized.
+
+        <ChildMemo left={<SomethingMemo value={memoValue} />}>
+            <SomethingMemo value={memoValue} />
+        </ChildMemo>
+
+        Here left and children are memo version so they wnt re-render. but ParentMemo will still re-redner beacuse left and 
+            children are objects.we need to memorize them also to provide re-render.
+
+c)Improving re-renders performance with useMemo/useCallback
+
+    Antipattern - 
+        a)unneccessary useMemo, useCallback without React.memo
+            a)Not using React.memo but still memorizing the values
+    Pattern - Necessary useMemo/useCallback
+        a)Prevent re-rendering of child component when a parent re-renders with React.memo,useMemo and useCallback.
+        b)memorize values used aa dependencies in useEffect,useMemo,useCallback
+        c) useMemo for expensive calculations (Memorize react elements)
+            Instead of directly using Selectors in JSX we can memorize a react elements and then use it in jsx.
+            In React, mounting and updating components will be the most expensive calculation in most cases (unless you’re actually 
+                calculating prime numbers, which you shouldn’t do on the frontend anyway).As a result, the typical use case for 
+                useMemo would be to memoize React elements.
+        
+d)Improving re-render performance of lists
+    a)using key attribute and memo
+        With proper key , memorized component in list are not called again even with reorder, because react identifies the component 
+            in list with key and passes it correct params,as params are not changed it is not called again.
+        With index as key, even memorized components will be called again.
+
+
+        Ex 1 - Using memorized versions in list,if list order remains saame than random key is also fine.
+        Ex 2 - If order of list changes and index is used as key, then when order chnages, even memorized versions are are called
+            again.
+
+    Antipatterns -
+        a)using random value as key.Here even memorized version of components will be called again.
+            Ex1 - here components are un mounted, and then mounted agaon.
+
+e)Preventing re-renders caused by Context
+    a)Preventing Context re-renders: memoizing Provider value
+        a)you are using children in provider to render children
+        b)children uses React.memo
+        c)when higher component re-renders.children of context will not render because they are using React.memo. but since
+            context value has changed,children of context also re-remders.
+        d)memorize the value of context. now children will bot re-render.
+    b)splitting data and API
+        a)In a component A we have 2 providers, one for state and one for settingState.
+        b)we are rendering children in component A.
+        c)some components use data ,some useSetData.
+        d)when we some component call setData, then state of component A chamges, but children are not rendered because of that,
+            children are rendered because context value has changed.
+        e)if we use single provider then whole all components will re-render,when e chnage data.
+        f)so we split spi between data and setData. now on resetting the data only components that use data are re-rendered.
+
+        Note -In this example, old state was not required when we change the state, so conversion was simple. sometimes we need oldState
+            while updating state, see context article of nadia.there our API functions will also change when state changes.there we need
+            to use useReducer.
+
+
+    c)Splitting Data into Chunks
+    d)Preventing Context re-renders: Context selectors
+        a)we defined a component which takes another component as argument.
+        b)create a memorized version of this component using React.Memo
+        c)Get the requireed value from context.
+        d)pass required value from context as parameter to component.
+
+
+Extra Lecture -
+    
+    Core principal of Context API, when a context value changed all components re-render.
+    How to provide re-render of component that does not use context -
+        a)If you are directly using JSX in provider component(bad practice because even children who are using contexxt will re-render when
+            context changes, as general rule is when context chnages all component re-render)
+            <CounterContext.Provider value={counterObj}>
+                <Navbar />
+                <Child />
+                <MidChild />
+            </CounterContext.Provider>
+            
+            a)use React.memo in children that do not use context.now chnage in context will not lead to their re-render.
+        b)render component as children
+            render components as children.

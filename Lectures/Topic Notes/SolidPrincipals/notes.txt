@@ -1,0 +1,29 @@
+1)Single Responisbility Principal - (SRP)
+
+    Example - Fetching and Showing Form
+
+2)Open/Closed Principal (OCP) - The OCP states that a class should be open for extension but closed for modification.
+
+    In ReactJS, this means that components should be designed in such a way that they can be extended with new functionality, but 
+        the original code does not have to be modified. This is achieved by making use of inheritance and composition.
+
+    Example - Genral Form and Specific Form
+
+3)Liskov Substitution Principle (LSP) -
+    The LSP states that objects of a superclass should be replaceable with objects of a subclass.
+
+4)Interface Segregation Principal(ISP) - The ISP states that a class ( or a function ) should not be forced to implement interfaces
+    it does not use. 
+
+    Ex- 
+        Notification Component - Email, SMS,Push Notification
+        Medicine Component - Main Component and Side Props
+
+
+5) Dependency Inversion Principle (DIP)
+
+    The DIP states that high-level modules ( classes of functions ) should not depend on low-level modules ( tools ) , but both 
+    should depend on abstractions ( the way that allowd hight level modules to use or connect the low level modules ).
+
+    to explain more, do not do the fetching and showing the data at the same place, and make it all one block , instead separate 
+    the fetching and make it as a tool could be used by another components ( when just replace the source or the URL) .

@@ -8,67 +8,8 @@ Accessor properties are represented by “getter” and “setter” methods. In
 The getter works when obj.propName is read, the setter – when it is assigned.
 */
 
-let obj = {
-  get propName() {
-    // getter, the code executed on getting obj.propName
-  },
-
-  set propName(value) {
-    // setter, the code executed on setting obj.propName = value
-  },
-};
-
-/* 
-we have a user object with name and surname.Now we want to add a fullName property, that should be "John Smith". Of course, we don’t
-    want to copy-paste existing information, so we can implement it as an accessor.
-
-From the outside, an accessor property looks like a regular one. That’s the idea of accessor properties. We don’t call user.fullName
-as a function, we read it normally: the getter runs behind the scenes.
-
-
-*/
-
-let user = {
-  name: "John",
-  surname: "Smith",
-
-  get fullName() {
-    return `${this.name} ${this.surname}`;
-  },
-};
-
-console.log(user.fullName); // John Smith
-
-/* 
-As of now, fullName has only a getter. If we attempt to assign user.fullName=, there will be an error:
-Let’s fix it by adding a setter for user.fullName:
-*/
-
-let user2 = {
-  name: "John",
-  surname: "Smith",
-
-  get fullName() {
-    return `${this.name} ${this.surname}`;
-  },
-
-  set fullName(value) {
-    [this.name, this.surname] = value.split(" ");
-  },
-};
-
-// set fullName is executed with the given value.
-user2.fullName = "Alice Cooper";
-
-console.log(user2.name); // Alice
-console.log(user2.surname); // Cooper
-
 /* 
 Accessor descriptors
-
-    Descriptors for accessor properties are different from those for data properties.For accessor properties, there is no value or
-    writable, but instead there are get and set functions.
-
     That is, an accessor descriptor may have:
 
         get – a function without arguments, that works when a property is read,
@@ -78,24 +19,7 @@ Accessor descriptors
 
 */
 
-let user3 = {
-  name: "John",
-  surname: "Smith",
-};
 
-Object.defineProperty(user3, "fullName", {
-  get() {
-    return `${this.name} ${this.surname}`;
-  },
-
-  set(value) {
-    [this.name, this.surname] = value.split(" ");
-  },
-});
-
-console.log(user3.fullName); // John Smith
-
-for (let key in user) console.log(key); // name, surname
 
 /* 
 Please note that a property can be either an accessor (has get/set methods) or a data property (has a value), not both.

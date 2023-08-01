@@ -1,0 +1,14 @@
+a)To make your component re-render only when a part of some context changes, split your component in two. Read what you need from 
+    the context in the outer component, and pass it down to a memoized child as a prop.
+
+b)Specifying custom comparison function -
+    If you do this, use the Performance panel in your browser developer tools to make sure that your comparison function is actually 
+    faster than re-rendering the component. You might be surprised.
+
+
+c)Avoid doing deep equality checks inside arePropsEqual unless you are 100% sure that the data structure you’re working with has a 
+    known limited depth. Deep equality checks can become incredibly slow and can freeze your app for many seconds if someone changes
+    the data structure later.
+
+d)Should you add memo everywhere? 
+    https://react.dev/reference/react/memo#should-you-add-memo-everywhere

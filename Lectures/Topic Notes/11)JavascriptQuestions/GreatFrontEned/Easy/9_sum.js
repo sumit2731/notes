@@ -1,10 +1,19 @@
 /**
+ * Implement a sum function that accepts a number and allows for repeated calling with more numbers. Calling the function without 
+ * an argument will sum up all the arguments thus far and return the total.
+ */
+
+/**
 sum(1)(); // 1
 sum(1)(2)(); // 3
 sum(1)(2)(-3)(); // 0
 
-things missed in first solution -
-    a)missed 0 case, 0 is also a falsy value
+Extra test condition -
+  test('can be reused', () => {
+    const addTwo = sum(2);
+    expect(addTwo(3)()).toBe(5);
+    expect(addTwo(4)()).toBe(6);
+    expect(addTwo(3)(4)()).toBe(9);
 
  */
 
@@ -69,7 +78,32 @@ function sum(numberA) {
     }
 }
 
-// const addTwo = sum(2);
-// console.log(addTwo(3)());
-// console.log(addTwo(4)());
-// console.log(addTwo(3)(4)());
+const addTwo = sum(2);
+console.log(addTwo(3)());
+console.log(addTwo(4)());
+console.log(addTwo(3)(4)());
+
+
+
+
+
+function sum(numA) {
+    let previousSum = numA;
+    return function wrapper(numB) {
+        if((numB != 0) && !numB) {
+            let result = previousSum;
+            previousSum = 0
+            return result;
+        }
+        else {
+            previousSum += numB;
+            return wrapper;
+        }
+    }
+}
+
+
+const addTwo = sum(2);
+console.log(addTwo(3)())
+console.log(addTwo(4)())
+console.log(addTwo(3)(4)())

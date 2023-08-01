@@ -1,0 +1,12 @@
+hooks probably replaced 90% of shared logic concerns and 100% of use-cases for accessing context, there are still at 
+    least three types of functionality, where higher-order components could be useful.
+
+    a)First: enhancing callbacks and React lifecycle events
+        Adding data to the higher-order component
+        Sending data on mount instead of click
+
+    b)Second: intercepting DOM events
+        Blocking key shortcuts
+
+    c)Third: context selectors
+        

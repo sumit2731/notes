@@ -1,0 +1,22 @@
+Design Patterns ()
+Solid Patterns
+
+React vs Angular
+React Hooks - what are they and why we need it
+Pure component
+render props
+props drilling
+Solid Principals
+
+Redux - reducer,
+
+UNite Testing - How to mock a entire module in react
+promise vs callbacks
+
+
+
+CI/CD Pipeline
+Unit Testing
+Functional Components,Pure Components ,Hooks
+
+Critical rendering Path

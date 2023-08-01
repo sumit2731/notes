@@ -1,6 +1,18 @@
 1)generator syntax. -
-    * and yield 
+    * and yield
+
+    function* generateSequence() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
     using for loop to insert multiple yield statements.
+
+    next function
+    
+    properties in result of next -
+        value: "some_value"
+        done: boolean
 2)using generator functions as iterator.
 3)generator composition
     yield*
