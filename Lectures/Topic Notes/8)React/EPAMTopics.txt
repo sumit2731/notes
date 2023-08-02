@@ -1,6 +1,8 @@
 Design Patterns ()
 Solid Patterns
 
+Jest vs Karma
+
 React vs Angular
 React Hooks - what are they and why we need it
 Pure component

@@ -1,0 +1,20 @@
+How to Update
+
+    a)concurrency - processing multiple simultaneous state updates
+        update can be marked of lower priority.
+
+        API's -
+            useTrasition
+            startTransition
+            useDeferedValue
+
+    b)state update batching - Now Also Supported in asynchronous timers
+
+    c)Suspense Component _ it was already avalible but cannot be used with SSR.
+        Plans is to make it work with Data fetching also.- explanations about this.
+
+
+    d)Server Components - Plans in future.
+        These are not compoents that are prerendered on server that you can do today, with SSR but,
+        These are components are meant to be executed only on server and works seamlessly with client side compoennts.
+        this will make react full stack frameworks, allowing you to perform tasks that should be done only on server and not on client.

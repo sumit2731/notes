@@ -1,0 +1,10 @@
+Redux -
+    middlewares in redux
+    flux vs redux
+
+TS -
+    null vs undefined vs never
+    clauses
+
+React -
+    useLayoutEffect

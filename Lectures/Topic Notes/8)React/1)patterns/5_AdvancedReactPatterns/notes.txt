@@ -1,0 +1,22 @@
+Criterias -
+
+
+    a. Pattern introduction
+    b. Code example (Based on a simple Counter component)
+    c. Pros & Cons
+    d. Criteria. Based on two factors :
+
+        Inversion of control: Level of flexibility and control given to the developers using your component.
+        Implementation complexity: Difficulty for you and developers to implement the pattern.
+    e. Public libraries using the pattern in production.
+
+
+Patterns -
+    1)presentation and container components
+    2)Higher Order Components
+    3)Render Props Pattern
+    4)Compound Components (react BootStrap, Reach UI)
+    5)Hooks Patterns - React table, React hook Form
+    6)Control Props Pattern (Material UI)
+    7)Props Getters Pattern - react Table, DownShift
+    8)State Reducer Pattern- Diwnshift
