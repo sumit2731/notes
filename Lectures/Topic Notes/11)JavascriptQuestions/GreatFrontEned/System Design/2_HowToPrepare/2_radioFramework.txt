@@ -1,0 +1,98 @@
+R - Start by understanding the Requirements, 
+A -defining the high level Architecture and the 
+D - Data Model. 
+I - Then define the Interfaces between the components in the product and 
+O- talk about any Optimizations or dive deep into specific areas which require special attention.
+
+
+Requirements Exploration: Understand the problem thoroughly and determine the scope by asking a number of clarifying questions.
+    No two system design interview experiences are the same even though you can be asked the same question. Interviewers have 
+    different backgrounds and might prioritize different aspects of the system. Take this chance to find out what they are most
+    interested in and plan your answers accordingly.
+
+    Recommended Duration: Not more than 15% of the session.
+
+    Get answers to these questions before moving to next round -
+        What are the main use cases we should be focusing on?
+        What are the functional requirements and non-functional requirements?
+            performance (how fast the page loads, how fast the interaction takes), 
+            scalability (how many items can be present on the page), 
+            good user experience, etc.
+        What are the core features to focus on and which are good-to-have?
+            You should clarify the core features beforehand and design for them before moving on to the extra features.
+
+Architecture/High-level Design: Identify the key components of the product and how they are related to each other.
+    Objective: Identify the key components of the product and how they are related to each other.
+    Recommended Duration: Roughly 20% of the session.
+    Diagrams are your friends here.
+
+    Examples of components/modules which are commonly found in a high-level front end design:
+        Server
+        View
+        Controller
+        Model/Client Store
+
+    Other things to consider when defining the responsibilities of components:
+        a)Separation of concerns
+        b)Where computation should occur - On Client or Server
+
+
+Data Model: Describe the various data entities, the fields they contain and which component(s) they belong to.
+    Recommended Duration: Roughly 10% of the session.
+
+    2 Kinds of Data on Client -
+        a)Server originated
+        b)Client-only Data -  state, is data that only needs to live on the client and does not have to be sent to the server for
+            writing into the database.
+
+        Client data can be further broken down into two:
+            a)Data to be persisted - Usually need to be sent to server.
+            b)Ephemeral data - Temporary state that lasts for a short time.validation state, the current tab, whether a section is 
+                expanded, etc. It's usually acceptable to lose these data when the browser tab is closed.
+
+        When listing the data fields, it'd be useful to identify what kind of data that field is, whether it's server-originated 
+            data or client-only data.
+
+    Data Model Example - You might want to write these fields near the components which owns them in your architecture diagram.
+
+Interface Definition (API): Define the interface (API) between components in the product, functionality of each API, their 
+    parameters and responses.
+
+    Recommended Duration: Roughly 15% of the session.
+     API is an overloaded term and generally refer to the protocol which software components communicate and request/send data 
+     between components. Client and server communicate via network layer APIs (HTTP/WebSockets). Client components generally 
+     communicate via functions in the browser runtime.
+
+     All APIs have three things in common whether they are between the server and the client or between client components:
+        Name and functionality
+        parameters
+        return value
+
+    The most important parts to describe are the functionality of the API, the parameters and the return/response value.
+
+Optimizations and Deep Dive: Discuss about possible optimization opportunities and specific areas of interest when building the 
+    product.
+
+    Recommended Duration: Roughly 40% of the session.
+
+    There's no fixed way to go about the optimization and deep dive section and you are free to focus on different areas of the 
+        product.There will not be sufficient time to cover every area, so select how you want to spend your time carefully 
+        according to these guidelines:
+
+            a)Focus on the important areas of the product - For e-commerce websites, performance is crucial and you'd want to spend
+                the bulk of your time diving into the various performance optimizations that can be done. For collaborative editors,
+                the complexity is in how to handle race conditions and concurrent modifications, so you'd want to focus on explaining
+                that.
+            b)Focus on your strengths - Showcase your domain knowledge. If you are well-versed in accessibility, talk about the 
+                various accessibility pitfalls that can occur in the product and how to address them. Impress the interviewer with
+                your knowledge. If you are a performance guru, explain the various performance optimization opportunities that can
+                provide a buttery smooth user experience.
+
+    General Optimization/Deep Dive Areas
+        Performance
+        User Experience
+        Network
+        Accessibility (a11y)
+        Multilingual Support
+        Multi-device Support
+        Security

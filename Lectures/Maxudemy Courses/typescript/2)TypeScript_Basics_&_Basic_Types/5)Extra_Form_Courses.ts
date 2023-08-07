@@ -7,7 +7,7 @@ Diffrence between object vs Object vs {}
  * @object vs Object (lowercased) 
  * object represents all non-primitive types.
  * 
- * if we use Object as type then it can allow any type. so here Object works an any type. 
+ * if we use Object as type then it can allow any type. so here Object works as any type. 
  * It is because in js everything extends Object.
  * 
  * all properties that exist on Obect can be accessed on object type.
@@ -16,6 +16,8 @@ Diffrence between object vs Object vs {}
 function onlyAllowObject (ob: object) {
     console.log(ob);
 }
+
+
 
 
 /**

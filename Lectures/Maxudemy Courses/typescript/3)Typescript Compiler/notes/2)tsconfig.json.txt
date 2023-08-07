@@ -20,6 +20,6 @@ because we will rarely used them. we will look at important ones, throughout thi
      translated js files.
 
      2)modules- I will skip this options, becaus eit will make sense only when we are are
-     aware about module sin typescript and how w ecan connect multiple files.
+     aware about modules in typescript and how we can connect multiple files.
 
      3)libs - see lecture 37 for rest of configurations see code.

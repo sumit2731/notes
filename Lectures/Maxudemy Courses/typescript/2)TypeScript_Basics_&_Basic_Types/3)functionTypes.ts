@@ -123,8 +123,8 @@ let a4: (b: number) => number;
   function f4(b: number) {
     console.log(2 * b);
   }
-  f3(4, f4); */
-
+  f3(4, f4);
+ */
  /* 
  *If in defination we says our function expects n arguments and we pass arguments less than
  n then its ok, it is because in callback we will not use extra parameters.
@@ -150,8 +150,8 @@ it's upto us whther we want to use them in callback or no. in first case we deci
 but in second case we are passing expecting third parameters in our callback and we may use it, 
 but in f11 we are not passing it.so it will lead to error.
 */
-
-/* function f11(a: number, b: number, cb: (c: number, d: number) => void) {
+/* 
+function f11(a: number, b: number, cb: (c: number, d: number) => void) {
   cb(a, b);
 }
 function f21(a: number,b: number,c:number) {

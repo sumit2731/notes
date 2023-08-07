@@ -1,0 +1,7 @@
+ It is similar to the process at certain companies where engineers write technical design documents to outline the possible 
+    approaches to a project they are working on, explain technical decisions and discuss tradeoffs with coworkers except that
+    you have to do it within 30-60 minutes.
+
+
+For Front End Engineers, system design interviews are slightly different, there's more emphasis on - 
+    what goes on in the client and API design between the client and the server, as opposed to what goes on in the back end.

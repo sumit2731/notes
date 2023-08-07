@@ -35,7 +35,7 @@ now return type infered by function is intersection of T and U
 */
 
 function merge21<T, U>(objA: T, objB: U) {
-  return Object.assign(objA, objB);
+  return Object.assign({},objA, objB);
 }
 /* 
 and because of that ts is able to predict propeties that will be avalible on mergedObj21. 

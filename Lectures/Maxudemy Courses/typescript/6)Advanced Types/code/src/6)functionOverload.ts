@@ -26,7 +26,7 @@ function add6(a: Combinable6, b: Combinable6) {
 
 /** 
 Here we get intellisense because of function overloading.
-because of function overloading we kow that return type will
+because of function overloading we know that return type will
 be string if we pass strig parameters. so we get intellisense.
 
 if we do not get use function oveloads, then ts knows that return type is always 

@@ -103,7 +103,7 @@ let person3 = {
 
 /* 
 Now role can be array with 2 elements, first one is number, second one is string. we will get error
-if we try to change it. one exception is we can still do push. but we cannot do these thisgs-
+if we try to change it. one exception is we can still do push. but we cannot do these things-
 this is because we know that first element is number not string
 */
 // person4.role[0] = 'admin'

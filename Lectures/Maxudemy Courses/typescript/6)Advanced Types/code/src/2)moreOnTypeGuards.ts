@@ -21,8 +21,6 @@ type Numeric2 = number | boolean;
 
 type Universal2 = Combinable2 & Numeric2;
 
-
-
 /* 
 typeGuard helps us with union type because whilst it is nice to have flexibility
 often you need to know which exact type you are getting now at runtime.
@@ -31,14 +29,15 @@ This is because althrough our function accepts diffrent types, but you do differ
 depending upon type of argument.
 */
 function add2(a: Combinable2, b: Combinable2) {
-    /* This is typeGuard. It allows us to utilize the flexibility union types gives us and
+  /* This is typeGuard. It allows us to utilize the flexibility union types gives us and
      still ensures that our code runs correctly at run time. we decide what do to based on
      types of parameters. this is typeGuard using typeof. we can also write other types of
      type guard.
      */
-    if (typeof a === 'string' || typeof b === 'string') {
-        return a.toString() + b.toString();
-    } return a+b;
+  if (typeof a === "string" || typeof b === "string") {
+    return a.toString() + b.toString();
+  }
+  return a + b;
 }
 
 type UnknownEmployee2 = Employee2 | Admin2;
@@ -47,7 +46,7 @@ function printEmployeeInformation2(emp: UnknownEmployee2) {
   /* 
   Both Employee2 and Admin2 have name property, so this will always work
   */
-  console.log('Name: ' + emp.name);
+  console.log("Name: " + emp.name);
   /* 
   *here we cannot use typeof, because typeof of argument will always be object, also
   we cannot use - 
@@ -60,7 +59,7 @@ function printEmployeeInformation2(emp: UnknownEmployee2) {
   if ("privileges" in emp) {
     console.log("privileges: " + emp.privileges);
   }
-  if("startDate" in emp) {
+  if ("startDate" in emp) {
     console.log("Start date: " + emp.startDate);
   }
 }
@@ -105,7 +104,7 @@ function useVehicle2(vehicle: Vehicle2) {
    instanceof will not work because interfaces are not translated to anything in js. therefor we cannot
    use them at run time
   */
-  if(vehicle instanceof Truck2) {
+  if (vehicle instanceof Truck2) {
     vehicle.loadCargo(10);
   }
 }
@@ -116,9 +115,8 @@ if certain proeprty or method exist before you try yo use it or if you can do so
 with the type before you try to use it.
 */
 
-
 /**
- @Discrimiated_Unions 
+ @Discrimiated_Unions - https://www.totaltypescript.com/discriminated-unions-are-a-devs-best-friend
 Special type of typeGuard you could say or something that helps you with typeguards
 is discriminated union. it's pattern which you can use when you are working with union 
 types that makes implementing type guards easier. it is avalible when you work with object types
@@ -134,12 +132,12 @@ interface Bird {
   we re not assigning value to type, we are assigning
   it type. which is literal type 
   */
-  type: 'bird';
+  type: "bird";
   flyingSpeed: number;
 }
 
 interface Horse {
-  type: 'horse';
+  type: "horse";
   runningSpeed: number;
 }
 
@@ -166,12 +164,12 @@ function moveAnimal(animal: Animal) {
     console.log("Moving with Speed: " + animal.runningSpeed);
   } */
   let speed;
-  switch(animal.type) {
+  switch (animal.type) {
     /* 
     Here we will get autocompletion, because ts understands
     what values type variable can hold
      */
-    case 'bird':
+    case "bird":
       /* 
       here Inside bird case, we will get suggestions for Bird iterface
       properties, because ts knows that if we re in this block object is
@@ -179,16 +177,15 @@ function moveAnimal(animal: Animal) {
       */
       speed = animal.flyingSpeed;
       break;
-  
-    case 'horse':
+
+    case "horse":
       speed = animal.runningSpeed;
       break;
   }
-  console.log('Moving at speed: ' +speed);
+  console.log("Moving at speed: " + speed);
 }
 
-moveAnimal({type: 'bird', flyingSpeed: 20});
-
+moveAnimal({ type: "bird", flyingSpeed: 20 });
 
 /**
 This is Discriminated Union because we have one common property
@@ -207,12 +204,9 @@ cases we can have here are Bird and Horse, hence it gives autocompeltion. if we
 do typo, we will error.
 */
 
-
-
 /**
  * @Not_Covered_in_course
-*/
-
+ */
 
 /**
  * @Using Type_Casting for type guards. link-
@@ -221,9 +215,10 @@ do typo, we will error.
  * to access properties on Union type.
  */
 
-
 /**
-@Type_Pradicates (This is not covered in Max's Course)
+@Type_Predicates (This is not covered in Max's Course)
+
+  https://www.logicbig.com/tutorials/misc/typescript/type-guards.html
 
 Type predicates are a special return type that signals to the Typescript compiler what type a particular value is. 
 Type predicates are always attached to a function that takes a single argument and returns a boolean.
@@ -237,3 +232,26 @@ https://dev.to/daveturissini/aha-understanding-typescript-s-type-predicates-40ha
 https://fettblog.eu/typescript-type-predicates/#:~:text=Type%20predicates%20in%20TypeScript%20help,paramter%20to%20something%20more%20useful.
 */
 
+class Car {
+  drive() {
+    console.log("car driving");
+  }
+}
+
+class Bike {
+  ride() {
+    console.log("Bike ridding");
+  }
+}
+
+function isCar(vehicle: Bike | Car): vehicle is Car {
+  return (vehicle as Car).drive != undefined;
+}
+
+function move(vehicle: Bike | Car): void {
+  if (isCar(vehicle)) {
+    vehicle.drive();
+  } else {
+    vehicle.ride();
+  }
+}

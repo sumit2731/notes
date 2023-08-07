@@ -28,10 +28,10 @@ In order to solve it we need to tell ts that element that we select is just not 
 but also of type HtmlInputElement and that's  what we can do with typecasting.
 */
 
-/* 
+
 let input1 = document.getElementById("id1")!;
 input1.value = '1'; 
-*/
+
 
 /* 
 There are 2 syntax for typecasting. They are equivalent
@@ -39,11 +39,11 @@ HTMLInputElement is globally avalible  because in tsconfig.json in lib section
 we have included DOM
 */
 
-//let input1 = <HTMLInputElement>document.getElementById("id1")!;
+let input12 = <HTMLInputElement>document.getElementById("id1")!;
 
 /* 
 In React you have this <> in js or ts, where you write jsx code in your
-react components. so similar syntax exists in recat project and there <> are
+react components. so similar syntax exists in react project and there <> are
 not used  to pass any information regardng types you are using but instead they
 are parsed by some buid tools and by react ultimately to know what you want to render
 on screen.so totally detached from ts. so not to clash wih jsx syntax, ts team provides
@@ -73,8 +73,8 @@ lets see alternative to using !
 Here we do typecasting only when we try to access value property
 */
 
-let input1 = document.getElementById("id1");
-if (input1) {
+let input13 = document.getElementById("id1");
+if (input13) {
     // (input1 as HTMLInputElement).value = "1";
     (<HTMLInputElement>input1).value = "1";
 }
