@@ -1,9 +1,0 @@
-it or test - these can be used intrchangebably in boh jest and vitest.can we used without exporting by adding --global 
-    flag. but importing gives better auto completion.
-
-AAA - Arrange, Act and assert. slide1.
-
-best practices -
-    a)write more than 1 test.
-    b)also test for certain things that we do not want to happen(values that we expect to get if invalid values get passed)
-see test in math.test to know how to test whether a function throws error or not.

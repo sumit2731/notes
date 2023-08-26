@@ -1,0 +1,24 @@
+Things needed for testing -
+
+    See figure 1
+    a)Test runner
+        eg - Jest,Karma
+    b)Assertion Library
+        eg -Jest,Chai
+
+JEST vs VITEST -
+    We will use VITEST in this course because JEST can be slow. and JEST has experimnetal support of ESMModules. codes get transpiled
+        behind the scenes.this is not good. we should always test the code that we are going to ship to prod. also VITEST syntax
+        is compatoble with JEST.
+
+    Vitest is both a test runner and an assertion library.
+
+Installing Vitest -
+
+    "scripts" : {
+        "test": "vitest --globals"
+    }
+
+    globals flags lets you use things like 'it' and 'expect' without any imports.
+
+    

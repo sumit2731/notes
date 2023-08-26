@@ -1,0 +1,16 @@
+34)what should not be tested
+    you should not test -
+        thrid party code
+        code or features built into the envirement you are working on(do not test browser api's, do not test native node.js
+            packages)
+    see slode1
+
+35)writing good test
+    a)AAA
+    b)test only one thing - Do not write test that test three different aspects of functions or 3 different functions.
+    c)Focus on essence of test when arranging
+    d)keep assertions minimal
+
+38)Refactoring code
+    we broke a larger function which was doing many things into smaller functions. now these individual units can be tested
+        separately.

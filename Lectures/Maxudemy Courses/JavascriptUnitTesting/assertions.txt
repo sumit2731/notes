@@ -1,0 +1,20 @@
+1)expect(a).toBe(0)
+
+2)How to test error -
+    const resultFn = () => {
+        add();
+    };
+    expect(resultFn).toThrow();
+
+3)not -
+    expect(a).not.toBe(0)
+    expect(resultFn).not.toThrow(); //https://jestjs.io/docs/expect#tothrowerror
+
+4)toBeTypeOf
+
+    expect(result).toBeTypeOf()
+
+5)toBeNaN()
+
+
+6)

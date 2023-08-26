@@ -1,0 +1,37 @@
+Lecture 15 -
+    we will write unit test for src/math.js. because it is mallest unit.function in app.js is also unit, but math.js
+    is smaller unit because it is not calling other functions in the end.so you want to look for functions that not 
+    calling other functions,and that are your units.your unit should be small and not do too many things.
+
+
+    it or test - these can be used intrchangebably in boh jest and vitest.can we used without exporting by adding --global 
+        flag. but importing gives better auto completion.
+
+
+Lecture 19 -
+    AAA - 
+        Arrange - The Arrange phase, where you wanna define the testing environment and values you are using in the test,
+        Act - then the Act phase, where you perform the actual testing.So, where you execute the function that should be 
+            tested
+        Assert - you evaluate the result   and you set your expectation,you simply define which results lead to a success
+            and which results lead to a failed test.
+
+    See first test of math.test.js
+
+
+20)Keep your tests simple
+    in add function , there is no point in adding like 10 numbers
+
+21)
+    a)write tests for thongs that should not happen
+
+    best practices -
+        a)write more than 1 test.
+        b)also test for certain things that we do not want to happen(values that we expect to get if invalid values get passed)
+    see test in math.test to know how to test whether a function throws error or not.
+
+30)Intriducing test suits
+    when to use suites
+
+    a)When you have multiple functions in file
+    b)Single functions is having lot of test

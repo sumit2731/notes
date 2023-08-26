@@ -2,10 +2,10 @@ import { expect, it } from "vitest";
 import { add } from "./math";
 
 it("should summarize all number values in array", () => {
-  // Arrange
+  // Arrange - Define values being used in test
   const numbers = [1, 2, 3];
 
-  // Act
+  // Act - Ru the actual code function that is to be executed
   const result = add(numbers);
 
   //Assert
