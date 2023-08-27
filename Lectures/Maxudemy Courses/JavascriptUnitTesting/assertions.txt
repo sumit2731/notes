@@ -1,20 +1,44 @@
-1)expect(a).toBe(0)
+matchers -
+    
+    1)expect(a).toBe(0)
 
-2)How to test error -
-    const resultFn = () => {
-        add();
-    };
-    expect(resultFn).toThrow();
+    2)expect([1,2,3]).toEqual([1,2,3])
+        Check section 6 lecture 48 for difference
 
-3)not -
-    expect(a).not.toBe(0)
-    expect(resultFn).not.toThrow(); //https://jestjs.io/docs/expect#tothrowerror
+    2)expect(a).toBeDefined()
 
-4)toBeTypeOf
+    2)How to test error -
+        const resultFn = () => {
+            add();
+        };
+        expect(resultFn).toThrow();
 
-    expect(result).toBeTypeOf()
+    3)not -
+        expect(a).not.toBe(0)
+        expect(resultFn).not.toThrow(); //https://jestjs.io/docs/expect#tothrowerror
 
-5)toBeNaN()
+    4)toBeTypeOf
+
+        expect(result).toBeTypeOf()
+
+    5)toBeNaN()
 
 
-6)
+    6)toContain(''someString)
+
+    7)expect(somevar).toMatch(regexp|string|object)
+
+
+    7)expect(promise).resolves.
+        after this you can use any jest matchers, like -
+        expect(promise).resolves.toBe()
+    8)expect(promise).reject()
+        expect(promise).resolves.toBe()
+
+    
+
+
+
+asertion count -
+    1)expect.assertions(3)
+    2)expect.hasAssertions()

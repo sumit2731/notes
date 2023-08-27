@@ -1,0 +1,12 @@
+43)Integration test
+    If you are combining multiple modules,multiple units or multiple functions
+    Ways to write integration test -
+        a)write unit test for function that uses another functions.
+        b)In test we can call multiple functions and use result of multiplee functions in combination.
+
+46)Integration vs Unit tests: Finding the right balance
+    See testing pyramid
+
+    more unit tests
+    then less integration tests
+    then least E2E tests
