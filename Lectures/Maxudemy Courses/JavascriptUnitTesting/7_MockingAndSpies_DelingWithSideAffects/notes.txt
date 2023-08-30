@@ -1,0 +1,90 @@
+61)Problem with side Effects & tests
+    Side effects -
+        a)Writing to file system
+        b)Making api calls
+        c)Interacting with DB
+
+        In gneral interact with something outosde your code is side affcet.
+
+
+        see comments in first test of io.test.js
+
+62)Introducing spies and mocks
+    how to get rid of side affects and thrird party code -
+        a)spies - Spies are in the end Wrappers around your functions or empty replacement functions for functions
+            where you're only interested in learning whether the function was called and maybe which argue it's received.
+        b)mocks - , mocks are also about replacement there, you also replace functions, but with mocks you often replace 
+            bigger parts of an API of a certain module or code.And with mocks you also often implement some test specific 
+            logic in the replacement function that does something else than the original function but helps you test different
+            scenarios.
+
+        theoratically there are also stubs and fakes.
+        But knowing spies and mocks is important. course has some links also , go through them in free time.
+
+        See slide 1 for details
+
+63)Working with Spies
+    creating spies -
+        jest.fn()
+        vi.fn()
+
+    see first test of data.test.js
+
+
+64)getting Started with mocks and automocking
+
+    in io.test we are importing a function from module and using it. this is not starightforward where function was passed as
+        argument,which we could replace.Instead, it's calling it on a module which we don't own.But that's where mocks come
+        into play.With mocks, we can easily replace functionalities that are defined in modules.With mocks, we can easily 
+        replace functionalities that are defined in modules.No matter if we own them or not.
+
+        vi.mock('fs');
+
+    see first test of io.test.js
+
+
+65)getting started with mocks and autoMocking
+    here we mocked a entire module using vi.mock. here we used automocking only.
+    see test in io.test.js for code.
+
+66)Note on mocking
+    1)production code is not affected.
+    2)in vitest mocks are hoisted, in jest, max thinks they are not. so there you need to mock a module before it is imported.
+    3)that this Mock is only active for the tests in this file kind of.Actually it does Mock away the module
+        and other tests therefore also have that module Mocked away.But if you do have tests in another file that also use 
+        this module,then Vitest automatically sorts the tests such that the unmocked files the files that use this
+        module where you don't call VMOC, are executed first.So they get the unmocked module.Therefore calling VMOC in all 
+        the files where you want the Mock to be active is a good idea.
+
+67)Custom Mocking logic
+    In spies and module isntead of having empty function as mock and spy, we can provide implementation of that.
+    sometimes we want our spy and mock to have some test specififc behaviour, in that case we can provide custom 
+    implemnetation.see second test of io.test.js, here by provide a custom implemenation of join method of path,
+    we are testing whther writeData was called with some particular elements or not.
+
+    And that's how you should think about testing in general.Be creative and find out how you can simplify your test
+    and how you can write testing code that really allows you to test what you wanna test.And here, I wanna test whether
+    writeFile was called with the data we passed to writeData and with the Filename.
+
+    And the Filename should be somewhere in the path that is created.
+
+    vi.fn(customFn);
+    vi.mock('modulePath', () => {
+        return moduleObject
+    });
+
+68)Managing Custom Mock Implementations Globally(__mocks__ Folder)
+    whenevr you mock any module for example -
+
+    vi.mock('fs')
+
+    first it will serach for fs file in __mocks__ folder, if you define that file, then that will be used isntead of
+    replacing all functions with empty spies.
+
+    see third test of io.test.js
+
+69)More Mocking functionalities
+    see mockImplementation and mockImplementationOnce, this can be ccalled on spies. on mocks also we can us this, see jest docs -
+    here is how we can use it with mocks -
+
+        https://jestjs.io/docs/mock-function-api/#mockfnmockimplementationfn

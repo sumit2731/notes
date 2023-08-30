@@ -35,6 +35,11 @@ matchers -
     8)expect(promise).reject()
         expect(promise).resolves.toBe()
 
+    9)assertins on spies -
+        expect(spy).toBeCalled()
+        expect(spy).toBeCalledTimes(number)
+        expect(spy).toBeCalledWith(argList)
+
     
 
 
@@ -42,3 +47,11 @@ matchers -
 asertion count -
     1)expect.assertions(3)
     2)expect.hasAssertions()
+
+
+cmd flags -
+    vitest --global
+        makes the things like expect,it,describe avalible without import as global variables. but importing them gives better
+            IDE support
+    vites --run
+        instead of getting into watch mode, runs it once only

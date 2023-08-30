@@ -1,0 +1,7 @@
+1)assertions with reportium client?
+    time - 24:18
+
+2)under info tab in individual report -
+    under execution there is button "Open source file and commit"
+
+3)appPackage capability
