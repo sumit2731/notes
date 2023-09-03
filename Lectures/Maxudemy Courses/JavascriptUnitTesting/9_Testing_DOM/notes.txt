@@ -1,0 +1,32 @@
+82)Intro
+    Accessing the DOM insode tests
+    DOM vs Noddejs Emvironment
+    Accessing the DOM
+    Some libraries that make working with DOM in our test easier
+
+83)Understanding the Problem
+    When we try to test code that access DOM, we get the error. One way to get around this problem is to mock the DOM object.
+    but it is complicated function and mocking all that might be tricky.
+
+    Now because it's such a common problem that you have tests for browser site JavaScript code and you therefore want to be
+    able to interact with the DOM for example, both Vitest and just support the DOM virtually so to say out of the box.
+
+
+84) working with different testing envirenment
+
+    here we chnaged the testing envirement from node to happy-dom.(jest supports the jsdom).
+    see lecture for details.
+
+    our test in dom.test.js is still failing because it is not able to find a element in DOM.
+
+85)Setting up Virtual HTML Page
+    see dom.test.js, here we loaded ur html file in our virtaul DOM envirement.
+
+    steps for doing similar thing in jest is also given in question.
+
+
+86)Testing DOM Functionalities
+
+    see second test in dom.test.js. here we tested that a p tag is created by element in document.
+
+87)DOM tests and cleanup work

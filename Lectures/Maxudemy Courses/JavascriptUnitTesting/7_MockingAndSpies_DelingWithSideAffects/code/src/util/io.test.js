@@ -7,15 +7,15 @@ import writeData from './io';
 
 
 /**
- * Here we know that write Data returns the fs.writeFile, so we are testing that if that promise resolves then writeFile was called.
+ * Here we know that writeData returns the fs.writeFile, so we are testing that if that promise resolves then writeFile was called.
  * also we know that writeFile resolves to undefined value, hence the test case
  * 
- * Also if forsome reasons it is not able to read file, then promise rejects and our test cases fails.
+ * Also if for some reasons it is not able to read file, then promise rejects and our test cases fails.
  * 
- * here we do not want to test writeFile function, it is responsibility of nodejs to make sure it works. what we want to test
+ * Here we do not want to test fs.writeFile function, it is responsibility of nodejs to make sure it works. what we want to test
  *  how our code works with that function,we want to test that our code does its job. so we want to test -
  * 
- * a)whther writeFile was called successfully
+ * a)whther fs.writeFile was called successfully
  * b)whther it was called with writeData
  * 
  * We are not interested in learning whether a file is actually written to file system. because our code is not doing this,
@@ -37,7 +37,7 @@ import writeData from './io';
  * In vitest mocks are hoisted to top, but i think in jest these are not. so in case of jest , you need to move mocks to
  *  the top, even before imports, because we want to make sure that it is mocked before we import.
  * 
- * Also this mock is applicable in this file only. in other
+ * Also this mock is applicable in this file only. not in other files.
  */
 
 vi.mock('fs');

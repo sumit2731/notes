@@ -1,0 +1,35 @@
+71)Module Intro
+    Mocking global pbjects and functions
+    mocking frontedn Fetaures
+
+
+76)Mocking global Values & Functions
+
+    see https.test.js to see howw to mock functions on global object in vitest.
+
+    In jest this can be done using spyon.spyOn returns a mock function, which we can configure mockimplementation and return
+    value. see link in bookmarks.
+
+
+78)Test Specififc mocking
+    see seoncd test of http.test.js, here in mock we are rejecting the promise, if passed data is not stringified.
+    here we wanted to ensure that in code we are stringifying the data before calling fetch.
+
+    And that is really the mindset you should get into when writing tests that you really build yourself an environment
+        that allows you to test the parts of your code you wanna test.
+
+
+79)Mocking Selected Places
+    See third test of http.test.js, Here we mocked the return value for some one time only.
+    in jest same can be done for mockedFunction returned with jest.spyOn(object, function)
+
+80)Using local mock values
+     see posts.test.js.
+
+     Now you could think that for testing, we need to use form dataand you could, you could build your own form data object
+        but you actually need a form element,a DOM element to do that. And whilst there would be ways of making this work
+        you will learn more about the DOM in the next section.It might be a bit too complex here.
+
+    So we setup our argument in muach a way that it has get method.that's the mindset I wanna get you into.
+    Look at the code you wanna test and think about what behavior you wanna test and then build a testing environment
+    that allows you to test those things.

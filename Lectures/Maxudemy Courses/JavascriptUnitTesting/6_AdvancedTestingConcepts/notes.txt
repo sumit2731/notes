@@ -16,7 +16,7 @@
 
     important thing is jest should not finish test bfore your asynchronous code is executed. there are various ways to do that-
         a)use done function while using callback
-        b)return a function from test callback
+        b)return a promise from test callback
         c)use async await(this automatically return a function)
 
         from docs -
@@ -32,6 +32,8 @@
     afterEach
 
     these hooks can be defined at file level as well as suite level.
+
+    code - hooks/hooks.test.js
 
 
 56)Concurrent Tests

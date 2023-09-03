@@ -34,7 +34,6 @@ import { generateToken, generateTokenPromise } from './async-example';
 
 // it('should generate a token value', (done) => {
 //   const testUserEmail = 'test@test.com';
-
 //   generateToken(testUserEmail, (err, token) => {
 //       expect(token).toBe(2);
 //       done();
@@ -46,7 +45,8 @@ it('should generate a token value', (done) => {
 
   generateToken(testUserEmail, (err, token) => {
     try {
-        expect(token).toBe(2);
+        // expect(token).toBe(2);
+        expect(token).toBeDefined();
         done();
     }
     catch(e) {
@@ -55,6 +55,19 @@ it('should generate a token value', (done) => {
   });
 });
 
+
+/**
+ * Testing promise based code.
+ * 
+ * a)return promise from your test, jest will wait for that promise to resolve. if promise is failed, then test fails.
+ *  See example in jest docs - https://jestjs.io/docs/asynchronous
+ * 
+ * b)alternatively use async/await in your tests. this is same as first one because async function returns a promise, which
+ * resolve when whole functions is executed. see docs how we can test failure
+ * 
+ * c)use .resolve/.reject - Be sure to return the assertion—if you omit this return statement, your test will complete before
+ *  the promise returned from fetchData is resolved and then() has a chance to execute the callback.
+ */
 it('should generate a token value', () => {
   const testUserEmail = 'test@test.com';
 

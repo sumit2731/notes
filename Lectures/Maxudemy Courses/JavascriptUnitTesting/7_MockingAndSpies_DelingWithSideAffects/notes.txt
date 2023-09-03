@@ -30,6 +30,14 @@
 
     see first test of data.test.js
 
+    You can also provide implementation function -
+        jest.fn(implementation) is a shorthand for jest.fn().mockImplementation(implementation).
+        you can also use mockImplementationOnce
+
+    Alternate syntax of creating spy -
+        a)const spy = jest.spyOn(object,'methodName')
+            docs - https://jestjs.io/docs/jest-object#jestspyonobject-methodname
+
 
 64)getting Started with mocks and automocking
 
@@ -53,7 +61,7 @@
     3)that this Mock is only active for the tests in this file kind of.Actually it does Mock away the module
         and other tests therefore also have that module Mocked away.But if you do have tests in another file that also use 
         this module,then Vitest automatically sorts the tests such that the unmocked files the files that use this
-        module where you don't call VMOC, are executed first.So they get the unmocked module.Therefore calling VMOC in all 
+        module where you don't call mock, are executed first.So they get the unmocked module.Therefore calling VMOC in all 
         the files where you want the Mock to be active is a good idea.
 
 67)Custom Mocking logic
@@ -78,6 +86,8 @@
 
     vi.mock('fs')
 
+    AutoMocking algo is - 
+    
     first it will serach for fs file in __mocks__ folder, if you define that file, then that will be used isntead of
     replacing all functions with empty spies.
 
