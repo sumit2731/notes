@@ -1,0 +1,8 @@
+3)installing and using cypress
+     install cypress npm package.
+
+     run - npx cypress open
+
+
+5)adjusting our first test
+    here we wrote our first test

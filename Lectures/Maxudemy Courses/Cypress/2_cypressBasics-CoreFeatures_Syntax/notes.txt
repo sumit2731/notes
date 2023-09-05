@@ -1,0 +1,14 @@
+13)let VS code help you
+    Add this at top of your webpage - /// <reference types="Cypress" />
+    now you will get IDE suggestions
+
+
+16)implicit and Explicit asertion
+    link to official doc - https://docs.cypress.io/guides/references/assertions
+
+
+17)get() vs find()
+    see commands .txt.
+
+18) Simulating user ineraction
+    see first test of tasks.cy.

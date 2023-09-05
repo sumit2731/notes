@@ -1,0 +1,60 @@
+visisting page -
+
+
+    1)cy.visit('url')
+        visist a webpage, implicit assertion.
+Finding elment -
+
+    2)cy.get("css selector")
+
+        find all elemnts by  css selector, has implicit assertion.
+        in case of single element found , it returns that elements so you can do user interactios on this.
+
+        variations -
+            a)nested element -
+                a)cy.get('.main-header img')
+                    pass css selector
+
+                b)use find after get - 
+                    cy.get(.main-header).find('img')
+
+                    find can only be used after using get.
+                    wrog way of doing it -
+                        cy.get('.main-header').get('img')
+
+                        finds mian-header and then finds img , but starts from root elemnt not inside .main-header
+
+            b)asserting on text of found element -
+
+                1)cy.get('h1').contains("My Cypress Course Tasks");
+                checks if found has elment has given text and returns the element
+
+            c)checking that element shoud not exists -
+                cy.get('.backdrop').should('not.exist')
+
+
+    3)cy.contains("some text")
+
+        checks if any elemnt has given text.implicit assertion
+        returns the searched element, so yiu can do user interations on this
+
+Explicit assertions -
+
+
+    4)cy.get('h1').should('have.length',1)
+
+        should is another command which is used to add expectation
+
+
+User interactions -
+
+    a)on retruned element, perform user interaction -
+
+        1)cy.contains("some text").click()
+
+        2)cy.get("some css selector").click()
+
+
+Assertions -
+    cy.get('h1').should('have.length',1)
+    cy.get('.backdrop').should('not.exist')
