@@ -1,0 +1,35 @@
+30)selecting Element best practice way
+
+    html -
+        <a data-cy="header-about-link"></a>
+    test file -
+        cy.get('[data-cy="header-about-link"]')
+        
+31)testing page navigation
+    we saw how to get url of page, how to make assertions based on that.
+    we also saw how to move forward and back in browser navigation.
+
+
+32)More on selecting Elements
+    here we saw how we can find good selector of element in cypress test.
+
+
+34)chaining elements
+    here we saw that we can use 'and' to chain the commands. see first test of contact.cy
+
+35)Working with values & alias
+    storing results of command like (cy.get) in a variable is not recommneded. it works but is not reccommended.
+    use aliases isntead by uisng chainable as method,it allows you to assign any alias of your choice to a value, for example
+    a element dervied by cypress command. later you can use reause this command or element that is yiedled by this command
+    by using this alias. this alias can be used with get method by refrencing it with '@'.
+
+    so this is offical way of reusing  a value yielded by a command.
+    
+    cy.get('[data-cy="contact-btn-submit"]')
+            .as('submitBtn')
+            .contains('Send Message')
+
+     cy.get('@submitBtn').click();
+
+
+    see second test in contact.cy
