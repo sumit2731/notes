@@ -11,4 +11,23 @@
     see commands .txt.
 
 18) Simulating user ineraction
-    see first test of tasks.cy.
+    see first test of tasks.cy
+
+25)Cypress Tests Run in Isolation
+
+    Each cypress test runs in isolation to each other,even if they are part of same suite.Cypress offers and ensures test 
+    isolation which means different tests run totally isolated from each other,even if they are part of the same file or
+    suite.
+
+    They run in total isolation.Instead, Cypress really reloads that page,gives you a brand new browser context,and even 
+    clears any cookies or local storage data.
+
+
+26)Time for more queries
+    see 4th test of tasks.cy.js.
+
+    here we saw how to get invidvidual elements from list of element using eq -
+
+    cy.get('.task').eq(0).contains('task1');
+
+    link to official docs, weher you can see all queries - https://docs.cypress.io/api/commands/eq
