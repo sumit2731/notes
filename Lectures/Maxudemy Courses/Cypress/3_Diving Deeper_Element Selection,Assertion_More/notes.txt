@@ -33,3 +33,17 @@
 
 
     see second test in contact.cy
+
+37)getting more direct access via then()
+     see test - "should submit the form - using then to get access object returned by command"
+     in contact.cy.js
+
+39)Another Example
+    here we interact with a element, then made some assertion on its parent.
+
+    see 5th test of contact.cy.js
+
+43)running with cypress app
+    npx cypress run
+
+    gives summary of tests, screenshots and videos

@@ -4,5 +4,8 @@
      run - npx cypress open
 
 
+     run without app - npx cypress run
+
+
 5)adjusting our first test
     here we wrote our first test

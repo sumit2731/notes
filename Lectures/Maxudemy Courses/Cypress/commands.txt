@@ -3,7 +3,7 @@ visisting page -
 
     1)cy.visit('url')
         visist a webpage, implicit assertion.
-Finding elment -
+Finding element -
 
     2)cy.get("css selector")
 
@@ -22,7 +22,7 @@ Finding elment -
                     wrog way of doing it -
                         cy.get('.main-header').get('img')
 
-                        finds mian-header and then finds img , but starts from root elemnt not inside .main-header
+                        finds mian-header and then finds img , img is serached in root element, not inside .main-header
 
                 c)after get use contains -
                     cy.get('Some css Selector').contains("Texxt on nexted element")
@@ -40,6 +40,24 @@ Finding elment -
                 cy.get('someSelector').first()
                 cy.get('someSelector').last()
                 cy.get('.task').eq(index)
+
+            e)saving element returned by query. you can use alias to save the element returned by get
+
+                cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
+                cy.get('@submitBtn').click();
+
+                code - section 3, file contact,cy.js
+
+                cypress rereuns the command when you refer to alias.
+
+                docs - https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Elements
+
+
+            d)getting parent and children -
+                cy.get('selector').parent()
+                cy.get('selector').children()
+
+
 
 
     3)cy.contains("some text") or called on element returned by cy.get("some css selector")
@@ -83,22 +101,66 @@ User interactions -
         1)element.click() - clicks on element
 
         2)element.type("text content") - types text in textINput or textArea
+            pressing special keys -
+                cy.get('[data-cy="contact-btn-submit"]').should('be.disabled')  
 
         3)selectElement.select("visisbleText or value field")
 
+        4)element.focus()
+
+        5)element.blur()
+
 
 Assertions -
-    cy.get('h1').should('have.length',1)
-    cy.get('.backdrop').should('not.exist')
-    cy.location('pathname').should('equal','/home')
+    There are 2 ways should(or and) and then
 
-    assertion on Elements -
-        a)Checking any attribute -
-            cy.get('[data-cy="contact-btn-submit"]').should('have.attr','disabled')
-        b)Checking if text box is disabled
-            cy.get('[data-cy="contact-btn-submit"]').should('be.disabled')
+        a)should (and is alias of should)
+            It has 2 forms -
+                a).should(chainers, method, value)
+                    cy.get('h1').should('have.length',1)
+                    cy.get('.backdrop').should('not.exist')
+                    cy.location('pathname').should('equal','/home')
+
+                    asserting on elements -
+                        a)Checking any attribute -
+                            cy.get('[data-cy="contact-btn-submit"]').should('have.attr','disabled')
+                        b)Checking if text box is disabled
+                            cy.get('[data-cy="contact-btn-submit"]').should('be.disabled')
+
+                b).should(callbackFn)
+                    el.should(el => {
+                        expect($el).to.have.class('foo')
+                    })
+
+                    cypress commands should not be used inside should
+
+                    el.shoud(() => {
+                        cy.log("Something")
+                    })
+
+            return value -
+                in first form most of cases it returns value yielded from previous command. but in some cases a new value is returned.
+                    see 5th testcase in contact.cy in section 3. for more details see docs.
+                In callback form it always returns the value yielded from previous command
+                should returns something, it returns a value that makes sense for the assertion you ran before.
+        b)then - .then(el => {}) is chained after other cypress queries to get direct access to subject of those quesries.
+
+    Which one should be use -
+        Any type of assertion that can be done with should can be done with expect also. Here are differences -
+            a)should is reccommended way.but should is avalaible on cypress chainable object like cy.get()
+            b)should assertions are retried until they pass or timeout. both with chainers and callback syntax.
+            c)inside .then and callback variant of should, you cannot use should ob argument passed to callback.as should can be called on 
+                chainable objects, returned by cypress objects.so we use expect(expect is globally avalaible)
+                
+            then should be used when - 
+                
+                    a)we want to modify result of previous query before query
+                    b)we want to execute logic only once.(lecture 39 explains this point)
 
 
-    Using 'and' -
-        and is alias of should. it is better of readability. see API docs to see how we can use it correctly.
-    
+
+    then - 
+        see lecture 37
+
+screenshots -
+    cy.screenshot() - takes screenshot while running "cypress run"
