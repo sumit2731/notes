@@ -9,7 +9,6 @@
 **/node_modules
 node_modules/
 #Testing files
-**/e2e
 
 # IDEs and editors
 /.idea
