@@ -3,6 +3,8 @@ visisting page -
 
     1)cy.visit('url')
         visist a webpage, implicit assertion.
+
+        see this blog for advance useage of this - https://www.cypress.io/blog/2018/02/05/when-can-the-test-start/
 Finding element -
 
     2)cy.get("css selector")
@@ -145,6 +147,10 @@ Assertions -
                 should returns something, it returns a value that makes sense for the assertion you ran before.
         b)then - .then(el => {}) is chained after other cypress queries to get direct access to subject of those quesries.
 
+            return value see docs.
+
+            you can use this command if you want to stop test execution for some time
+
     Which one should be use -
         Any type of assertion that can be done with should can be done with expect also. Here are differences -
             a)should is reccommended way.but should is avalaible on cypress chainable object like cy.get()
@@ -164,3 +170,8 @@ Assertions -
 
 screenshots -
     cy.screenshot() - takes screenshot while running "cypress run"
+
+
+adding wait to test -
+
+    cy.wait(timeInMs)

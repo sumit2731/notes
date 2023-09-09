@@ -1,0 +1,52 @@
+50)The global config file
+    the config file is cypress.config.js
+    some config - video location, encryption of video, takes pics on error etc.
+
+51)Understanding Timeouts
+    cypress runs commands untill they pass or untill timeout.
+    There are various kind of timeouts, you can see them via intellisense in cypress.config.js.
+
+52)Global vs local config
+    local config can be passed as object as second argument in it or describe.
+
+53)Setting the browser
+    ways to set browser -
+        a)cypress open
+            select the browser
+        b)cypress run
+            cypress run --browser firefox
+        c)In it or descrobe block, pass cconfig as second argument and mention this -
+            {browser: firefox}
+
+54)baseUrl
+     we setup the baseUrl option in cypress config in e2e config proeprties. as it applies to e2e tests only.
+
+55)Sharing logic wwith hooks
+    before()
+    beforeAll()
+
+    after
+    afterAll()
+
+    these can be added at page level or test suite level
+
+    It is reccommneded to use before and beforeAll even for cleanUp work also. so we have test env ready for test before starting the
+        test.
+
+56)Introducing Custom Commands and Queries
+    see slide 18 to see difference between these.
+
+57)Creating a Custom Command
+
+    Creating custom command (cypress/support/commands.js) -
+        
+        Cypress.Commands.add('submitForm', () => {
+            cy.get('form button[type="submit"]').click();
+        });
+
+    Using custom comamnd -
+        cy.submitForm();
+
+    you shoud not create commands for everything
+
+    
