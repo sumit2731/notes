@@ -1,0 +1,19 @@
+78)Starting project
+    
+    Application uses prism.js to create and seeed the local db , a sql lite, DataBase. application is made using remix.js. 
+
+    To initialize app -
+
+        npm run int
+
+    to run test cases and application code run - 
+        
+        npm run test:open
+
+
+79)Writing a Fist(Problematic) Test
+
+    here you wrote a test to verufy if learnings are dislayed correctly on screen.
+
+    test pases, but on cypress browser you can see that there are some errors thrown on screen.
+    In cypress/support/commands.js we added a code that prevenets our test to fail based on these errors.this is another config.

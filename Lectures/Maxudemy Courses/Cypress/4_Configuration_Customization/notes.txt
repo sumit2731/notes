@@ -95,7 +95,7 @@
             console.log(returnvalue);
         })
     
-
+Note - see Lecture 79 to see , how we can prevent Cyress to fail our test when some known errors are thrown.
 
 Files to be looked at -
 
