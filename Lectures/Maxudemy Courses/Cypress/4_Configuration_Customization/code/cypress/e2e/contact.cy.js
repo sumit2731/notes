@@ -4,10 +4,19 @@ describe('contact form', () => {
   beforeEach(() => {
     cy.visit('/about');
   })
-  it('should submit the form', () => {
-    cy.get('[data-cy="contact-input-message"]').type('Hello world!');
-    cy.get('[data-cy="contact-input-name"]').type('John Doe');
-    cy.get('[data-cy="contact-btn-submit"]').then((el) => {
+  it('should submit the form's ,() => {
+
+    /**
+     * @Desc This will call the tasks defined with on method. first param is name of task, second one is argument to task
+     * value returned by task, can be accessed by then method
+     */
+    cy.task('seedDatabase','filename.csv').then(returnValue => {
+      console.log("Here we are getting value returned by Database");
+      console.log(returnValue);
+    })
+    cy.getById('contact-input-message').type('Hello world!');
+    cy.getById('contact-input-name').type('John Doe');
+    cy.getById('contact-btn-submit').then((el) => {
       expect(el.attr('disabled')).to.be.undefined;
       expect(el.text()).to.eq('Send Message');
     });

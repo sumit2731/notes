@@ -9,56 +9,61 @@ Finding element -
 
     2)cy.get("css selector")
 
-        find all elemnts by  css selector, has implicit assertion.
-        in case of single element found , it returns that elements so you can do user interactios on this.
+        a)getting DOM element
 
-        variations -
-            a)nested element -
-                a)cy.get('.main-header img')
-                    pass css selector
+            find all elemnts by  css selector, has implicit assertion.
+            in case of single element found , it returns that elements so you can do user interactios on this.
 
-                b)use find after get - 
-                    cy.get(.main-header).find('img')
+            variations -
+                a)nested element -
+                    a)cy.get('.main-header img')
+                        pass css selector
 
-                    find can only be used after using get.
-                    wrog way of doing it -
-                        cy.get('.main-header').get('img')
+                    b)use find after get - 
+                        cy.get(.main-header).find('img')
 
-                        finds mian-header and then finds img , img is serached in root element, not inside .main-header
+                        find can only be used after using get.
+                        wrog way of doing it -
+                            cy.get('.main-header').get('img')
 
-                c)after get use contains -
-                    cy.get('Some css Selector').contains("Texxt on nexted element")
-                        this returns the nested element, so you can do some operations on this
+                            finds mian-header and then finds img , img is serached in root element, not inside .main-header
 
-            b)asserting on text of found element -
+                    c)after get use contains -
+                        cy.get('Some css Selector').contains("Texxt on nexted element")
+                            this returns the nested element, so you can do some operations on this
 
-                1)cy.get('h1').contains("My Cypress Course Tasks");
-                checks if found has elment has given text and returns the element
+                b)asserting on text of found element -
 
-            c)checking that element shoud not exists -
-                cy.get('.backdrop').should('not.exist')
+                    1)cy.get('h1').contains("My Cypress Course Tasks");
+                    checks if found has elment has given text and returns the element
 
-            d)finding individual elements inside set of elements -
-                cy.get('someSelector').first()
-                cy.get('someSelector').last()
-                cy.get('.task').eq(index)
+                c)checking that element shoud not exists -
+                    cy.get('.backdrop').should('not.exist')
 
-            e)saving element returned by query. you can use alias to save the element returned by get
+                d)finding individual elements inside set of elements -
+                    cy.get('someSelector').first()
+                    cy.get('someSelector').last()
+                    cy.get('.task').eq(index)
 
-                cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
-                cy.get('@submitBtn').click();
+                e)saving element returned by query. you can use alias to save the element returned by get
 
-                code - section 3, file contact,cy.js
+                    cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
+                    cy.get('@submitBtn').click();
 
-                cypress rereuns the command when you refer to alias.
+                    code - section 3, file contact,cy.js
 
-                docs - https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Elements
+                    cypress rereuns the command when you refer to alias.
+
+                    docs - https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Elements
 
 
-            d)getting parent and children -
-                cy.get('selector').parent()
-                cy.get('selector').children()
+                d)getting parent and children -
+                    cy.get('selector').parent()
+                    cy.get('selector').children()
 
+        b)getting alias object, alias can also refer to non dom elments like stubs,fixtures etc.
+
+            cy.get("@aliasName")
 
 
 
@@ -165,8 +170,21 @@ Assertions -
 
 
 
-    then - 
-        see lecture 37
+then - 
+        see lecture 37.
+
+        see cypess docs, it can be chained to cypress queries to get direct access to subjects yieldwd by those queries.
+
+        1)getting accesss to element -
+            cy.get("element").then((element) => {})
+        2)getting access to windowObject
+            cy.visit("url").then((windowObject) => {})
+            now you can provide provide stubs for window object inside function.
+            also you can return a promise from callback to then wwhich will stop the test from executing until, your promise resolves
+
+        3)you can load your fixtures
+            cy.get(@alias).then(aliasObject => {})
+            inside then you can do all kind of things with fixtureObject for eaxmple like defining stubs and using fixture object in asserrtion. see location.cy.js in section 5.
 
 screenshots -
     cy.screenshot() - takes screenshot while running "cypress run"
@@ -175,3 +193,64 @@ screenshots -
 adding wait to test -
 
     cy.wait(timeInMs)
+
+
+cy.now -
+    will execute a cypress function immediately instead of creating a query. used while creating custom queries.
+    see cypress/supports/commands.js folder of module 4 -
+        
+        Cypress.Commands.addQuery('getById', (id) => {
+            const getFn = cy.now('get',`[data-cy="${id}"]`);
+            return () => {
+                return getFn();
+            }
+        })
+
+
+cy.task -
+
+    runs a command a task defined in cypress.config.js
+    see lecture 56. code -
+
+        section 4
+            tasks is defined in - cypess.config.js
+            task is executed in contact.cy.js
+    
+    see cyoress.config file in module
+
+
+cy.stub -
+    creates a stub function.
+        cy.stub(win.navigator.geolocation, 'getCurrentPosition').as('getUserPosition');
+
+    see location.cy.js of section 5.
+
+    functions that can be called on stub -
+        a)callsFake(fn) - used to give fake implementation to stub
+        b)resolves() - stub returns a promise that is resolved immediately
+
+    asesrtions on stub -
+
+        cy.get('@saveToClipBoard').should("have.been.called");
+        cy.get('@saveToClipBoard').should(
+            "have.been.calledWithMatch",
+            new RegExp(`${37.75}.*${48.01}.*${encodeURI('John Doe')}`)
+        );
+
+cy.fixture -
+    loads the fixture into testingFile.
+
+    cy.fixture("pathOfFile").as('aliasName')
+
+
+
+alias -
+    1)document element
+        see lecture 35 notes.
+        you can query element using get and give it alias. later instead of refering to whole query, you can only refer to that alias while using get.
+    2)stub can be saved into alias and then we can use get to get hold of that stub be refering to its alias.
+        in sction 5, see first test in location.cy.js
+
+    3)we can lod fixture data in test and assign them alias, so that later they can be used in test.
+        see location.cy.js in secton 5.
+

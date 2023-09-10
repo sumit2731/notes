@@ -3,11 +3,12 @@
     some config - video location, encryption of video, takes pics on error etc.
 
 51)Understanding Timeouts
-    cypress runs commands untill they pass or untill timeout.
+    cypress runs commands untill they pass or untill timeout.only after timeout test is marked as failed.
     There are various kind of timeouts, you can see them via intellisense in cypress.config.js.
 
 52)Global vs local config
     local config can be passed as object as second argument in it or describe.
+    this is object is same as that you are using in cypress.config.js file.
 
 53)Setting the browser
     ways to set browser -
@@ -17,6 +18,7 @@
             cypress run --browser firefox
         c)In it or descrobe block, pass cconfig as second argument and mention this -
             {browser: firefox}
+        d)pass as global config object in cypress.config.js
 
 54)baseUrl
      we setup the baseUrl option in cypress config in e2e config proeprties. as it applies to e2e tests only.
@@ -49,4 +51,54 @@
 
     you shoud not create commands for everything
 
+
+58)Creting a custom command
+    Creating a custom query (cypress/e2e/support/command.js) -
+
+        Cypress.Commands.addQuery('getById', (id) => {
+            const getFn = cy.now('get',`[data-cy="${id}"]`);
+            return () => {
+                return getFn();
+            }
+        })
+
+    useage in file - 
+
+        cy.get('[data-cy="contact-btn-submit"]').click();
+
+
+59)Understanding Tasks
+    it allows you to run a code outisde of browser.
+
+    creating a task(cypress.config.js) -
+        
+        export default defineConfig({
+            e2e: {
+                baseUrl: 'http://localhost:5173',
+                setupNodeEvents(on, config) {
+                // implement node event listeners here
+                on('task', {
+                    seedDatabase() {
+                    //run your nodejs code
+                    //e.g edit a file here
+                    return 3;
+                    }
+                })
+                },
+            },
+        });
+
+    running a task from test (contact.cy.js) -
+
+        cy.task('seedDatabase','filename.csv').then(returnValue => {
+            console.log("Here we are getting value returned by Database");
+            console.log(returnvalue);
+        })
     
+
+
+Files to be looked at -
+
+    cypress.config.js - added a task
+    cypress/supports/commands.js - added a comamnd and query
+    conatct.cy.js - here we used custom comamnd, custom query and task. 

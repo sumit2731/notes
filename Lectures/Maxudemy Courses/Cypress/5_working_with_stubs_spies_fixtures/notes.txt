@@ -1,0 +1,37 @@
+untill 70)Stubs
+
+    see slide 22
+
+    here in code we are using a window.navigator object. so we need to fake. for that we use cy.stub.
+    But all window objectjs can be mocked in a special way i.e in callback passed to cy.visist, there
+    window function is passed as argument.
+
+    then we saw that how we can save stub into a alias so that we can run  assertions on it.
+
+    then we provided custom functionality to our stub. initally stub was a empty function,we use used
+    callsFake on stub.then we saw that in callback we are removing the a button but we need to make sure
+    that button is disabled, so in fakeimplementation we added a delay so button is not removed immediately.
+
+    then we created the stub for copyToClipboard function, then we made some asertions on it, that it has been called
+        with specififc arguments.
+
+    se first2 tests in location.cy.tes
+
+71)using Fxture
+    we defined a fixure(i.e a json file ) in cypress/fixtures/user-location.js
+
+    then we loaded the fixture in location.cy.js, using cy.fixture('path of file')
+    then we gave it a alias. then we loaded the fixture using cy.get("@nameOfAlias") and then
+    got access to it using then. then we used fixture to give values to sstubs and making assertions.
+
+
+72,73) here we created and used spies with cy.spy
+
+    see location.cy.js for details
+
+
+74,75) clock and timer
+    here we manually manupilated the clock.
+    see contact.cy.js.
+
+    onbe thing to be noticed is cy.clock() takes effect when it is called in beforeEach, may be it needs to be called before visisting the page.
