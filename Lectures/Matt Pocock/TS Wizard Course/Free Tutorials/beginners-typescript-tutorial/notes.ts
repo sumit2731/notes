@@ -91,33 +91,3 @@ problem 9 -
  * Problem 18
  * return type of async functions is always Promise
  */
-
-/* 
-JasVir Sood
-8.00 - 26 oct 2023 - 1 lakh  
-7.25 - 10 May 2024 - 1 lakh
-
-8.50 - 21 oct 2024 - 18913()
-
-Santosh 
-
-8.00 - 26 oct 2023 - 1 lakh (duplicate)
-7.75 - 26 april 2024 - 1 lakh
-7.25 - 10 may 2024 - 1 lakh (duplicate)
-
-8.50 - oct 2024
-
-1
-*/
-
-/* 
-Santosh Sood
-8.00 % - 26 Oct 20-23 - 1.00 lakh - 4583030006462694-1 (1,26,828) (verified)
-7.75 % - 26 Apr 21-24 - 1.00 lakh - 4583030007994884-1 (1,25,921)
-7.25 % - 10 May 21-24 - 1.00 lakh - 4583030008082247-1 (1,00,000) (verified)
-
-Jasvir Sood
-8.50 % - 21 Oct 22-24 - 1.10 lakh - 4583030006403205-3 (1,30,166)
-8.50 % - 21 Oct 22-24 - 18,913    - 4583030006403205-2 (22,380)
-
-*/
