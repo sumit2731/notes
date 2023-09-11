@@ -17,3 +17,36 @@
 
     test pases, but on cypress browser you can see that there are some errors thrown on screen.
     In cypress/support/commands.js we added a code that prevenets our test to fail based on these errors.this is another config.
+
+
+80,81,82,83)
+    We are using prism.js to create a database from filesystem. so while using test cases we chnaged our config file so that we can fetch 
+        data from different source. we didi this by replacing "dotenv -e .env" by "dotenv -e .env.test". in this file there different name
+        of file is given. also we are seeding database in beforeEach hook so that even if a testcase makes some chnages in database, test
+        in other file does fail. for example a test may  delete some resources from database,and other test which is asesrting based on 
+        other resources may fail.
+
+        lecture 83 shows the example for same.
+
+
+84)understaing and using the interceotors
+    here we intercepted the request, and then blocked it. afterwards we provided our own mock data.
+    see we provided as alias to that intercepted request, which allowed to wait when that request is made and intercepted by cypress,
+    before proceeding ahead. see code in newletter.cy.js
+
+
+88)summary diffrent testing strategies
+    see slide 26
+
+
+89)testing authentication
+    see auth.cy.js
+
+90,91) login test
+    here we created a login test and added a login command in cyoress/support/commands.js
+
+
+files to be seen -
+    cypress.config - added a task to seed database
+    cypress/support/commands.js - here we amde sure that even if some errors are thrown our test still passes, and added a custom login command
+    takeaways.cy.js, newsletter.cy.js, auth.cy.js

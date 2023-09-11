@@ -19,6 +19,9 @@ describe("share location", () => {
 
       when I give Cypress that instruction.At this point of time, though, the tests are not running yet
       and the window object will not be available yet, or at least, not the window object sof the website I'm trying to test.
+
+      This is one way of spying or stubbing some proeprty/method on window object, 
+      second way is - https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/stubbing-spying__window-fetch/cypress/e2e/spy-on-fetch-spec.cy.js
      */
     cy.visit("/").then((win) => {
       cy.get("@userLocation").then((userLocation) => {

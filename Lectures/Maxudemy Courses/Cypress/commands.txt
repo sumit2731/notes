@@ -76,6 +76,8 @@ Finding element -
         Search case senstove, but even if element has some extra text, it is searched.
         returns the searched element, so you can do user interations on this
 
+        see docs to see how we can control which element is retruned by using 2 arguments
+
 interacting with BOM -
 
     1)cy.location() - Gives us information about location we are currently on our website
@@ -168,12 +170,50 @@ Assertions -
                     a)we want to modify result of previous query before query
                     b)we want to execute logic only once.(lecture 39 explains this point)
 
+its - Get a property's value on the previously yielded subject. then it can all assertion on that
+    cy.window().its('sessionStorage')
+
+    useage  -
+
+        a)cy.wrap({ age: 52 }).its('age').should('eq', 52) // true
+        b)cy.wrap(['Wai Yan', 'Yu']).its(1).should('eq', 'Yu') // true
+        c)cy.get('ul li') // this yields us a jquery object
+            .its('length') // calls 'length' property returning that value
+            .should('be.gt', 2)
+        d)get response form cy.request
+            cy
+            .request(...)
+            .its('body.user')
+            .then(user => ...)
+
+
+        e)spy whether some method/prpeprty on window object is called
+        
+            cy.window().its('fetch').should('be.calledWith', '/favorite-fruits')
+
+
+        How to get nsted proeprties -
+            cy.wrap(user).its('contacts.work.name').should('eq', 'Kamil') // true
+        How to know which proeprties exist, click on get step in cypess app and you will see
+    Important pints -
+        .its() requires being chained off a previous command.
+        .its() will automatically retry until it has a property that is not null or undefined.
+
+
+invoke - 
+    Invoke a function on the previously yielded subject.
+
+    If you want to get a property that is not a function on the previously yielded subject, use .its().
+
+    Ex -
+        cy.get('.input').invoke('val').should('eq', 'foo')
 
 
 then - 
         see lecture 37.
 
         see cypess docs, it can be chained to cypress queries to get direct access to subjects yieldwd by those queries.
+        then method can be used to access the subject of the command in front of the then method.
 
         1)getting accesss to element -
             cy.get("element").then((element) => {})
@@ -244,6 +284,16 @@ cy.fixture -
 
 
 
+cy.intercept -
+
+    You can intercept HTTP requests.You can do this by calling cy.intercept.And typically that's done at the beginning
+        of your test before you even visit a page,because intercept will set up an interceptorit will basically watch for
+        certain kinds of HTTP requests.And if such requests then occur at any point of time during the test in which you set
+        up your interceptor,Cypress will step in and intercept that request.That's why it makes sense to set this up early in the test.
+
+
+
+cy.wait -
 alias -
     1)document element
         see lecture 35 notes.
@@ -254,3 +304,17 @@ alias -
     3)we can lod fixture data in test and assign them alias, so that later they can be used in test.
         see location.cy.js in secton 5.
 
+    4)we can intercept the api call and wait for cypress to intercot befire moving ahead. this also done with the help of alias
+        in starting of test -
+            cy.intercept('POST','/newsletter*',{status: 201}).as('subscribe');
+
+        In later code - 
+            cy.wait('@subscribe');
+
+        code is used in nesletter.cy.js in section 6.
+
+cy.getCookie("name of cookie")
+
+    cy.getCookie('__session')
+
+    see docs to see proeprties

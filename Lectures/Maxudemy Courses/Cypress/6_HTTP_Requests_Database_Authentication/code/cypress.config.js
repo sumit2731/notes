@@ -7,13 +7,17 @@ export default defineConfig({
     baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      /**
+       * And then also very important at the end you should return null here
+        because you have to return a value from inside your task methods
+        for this cy.task call here to succeed
+       */
       on('task', {
         async seedDatabase() {
           await seed();
           return null;
         }
       })
-      on('')
     },
   },
 });

@@ -1,0 +1,3 @@
+Cypress Guide -
+    network request -
+        https://docs.cypress.io/guides/guides/network-requests
