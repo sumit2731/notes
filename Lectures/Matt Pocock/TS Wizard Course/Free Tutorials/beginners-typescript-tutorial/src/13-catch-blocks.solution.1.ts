@@ -7,7 +7,8 @@ const tryCatchDemo = (state: "fail" | "succeed") => {
     }
   } catch (e: any) {
     /**
-     * @desc not best, we loose all autotype
+     * @desc By default type of e is unknown so we are not able to access any propertie son it. but if use any type we can
+     * access any property on this but dowwn side is we will loose all intellisense.
      */
     return e.message;
   }

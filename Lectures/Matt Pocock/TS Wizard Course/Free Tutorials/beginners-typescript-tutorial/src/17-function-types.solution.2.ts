@@ -5,7 +5,7 @@ import { Equal, Expect } from "./helpers/type-utils";
  * void is diffrent from undefined. if you define undefined , you have to explicitly return undefined. void is special type in ts
  * that defines that this function returns asolutely nothing.
  * 
- * if return type is void, you can return anything for function, it will not throw a error.(in standalone as well as in callbacks)
+ * If return type is void, you can return anything for function, it will not throw a error.(in standalone as well as in callbacks)
  * you can skip the parameters(in standalone as well as clabback), but params of wromg type cannot be passed
  */
 type FocusListener = (isFocused: boolean) => void;
@@ -20,7 +20,7 @@ type FocusListener = (isFocused: boolean) => void;
 const myFocusListerner: FocusListener = () => 1;
 
 /**
- * Better wa to define standalone function. throws error when you try to return something.
+ * Better way to define standalone function. throws error when you try to return something.
  * @returns
  */
 

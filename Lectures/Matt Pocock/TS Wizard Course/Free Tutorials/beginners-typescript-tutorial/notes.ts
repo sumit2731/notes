@@ -1,5 +1,20 @@
-// @ts-ignore
-// @ts-expect-error
+// @ts-ignore - ignores the error
+// @ts-expect-error - If there is error in line then no error will be shown, however if there is no error, then error is shown
+
+import { TypeOf } from "zod";
+
+
+
+/**
+ * Problem 4 - Functional parameters can also be made optional
+ */
+
+/**
+ * Problem - 6
+ * 
+ * use of this comment - // @ts-expect-error
+ */
+
 
 /**
  //problem 8 => how to define return type of function
@@ -20,7 +35,7 @@ const multiply2 = (a: number, b: number): number => {
   return 1;
 };
 
-const multiply3: (a: number, b: number) => number = (a, b) => {
+const multiply3: (a: number, b: number) => number = (a, b)  => {
   return 1;
 };
 
@@ -51,7 +66,9 @@ problem 9 -
 /**
  * problem 11 -
  *
- * index means key of object
+ * index means key of object.
+ * 
+ * Record type can also specify the same thing as index type.
  *
  */
 
@@ -59,24 +76,32 @@ problem 9 -
  * problem 12 -
  *
  *how to use typeof operator to be sure that union type is of given type.ts will give you ide suggestions for that type
- *You cnt access the property unless you know that it is there. so we write the condition in different way. see commnets in solution
+ *You cnt access the property unless you know that it is there. so we write the condition in different way. see commnets in 
+ solution
  */
 
 /**
- * Problem 13 - how typeof operator agan saves the day
+ * Problem 13 - Here we had any type but we want to narrow it down to have specific type.
+ * here we used instanceof operator instead of typeof
  */
 
 /**
  * Problem 14 - interface can inherit other interfaces but types cannot.
+ * In types we have intersection solution. it like type3 = type1 & type2;
  */
 
 /**
  * Problem 15 - using intersection to define new types by combining existing types. you can combine as many types as ypu want.
+ * also you can create new types on the flylike this -
+ * 
+ * type1 & type2 & {id: number, namne: string}
+ * 
+ * here third type is defined on the fly
  */
 
 /**
  * problem - 16
- * typescript built helpers - Omit<T>, Pick<T>. you can omit or pick multiple properties using union type
+ * typescript built helpers - Omit<T,K>, Pick<T,K>. you can omit or pick multiple properties using union type
  */
 
 /**

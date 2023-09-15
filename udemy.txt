@@ -83,25 +83,25 @@ c)sumitsood2714 - old courses
 
 d)sumitudemy@gmail.com- divalovesme (Done)
 
-Max Courses-
-1)Javascript Unit Testing
-2)remix
-3)docker & kubernetes
-4)next.js & react
-5)python - complete guide
-5)css
-6)Angular material+ Angular fire(Done)
-7)vue
-8)aws: serverless api's and apps - a complete intro(Done)
-9)ionic 4 course(Done)
-10)Pregressive web appas courses(done)
-11)React
+    Max Courses-
+        1)Javascript Unit Testing
+        2)remix
+        3)docker & kubernetes
+        4)next.js & react
+        5)python - complete guide
+        5)css
+        6)Angular material+ Angular fire(Done)
+        7)vue
+        8)aws: serverless api's and apps - a complete intro(Done)
+        9)ionic 4 course(Done)
+        10)Pregressive web appas courses(done)
+        11)React
 
-Angular University -
+    Angular University -
 
-webpack -
+    webpack -
 
-  webpack5 : - The complete guide for beginers (viktor pyskunov)
+        webpack5 : - The complete guide for beginers (Viktor Pyskunov)
 
 Javacsript course-
 1)JavaScript projet games 55 moden js DOM ES6

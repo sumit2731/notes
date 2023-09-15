@@ -16,9 +16,16 @@ import { expect, it } from "vitest";
 
 
 const coerceAmount = (amount: number | { amount: number }) => {
+  /**
+   * Here ts figures out which type in union will staisfy this condition.
+   */
   if (typeof amount === "number") {
     return amount;
   }
+  /**
+   * Here ts also figures out for which part of union we will reach here and gives us intellisense accordingly.
+   * It knows that it will reach here if number is not of type number, then it will be of second type mentioned in union
+   */
   return amount.amount;
 };
 const coerceAmount2 = (amount: number | { amount: number }) => {

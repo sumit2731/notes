@@ -1,3 +1,4 @@
+import { error } from "console";
 import { expect, it } from "vitest";
 
 const tryCatchDemo = (state: "fail" | "succeed") => {
@@ -7,7 +8,9 @@ const tryCatchDemo = (state: "fail" | "succeed") => {
     }
   } catch (e) {
     /**
-     * @desc not best solition as e can be something else, in that case we will end up retuning undefined
+     * @desc not best solition as we can be something else, in that case we will end up retuning undefined.
+     * Actually in production we can throw anything as condition in try will be more complicated.so ny using this solution
+     * we will end up returning undefined
      */
     return (e as Error).message;
   }
