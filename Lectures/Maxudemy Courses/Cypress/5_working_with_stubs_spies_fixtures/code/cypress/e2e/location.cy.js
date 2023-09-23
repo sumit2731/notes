@@ -6,7 +6,7 @@ describe("share location", () => {
     console.log("Inside then");
     cy.clock();
     /**
-     * Loads the json from provided file and converts it into js bjevt
+     * Loads the json from provided file and converts it into js object
      */
     cy.fixture("user-location.json").as("userLocation");
     /**
