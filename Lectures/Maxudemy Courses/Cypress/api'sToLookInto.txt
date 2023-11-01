@@ -1,0 +1,15 @@
+1)Ways to get access to button text
+
+    way1 - (then)
+        cy.get('button').then(($btn) => {
+            // redefine text reference
+            text = $btn.text()
+        })
+
+    way 2-
+        (invoke)
+
+        beforeEach(() => {
+            // alias the $btn.text() as 'text'
+            cy.get('button').invoke('text').as('text')
+        })

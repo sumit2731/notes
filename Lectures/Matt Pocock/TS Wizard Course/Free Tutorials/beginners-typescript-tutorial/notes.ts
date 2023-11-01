@@ -35,6 +35,10 @@ const multiply2 = (a: number, b: number): number => {
   return 1;
 };
 
+/**
+ * See Third problem in hooks section of React.While specifying the type of function, we will not get errors
+ * even if return object has some extra properties 
+ */
 const multiply3: (a: number, b: number) => number = (a, b)  => {
   return 1;
 };

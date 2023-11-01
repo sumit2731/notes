@@ -10,7 +10,7 @@ interface ButtonProps {
    * We copied this type from by hovering over onClick prop of button element.
    * 
    * 
-   * You can use React.MouseEventHandler<HTMLButtonElement> or you can us eless specififc type like React.MouseEventHandler.
+   * You can use React.MouseEventHandler<HTMLButtonElement> or you can us less specififc type like React.MouseEventHandler.
    * In Parent component when we define onClick function, This generic type passed to React.MouseEventhandler is type of e.
    * currentTarget,IF you do not provide anything then type of e.currentTarget is HTMLElement.
    * we get these types propagated to first argument,i.e e.currentTarget

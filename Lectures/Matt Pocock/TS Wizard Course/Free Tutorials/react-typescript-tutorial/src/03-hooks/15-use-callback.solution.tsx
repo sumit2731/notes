@@ -13,9 +13,10 @@ export const Buttons = (props: { id: string }) => {
    * 
    * There 2 ways to solve this, 
    * 
-   * a)First way is we give argtype and return to passed function, this way our return type also will have more 
-   *  strict type.So here ts assigns the type thatb is passed into it as T and assigns it to function that is returned from
-   * it. 
+   * a)First way is we give argtype and return to passed function. his was typescript will have value of generic.
+   * and same type it will assign to return type of useCallBack
+   * What we're seeing here is that useCallback takes in the function that's passed in, infers its types, and then uses 
+   * that as the thing that gets returned.
    */
   const onClick = useCallback(
     (buttonName: string) => {
@@ -26,7 +27,7 @@ export const Buttons = (props: { id: string }) => {
 
   /**
    * @way2 - here we specifically assign a type to generic.even if actual function type is different, type given
-   *  to generic prevails.Please keep in mind that fdirst way is preferred.
+   *  to generic prevails.Please keep in mind that first way is preferred.
    */
   const onClick2 = useCallback<(buttonName: string) => void>(
     (buttonName: string) => {
@@ -35,10 +36,6 @@ export const Buttons = (props: { id: string }) => {
     },
     [props.id]
   );
-
-  /**
-   * Second Way - Give more specific type to 
-   */
 
   type test = Expect<Equal<typeof onClick, (buttonName: string) => void>>;
 

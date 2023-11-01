@@ -1,0 +1,29 @@
+Accessing properties and methods on yielded methods -
+
+    a)invoke - Invoke a function on the previously yielded subject.
+        cy.get('.input').invoke('val').should('eq', 'foo')
+
+
+        beforeEach(() => {
+            // alias the $btn.text() as 'text'
+            cy.get('button').invoke('text').as('text')
+        })
+
+        it('has access to text', function () {
+            this.text // is now available
+        })
+
+    b)its - access the proeprty on previous wielded object
+
+
+    b)wrap - Yield the object passed into .wrap(). If the object is a promise, yield its resolved value.
+
+
+
+
+
+
+
+
+
+    

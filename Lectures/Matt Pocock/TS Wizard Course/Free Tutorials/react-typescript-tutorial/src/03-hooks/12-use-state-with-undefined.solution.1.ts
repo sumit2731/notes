@@ -12,10 +12,12 @@ const fetchData = () => {
 
 export const Component = () => {
   /**
+   * Instead of being inferred as never[] like we saw last time, data is being inferred as undefined.
    * If we do not pass any value to useState and give it a type, then type of state variable is Data|undefined.
-   * if we want to give other value like null, we need to give this type explicit to useState like Data|null.
+   * If we want to give other value like null, we need to give this type explicit to useState like Data|null.
    * and infered type will also be Data|null, undefined will not be included now
    */
+  //const [data, setData] = useState();
   const [data, setData] = useState<Data>();
 
   useEffect(() => {

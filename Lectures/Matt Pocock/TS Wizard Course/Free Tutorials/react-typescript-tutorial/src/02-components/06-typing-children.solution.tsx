@@ -10,6 +10,7 @@ const Parent = () => {
       {/* @ts-expect-error */}
       <Button></Button>
       <Button>Hello world!</Button>
+      <button><span>This is Button</span></button>
     </>
   );
 };

@@ -5,6 +5,11 @@ interface TagState {
   tags: { id: number; value: string }[];
 }
 
+/**
+ * Problem - In First spelling of tagesSelecteed is wrng, but we are not getting an error
+ * 
+ * In second case a extra proeprty is being passed, still no error
+ */
 export const Tags = () => {
   const [state, setState] = useState<TagState>({
     tags: [],

@@ -24,15 +24,19 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-
-Cypress.Commands.add('submitForm', () => {
-    cy.get('form button[type="submit"]').click();
+Cypress.Commands.add("submitForm", () => {
+  cy.get('form button[type="submit"]').click();
 });
 
+/**
+ * Now a query is like a command, but one core difference is that it's a retryable function that can be retried
+    by Cypress whilst it's, for example, waiting for the visibility of a certain element.
 
-Cypress.Commands.addQuery('getById', (id) => {
-    const getFn = cy.now('get',`[data-cy="${id}"]`);
-    return () => {
-        return getFn();
-    }
-})
+    Function retruned by query is retried by cypress
+ */
+Cypress.Commands.addQuery("getById", (id) => {
+  const getFn = cy.now("get", `[data-cy="${id}"]`);
+  return () => {
+    return getFn();
+  };
+});

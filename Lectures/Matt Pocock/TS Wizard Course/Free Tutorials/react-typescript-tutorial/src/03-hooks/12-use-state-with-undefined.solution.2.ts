@@ -11,6 +11,9 @@ const fetchData = () => {
 };
 
 export const Component = () => {
+  /**
+   * If we manually want to pass undefined value then we need to give that type as genertic to use state
+   */
   const [data, setData] = useState<Data | undefined>(undefined);
 
   useEffect(() => {

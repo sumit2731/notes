@@ -2,9 +2,7 @@ visisting page -
 
 
     1)cy.visit('url')
-        visist a webpage, implicit assertion.
-
-        see this blog for advance useage of this - https://www.cypress.io/blog/2018/02/05/when-can-the-test-start/
+        
 Finding element -
 
     2)cy.get("css selector")
@@ -22,20 +20,43 @@ Finding element -
                     b)use find after get - 
                         cy.get(.main-header).find('img')
 
-                        find can only be used after using get.
+                        find can only be used after using get.(it can only be chained to already found element)
+                        Get the descendent DOM elements of a specific selector.
                         wrog way of doing it -
                             cy.get('.main-header').get('img')
 
-                            finds mian-header and then finds img , img is serached in root element, not inside .main-header
+                            finds mian-header and then finds img , img is searched in root element, not inside .main-header
 
                     c)after get use contains -
-                        cy.get('Some css Selector').contains("Texxt on nexted element")
-                            this returns the nested element, so you can do some operations on this
+                        cy.get('Some css Selector').contains("Texxt on nested element")
+                            this returns the element with found text inside element returned by cy.get
+
+                            cy.contains returns the found element, so we can do operations on that
+
+                        You can call contains on cy also, this will look for element in root node like this -
+
+                            cy.contains('some text)
+
+                        note that .contains can never be called on non-dom element like this -
+                            cy.title().contains('My App') // Errors, 'title' does not yield DOM element
+                            cy.getCookies().contains('_key')
+                        
+                        also contains can take additional argument which is selector of element.
+
+                        however this looks only inside a element -
+
+                            cy.contains('Delete User').click().contains('Yes, Delete!').click()
+
+                    d)use get commands in within -
+                        cy.get('form').within(() => {
+                            cy.get('input').type('Pamela') // Only yield inputs within form
+                            cy.get('textarea').type('is a developer') // Only yield textareas within form
+                        })
 
                 b)asserting on text of found element -
 
                     1)cy.get('h1').contains("My Cypress Course Tasks");
-                    checks if found has elment has given text and returns the element
+                    checks if found has element has given text and returns the element
 
                 c)checking that element shoud not exists -
                     cy.get('.backdrop').should('not.exist')
@@ -44,6 +65,13 @@ Finding element -
                     cy.get('someSelector').first()
                     cy.get('someSelector').last()
                     cy.get('.task').eq(index)
+
+                    cy.get('.nav').then(($nav) => {}) // Yields .nav as first arg
+
+                    cy.get('button').then(($btn) => {
+                        const cls = $btn.attr('class')
+                        cy.wrap($btn).click().should('not.have.class', cls)
+                    })
 
                 e)saving element returned by query. you can use alias to save the element returned by get
 
@@ -60,16 +88,65 @@ Finding element -
                 d)getting parent and children -
                     cy.get('selector').parent()
                     cy.get('selector').children()
+                
+                e)assertions on elements found by .get -
+                    cy.get('input').should('be.disabled')
+                                    .should('be.visible')
+                                    .and('have.attr', 'href')
+                                    .should('contain', 'Edit User')
+                                    and('not.include', '#')
+                    cy.get('ul li:first').should('have.class', 'active')
+                    cy.get('input[name="firstName"]').should('have.value', 'Homer')
+                    cy.get('header').contains(user.name)
+                    
+
 
         b)getting alias object, alias can also refer to non dom elments like stubs,fixtures etc.
 
             cy.get("@aliasName")
 
+        c)getting access to element returned by get -
+            
+            a)cy.get('form').within(($form) => {
+                // ... more commands
+
+                cy.wrap($form).should('have.class', 'form-container')
+            
+            })
+
+            b)
+                cy.get('.list')
+                .first()
+                .within(($list) => {}) //  Yield the first `.list` and scope all commands within it
+
+            c)
+                cy.get('button')
+                .then(($btn) => {
+                    const cls = $btn.attr('class')
+
+                    cy.wrap($btn).click().should('not.have.class', cls).find('i')
+                    // since there is no explicit return
+                    // the last Cypress command's yield is yielded
+                })
+                .should('have.class', 'spin') // assert on i element
+
+            d)   cy.get('form')
+                .then(($form) => {
+                    console.log('form is:', $form)
+                    // undefined is returned here, but $form will be
+                    // yielded to allow for continued chaining
+                })
+                .find('input')
+                .then(($input) => {
+                    // we have our $input element here since
+                    // our form element was yielded and we called
+                    // .find('input') on it
+                })
 
 
     3)cy.contains("some text") or called on element returned by cy.get("some css selector")
 
-        When called on cy searchs for elements with text on etire doc.
+        When called on cy searchs for elements with text on entire doc.
         when called on cy.get(''), searchs for element with given text inside element returned by cy.get('') only
 
         Checks if any element with given text is present.This has implicit assertion.
@@ -78,14 +155,27 @@ Finding element -
 
         see docs to see how we can control which element is retruned by using 2 arguments
 
+    4).within - Scopes all subsequent cy commands to within this element. Useful when working within a particular group of 
+        elements such as a <form>.
+        Pass a function that takes the current yielded subject as its first argument.
 interacting with BOM -
 
     1)cy.location() - Gives us information about location we are currently on our website
-        cy.location('pathname').should('eq',3)
+        cy.location('pathname').should('eq', '/takeaways');
 
     2)cy.go() - go back and forward in browser
         cy.go('back')
         cy.go('forward')
+
+    3) cy.visit("/signup");
+        Users navigates to required url.
+
+        visit a webpage, implicit assertion.
+
+        see this blog for advance useage of this - https://www.cypress.io/blog/2018/02/05/when-can-the-test-start/
+
+        here you can also get access to window object object , which is useful for stubiing, see .then section of notes and 
+        location.cy of section 5.
 Explicit assertions -
 
 
@@ -111,7 +201,8 @@ User interactions -
 
         2)element.type("text content") - types text in textINput or textArea
             pressing special keys -
-                cy.get('[data-cy="contact-btn-submit"]').should('be.disabled')  
+                cy.get('#password').type('password123{enter}')
+                cy.get('input').type('{ctrl}test').type('everything') 
 
         3)selectElement.select("visisbleText or value field")
 
@@ -139,6 +230,8 @@ Assertions -
                 b).should(callbackFn)
                     el.should(el => {
                         expect($el).to.have.class('foo')
+                        expect(el.attr('disabled')).to.be.undefined
+                        expect(el.text())to.eq('SEnd Message')
                     })
 
                     cypress commands should not be used inside should
@@ -149,7 +242,8 @@ Assertions -
 
             return value -
                 in first form most of cases it returns value yielded from previous command. but in some cases a new value is returned.
-                    see 5th testcase in contact.cy in section 3. for more details see docs.
+                    see 5th testcase in contact.cy in section 3(lecture 44-46), here should yields the class attributes. for more details
+                    see docs.
                 In callback form it always returns the value yielded from previous command
                 should returns something, it returns a value that makes sense for the assertion you ran before.
         b)then - .then(el => {}) is chained after other cypress queries to get direct access to subject of those quesries.
@@ -162,34 +256,80 @@ Assertions -
         Any type of assertion that can be done with should can be done with expect also. Here are differences -
             a)should is reccommended way.but should is avalaible on cypress chainable object like cy.get()
             b)should assertions are retried until they pass or timeout. both with chainers and callback syntax.
-            c)inside .then and callback variant of should, you cannot use should ob argument passed to callback.as should can be called on 
-                chainable objects, returned by cypress objects.so we use expect(expect is globally avalaible)
+            c)inside .then and callback variant of should,and inisde within callback, you cannot use should on argument passed to callback.as should can be called on 
+                chainable objects, returned by cypress objects.so we use expect(expect is globally avalaible).see lecture 36
                 
             then should be used when - 
                 
-                    a)we want to modify result of previous query before query
+                    a)we want to modify result of previous query before running next query, because then callbacks runs only once,
+                        while should callback is retried.
                     b)we want to execute logic only once.(lecture 39 explains this point)
+
+
+
+
+        Also inside then block if we want to use should asesrtion, we can wrap the object using cy.wrap
+
+            cy.get('form').within(($form) => {
+                // ... more commands
+                cy.wrap($form).should('have.class', 'form-container')
+            })
 
 its - Get a property's value on the previously yielded subject. then it can all assertion on that
     cy.window().its('sessionStorage')
 
-    useage  -
+    useage  - (see docs)
 
         a)cy.wrap({ age: 52 }).its('age').should('eq', 52) // true
-        b)cy.wrap(['Wai Yan', 'Yu']).its(1).should('eq', 'Yu') // true
         c)cy.get('ul li') // this yields us a jquery object
             .its('length') // calls 'length' property returning that value
             .should('be.gt', 2)
-        d)get response form cy.request
+        d)get response form cy.request(cy.request makes call to backend api directly)
+                        
             cy
             .request(...)
             .its('body.user')
             .then(user => ...)
 
+                OR
+
+            cy
+            .request(...)
+            .its('body')
+            .then(({user}) => ...)
+
+        e) from code - 
+        
+            cy.getCookie("__session").its("value").should("not.be.empty");
+        
+        
+        f)Here we intercept a request and assert on what is being sent in body of request(lecture 6, takeaways.cy.js)
+
+                cy.intercept("POST", "/takeaways/new*", "success").as("createTakeaway");
+
+                cy.wait("@createTakeaway")
+                    .its("request.body")
+                    .should("match", /TestTitle1.*TestBody1/);
+
 
         e)spy whether some method/prpeprty on window object is called
         
             cy.window().its('fetch').should('be.calledWith', '/favorite-fruits')
+
+        f)from docs (Wait for some property to exist on window) - 
+
+            cy.window()
+                .its('globalProp')
+                .then((globalProp) => {
+                    // do something now that window.globalProp exists
+                })
+
+            This works because .its() will automatically retry until it has a property that is not null or undefined.
+
+
+        g)assert property does not exist on window object -
+            cy.window().its('evilProp').should('not.exist')
+
 
 
         How to get nsted proeprties -
@@ -229,11 +369,11 @@ then -
 screenshots -
     cy.screenshot() - takes screenshot while running "cypress run"
 
-
-adding wait to test -
-
-    cy.wait(timeInMs)
-
+cy.wait -
+    a)cy.wait(number)
+    b)cy.wait(@aliasname) - we give alias to request intercepting.
+        then we can wait in code until we get response from code.to get response from that call.
+        see takeaways.cy.ts and newsletter.cy.js in section 6.
 
 cy.now -
     will execute a cypress function immediately instead of creating a query. used while creating custom queries.
@@ -268,6 +408,9 @@ cy.stub -
     functions that can be called on stub -
         a)callsFake(fn) - used to give fake implementation to stub
         b)resolves() - stub returns a promise that is resolved immediately
+        c)return -
+
+        see this guide - https://docs.cypress.io/guides/guides/stubs-spies-and-clocks
 
     asesrtions on stub -
 
@@ -292,8 +435,6 @@ cy.intercept -
         up your interceptor,Cypress will step in and intercept that request.That's why it makes sense to set this up early in the test.
 
 
-
-cy.wait -
 alias -
     1)document element
         see lecture 35 notes.
@@ -301,7 +442,8 @@ alias -
     2)stub can be saved into alias and then we can use get to get hold of that stub be refering to its alias.
         in sction 5, see first test in location.cy.js
 
-    3)we can lod fixture data in test and assign them alias, so that later they can be used in test.
+    3)we can lod fixture data in test and assign them alias, so that later they can be used in test.we can either use them to
+        to provide response of intercepted request or to use that object inside code
         see location.cy.js in secton 5.
 
     4)we can intercept the api call and wait for cypress to intercot befire moving ahead. this also done with the help of alias
@@ -318,3 +460,6 @@ cy.getCookie("name of cookie")
     cy.getCookie('__session')
 
     see docs to see proeprties
+
+cy.clock() -
+    section 5 ,location.cy.js

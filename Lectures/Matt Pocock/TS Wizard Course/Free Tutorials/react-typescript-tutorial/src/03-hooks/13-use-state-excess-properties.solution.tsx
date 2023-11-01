@@ -6,6 +6,7 @@ interface TagState {
 }
 
 /**
+ * See Coiurse Video
  * In TypeScript, you are allowed to pass excess properties from the return values inside functions.
  * 
  * With the above in mind, when we pass a function to our setState call here, we're allowed to return excess 
