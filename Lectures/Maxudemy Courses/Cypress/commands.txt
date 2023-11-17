@@ -25,10 +25,10 @@ Finding element -
                         wrog way of doing it -
                             cy.get('.main-header').get('img')
 
-                            finds mian-header and then finds img , img is searched in root element, not inside .main-header
+                            finds main-header and then finds img , img is searched in root element, not inside .main-header
 
                     c)after get use contains -
-                        cy.get('Some css Selector').contains("Texxt on nested element")
+                        cy.get('Some css Selector').contains("Text on nested element")
                             this returns the element with found text inside element returned by cy.get
 
                             cy.contains returns the found element, so we can do operations on that

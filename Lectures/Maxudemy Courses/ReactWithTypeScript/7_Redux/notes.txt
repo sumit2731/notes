@@ -1,0 +1,2 @@
+main files to check - cart-slice.ts, hooks.ts
+In notes.txt see main types used in redux setup.
