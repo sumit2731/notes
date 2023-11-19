@@ -56,6 +56,8 @@ function multiply(a: number, b: number): number {
   return a * b;
 }
 
+const multiply2 = (a: number, b: number): number => a * b;
+
 /**
  * Defining function types.
  * here we defined a function type, and then gave that type to a parameter.
@@ -77,7 +79,7 @@ interface functionType2 {
   (a: number, b: number): number;
 }
 
-//defining function type inside a object via interface
+//defining function type inside a object via interface (Not covered in course)
 
 interface customInterface {
   callback(a: number, b: number): number;
@@ -156,6 +158,10 @@ methods to it.Now you might wonder why I would do it like this and not just add 
 are, for example,creating a library which you are sharing with other developers from all over the world,and you have 
 your interface definition in some part of your library, but you want to allow those developers to easily extend your
 interface. With that feature, which is called declaration merging.
+
+Extra from course - Another feature is you can define interface and class with same name, their types will
+ be merged under same name. see Component type (used in JSXElementConstructor) in ReactTypes. see 
+ importantTypes.ts of Section 3.
 
 In basically all other scenarios,and therefore, in the end, in most use cases.it therefore doesn't matter. if you use
 interface or type and you can use whatever you prefer.
