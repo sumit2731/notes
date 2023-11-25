@@ -19,6 +19,8 @@
 /**
  * Now any object can be assign to this we will get error if we try to assign non object type.
  *
+ * object simply represents non primitive values, meaning NOT number, string, symbol, null, boolean, undefined or bigint. (ref)
+ *
  * we can even assign empty object to this
  */
 let user: object;
