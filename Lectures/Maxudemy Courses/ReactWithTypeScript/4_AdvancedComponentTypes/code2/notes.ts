@@ -39,20 +39,63 @@
  *
  *
  *
- * Here we wanted to build a component that renders either button or anchor. also props that it accepts should be set accordingly
- * while rendering button it should accepts props that are valid for native button and vice versa.
+ * Here we wanted to build a component that renders either button or anchor. also props that it accepts
+ * should be set accordingly while rendering button it should accepts props that are valid for native button
+ * and vice versa.
  *
  * see code2/src/components/Button.tsx
  *
  * here we combined DiscrinatedUnion and ComponentPropsWithoutRef utility to achieve same.
  * see App.tsx, after passing el ="button" we cannot pass any prop that does snot belong to HTMLButton.
- * THis is only possible with DiscrinatedUnion and not with normal Union, see DummyComponent.tsx for that.
+ * This is only possible with DiscrinatedUnion and not with normal Union, see DummyComponent.tsx and its
+ * useage in App.tsx here we are able to pass props that are not valid.
+ *
+ * This component also accepts a Union type prop, but does not provide level of type checking that we get
+ * with discriminted union.
  *
  */
 
 /**
- * Solution to above problem is great but tiny downside is that we always have to pass el prop, which is extra.
+ * 
+ * code 2
+ * Solution to above is great but tiny downside is that we always have to pass el prop, which is extra.
  * see alternate approach in code2/src/components/Button2.tsx
  *
- * more notes to be added
+ * there also we had 2 approaches. see code comments
+ *
+ * with second approach our code is working but down side of this approach is that while using that component
+ * we do get type errors, for example these combinations are possible(see figure 4) -
+ *      <Button2 target="some target">A Button</Button2>
+        <Button2 href="https://google.com" disabled={true}></Button2>
+ *
+ *
+ * Now I am not getting any support because of course when I'm using the button component,TypeScript just
+ * knows that we can set either button or anchor props. So by default, it accepts both. And that's why I can
+ * mix and match those different props.
+ * 
+ * @never type to ensure that a property is never present in type in union
+ * to fix it we used :never type. see second half of lecture 53 for this.
+ */
+
+/**
+ * Code 2 -
+ *
+ * lectures - 53,54,55
+ *
+ *
+ * src/component/Container.tsx
+ *
+ * here we defined a polymorphic component, i.e component that warps a another component.
+ * then we added types such that correct props should be passed depending upon which component
+ * is rendered. this was done generics
+ *
+ * concepts learned -
+ * ElementType type
+ * generics in component
+ *
+ *
+ * also in lecture 55 max has some examples of dynamic component. these are coded in src/examples
+ *
+ * see List component to see how we can use generics in components.
+ *
  */

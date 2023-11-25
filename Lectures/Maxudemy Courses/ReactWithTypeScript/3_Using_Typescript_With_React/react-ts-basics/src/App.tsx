@@ -15,12 +15,12 @@ export default function App() {
    * When we do not give any value to useState. type of state inferred is undefined. as a result later we
    * cannot give it any other value
    *
-   * However if we do give initial state then correct type is infered by ts.
+   * However if we do give initial state then correct type is inferred by ts.
    *
    * however in case of arrays if we give empty array then type infered is never[]. so later later you cannot
    * assign any value. so we should give correct type to useState
    *
-   * we we give genric type to useState but does provide initia value then sttate type will be-
+   * If we give generic type to useState but does provide initial value then state type will be-
    *  ProvidedType| undefined
    */
   // const [goals, setGoals] = useState();

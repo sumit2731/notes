@@ -12,7 +12,7 @@ import { ReactNode } from "react";
 /**
  * @Way2 - Use Descrinated union
  * 
- * discriminated union feature,where you build different objects with an identification property,
+ * discriminated union feature,where you build different objects with an identification property(propert is present in all union values but value is different in each value),
     the mode property in this case, and you then require different other properties depending on that
     mode property, that's a really useful feature and pattern which allows you to build way more 
     flexible components and, in general, in TypeScript, allows you to write more flexible code.

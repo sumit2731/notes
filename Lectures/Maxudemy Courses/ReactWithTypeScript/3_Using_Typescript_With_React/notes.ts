@@ -2,7 +2,7 @@
  * Creating new ts project -
  *
  *  npm create vite@latest react-ts-basics
- *  then sellect react, then select typecsript
+ *  then select react, then select typecsript
  */
 
 /**
@@ -28,7 +28,7 @@
  * @PropType and @children PropType
  * See CourseGoal component to see how to give type to props and especially to children prop.
  *
- * lecture 33 explain how key props can be assigned to compoent even if you dnt specify it in
+ * lecture 33 explain how key props can be assigned to component even if you dnt specify it in
  * props type.
  *
  * also we saw how we can use special type PropWithChildren to define prop type with children property.
@@ -53,7 +53,8 @@
  *
  * event.target gives HTMLElement of type - ElementTypeOnWhichEventoccured.
  * if we do not specify anytype, then even.currentTarget is HtmlElement. In out Cases generic type T will be HTMLButtonElement
- *  and HTML FormElement
+ *  and HTML FormElement. just define a callback whose first params if of type -  EventType<ElementTypeOnWhichEventoccured>
+ * these types can be imported from react
  *
  *
  * New Goal.tsx - here we defined a eventHandler for onSubmit on form. but problem is how to define type of

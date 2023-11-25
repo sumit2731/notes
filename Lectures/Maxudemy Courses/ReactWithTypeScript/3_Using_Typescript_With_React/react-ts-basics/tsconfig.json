@@ -5,7 +5,7 @@
     /* 
     Specifies which base types should be avalaible in typescript in general
     for example,we get HTMLElement type
-    here we unlcok some Javascript basetypes and some DOM specific base types (HTMLButtonElement, HTMLFormElement)
+    here we unlcok some Javascript base types and some DOM specific base types (HTMLButtonElement, HTMLFormElement)
     */
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",

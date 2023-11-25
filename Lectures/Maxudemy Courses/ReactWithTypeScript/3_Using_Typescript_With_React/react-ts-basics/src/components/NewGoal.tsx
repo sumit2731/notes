@@ -38,7 +38,10 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //to use type of currentElement should be HTMLFormElement
+    /**
+     * This will return a object whose key will be name attribute given to each form field
+     * value will be value of that form field
+     */
     //const formData = new FormData(event.currentTarget)
 
     /**

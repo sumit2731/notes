@@ -9,7 +9,7 @@ type CourseGoalsProps = {
 
 /**
 You will see both approaches out there in the wild in react and TypeScript projects
-and whilst you will read a lot of opinions on thatin the end it will come down to
+and whilst you will read a lot of opinions on that ,in the end it will come down to
 your personal preference, which approach you prefer unless you are working on some
 library which you plan on distributing to other developers,in which case you might
 wanna prefer an interface because it's a bit more extensible
@@ -17,7 +17,7 @@ wanna prefer an interface because it's a bit more extensible
 interface CourseGoalsProps2 {
   id: number;
   title: string;
-  description: string;
+  children: ReactNode;
   /**
    * this is how we define property which is function is interface
    */
