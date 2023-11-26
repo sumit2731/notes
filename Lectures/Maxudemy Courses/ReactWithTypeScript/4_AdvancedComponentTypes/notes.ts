@@ -80,6 +80,9 @@
 /**
  * Code 2 -
  *
+ * @PolymorphiceComponent
+ * @ElementType
+ *
  * lectures - 53,54,55
  *
  *
@@ -97,5 +100,46 @@
  * also in lecture 55 max has some examples of dynamic component. these are coded in src/examples
  *
  * see List component to see how we can use generics in components.
+ *
+ */
+
+/**
+ * @Passing 'ref' prop to functional components
+ *
+ * code2
+ *
+ * src/components/InputWithRef
+ *
+ * In order to use pass ref in functional components, we need to use forwardRef. otherwise we get error
+ * see figure 5. also see comments in  in InputWithRef.jsx
+ */
+
+/**
+ * @FormWrapperComponent
+ *
+ * lecture 59
+ * code2
+ *
+ * src/components/Form.tsx
+ *
+ * here we built a formComponent that wraps all chiildren passed to it and then handles the submit event.
+ * OnSubmit event it shuld call the callback passed to it with form data. but trick here was data of form cannot be
+ * know in Form component as it is dynamic.
+ *
+ * Concepts learned -
+ *     a)In FormComponent we were not sure about type of data so we passed unknown but later in App.tsx,
+ *      we realized that we know the type,so we used typecasting to give it a type. also we saw how we
+ *      we can use typeguards for same. see code2/src/App.tsx
+ */
+
+/**
+ * @FormWrapperComponent - Enhancement
+ *
+ * code - src/component/Form2.tsx
+ *
+ * here we exposed a custom api from FormComponent using useImperativeHandler and then assigned type
+ * to refrence of our custom Component
+ *
+ *
  *
  */
