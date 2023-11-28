@@ -10,6 +10,6 @@ export async function get(url: string) {
     you can access any property without an error.With unknown, you will instead get an error if you try to access a property TypeScript doesn't know about.
     So you get more type safety when using unknown,because it will force you to then, at some point,explicitly set your own types.
    */
-  const data = (await response.json()) as any;
+  const data = (await response.json()) as unknown;
   return data;
 }
