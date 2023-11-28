@@ -11,9 +11,9 @@ export default function Timer({ name, duration }: TimerProps) {
    * Give function overloads for useRef
    * solution - keep type of default value and generic same. so to generic we give union value.
    * we will not face this issue when assigning ref to dom elements, we only face this when we use
-   * ref to store vaue by ur own.
+   * ref to store our own value
    */
-  //const timerIntervalRef = useRef<number>(null);
+  // const timerIntervalRef = useRef<number>(null);
   const timerIntervalRef = useRef<number | null>(null);
   const [remainingTime, setRemainingTime] = useState(duration * 1000);
 
