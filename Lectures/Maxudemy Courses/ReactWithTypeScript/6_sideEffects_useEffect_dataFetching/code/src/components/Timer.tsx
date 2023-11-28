@@ -39,6 +39,9 @@ export default function Timer({ name, duration }: TimerProps) {
     if (isRunning) {
       timer = setInterval(() => {
         setRemainingTime((prevTime) => {
+          /**
+           * When you stop & restart the timers, any timers that did already expire will restart for "one tick" and will therefore be reduced by 50ms.
+           */
           if (prevTime <= 0) return prevTime;
           return prevTime - 50;
         });
@@ -46,10 +49,8 @@ export default function Timer({ name, duration }: TimerProps) {
       timerIntervalRef.current = timer;
     } else if (timerIntervalRef.current) {
       //! sign at the end tells that value is not null
-      return () => {
-        clearInterval(timerIntervalRef.current!);
-        // timerIntervalRef.current = null;
-      };
+      clearInterval(timerIntervalRef.current!);
+      // timerIntervalRef.current = null;
     }
     return () => clearInterval(timerIntervalRef.current!);
   }, [isRunning]);
