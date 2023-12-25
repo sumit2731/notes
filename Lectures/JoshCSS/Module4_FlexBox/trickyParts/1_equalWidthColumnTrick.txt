@@ -1,0 +1,33 @@
+1)in lecture 3.2, we saw concept of flex:1 that makes equal size columns.
+    this tricks sets the flex-basis to 0 , then because of flex-grow all columns ends up having equal width.
+
+    but flex-basis cannot set the width lesser then minimum content,how does this works?
+
+    See second video of exercise in 3.2
+
+    answer to that is this min-width is given from flex-grow.
+
+    consider case where are 2 columns and column1 has very large text and column2 has very small content.
+    now even flex-basis is 0 but since flex-basis cannot set width/heigh smaller than minimum width, columns
+    will have width according to its minimum content(this is taken from flex-grow). 
+    
+    so at very small widths width of column1 will be more than column2(if required we will have a scroll bar).
+    since both of columns had flex-basis:0,these widths are because of flex-grow. but as flex-grow is same 
+    and ratio should remain same, flexbox tries to do same. with further width increase of container.it keeps
+    width of one item constant and given all width to other one until width because of flex-grow become equal.
+
+    now as width of container increases second column2 width will keep on increasing and column1 width will 
+    remain equal.this continues upto point when both columns have equal width, now ratios of width taken 
+    because of flex-grow is same.now with further increase in width both columns get equal share hence 
+    columns have equal width.
+
+
+    Implications -
+        That means width of columns will be equal when width of container is greater than 
+        (max minColumnWidth of all columns) * number of columns.
+
+    
+
+
+2)to further support this statement consider case,when one column has flex-grow: 1 and other one has
+    flex:1. see code in folder2

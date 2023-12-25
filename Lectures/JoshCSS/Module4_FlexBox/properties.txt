@@ -43,3 +43,10 @@ Properties of flex-items -
 
     flex: flex-grow flex-shrink flex-basis; (note second and third values are optional, but even using flex property sets the 
         flex-basis to 0%)
+
+
+        when we set a single value for flex -
+
+        flex: 1 => flex-grow: 1, flex-basis: default value(which is 1), flex:basis (0)
+
+        flex: 1 2 => flex-grow: 1, flex-shrink: 2, flex-basis: 0%

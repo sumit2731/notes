@@ -1,0 +1,5 @@
+In lecture we saw that margin:auto centers the flex-item in main axis(both horizontal and vertical). but thing to be 
+    noticed is that it also aligns the flex-items in cross axis. but alike align-item it does so in individual rows.
+
+
+In course it is covered in section 5. see example and exercise.

@@ -14,10 +14,10 @@ Exercise 1 -
 
 Exercise 2(imp) -
     Problem -
-        1)we have 3 columns as shown in video. when one column disappears, then for some time, right side bar should shrink.
-            after some shrinking, then it stops and then middle columns starts shrink.middle content is main area.
-        2)At very large width only middle one shrinks. but after shrinking for some time, then main stops and nav and aside
-            one starts shrinking.
+        a)when only two columns are remaining, on shrinking -
+            a)Initially only second column shrinks, while first remains same.
+            b)Then only first column shrinks, second one remains constant.
+
 
     Solution -
         why one column stops shrinking(main column is not shrinking for some time when first column disappears) -

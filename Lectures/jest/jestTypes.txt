@@ -1,0 +1,14 @@
+1)when we mock functions in file, we need to give type to these functions especially when we spy 
+    these and want to mock a return value.
+
+    const mockedGetCommandDefinitionsAction = jest.spyOn(
+        CommandActions,
+        'getCommandDefinitionsAction'
+    ) as unknown as jest.Mocked<() => { type: string }>;
+
+
+    file DeviceLogs.test.tsx
+
+
+2)fake timers -
+    DeviceLogs.tes.tsx

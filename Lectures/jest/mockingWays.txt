@@ -1,0 +1,55 @@
+
+mocking using __mocks__ folder -
+    a)fr user defined modules -
+        a)create file under same directory but under __mocks__ folder.
+
+            for models/user.js -> models/__mocks__/user.js
+
+        b)In test you need to call jest.mock('./moduleName')
+
+
+    b)mocking node modules
+        a)__mocks__ folder should be created adjacent to node_modules folder or in a path which is specified
+            in roots variable in jest config.
+
+            to mock lodash.js -> __mocks__/lodash.js
+
+        b)There's no need to explicitly call jest.mock('module_name').
+
+
+    c)mocking built-in nodejs modules
+
+        a)define a file with same name in your main folder under __mocks folder -
+
+            src/__mocks__/fs.js
+
+        b)In test you need to call jest.mock('moduleName')
+
+
+
+Defining mocks in files - 
+
+        c)Inside these files you can use -
+            const fs = jest.createMockFromModule("fs");
+
+            now provide your own implementation for some functions and export fs
+
+Using with ES module imports
+
+Mocking methods which are not implemented in JSDOM
+
+
+
+jest.mock('') - tells jest to use automock defined above
+    In order to mock properly, Jest needs jest.mock('moduleName') to be in the same scope as the 
+        require/import statement.
+jest.unmock - use when automock is set to true but you want to use actual module
+
+jest.requireActual(moduleName)
+
+
+refrence to other sections -
+    Using with ES module imports
+
+   https://jestjs.io/docs/ecmascript-modules
+

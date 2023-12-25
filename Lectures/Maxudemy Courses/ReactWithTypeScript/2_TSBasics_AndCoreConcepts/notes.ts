@@ -57,7 +57,6 @@ hobbies = ["coding", "music"];
 function multiply(a: number, b: number): number {
   return a * b;
 }
-
 const multiply2 = (a: number, b: number): number => a * b;
 
 /**
@@ -71,6 +70,7 @@ type functionType = (a: number, b: number) => number;
 //defining function type inside object type
 type customType = {
   callback: (a: number, b: number) => number;
+  callback2(a: number, b: number): number;
 };
 
 /**
@@ -85,6 +85,7 @@ interface functionType2 {
 
 interface customInterface {
   callback(a: number, b: number): number;
+  callback2: (a: number, b: number) => number;
 }
 
 function calculate(a: number, b: number, calcFn: functionType) {

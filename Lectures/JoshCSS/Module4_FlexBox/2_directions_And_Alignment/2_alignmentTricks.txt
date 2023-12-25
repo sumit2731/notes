@@ -17,9 +17,3 @@ exercise 1 -
         so now bigger item is centered, in inner flexbox use align-items:center.
     
     mathematical centering vs optical centering(in line more space is left at top than bottom)
-
-align-self proeprty
-
-why justify-self does not exist -
-    We can solve for primary-axis positioning using other properties we'll discover, like flex-grow, flex-shrink, flex-basis, 
-        and order. These properties offer much more flexibility than justify-self would. also we have margin trick.

@@ -1,29 +1,38 @@
-1)when flex-box does not have enough space to fit all items, all items begin to shrink. but they do not shrink below their min-width/
-    min-height. in case of text only content ,this is length of longest word. multi word text starts getting splitted into 
-    multiple lines.there are 2 types of sizes -
+1)when flex-box does not have enough space to fit all items, all items begin to shrink. but they do not 
+    shrink below their minimum size. in case of text only content ,this is length of longest word.
+    multi word text starts getting splitted into multiple lines.there are 2 types of sizes -
 
-    hypothetical size - Hypothetical size of flex-items if it is not acted by any other force. these proeprty specify hpothtical size -
-        flex-basis
-        width
-        width of content if above 2 are not specified
+    hypothetical size - Hypothetical size of flex-items if it is not acted by any other force.these flex 
+        properties specify hypothetical size -
+            flex-basis (high priority that width)
+            width
+            width of content if above 2 are not specified
 
         now if there is enough space in conatiner then this hypothtical size is actual size, but when container size is not
-        enough to provide this then items start shrinking.Setting width in a flex--items when flex-direction is row (or height in a flex column) sets the 
-        hypothetical size. It isn't a guarantee, it's a suggestion.
+        enough to provide this then items start shrinking.Setting width in a flex--items when flex-direction is row (or height
+        in a flex column) sets the hypothetical size. It isn't a guarantee, it's a suggestion.
     
-    minimum content size -This is the smallest an item can get without its contents overflowing.When size of container is not 
-        big enough for all flex-items to have hypothetical width(in case main axis is horizontal), then flex-items start 
-        shrinking. they shrinking upto a point, after which we will have a scroll bar in
-        our container. so basically flex-items cannot shrink beyond this point. this min-size is equal to -
+    minimum size - With flexbox there is idea of minimum size and by default it is equivalent to if you had set
+        width:min-content. The idea is that each these columns have a minimum size based on longest word.
+    
+        This is the smallest or lowest, it can go without things dnt fit anymore, it would overflow 
+        the content.can get without its contents overflowing.
+        
+        When size of container is not big enough for all flex-items to have hypothetical width(in case main 
+        axis is horizontal),then flex-items start shrinking. they shrinking upto a point, after which we will 
+        have a scroll bar in our container. so basically flex-items cannot shrink beyond this point. this 
+        min-size is equal to -
 
-            1)min-width porperty if it is specified.
-            2)if min-width is not specified, then it depends on contents of flex-items, in case of text content it is length
-                of largest world(which is min-content keyword)
-            3)In case of image, min-width is its intrinsic size.
+            1)min-width property if it is specified.now minimum width is no longer based on minimum content
+                size, we are specifying that intentionally (this is used in exercise see lecture 3.2)
+            2)if min-width is not specified, then it depends on contents of flex-items, in case of text 
+                content it is length of largest world(which is min-content keyword)
+            3)In case of image, min-width is its intrinsic size.(i.e even if we set flex-basis: 0, i cannot
+            make image smaller than it's intrinsic width, for that you need to set min-width)
 
             In case we want flex-items to shrink beyond there min-size, then either we we can use width/height(flex-basis 
             will not work for values smaller than min-width) to set to a value or we can set min-width: 0, to allow scaling of
-            image. alternate for responsice scaling we can use a conatiner for image and set image, width:100%.
+            image. alternate for responsive scaling we can use a container for image and set image, width:100%.
 
 flex-basis - 
     same as width and height but changes when we change main axis direction.
@@ -33,16 +42,16 @@ flex-basis -
     width can.Both width and flex-basis will change the hypothetical size of an element, but width can set that value below the 
     minimum content size. flex-basis can't.
 
-    when both width and flex-basis are samller than min-content width, then whatever is larger is taken into account.
+    when both width and flex-basis are smaller than min-content width, then whatever is larger is taken into account.
 
 
-flex-grow - it comes to picture if there is extra space in container after hypothtical size is given to all flex-items.
-    different flex-items will try to occupy this extra space based on proportion of flex-grow proeprty. so learn about
+flex-grow - it comes to picture if there is extra space in container after hypothetical size is given to all flex-items.
+    different flex-items will try to occupy this extra space based on proportion of flex-grow proeprty. to learn about
     this see section 7(josh blog article). then we saw how to calculate which element will consume how much space, depending
-    upon flex-gow ration. 
+    upon flex-gow ratio. 
 
 flex-shrink - It comes into picture when container does not have enough width to have all items inside it. it is ratio in which
-    items will shrink. note that items do not shrink below min-width.so once items hit their min-width, they stop shrinking.
+    items will shrink. note that items do not shrink below minimum size.so once items hit their min-width, they stop shrinking.
     so flex-shrink only does something when items are between their minimum size to hypothetical size.
 
     min width of elements that have text content is width of largest word.

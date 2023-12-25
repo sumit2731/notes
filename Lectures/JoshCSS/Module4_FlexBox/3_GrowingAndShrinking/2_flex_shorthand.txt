@@ -6,12 +6,16 @@ flex takes 3 individual values:
     flex: 1 will assign flex-grow: 1, but it will also set flex-basis: 0. It won't affect the default value for flex-shrink, 
         which is 1.()
 
-    if we sepcify only single value then it chnages flex-grow and flex-basis(sets flex-basis to 0).
+    if we specify only single value then it changes flex-grow and flex-basis(sets flex-basis to 0).
     if we specify 2 values , it affects flex-grow, flex-shrink and flex-basis.
 
 
-here we saw the trick to make equal size column, this can be used to divide sapce between any no of columns.
-    we set flex-basis: 0 and then use flex-grow:1 to make them equal size.
+here we saw the trick to make equal size column, this can be used to divide space between any no of columns.
+    we set flex-basis: 0 and then use flex-grow:1 to make them equal size.thing to be noticed is that when
+    you make flex-basis as 0,flexbox will still have width equal to min-content. so for lesser widths flex-child
+    will still have that min-content width, but for widths larger than min-content, i.e when flex-grow comes into
+    picture than hypothetical width will be taken as zero only, which results in 2 columns being of equal 
+    size.
 
 Exercise 1 -
 
@@ -22,8 +26,8 @@ Exercise 1 -
         regarding image scaling read this - https://courses.joshwcomeau.com/css-for-js/06-typography-and-media/15-flexbox-interactions
 
         later we saw that for very smaller size, we do not have equal widths.this happens because smallest word in columns
-            is of equal size and flex-basis: 0px, cannot set width smaller than min-content width. we can overcome this problem
-            by setting min-width:0, now columns are always of equal width but now content overflows. which looks ugly.there
+            is not of equal size and flex-basis: 0px, cannot set width smaller than min-content width. we can overcome this
+            problem by setting min-width:0, now columns are always of equal width but now content overflows. which looks ugly.there
             are 2 solutions to problem -
 
             a)use flex-wrap, so that each content goes to separate row.

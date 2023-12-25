@@ -1,0 +1,32 @@
+a)first-child, last-child
+    selector:first-child - select element which matches selector and is first child of its parent.
+        it will not select element which is not first child of its parent.
+    p:first-child - selects all p tags which are first child.
+    article p:first-child - select all p tags which are first child's and which are descendent of article tag.
+b)nth-child
+    we can grab any child and then we can style it.
+    li:nth-child(1), li:nth-child(7) {}
+    li:nth-child(2n),li:nth-child(even) - n starts from 0
+    li:nth-child(2n+1),li:nth-child(odd) - n starts from 0
+
+    there is syntax that is supported in safari only -
+        :nth-child(an + b of <selector>) {
+
+        }
+
+        see css tricks article - 
+
+c):nth-last-child
+
+d)first-of-type, last-of-type
+    selector:first of type - select element which matches selector and is first element of type in parent.
+        i.e element may not be first child, but of all elements that match selector it selects only first
+        element(first child from children(only those chilren are considered that match selector)).
+    p:first-of-type - 
+    article p:first-of-type -
+
+
+e)nth-of-type, :last-of-type
+    nth-of-type(1),nth-of-type(3)
+    nth-of-type(2n), nth-of-type(even)
+    nth-of-type(2n+1),nth-of-type(odd)

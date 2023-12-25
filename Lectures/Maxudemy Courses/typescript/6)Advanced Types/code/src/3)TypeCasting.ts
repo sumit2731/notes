@@ -11,7 +11,7 @@
    because only p tag will be selected by this selector and ts is able to detect it
    and null is because there may not be any element that mathes this criteria
 */
-let paragraph1 = document.querySelector('p');
+let paragraph1 = document.querySelector("p");
 
 /* 
 Here type infered by ts is HtmlElement | null
@@ -28,10 +28,8 @@ In order to solve it we need to tell ts that element that we select is just not 
 but also of type HtmlInputElement and that's  what we can do with typecasting.
 */
 
-
 let input1 = document.getElementById("id1")!;
-input1.value = '1'; 
-
+input1.value = "1";
 
 /* 
 There are 2 syntax for typecasting. They are equivalent
@@ -56,7 +54,7 @@ ofcourse since you are forcing typescript to use thus type, it;s your responsibi
 as developer to ensure that whatever this expression yields will be of that type. otherwise'
 you might get run time error or unexpected runtime behaviour
 
-lets talk about !, it tell ts that this expresion will never yield null. this is required
+lets talk about !, it tell ts that this expression will never yield null. this is required
 for some expressions like this here, when we select something from DOM that might return null.
 if we as a developer knows that it will never be null then we can use this !, oterwise you can use
 if check and ts will recognize this if check and wnt give you error, inside that if statement.
@@ -65,8 +63,8 @@ here when we do typecasting we, also handle null case, because there we say it w
 HTMLInputElement, so ! is redundant here
 */
 
-// let input1 = document.getElementById("id1")! as HTMLInputElement;
-// input1.value = '1';
+let input131 = document.getElementById("id1")! as HTMLInputElement;
+input131.value = "1";
 
 /* 
 lets see alternative to using !
@@ -75,14 +73,13 @@ Here we do typecasting only when we try to access value property
 
 let input13 = document.getElementById("id1");
 if (input13) {
-    // (input1 as HTMLInputElement).value = "1";
-    (<HTMLInputElement>input1).value = "1";
+  // (input1 as HTMLInputElement).value = "1";
+  (<HTMLInputElement>input13).value = "1";
 }
 
 /**
  * @Not Covered in lectures-
  */
-
 
 /**
  * @Using Type_Casting for type guards. link-
@@ -91,14 +88,14 @@ if (input13) {
  * to access properties on Union type.
  */
 
- /**
-  * Here without using typecasting we cannot access name proeprty on obj3, because
-  * type infered by ts is {}.
-  */
- class Employee3 {
-   name = "sumeet";
- }
+/**
+ * Here without using typecasting we cannot access name proeprty on obj3, because
+ * type infered by ts is {}.
+ */
+class Employee3 {
+  name = "sumeet";
+}
 
- let obj3 = {};
+let obj3 = {};
 
- (obj3 as Employee3).name;
+(obj3 as Employee3).name;

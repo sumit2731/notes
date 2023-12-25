@@ -1,4 +1,17 @@
-Here we saw that how we can control the placement of individual items, along corss axis using margin-auto.
+Example -
+    a)We had 3 items in flexbiox. we wanted 2 items to move to extreme right. ways to that -
+        a)wrap last 2 items into extra div and then use justify-content: space-between.
+        b)use margin-right: auto, on first child
+
+    b)the we wanted to have a gap between last 2 items
+        a)way 1 - use margin-left on both.
+        b)use gap proeprty of flexbox
+
+
+
+
+
+Here we saw that how we can control the placement of individual items, along cross axis using margin-auto.
     people who are not aware of this property do this by adding a extra div.
 
 Note that this margin:auto trick works in main axis of flexbox. if we chnage main axis to vertiacl axis, then instead of setting 

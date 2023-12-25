@@ -1,0 +1,2 @@
+Read this article to see how ratio of flex-grow flex-shrink -
+    https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/#flex-shrink-9

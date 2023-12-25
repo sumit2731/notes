@@ -1,6 +1,7 @@
 type Admin2 = {
   name: string;
   privileges: string[];
+  salary: number;
 };
 
 type Employee2 = {
@@ -57,6 +58,10 @@ function printEmployeeInformation2(emp: UnknownEmployee2) {
   this is js code that allows us to check if a property exists on object
   */
   if ("privileges" in emp) {
+    /**
+     * here ts narrows down the type of emp to Admin2 because of if check. within this
+     * check of can also access other properties that exists on Admin2 type.
+     */
     console.log("privileges: " + emp.privileges);
   }
   if ("startDate" in emp) {

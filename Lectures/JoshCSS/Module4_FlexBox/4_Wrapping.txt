@@ -1,9 +1,11 @@
 THis is how flex-wrap works -
-    a)When item has a flex-basis set to non zero value, here when we have multiple items in row, insated of shrinking below
-        flex-basis size, they move to next row.item will only shrink where there single item in row.
+    a)When item has a flex-basis set to non zero value, here when we have multiple items in row, insated of
+        shrinking below flex-basis size, they move to next row.item will only shrink where there 
+        single item in row.
 
-    b)when flex-basis is zero,even them flex-item cannot shrink below its min-size, so we will have scroll bar. but with
-        flex-wrap applied, instead of having scroll bar item will go to next row.
+    b)when flex-basis is zero,even them flex-item cannot shrink below its min-size, so we will have
+        scroll bar. but with flex-wrap applied, instead of having scroll bar item will go to next
+        row.
     
 align-items vs align-content
 
@@ -13,8 +15,8 @@ align-items vs align-content
     content - group of items
     items - individual item, item is positioned on its own
 
-    In case of multiple rows align-items only moves the items within it's own row. if you want to move the entire rows then use
-    align-content.
+    In case of multiple rows align-items only moves the items within it's own row. 
+    If you want to move the entire rows then use align-content.
 
 flex-shrink vs flex-wrap
 

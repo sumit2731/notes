@@ -1,0 +1,13 @@
+1)https://courses.joshwcomeau.com/css-for-js/06-typography-and-media/15-flexbox-interactions
+
+2)see exercise  -
+    https://courses.joshwcomeau.com/css-for-js/04-flexbox/05-flex-shorthand
+
+
+
+You can noice that in above example setting min-width: 0px along with flex:1 makes images responsive when
+    they are direct child of flex-container. but if they are child of flex-item, then setting min-width
+    does not do anything, and we have to set width: 100% to make them responsive.
+
+    Also Josh says he prefers to have image inside a conainer(flex-child is container). he explains it
+    in video 1.
