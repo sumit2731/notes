@@ -1,15 +1,26 @@
 grid container properties -
+    grid-auto-flow - row(default) | column
+        Each grid child comes on its cell. By default if we do not give any config to grid, then it has one column only.
+        for each item a new row is created.so we end up with 1*n grid.
+        if we want to distribute the elements horizontally instead of vertically, though? We can change the 
+        flow direction for implicit grids with the grid-auto-flow property.
 
-    grid-template-columns: 
+        with value 'column', for each item a new column will be created.
+
+        Note that if we give dimensions to column then each item occupies a column.
+    
+    grid-template-columns: This controls 2 things -
+            a)The number of columns we want our grid to have
+            b)The individual widths of each column
         25% 75%; (The number of columns we want our grid to have,The individual widths of each column)
-        1fr 2fr (fr stands for “fraction”. In this example, we're saying that the first column should take up 1 "unit" of space, 
-            and the second column should take up 2 "units". There are 3 units total, so the first column is 1/3rd, the second 
-            column is 2/3rds.) fr unit ditributes avalible space.
+        1fr 2fr (fr stands for “fraction”. after giving size to all columns, remaining width is distributed between fr units by ratio's.
+            also if width by fr ratios's causes overflow in a column, then minimum width according to content
+            will be given to column with fr units.tHis behavviour happens with fr and auto.
         200px 2fr 1fr
 
-        250px repeat(5, 1fr);
+        250px repeat(5, 1fr)
         repeat(4, 200px)
-        repeat(auto-fill, 150px) - create as many as 150 columns as possible. some empty space will be left when left over space is not multiple of 150px. this can be 
+        repeat(auto-fill, 150px) - Create as many as 150 columns as possible. some empty space will be left when left over space is not multiple of 150px. this can be 
             handled using justify-content; see auto-fit also
         repeat(auto-fill, minmax(150px, 1fr)) - here's how it works -
             a)Figure out how many columns we can fit at the minimum acceptable size, 150px.
@@ -20,43 +31,69 @@ grid container properties -
         minmax(50px, 1fr) the flexible unit has to come last. minmax(1fr, 250px) is invalid, because 1fr isn't a valid "minimum" value.
         minmax(250px, 1fr)
 
-    grid-template-rows: 
+    grid-template-rows: Using this we can create explicit rows.
         64px 1fr 100px;
         minmax(250px, 1fr)
+
+    gap: 
+        8px(9px gap between both rows and columns)
+        8px 0px; (row column)
+
+        To Support IE use grid-gap
+
+    justify-content: It arranges the column in horizontal axis. if we do not specify any width of column then the default behaviour in
+        CSS Grid is to stretch the columns to take up all available space.
+            start,
+            end,
+            center,
+            stretch(default),
+            space-between,
+            space-around,
+            space-evenly.
+
+    justify-items - It arranges the items in column.
+        start
+        end
+        center
+        stretch(default)
+
+    align-content(aligning rows in grid): 
+        start(default),
+        end,
+        space-between,
+        space-around,
+        space-evenly.
+    align-items(aligning a item in cell along vertical direction):  
+        stretch(default),
+        start,
+        end,
+        center,
+        baseline
+        controls elements vertical position within row.
 
     grid-template-areas :
         'sidebar header'
         'sidebar main'
 
-    gap: 8px 0px; (row column)
+    
 
-    justify-content: start(default),end,center,stretch,space-between,space-around,space-evenly
-        arranges the columns in grid
 
-    justify-items: start,center,end,stretch(default)
-        arranges items in individual column
-        Normally, a grid child will stretch across the entire width of its column. If we place an element in a 100px-wide column, we'll get a 100px-wide element.
-        But that's just the default, it isn't set in stone. justify-items changes this behaviour so that the child element moves around within its cell.
+   
 
-    align-content(aligning rows in grid): start(default),end,space-between,space-around,space-evenly
 
-    align-items(aligning a item in cell along vertical direction):  stretch(default), start,end,center,baseline
-        controls elements vertical position within row.
 
     place-content: align-content / justify-content
 
     
-    grid-auto-flow - row(default) | column
-        grid-auto-flow from row to column, we're not fundamentally changing the orientation of our grid; everything stays the same, 
-            except for the fact that our grid will have multiple columns instead of multiple rows.
+  
 
     grid-auto-columns: 200px; (width of implicit column)
     grid-auto-rows: 60px; (height of implicit rows)
 
 
-grid children proeprties -
+grid children properties -
     align-self - placement of a item in cell along vertical axis.
-    justofy-self - placement of item in cell along horizontal axis.
+    justify-self - placement of item in cell along horizontal axis.
     grid-area: 'name of area'
     grid-column: 
         3 / 5 (Start column line/ end column line)

@@ -1,0 +1,1 @@
+a)While it is technically possible to assign multiple elements to occupy a single cell

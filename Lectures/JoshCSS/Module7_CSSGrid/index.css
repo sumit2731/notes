@@ -1,0 +1,5 @@
+.wrapper {
+  display: grid;
+  align-content: space-between;
+  height: 300px;
+}

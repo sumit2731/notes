@@ -33,13 +33,14 @@ Properties of flex-items -
         flex-start
         flex-end
         center
-        strtech
+        stretch
         baseline
 
     flex-basis
     flex-grow
     flex-shrink
-    order
+    order - default value for all flex-child is 1. child with greater value of order will appear 
+        later in flexbox.
 
     flex: flex-grow flex-shrink flex-basis; (note second and third values are optional, but even using flex property sets the 
         flex-basis to 0%)

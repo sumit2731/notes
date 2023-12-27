@@ -1,0 +1,15 @@
+Rules for valid grid -
+    a)In CSS Grid, our element's content box is sliced into rows and columns. 
+    
+    b)The rows/columns don't have to be the same size, but they do have to be consistent. 
+        1)Every cell in the same column needs to have the same width
+        2)every cell in the same row needs to have the same height.
+
+    c)We also can't end a row or column prematurely; If our grid has 2 columns and 3 rows,
+        each column will have 3 cells.
+
+    d)A grid child can choose to span multiple rows and columns, but it must always produce
+        a rectangle. No tetrominoes allowed!
+
+
+Inset grids - In Container we can have some dead space that is not used by grid.
