@@ -65,21 +65,29 @@ const multiply2 = (a: number, b: number): number => a * b;
  * then we called that function with already defined function which matched the defined type
  */
 
-type functionType = (a: number, b: number) => number;
-
-//defining function type inside object type
-type customType = {
-  callback: (a: number, b: number) => number;
-  callback2(a: number, b: number): number;
-};
+type functionType = (a: number, b: number) => number; // cannot use ':'
 
 /**
  * defining function type using interface (Not covered in course)
  */
 
 interface functionType2 {
-  (a: number, b: number): number;
+  (a: number, b: number): number; // cannot use '=>'
 }
+
+/**
+ *type as a call signature of an object literal type:
+ */
+
+type functionType3 = {
+  (a: number, b: number): number; //cannot use '=>'
+};
+
+//defining function type inside object type
+type customType = {
+  callback(a: number, b: number): number;
+  callback2: (a: number, b: number) => number;
+};
 
 //defining function type inside a object via interface (Not covered in course)
 
