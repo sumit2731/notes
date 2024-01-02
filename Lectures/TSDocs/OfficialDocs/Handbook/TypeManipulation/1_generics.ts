@@ -205,3 +205,15 @@ declare function create2<T extends HTMLElement = HTMLDivElement, U = T[]>(
 
 const div2 = create2();
 const p2 = create2(new HTMLParagraphElement());
+
+/* 
+Summary -
+
+How generics behaves with declaration merging
+
+*/
+
+/**
+ * Extra Notes - generics can also be used on induival types seeIndexedAccesType, exercise 1
+ * generics can also be used in interfaces
+ */

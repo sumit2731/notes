@@ -68,7 +68,9 @@ const multiply2 = (a: number, b: number): number => a * b;
 type functionType = (a: number, b: number) => number; // cannot use ':'
 
 /**
- * defining function type using interface (Not covered in course)
+ * Defining function type using interface (Not covered in course)
+ * Another interesting way of writing a function type is to use a -TypeScript function interface.
+ * It's also called function call signature
  */
 
 interface functionType2 {

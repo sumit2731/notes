@@ -33,7 +33,7 @@
  */
 
 /**
- * 3)JSXElementConstructor
+ * 3)JSXElementConstructor<P>
  *
  * In Object form of JSXElement, this is used as type of type property.
  *
