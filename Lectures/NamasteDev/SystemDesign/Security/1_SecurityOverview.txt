@@ -1,0 +1,18 @@
+    XSS Attacks
+    CSRF(Cross Site Request Forgery)
+    Authentication/Authorization
+    Input Validation(Sanitization)
+    HTTPS
+    Security Header
+    IFrame Protection (Opening google inside IFrame or Opening your website in HDFC bank and
+        make user enter password in yur page)
+
+
+    Dependency Injection - Alerts that come in github
+    Client Storage Security
+    Compliances and Regulations
+    SSRF - Server Side Request Forgery - Someone is able to do the activity on server on behalf of you
+    SSJI - Server Side Javascript Injection
+    Feature Flag (Ca,era, microphone access)
+    Subresource Integration - 
+    CORS - Cross Origin Request Sharing

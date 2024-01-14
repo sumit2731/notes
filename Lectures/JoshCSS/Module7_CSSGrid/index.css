@@ -1,5 +1,10 @@
+header,
+section,
+footer {
+  border: 1px solid;
+}
+
 .wrapper {
   display: grid;
-  align-content: space-between;
-  height: 300px;
+  justify-items: center;
 }

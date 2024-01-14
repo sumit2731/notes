@@ -60,7 +60,7 @@ Extra Notes - From matt Spock ts Lecture
 
 
   a)Enum ends up as a object in js, which has some extra properties then expected.
-    AboveLogLevel enums ends up like this in js. This happens only for nuber enums,
+    AboveLogLevel enums ends up like this in js. This happens only for number enums,
     string enums creates only expected properties
 */
 

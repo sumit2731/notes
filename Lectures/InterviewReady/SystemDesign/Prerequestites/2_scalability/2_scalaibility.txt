@@ -1,0 +1,15 @@
+Scalability - Ability to handle more request.
+    a)Vertical - Buy bigger machine
+    b)Horizontal - Buy new machines.
+
+
+Major Concern when designing a system -
+    a)Is it Scalable
+    b)Is it reselient
+    c)Is it consistent
+
+
+See figure, various points explained -
+    Point 3 - why machines need to communicate?
+        a)user logs into one instance and later other request is sent to different database.Solutions
+            like sticky sessions or distributed session management become necessary.

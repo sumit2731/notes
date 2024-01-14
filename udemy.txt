@@ -85,6 +85,7 @@ c)sumitsood2714 - old courses
 d)sumitudemy@gmail.com- divalovesme (Done)
 
     Max Courses-
+        1)clean Code
         1)Javascript Unit Testing
         2)remix
         3)docker & kubernetes
@@ -109,7 +110,7 @@ Javacsript course-
 2)advanced JavaScript(Assim Hussain)(done)
 
 zero to mastery -
-1)javascript 20 projects(Done)
+    1)javascript 20 projects(Done)
 
 
 Js Projects -

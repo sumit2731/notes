@@ -17,6 +17,7 @@ grid container properties -
             also if width by fr ratios's causes overflow in a column, then minimum width according to content
             will be given to column with fr units.tHis behavviour happens with fr and auto.
         200px 2fr 1fr
+        auto - width will be according to content of widest item
 
         250px repeat(5, 1fr)
         repeat(4, 200px)

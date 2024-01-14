@@ -1,0 +1,5 @@
+- what is load balancing
+- simple approach to load balancing
+- disadvantages of it - cache become useless
+    ways to avoid - no of chnage in request should be minimum. that is why we need advanced cache
+        techniques like consistent hashing.

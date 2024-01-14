@@ -1,6 +1,8 @@
 /* 
 
-1)ensure that all cases are handled in function which accepts a union type.
+1)ensure that all cases are handled in function which accepts a union type.(discriminated union).
+  never also appears when TypeScript determines there’s nothing left in a union.
+
 2)never is the only type that will “factor out” in a type union, which makes it indispensable for 
     certain cases, as we will see in the next section.
 
@@ -12,7 +14,7 @@
         NonNullable<T> type (source), which removes null and undefined from a union type.
         NonNullable<T> produces a potentially narrowed type using never to prune unwanted union branches.
 4)Ensuring that a property does not exist on a object. there are 2 ways to do that -
-  making a proeprty optional and giving it value of undefined
+  making a property optional and giving it value of undefined
   while using mapped type when proeprtyName evaluates to never
 
 5)type for function that never actually returns

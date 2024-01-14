@@ -1,0 +1,4 @@
+How to handle Single Point Of Failure -
+    servers - add more severs
+    database - master-slave (make copy of database)
+    loadBalancers(gateway) - add more load balancers

@@ -1,0 +1,7 @@
+fr units - first all columns or rows, which have hardcoded width/height are given width/height. then all
+    width/height that are in fr units is asisgned as per ration.but if a column/row needs width/height
+    greater than assigned width/height according to ratio, then assigned width/height is increased to occupy
+    minimum content.
+
+
+    https://courses.joshwcomeau.com/css-for-js/07-css-grid/05-grid-construction (Flexible Columns)

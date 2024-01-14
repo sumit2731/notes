@@ -1,0 +1,48 @@
+Horizontal Partioning - Use key to break down the data into pieces and allocate that to different
+    servers.it depends on one key which is attribute of data that you are going to store, to partition
+    the data.
+    here table is broken into multiples tables in same database. names of tables needs to be different
+    as they are in same databse.
+Vertical Partioning - Uses column to partition the data.
+
+here we will look at Horizontal sharding and in horizontal partition also, we will have a look at a 
+    single concept called sharding.
+
+Things important in Database -
+    consistancy > avalaibility
+
+
+Sharding your data on basis on what?
+    most cases we will use userId but for application like tinder, it can be on location basis.
+    We can get users of active in that area by querying a smaller data base.
+
+
+Problems in sharding -
+    a)joins across shards - query needs to go to 2 db's, data needs to be pulled and then join the
+        data across the network.
+    b)inflexible - you can't have more or less db servers, it is already done.
+    but we want db servers to be flexible, one of really good algorithms for this is consistent hashing
+        one DB that implements this is - MEMCACHED.
+
+        to overcome this problem we can map a slice into mini slice and there will be manager which will
+            map the request to correct mini slice.this is called hierarchial sharding, using this we can
+            get rid of flexibility mentioned above.
+
+
+Best Practices -
+    a)use indexing if your application requires it. It can be on totally different attribute than attribute
+        you used for sharding. ex-give me all users in city x over age 50. indexing should be done on
+        age.
+
+    2)what if shards fails for example ome power outage?Use master-slave architecture.
+        master gets all the write operations, slaves continues poll the master and read from it.
+        read request can be given to any slaves, but write request always goes to master.If master
+        fails slaves chosse a master amoung themselves.
+
+
+Conclusion -
+    A bit difficult to implement practically because consistancy is difficlut to do.
+    so before implementing this take into considration other things like indexing,no sql databases etc,
+    which internally actually uses these kind of concepts.but to use those ready-made solutions or to 
+    use well-known solutions like indexing is probably the way to go before you go for sharding.
+

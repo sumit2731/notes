@@ -1,0 +1,31 @@
+Analogy of backend architecture with (pizza shop, fig 4.1) -
+    1)Paying chef more - vertical scaling
+    2)Preparing Before Hand - cron job
+    3)Keep backup chef and avoid single point of failure - Master-Slave Architecture
+    4)Hire more resources - Horizontal scaling
+
+
+Scaling the restaurant(Figure 4.2) -
+    5)Having different teams of chefs for pizza and garlic bread - microservices
+        a)different teams can be scaled at different rate
+        b)we know which team to contact for order status of pizza or garlic bread
+    6)Setting up a backup shop(avoiding electric outages) - Distributed Systems (Fault tolerant and quick response times)
+        a)Sometimes there needs to be a communication between these 2 systems, you need to route your
+            orders to a shop, you need to tell from which shop order will happen
+        b)also orders which are nearer to a shop can be served from that shop - Partitioning
+
+    (Figure 4.3) -
+    7)centralized place which decides where to send order(shp1 or shop 2) - load balancer
+        only criteria is pizza(or response ) should be delivered in short time
+
+Now system is fault tolerant but how you make it flexible to change? (figure 4.5)
+    8)for delivery part it does not matter whether if it is pizza shop or burger shop, similar
+        for shop it does not matter who picks the order customer or delivery guy - Decoupling
+
+9)may be shop1's oven is faulty or delivery agent1 is slow, yu want to log everything in system.
+    -Logging and Metrics (fig 4.6)
+
+
+10)extensible - you dnt want to rewrite your code again and again to serve different purpose. for 
+    example delivery agent can deliver burger tomorrow.so you decouple your system to make it 
+    extensible

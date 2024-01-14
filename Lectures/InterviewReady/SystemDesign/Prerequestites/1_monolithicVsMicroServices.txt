@@ -1,0 +1,33 @@
+Monliths - same code can be run on different machines. these machine scan connect to multiple
+    databases.
+
+Microservices - client connect to gateway and then gateways connects to machines.
+
+
+
+Moniliths advantages -
+    a)small team, cannot get time to break it into microservices.
+    b)Less complex, deployments are easy
+    c)less code duplication.
+    4)faster as you are not making rpc (remote procedure calls).
+
+Monlithic Disadvantages -
+    a)More context required for new person.
+    b)frequent deployments, each time to touch a code, deployment needs to happen, and it needs to be
+        monitored everytime, that it is working properly.
+    c)tests are more complicated as everything is touching everything.
+    d)single point failures. too much resposibility on one server, if one server crashes all of this
+        crashes.
+
+
+Microservices Disadvantages - 
+    a)system is scalable, each services has its own database and iteract with other services.It is
+        easier to design system in this way.
+    b)easier for new team member.
+    c)parallel development is easy.
+    d)there are less hidden parts, you put more servers for service which is highly used.
+
+Disadvantage of microservice -
+
+    a)needed skilled architects to design this, if a microservices is only talking to one microservice,
+        then both microservice need to be combined into one microservice.

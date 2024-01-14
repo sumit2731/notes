@@ -68,3 +68,15 @@ Type Annotation - Giving types in javascript
 Type Assertions - Type Casting
 
 */
+
+/**
+ * @FunctionTypeExpression.
+ */
+
+type fn = (a: string) => void;
+
+//or
+
+function greeter(fn: (a: string) => void) {
+  fn("Hello, World");
+}
