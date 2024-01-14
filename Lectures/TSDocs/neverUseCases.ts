@@ -1,7 +1,9 @@
 /* 
 
-1)ensure that all cases are handled in function which accepts a union type.(discriminated union).
-  never also appears when TypeScript determines there’s nothing left in a union.
+1)never also appears when TypeScript determines there’s nothing left in a union.
+
+  this can be used to ensure that all cases are handled in function which accepts a union type.
+  (discriminated union).never also appears when TypeScript determines there’s nothing left in a union.
 
 2)never is the only type that will “factor out” in a type union, which makes it indispensable for 
     certain cases, as we will see in the next section.
@@ -13,6 +15,7 @@
     b)Conditional pruning is also useful for narrowing union types. TypeScript’s libraries include the
         NonNullable<T> type (source), which removes null and undefined from a union type.
         NonNullable<T> produces a potentially narrowed type using never to prune unwanted union branches.
+        see lecture 4 in mattPocock folder
 4)Ensuring that a property does not exist on a object. there are 2 ways to do that -
   making a property optional and giving it value of undefined
   while using mapped type when proeprtyName evaluates to never

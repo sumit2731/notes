@@ -8,11 +8,30 @@
  *
  *  This trick is used by callbacks to make passing second parameter optional.
  *
- * b)f1 is function type that returns void. It can accept value of type f2 which have return type
- *  something else.
+ *  read this blog - https://www.totaltypescript.com/function-types-are-weird-in-typescript
  *
+ * b)f1 is function type that returns void. It can accept value of type f2 which have return type
+ *  something else.but giving return type explicitly to function, make it typesafe i.e you will get error
+ *  if you try tio return something from function
+ *
+ * c)Tips to write better generic functions
+ *
+ * d)In function overloading -
+ *  a)function  implementation signature implements the function behavior, however,
+ *    it is not directly callable. Only the overload signatures are callable. see example here -
+ *      https://dmitripavlutin.com/typescript-function-overloading/
+ *  b)function implementation signature should be generic and should implements all all overloaded
+ *    signatures, otherwise that particular overloaded signature is marked as incompatible
+ *  c)tips to write better overloads
  */
 
+/**
+ * Open Questions -
+ *
+ * Some objects, like JavaScript’s Date object, can be called with or without new. You can combine call
+ * and construct signatures in the same type arbitrarily:
+ *
+ */
 //Function Type Expressions
 
 function greeter(fn: (a: string) => void) {
@@ -110,7 +129,7 @@ function map<Input, Output>(
 const parsed = map(["1", "2", "3"], (n) => parseInt(n));
 
 /**
- * @Constraints
+ * @Constraints - we can pass constraints to generics using extends.These constraints are then applied
  */
 
 /**
@@ -185,7 +204,10 @@ optionalParam(10);
 
 /**
  * Default Param
- * you can call a function without that param also
+ * You can call a function without that param also. but you cannot mark a argument as default and
+ *  make it optional
+ * so this is alter way of marking a parameter as optional. now function can be called without any
+ * argument
  */
 function defaultParam(number1 = 10) {
   return number1; // type is always number
@@ -193,6 +215,7 @@ function defaultParam(number1 = 10) {
 
 defaultParam();
 defaultParam(20);
+defaultParam(undefined);
 
 /**
  * Optional Parameters in Callbacks
@@ -214,8 +237,8 @@ myForEach([1, 2, 3], (a, i) => {
 /**
  * Better way
  *
- * This works because - In ts you can functionType with more parameters can be assigned to functionType with
- *  less parameters.extra args are just ignored
+ * This works because - In ts you can functionType with more parameters can have values of function type
+ * which has less parameters
  */
 
 function myForEach2(arr: any[], callback: (arg: any, index: number) => void) {
@@ -304,9 +327,15 @@ len([0]); // OK
  */
 len(Math.random() > 0.5 ? "hello" : [0]);
 
+/**
+ *
+ * Because both overloads have the same argument count and same return type, we can instead
+ * write a non-overloaded version of the function:
+ * @returns
+ */
 //better way
 
-function len(x: any[] | string) {
+function len2(x: any[] | string) {
   return x.length;
 }
 
@@ -358,7 +387,34 @@ function doSomething5(f: Function) {
 }
 
 /**
+ * rest parameters and Arguments
+ *
+ * rest parameters need to appear at last and their type needs to be Array or tupple
+ */
+
+/**
+ * rest arguments
+ *
+ * A spread argument must either have a tuple type or be passed to a rest parameter
+ *
+ * If function has fixed parameters then , the spread operator can be applied only on tupple types.
+ * to convert array type into tupple use as const
+ */
+
+// Inferred type is number[] -- "an array with zero or more numbers",
+// not specifically two numbers
+const args5 = [8, 5];
+const angle5 = Math.atan2(...args5);
+
+// Inferred as 2-length tuple
+const args6 = [8, 5] as const;
+// OK
+const angle6 = Math.atan2(...args6);
+
+/**
  * Assigininbility of functions
  *
  * Function which return somethings can be assigning to type which return void
  */
+
+Array.prototype.push;

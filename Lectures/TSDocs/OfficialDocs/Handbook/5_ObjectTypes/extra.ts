@@ -31,3 +31,31 @@ let empPer: EmpPerson = {
     country: "",
   },
 };
+
+/**
+ * How Conflict is handled while extending the interface
+ */
+
+interface Person3 {
+  name: string;
+  address: {
+    city: string;
+  };
+}
+/**
+ * we get error if types for same property mismatch, and these types can come from anywhere else also
+ * because of declaration merging.
+ */
+interface Emp3 extends Person2 {
+  id: number;
+  address: {
+    country: string;
+  };
+}
+
+/**
+ * Event in declaration merging same property cannot have incompatible types
+ */
+interface Person3 {
+  name: boolean;
+}

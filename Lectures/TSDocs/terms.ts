@@ -80,3 +80,11 @@ type fn = (a: string) => void;
 function greeter(fn: (a: string) => void) {
   fn("Hello, World");
 }
+
+/**
+ * function call signature
+ */
+
+interface SumInterface {
+  (a: number, b: number): number;
+}

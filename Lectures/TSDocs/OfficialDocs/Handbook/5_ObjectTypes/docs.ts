@@ -1,8 +1,14 @@
 /**
- * New Things learned
+ * Important things
  *
- * a)how to use genrics in type alias abd interfaces, and then how they can be passed to function,
- *  where function can understand generics type from parameter type
+ * a)How conflicts are handled in extending a interface and intersecting types(this is not covered in docs,
+ *  see extra.ts for details)
+ *
+ * a)how to use genrics in type alias and interfaces, and then how they can be passed to function,
+ *  and then inference can happen based on those
+ *
+ *
+ * b)
  *
  */
 
@@ -193,7 +199,7 @@ type OneOrManyOrNullStrings2 = OneOrMany<string> | null;
  */
 
 /**
- * ReadonlyArray<string>
+ * ReadonlyArray<string> or readonly string[]
  *
  * The ReadonlyArray is a special type that describes arrays that shouldn’t be changed.
  *
@@ -215,17 +221,38 @@ type OneOrManyOrNullStrings2 = OneOrMany<string> | null;
  *
  * gives as error - when try to access index that does not exists
  *
+ */
+
+/**
  * Optional members in tupples
- * rest elements in tupples
- *
- * Uses of rest tupples -  it allows TypeScript to correspond tuples with parameter lists. Tuples types
- *  can be used in rest parameters and arguments, so that the following:
+ */
+
+type StringNumberBooleans = [string, number, ...boolean[]];
+type StringBooleansNumber = [string, ...boolean[], number];
+type BooleansStringNumber = [...boolean[], string, number];
+
+/**
+ * Uses of Optional tupples
+ */
+
+function readButtonInput(...args: [string, number, ...boolean[]]) {
+  const [name, version, ...input] = args;
+  // ...
+}
+
+//is basically equivalent to:
+
+function readButtonInput2(name: string, version: number, ...input: boolean[]) {
+  // ...
+}
+
+/**
  *
  * readonly tupple type
  *
  * pair: readonly [number, string]
  *
  * readonly tupples cannot be assigned to tupples of same type also
+ *
+ * using as const on array gives readonly tupples
  */
-
-type StringNumberPair = [string, number];

@@ -3,6 +3,10 @@
  */
 
 /**
+ * 2) see lecture 7 in MattPocock
+ */
+
+/**
  * 2
  * 
  * Inferred type is number[] -- "an array with zero or more numbers",
