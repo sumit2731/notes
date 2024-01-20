@@ -1,0 +1,18 @@
+Security Headers -
+    X-Powered-By - Tells yu your application is built by using what kind of server.like here you get
+        to know that you are using express server.
+
+    Referrer-Policy - strict-origin-when-cross-origin
+        This controls how much information is passed in referer header.when moving to other websites, why
+        do you want to pass complex information like queryparams and all.
+
+        Referrer-Policy: no-referrer
+        Referrer-Policy: no-referrer-when-downgrade
+        Referrer-Policy: origin
+        Referrer-Policy: origin-when-cross-origin
+        Referrer-Policy: same-origin
+        Referrer-Policy: strict-origin
+        Referrer-Policy: strict-origin-when-cross-origin(Default)
+        Referrer-Policy: unsafe-url (Send the origin, path, and query string when performing any request, regardless of security.)
+
+    X_CONTENT_OPTIONS

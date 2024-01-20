@@ -1,0 +1,79 @@
+vulnerability
+
+    a)Click Hijacking - You are filling some form on website, but i frame some other website is loaded
+        which is not visible to you and you are interacting with that website.
+
+        Example - code/IframeProtection/server1/example1.html
+        here this website loads another website, in frame, hides it. user things that he is interacting with
+        example1.html but user is interact with iframe website.
+        here main website is of attacker and iframe's website is normal website.
+    b)Data Threft via javascript - Iframe can access main window data and main window can access Iframe
+        data.
+
+         Example - code/IframeProtection/server1/example2.html
+         here example2 is right website and iframe one is malicious website. intially example2 trusted iframe
+         website so it was injected.
+
+         now a days iframe from different origin cannot access parent document and cookie from parent website,
+         if they are of different origin. but in older browsers this was possible.
+    c)Session & Cookie threft - same as data threft but this type threft is of session and cookie.
+
+
+Mitigations -
+    1)if you are website owner of iframe and you do not want your wbsite to be injected in iframe anywhere.
+
+
+        You can use these headers -
+            X-Frame-Options (old one, now CSP is used) - DENY or SAMEORIGIN
+            CSP - use directive frame-ancestor: 
+                possible values - 
+                    'self'
+                    indival website names (wildcards can also be sued) 
+                    <scheme-source> (some weird thing, i was not able to understand)
+
+
+            res.setHeader("Content-Security-Policy", "frame-ancestors 'none'");
+
+        This is added in code/IframeProtection/server1/example1.html.
+
+    2)If you are website owner and you want to limit the actions that Iframe can take -
+        use sandbox attribute on iframe. see code/IframeProtection/server1/example2.html
+
+        sandbox - The value of the attribute can either be empty to apply all restrictions, or 
+            space-separated tokens to lift particular restrictions. if it has "allow-same-origin"
+            then actions of same origin are not blocked. you can also allow some actions,
+            you can control actions like - Execution of Scripts, showing of dialog, submission of forms,
+
+            values -
+                allow-scripts
+                allow-modals
+                allow-forms
+                allow-same-origin - see description in docs
+            
+
+
+
+
+
+        sandbox="allow-same-origin allow scripts allow-modals"
+
+    3)when parent tries to steal something from child -
+        if (top != self) {
+            top.location = self.location;
+        }
+
+        howver this is weeek mechanism as there are many ways to surpass this
+
+        althrough now these things do not happen, now a days browser if you want to have cross communication
+        between iframe and main use postMessaging or contentMessaging kind of thing.
+
+
+    4)how to safeguard cookies in your iframe -
+        set 3 parameters in cookies -
+            httpOnly: true (cookies cannot be access ia JavaScript)
+            secure: true (cookies are sent only in https connection)
+            sameSite: 'strict' (default value)
+
+        these are set in iframe-website1.html
+
+    

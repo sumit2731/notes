@@ -15,7 +15,6 @@ XSS(CRoss Side Scripting) - Someone is able to inject javascript into your websi
         d)Stealing critical information(taking screenshot of DOM)
         e)Phishing Attack - Using injection I injected a form
             and that form does something the hood for you.
-
     a)User session hijacking -
         see example2 in Vulnerability.here hacker was able to get access to cookie in browser.
 
@@ -36,7 +35,7 @@ XSS(CRoss Side Scripting) - Someone is able to inject javascript into your websi
 
         see netwrok request, there were 2 error request second one passed the user cookie.
 
-    b)unauthorized activities -
+    b)unauthorized activities(vulnerability/example3) -
         here hacker trigger the function defined in script.
 
         pass this as query param -
@@ -62,8 +61,41 @@ Mitigations -
     -List all possible ways to take user Input (as query param, as form)
     -instead of using innerHTML, use innerText| textContent, whenever you want to inject something
         into DOM.
-    -escaping mechanism(34:00)
+    -escaping mechanism - see screenshots/mitigations/1
+    -Using Library like React(It provides lot of stuff under the stuff), wiring in jsx will automatically
+        do lot of things out of box
 
+        {wiring some variable}
 
+    -There is a way in react which is called put dangerously HTML into DOM, avoid using those syntaxes
+        where you are dangerously injecting html into your DOM. react provides a way to put things as
+        html in your code,but you should avoid it.
+
+    -Sanitize your data using libraries like  DOMPurifier (see screenshots/mitigations/2)
+
+    -CSP Headers - These are many headers that are set from server, which decides what kind of resources
+        can be loaded, from where these resources can be loaded and taking control, do you want to execute
+        it or you dnt want to execute resources coming from different places.On the top of it,scripts that
+        you in your application, do you trust it,how do you get to know that script is your script or it
+        is injected by someone else.
+
+            3 Purposes of CSP headers -
+
+                a)allowed Sources - you can decide from where you want to load script,from where to load 
+                    images,fonts, any kind of resource even iframe.you want to load from same origin, you
+                    want to load from different origin all can be decided here.
+                b)Script Nounces - Anything which is there as inline script, how do you want to ensure that
+                    inline script belongs to you.do you put some way to differentiate and get to know that these
+                    are yur scripts or these are injected by some external party.so you add some nonces, to identify
+                    that this is my script or this is injected by someone else.
+
+                    here you can control only specififc scripts are executed
+
+                c)Report-only mode - if someone is trying to inject the script, we can send a report it, we can know
+                    from where these attacks are happening.
+
+            For code snippet of of CSP headers, see code/XSS/mitigation folder
+
+    -Do not use eval
 
 
