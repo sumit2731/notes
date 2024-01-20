@@ -60,7 +60,8 @@ XSS(CRoss Side Scripting) - Someone is able to inject javascript into your websi
 
 Mitigations -
     -List all possible ways to take user Input (as query param, as form)
-    -instead of using innerHTML, use innerText| textContent
+    -instead of using innerHTML, use innerText| textContent, whenever you want to inject something
+        into DOM.
     -escaping mechanism(34:00)
 
 
