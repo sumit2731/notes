@@ -122,10 +122,20 @@ commands -
     7)exiting Vi/Vim - These editors are notoriously difficult to quit; ctrl + c won't help you here!.
 
         To quit without saving, follow these steps:
+            way1 -
 
-            Press Escape.
-            Press :. This should add a prompt at the bottom of the terminal.
-            Type q! and press Enter.
+                a)Press Escape key to switch to command mode.
+                b)Press ':', This should add a prompt at the bottom of the terminal.
+                c)Type 'q!'
+                d)press Enter.
+                Vim will discard the changes and quit.
+            way 2 -
+                a)Press the Escape key to switch to command mode.
+                b)Type ':', This should add a prompt at the bottom of the terminal.
+                c)Type 'wq'
+                d)press Enter.
+                Vim will save the changes and quit, and you will return to the command line.
+
 
     Tricks -
         8)to open vs code at particular path -
