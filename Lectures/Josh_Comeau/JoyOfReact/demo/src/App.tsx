@@ -7,19 +7,30 @@ function App() {
   const [count, setCount] = useState(0);
   const daysUntilSantaReturns = 4;
 
-  const element = <p id="hello">Hello World!</p>;
+  let someClass;
+  let element;
+  const element2: JSX.Element = <div className={someClass}>Hello World</div>;
 
   console.log(element);
 
   return (
     <>
-      <div>
+      {/* <div>
         <strong>Days until Santa returns:</strong> {daysUntilSantaReturns}
       </div>
       <div>
         <strong>Days until Santa returns:</strong>
         {daysUntilSantaReturns}
-      </div>
+      </div> */}
+      <h1>Hello</h1>
+      <ul>
+        <li>false: {false}</li>
+        <li>undefined: {undefined}</li>
+        <li>null: {null}</li>
+        <li>Empty string: {""}</li>
+        <li>Zero: {0}</li>
+        <li>NaN: {NaN}</li>
+      </ul>
     </>
   );
 }
