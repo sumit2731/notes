@@ -149,10 +149,9 @@ commands -
 
             b)Other shortcuts which works even when terminal is busy -
                 a)mac os - cmd + k
-                b)on mac os - ctrl + shift + l
 
 
-                Shortcuts which cleras terminal when terminal is busy somes handy in these places -
+                Shortcuts which clear terminal when terminal is busy somes handy in these places -
                     a)let's say you're running a dev server. This is a long-running process, and so the ctrl + L 
                         shortcut won't work
                     b) As you work on the project, lots of messages will be logged in the terminal window. The 

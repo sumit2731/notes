@@ -1,0 +1,9 @@
+prettier -
+    1)integration with IDE
+        a)install from extension
+        b)tell vscode to use it, by settings it as default formatter
+        c)configure vs code to save it
+    2)Some formatting settings can be customized(configuring)
+    3)disabling prettier for a line - // prettier-ignore
+    4_identifying issues with prettier - prettier will not fire if there is issue with syntax
+

@@ -25,6 +25,7 @@ export const store = configureStore({
 
 let rootState = store.getState();
 export type AppDispatch = typeof store.dispatch;
+console.log(store.dispatch);
 
 /**
  * Above type gives this type only
@@ -39,3 +40,7 @@ type AppDispatch2 = ThunkDispatch<
   Dispatch<AnyAction>;
 
 export type RootState = ReturnType<typeof store.getState>;
+
+const dispatch = AppDispatch2();
+
+dispatch((dispatch, getState) => {});

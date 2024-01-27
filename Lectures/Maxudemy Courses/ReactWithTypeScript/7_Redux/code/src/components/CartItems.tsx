@@ -17,6 +17,7 @@ export default function CartItems() {
   const handleRemoveFromCart = (id: string) => dispatch(removeFromCart(id));
 
   const handleAddToCart = (item: CartItem) => dispatch(addToCart(item));
+  dispatch({ type: "sumeet" });
 
   return (
     <div id="cart">

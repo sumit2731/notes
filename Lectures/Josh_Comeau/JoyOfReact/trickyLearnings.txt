@@ -1,0 +1,2 @@
+HTML Entities - &"Name"  or &"number"
+1)white space charcter - &nbsp

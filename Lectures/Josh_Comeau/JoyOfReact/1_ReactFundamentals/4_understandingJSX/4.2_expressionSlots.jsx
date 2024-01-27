@@ -1,5 +1,6 @@
 /**
  * You can use any javascript expression in Expression Slots. but you cannot use javascript statements.
+ * Javscript in slot is forwarded untouched to React.createElement
  *
  * because - This works because all function arguments must be expressions. Expressions produce a
  *  value, and that value will be passed into the function. Statements don't produce a value, and
@@ -15,13 +16,25 @@ const shoppingList = ["apple", "banana", "carrot"];
 // This code...
 const element = <div>Items left to purchase: {shoppingList.length}</div>;
 
-// ...is equivalent to this code:
+/**
+ * here expression slots are moved as it to React.CreateElement
+ */
 const compiledElement = React.createElement(
   "div",
   {},
   "Items left to purchase: ",
   shoppingList.length
 );
+/**
+ * this is wrong as we are using expressions in jsx.
+ * function arguments should be expressions
+ */
+
+const element2 = (
+  <div>
+    Items left to purchase {if(shoppingList.length < 5) "Almost Done!"}
+  </div>
+)
 
 /**
  * @Commmnets in jSX
@@ -33,7 +46,11 @@ const compiledElement = React.createElement(
  out, including the closing } for the expression slot!
  */
 
-const element2 = <div>{/* Some comment! */}</div>;
+const element3 = (
+  <div>
+    {/* Some comment! */}
+  </div>
+)
 
 /**
  * @Attribute expression slots
@@ -41,10 +58,10 @@ const element2 = <div>{/* Some comment! */}</div>;
 
 const uniqueId = "content-wrapper";
 
-const element3 = <main id={uniqueId}>Hello World</main>;
+const element4 = <main id={uniqueId}>Hello World</main>;
 
 //here how it compiles
-const element4 = React.createElement(
+const element5 = React.createElement(
   "main",
   {
     id: uniqueId,
@@ -54,7 +71,7 @@ const element4 = React.createElement(
 
 //For comparison, here's what it looks like without an expression slot, when the value for id is fixed:
 
-const element5 = <main id="content-wrapper">Hello World</main>;
+const element6 = <main id="content-wrapper">Hello World</main>;
 
 const compiledElement2 = React.createElement(
   "main",
@@ -63,3 +80,38 @@ const compiledElement2 = React.createElement(
   },
   "Hello World"
 );
+
+/**
+ * Note that when we compile the code, it doesn't actually get evaluated.
+ * When JSX gets compiled to JS, we copy over everything between the { and }.
+ * We don't call any functions or run any of the logic. That happens later,
+ * when the processed JavaScript runs in the browser.
+ */
+
+/**
+ * @TypeCoercion - At run-time, React will automatically convert types as needed when supplying attributes in
+ *  expression slots.
+ */
+
+// This works:
+<input required="true" />
+
+// And so does this!
+<input required={true} />
+
+/**
+ * Boolean ttaributes
+ * In HTML, it's possible to set attributes to true by specifying only the key, like this:
+ * This same pattern has been implemented in JSX; these two elements are equivalent:
+ * 
+ *  <input required />
+    <input required={true} />
+
+    Honestly, though, I don't recommend doing this. I prefer to spell it out, and write required={true}.
+    In fact, there was even some talk about deprecating the “attribute-only” syntax in JSX, to remove this
+    ambiguity. In the end, the team decided to keep it for now, but it wouldn't surprise me if this was
+    removed in the future.
+
+    And so, to keep things as simple and future-proof as possible, I choose to write the full thing out,
+    required={true}.
+ */
