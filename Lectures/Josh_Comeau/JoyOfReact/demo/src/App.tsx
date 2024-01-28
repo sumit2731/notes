@@ -3,34 +3,27 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+const hiddenStyles = {
+  display: "inline-block",
+  position: "absolute",
+  overflow: "hidden",
+  clip: "rect(0 0 0 0)",
+  height: 1,
+  width: 1,
+  margin: -1,
+  padding: 0,
+  border: 0,
+};
+
+const VisuallyHidden = ({ children }) => {
+  return <span style={hiddenStyles}>{children}</span>;
+};
 function App() {
-  const [count, setCount] = useState(0);
-  const daysUntilSantaReturns = 4;
-
-  let someClass;
-  let element;
-  const element2: JSX.Element = <div className={someClass}>Hello World</div>;
-
-  console.log(element);
-
+  const classname = `hello ${undefined}`;
   return (
     <>
-      {/* <div>
-        <strong>Days until Santa returns:</strong> {daysUntilSantaReturns}
-      </div>
-      <div>
-        <strong>Days until Santa returns:</strong>
-        {daysUntilSantaReturns}
-      </div> */}
-      <h1>Hello</h1>
-      <ul>
-        <li>false: {false}</li>
-        <li>undefined: {undefined}</li>
-        <li>null: {null}</li>
-        <li>Empty string: {""}</li>
-        <li>Zero: {0}</li>
-        <li>NaN: {NaN}</li>
-      </ul>
+      <h1 className={classname}>Hello</h1>
+      <p>Hello</p>
     </>
   );
 }

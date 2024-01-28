@@ -65,11 +65,12 @@ function Friend({ name, isOnline }) {
  *  right-hand side. So, when our list is empty, this expression evaluates to 0.
  * b) React will render any number you give it, even zero!
  *
- * React ignores all false values except 0 and NaN.
+ * React ignores all false values except 0 and NaN(while rendering).
  *
  * It ignores - false,undefined, null,''
  *
- * react renders zero because we need to render zero some times
+ * react renders zero because we need to render zero some times.
+ *
  */
 
 /**
