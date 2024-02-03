@@ -1,0 +1,9 @@
+Webpack is static module bundler.
+
+1)Here we saw that we can run webpack without any initial confguration. By default it makes suome assumptions about entryFile and where it places final build.
+    npx webpack
+
+2)Then we used this command to get details -
+
+    npx webpack --stats detailed
+3)Then we create a file- webpackConfig.js. and added a command in npm scripts.

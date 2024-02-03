@@ -1,0 +1,33 @@
+Feature asset modules is a new feature introduced in Webpack five.
+It allows you to easily use asset files in your JavaScript application without installing additional dependencies.
+
+assets - images, fonts, plain text files.
+
+Types of asset modules - see figure1.
+    a)asset/resource
+
+        adding rules -
+            see webpack.config.js
+            So every time we try to import a JPG file, Webpack will check if it has a rule for it.
+            If it doesn't find a suitable rule, it will give an error, which means something like the following -
+                Unfortunately, I don't know how to import this file. Please tell me what I should do with it.
+
+            On the other hand, if it finds a rule for this file, it will import the file according to the rule.
+
+        Public path(see webpack config comments also) - 
+            Public pass tells Webpack which URL to use in order to load all the generated files in the browser.
+            For example, if you are using static files like images in your application, you can tell the browser
+            where those static files should be taken from using public pass configuration option.
+
+            From Webpack version five, you don't have to worry about this option as much as before.
+
+            If you use webpack version older than 5 then previous setup  wouldn't work for you because you haven't specified
+            the public path to your image.But now everything works out of the box in simple cases.
+
+            You should only worry about public paths if your case is not that simple.
+
+    b)asset/inline - generates base 64 representation of your file and bakes it directly into JavaScript.
+
+    c)asset - file less than 8kb then asset/inline otherwise asset/resource
+    d)asset/source - Asset source reads the content of the file into a JavaScript string and injects that string directly into the
+        JavaScript bundle, as is, without any modifications.

@@ -1,0 +1,36 @@
+Loaders
+    Loaders allow you to import all other kinds of files that you can't handle using Asset Modules.
+    Webpack was designed to help you bundle all your dependencies into one or more files. What kind
+        of dependencies are we talking about?
+
+    Usually, dependencies are other JavaScript modules that your main JavaScript file requires in order
+        to do its job.
+
+    But we can do more than that! With Webpack, you can import css files right into your JavaScript code,
+        you can import SASS, LESS, handlebars, XML and so much more!
+
+    There are a lot of things you can import using Webpack. And Webpack loaders are JavaScript libraries
+        that help you import all that stuff.In the next videos, we are going to talk about various loaders
+        that you most probably will use in your projects.
+
+
+    css-loader,style-loader -
+        here we added these loader into webpack config. here we are appyling multiple loaders on same file.
+        output of css-loader is input to style-loader.also assets modules are built into webpack but webpack
+        loaders are npm packages that needs to be downloaded.see config file for more details
+
+        npm i css-loader style-loader
+
+    scss loader -
+        npm i scss scss-loader
+
+        here we install sass with sass-loader, there are many implementation of sass and you can use any but this one
+            is primary so it means that it gets the new feature fatser than any other implementation.
+
+    babel-loader -
+        Here we used a class variable in helllo-world-button.js
+        if we compile it webpack gives error that you need a appropriate loader to do this.so using loaders, you can use
+        syntax which is not even part of Ecmascript standard.
+
+
+        npm i @babel/core babel-loader @babel/preset-env @babel/plugin-proposal-class-properties --save-dev
