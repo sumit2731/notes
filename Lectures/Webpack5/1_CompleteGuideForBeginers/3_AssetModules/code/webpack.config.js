@@ -8,7 +8,12 @@ module.exports = {
     // /Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/TUTORIAL/dist
     path: path.resolve(__dirname, "./dist"),
     /**
-     * With webpack 5, 'auto' is default value of publicPath. auto means folder where our final bundle is placed. In code src will be - http://127.0.0.1:5500/code/dist/NameOfAsset
+     * this is path where assets are copied.
+     * link - https://www.udemy.com/course/webpack-from-beginner-to-advanced/learn/lecture/10919184#questions/18804866
+     */
+    // assetModuleFilename: "[path]/[name][hash][ext]",
+    /**
+     * With webpack 5, 'auto' is default value of publicPath. auto means folder where our final bundle is placed. In code src(result when we import a image) will be - http://127.0.0.1:5500/code/dist/NameOfAsset
      * In earlier versions default value was empty path,if we set it to empty string then in code we can see that src of image is  = nameOfAsset
      * this is because webpack does not know from where to take this image.
      *
@@ -22,12 +27,12 @@ module.exports = {
      *  b)if you are using an Express.js server in order to serve your application, and you decided to use a special URL prefix to serve your static files?
      *  c)Another case when you need to care about public path would be using module Federation feature
      */
-    //publicPath : 'auto'
-    // publicPath: "http://127.0.0.1:5500/code/dist/",
+    //publicPath : 'auto' , //imagePath - http://127.0.0.1:5500/3_AssetModules/code/dist/23de234a71129d9c860b.jpg
+    //publicPath: "http://127.0.0.1:5500/code/dist/", //imagePath - http://127.0.0.1:5500/code/dist/23de234a71129d9c860b.jpg
     // publicPath: '/Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/code/dist/23de234a71129d9c860b.jpg'
     // publicPath: "/Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/code/dist/",
-    //publicPath: "./dist/", or 'dist/'
-    // publicPath: "http://some-cdn.com/",
+    //publicPath: "http://some-cdn.com/", //imagePath - http://some-cdn.com/23de234a71129d9c860b.jpg
+    //publicPath: "dist/", // or './dist/'
   },
   mode: "none",
   module: {
@@ -61,12 +66,9 @@ module.exports = {
         },
       },
       {
-        test: /\.(text)$/,
+        test: /\.(txt)$/,
         type: "asset/source",
       },
     ],
   },
 };
-
-console.log(__dirname);
-console.log(path.resolve(__dirname, "./dist"));

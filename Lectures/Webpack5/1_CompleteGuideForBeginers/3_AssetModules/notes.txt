@@ -24,7 +24,17 @@ Types of asset modules - see figure1.
             If you use webpack version older than 5 then previous setup  wouldn't work for you because you haven't specified
             the public path to your image.But now everything works out of the box in simple cases.
 
-            You should only worry about public paths if your case is not that simple.
+            You should only worry about public paths if your case is not that simple.as of now we will use publicPath: ./dist
+                as we will refrence it later
+
+        Controling where assets are copied -
+            assetModuleFilename - see config in webpack. also there is link t know more.
+
+            variable things that you can mention in path -
+                [name] - name of file
+                [path] - path to file
+                [hash] - hash of file
+                [ext] - extension of file
 
     b)asset/inline - generates base 64 representation of your file and bakes it directly into JavaScript.
 

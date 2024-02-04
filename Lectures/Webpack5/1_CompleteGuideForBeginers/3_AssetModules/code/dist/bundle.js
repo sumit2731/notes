@@ -9,11 +9,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function helloWorld() {
-  console.log("Hello world");
+class HelloWorldButton {
+  render() {
+    const button = document.createElement("button");
+    button.innerHTML = "Hello world";
+    button.classList.add("hello-world-button");
+    const body = document.querySelector("body");
+    button.onclick = function () {
+      const p = document.createElement("p");
+      p.innerHTML = "Hello world";
+      p.classList.add("hello-world-text");
+      body.appendChild(p);
+    };
+    body.appendChild(button);
+  }
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (helloWorld);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HelloWorldButton);
 
 
 /***/ }),
@@ -25,13 +37,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _altText_txt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 
 
+
+console.log(document.currentScript);
+console.log("file:///Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/3_AssetModules/code/src/add-image.js");
+// console.log(script.src);
+console.log(self.location);
+console.log(_kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__);
 //Kiwi - http://127.0.0.1:5500/code/dist/23de234a71129d9c860b.jpg
 
+/**
+ * publicPath - dist/
+ * Kiwi -dist/23de234a71129d9c860b.jpg
+ *
+ * publicPath - not mentioned
+ * Kiwi - http://127.0.0.1:5500/dist/23de234a71129d9c860b.jpg or http://127.0.0.1:5500/3_AssetModules/code/dist/23de234a71129d9c860b.jpg
+ * depends which folder is opened in vsCode
+ */
 function addImage() {
   const img = document.createElement("img");
-  img.alt = "Kiwi";
+  img.alt = _altText_txt__WEBPACK_IMPORTED_MODULE_1__;
   img.width = 300;
   img.src = _kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__;
   const body = document.querySelector("body");
@@ -46,6 +73,12 @@ function addImage() {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "23de234a71129d9c860b.jpg";
+
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+module.exports = "Kiwi alt text";
 
 /***/ })
 /******/ 	]);
@@ -143,12 +176,13 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _hello_world_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _components_hello_world_button_hello_world_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _add_image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 
 
 
-(0,_hello_world_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
+const helloWorldButton = new _components_hello_world_button_hello_world_button__WEBPACK_IMPORTED_MODULE_0__["default"]();
+helloWorldButton.render();
 (0,_add_image_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 })();
