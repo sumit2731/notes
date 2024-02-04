@@ -1,0 +1,2 @@
+prodution -
+    this enable long list of plugins - TersorPlugin

@@ -56,6 +56,10 @@ module.exports = {
     //   keep: /\.css/,
     // },
   },
+  /**
+   * This option is avalaible from version -webpack4
+   * None- means we do not want any built in optimizations
+   */
   mode: "none",
   module: {
     /**
