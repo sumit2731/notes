@@ -1,0 +1,71 @@
+A plugin is a JavaScript library that adds functionality to the webpack itself.
+
+Plugins can do everything that loaders cannot do.loaders load new type of files.
+But what if you need to do something else than importing a new type of file?
+
+This plugins you can do much more than that.
+
+    a)You can define global constants across the whole application.   
+    b)You can minify your resulting bundle so it consumes less space on disk and is faster to download.
+    c)You can generate other files besides Bundle.js.
+
+Webpack itself utilizes the same plugin system that you can use in your webpack configurations.
+
+a)TerserPlugin -
+    normally webpack plugins needs to be downloaded separately, but TerserPlugin is provided by default with webpack.
+    it reduces the bundle size.
+
+    size decreased from 25kb to 8kb.Terser plugin removes the debugger.
+
+b)mini-css-extract-plugin
+    creates the separate file for css instead of injecting the css in styles tag
+
+    npm i mini-css-extract-plugin --save-dev
+
+    here first we added the plugin in plugin options in config.
+    then we changed the rule where we load css files instead of using style-loader now we use MiniCssExtractPlugin.loader
+
+c)generating name of output file by hash
+    filename: "bundle.[contenthash]js"
+
+    now name of file will depend upon its contents.It is MF% hash of its contents.
+    For doing same for css files add contenthas in name while giving it to MiniCssExtractPlugin, in plugins config.
+     why is this helpful? It helps in cache
+
+d)clearing the dist folder before generating build
+    npm i clean-webpack-plugin --save-dev
+    then we added this plugin in weboackConfig
+
+    then we saw with this plugin we can remove files out side of dist folder.
+    thenwe saw how webpack has a inbuild clean config, we also used that.
+
+    all details are mentioned in webpack.config.js
+
+e)injecting files automatically in index.html
+
+    npm i html-webpack-plugin --save-dev
+
+    then addded this in plugins array. First we used this plugin without any options
+    
+    now we are generating index.html file also inside dist folder.
+
+
+    customizing the genrated html -
+        a)specifying options via plugin
+        b)using a template to generate resultant file -
+            see config in webpack. we using some variable sin handlebar file.
+            but we need to tell webpack how it can load handlebar files -
+                npm i handlebars handlebars-loader --save-dev
+
+    Lis of all all options avalible with this plugin(github link of page) - https://github.com/jantimon/html-webpack-plugin?tab=readme-ov-file
+    main options -
+        a)specify custom template
+        b)filters the chunks that are injected in html
+        c)exclude any specififc chunks
+        d)minify html using html-minifier-options
+        e)injecting base and target tags
+        f)using hashname in file
+
+    list of all webpack official plugins - https://webpack.js.org/plugins/
+
+    There are many more unofficial plugins that are not part of above list

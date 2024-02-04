@@ -1,0 +1,2 @@
+publicPath - automatic value
+how to pass public path value from build
