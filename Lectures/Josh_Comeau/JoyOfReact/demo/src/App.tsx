@@ -19,12 +19,21 @@ const VisuallyHidden = ({ children }) => {
   return <span style={hiddenStyles}>{children}</span>;
 };
 function App() {
-  const classname = `hello ${undefined}`;
+  // No default value:
+  const [username, setUsername] = useState();
+
   return (
-    <>
-      <h1 className={classname}>Hello</h1>
-      <p>Hello</p>
-    </>
+    <form>
+      <label htmlFor="username">Select a username:</label>
+      <input
+        type="text"
+        id="username"
+        value={username}
+        onChange={(event) => {
+          setUsername(event.target.value);
+        }}
+      />
+    </form>
   );
 }
 
