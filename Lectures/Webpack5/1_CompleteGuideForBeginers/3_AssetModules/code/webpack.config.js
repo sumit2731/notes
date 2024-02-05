@@ -15,7 +15,12 @@ module.exports = {
      */
     // assetModuleFilename: "[path]/[name][hash][ext]",
     /**
-     * With webpack 5, 'auto' is default value of publicPath. auto means folder where our final bundle is placed. In code src(result when we import a image) will be - http://127.0.0.1:5500/code/dist/NameOfAsset
+     * This is path from which images imported in js code will be fetched.
+     * js ,css and fonts assets in css will be fetched from
+     *
+     *
+     * With webpack 5, 'auto' is default value of publicPath. auto means folder where our final bundle is placed. In code src(result when we import a image) will be -
+     * http://127.0.0.1:5500/code/dist/NameOfAsset
      * In earlier versions default value was empty path,if we set it to empty string then in code we can see that src of image is  = nameOfAsset
      * this is because webpack does not know from where to take this image.
      *
@@ -24,7 +29,7 @@ module.exports = {
      * In short whatever you give here will be concatenated with imageName to look for image.so do not forget '/'
      */
     /**
-     * So if it works fine then why aare we talking about it? Because there are some cases when public path should be specfifed explicitly
+     * So if it works fine then why are we talking about it? Because there are some cases when public path should be specfifed explicitly
      *  a)If you are serving static files from CDN
      *  b)if you are using an Express.js server in order to serve your application, and you decided to use a special URL prefix to serve your static files?
      *  c)Another case when you need to care about public path would be using module Federation feature

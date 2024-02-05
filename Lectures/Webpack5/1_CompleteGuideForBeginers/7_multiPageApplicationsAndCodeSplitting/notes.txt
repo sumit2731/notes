@@ -36,3 +36,12 @@ code 2 changes -
 
 
     Thing to be be looked into configs of splitChunk option. see things to be covered
+
+
+    In last we setup the webpack for dev build.chnages required were -
+        a)Multiple entry points
+        b)Generating 2 html file(changes in plugin)
+        
+
+        webpack dev server served index,html in dist folder, since that file was not there, so it served
+            filesystem, you can navigate to any html page by chnaging in browser.

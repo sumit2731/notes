@@ -1,0 +1,27 @@
+{
+  // adds recommended settings
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    //bt default it checks against es5 but we are using ES6 syntax
+    "ecmaVersion": "latest",
+    "requireConfigFile": false,
+    //we can use modules in code
+    "sourceType": "module"
+  },
+  //   we are using features like class variables which are not part of ECMAscript standrad so eslint will complaint about them
+  // this parser is installed
+  "parser": "@babel/eslint-parser",
+  "env": {
+    // we can write node js specififc code (require function)
+    "node": true,
+    //we can write browser code, so we can write document.
+    "browser": true
+  },
+  "rules": {
+    /**
+    by default console.log is disabled by by recommneeded rule
+    we want to disable this rule, so we use 0
+    */
+    "no-console": 0
+  }
+}
