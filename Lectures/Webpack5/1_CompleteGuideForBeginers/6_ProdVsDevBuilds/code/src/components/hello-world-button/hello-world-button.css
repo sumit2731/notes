@@ -7,9 +7,7 @@
 }
 
 .hello-world-text {
-  color: red;
+  color: green;
   font-weight: bold;
-}
-h1 {
-  color: gray;
+  font-weight: bold;
 }

@@ -1,2 +1,15 @@
-prodution -
-    this enable long list of plugins - TersorPlugin
+production mode -  enable long list of plugins - TersorPlugin.
+then we saw difference between production and dev build.how errors are marked
+how mode is avalaible as nodejs variable.
+
+creating 2 separate build configs -
+    then we created 2 separate webpack configs for prod and build. and added scripts in package.json to run them separately.
+    in scripts we mentioned different configs using config file.
+
+webpack-dev-server -
+    npm i webpack-dev-server --save-dev
+
+    then we added the webpack-dev-server in webpack.dev.config in devServer property.passed it some options.
+
+    then we chnages the command to start webpack(now we want to use webpack-dev server) -
+        "dev": "webpack serve --config webpack.dev.config.js --hot"
