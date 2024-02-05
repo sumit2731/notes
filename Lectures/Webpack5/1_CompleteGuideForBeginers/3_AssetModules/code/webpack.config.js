@@ -10,6 +10,8 @@ module.exports = {
     /**
      * this is path where assets are copied.
      * link - https://www.udemy.com/course/webpack-from-beginner-to-advanced/learn/lecture/10919184#questions/18804866
+     *
+     * all identifiers which can be used in chunk name - https://webpack.js.org/configuration/output/#outputfilename
      */
     // assetModuleFilename: "[path]/[name][hash][ext]",
     /**
@@ -40,7 +42,7 @@ module.exports = {
      * each rule has atleast 2 properties
      *  'test' - this regular expressions which is used to match files
      *  type or use - asset modules need 'type' property, 'use' is for loaders
-     *    type accepts 4 values as shouwn in figure1 of section 3.
+     *    type accepts 4 values as shown in figure1 of section 3.
      */
     rules: [
       {

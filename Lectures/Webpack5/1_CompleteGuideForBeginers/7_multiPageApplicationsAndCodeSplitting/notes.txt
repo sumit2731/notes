@@ -1,0 +1,38 @@
+1)we created some additional files which kiwi-image in components.
+2)then we created a separate entrypoints in prod level config.(entry property),
+    which generated different bundles.
+
+code1 changes -
+All these changes are in webpack.prod.config.js - 
+
+    3)then we added the name of chunkNme in generated output file- config.output.filename
+        abd for css - changes were made in MiniCssExtractPlugin.
+    4)difference between - hash, chunkhas, contenthash - MiniCssExtractPlugin
+        https://medium.com/@web_developer/hash-vs-chunkhash-vs-contenthash-e94d38a32208
+
+    5)but we saw that all our bundles(js and css) are included in same index.html we dot not want this.
+
+    6)then we added separate instance of HtmlWebpackPlugin in plugin array to generate another html file,
+        then we added chunks property to controls which chunk assets should be included in each html file.
+        chunk names are taken from entryPoint.
+
+    7)then we added a common lodash dependency(install npm package) for our page and generated the build. 
+        there we found that size of both files was very large.if we change our file the user needs to download this large file again,
+        inspite of fact that large part of it is not changed.
+
+        then we told webpack to optimize all bundles via optimize property. now a common chunk is generated for webpack.
+        in index.html now 2 chunks of js is included. if our code changes then user does not need to download the lodash code again.
+
+        then we removed lodash from one our code and saw that it is no longer included in index.html file.so webpack only includes this
+        extra bundle if it is required.
+        
+        we also saw how to read the webpack output.
+
+
+code 2 changes -
+    Then we removed the lodash and incldued reactjs. separate bundle was not getting generated for same. so we spcififed the minimum
+        size after which a separate bundle should be genretaed for a package. default value is 30kb. see code2 for it.option
+        chnaged was optimization.
+
+
+    Thing to be be looked into configs of splitChunk option. see things to be covered

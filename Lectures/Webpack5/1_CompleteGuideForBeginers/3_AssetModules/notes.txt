@@ -28,10 +28,12 @@ Types of asset modules - see figure1.
                 as we will refrence it later
 
         Controling where assets are copied -
-            assetModuleFilename - see config in webpack. also there is link t know more.
+            assetModuleFilename - see config in webpack. also there is link to know more.
+
+            https://webpack.js.org/configuration/output/#outputfilename
 
             variable things that you can mention in path -
-                [name] - name of file
+                [name] - name of file (name of entry point)
                 [path] - path to file
                 [hash] - hash of file
                 [ext] - extension of file

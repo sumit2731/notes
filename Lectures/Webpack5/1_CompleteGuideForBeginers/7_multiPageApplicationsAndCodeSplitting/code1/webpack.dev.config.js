@@ -5,12 +5,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: {
-    "hello-world": "./src/hello-world.js",
-    kiwi: "./src/kiwi.js",
-  },
+  entry: "./src/index.js",
   output: {
-    filename: "[name].bundle.js",
+    filename: "bundle.[contenthash].js",
     path: path.resolve(__dirname, "./dist"),
     publicPath: "",
   },
@@ -98,29 +95,10 @@ module.exports = {
 
     new CleanWebpackPlugin(),
 
-    // new HtmlWebpackPlugin({
-    //   template: "src/index.hbs",
-    //   title: "Hello World",
-    //   description: "Some description",
-    // }),
     new HtmlWebpackPlugin({
-      filename: "hello-world.html", //name of generated html file
-      chunks: ["hello-world"], // this means chunks related to which entry point config should be added here
+      template: "src/index.hbs",
       title: "Hello World",
-      template: "src/page-template.hbs",
-      description: "Hello world",
-      minify: false, // minifies the html file
-    }),
-    /**
-     * This is to generate separate html file, each new instacnce will generate separate html file
-     */
-    new HtmlWebpackPlugin({
-      filename: "kiwi.html",
-      chunks: ["kiwi"],
-      title: "Kiwi",
-      template: "src/page-template.hbs",
-      description: "Kiwi",
-      minify: false, // minifies the html file
+      description: "Some description",
     }),
   ],
 };

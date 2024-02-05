@@ -1,0 +1,19 @@
+Asset                                     Size              Chunks                    Chunk Names
+
+6ac037a9bbef5a78e02402b7ec1cd204.jpg      313 KiB          [emitted]                      [big]
+
+hello-world.07a09db7d5fb07a70d35.css      175 bytes       1  [emitted]                    hello-world
+
+ hello-world.7c5e2dcf757a1cff05a8.js      2.28 KiB          1  [emitted]         hello-world
+
+hello-world.html  392 bytes                                 [emitted]
+
+hello-world_me-img.54394f9c0af49ef433b9.js   7.61 KiB       0  [emitted]         hello-world_me-img
+
+hello-world_me-img.7cf24a1f948463893863.css   23 bytes       0  [emitted]         hello-world_me-img
+
+      me-img.531cff5af6fddf1ddc70.js   2.15 KiB       2  [emitted]         me-img
+
+     me-img.6901e783b05b74fd36b0.css   65 bytes       2  [emitted]         me-img
+
+                         me-img.html  375 bytes          [emitted]

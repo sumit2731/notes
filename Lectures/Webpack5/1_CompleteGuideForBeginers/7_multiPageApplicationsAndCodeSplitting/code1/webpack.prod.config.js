@@ -30,26 +30,12 @@ module.exports = {
 
   mode: "production",
   optimization: {
-    //This is config for SplitChunkPlugin
     splitChunks: {
       /**
        * This option indicates which chunks will be selected for optimization.
         In this case, we want to tell Webpack to optimize all types of chunks.
-        values are string(all initial and async),RE(regular expression), function
        */
       chunks: "all",
-      /**
-       * minSize is telling Webpack if the chunk is less than  minSize, it should not be extracted as a separate bundle. Instead, it should be part of
-       * the larger bundle. By default minSize is equal to 30kb. This means that by default Webpack does not create a separate bundle for a chunk that
-       * is less than 20kb.
-       */
-      minSize: 3000, //
-      /**
-       * maxSize tells Webpack to  split chunks bigger than maxSize bytes into smaller parts. For example, if you have maxSize
-       *  equal to 100kb, then Webpack will try to split every chunk that's larger than 100kb into smaller chunks. By default
-       *  maxSize is equal to 0 which means there is no restriction on maximum size of the generated chunks.
-       */
-      // maxSize: 0,
     },
   },
 
@@ -154,15 +140,9 @@ module.exports = {
       filename: "[name].[contenthash].css",
     }), // generates separate file for CSS
     new CleanWebpackPlugin(),
-    //config for single entry point
-    // new HtmlWebpackPlugin({
-    //   template: "src/index.hbs",
-    //   title: "Hello World",
-    //   description: "Some description",
-    // }),
     new HtmlWebpackPlugin({
       filename: "hello-world.html", //name of generated html file
-      chunks: ["hello-world"], // this means chunks related to which entry point config should be added here
+      chunks: ["hello-world"],
       title: "Hello World",
       template: "src/page-template.hbs",
       description: "Hello world",
