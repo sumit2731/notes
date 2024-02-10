@@ -6,4 +6,15 @@ code1 -
         d)but now all assets should be called with fetched with that route, for this used pubLicAssetPath in webpack config.
 
 
-code 2 - same as 1 so not done
+code 2 -
+    here we are consuming modules from 2 apps in single app (dashboard). see figure 1.
+
+    we load both these module in dashboard/dashboards.js
+
+
+code3 -
+    till now we talked about one level deep module federation.we had on host application and 2 federated modules that were
+    refrenced from host.its also possible to have nested federated module. a mpdule can serve both as remote and host.
+
+    see figure 2. kiwi is host  for ImageCaption and at a same time it will still be consumed as  federated module inside
+    dashboard.

@@ -9,7 +9,8 @@ Code 1 -
         
         
         Then in Kiwi App we consumed that module. using ModuleFederationPlugin , first we told webpack where to find imports with that path.
-            then in dynamic path we imported the module which is exposed by HelloWorld App. changes are in webpack config and in Kiwi.js
+            then in dynamic path we imported the module which is exposed by HelloWorld App. changes are in webpack config and in Kiwi.js.
+            dynamic import is needed because dynamic bundles are loaded asynchronously
 
 
 Code 2 -
