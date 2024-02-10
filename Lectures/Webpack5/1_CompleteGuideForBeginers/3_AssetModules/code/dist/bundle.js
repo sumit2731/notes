@@ -42,7 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 console.log(document.currentScript);
-console.log("file:///Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/3_AssetModules/code/src/add-image.js");
+console.log("file:///Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/3_AssetModules/code/src/add-image.js"); // full path of file
 // console.log(script.src);
 console.log(self.location);
 console.log(_kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__);

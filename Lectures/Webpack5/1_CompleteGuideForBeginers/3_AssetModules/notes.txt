@@ -38,11 +38,14 @@ Types of asset modules - see figure1.
                 [hash] - hash of file
                 [ext] - extension of file
 
-    b)asset/inline - generates base 64 representation of your file and bakes it directly into JavaScript.
+    b)asset/inline - asset/inline module type ,inline's the content of file into the bundle as a data URI.
+         generates base 64 representation of your file and bakes it directly into JavaScript.
+         very common for smaller resources like svg.
+        
 
-    c)asset - file less than 8kb then asset/inline otherwise asset/resource
-    d)asset/source - Asset source reads the content of the file into a JavaScript string and injects that string directly into the
-        JavaScript bundle, as is, without any modifications.
+    c)asset - file less than 8kb(customizable) then asset/inline otherwise asset/resource
+    d)asset/source - Asset source reads the content of the file into a JavaScript string and injects that string
+        directly into the JavaScript bundle, as is, without any modifications.
 
 
 Answered in question - what if i want to place differet assets in different folders?

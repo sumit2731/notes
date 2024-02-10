@@ -1,0 +1,8 @@
+config.module - 
+    matching condition,
+    include option
+    exclude option
+
+
+config.resolve - how modules are resolve. you can mention alias. 
+    https://webpack.js.org/configuration/resolve/

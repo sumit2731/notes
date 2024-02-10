@@ -7,7 +7,9 @@ module.exports = {
     //path: "/dist",
     // /Users/sumeet.sood/notes/Lectures/Webpack5/1_CompleteGuideForBeginers/TUTORIAL/dist
     path: path.resolve(__dirname, "./dist"),
+
     /**
+     * Extra from lectures
      * this is path where assets are copied.
      * link - https://www.udemy.com/course/webpack-from-beginner-to-advanced/learn/lecture/10919184#questions/18804866
      *
@@ -15,7 +17,7 @@ module.exports = {
      */
     // assetModuleFilename: "[path]/[name][hash][ext]",
     /**
-     * This is path from which images imported in js code will be fetched.
+     * Public pass tells Webpack which URL to use in order to load all the generated files in the browser.
      * js ,css and fonts assets in css will be fetched from
      *
      *
@@ -48,13 +50,28 @@ module.exports = {
      *  'test' - this regular expressions which is used to match files
      *  type or use - asset modules need 'type' property, 'use' is for loaders
      *    type accepts 4 values as shown in figure1 of section 3.
+     *
+     *
+     * Additional from lecture -
+     *
+     * There is a generator property also which can be used to control name and location where asset is placed
+     *  https://www.udemy.com/course/webpack-from-beginner-to-advanced/learn/lecture/42023008#questions/21277148/
+     *
+     * this is geneartor , this can be specified under modules(here they affect all rules), or under required rule
+     *
+     * useful values - {
+     *  fileName: Customize filename for this asset module
+     *  publicPath: Customize publicPath for asset modules, available since webpack 5.28.0
+     *  outputPath:Emit the asset in the specified folder relative to 'output.path', available since webpack 5.67.0
+     *
+     * }
      */
     rules: [
       {
         test: /\.(png|jpg)$/,
         /**
          * It tells webpack to copy the required file to output directory.By default name of file is default hash of contents
-         * of file with regional extension.
+         * of file with regional extension. both location and name can be customized, see notes
          */
         // type: "asset/resource",
         /**
