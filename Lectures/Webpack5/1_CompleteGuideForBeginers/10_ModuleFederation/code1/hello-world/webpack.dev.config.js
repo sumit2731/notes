@@ -25,7 +25,7 @@ module.exports = {
   devServer: {
     port: 9001,
     static: {
-      directory: path.resolve(__dirname, "./dist"),
+      directory: path.resolve(__dirname, "./dist"), // this comes from section 9
     },
     devMiddleware: {
       index: "hello-world.html",
