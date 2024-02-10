@@ -1,9 +1,25 @@
+Before  Webpack -
+    multiple files in index.html. Order determines which files should be loaded first. changing order breaks app.
+    Grunt Gulp - These tools helped us to manage assets and concatenate all our JavaScript files into one.
+        But they still cannot figure out dependencies between those files.
+    require.js - In order to manage JavaScript dependencies we used required JS which helps in the way, but it's not
+        as powerful as Webpack.
+
 Webpack is static module bundler.
 
-1)Here we saw that we can run webpack without any initial confguration. By default it makes suome assumptions about entryFile and where it places final build.
+install webpack -
+    npm install webpack webpack-cli --save-dev
+
+1)Here we saw that we can run webpack without any initial confguration - 
     npx webpack
 
+    By default it makes some assumptions about entryFile and where it places final build -
+        entry file - src/index.js
+        bundle is generated at - dist/main.js
+
+    
 2)Then we used this command to get details -
 
     npx webpack --stats detailed
-3)Then we create a file- webpackConfig.js. and added a command in npm scripts.
+3)Then we create a config file for webpack- webpackConfig.js. and added a command in npm scripts.
+    "build": webpack

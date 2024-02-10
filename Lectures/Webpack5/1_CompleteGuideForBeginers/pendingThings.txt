@@ -2,8 +2,4 @@
     https://angularindepth.com/posts/1490/webpack-an-in-depth-introduction-to-splitchunksplugin
     also see official documentation
 
-
-
-1)publicPath - automatic value
-2)how to pass public path value from build
-3)
+2)Extra modules downloaded in WebpackModule federation
