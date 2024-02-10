@@ -49,7 +49,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n/* harmony import */ var _components_kiwi_image_kiwi_image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/kiwi-image/kiwi-image.js */ \"./src/components/kiwi-image/kiwi-image.js\");\n\n\nvar heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nheading.render('kiwi');\nvar kiwiImage = new _components_kiwi_image_kiwi_image_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nkiwiImage.render();\n__webpack_require__.e(/*! import() */ \"webpack_container_remote_HelloWorldApp_HelloWorldButton\").then(__webpack_require__.t.bind(__webpack_require__, /*! HelloWorldApp/HelloWorldButton */ \"webpack/container/remote/HelloWorldApp/HelloWorldButton\", 23)).then(function (HelloWorldButtonModule) {\n  var HelloWorldButton = HelloWorldButtonModule[\"default\"];\n  var helloWorldButton = new HelloWorldButton();\n  helloWorldButton.render();\n});\n\n//# sourceURL=webpack://tutorial/./src/kiwi.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/heading/heading.js */ \"./src/components/heading/heading.js\");\n/* harmony import */ var _components_kiwi_image_kiwi_image_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/kiwi-image/kiwi-image.js */ \"./src/components/kiwi-image/kiwi-image.js\");\n\n\nvar heading = new _components_heading_heading_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nheading.render(\"kiwi\");\nvar kiwiImage = new _components_kiwi_image_kiwi_image_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nkiwiImage.render();\n/**\n * First part is path by which webpack will resolve which module to load, this is key in ModuleFederationPlugin config\n * Second part is name given by parenbt application while exposing this module\n */\n\n__webpack_require__.e(/*! import() */ \"webpack_container_remote_HelloWorldAp_HelloWorldButton\").then(__webpack_require__.t.bind(__webpack_require__, /*! HelloWorldAp/HelloWorldButton */ \"webpack/container/remote/HelloWorldAp/HelloWorldButton\", 23)).then(function (HelloWorldButtonModule) {\n  var HelloWorldButton = HelloWorldButtonModule[\"default\"];\n  var helloWorldButton = new HelloWorldButton();\n  helloWorldButton.render();\n});\n\n//# sourceURL=webpack://tutorial/./src/kiwi.js?");
 
 /***/ }),
 
@@ -421,7 +421,7 @@ eval("module.exports = __webpack_require__.p + \"23de234a71129d9c860b.jpg\";\n\n
 
 /***/ }),
 
-/***/ "webpack/container/reference/HelloWorldApp":
+/***/ "webpack/container/reference/HelloWorldAp":
 /*!*********************************************************************!*\
   !*** external "HelloWorldApp@http://localhost:9001/remoteEntry.js" ***!
   \*********************************************************************/
@@ -582,7 +582,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f65e1901492b9b3c8c1c")
+/******/ 		__webpack_require__.h = () => ("9f065dbe6187ff20e9d9")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -650,15 +650,15 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 	/* webpack/runtime/remotes loading */
 /******/ 	(() => {
 /******/ 		var chunkMapping = {
-/******/ 			"webpack_container_remote_HelloWorldApp_HelloWorldButton": [
-/******/ 				"webpack/container/remote/HelloWorldApp/HelloWorldButton"
+/******/ 			"webpack_container_remote_HelloWorldAp_HelloWorldButton": [
+/******/ 				"webpack/container/remote/HelloWorldAp/HelloWorldButton"
 /******/ 			]
 /******/ 		};
 /******/ 		var idToExternalAndNameMapping = {
-/******/ 			"webpack/container/remote/HelloWorldApp/HelloWorldButton": [
+/******/ 			"webpack/container/remote/HelloWorldAp/HelloWorldButton": [
 /******/ 				"default",
 /******/ 				"./HelloWorldButton",
-/******/ 				"webpack/container/reference/HelloWorldApp"
+/******/ 				"webpack/container/reference/HelloWorldAp"
 /******/ 			]
 /******/ 		};
 /******/ 		__webpack_require__.f.remotes = (chunkId, promises) => {
@@ -745,7 +745,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 			var promises = [];
 /******/ 			switch(name) {
 /******/ 				case "default": {
-/******/ 					initExternal("webpack/container/reference/HelloWorldApp");
+/******/ 					initExternal("webpack/container/reference/HelloWorldAp");
 /******/ 				}
 /******/ 				break;
 /******/ 			}
