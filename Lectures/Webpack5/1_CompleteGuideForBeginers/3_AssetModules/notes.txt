@@ -43,3 +43,10 @@ Types of asset modules - see figure1.
     c)asset - file less than 8kb then asset/inline otherwise asset/resource
     d)asset/source - Asset source reads the content of the file into a JavaScript string and injects that string directly into the
         JavaScript bundle, as is, without any modifications.
+
+
+Answered in question - what if i want to place differet assets in different folders?
+    https://www.udemy.com/course/webpack-from-beginner-to-advanced/learn/lecture/22891448#questions/21277148/
+
+    module.rule.generaor.fileName (overwrites assetModuleFileName)
+    module.rule.generaor also has other options like publicPath for module

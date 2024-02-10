@@ -1,0 +1,6 @@
+Code 1 - 
+    Module federation lets one application to dynamically load modules from another application at run rime.
+
+    In First 4 lectures, we exposed a module from helloWprld Application by using ModuleFederationPlugin.
+        Then I consumed that module in Kiwi App. This module is fetched dynamically at run time.
+        start both app in dev or prod mode and you can see that Kiwi uses code that is built in another
