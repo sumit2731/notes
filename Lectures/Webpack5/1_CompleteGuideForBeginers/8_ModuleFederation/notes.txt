@@ -1,6 +1,15 @@
 Code 1 - 
     Module federation lets one application to dynamically load modules from another application at run rime.
 
-    In First 4 lectures, we exposed a module from helloWprld Application by using ModuleFederationPlugin.
-        Then I consumed that module in Kiwi App. This module is fetched dynamically at run time.
-        start both app in dev or prod mode and you can see that Kiwi uses code that is built in another
+    HelloWorldApp is exposing a module and Kiwi app is using that module.
+
+    In First 4 lectures, we created 2 separate apps,Kiwi and HelloWorld. In HelloWorld we exposed some modules using
+        ModuleFederationPlugin. Changes are in WebpackConfig file in plugin section, we have to set the Public Path also
+        where in the end app will be deployed.
+        
+        
+        Then in Kiwi App we consumed that module. using ModuleFederationPlugin , first we told webpack where to find imports with that path.
+            then in dynamic path we imported the module which is exposed by HelloWorld App. changes are in webpack config and in Kiwi.js
+
+
+Code 2 -
