@@ -13,4 +13,15 @@ Code 1 -
             dynamic import is needed because dynamic bundles are loaded asynchronously
 
 
-Code 2 -
+code 2 -
+    here we are consuming modules from 2 apps in single app (dashboard). see figure 1.
+
+    we load both these module in dashboard/dashboards.js
+
+
+code3 -
+    till now we talked about one level deep module federation.we had on host application and 2 federated modules that were
+    refrenced from host.its also possible to have nested federated module. a mpdule can serve both as remote and host.
+
+    see figure 2. kiwi is host  for ImageCaption and at a same time it will still be consumed as  federated module inside
+    dashboard.
