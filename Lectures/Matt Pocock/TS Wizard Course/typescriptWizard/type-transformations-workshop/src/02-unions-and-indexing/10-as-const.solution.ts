@@ -13,14 +13,14 @@ export const programModeEnumMap = {
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
 } as const;
 
-export type GroupProgram = typeof programModeEnumMap["GROUP"];
-export type AnnouncementProgram = typeof programModeEnumMap["ANNOUNCEMENT"];
-export type OneOnOneProgram = typeof programModeEnumMap["ONE_ON_ONE"];
-export type SelfDirectedProgram = typeof programModeEnumMap["SELF_DIRECTED"];
+export type GroupProgram = (typeof programModeEnumMap)["GROUP"];
+export type AnnouncementProgram = (typeof programModeEnumMap)["ANNOUNCEMENT"];
+export type OneOnOneProgram = (typeof programModeEnumMap)["ONE_ON_ONE"];
+export type SelfDirectedProgram = (typeof programModeEnumMap)["SELF_DIRECTED"];
 export type PlannedOneOnOneProgram =
-  typeof programModeEnumMap["PLANNED_ONE_ON_ONE"];
+  (typeof programModeEnumMap)["PLANNED_ONE_ON_ONE"];
 export type PlannedSelfDirectedProgram =
-  typeof programModeEnumMap["PLANNED_SELF_DIRECTED"];
+  (typeof programModeEnumMap)["PLANNED_SELF_DIRECTED"];
 
 type tests = [
   Expect<Equal<GroupProgram, "group">>,
@@ -28,7 +28,15 @@ type tests = [
   Expect<Equal<OneOnOneProgram, "1on1">>,
   Expect<Equal<SelfDirectedProgram, "selfDirected">>,
   Expect<Equal<PlannedOneOnOneProgram, "planned1on1">>,
-  Expect<Equal<PlannedSelfDirectedProgram, "plannedSelfDirected">>,
+  Expect<Equal<PlannedSelfDirectedProgram, "plannedSelfDirected">>
 ];
+
+/**
+ * 1)converts the value from type like string to literal value
+ * 2)makes all properties readonly
+ * 3)can be extended to any level
+ * 4)No run time existance
+ * 5)Object.freeze exist at run time, but works at first level only
+ */
 
 //see lecture for all details

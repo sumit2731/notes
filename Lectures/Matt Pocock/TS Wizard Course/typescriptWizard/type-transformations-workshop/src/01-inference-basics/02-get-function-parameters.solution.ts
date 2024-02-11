@@ -37,7 +37,7 @@ type tests = [
 
 /**
  * Things learnt -
- *  Utility type Parameters - this returns a tuple
+ *  Utility Parameters Type - this returns a tuple
  * this is really useful for extracting things that you do not have any control of, like 3rd paty libraries.
  */
 declare function f1(a: number, b: string): void;
@@ -51,3 +51,13 @@ declare function f12(obj: { a: number; b: string }): void;
 type T32 = Parameters<typeof f12>;
 
 let arr2: T32 = [{ a: 1, b: "a" }];
+
+/**
+ * Define paramater type
+ */
+
+type Parameters2<T extends (...args: any[]) => any> = T extends (
+  ...args: infer P
+) => any
+  ? P
+  : any;

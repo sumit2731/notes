@@ -15,7 +15,7 @@
     b)Conditional pruning is also useful for narrowing union types. TypeScript’s libraries include the
         NonNullable<T> type (source), which removes null and undefined from a union type.
         NonNullable<T> produces a potentially narrowed type using never to prune unwanted union branches.
-        see lecture 4 in mattPocock folder
+        see lecture 4 in mattPocock folder (also used in Extract and Exclude utility types)
 4)Ensuring that a property does not exist on a object. there are 2 ways to do that -
   making a property optional and giving it value of undefined
   while using mapped type when proeprtyName evaluates to never

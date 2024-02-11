@@ -17,3 +17,12 @@ type tests = [Expect<Equal<MyFuncReturn, string>>];
  * 1)typeof allows us to extract types form tun time code
  * 2)ts utility type - ReturnType. it allows us to extract retur type from function type.
  */
+
+/**
+ * Extra from course
+ */
+type returnType2<T extends (...args: any[]) => any> = T extends (
+  ...args: any[]
+) => infer returnType
+  ? returnType
+  : never;

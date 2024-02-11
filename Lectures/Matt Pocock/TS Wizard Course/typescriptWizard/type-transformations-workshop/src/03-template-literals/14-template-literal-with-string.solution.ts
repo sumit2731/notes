@@ -1,3 +1,8 @@
+/**
+ * In Template literals we can put types inside ${}
+ * here we used string type inside ${}
+ */
+
 type Route = `/${string}`;
 
 export const goToRoute = (route: Route) => {};

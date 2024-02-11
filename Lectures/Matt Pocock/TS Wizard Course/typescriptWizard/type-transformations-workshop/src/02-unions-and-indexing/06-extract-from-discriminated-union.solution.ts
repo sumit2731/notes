@@ -42,3 +42,11 @@ type BananaAndOrange = Extract<Fruit, "banana" | "orange">;
 type T0 = Extract<"a" | "b" | "c", "a" | "f">;
 
 //type T0 = "a"
+
+/**
+ * Extract from T those types that are assignable to U. I uses the extends and never type to filter type.
+ * So in  UNion you can filter a type without typing it fully.
+ * T extends U means T is assignable to U type
+ * Also see use of never in removing the type from Union
+ */
+type Extract<T, U> = T extends U ? T : never;
