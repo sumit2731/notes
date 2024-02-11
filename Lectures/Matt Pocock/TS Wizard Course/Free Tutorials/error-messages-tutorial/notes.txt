@@ -1,0 +1,6 @@
+1)see lecture 8. type conversio gives error if all properties of required type are not present.
+    if they are present then type casting works.this is covered in video
+
+
+2)In order to tell typescript that all files are modules use this option - 
+    compilerOption.moduleDetection = 'force'
