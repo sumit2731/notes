@@ -1,5 +1,8 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
+/**
+ * if we do not specify the constraint then TRoute will have type of unknown
+ */
 type AddRoutePrefix<TRoute extends string> = `/${TRoute}`;
 
 type tests = [

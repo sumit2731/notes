@@ -10,6 +10,10 @@ const parser3 = {
   extract: () => true,
 };
 
+/**
+ *  What you can do here is you can say T extends either this branch or this branch or this branch. 
+ * You can specify an infer TResult in each branch.
+ */
 type GetParserResult<T> = T extends
   | {
       parse: () => infer TResult;

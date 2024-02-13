@@ -12,6 +12,7 @@ const getServerSideProps = async () => {
 
 type InferPropsFromServerSideFunction = unknown;
 
+
 type tests = [
   Expect<
     Equal<

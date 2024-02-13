@@ -1,5 +1,5 @@
 /**
- * Run in Pipe
+ * @RunInPipe
  *
  * Let’s say we have an array of functions and a value, the value has to be passed through these functions
  * in a pipe. Like the initial value has to be passed to the first function and then the returned value
@@ -28,6 +28,10 @@ const finalValue = arr.reduce((previousValue, currentElement) => {
   return newValue;
 }, initialValue);
 console.log(finalValue);
+
+/**
+ * @RunAPromiseInSequence
+ */
 
 //Similarly, if we want to run a promise in a sequence we can do the same with this.
 

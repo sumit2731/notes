@@ -21,6 +21,13 @@
   while using mapped type when proeprtyName evaluates to never
 
 5)type for function that never actually returns
+
+6)Total type script, see exercise 22 (we return never from conditional types)
+  Never is a way of signaling to your types that something should never happen.
+  This pattern though of returning never allows your conditional types to specify 
+  their else logic without having to worry too much about what it is.
+  Really, never is a way of saying this should never happen. It's very useful in conditional types, a 
+  very common pattern to basically say, "OK, this value isn't allowed," or "This should never happen."
 */
 
 //1

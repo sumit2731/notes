@@ -12,3 +12,4 @@ type tests = [
   // @ts-expect-error
   AddRoutePrefix<number>,
 ];
+
