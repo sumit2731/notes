@@ -16,6 +16,7 @@ type Fruit =
 
 type TransformedFruit = unknown;
 
+
 type tests = [
   Expect<
     Equal<TransformedFruit, "apple:red" | "banana:yellow" | "orange:orange">

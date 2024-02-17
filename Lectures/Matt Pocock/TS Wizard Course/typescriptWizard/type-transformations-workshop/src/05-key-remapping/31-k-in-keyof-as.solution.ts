@@ -6,6 +6,9 @@ interface Attributes {
   age: number;
 }
 
+/**
+ * Remapping of keys using as
+ */
 type AttributeGetters = {
   [K in keyof Attributes as `get${Capitalize<K>}`]: () => Attributes[K];
 };

@@ -13,6 +13,8 @@ const parser3 = {
 /**
  *  What you can do here is you can say T extends either this branch or this branch or this branch. 
  * You can specify an infer TResult in each branch.
+ * 
+ * takeway- In different branches of Union, infer can refer to different things by same name
  */
 type GetParserResult<T> = T extends
   | {

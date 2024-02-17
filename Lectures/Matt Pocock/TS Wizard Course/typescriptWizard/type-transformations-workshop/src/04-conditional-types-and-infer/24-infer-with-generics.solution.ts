@@ -16,6 +16,8 @@ type Example = MyComplexInterface<
 
 /**
  * here we can extract multiple argumnets using infer, here we are extracting only one
+ * 
+ * like - MyComplexInterface<any, any, infer Name, infer TPoint>
  */
 type GetPoint<T> = T extends MyComplexInterface<any, any, any, infer TPoint>
   ? TPoint

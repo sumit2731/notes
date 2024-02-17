@@ -38,6 +38,15 @@
   *   on them
   * 
   * 27 - new way of using infer. which helps us to avoid nested ternaries
+  * 
+  * 28 - distributive nature of generics in condiitonal types (important)
+  */
+
+ /**
+  * 34 - pattern to transform union into different union or into object type
+  * 
+  * 
+  * 36 - converted unions into other union type
   */
 
 /**

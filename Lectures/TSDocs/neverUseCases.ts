@@ -18,7 +18,7 @@
         see lecture 4 in mattPocock folder (also used in Extract and Exclude utility types)
 4)Ensuring that a property does not exist on a object. there are 2 ways to do that -
   making a property optional and giving it value of undefined
-  while using mapped type when proeprtyName evaluates to never
+  while using mapped type when proeprtyName evaluates to never (see ts docs of mapped type, In total TS course see lecture 32 of section 1)
 
 5)type for function that never actually returns
 

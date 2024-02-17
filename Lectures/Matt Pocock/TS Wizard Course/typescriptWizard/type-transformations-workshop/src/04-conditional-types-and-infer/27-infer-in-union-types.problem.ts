@@ -10,9 +10,6 @@ const parser3 = {
   extract: () => true,
 };
 
-/
-
-
 type tests = [
   Expect<Equal<GetParserResult<typeof parser1>, number>>,
   Expect<Equal<GetParserResult<typeof parser2>, string>>,

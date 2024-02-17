@@ -14,6 +14,9 @@ type Fruit =
       color: "orange";
     };
 
+/**
+ * Here type remapping is needed as properties of type can only be of string, numbers and symbols
+ */
 type TransformedFruit = {
   [F in Fruit as F["name"]]: `${F["name"]}:${F["color"]}`;
 }[Fruit["name"]];
