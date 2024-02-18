@@ -11,6 +11,12 @@ interface Attributes {
  * of all possible combinations of Attributes?
  */
 type MutuallyExclusive<T> = unknown;
+type MutuallyExclusive2<T> =  {
+  [P in keyof T] : {
+    `${P}`: T[P]
+  }
+}
+type ExclusiveAttributes2 = MutuallyExclusive2<Attributes>;
 
 type ExclusiveAttributes = MutuallyExclusive<Attributes>;
 

@@ -49,6 +49,18 @@
   * 36 - converted unions into other union type
   */
 
+ /**
+  * Challennges -
+  * 
+  * 37 - not able to solve
+  * 
+  * 38 - not able to solve
+  * 
+  * 39 - solved
+  * 
+  * 40 - to be seen
+  */
+
 /**
  * See how you defined utility types -
  * 
