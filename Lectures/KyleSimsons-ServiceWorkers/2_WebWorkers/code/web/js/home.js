@@ -34,7 +34,13 @@
     fibsList.innerHTML = "";
 
     // TODO
-    wor;
+    worker = new Worker("/js/worker.js");
+    /**
+     * Receives the message from webWorker
+     */
+    worker.addEventListener("message", onMessage);
+    //does'nt matter what we send
+    worker.postMessage("start");
   }
 
   function stopFibs() {
@@ -43,6 +49,11 @@
 
     startStopBtn.innerText = "Start";
 
-    // TODO
+    //we terminate the worker
+    worker.terminate();
+  }
+  function onMessage(evt) {
+    console.log(evt);
+    renderFib(evt.data.idx, evt.data.fib);
   }
 })();

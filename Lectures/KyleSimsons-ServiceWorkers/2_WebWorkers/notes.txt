@@ -64,5 +64,50 @@ Intro To WebWorkers
             hey,stop doing what you're doing.So the better way of telling it to stop doing what it's doing is 
             to terminate the web worker
 
+Creating WebWorker - 
+    Because the web worker does have, while it doesn't have access to thingslike your DOM and stuff 
+    like that, the web worker does have network access.So a web worker could technically be making 
+    ping communications to your server,or sending information that it gathered.So it's not gonna be
+    able to pull stuff from your web page, butit might be able to pull stuff from other locations,or
+    just say hey, I'm still alive, or something like that.
+
+
+Communicating with WebWorker -
+    Speaking of the data that we're gonna be sending between workers and our web page, the data is 
+    copied.It is not sent by reference, if it were sent by reference,we would have all kinds of 
+    threaded issues to be concerned about.So the data is copied.Now normal data like numbers and 
+    strings are all already obviously copied,but even if you send something like a JSON object, that 
+    entire object is going to be copied, and it's copied by way of what's called the structured clone 
+    algorithm.this algo is part of web specification.
+
+    But it's essentially gonna make a copy of your data,any data that it actually can copy.So if you 
+    send stuff that can't be copied then it ain't gonna work.So for example, you can't send something 
+    like a function to a web worker.However, you can take the string representation of a function and 
+    send that to a web worker and then evaluate it inside of a web worker, and there have actually 
+    libraries out there that do exactly that.They'll take your functions and your code that's in a 
+    web page, and they'll replicate it in a web worker to have it running on the background threads.
+
+    But just bear in mind that if you have like a large chunk of data,say several megabytes worth of
+    binary data or something, andyou're going to ship that off to a web worker to have it crunch on
+    it,maybe it's bitmap data that you want to process orsomething, just be aware that there's going
+    to be a copy made of all that data,and then a copy made when the data comes back.
+
+Data Tarnsfer solutions -
+    transferables - This was a way of basically creating a special kind of,like a ray data structure
+        that you put some data into it and as soon as you posted it to a web worker, it went away from
+        the web page adn voce-versa.
+
+        So there's only ever one copy of that thing in any given place,but it's never in both places at once.
+        they shipped that, but that's been kinda deprecated.It seems like they went away from transferables,
+        so that doesn't seem like something that's got much of a future.
+    shared array buffers - data was at single place but can be accesed by both thread. With some thread
+        blocking mechanism. these were perfect way of implementing High precision memory, which lead
+        to security vulnerability. so this is also deprecated.
+
+        I think maybe one browser re-shipped it with the fix in place to prevent timers, or whatever.
+        But as far as I know at the moment, that's still kind of an influx problem.
+
+        so only reliable thing to send data as of now is copying only.
+
 
         

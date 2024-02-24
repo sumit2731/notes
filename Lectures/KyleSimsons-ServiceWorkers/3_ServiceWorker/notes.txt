@@ -1,0 +1,139 @@
+Service Worker Use Cases
+    service worker is obviously a web worker.But as I talked about earlier,it's going to basically live
+    on a different timeline or with a different sort of life cycle than your normal web worker.
+    
+    But a service worker is going to actually sit between your web application and the rest of the web.
+    In other words, every single web request that happens,whether it's an image file in your HTML, it's
+     a CSS file, it's a favicon.Actually, technically, favicons don't in Chrome.That's a weird bug.
+     But basically, every single request, whether it's a JavaScript file or it's AJAX calls, anything
+     that happens.And that's not just to your own server, it's to anywhere, to any location.If there 
+     is a service worker installed,they're all gonna funnel themselves through the service worker 
+     first.
+
+    Now, the service worker doesn't have to do anything with any of those.If it doesn't listen for 
+        those incoming requests,then they just pass through untouched.So if you install a service 
+        worker that does not listen for outbound requests, then that won't interfere with any of that
+        traffic.But as soon as you start listening for those outbound requests, it's now entirely on
+        you to make sure,if you want those to work, you have to make sure they get routed correctly.
+        There's not really a way to tell the service worker,I don't care about this request.You 
+        essentially have to act as a proxy,Once you start listening for outbound requests, your code
+        basically has to act like a proxy that makes the request on behalf of the page.And when it 
+        receives the response, the response goes back to the page.
+
+    So that basically ends up working like a pass-through, so you could do no logic around that.But as
+    soon as you install what's called a fetch handler in your service worker,all those requests are
+    gonna funnel through your fetch handler and you're gonna have to add a minimum, make sure that 
+    those all go outbound.
+
+    And there's an interesting little quirk here, which is if your page is requesting resources that 
+    are not on your domain, so they're not on your server's domain.Your service worker is still bound
+    by the rules of CORS,Cross-Origin Resource Sharing, which means if your service worker tries to do
+    a fetch event, an AJAX call to a cross-origin location on behalf of a page.Say, in your page,you
+    have an image tag loading to some image off some CDN somewhere.That completely works normally on a
+    normal image tag,regardless of what the CDN does or doesn't publish in terms of headers.As soon as
+    that request is now routing through your service worker and your service worker is gonna try to
+    make an AJAX call cross-domain to that CDN,now all of a sudden, that CDN has to publish CORS 
+    headers or it's gonna fail.
+
+    So the only way around that particular problem is you end up doing an opaque AJAX call, which is 
+    literally forwarding it and you don't get to see the response.And then it would allow it to go 
+    through the service worker machinery,but go back to the page without you seeing it.
+    So if you are going to send it and try to receive it back and do something with it, like cache it
+    or any of that other stuff,then it has to be CORS-enabled for you to do that if its cross-origin.
+
+
+    If you don't care about doing any sort of caching or anything in the service worker, you can do an
+    opaque pass-through request, and then it'll go just fine even if it's in CORS.
+
+    the mindset that we wanna have is that essentially,we are programming our own proxy that sits in
+    the browser.
+
+
+    Why do we need to have a proxy involved?
+    start thinking to yourself,what are things that I could do if I could program all of my network 
+    requests?At a bare minimum, a thing that you can do, and this is kind of the primary use case of a
+    service worker, is to use an API that they added to the web platform at the same time as service
+    workers, which is called the cache API.And the cache API is a programmatic way of storing resource
+    requests.
+
+    Instead of relying upon the browser's underlying caching mechanism,this is a cache API that gives
+    you complete control over what is or is not in the cache.You get access to what URL it's referred to,
+    You can put contents in there,You can make your own contents and stuff them into this cache, and 
+    then retrieve those from the cache, and later respond to them.
+
+
+UseCase BrainStorming
+    1)So caching is kind of the major use case that you start with,usually with service workers, is I 
+        wanna do something different with the caching behavior than what normally happens with my files.
+        That's what usually motivates you to say I'm gonna writing some of this routing logic for myself.
+        But caching is certainly just scratching the surface.
+
+    2)Do offline computing and when you connect it saves- caching and backGroundSync API.Offline abiility -
+        a)edit a google docs when you are offline and then comeback online,all your resources are saved.
+        b)you are able to open a spreadsheet, when you are offline even though you did'nt open it before
+            when you were online.
+
+    3)tranprent URL rewriting - web page that's requesting an image from one location,maybe from one 
+        CDN, and the service worker might have decided that that CDN is down because another request
+        failed, and it might rewrite it to a different CDN location.And request it from there instead
+        of from the place that was asked for.
+
+    4)You can haveprogrammatically created content that's responded to from the client.So for example,
+        if you are offline and somebody makes an Ajax request to get some data, you might be able to
+        just create an artificial JSON response from your code and your service worker and send it 
+        back to the web page and the web page won't know any different.It'll think that it just got it
+        from the server, but now it was data that was artificially constructed and sent back.
+        
+    Or you could have used a cached response to it like we talked about.
+
+    5) if a web page requests a single file,let's say it requests a single image file,the service
+        worker could say I know that because they requested that image file they're also likely to
+        request these other things.So I'm gonna go head and request these other things on behalf of
+        the page, get them primed and ready, so sort of a programmatic pre-fetching kind of thing 
+        that the web page doesn't even know is happening, but the service worker is doing in the 
+        background.
+
+    6)You could go even one step further.When they request a single image,you could actually force 
+        multiple resources to the page.So you could respond with the one image and then, because it's
+        a worker,you could send a message to the page that tells the page to ask for more resources.
+
+        So that's like dependency injection.You've asked for this one thing, I know you need these 
+        other three things as well,so I'm gonna give you all four things even though you only asked
+        for one.
+
+Push Notifications
+
+    It is 2 technologies used togather
+
+    
+    Notifications - It is the thing that service worker can sen to your OS and it can do that when your
+        page is not opened.There's a notification API where the service worker can say,I wanna pop up
+        a little notification on somebody's screen.You can only do that if the user has,prior to that
+        point, granted access for that. You can also have a seeting to launch your app when user clicks
+        on button in notification.if your app is already opnened, you can take them to specififc part
+        of website.
+
+
+    Good UseCase -
+        Preload a new blog post, save it in cache.
+        Preload a new version of your website.
+
+    Bad usecases - website keeps annoying users, so browser provides a option of blancket ban on
+        all websites.there is talk to deprecate it.
+
+    Push - Push is how your service worker can be notified of something from your server.So it's how
+        your server can tell the service worker that something needs to occur.Often, that thing that
+        you're telling it is, show them a visible notification,but it doesn't have to be that you 
+        want to notify the service worker.
+
+        This communication can happen even if webpage is not opened, it can be days or week prior user
+        opened the website.
+
+
+So the point I'm making is there's a bunch of these like auxiliary technologies underneath this umbrella
+    of service workers.And service workers is our entry point to using all of these things because the
+    service worker lives independent of an open tab.We could do all of that stuff if the tab was open 
+    because we've had web sockets fora decade or more.We could do all of this stuff if the tab was open.
+    But now we have the potential to do all this stuff even if they've closed the page.So there's some
+    really exciting stuff with service workers.And that's why we've got a bunch of exercise to work 
+    through.
