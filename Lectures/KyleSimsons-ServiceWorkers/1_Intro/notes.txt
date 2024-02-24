@@ -1,0 +1,40 @@
+Intro -
+
+    Every single Websites needs a web worker.even static app written 10 years ago, needs service
+        worker.problems with websites-
+        1)browser cache example - very complex code in browser, where it decies whether to use
+            cache or load resources from browser.
+        2)places where internet connectivity is not that great.customer travel to some other country,
+            he is still your customer.
+            deciding between slow vs broken experience
+            get in airplane while reading the blog post
+
+
+    I think that's what we've missed about the web is that we've made theseterrible assumptions
+        that people are gonna experience the web in a contiguous way.That when you sit down to 
+        experience something about the web,you're not gonna be interrupted.You're gonna have 
+        perfect Wi Fi perfect internet connectivity,perfect battery power.You're never gonna 
+        have any sort of interruption to that.That's the way that we design the web
+
+The Case for Service Workers -
+    The twitter timeline case - user goes offline, show him the stuff, that he has seen when
+        user was online.twitter PWA does not show anything.we can show 100 tweets before and
+        100 tweets after
+
+
+    How do we gracefully fall back, not only when the Internet is completely down, but let's 
+        even think about what would you do if somebody had an Internet connection and they
+        clicked the tweet button, but it's so slow that it takes minutes and it hasn't 
+        actually responded that the tweet came out(they are on slow internet connection).
+        They have Internet connection, they're not offline.It's just they're on such terrible
+        2g that we don't even know whether the information got to the server.So it's not
+        relevant to me what the server does, that's a totally separate concern.
+        What's relevant to me in this question is how are you gonna handle that for the user?
+        What are you gonna tell them?Are you gonna tell them sorry, you've lost your tweet?
+
+    user was online when he started but now he is offline when he is finished.how to handle
+    it? in case of twitter it goes away.solution -
+        a)tell user that it was not possible to post the tweet, but whenever user is online
+            it will be posted.
+        b)tell user tweet was sent, later sync it with server.
+        c)just say that some error occured and tweet is gone.
