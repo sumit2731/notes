@@ -3,11 +3,16 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 /**
  *
- * It's actually debatable which one is better here. This one here(solution) is maybe actually a little less
- * cleaner. You're having to do a little bit less mapping here. Whereas this one, it's like there's a bit more constraint going on. You're having to index into it both times.
+ * It's actually debatable which one is better here. This one here(problem) is maybe actually a little less
+ * cleaner. You're having to do a little bit less mapping here. Whereas this one, it's like there's a bit more
+ * constraint going on. You're having to index into it both times.
  *
  * I want to put into your mind the idea that you should be on the hunt for useless generics in your projects,
  * in your functions.
+ *
+ * In problem - When you hover over them here, you're going to see them as string and number being locked in,
+ *  which is pretty nice.
+ * In solution -when you hover over is actually the entire parameters that are being passed.
  *
  * This is basically dealer's choice. It's up to you which one you use. Experience has taught me that you
  * should try to reduce the number of type arguments that you possibly can.

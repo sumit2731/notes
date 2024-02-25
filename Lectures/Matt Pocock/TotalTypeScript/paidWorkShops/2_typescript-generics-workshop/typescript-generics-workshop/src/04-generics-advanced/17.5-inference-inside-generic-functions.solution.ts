@@ -7,8 +7,9 @@ type Person = {
 };
 
 /**
- * THis function can also be called with any key but it can also be called with union of key types like this-
- * in below case return type is string | number, also second argument can be of type string | number
+ * we are basically saying that this can be called with any key, Weirdly, it can also be called with a union type of some of the keys too
+ *  like this-
+ *now type of second argument can be string| date, and return type is also union.
  */
 
 const demo = remapPerson<"name" | "age">("name", "dd");
@@ -22,7 +23,7 @@ export function remapPerson<Key extends keyof Person>(
    *
    * Because of this wrinkle, TypeScript can't trust any narrowing inside a generic function.
    *
-   * What It should be able to say inside here is it should give me a proper error, if I tried
+   * What It should be able to say inside in , if condition is, it should give me a proper error, if I tried
    * to return a number for the user's birthdate, because it doesn't meet the contract in my
    * person up here, but it's not telling me that. It basically resolves any return types inside
    * these narrowing's as never, because it can't trust that key is going to be,it breaks  down at this level.

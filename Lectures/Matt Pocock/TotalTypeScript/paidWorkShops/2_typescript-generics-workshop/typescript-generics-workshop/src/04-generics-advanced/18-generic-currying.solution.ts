@@ -6,7 +6,18 @@ import { Equal, Expect } from "../helpers/type-utils";
  *  instead of this - curryFunction <number, number, number>(1)(2)(3)
  *  we have this - curryFunction <number>(1)<number>(2)<number>(3)
  * 
+ * 
+ * Break the combined call into separate calls like below and try to see how generic values is 
+ * getting infered in each call.
+ * 
 
+ */
+
+/**
+ * @MyNotes
+ * Here we saw that when pass generic to a function, we can access that type in inner function.
+ * This works just like we can access variables in closures.
+ *
  */
 export const curryFunction =
   <T>(t: T) =>
@@ -27,7 +38,8 @@ it("Should return an object which matches the types of each input", () => {
    *  capture its own generic arguments.sometimes you get really bad inference because your generics are at
    *  wrong slots
    *
-   * hover over these types to see type being infered
+   * hover over these types to see type being infered.
+   *
    */
   const secondFunc = curryFunction(1);
   const thirdFunc = secondFunc(2);

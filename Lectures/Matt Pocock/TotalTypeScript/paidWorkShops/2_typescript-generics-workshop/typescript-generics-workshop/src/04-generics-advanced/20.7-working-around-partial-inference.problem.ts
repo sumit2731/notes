@@ -19,10 +19,8 @@ interface Source {
  * we're covering a really annoying aspect of how TypeScript infers type arguments when you pass
  * them to functions.
  *
- * We have a makeSelectors function here where we're passing it a type argument, except that it
- * looks like the second type argument,Instead of being inferred as the selectors, which is a
- * record of string, and then a function which returns source, TSource, any, then we're not
- * getting that inferred there(hover over makeSelectors call.
+ * We have a makeSelectors function, while calling the function we're passing it a type argument,
+ * except that it looks like the second type argument, is not getting that inferred there(hover over makeSelectors call.
  *
  *  If we remove the source(first Generic argument) from function call, then we're going to get
  * second generic argument inferred but now first one is unknown

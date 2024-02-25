@@ -1,12 +1,16 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
 /**
- * Reason for error is typeof key is Union of all properties, return type is TObj[key], so return type is Union of object values
- * instead of giving union type to key argument, we need to give it exact literal type. This can be done by using
- *  a another generic argument.
+ * Reason for error is typeof key is Union of all properties, return type is TObj[key], so return
+ * type is Union of object values.
  *
- * The lesson here is to make sure that if you're not getting the inference you want, make sure that you haven't got any missing generics.
- * You need to make sure that the right things are being inferred at the right times and that you've got the thing that you want to infer there
+ * instead of giving union type to key argument, we need to give it exact literal type.
+ * This can be done by using a another generic argument.generic argumeent is constraint by Union type,
+ * but exact property type is passed in each function call.
+ *
+ * The lesson here is to make sure that if you're not getting the inference you want, make sure that
+ * you haven't got any missing generics.
+ * You need to make sure that the right things are being inferred at the right times.
  */
 const getValue = <TObj, TKey extends keyof TObj>(obj: TObj, key: TKey) => {
   return obj[key];

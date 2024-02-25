@@ -2,7 +2,8 @@ import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
 /**
- * Remove a Extra generic Type
+ * we can remove one of the generic parameters here. It seems a little bit clumsy the way that we've
+ * done it, and one of these generics is a little bit useless and we can condense them down.
  */
 const returnBothOfWhatIPassIn = <T1, T2>(params: {
   a: T1;

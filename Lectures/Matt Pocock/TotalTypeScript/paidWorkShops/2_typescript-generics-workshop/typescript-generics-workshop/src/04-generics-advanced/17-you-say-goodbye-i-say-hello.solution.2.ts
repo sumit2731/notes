@@ -6,7 +6,7 @@ type GreetingResult<TGreeting> = TGreeting extends "hello"
   : "hello";
 
 /**
- * see here how run time value of generics can be passed forward
+ * see here how run time value of generics can be passed forward, to next generic type
  */
 function youSayGoodbyeISayHello<TGreeting extends "hello" | "goodbye">(
   greeting: TGreeting

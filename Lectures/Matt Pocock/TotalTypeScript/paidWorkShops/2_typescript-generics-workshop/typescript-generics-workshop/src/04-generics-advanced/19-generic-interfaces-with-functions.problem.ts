@@ -42,7 +42,9 @@ it("Should let you clone the cache using a transform function", () => {
 
   numberCache.set("a", 1);
   numberCache.set("b", 2);
-
+  /**
+   * Problem is that type of stringCache is Cache<Unknown>
+   */
   const stringCache = numberCache.clone((elem) => {
     return String(elem);
   });

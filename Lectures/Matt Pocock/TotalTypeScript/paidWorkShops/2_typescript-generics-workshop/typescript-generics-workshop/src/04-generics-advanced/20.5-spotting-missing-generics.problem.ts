@@ -10,6 +10,9 @@ const obj = {
   c: true,
 };
 
+/**
+ * Return type is not single type bu union of all return types of object
+ */
 const numberResult = getValue(obj, "a");
 const stringResult = getValue(obj, "b");
 const booleanResult = getValue(obj, "c");

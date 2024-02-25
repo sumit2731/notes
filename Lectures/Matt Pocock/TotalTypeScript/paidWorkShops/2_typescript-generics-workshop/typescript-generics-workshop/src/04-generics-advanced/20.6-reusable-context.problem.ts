@@ -18,13 +18,6 @@ const useStyled = <TTheme = {}>(func: (theme: TTheme) => CSSProperties) => {
   return {} as CSSProperties;
 };
 
-const makeUseStyled2 = <TTheme>() => {
-  const useStyled = (func: (theme: TTheme) => CSSProperties) => {
-    return {} as CSSProperties;
-  };
-  return useStyled;
-};
-
 interface MyTheme {
   color: {
     primary: string;
@@ -33,7 +26,11 @@ interface MyTheme {
     small: string;
   };
 }
-
+/**
+ * Problem is we have to metion MyTheme each time. can we get rid of this.
+ *
+ * new function signature is also given above
+ */
 const buttonStyle = useStyled<MyTheme>((theme) => ({
   color: theme.color.primary,
   fontSize: theme.fontSize.small,
