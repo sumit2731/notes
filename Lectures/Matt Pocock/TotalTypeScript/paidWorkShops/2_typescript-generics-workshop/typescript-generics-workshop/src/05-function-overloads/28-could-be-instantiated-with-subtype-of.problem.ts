@@ -7,7 +7,9 @@ const obj = {
 } as const;
 
 type ObjKey = keyof typeof obj;
-
+/**
+ * We want to give default value for key when no parameter is passed
+ */
 const getObjValue = <TKey extends ObjKey>(key: TKey = "a") => {
   return obj[key];
 };

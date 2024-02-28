@@ -1,7 +1,7 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
 /**
- * This time, let's solve this with function overloads!
+ * We've done this before, but with generics. This time, I want you to do with function overloads.
  */
 const returnWhatIPassIn = (t: unknown) => {
   return t;

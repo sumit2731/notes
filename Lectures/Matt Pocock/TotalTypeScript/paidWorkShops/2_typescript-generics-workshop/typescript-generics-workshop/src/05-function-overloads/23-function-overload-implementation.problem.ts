@@ -44,6 +44,6 @@ it("Should return the correct privileges", () => {
   type tests = [
     Expect<Equal<typeof adminPrivileges, AdminPrivileges>>,
     Expect<Equal<typeof userPrivileges, UserPrivileges>>,
-    Expect<Equal<typeof anonymousPrivileges, AnonymousPrivileges>>,
+    Expect<Equal<typeof anonymousPrivileges, AnonymousPrivileges>>
   ];
 });
