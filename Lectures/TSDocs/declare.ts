@@ -1,3 +1,22 @@
-// This line is a shortcut to tell TypeScript there is a
-// constant called `backpack`, and to not worry about where it came from.
-declare const backpack: Backpack<string>;
+/**
+ * declare is used a declare something at type level.at run times that things needs to be provided somehow.
+ * it can used to define functions, variables, types etc.
+ * These definitions are only avalaible inside same file(until and unless you define them in d.ts file)
+ */
+
+/**
+ * declares variables with given type
+ */
+declare const backpack: string;
+declare var someThing: number;
+
+console.log(backpack);
+
+/**
+ * This tells that there will a function named this, whose type signature is provided
+ */
+declare function dummyFunc(num: number): number;
+
+declare const window: {
+  name: string;
+};
