@@ -1,0 +1,156 @@
+How has works -
+    .figure:has(figcaption) {
+        //figure will be styled if it has figcaption inside it
+    }
+
+Existing selectors -
+    a)adjacent sibling (+) - selects only next sibling
+         .frame+.book {
+            selects next sibling(only one)
+            selects .book which is next to .frame
+         }
+    b)general siblings (selects all the next siblings of elements)
+        .frame~.book {
+            selects all books which are next siblings of .frame 
+        }
+    c)previous sibling selector (using :has).
+        select previous sibling of frame
+        .book:has(+ .frame) {
+            //book will be styled if it's next element is .frame
+        }
+    d)selects all previous elements -
+        .book:has(~ .shelf) {
+            //selects all books before shelf
+        }
+
+    e)child combinator (selects direct child only) -
+        .box > .book {
+            //selects all books that are direct child of box
+        }
+    f):not selector -
+        can exclude a element form given styles -
+        .box:not(.blue) {
+            //these styles will not be applied to element with blue class
+        }
+
+CSS Has selector -
+    3)css :has selector matching - 
+        1)selecting element if it has a descendent -
+            .card:has(.image) {
+                will select card element if it has .image has descdendent
+            }
+
+        1.2)select a element with a given direct child -
+            .card:has( > .image) {
+                will select card if it has image as direct element
+            }
+
+        2)select a elemnt if it does not contain another element -
+            .card:not(:has(.img)) {}
+        3)Select the shelf with a frame followed by a purple book
+            .shelf:has(.frame + .book-purple)
+        4)select container if it has books inside box -
+            container:has(.box > .book) {
+            }
+
+        5)select a box without blue book -
+            .box:not(:has(.blue)) {
+                selects a box that does not contain the blue book
+            }
+
+        6)select a box with 3+ books
+            .box:has(.book:nth-child(n+3)) (My solution)
+            .box:has(.book:nth-last-child(n+3)) (Course solution)
+
+        8)Add spacing to each 3rd item if there are more than 5 books (has + nesting)
+            .box:has(.book:nth-child(n+5)) {
+                .book:nth-child(3n) {
+                    margin-right: 50px;
+                }
+            }
+        9)Full Example
+
+        10)logical conditions with :has -
+            select self if it has yellow book, purple book -
+            Or -
+                .shelf:has(.book-yellow , .book-purple) {}
+
+            and -
+                .shelf:has(.book-yellow):has(.book-purple) {}
+
+
+    4)use Cases for CSS :has
+        4.1 - Showing a file download
+            Depending upon the attribute value,set css variable on element
+            If a child element is not present , then style (:before of child)child of same parent differently
+
+        4.2 - Sidebar width -
+            Increased width of parent if it has a child
+        4.3 - Cookies banner
+            Gave styles to child if parent has another child
+        4.4 - Dashboard Banner
+            If alert is present in parent, style some child differnlt
+        4.5 - quaititify queries with has
+            sets css variables based on no of children
+
+        4.6 - select the title that comes after link
+            lets us able to style a element if it is followed by another elmenet.
+            without has wecan only select element that comes afetr, now we can select element that comes before
+
+        4.8 - Setting styles on parent if child is hoevered
+            .parent:has(.child:hover {
+                styles
+            })
+
+        4.10 - Changing button layout if there are more than 2 buttons.
+        4.11- empty state
+            :empty peseod class
+        4.12 -Input States
+            4.12.1 - checkbox and :has
+                .box:has(input[type="checkbox"]:checked) {
+                    .childSelector {
+                        //
+                    }
+                }
+            4.12.2 - radio button and :has
+                .box:has(input[value="standard"]:checked) {
+                    childSelector {
+
+                    }
+                }
+
+            4.12.3 - select and :has
+                .box:has(option[value="default]:checked) {
+                    childSelector {
+
+                    }
+                }
+
+        4.14 - HTML Attributes
+            
+            4.14.1 - disabled
+                .box:has(button[disabled]) {
+
+                }
+
+            4.14.2 - When you hover over one lement you want to do something on other elemnets
+        
+                Dual Hover (Ypu can do something when you hover over some other element, if they share same grand grad parent)
+                .box:has([data-name="css"]:hover) {
+                    [data-name="css"] {
+                        border: 1px solid red;
+                    }
+                }
+            4.14.3 - reverse list
+
+        4.15 - rQuiz Question
+        4.16 - 
+        4.20 - Dynamic Menu layout with quanity queries
+        4.21 - In grid, a item can span rows and column, if it has a image
+
+
+
+
+Things learnt -
+    a)use of :before and :after to add or remove things dynamically, by css only(without using display:none or visisbility hidden).
+        you just need to set content on before and after

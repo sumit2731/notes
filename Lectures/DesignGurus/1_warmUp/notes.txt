@@ -4,3 +4,12 @@
 4)I solved the question but course solution is better.
 5)shortestDistance is excellent question, i solved it using more complexity. course solution is excellent one.
 6)you solved it but course solution was more elegent
+
+
+iteration 2 -
+
+    2)ReverseVowels - solved but bit rusty
+    3)Remember regularExpression for alpha numeric
+    4)Solved, course solution 1% better.
+    5)I solved it , but course solution complexity is better(less time complexity)
+    6)i solved in O (n * n), course had O (n * n)

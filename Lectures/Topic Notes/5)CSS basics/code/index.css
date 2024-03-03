@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  border: 2px solid;
+}
+
+.book {
+  width: 30px;
+  height: 300px;
+  background-color: blue;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.book:nth-last-child(n + 5),
+.book:nth-last-child(n + 5) ~ .book {
+  background: green;
+}

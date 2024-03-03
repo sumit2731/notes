@@ -1,3 +1,8 @@
+/**
+ * Ask these questions - do string contains special chacarters or spaces?
+ *
+ * remeber - regular expression for matching chacaters
+ */
 function validPallindrome(str) {
   let startPointer = 0,
     endPointer = str.length - 1;

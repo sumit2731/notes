@@ -4,12 +4,6 @@
     button:disabled:hover {}
 
 2):first-of-type
-
-    The :first-of-type selector in CSS allows you to target the first occurence of an element within its container.
-    Using :first-of-type is very similar to :nth-child but with one critical difference: it is less specific. In the example 
-    above, if we had used p:nth-child(1), nothing would happen because the paragraph is not the first child of its parent 
-    (the <article>).
-    
     <article>
         <h1>A Title</h1>
         <p>Paragraph 1.</p>
@@ -20,7 +14,18 @@
     to select first p -
         p:first-of-type {
             font-size: 1.25em;
-        }
+    }
+
+    The :first-of-type selector in CSS allows you to target the first occurance of an element within its container.
+    Using :first-of-type is very similar to :nth-child but with one critical difference: it is less specific. 
+    In the example above, if we had used p:nth-child(1), nothing would happen because the paragraph is
+    not the first child of its parent 
+    (the <article>).
+
+    This reveals the power of :first-of-type: it targets a particular type of element in a particular 
+        arrangement with relation to similar siblings, not all siblings.
+    
+
 
 3):nth-of-type() - from elements that matches the given selector, it selects elements based on params passed
 
@@ -48,9 +53,13 @@
 
         p:nth-of-type(-n +3) {}
 
-4)selector:last-of-type 
-    selects the last occurance of element with provided selector in its contaoner
-3)selector:first-child
+4):nth-last-of-type - 
+    similar to above but iteration starts from last element.
+
+5)last-of-type 
+    selects the last occurance of element with provided selector in its container
+6):first-child
+    The :first-child selector allows you to target the first element immediately inside another element.
 
     selects the element with given selector which is also first child of its parent.
     
@@ -67,7 +76,7 @@
     selector >*:first-child {}
         Apply this style to first child of element selected by selector.
 
-4)selector:nth-child()
+7):nth-child()
 
     see css trick
     
@@ -75,11 +84,17 @@
     li:nth-child(3) - Selects the second li element in a list
     div:nth-child(3)Selects the second element of div siblings
 
+8):nth-last-child()
+    It functions the same as :nth-child except it selects items starting at the bottom of the source
+    order, not the top.
 
+9):not - used to exclude aa element from selection
+9):has -
+    see shaheen blog
 
-5):not()
+10):empty, see shaheen blog about :has
 
-    The :not() pseudo-class requires a comma-separated list of one or more selectors as its argument. The list must not contain another negation selector or a pseudo-element.
+11):checked - avalible on checkbox
 
 
 to be looked at -
