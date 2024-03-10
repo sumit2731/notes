@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -20,19 +20,30 @@ const VisuallyHidden = ({ children }) => {
 };
 function App() {
   // No default value:
-  const [username, setUsername] = useState();
+  const [selectedOption, setSelectedOption] = React.useState("red");
 
   return (
     <form>
-      <label htmlFor="username">Select a username:</label>
-      <input
-        type="text"
-        id="username"
-        value={username}
-        onChange={(event) => {
-          setUsername(event.target.value);
-        }}
-      />
+      <fieldset>
+        <legend>What is your favourite color?</legend>
+
+        <select
+          value={selectedOption}
+          onChange={(event) => {
+            setSelectedOption(event.target.value);
+          }}
+        >
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+        </select>
+      </fieldset>
+
+      <p>
+        Selected value:
+        <br />
+        {selectedOption}
+      </p>
     </form>
   );
 }

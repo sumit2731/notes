@@ -5,7 +5,19 @@
 <button onclick="doSomething()">Click me!</button>;
 
 /**
- * in jsx
+ * In js
+ */
+
+const button = document.querySelector(".btn");
+
+function doSomething() {
+  // Stuff here
+}
+
+button.addEventListener("click", doSomething);
+
+/**
+ * In jsx
  */
 
 function App() {
@@ -32,6 +44,8 @@ function App() {
  */
 
 /**
+ * CamelCasing -
+ * InHtml - onclick, onfocus
  * onClick, onFocus, onTransitionEnd
  */
 
