@@ -1,0 +1,93 @@
+a)img srcset attribute -
+    Download different images based on different viewport width -
+        In srcset we mention imageUrl followed by actual size of image. we use but 1600w instead of
+            1600px because this number means how actual wide our image is in actual intrinsic pixels.
+            we do not define it with css pixels, because sometimes your screen has more amount of pixels than css
+            pixels (when you are zoomed in and your device has pixel density)
+        <img
+            src="tree-1200.jpg"
+            alt="A tree"
+            srcset="tree-400.jpg 400w, tree-800.jpg 800w, tree-1200.jpg 1200w"
+        />
+
+        Browser is going to have a look at actual resolution of your screen as well as how wide your screen is to determine
+            what image it needs to show.
+
+    Download different images based on pixel densities(Sometimes you have an image that will 
+        always be the same size on the screen, but you want to make sure it looks good on high
+        resolution devices) -
+
+        <img
+            src="logo-200.jpg"
+            alt="Our Logo"
+            srcset="logo-100.jpg 1x, logo-150.jpg 1.5x, logo-200.jpg 2x"
+        />
+
+
+b)img sizes attribute(image size is not actually the same as the width of your screen, using media
+    query we tell which image width should be downloaded) -
+
+    The sizes attribute lets you define relation between img width and screen width, when you do not
+        use size attribute, then default value is 100vw. lets say you know your image will be half
+        width of screen, then use this -
+
+            <img
+                src="tree-1200.jpg"
+                alt="A tree"
+                srcset="tree-400.jpg 400w, tree-800.jpg 800w, tree-1200.jpg 1200w"
+                sizes="50vw"
+            />
+
+    
+    either a single size for your image, such as 50vw, or a 
+        list of media queries that will be used to determine which size your image should be.
+        By default when you do not add the sizes attribute to your img it assumes a size of 100vw
+
+    <img
+        src="tree-1200.jpg"
+        alt="A tree"
+        srcset="tree-400.jpg 400w, tree-800.jpg 800w, tree-1200.jpg 1200w"
+        sizes="(max-width: 800px) 100vw, 800px"
+    />
+
+    (max-width: 800px) 100vw has two parts
+        a)media query we want to check against
+        b)The second part is the size we want to use for our image if the media query is true.
+            In this case we are using 100vw which means we want the browser to choose the image
+            size based off the full width of the browser window.
+
+        The second item 800px does not have a media query and instead just has a size. This is 
+            considered our fallback size. If all the media queries defined before this size are
+            false it will use this fallback size instead.What we are saying with this item is
+            that our image should be selected assuming our image takes up 800px on the screen.
+            The browser will then use this size to determine which image to download.
+
+
+    Potential pitfalls -
+        a)first media query that is matched first is used, so order matters.
+            a)you need to reorder your media queries so that the most specific media queries are
+                first and the least specific media queries are last.
+            b)It is also important to make sure that your default size, the one with no media 
+                query, is always last since it always evaluates to true so if it is first it
+                will always be picked over any other media query.
+
+        b)percentages size are not supported only px,vw,vh are supported.
+
+
+c)picture element - Great If you want to show different image(not different image but entirely 
+    separate image) on different screen sizes.
+
+    <picture>
+        <source media="(max-width: 500px)" srcset="hiking-narrow.jpg" />
+        <source media="(max-width: 1000px)" srcset="hiking-medium.jpg" />
+        <img src="hiking-wide.jpg" alt="Someone jumping on a hike" />
+    </picture>
+
+
+Why use picture element over alternatives
+
+    when we change the window width, the picture element will show image with less pixel for small
+        widths. 
+
+
+

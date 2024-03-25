@@ -1,0 +1,41 @@
+scale-
+    If you provide 1 value then element will scale in both x and Y axis.
+    If provide 2values, one will be used in x axis and other will be used in Y axis.
+    3 values - 3 axis
+
+
+    .class {
+        scale: 1.5;
+        scale: 1.5 0.5;
+        scale: 1.5 0.5 2;
+    }
+
+translate -
+    single value - move only in x-axis.
+    2 values - move in x and y axis.
+    3 values - 3 axis
+
+    .class {
+        translate: 50px 100px;
+        translate: 50px 100px 200px;
+    }
+
+rotate -
+    single value - rotates in x axis.
+    for rotating in other axis, you need to pass axis value also.
+
+    .class {
+        rotate: x 90deg;
+        /* transform: rotateX(90deg); */
+
+        rotate: y 90deg;
+        /* transform: rotateY(90deg); */
+
+        rotate: z 90deg;
+        /* transform: rotateZ(90deg); */
+    }
+
+Advantage -
+    a)we can apply different mutations in different classes, they will not override each other.'
+    b)problem in a,can be get around with css variables, but since css variables cannot be animated,
+        it causes problems in animation 

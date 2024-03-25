@@ -1,0 +1,17 @@
+Support query has syntax like media query -
+    For nearly all use cases a feature query has the same syntax as a media query.Also like 
+        media queries, feature queries support and, or, and not when defining queries
+    
+    @supports (display: grid) {
+    }
+
+    @supports (display: grid) and (display: flex) {
+    }
+
+    @supports not (position: sticky) {
+        //This query checks if the browser does not support position sticky.
+    }
+
+    @supports (perspective: 1px) or (-moz-perspective: 1px) or (-webkit-perspective: 1px) or (-ms-perspective: 1px) or (-o-perspective: 1px) {
+        // this query can be used to check for the perspective property including any browser prefix support
+    }

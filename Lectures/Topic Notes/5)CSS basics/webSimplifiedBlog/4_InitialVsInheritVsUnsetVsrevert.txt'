@@ -1,0 +1,30 @@
+initial -
+    initial value of div is inline
+    Tying all this back to initial, we can see that the value of initial is great to use if you 
+        really want to remove all browser specific styles.
+
+inherit -
+
+unset - initial or inherit.
+    inherited properties - inherit
+    rest - initial
+
+    used with 'all'.The all property allows you to set one value for every single property of an
+        element. This is really useful if you want to remove all browser specific styles from an
+        element such as a button.
+
+        .btn-all {
+            all: unset;
+        }
+
+        .btn-no-all {
+            background: initial;
+            border: initial;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+
+revert - allows you to reset a CSS value back to the browser specific style.this could be useful
+    to change back some styles to their browser specific style after doing a all: unset.
+

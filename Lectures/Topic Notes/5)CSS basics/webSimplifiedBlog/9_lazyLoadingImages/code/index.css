@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.blur-load {
+  /* 
+  This is blur version of image, it is only 20px in width, so extremely small in size
+  */
+  background-image: url("path of image");
+  /* 
+  Image will be stretched to cover all all space instead of repeating it
+  */
+  background-size: cover;
+  background-position: center;
+}
+
+.blur-load::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* we are using rgba value because we want it to be partially transparent */
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+.blur-load > img {
+  /* we want to hide the image, but we also want to fade animation so we  use opacity */
+  /* display: none; */
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.blur-load.loaded::before {
+  /* it is going to remove the ::before pseudo element */
+  content: none;
+  animation: none;
+}
+
+.blur-load.loaded > img {
+  opacity: 1;
+}
+
+img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  /* 
+  Whenever we are doing blurry loading, we want background-size and position to match object-position
+  object-fit, that way they perfectly line up on top of each other, and when it fades in, it looks
+  very smooth
+  */
+  object-position: cover;
+  object-fit: cover;
+}

@@ -1,0 +1,60 @@
+1)attr()
+    Using his function in css we can refer to value of data-something attribute.Limitation is
+        this property can only be used to set the content property only.
+
+    html -
+        <div data-sumit="someText"></div>
+
+    css -
+        [data-sumit]:before {
+            content: attr(data-sumit)
+        }
+
+2)var()
+    It allows us to use custom css property
+
+    .parent {
+        --propertyName: blue;
+    }
+    .child {
+        color: var(--propertyName)
+    }
+
+3)calc - this is function that lets you do that lets you do addition, subtraction, division, 
+    and multiplication on various CSS units.it allows you to combining different css units.
+
+        .class {
+            --someVariable: 10px;
+            width: calc(100vw - 30px);
+            width: calc(100% - 30px);
+            width: calc(var(--someVariable) + 30px)
+        }
+
+    In calc you can also convert a value that has no units to a value with units by just
+        multiplying the value by 1 of the unit type you want to convert to -
+
+
+        .class {
+            --fav-num: 3;
+            width: calc(var(--fav-num) * 1px);
+        }
+
+    Spacing in calc -
+        You must have one space between each of the values in the calc function and the operation
+            between them. This means you cannot have your value touch the operator. You also cannot
+            have a space before the parentheses of the calc function. For example all of the 
+            following are invalid CSS.
+
+
+            .class {
+                width: calc(1px+ 2px);
+                width: calc(1px +2px);
+                width: calc(1px+2px);
+                width: calc (1px + 2px);
+            }
+
+4)clamp - You can specify minValue, normalValue and maxValue
+    https://blog.webdevsimplified.com/2020-11/css-clamp/
+
+
+

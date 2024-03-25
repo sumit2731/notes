@@ -1,0 +1,43 @@
+Syntax -
+    .btn {
+        /* Any elements with the class .btn will be red */
+        --button-color: red;
+        background-color: var(--button-color, defaultValues);
+    }
+
+    .btn.btn-primary {
+        --button-color: green;
+    }
+
+Custom Properties In The Cascade - 
+    custom properties always inherit into child elements. This means that if a custom property
+        is defined in the body or root element, then it will be available in all child elements.
+        custom properties can be overwritten based on where they fall in the CSS cascade.
+
+
+Advantage -
+    1)when you want to overwrite single parts of a property without redefining the entire property.
+        .btn:hover {
+            --scale: 1;
+            transform: rotate(45deg) scale(var(--scale));
+        }
+
+        .btn.btn-grow:hover {
+            --scale: 1.5;
+        }
+
+Custom properties in Javascirpt -
+    getting the value -
+        getComputedStyle(HTMLElement).getPropertyValue("--propertyName")
+    setting the value -
+        HTMLElement.style.setProperty("--background-color", "yellow")
+
+Extra from notes -
+    a)CSS custom properties cannot be animated.(is css transform dead article)
+    b)setting css variables on element -
+        a)In css through css selectors
+        b)using style attribute in css, (in react we can make it dynamic)
+            <div style="--aspect-ratio: 2/3">
+            </div>
+
+

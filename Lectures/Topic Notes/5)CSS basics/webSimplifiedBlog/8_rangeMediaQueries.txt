@@ -1,0 +1,39 @@
+media query syntax -
+
+    @media typeOfDevice joiningCondition (mediaCondition) joiningCondition (mediaCondition) {
+        styles
+    }
+
+    typeOfDevice -
+        all - if typeOfMedia is not specified then it means all
+        screen - anything with screen, desktop, phone,tablet etc
+        print - section showed when we try to print tha page
+        speech - something that's text to speech, example - screen reader
+
+
+    mediaCondition -
+        max-width:500px
+        min-width:500px
+        orientation:landscape
+
+    joiningCondition -
+        or (if use comma, that also means or)
+        and
+        not -
+
+Note - Media queries follows the rules of specificity,if a css rule is defined after media query,
+    it will overwrite the media query.
+
+
+New Syntax -
+    /* Greater than or equal to 1000px */
+    @media (width >= 1000px) {
+    }
+
+    /* Less than or equal to 700px */
+    @media (width <= 700px) {
+    }
+
+    /* Between 700px and 1000px */
+    @media (700px <= width <= 1000px) {
+    }

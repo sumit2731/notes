@@ -1,0 +1,27 @@
+.container:has(.child1) {
+  /* container should have .child element */
+}
+
+.container:has(.child1 strong#child2) {
+  /* container should have .child element, which should have strong element with id child2 */
+}
+
+.container:has(> .child1) {
+  /* container should have .child1 element as immediate child */
+}
+
+.container:has(> .child1 .subtitle) {
+  /* container should have immediate child with class child1, which should have a subtitle
+    class */
+}
+
+.container:has(.child1) .child2 {
+  /* select a element with child2 class whose parent (has container class and contains element
+    with child1 class) */
+}
+
+.container:has(.child1):has(.child2) {
+  /* selects a element with container class which has both .child1 element and
+          .child2 element
+      */
+}

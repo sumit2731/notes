@@ -1,0 +1,48 @@
+Logical properties are simply a way to specify the size, margin, padding, etc. using the logical
+    flow of the container (start, end) instead of the actual directions of the page (top, 
+    bottom, left, right). Essentially any property you see that refers to a specific direction 
+    (width, top, padding-left) has a new corresponding logical property to set that value
+    instead (inline-size, inset-block-start, padding-inline-start).
+
+
+
+    width => inline-size
+    height => block-size
+    margin-top => margin-block-start
+    oyerflow-y - overflow-block
+
+    top => inset-block-start (Some cases like top require you to add an additional word to the property to make it clear what the property does.)
+    padding-left => padding-inline-start
+    border-top => border-block-start
+
+
+Additonal Support -
+    One really nice feature that logical properties have is that you can now easily set the 
+        margin/padding for one axis at the same time.
+
+
+        .old {
+            /* No way to do this shorthand */
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .new {
+            margin-block: 1rem;
+        }
+
+
+Browser Support - good
+
+
+    .class {
+        width: 200px;
+    }
+
+    @supports (inline-size: 200px;) {
+        .class {
+            width: initial;
+            inline-size: 200px;
+        }
+    }
+

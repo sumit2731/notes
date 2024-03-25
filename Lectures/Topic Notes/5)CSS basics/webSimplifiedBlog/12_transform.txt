@@ -1,0 +1,93 @@
+transform: rotate(90deg) scale(2) translate(100px, 200px);
+
+
+rotate - A positive value will result in a clockwise rotate and a negative value will result in a 
+    counter-clockwise rotation.we used both deg and turn units to define our rotation. deg units
+    are from 0 to 360 while the turn unit goes from 0 to 1.
+
+    .red {
+        transform: rotate(10deg);
+    }
+
+    .green {
+        transform: rotate(-45deg);
+    }
+
+    .blue {
+        transform: rotate(0.25turn);
+    }
+
+
+    3D Rotation -  3D rotation by using the rotateX, rotateY, and rotateZ functions. The rotateZ 
+        function works exactly the same as rotate.
+
+
+scale - It can take either one or two parameters.When one parameter is passed to scale it scales the
+    X and Y axis the same amount based on the number passed. When two values are passed to scale the
+    first number will scale the X axis and the second number will scale the Y axis.
+
+    .red {
+        transform: scale(1.25);
+    }
+
+    .green {
+        transform: scale(0.5);
+    }
+
+    .blue {
+        transform: scale(1.25, 0.75);
+    }
+
+
+    if you want you can use the scaleX and scaleY functions to just scale the X or Y axis.
+
+
+    3d scale - Just like with rotate you can scale in 3D. To do this you would use the scaleZ function
+        which works just like scaleX and scaleY, but for the Z axis. This again is only useful with 
+        3D elements.
+
+
+translate - 
+
+    a)when just one value is passed to translate it only effects the X axis so the element is
+        moved 25 pixels to the right since it is a positive value.
+
+    b)When two values are passed to translate the first one moves the element in the X axis and the
+        second effects the Y axis position.
+
+    c)Just like scale, there are a translateX and translateY functions for moving an element in just
+        one direction at a time.
+
+        .red {
+            transform: translate(25px);
+        }
+
+        .green {
+            transform: translate(-25px, 25px);
+        }
+
+        .blue {
+            transform: translate(0, -25px);
+        }
+
+
+    Percentage Translation - percentage value is relative to element ,not to its parent.
+        The translate property handles percentages differently than nearly every other CSS property
+            since it is based on the element’s size and not its parent’s size.
+
+    3D Translate - translateZ function which modifies just the Z axis or the translate3D function
+        which works just like translate, but accepts a third argument for moving an element in the
+        Z axis.
+
+
+skew - specifying one parameter we skew on only the X direction while if we pass two properties the 
+    first one skews in the X direction and the second one skews in the Y direction.
+
+    you can use skewX and skewY to skew an element in one direction without affecting the other 
+    directions.
+
+    Unlike, all the other transform properties, skew does not have any 3D version.
+
+
+Combining different things -
+    Combining these can be problem, but CSS variables comes handly here.

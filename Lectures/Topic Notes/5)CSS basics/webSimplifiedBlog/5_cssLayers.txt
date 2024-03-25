@@ -1,0 +1,53 @@
+CSS Layers System -
+    Browser (also known as user agent) styles
+    User styles
+    Author styles
+
+
+
+Creating new layer
+
+    Browser styles
+    User styles
+    Author styles
+        one
+        two
+
+Appending styles to already created new layer
+
+
+Defining Layer Order 
+
+    a)Framework
+    b)Base
+    c)Components
+    d)Utilities
+
+
+Importing Layers
+    Not performant way -
+        @import url("bootstrap.css") layer(framework);
+
+    Alternative -
+        <!-- link tag to stylesheet that define your layers -->
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            @import url("bootstrap.css") layer(framework);
+        </style>
+
+
+Anonymous Layers
+
+Nested Layers
+
+
+Important Layers Concepts -
+    Non-Layered Styles are more specific. For visulization -
+        Browser styles
+        User Styles
+        Author Styles
+        Base
+        Non-Layered Styles
+
+!Important and layers
+

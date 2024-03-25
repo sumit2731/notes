@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="grid">
+      <div class="blur-load">
+        <img src="" alt="" loading="lazy" />
+      </div>
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+      <img src="" alt="" loading="lazy" />
+    </div>
+  </body>
+  <script>
+    const blurDivs = document.querySelectorAll(".blur-load");
+    blurDivs.forEach((div) => {
+      const img = div.querySelector("img");
+      function loaded() {
+        div.classList.add("loaded");
+      }
+      if (img.complete) loaded();
+      else img.addEventListener("load", loaded);
+    });
+  </script>
+</html>

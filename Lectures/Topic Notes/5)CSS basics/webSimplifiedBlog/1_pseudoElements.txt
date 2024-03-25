@@ -1,0 +1,17 @@
+type 1 -
+    The first and by far most popular type are pseudo elements that allow you to add content to
+    your HTML from CSS
+
+    :before - allow you to add one child element as the first element of whatever element you are
+        selecting in your CSS.
+    :after - allow you to add one child element as the last child element of whatever element you
+        are selecting in your CSS.
+
+type 2 -
+    allow you to treat specific sections of your HTML as if they were their own element. 
+    
+    Good examples of this are the ::first-letter and ::first-line pseudo element that allow you
+        to style the first letter or line of text as if it was its own element.
+
+    Another example is the ::selection pseudo element that allows you to style the text that is 
+    highlighted.

@@ -1,0 +1,43 @@
+.blurred-img {
+  /* this ism blurred image */
+  /* background-image: url(imageName-small.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.blurred-img::before {
+  --text-color: red;
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: pulse 2.5s infinite;
+  background-color: white;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blurred-img.loaded::before {
+  animation: none;
+  content: none;
+}
+
+.blurred-img img {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.blurred-img.loaded img {
+  opacity: 1;
+}
