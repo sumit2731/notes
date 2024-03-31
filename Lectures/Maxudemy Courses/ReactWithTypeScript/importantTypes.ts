@@ -34,7 +34,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *
  * a)Used in type property of ReactElement to represent custom components
  * b)In ComponentsProps this is used to
- *      a)Place restriction that passed generic should be a component
+ *      a)Place restriction that passed generic should be a component(along with union of inbuilt Components)
  *      b)used in infer to get prop type
  *
  * This is union of FunctionComponent type and Class Component Type.propTYpes is passed as
@@ -44,8 +44,10 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *  b)Class Component is  Constructor Function, this is called with props and returns - Component<P,S>
  *
  *
- * Alternate Type - ElementType (this also represents InBuilt ReactComponent for HTML and CustomComponent)
- *  how it differs from JSXElementConstructor is class and functional components have some extra properties
+ * Alternate Type - ElementType (this also  InBuilt ReactComponent for HTML plus CustomComponent)
+ *  how it differs from JSXElementConstructor is -
+ *   a)Element Type represents both built ina dn custom components
+ *   b)class and functional components have some extra properties
  */
 
 /**
@@ -128,20 +130,14 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
 
 /**
  * 8)
- * @ElementType - This represents the Built in HTML element or CustomComponent
+ * @ElementType - This represents the Built in HTML element(string like - h1,div, span) or CustomComponent(Functional or Class)
+ * means Identifier which can be used as component
  *
  * Similar to - @JSXElementConstructor<P>
  *
  *
- * This is used as Constaint type in ComponentPropsWithRef
- *
- * value should be some valid identifier of a component
- *
- *    * <button></button>
- *
- * Here button is identifier.value can be inbuilt component as well as your Custom Component.
- * If you are using it as Identifier for Custom Component,then in order to use it as JSX element,
- * it should have capital letters.
+ * This is used as type of as Prop. this means it can either be setting which represents built in component or
+ *  custom component
  *
  * used in section 4. code2/src/components/Container.tsx
  */

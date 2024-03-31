@@ -64,7 +64,7 @@ type ButtonProps = ComponentPropsWithoutRef<"button"> & { href?: never };
 /**
  * on the anchor props, we set href to be optional because technically that's the case for anchor props
  */
-type AnchorProps = ComponentPropsWithoutRef<"a"> & { href?: string };
+type AnchorProps = ComponentPropsWithoutRef<"a"> & { href: string };
 
 const Button = (props: ButtonProps | AnchorProps) => {
   if (isAnchorProps(props)) {
@@ -82,10 +82,26 @@ export default Button;
 const ex1 = <Button href="google.com"></Button>;
 
 /**
- * absense of href prop do not means that type is  AnchorProps, as href is options in
+ * Absense of href prop do not means that type is  AnchorProps, as href is options in
  *  if you can live this then this is also a good solution
  */
 const ex2 = <Button disabled target="blank"></Button>;
 
 /**
- * See Function OverLoad solution - Button3
+ * Extra from course - my Notes
+ *
+ * Attempts to solve, absense of href useCase.
+ */
+
+/**
+ * Why other options will not work -
+ *
+ * a)we cannot make href:never as mandatory in ButtonProps, because that way we cannot
+ *  provide a valid value to href when we want to use button
+ * b)If we make href:string as mandatory in AnchorProps , thenw e would have this -
+ *    href? in ButtonProps
+ *    href  in AnchorProps
+ *
+ * here still ts cannot decide which exact prop type to use as , in DemoComponent also,
+ * providing starting properties on type1 does not ensure that prop type is of type1
+ */

@@ -55,8 +55,11 @@ function App() {
         company="abc"
         class="abc"
       ></DummyComponent>
-      <Container as="button" type="button" onClick={(e) => console.log(e)}>
+      {/* <Container as="button" type="button" onClick={(e) => console.log(e)}>
         ClickMe
+      </Container> */}
+      <Container as={Button} el="button">
+        Click Me
       </Container>
       <InputWithRef label="Test" id="test" ref={inputRef} />
       <Form onSave={handleSave}>

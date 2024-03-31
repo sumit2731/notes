@@ -13,16 +13,24 @@ function Button({ children, ...props }: AnchorProps): JSX.Element;
 function Button({ children, ...props }: ButtonProps): JSX.Element;
 function Button({ children, ...props }: AnchorProps | ButtonProps) {
   if ("href" in props) {
+    //props type is AnchorProps
     return (
       <a className="link" {...props}>
         {children}
       </a>
     );
   }
-
+  //props type is ButtonProps
   return (
     <button className="btn" {...props}>
       {children}
     </button>
   );
 }
+/**
+ * Here props is exactly of 1 type.We get around all disadvantages of
+ *
+ * All mandatory props in each type should be provided and we cannot mix and match these
+ */
+const div1 = <Button href="google.com" target="blank"></Button>;
+const div1 = <Button disabled></Button>;
