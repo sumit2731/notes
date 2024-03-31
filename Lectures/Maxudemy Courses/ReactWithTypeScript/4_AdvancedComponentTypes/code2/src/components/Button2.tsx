@@ -1,58 +1,91 @@
 import { type ComponentProps as ComponentPropsWithoutRef } from "react";
 
-/**
- * This type is used till end, it's only in end we use this never type.
- *
- * never means that this property should be not be set to any value. we are using optional prop
- * because if we do not make it optional then we need to provide it value while we truly cannot
- * provide it any value.
- * see second half of lecture 52 for details
- */
-// type ButtonProps = ComponentPropsWithoutRef<"button">;
-type ButtonProps = ComponentPropsWithoutRef<"button"> & { href?: never };
-
-// type AnchorProps = ComponentPropsWithoutRef<"a">;
-/**
- * here we make it optional to be inline with standard anchor tag behaviour
- */
-type AnchorProps = ComponentPropsWithoutRef<"a"> & { href?: string };
-
-/**
- * here return value type is @typePradicate
- * that is some special TypeScript code that can be used as a return value type,to tell TypeScript that this function
- * returns a Boolean but that if the Boolean value is true, this argument that has been passed to this function is of
- * a specific type.
- */
-
-function isAnchorElement(
-  props: ButtonProps | AnchorProps
-): props is AnchorProps {
+function isAnchorProps(
+  props: ButtonProps2 | AnchorProps2
+): props is AnchorProps2 {
   return "href" in props;
 }
 
-const Button = (props: ButtonProps | AnchorProps) => {
+/**
+ * @Approach1
+ */
+type ButtonProps1 = ComponentPropsWithoutRef<"button">;
+type AnchorProps1 = ComponentPropsWithoutRef<"a">;
+
+const Button1 = (props: ButtonProps1 | AnchorProps1) => {
   /**
    * Approach 1 - here we checked whether a href is present in props or not. ts was able to
    * conclude that props type is AnchorProps, so it can be passed to 'a'. but it was not able
-   * to narrow down the props outisde if condition
+   * to narrow down the props outisde if condition.
+   *
+   * see type narrow example in DummyComponnet, this narrowing works fine in ts
    */
-  // if ("href" in props) {
-  //   //here ts is able to understand that props type is AnchorProps
-  //   return <a {...props} className="button"></a>;
-  // }
-  // //here ts is not able to understand that props type is ButtonProps
-  // return <button {...props} className="button"></button>;
+  if ("href" in props) {
+    return <a {...props} className="button"></a>;
+  }
+  //here ts is not able to understand that props type is ButtonProps
+  return <button {...props} className="button"></button>;
+};
 
-  /**
-   * Here because of type pradicate ts knows that type of props is AnchorProps, which means that it
-   * can be passed to 'a' tag
-   */
-  if (isAnchorElement(props)) return <a {...props} className="button"></a>;
-  /**
-   * Here ts knows that if we come to this line then type of props is ButtonProps, hence they
-   * can be passed to 'button' tag
-   */
+/**
+ * @Approach2 - TypePredicate (workwround for problem faced in approach 1)
+ */
+
+type ButtonProps2 = ComponentPropsWithoutRef<"button">;
+type AnchorProps2 = ComponentPropsWithoutRef<"a">;
+
+const Button2 = (props: ButtonProps2 | AnchorProps2) => {
+  if (isAnchorProps(props)) {
+    return <a {...props} className="button"></a>;
+  }
+  return <button {...props} className="button"></button>;
+};
+/**
+ *  * DownSide - Outside this component, we can still pass props which belongs to both types do this.
+ * 
+ * Now I am not getting any support because of course when I'm using the button component,TypeScript just knows
+    that we can set either button or anchor props.So by default, it accepts both.And that's why I can mix and 
+    match those different props.See DummyComponent
+ */
+
+const demo = <Button2 target="abc.com" disabled></Button2>;
+
+/**
+ * @Approach3 - Try to differentiate between 2 types based on type that already exist. here we use href.
+ *
+ * here we tell ts if href is present then props type is AnchorProps only.
+ */
+
+/**
+ * here we make href options , because if we make it mandatory then we cannot ptovide it any value
+ */
+type ButtonProps = ComponentPropsWithoutRef<"button"> & { href?: never };
+
+/**
+ * on the anchor props, we set href to be optional because technically that's the case for anchor props
+ */
+type AnchorProps = ComponentPropsWithoutRef<"a"> & { href?: string };
+
+const Button = (props: ButtonProps | AnchorProps) => {
+  if (isAnchorProps(props)) {
+    return <a {...props} className="button"></a>;
+  }
   return <button {...props} className="button"></button>;
 };
 
 export default Button;
+
+/**
+ * href is present and is string,that means prop type is AnchorProps
+ */
+
+const ex1 = <Button href="google.com"></Button>;
+
+/**
+ * absense of href prop do not means that type is  AnchorProps, as href is options in
+ *  if you can live this then this is also a good solution
+ */
+const ex2 = <Button disabled target="blank"></Button>;
+
+/**
+ * See Function OverLoad solution - Button3

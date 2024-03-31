@@ -58,6 +58,7 @@
  * 
  * code 2
  * Solution to above is great but tiny downside is that we always have to pass el prop, which is extra.
+ * here we try to differeiate based on href attribute
  * see alternate approach in code2/src/components/Button2.tsx
  *
  * there also we had 2 approaches. see code comments
