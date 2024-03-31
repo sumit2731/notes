@@ -10,9 +10,10 @@ import { ReactNode } from "react";
 }; */
 
 /**
- * @Way2 - Use Descrinated union
+ * @Way2 - Use Discriminated Unions
  * 
- * discriminated union feature,where you build different objects with an identification property(propert is present in all union values but value is different in each value),
+ * discriminated union feature,where you build different objects with an identification property(property is present in
+ *  all union values but value is different in each value),
     the mode property in this case, and you then require different other properties depending on that
     mode property, that's a really useful feature and pattern which allows you to build way more 
     flexible components and, in general, in TypeScript, allows you to write more flexible code.
@@ -20,7 +21,7 @@ import { ReactNode } from "react";
  * Advantages -
  *  a)TS will not complaint for severity type when it sees that mode is 'hint'. TS will complain about
  *      severity when mode is warning
- *  b)IN this component also we will know in some specififc code places that severity will be present.
+ *  b)IN this component also we will know in some specific code places that severity will be present.
  *      see component code below
  */
 
@@ -41,6 +42,7 @@ type InfoBoxProps = HintBoxProps | WarningBoxProps;
  */
 const InfoBox = (props: InfoBoxProps) => {
   const { mode, children } = props;
+  // const { severity } = props;
   if (mode == "hint") {
     return (
       <aside className="infobox infobox-hint">
@@ -50,7 +52,7 @@ const InfoBox = (props: InfoBoxProps) => {
   }
   /**
    * Here is typescript is smart enough to know that we will reach at this point only if
-   * mode is 'warning' and that means severity props will be present
+   * mode is 'warning' and that means severity props will be present. so we do not get any warning
    */
   const { severity } = props;
   return (

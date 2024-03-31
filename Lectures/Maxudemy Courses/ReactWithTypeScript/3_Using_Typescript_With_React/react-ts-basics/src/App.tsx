@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Header } from "./components/Header";
 import goalsImg from "./assets/goals.jpg";
+/**
+ * In vite project it is considered good practice to include tsx extension
+ */
 import CourseGoalList from "./components/CourseGoalList";
 import NewGoal from "./components/NewGoal";
 

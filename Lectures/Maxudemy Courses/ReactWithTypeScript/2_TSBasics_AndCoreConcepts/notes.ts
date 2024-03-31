@@ -114,9 +114,9 @@ calculate(1, 2, multiply);
  * Defining object types with interface
  * 
  * you add curlybraces after name because the interface type is essentially for creating objects.
-    I'm saying essentially because you can also define function types with it,but that's not too important here,
-    and not something you'll probably use a lot.And, therefore, the most common use case for the interface keyword
-    is to define object types
+    I'm saying essentially because you can also define function types with it,but that's not too
+    important here,and not something you'll probably use a lot.And, therefore, the most common use
+    case for the interface keyword is to define object types
  */
 
 interface Credentials {
@@ -135,15 +135,15 @@ creds = {
  * type vs interface
  * 
  * In general you can always use the type keyword, and that also allows you to define other types
-    than object types like function type.Interface is more limited when it comes to that,because it's basically 
-    limited to object types.
+    than object types like function type.Interface is more limited when it comes to that,because it's
+    basically limited to object types.
     
-    note -you can actually use interface to also define function types but you for example cannot use interface to 
-    store a union type.
+    note -you can actually use interface to also define function types but you for example cannot use
+    interface to store a union type.
 
 
-    Nonetheless, the interface type also has some advantages.For example, if you're defining a class, you can inherit
-    the interface.
+    Nonetheless, the interface type also has some advantages.For example, if you're defining a class, you
+    can inherit the interface.
     
     So this feature where you can implement interfaces into classes can be a reason for using interfaces
     over the type keyword
@@ -158,9 +158,9 @@ class AuthCredentials implements Credentials {
 function login(credentials: Credentials) {}
 
 /**
- * Here But we could also call login with a new instance of Auth credentials since that also implements credentials,
-    and therefore TypeScript knows that this will also be a valid object that has at least the properties and methods
-    that are wanted by that interface.
+ * Here But we could also call login with a new instance of Auth credentials since that also implements
+ *   credentials,and therefore TypeScript knows that this will also be a valid object that has at least
+ *   the properties and methods that are wanted by that interface.
  */
 login(new AuthCredentials());
 

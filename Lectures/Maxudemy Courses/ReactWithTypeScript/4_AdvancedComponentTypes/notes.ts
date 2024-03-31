@@ -8,7 +8,8 @@
  *  a)while using that component (ts is able to know which props are required when we give value to mode
  *      prop)
  *  b) Also inside component we can create typeguards and will get severity property only where it
- *      is present
+ *      is present. As of now we are using 'return' keyword to tell ts that we will reach at some places
+ *      only when a mode proeprty is not hint
  */
 
 /**
@@ -22,8 +23,8 @@
  * but we are getting the error. see figure 2. so here typescript is not allowing us
  * to pass props that are not declared in prop types.
  *
- * refer to figure 2, error we are getting is IntrinsicAttributes error. one way to avoid it is to
- * use prop destructuring. see figure 3. here we if pass some less props we get error but on passing
+ * Refer to figure 2,error we are getting is IntrinsicAttributes error. one way to avoid it is to
+ * use prop destructuring.See figure 3. here we if pass some less props we get error but on passing
  * more props, there is no error.
  *
  * In order to overcome this we used ComponentProps more specifically ComponentPropsWithOutRef.
@@ -48,10 +49,8 @@
  * here we combined DiscrinatedUnion and ComponentPropsWithoutRef utility to achieve same.
  * see App.tsx, after passing el ="button" we cannot pass any prop that does snot belong to HTMLButton.
  * This is only possible with DiscrinatedUnion and not with normal Union, see DummyComponent.tsx and its
- * useage in App.tsx here we are able to pass props that are not valid.
- *
- * This component also accepts a Union type prop, but does not provide level of type checking that we get
- * with discriminted union.
+ * useage in App.tsx here we are able to pass props that are not valid.This component also accepts a Union
+ * type prop, but does not provide level of type checking that we get with discriminted union.
  *
  */
 

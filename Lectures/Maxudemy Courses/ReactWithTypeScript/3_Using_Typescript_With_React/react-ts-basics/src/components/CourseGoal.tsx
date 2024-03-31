@@ -25,9 +25,13 @@ interface CourseGoalsProps2 {
 }
 
 /**
- * Second approach to pass children props
+ * Second approach to pass children props. Where children property with value type ReactNode
+ *   is already defined
  */
-type CourseGoalsProps3 = PropsWithChildren<{ title: string }>;
+type CourseGoalsProps3 = PropsWithChildren<{
+  title: string;
+  onDelete: (id: number) => void;
+}>;
 
 // export default function CourseGoal(props: {title: string}) {
 export default function CourseGoal({
@@ -53,16 +57,16 @@ export default function CourseGoal({
  * And that's simply another alternative syntax which you should know.There is no
  * better or worse syntax here. It really comes down to personal preference
  */
-// const CourseGoal: FC<CourseGoalsProps> = ({ title, children }) => {
-//   return (
-//     <article>
-//       <div>
-//         <h2>{title}</h2>
-//         {children}
-//       </div>
-//       <button>Delete</button>
-//     </article>
-//   );
-// };
+const CourseGoal2: FC<CourseGoalsProps> = ({ title, children }) => {
+  return (
+    <article>
+      <div>
+        <h2>{title}</h2>
+        {children}
+      </div>
+      <button>Delete</button>
+    </article>
+  );
+};
 
 // export default CourseGoal;

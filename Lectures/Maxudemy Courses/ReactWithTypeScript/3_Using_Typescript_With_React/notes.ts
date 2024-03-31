@@ -11,8 +11,9 @@
  * typescript compiler uses this file to compile ts code.IDE also refers to this file to show errors.
  *
  * important fields -
- *  target
- *  strict
+ *  target - Which js version you want to compile to
+ *  strict - enables strict mode(more strict rules, like you always must explicitly set the type of parameters in a function)
+ *  lib - this controls which built in types are avalaible in this project
  *
  * see comments in tsconfig.js
  */
@@ -26,7 +27,7 @@
 
 /**
  * @PropType and @children PropType
- * See CourseGoal component to see how to give type to props and especially to children prop.
+ * See CourseGoal.tsx component to see how to give type to props and especially to children prop.
  *
  * lecture 33 explain how key props can be assigned to component even if you dnt specify it in
  * props type.
@@ -43,38 +44,16 @@
 
 /**
  * @TypesOf Eventhandlers of built in components
- * here we added a prop which is callback see CourseGoal.tsx
  *
- * While assigning this prop to onClick handler of mouse we got an error, see commneted out code in CourseGoal.
- * Read the error message. It gives you idea about what is wrong. now lets see how we can navigate through ts types -
- * click on onClick prop, you will see type of value it expects. soon you will see it ends up in EventHandler<SomeGeneric>.
- * It means EventHandler is callback whose first argument is - "SomeGeneric". someGeneric is of this format -
- *  EventType<ElementTypeOnWhichEventoccured> (MouseEvent<T>, FormEvent<T>)
- *
- * event.target gives HTMLElement of type - ElementTypeOnWhichEventoccured.
- * if we do not specify anytype, then even.currentTarget is HtmlElement. In out Cases generic type T will be HTMLButtonElement
- *  and HTML FormElement. just define a callback whose first params if of type -  EventType<ElementTypeOnWhichEventoccured>
- * these types can be imported from react
- *
- *
- * New Goal.tsx - here we defined a eventHandler for onSubmit on form. but problem is how to define type of
- * parameter?
- *  way 1 - click on onSubmit prop, you will get to this type - EventHandler<FormEvent<T>>
- *  What EventHandler does we already discussed above.First Parameter of callback is FormEvent<T>
- *  it eventType is FormEvent and event.currentElementType is T. how to find T?
- *      way 1 - Do not mention, it it will default to HTMLElement.later we see we need this type of elmeent in order
- *          to use FormData
- *      way 2 - Hover form form or OnSubmit to get type of T
- *
- *  way 2 - try to define onSubmit handler inline, do not give any type to first param, hover over it, ts will give it type automatically.
- *   use that type. see commented out code in NewGoal.tsx
+ * See NewGoal.tsx
  *
  */
 
 /**
  * while creating new goal now we want to get values that user filled in inputs. approaches to do that -
  *  a)useState and 2 way data-binding to get current value of input on every keystroak
- *  b) use Formdata to get values of all input in form, for this need to give name property to all input fields
+ *  b) use FormData to get values of all input in form, for this need to give name property to all input fields
+ *      const formData = new FormData(event.currentTarget)
  *  c)by using useRef (we will use this)
  */
 

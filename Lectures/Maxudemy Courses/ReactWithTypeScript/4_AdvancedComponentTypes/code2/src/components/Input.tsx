@@ -23,3 +23,5 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 export default Input;
+
+type t1 = string extends any ? number : any;

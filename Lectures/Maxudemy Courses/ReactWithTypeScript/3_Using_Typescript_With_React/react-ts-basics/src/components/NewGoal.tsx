@@ -16,7 +16,9 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
    * 2)when we give some initial value and generic to useRef
    *    case 1 - Type of generic and initial value is same , then it is same as case 1.we can say generic here is redundant.
    *        const flag = useRef<boolean>(true)
-   *    case 2 - Only one value is allowed whose type does not match with provided generic. that is null
+   *    case 2 - Only one value is allowed whose type does not match with provided generic. that is null.After initilaization
+   *      type of ref will be type provided by generic.
+   *      (Not needed in use State, hence this overload is needed in useRef)
    *        const flag = useRef<boolean>(null)
    *          here type if flag.current is null | boolean
    * 3)When no initial value is provided
@@ -25,7 +27,7 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
    *        generic also defaults to undefined, type of flag.current is undefined
    *    case 2 - generic is provided
    *        const flag = useRef<boolean>()
-   *        type of flag.current is boolean is undefined.
+   *        type of flag.current is boolean | undefined.
    *
    *
    * ref prop to HTMLElement accepts ref which of type HTMLEement | null. so we specify null as initial value,
@@ -40,7 +42,9 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
 
     /**
      * This will return a object whose key will be name attribute given to each form field
-     * value will be value of that form field
+     * value will be value of that form field.
+     *
+     * In order to to use we need to have type of element on which event occurred
      */
     //const formData = new FormData(event.currentTarget)
 
@@ -49,13 +53,13 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
      */
     const enteredGoal = goal.current!.value;
     const enteredSummary = summary.current!.value;
-
+    //resets the form
     event.currentTarget.reset();
     onAddGoal(enteredGoal, enteredSummary);
   };
   return (
     // here ts is able to correclt guess the type  of event, you can use this to copy type correctly
-    // <form onSubmit={(event) => event.preventDefault()}>
+    /*  <form onSubmit={(event) => event.preventDefault()}> */
     <form onSubmit={handleFormSubmit}>
       <p>
         <label htmlFor="goal">Your goal</label>

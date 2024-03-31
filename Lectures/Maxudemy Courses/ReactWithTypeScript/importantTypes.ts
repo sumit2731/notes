@@ -1,7 +1,10 @@
+import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
+
 /**
  * 1)ReactNode
- * this can be given as type to children prop.
- * this is also used as return type of Functional Components
+ * this can be  used here -
+ *  a)type of children prop
+ *  b)return type of functional component
  * this is union of some types where JSX elements are represented by ReactElement
  */
 
@@ -24,35 +27,52 @@
  *  a)to represent JSX element in reactNode type
  *  b)Function component types has return type of JSX.Element. JSX Element extends this interface
  *  only
- * 
- * it accepts 2 generics type which are for prototype and componentType.
- *
- * propType can be any
- * componentType is Union of string and JSXElementConstructor. string is for built in HtmlElement
- * props.
  */
 
 /**
  * 3)JSXElementConstructor<P>
  *
- * In Object form of JSXElement, this is used as type of type property.
+ * a)Used in type property of ReactElement to represent custom components
+ * b)In ComponentsProps this is used to
+ *      a)Place restriction that passed generic should be a component
+ *      b)used in infer to get prop type
  *
  * This is union of FunctionComponent type and Class Component Type.propTYpes is passed as
  * generics for this
  *
- * Functional Component is function which accepts argument of proptype and returns ReactNode
- * Class Component is Function which will be called in constructor mode, with props and returns
- *  Component<any, any>
+ *  a)Functional Component is function which accepts argument of prototype and returns ReactNode
+ *  b)Class Component is  Constructor Function, this is called with props and returns - Component<P,S>
+ *
+ *
+ * Alternate Type - ElementType (this also represents InBuilt ReactComponent for HTML and CustomComponent)
+ *  how it differs from JSXElementConstructor is class and functional components have some extra properties
  */
 
 /**
  * 4)Component
  *
- * This is return type of Class Component type. it accepts 3 generics. first 2 are propType and
- *  stateType.
+ * Our custom class components extends this class.It is defined at 2 places
  *
- * There is interface of this name which has all lifeCycle methods defined.
- * then there is class defined with this name which is used in defining your custom class component - class Foo extends React.Component
+ * a)There is interface of this name which has all lifeCycle methods defined.
+ *  componentDidMount?()
+ *  shouldComponentUpdate?(nextProps: Readonly<P>, nextState: Readonly<S>, nextContext: any): boolean;
+ *  componentWillUnmount?(): void;
+ *  componentDidCatch?(error: Error, errorInfo: ErrorInfo): void;
+ *  getSnapshotBeforeUpdate?(prevProps: Readonly<P>, prevState: Readonly<S>): SS | null;
+ *  componentDidUpdate?(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot?: SS): void;
+ * b)then there is class defined with this name which has these types -
+ *  a)static contextType
+ *  b)context: unknown;
+ *  c)constructor(props: Readonly<P> | P);
+ *  d)setState
+ *  e)forceUpdate
+ *  f)render
+ *  g)props
+ *  h)state
+ *  i)refs
+ *
+ *
+ *  used in defining your custom class component - class Foo extends React.Component
  *  This class has fields like props, state,setState, static ContextType.
  * Because of declaration merging these 2 types are combined
  */
@@ -60,32 +80,62 @@
 /**
  * 5)PropsWithChildren<PropType>
  *
- * Used to define prop type of component. children property with reactNode is already defined.
- * Rest types are defined by generic
+ * Used to define prop type of component.
+ *
+ * children property with value type ReactNode is already defined.Rest types are defined by generic
  */
 
 /**
- * 6)FC
+ * 6)FC<PropType>
+ *
+ * type FC<P = {}> = FunctionComponent<P>;
+ *
+ * This represents the Functional Component Type
  *
  * This is alternative to define type of Functional Component.
- * This is one of the union types defined in JSXElementConstructor.It has some additional types also
- *
- * JSXElementConstructor defined both functional as well as class components.
+ */
+
+/**
+ * 7)FunctionalComponent<P = {}>
+ * 
+ * This represents the FunctionalComponent, with some Extra Type
+ * 
+ *  interface FunctionComponent<P = {}> {
+        (props: P, context?: any): ReactNode;
+        propTypes?: WeakValidationMap<P> | undefined;
+        contextTypes?: ValidationMap<any> | undefined;
+        defaultProps?: Partial<P> | undefined;
+        displayName?: string | undefined;
+    }
  */
 
 /**
  * 7)ComponentProps<ComponentType>
- * ComponentPropsWithRef<ComponentType>
- * ComponentPropsWithoutRef<ComponentType>
  *
  * returns the prop types for given component. primarily used to get prop types of built in html elements
- *  div, button and a
+ *  div, button and a.
+ *
+ * Generic has following constraints -
+ *  a)string can only be built in HTMLElement (JSX.IntrinsicElements, key represents HTML name, value is PropType)
+ *  b)CustomComponent Type - JSXElementConstructor<any>
  *
  * used in Section4/code2/src/components/input lecture 51
+ *
+ * Other variations -
+ *      ComponentPropsWithRef<ComponentType>
+ *      ComponentPropsWithoutRef<ComponentType> - here In constraints see descriptive type of ClassComponents
  */
 
 /**
- * 8)ElementType - value should be some valid identifier of a component
+ * 8)
+ * @ElementType - This represents the Built in HTML element or CustomComponent
+ *
+ * Similar to - @JSXElementConstructor<P>
+ *
+ *
+ * This is used as Constaint type in ComponentPropsWithRef
+ *
+ * value should be some valid identifier of a component
  *
  *    * <button></button>
  *

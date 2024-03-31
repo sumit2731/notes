@@ -1,0 +1,21 @@
+animation properties -
+    animation-name
+    animation-duration
+    animation-delay
+    animation-fill-mode
+    animation-direction - normal,reverse, alternate, alternate-reverse
+    animation-iteration-count - infinite or some number
+
+
+
+
+
+animation-fill-mode -
+
+    By default the animation-fill-mode is set to none which means that before the animation starts
+        and after the animation finishes the element will not use any styles from the keyframes.
+
+    possible values -
+        forwards (retain 100% keyframe style after animation)
+        backwards (apply 0% keyframe style before animation start, even before animation delay)
+        both - combines both
