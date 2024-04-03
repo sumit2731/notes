@@ -1,0 +1,24 @@
+3 libraries -
+    Tailwind - 
+    MUI - Gives highly opiniated components, difficult to customize
+        How To customize - use styled component.see figure 1
+        tells you to use emotion library for styled components. you can overwrite the styles of
+            their button component also using emotion. they suggest to use styled components
+            instead of raw css
+    Radix - Unstyled JS based UI Frameworks
+    Bootstrap
+    Chakra - similar to MIUI
+    shadCN - 
+        Uses Radix and Tailwind.You copy their code into your system.You can chnage something if you do not like it.
+
+
+
+
+
+Ideal Stack - Tailwind + Radix
+
+Well Written Projects -
+    Cal.com
+
+ToDo -
+    See Accordian component of Radix

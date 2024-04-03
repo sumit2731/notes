@@ -1,5 +1,5 @@
 1)solved squareroot using tradational loops, but in course binarySearch approach is used. binary search solution is better.
-2)reverse vowel took some time to solve in single loop
+2)ReverseVowels - everse vowel took some time to solve in single loop
 3)here remeber the expression to check if char is alphanumeric
 4)I solved the question but course solution is better.
 5)shortestDistance is excellent question, i solved it using more complexity. course solution is excellent one.
@@ -7,6 +7,9 @@
 
 
 iteration 2 -
+
+    1)contains duplicate - solved
+    2)Pangram
 
     2)ReverseVowels - solved but bit rusty
     3)Remember regularExpression for alpha numeric

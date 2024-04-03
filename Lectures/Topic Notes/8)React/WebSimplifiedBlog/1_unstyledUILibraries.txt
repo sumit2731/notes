@@ -1,0 +1,19 @@
+Opinionated Styled libraries -
+
+    chakra(little-bit more customizable)
+    react-select
+    ManTin
+
+
+UnStyled Libraries -
+    hook based(Greater control,but you need to write all html from scratch) -
+        react-aria(hook based as well as component based)
+        downshift
+        BaseUI (MUI)(component API and Hook API)
+
+    component based(They are in middle, not as low level as hooks but are unstyled, so we can customize it.
+        here you do not have control over html because it is baked into component
+        
+        radix-ui
+        headless ui(built around tailwind)
+        reachUI
