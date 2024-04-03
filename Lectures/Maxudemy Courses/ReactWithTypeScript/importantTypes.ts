@@ -33,7 +33,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  * 3)JSXElementConstructor<P>
  *
  * a)Used in type property of ReactElement to represent custom components
- * b)In ComponentsProps this is used to
+ * b)In ComponentProps this is used to
  *      a)Place restriction that passed generic should be a component(along with union of inbuilt Components)
  *      b)used in infer to get prop type
  *

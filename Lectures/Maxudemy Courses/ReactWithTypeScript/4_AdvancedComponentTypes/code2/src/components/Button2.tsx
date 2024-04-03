@@ -18,9 +18,11 @@ const Button1 = (props: ButtonProps1 | AnchorProps1) => {
    * conclude that props type is AnchorProps, so it can be passed to 'a'. but it was not able
    * to narrow down the props outisde if condition.
    *
-   * see type narrow example in DummyComponnet, this narrowing works fine in ts
+   * see type narrow example in DummyComponnet, this narrowing works fine in ts. max also said -
+   * "at point of recording this lecture this does not work fine"
    */
   if ("href" in props) {
+    console.log(props);
     return <a {...props} className="button"></a>;
   }
   //here ts is not able to understand that props type is ButtonProps
@@ -52,7 +54,6 @@ const demo = <Button2 target="abc.com" disabled></Button2>;
 
 /**
  * @Approach3 - Try to differentiate between 2 types based on type that already exist. here we use href.
- *
  * here we tell ts if href is present then props type is AnchorProps only.
  */
 

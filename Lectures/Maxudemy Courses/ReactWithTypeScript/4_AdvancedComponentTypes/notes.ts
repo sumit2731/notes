@@ -9,7 +9,7 @@
  *      prop)
  *  b) Also inside component we can create typeguards and will get severity property only where it
  *      is present. As of now we are using 'return' keyword to tell ts that we will reach at some places
- *      only when a mode proeprty is not hint
+ *      only when a mode property is not hint
  */
 
 /**
@@ -19,13 +19,14 @@
  *
  * See code2/src/components/Input.tsx
  *
- * Here what we wanted to do is we want to pass all props to input by using destructuring trick
- * but we are getting the error. see figure 2. so here typescript is not allowing us
- * to pass props that are not declared in prop types.
+ * Here Input.tsx is wrapper around native input component.We want to forward some props which are accepted
+ *     by native input, via InputComponent. Inside InpuTComponent we are using destruturing trick to forward all
+ *     props to native input,but ts gives us error, when we try to pass props which are not defined in props type.
+ *     see left side of figure2
  *
- * Refer to figure 2,error we are getting is IntrinsicAttributes error. one way to avoid it is to
- * use prop destructuring.See figure 3. here we if pass some less props we get error but on passing
- * more props, there is no error.
+   one way to avoid it is to use prop destructuring.@Note1 this is trick to pass extra props to component.
+   See figure 3. here we if pass some less props we get error but 
+   on passing more props, there is no error.
  *
  * In order to overcome this we used ComponentProps more specifically ComponentPropsWithOutRef.
  *
@@ -37,8 +38,6 @@
 
 /**
  * code 2
- *
- *
  *
  * Here we wanted to build a component that renders either button or anchor. also props that it accepts
  * should be set accordingly while rendering button it should accepts props that are valid for native button

@@ -69,4 +69,4 @@ const CourseGoal2: FC<CourseGoalsProps> = ({ title, children }) => {
   );
 };
 
-// export default CourseGoal;
+// export  CourseGoal2;

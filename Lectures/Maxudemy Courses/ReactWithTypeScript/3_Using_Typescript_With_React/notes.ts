@@ -29,8 +29,6 @@
  * @PropType and @children PropType
  * See CourseGoal.tsx component to see how to give type to props and especially to children prop.
  *
- * lecture 33 explain how key props can be assigned to component even if you dnt specify it in
- * props type.
  *
  * also we saw how we can use special type PropWithChildren to define prop type with children property.
  *

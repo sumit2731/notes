@@ -12,8 +12,8 @@ const Button = (props: ButtonProps | AnchorPorps) => {
   const { el, ...otherProps } = props;
   if (props.el == "anchor") {
     /**.
-     * This will not work since we destructed the otherProps outside of if condition (see TypeNarrowing example in DummyComponent, to
-     *  issue with destructuring and type inference)
+     * here inside if block we do not get type narrowing, since we destructed the otherProps outside of if condition
+     * (see TypeNarrowing example1 in DummyComponent,to see issue with destructuring and type inference)
      *  ts does not know type of otherProps (I thunk it should be union of ComponentPropsWithoutRef<"button">
      *  and ComponentPropsWithoutRef<"anchor"> ).
      *
@@ -22,13 +22,18 @@ const Button = (props: ButtonProps | AnchorPorps) => {
      */
     // return <a {...otherProps} className="button"></a>;
 
-    //if we do this, the otherProps has type of ComponentPropsWithoutRef<"a">, and it can be used in  props of a tag
+    /**
+     * In order to get type narrowing , we need to do destructuring inside if block. now restProps is of type
+     *  ComponentPropsWithoutRef<"a">
+     */
 
     let { el, ...restProps } = props;
 
     /**
-     * here type of props is AnchorProps but passing extra props in destrcutre assignment is not going to
-     *  give us error.read notes.ts , refer to figure 3
+     * now you can either pass props or restProps to your component.
+     * why can we pass props? it is having a extra prop el, which does not exists on a tag?
+     * passing extra props in destrcutre assignment is not going to give us error.read @Note1 in notes.ts ,
+     * refer to figure 3
      */
     return <a {...props} className="button"></a>;
   }

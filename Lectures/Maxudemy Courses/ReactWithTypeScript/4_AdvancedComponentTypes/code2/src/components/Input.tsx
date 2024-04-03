@@ -11,17 +11,14 @@ type InputProps = {
  *
  * If you specify first generic thhen you will have to specify second one alos
  */
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, id, ...props }, ref) => {
+
+export default function Input({ label, id, ...props }: InputProps) {
+  {
     return (
       <p>
         <label htmlFor={id}>{label}</label>
-        <input id={id} name={id} type="text" ref={ref} {...props} />
+        <input id={id} name={id} type="text" {...props} />
       </p>
     );
   }
-);
-
-export default Input;
-
-type t1 = string extends any ? number : any;
+}

@@ -1,39 +1,68 @@
-import { ComponentPropsWithoutRef, forwardRef } from "react";
+import {
+  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
+  forwardRef,
+} from "react";
+
+/**
+ * @Solution1
+ * NO Ts error but this does not work as expected.
+ *
+ * you will get error on console that refs cannot be passed to functional components. see figure 6.
+ */
+
+type InputProps1 = {
+  label: string;
+  id: string;
+} & ComponentPropsWithRef<"input">;
+
+const Input1 = ({ label, ref, id, ...props }: InputProps1) => {
+  return (
+    <p>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type="text" ref={ref} {...props} />
+    </p>
+  );
+};
+
+/**
+ * @Solution2
+ * Now we use forwardRef to forward the ref to component. but here type of ref property is not compatible
+ * ref prop of input, so we need to give type to incoming ref in Forward ref.
+ */
 
 type InputProps = {
   label: string;
   id: string;
 } & ComponentPropsWithoutRef<"input">;
 
+const Input2 = forwardRef(function Input(
+  { label, id, ...props }: InputProps,
+  ref
+) {
+  return (
+    <p>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type="text" ref={ref} {...props} />
+    </p>
+  );
+});
+
 /**
- * comment1 -
- * Now if we use this code we will get a error. error is that currentProperty of ref received and ref in input
- * are not having same type. so we need to tell react what will ref.current hold
+ * @Solution3
+ * here we use generics to provide type to ref and type to props.
  *
- * comment2 -
- * so we give that as a generic type to forwardRef. there we again get a error. forwardref receives 2 generics if,
- * one generic then we have to specify other one also. this other is  type of props.
- *
- *
- *
- *
- * forwardRef accepts 2 generic as a parameter. First generic is the type of value that will be eventually stored in
- * ref.current, and second one is props that function that is passed to forwardRef will receive.
- *
- * If you specify first generic thhen you will have to specify second one alos
+ * If you use generics to provide type to ref, you have to use generics to provide type to reactProps also.
  */
-
-// const Input = forwardRef(({ label, id, ...props }: InputProps, ref) => {
-// const Input = forwardRef<HTMLInputElement>(({ label, id, ...props }: InputProps, ref) => {
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, id, ...props }, ref) => {
-    return (
-      <p>
-        <label htmlFor={id}>{label}</label>
-        <input id={id} type="text" ref={ref} {...props} />
-      </p>
-    );
-  }
-);
-
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { label, id, ...props },
+  ref
+) {
+  return (
+    <p>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type="text" ref={ref} {...props} />
+    </p>
+  );
+});
 export default Input;

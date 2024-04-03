@@ -37,6 +37,9 @@ type t2 = {
 function test2(param: t1 | t2) {
   let { id1, ...restParam } = param;
   if (id1 === "t1") {
+    /**
+     * Here type narrowing happends for id1 but not for param and restParam
+     */
     //type narrowing not happening
     console.log(param);
     console.log(restParam);
