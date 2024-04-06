@@ -29,6 +29,11 @@ const Input1 = ({ label, ref, id, ...props }: InputProps1) => {
  * @Solution2
  * Now we use forwardRef to forward the ref to component. but here type of ref property is not compatible
  * ref prop of input, so we need to give type to incoming ref in Forward ref.
+ *
+ * ForwardedRef, allows component to receive ref from outside, It can be used at 2 places -
+ *  a)passing a ref to DOM element in underlying component
+ *  b)while using impertaive handler. this allows to expose some custom functionality outside of
+ *    component
  */
 
 type InputProps = {

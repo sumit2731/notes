@@ -24,7 +24,8 @@
  *     props to native input,but ts gives us error, when we try to pass props which are not defined in props type.
  *     see left side of figure2
  *
-   one way to avoid it is to use prop destructuring.@Note1 this is trick to pass extra props to component.
+   one way to avoid it is to use prop destructuring.@Note1 this is trick to pass extra props to component.but i think it
+   do give error on console.
    See figure 3. here we if pass some less props we get error but 
    on passing more props, there is no error.
  *
@@ -132,12 +133,14 @@
  */
 
 /**
- * @FormWrapperComponent - Enhancement
+ * @FormWrapperComponent - Enhancement, exposed api of Form using useImperativeHandle
+ * @UsingRefInCustomComponents
+ *
  *
  * code - src/component/Form2.tsx
  *
  * here we exposed a custom api from FormComponent using useImperativeHandler and then assigned type
- * to refrence of our custom Component
+ * to refrence of our custom Component. Here also see how all types fit togather. see notes in component
  *
  *
  *

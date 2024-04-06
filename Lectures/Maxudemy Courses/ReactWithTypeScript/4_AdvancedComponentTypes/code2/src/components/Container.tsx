@@ -7,8 +7,8 @@ import {
 } from "react";
 
 /**
- * This is PolymorphicComponent, these are a wrapper components where we don't know in advance,which component it will wrap.Instead,
- * it should be able to wrap all kinds of components.
+ * This is PolymorphicComponent, these are a wrapper components where we don't know in advance,which component it will wrap.
+ *  Instead,it should be able to wrap all kinds of components.
  */
 
 /**
@@ -65,7 +65,7 @@ export default function Container<C extends ElementType>({
   /**
    * here we get a unique typing error, 2 ways to get past this -
    *  a)Use TypeCast to give type ElementType to Component as of now it is different.
-   *  b) make 'as' as optional and give some default value to Component
+   *  b) make 'as' as optional in props and give some default value to Component
    */
   // const Component = as;
   // return <Component {...props}>{children}</Component>;

@@ -130,14 +130,20 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
 
 /**
  * 8)
- * @ElementType - This represents the Built in HTML element(string like - h1,div, span) or CustomComponent(Functional or Class)
- * means Identifier which can be used as component
+ * @ElementType - This represents the identifier which can be used a component.
+ * <as></as>
  *
- * Similar to - @JSXElementConstructor<P>
+ * Union of -
+ *
+ *  a)Built in HTML element(string like - h1,div, span) or
+ *  b)CustomComponent(Functional or Class) - ComponentClass<P> represents this
+ *
+ *  ComponentClass is union of -
+ *      a)ClassComponent (represent class component with extra props) and
+ *      b)FunctionalComponent(function with extra properties)
  *
  *
- * This is used as type of as Prop. this means it can either be setting which represents built in component or
- *  custom component
+ * Similar to - @JSXElementConstructor<P> plus adds inbuilt component types also.
  *
  * used in section 4. code2/src/components/Container.tsx
  */

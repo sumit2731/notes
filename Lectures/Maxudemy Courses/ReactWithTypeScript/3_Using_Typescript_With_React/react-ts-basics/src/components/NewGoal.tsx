@@ -59,7 +59,7 @@ const NewGoal = ({ onAddGoal }: NewGoalProp) => {
   };
   return (
     // here ts is able to correclt guess the type  of event, you can use this to copy type correctly
-    /*  <form onSubmit={(event) => event.preventDefault()}> */
+    /*     <form onSubmit={(event) => event.preventDefault()}> */
     <form onSubmit={handleFormSubmit}>
       <p>
         <label htmlFor="goal">Your goal</label>

@@ -22,7 +22,13 @@ type TimerContextValue = TimersState & {
 };
 
 /**
- * null is added in union to allow default value of null
+ * Name is Upper case because we need to use TimersContext.Provider as a value.
+ * Generic and InitialValue type should be same
+ *
+ *
+ * this is needed at 2 places -
+ *    a)To create Provider component
+ *    b)In use context hook to get value of context
  */
 export const TimersContext = createContext<TimerContextValue | null>(null);
 
@@ -61,7 +67,9 @@ type AddTimerAction = {
 // type Action = {
 //   type: "ADD_TIMER" | "START_TIMERS" | "STOP_TIMERS";
 // };
-
+/**
+ * Here we used discriminated unions to define Action types
+ */
 type Action = StartTimersAction | StopTimersAction | AddTimerAction;
 
 /**
@@ -98,14 +106,13 @@ export default function TimersContextProvider({
    * but here we will useReducer hook. To see how that works with typescript
    *
    * First argument is reducer function second one is initialState.
-   * 
-   * reducer is a function that's then automatically executed by React whenever we dispatch a new action and we'll be able to dispatch such
-   * an action with help of the return value of useReducer.Because useReducer does return a value,to be precise, it returns an array which
-   * we can therefore destructure with array destructuring,which has exactly two elements.The first element is the current state managed by
-   * usereducer.
-
-    So we could name this timersState.The second element is a dispatch function which we can therefore call dispatch which allows us to 
-    trigger a state change.
+   *
+   * reducer is a function that's then automatically executed by React whenever we dispatch a new action and
+   *  we'll be able to dispatch such an action with help of the return value of useReducer.Because useReducer
+   *  does return a value,to be precise, it returns an array which we can therefore destructure with array
+   *  destructuring,which has exactly two elements.The first element is the current state managed by
+   *  usereducer.So we could name this timersState.The second element is a dispatch function which we can
+   *  therefore call dispatch which allows us to trigger a state change.
    */
   const [timerState, dispatch] = useReducer(timersReducer, initialState);
   const ctx: TimerContextValue = {

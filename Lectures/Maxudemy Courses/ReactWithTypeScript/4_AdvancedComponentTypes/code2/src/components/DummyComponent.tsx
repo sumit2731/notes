@@ -1,16 +1,29 @@
+type student = {
+  class: string;
+  teacher: string;
+  college: string;
+  // if we use this then  presence of company means type is emp
+  //company?: never;
+};
+
 type emp = {
   salary: number;
   manager: string;
   company: string;
 };
 
-type student = {
-  class: string;
-  teacher: string;
-  college: string;
-};
-
 type DummyComponentProps = emp | student;
+
+/**
+ * How Union Type props behave -
+ *  a)you cannot pass a property that do not belong to any type
+ *  b)you need to provide all mandatory properties of atleast one type
+ *  c)After providing all mandatory props of one type, you can pass properties that belongs to other
+ *    union type. this is not good, this is why we need Discrinated Unions
+ *  d)If you have one property that is optional and type is never and in other union type, it is
+ *    optional or mandatory but type is not never, then presense of never property means type is other
+ *  type. this is trick used in Button2
+ */
 
 const DummyComponent = (prop: DummyComponentProps) => {
   return <h1>Hello</h1>;

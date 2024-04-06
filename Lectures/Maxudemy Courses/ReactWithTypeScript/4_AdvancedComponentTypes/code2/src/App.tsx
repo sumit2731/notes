@@ -20,7 +20,7 @@ function App() {
     console.log(extractedData);
 
     /**
-     * Approach 2 -
+     * Approach 2 - https://www.udemy.com/course/react-typescript-the-practical-guide/learn/lecture/40470622#questions
      */
     if (
       !data ||
@@ -49,11 +49,14 @@ function App() {
         {/* as href is present now ts knows that this should only anchor props, so it gives error */}
         <Button2 href="https://google.com"></Button2>
       </p>
+      {/* No error as all types of one prop are present  */}
+      <DummyComponent class="c1" teacher="t1" college="c1"></DummyComponent>
+      {/* all types of one prop are present, so extra props can also be passed */}
       <DummyComponent
+        class="c1"
+        teacher="t1"
+        college="c1"
         salary={100}
-        manager="abc"
-        company="abc"
-        class="abc"
       ></DummyComponent>
       {/* <Container as="button" type="button" onClick={(e) => console.log(e)}>
         ClickMe

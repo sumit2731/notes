@@ -1,7 +1,7 @@
 /**
  * @ContextAPI
  *
- * here we used the contextAPI with typescript
+ * Here we used the contextAPI with typescript
  *
  * see src/stores/timers-context.tsx
  *
@@ -13,11 +13,7 @@
 /**
  * @useReducer
  *
- * Then we how to ts to wih @useReducer
- *
- * how we can manage the state by useReducer and using useReducer with ts
- *
- * we have type state managed by useReducer and defined type of actions that can be dispatched
- *  by useReducer
- *
+ * See how types of useReducer are defined.how we can manage the state by useReducer and using
+ *  useReducer with ts.we have type state managed by useReducer and defined type of actions that
+ *  can be dispatched by useReducer
  */

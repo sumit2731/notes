@@ -15,14 +15,14 @@ function Button({ children, ...props }: AnchorProps | ButtonProps) {
   if ("href" in props) {
     //props type is AnchorProps
     return (
-      <a className="link" {...props}>
+      <a className="link" target="blank" {...props}>
         {children}
       </a>
     );
   }
   //props type is ButtonProps
   return (
-    <button className="btn" {...props}>
+    <button className="btn" disabled {...props}>
       {children}
     </button>
   );

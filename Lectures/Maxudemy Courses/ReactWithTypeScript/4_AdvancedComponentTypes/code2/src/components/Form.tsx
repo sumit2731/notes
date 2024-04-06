@@ -1,10 +1,17 @@
 import { ComponentPropsWithoutRef, FormEvent } from "react";
 
 type FormProps = ComponentPropsWithoutRef<"form"> & {
+  /**
+   * Form can be wrapped around any element so we do not know what kind of data we will be getting here,
+   * so we used unknown type
+   */
   onSave: (value: unknown) => void;
 };
 
 const Form = ({ onSave, ...props }: FormProps) => {
+  /**
+   * see NewGoal.tsx, to see how to get this type correctly
+   */
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     /**
