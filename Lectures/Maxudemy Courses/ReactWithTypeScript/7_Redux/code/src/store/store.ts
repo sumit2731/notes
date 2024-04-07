@@ -6,6 +6,11 @@ import {
 } from "@reduxjs/toolkit";
 import { cartSlice, type CartState } from "./cart-slice";
 
+/**
+ * with Redux, you don't really create that store by telling it what its initial state should be;
+  instead, you tell it what its reducer is,and Redux will then infer the type of data that it will
+  manage from that reducer,
+ */
 export const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
