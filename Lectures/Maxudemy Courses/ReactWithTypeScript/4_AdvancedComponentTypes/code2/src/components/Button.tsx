@@ -23,11 +23,12 @@ const Button = (props: ButtonProps | AnchorPorps) => {
     // return <a {...otherProps} className="button"></a>;
 
     /**
-     * In order to get type narrowing , we need to do destructuring inside if block. now restProps is of type
+     * In order to get type narrowing,we need to do destructuring inside if block. now restProps is of type
      *  ComponentPropsWithoutRef<"a">
      */
 
     let { el, ...restProps } = props;
+    // return <a {...props} className="button"></a>;
 
     /**
      * now you can either pass props or restProps to your component.

@@ -16,10 +16,10 @@ const Button1 = (props: ButtonProps1 | AnchorProps1) => {
   /**
    * Approach 1 - here we checked whether a href is present in props or not. ts was able to
    * conclude that props type is AnchorProps, so it can be passed to 'a'. but it was not able
-   * to narrow down the props outisde if condition.
+   * to narrow down the props outisde if condition, this is because href is optional in AnchorProps.
    *
-   * see type narrow example in DummyComponnet, this narrowing works fine in ts. max also said -
-   * "at point of recording this lecture this does not work fine"
+   * If  a property is mandatory in type then this works fine. See example2 in DummyComponent
+   *
    */
   if ("href" in props) {
     console.log(props);

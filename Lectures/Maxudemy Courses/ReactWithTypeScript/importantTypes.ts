@@ -130,15 +130,19 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
 
 /**
  * 8)
- * @ElementType - This represents the identifier which can be used a component.
+ * @ElementType - This accepts a generic type which is prop type -
+ *      a)checks whether this genericType is prop types of inbuilt elements if yes returns string represent that
+ *          inbuilt element
+ *      b)otherwise it returns- ComponentType<P>.
  * <as></as>
  *
  * Union of -
  *
- *  a)Built in HTML element(string like - h1,div, span) or
+ *  a)Built in HTML element(string like - h1,div, span) - checks whether this genericType is prop types of inbuilt
+ *      elements if yes returns string represent that inbuilt element
  *  b)CustomComponent(Functional or Class) - ComponentClass<P> represents this
  *
- *  ComponentClass is union of -
+ * ComponentClass is union of -
  *      a)ClassComponent (represent class component with extra props) and
  *      b)FunctionalComponent(function with extra properties)
  *

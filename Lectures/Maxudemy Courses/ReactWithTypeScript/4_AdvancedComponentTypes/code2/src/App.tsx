@@ -49,9 +49,11 @@ function App() {
         {/* as href is present now ts knows that this should only anchor props, so it gives error */}
         <Button2 href="https://google.com"></Button2>
       </p>
+      {/*Error as this does not have all props that belong to any one union type  */}
+      <DummyComponent class="c1" teacher="t1" salary={1000}></DummyComponent>
       {/* No error as all types of one prop are present  */}
       <DummyComponent class="c1" teacher="t1" college="c1"></DummyComponent>
-      {/* all types of one prop are present, so extra props can also be passed */}
+      {/* all types of one prop are present, so extra props can also be passed, no error is given */}
       <DummyComponent
         class="c1"
         teacher="t1"

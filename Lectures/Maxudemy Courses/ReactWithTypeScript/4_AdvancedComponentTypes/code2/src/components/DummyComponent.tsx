@@ -46,29 +46,21 @@ type t2 = {
   salary: number;
   cellNo: number;
 };
-
+/**
+ * @Example1
+ * Type narrowing is not proper with Destructuring
+ */
 function test2(param: t1 | t2) {
   let { id1, ...restParam } = param;
   if (id1 === "t1") {
     /**
      * Here type narrowing happends for id1 but not for param and restParam
      */
-    //type narrowing not happening
+    console.log(id1);
     console.log(param);
     console.log(restParam);
-    let { id1, ...restParam2 } = param;
-  } else {
-    //type narrowing not happening
-    console.log(restParam);
-  }
-}
-function test22(param: t1 | t2) {
-  if (param.id1 === "t1") {
-    //proper type narrowing
-    console.log(param);
-    let { id1, ...restParam } = param;
-    //proper typing
-    let { id1, ...restParam2 } = param;
+    // type narrowing not happening for id2 and restParam
+    let { id1: id2, ...restParam2 } = param;
   } else {
     //type narrowing not happening
     console.log(restParam);
@@ -76,6 +68,23 @@ function test22(param: t1 | t2) {
 }
 
 /**
+ * Type Narrowing is proper with destructuring
+ */
+function test22(param: t1 | t2) {
+  if (param.id1 === "t1") {
+    //proper type narrowing
+    console.log(param);
+    let { id1: id2, ...restParam } = param;
+    //proper typing
+    let { id1: id3, ...restParam2 } = param;
+  } else {
+    //type narrowing not happening
+    console.log(param);
+  }
+}
+
+/**
+ * @Example2
  * Type Narrowing in Union
  */
 function test(person: DummyComponentProps) {

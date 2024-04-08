@@ -10,6 +10,9 @@
  *  b) Also inside component we can create typeguards and will get severity property only where it
  *      is present. As of now we are using 'return' keyword to tell ts that we will reach at some places
  *      only when a mode property is not hint
+ *
+ *
+ * To see how DiscriminatedUnion component differes from normal union type see DummyComponent in code2
  */
 
 /**
@@ -46,11 +49,11 @@
  *
  * see code2/src/components/Button.tsx
  *
- * here we combined DiscrinatedUnion and ComponentPropsWithoutRef utility to achieve same.
+ * here we combined DiscriminatedUnion and ComponentPropsWithoutRef utility to achieve same.
  * see App.tsx, after passing el ="button" we cannot pass any prop that does snot belong to HTMLButton.
- * This is only possible with DiscrinatedUnion and not with normal Union, see DummyComponent.tsx and its
+ * This is only possible with DiscriminatedUnion and not with normal Union, see DummyComponent.tsx and its
  * useage in App.tsx here we are able to pass props that are not valid.This component also accepts a Union
- * type prop, but does not provide level of type checking that we get with discriminted union.
+ * type prop, but does not provide level of type checking that we get with DiscriminatedUnion union.
  *
  */
 

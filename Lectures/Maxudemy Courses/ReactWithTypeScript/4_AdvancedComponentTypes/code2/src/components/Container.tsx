@@ -25,6 +25,8 @@ const Container1 = ({ as }: ContainerProps1) => {
   return <Component></Component>;
 };
 
+const div1 = <Container1 as="div"></Container1>;
+
 /**
  * Here we want to pass additional props that are accepted by component that is passed as as to my Container component.
  * For that we can use ComponentPropsWithoutRef type, but here we do not know which type we will be rendering so we do
