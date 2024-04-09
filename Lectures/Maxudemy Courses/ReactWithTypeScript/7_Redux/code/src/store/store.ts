@@ -45,7 +45,3 @@ type AppDispatch2 = ThunkDispatch<
   Dispatch<AnyAction>;
 
 export type RootState = ReturnType<typeof store.getState>;
-
-const dispatch = AppDispatch2();
-
-dispatch((dispatch, getState) => {});
