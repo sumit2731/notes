@@ -54,7 +54,12 @@ const demo = <Button2 target="abc.com" disabled></Button2>;
 
 /**
  * @Approach3 - Try to differentiate between 2 types based on type that already exist. here we use href.
- * here we tell ts if href is present then props type is AnchorProps only.
+ *
+ * Here we mark a property as optional with never type, it needs to be optional because making it mandatory, will require
+ *  us to pass a value and there is not valid value for optional type.
+ * At the same time we make this property as optional(or mandatory) in other union type.Now when we provide this property
+ * that means type is second type only.
+ *
  */
 
 /**
@@ -83,6 +88,9 @@ export default Button;
 const ex1 = <Button href="google.com" disabled></Button>;
 
 /**
+ * Now presence of href means that prop type cannot be ButtonProps, because it expect href to have type of never.
+ *
+ *
  * Absense of href prop do not means that type is  AnchorProps - if you can live this then this is also a good solution
  * You cannot solve this by making href mandatory in AnchroProps because we know how Union Types behaves in
  *  props.even if a proeprty exist in on  prop type, presence of it does not mean that pop is of that type,

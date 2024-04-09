@@ -126,7 +126,7 @@
  * src/components/Form.tsx
  *
  * here we built a formComponent that wraps all chiildren passed to it and then handles the submit event.
- * OnSubmit event it shuld call the callback passed to it with form data. but trick here was data of form cannot be
+ * OnSubmit event it should call the callback passed to it with form data. but trick here was data of form cannot be
  * know in Form component as it is dynamic.
  *
  * Concepts learned -

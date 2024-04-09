@@ -33,7 +33,8 @@
         *
         *
         * Pattern -
-        *      a)In Max ReactTypescriptCourse, both of these types were combine to define value returned from useDispatch hook.
+        *      a)In Max ReactTypescriptCourse, both of these types were combine to define value returned from useDispatch
+        *           hook.
         *      b)Both of these are also used to type of our customHook in project. useScriptlessMobileDispatch
     b)react-redux
 

@@ -96,6 +96,26 @@ function test(person: DummyComponentProps) {
   return person.college;
 }
 
+
 /**
- * Type Narrowing in Union2
+ * @Example3
+ * Union type  prop, how we do type narrowing with never type
  */
+
+type student2 = {
+  rollNo: number;
+  random?: never;
+};
+
+type emp2 = {
+  id: number;
+  random: number;
+};
+
+type DummyComponentProps2 = student2 | emp2;
+
+export function DummyComponent2(prop: DummyComponentProps2) {
+  return <h1>Hello</h1>;
+}
+
+const e2 = <DummyComponent2 random={1}></DummyComponent22>

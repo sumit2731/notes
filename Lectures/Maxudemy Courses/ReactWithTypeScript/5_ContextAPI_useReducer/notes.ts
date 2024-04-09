@@ -13,6 +13,8 @@
 /**
  * @useReducer
  *
+ * see src/stores/timers-context.tsx
+ *
  * See how types of useReducer are defined.how we can manage the state by useReducer and using
  *  useReducer with ts.we have type state managed by useReducer and defined type of actions that
  *  can be dispatched by useReducer
