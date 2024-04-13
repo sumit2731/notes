@@ -1,0 +1,99 @@
+checking support -
+    @supports(anchor-name: --foo) {  /* ... */}
+
+
+Tooltip -
+    element A
+    anchor target element
+
+Base Element -
+    element B
+    anchor element
+
+On baseElement -
+    Give id
+
+On Tooltip -
+    1)Position:absolute
+    2)then position tooltip relative to base element using anchor function
+    3)Referencing an anchor element from the target element with dashed-ident anchor name (e.g., --my-anchor), implicit keyword, or 
+        indirectly with anchor-default
+    4)Using anchor-size() to calculate the width and height of the target element with respect to the 
+        anchor’s dimensions
+    5)Providing guidance to the browser with @position-fallback to change the size and position of the 
+        target element when viewport boundaries clip the target element
+
+
+Logical properties -
+    anchor(self-start)
+    anchor(self-end)
+
+    left -> inset-bock-start
+    right -> inset-block-end
+
+
+Declaring and refrencing Anchor element -
+    way 1 - use implicit keyword
+        top: anchor(implicit start);
+    way 2 - do not mention anything
+    way 3 -Refer to anchor element
+        #img {
+            /* create an anchor named --cover */
+            anchor-name: --cover;
+        }
+
+        #overlay {
+            top: anchor(--cover top)
+        }
+
+    way 4 -
+        onBaseElement -
+
+        #img {
+            anchor-name: --hero-image-1;
+        }
+
+        On tooltip -
+
+        #overlay {
+            anchor-default: --hero-image-1;
+            bottom: anchor(auto);
+        }
+
+
+calculating dimensions of anchor target element -
+    width: calc(anchor-size(var(--anchor-inset) width) / 2);
+
+
+Position fallbacks -
+
+    way 1 -
+        /* 
+        Align the fig caption’s bottom to the top of the anchor (hero image), but automatically swap if this overflows the window to the tooltip’s top aligns to the anchor’s bottom instead. 
+        */
+        bottom: anchor(auto);
+
+    way 2 -
+        #caption-with-fallback img {
+            anchor-name: --hero-image-fallback;
+        }
+        #caption-with-fallback figcaption {
+            position: fixed;
+            anchor-default: --hero-image-fallback;
+            position-fallback: --fallback1;
+        }
+        @position-fallback --fallback1 {
+            @try {
+                top: anchor(bottom);
+                left: anchor(left);
+            }
+            @try {
+                bottom: anchor(top);
+                left: anchor(left);
+            }
+        }
+
+
+
+
+

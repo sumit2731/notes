@@ -1,0 +1,49 @@
+dialogs vs modals
+    modals - you cannot interact with rest of page, until modal is closed
+    dialogs - you can interact with rest of page
+
+
+Attributes -
+    open - dialog is visible, it is non-modal dialog
+
+Open dialog through js -
+    const dialog = document.querySelector("dialog")
+    dialog.show() // Opens a non-modal dialog
+    dialog.showModal() // Opens a modal
+        a)now modal is opened in separate layer
+    dialog.close()
+
+benefits -
+    It handles accessibility for you by default.
+        a)modal is centered by default
+        a)All the proper aria-attributes and focus states are taken care
+        b)modal will be closed by pressing escape key
+        c)focus trapping
+        d)When dialog is opened first focusable element is opened by default
+
+Custom Stylings -
+    a)styling of dialog -
+        You can style the modal way you want
+    b)styling of backdrop -
+        backdrop is handled using - ::backdrop
+        
+        dialog::backdrop {
+            background-color: hsl(250, 100%, 50%, 0.25);
+        }
+
+Advance Usecases - 
+    a)form
+        <form method="dialog">
+    b)formmethod
+        <form>
+            <button formmethod="dialog" type="submit">Cancel</button>
+        <form>
+
+    c)ckosing the dialog on click of backdrop - by default not added, bit can be added easily
+
+
+From video -
+    problem with regular modal -
+        a)Extra element or pseudo element for overlay
+        b)hide modal by default and show it only when required
+        c)focus trapping is not there, using tab you can focus outside of dialog

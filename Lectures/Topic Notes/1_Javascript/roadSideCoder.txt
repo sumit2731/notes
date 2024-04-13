@@ -1,0 +1,10 @@
+Machine Coding Rounds(or System design) -
+    Using Intersection Observer or debounce in react hooks
+    Create Components, how to pass props to componnets
+    If you need to create a UI, and need data for it, you should not hard code the data inside  it,
+        you should create a configuration and render that configuration
+    Create proper folder structure(create component in componnets folder)
+    Gather requirements properly
+    Be Vocal - discuss , what you are doing
+
+

@@ -1,0 +1,5 @@
+.implicit-crossref {
+  position: absolute;
+  top: anchor(implicit start);
+  /* ... */
+}

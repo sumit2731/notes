@@ -1,0 +1,15 @@
+.parent {
+  display: flex;
+  background-color: navy;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.child {
+  width: 200px;
+  height: 200px;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

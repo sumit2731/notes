@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+}
+
+.box {
+  background-color: red;
+  flex-grow: 1;
+  height: 400px;
+}

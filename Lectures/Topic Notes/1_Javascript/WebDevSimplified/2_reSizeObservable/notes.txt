@@ -1,0 +1,44 @@
+Reason for change in size -
+    window size changing
+    elements being added/removed from the page
+    user interaction, and much more.
+
+
+
+Properties on entries -
+    contentRect(DOMRectReadOnly) - contains information such as the width, height, top, left, bottom, right,
+        etc. of our element
+    target - gets the current element, you can for example change the size of element
+    borderBoxSize,contentBoxSize, devicePixelContentBoxSize - ach of these properties will be an array
+        that will almost always contain just one value which is an object with a blockSize and 
+        inlineSize property
+
+
+ResizeObservableOptions -
+    box -
+        content-box(default) -
+        border-box - takes into account things like border and padding changes
+        device-pixel-content-box - The device-pixel-content-box is similar to the content-box
+            option but it takes into account the actual pixel size of the device it is rendering
+            too. This means that the device-pixel-content-box will change at a different rate than
+            the content-box depending on the pixel density of the device.
+
+
+Methods on Observer -
+    unobserve - method takes a single element as its only parameter and it stops observing that single 
+        element.
+    disconnect - takes no parameters and will stop observing all elements.
+
+
+Code -
+    const observer = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+            console.log(entry.borderBoxSize[0].blockSize)
+            console.log(entry.contentBoxSize[0].blockSize)
+            console.log(entry.devicePixelContentBoxSize[0].blockSize)
+        })
+    }))
+
+    observer.observe(document.getElementById("test"))
+
+        

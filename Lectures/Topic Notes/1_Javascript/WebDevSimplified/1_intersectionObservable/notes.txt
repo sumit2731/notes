@@ -1,0 +1,59 @@
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const intersecting = entry.isIntersecting
+            entry.target.style.backgroundColor = intersecting ? "blue" : "orange"
+        })
+    })
+
+    observer.observe(document.getElementById("test"))
+
+information related to each element that changes its intersection status.
+
+telling it to observe intersection changes for the element with the id test.
+
+
+Property on each entry -
+    a)isIntersecting 
+        true - when element is in view port
+        false - when element not in page
+    b)target - This gets the currentElement that that is being observed
+    c)intersectionRatio - number between 0 and 1 which represents the current percentage of the element that is
+        within the viewport.
+    d)boundingClientRect (DOMRectReadOnly) - actual shape of element, that is observed
+    e)intersectionRect (DOMRectReadOnly) - rectangle that defines the the amount of element that is visible on screen.
+    f)rootBounds(DOMRectReadOnly) - these are root bounds, in most cases this is viewport.
+
+
+
+IntersectionObservable Options -
+
+    a)threshhold - value between  0 and 1.and represents the percentage of the element that must be visible before 
+        isIntersecting becomes true. default - 0.
+
+        You can also pass an array to threshold which means that the Intersection Observer will fire 
+            each time your element passes one of the thresholds passed to it.It is useful like when you
+            want to print by how much percent your element is scrolled.
+    b)root margin - The rootMargin will be added to the container viewport so in essence we can 
+        shrink/grow our view port with this value.
+        positive rootMargin like this is really useful when you need to lazy load images, or do something like 
+            infinite scrolling since you can load in all the data before it becomes visible to the user.
+        Negative root margin -
+            you can also add negative margin to shrink the view port.
+            This type of rootMargin is perfect for doing things like loading animations that you want to occur after
+                an element is at least a certain distance from the edge of the screen.
+    c)Root -This property must be an element that is an ancestor of the elements being observed. This root element is
+        then used as the viewport for intersection. This is really only useful when you have a scrolling container
+        inside your page that you want to check observations for since you can make the scrolling container the root
+        element instead of the screen.
+
+
+Advanced Intersection Observer -
+    Second callback parameter - The callback you pass to new Intersection Observers actually has two 
+        parameters. The first parameter is the entries parameter we have talked a bunch about.
+        The second parameter is simply the observer that is observing the changes.
+
+Unobserve and disconnect -
+    unobserve - takes a single element as its only parameter and it stops observing that single element.
+    disconnect - takes no parameters and will stop observing all elements.
+
+
