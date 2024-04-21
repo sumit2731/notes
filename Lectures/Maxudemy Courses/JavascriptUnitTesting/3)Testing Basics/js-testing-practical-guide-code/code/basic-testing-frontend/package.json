@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    // run means run the test only once, alternative is watch mode
+    // report verbose flag adds details for test which are paased or failed in final test
     "test": "vitest --run --reporter verbose",
     "test:watch": "vitest",
     "start": "http-server -c-1"

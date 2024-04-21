@@ -1,0 +1,19 @@
+1)getting most nested element at a point -
+    document.elementFromPoint(event.clientX, event.clientY);
+
+2)from a element, get a closest parent that matches the selector -
+    elemBelow.closest(".droppable");
+
+3)to get height of current visible viewPort -
+    document.documentElement.clientHeight
+
+
+
+Scrolling -
+    a)To Scroll Window -
+        window.scrollBy(xOffSet,yOffset)
+
+    b)To get scrolling position -
+        window.scrollX
+        window.scrollY
+    

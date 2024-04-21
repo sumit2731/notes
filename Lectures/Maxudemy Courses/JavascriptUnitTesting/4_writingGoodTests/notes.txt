@@ -1,16 +1,57 @@
 34)what should not be tested
     you should not test -
-        thrid party code
+        third party code
         code or features built into the envirement you are working on(do not test browser api's, do not test native node.js
             packages)
-    see slode1
+    see slide 1 & 2
 
-35)writing good test
-    a)AAA
-    b)test only one thing - Do not write test that test three different aspects of functions or 3 different functions.
-    c)Focus on essence of test when arranging
-    d)keep assertions minimal
+35)writing good test (slide 3)
+    a)AAA - Arrange, Act and Assert
+    b)test only one thing - Do not write test that test three different aspects of functions or 3 different functions.instead one
+        test should test one unit and one behaviour or one expected outcome or result of that unit or function..
+    c)Keep test basic and simple and Focus on the essence of the thing you are testing. have short and concise tests
+    d)keep assertions minimal - In some cases okay to have more than one assertion, like when testing one and same thing, just with
+        different values.
+
+36)Only Test "One Thing" (slide 4)
+    testing one thing means testing one feature or one behaviour
+
+
+37)Splitting Functions of easier testing & better code
+    In app.js we have huge code and doing many things , we might want to split that up because testing all these things in one test can
+        become tricky.because even while testing one testing one behaviour , we will execute whole code.So if our test fails thereafter,
+        even though we're just testing one behavior,it could fail because any part of that overall code failed.So still finding out why
+        our test failed could be challenging or tricky.
+    
+    Hence what you should try to do to make your life easier for testing, but also to improve the readability of this overall function here
+        is you should try to split it up into multiple functions. I do recommend there that you should also try to avoid complex functions like this.
+        Instead, you might just want to call a bunch of other functions in that function and those other functions do the individual tasks that need
+        to be done, like getting the input,validating the input and so on.And if you do that, you have the benefit that this function will get a bit
+        more readable and maintainable and your tests will become more manageable as well.And you will be able to have more granular tests.
+
+    So testing kind of forces you to write better application code, which is a huge benefit of adding tests to your project, that you are forced to write
+        cleaner code.
 
 38)Refactoring code
     we broke a larger function which was doing many things into smaller functions. now these individual units can be tested
         separately.
+
+39)Formulating different expectations
+
+    Functions for which we did not wrote any tests
+        parser.js - this is using browser api's
+        app.js - formSubmitHandler, it is calling bunch of another function
+        numbers.js - here also we are calling other functions
+
+        we will address these in next section
+
+    We will write test for these functions - output.js
+
+
+
+Files changed -
+
+    code/app.js - splitted the code into different functions to allow easy testing
+
+    code/src/output.test.js - added unit test for code
+

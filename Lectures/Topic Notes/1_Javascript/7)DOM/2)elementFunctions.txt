@@ -18,7 +18,7 @@
         ancestors together form the chain of parents from the element to the top.from that chain,this selects the closest 
         element.element itself is also included.when a element matches , then serach is stopped and element is returned.
 
-        THis is useful in event delagation pattern, to identify whether target ic child of desired element.
+        THis is useful in event delagation pattern, to identify whether target is child of desired element.
 
     getElementsBy - return Live Collection i.e newNodes that are added in DOM after query are also added to live Collection
 

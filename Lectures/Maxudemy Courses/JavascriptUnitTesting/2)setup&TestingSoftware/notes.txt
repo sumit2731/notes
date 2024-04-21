@@ -7,18 +7,27 @@ Things needed for testing -
         eg -Jest,Chai
 
 JEST vs VITEST -
-    We will use VITEST in this course because JEST can be slow. and JEST has experimnetal support of ESMModules. codes get transpiled
-        behind the scenes.this is not good. we should always test the code that we are going to ship to prod. also VITEST syntax
-        is compatoble with JEST.
+    We will use VITEST in this course because -
+        a)JEST can be slow.
+        b)ESModules- Jest kind of supports it.It does support ECMAScript modules but support is only experimental.
+            And in my experience, setting it up and making it work with this other import Syntex can be very annoying
+            and you often end up installing extra tools and you set up an extra workflow for testing where the code gets
+            transpiled and changed behind the scenes, which is always a bit annoying if your main code works just like that
+            without any extra setup and you then need some extra configuration just to make your tests work.That's not really
+            the idea behind testing.You don't wanna test something different than you run in production,even though it's just
+            a behind the scenes transpolation.
 
     Vitest is both a test runner and an assertion library.
 
 Installing Vitest -
 
-    "scripts" : {
-        "test": "vitest --globals"
-    }
+    a)npm install --save-dev vitest
 
-    globals flags lets you use things like 'it' and 'expect' without any imports.
+    b)add a script in package.json -
+        "scripts" : {
+            "test": "vitest --globals"
+        }
+
+        globals flags lets you use things like 'it' and 'expect' without any imports.
 
     

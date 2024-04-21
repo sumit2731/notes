@@ -5,31 +5,39 @@ matchers -
     2)expect([1,2,3]).toEqual([1,2,3])
         Check section 6 lecture 48 for difference
 
-    2)expect(a).toBeDefined()
+    3)expect(a).toBeDefined()
         .toBeUndefined
         .not.toBeDefined()
 
-    2)testng error
+    4)testng error - see math.test.js in section 3. on how to assert whether function throws or not.
         const resultFn = () => {
             add();
         };
         a)expect(resultFn).toThrow(); // just checks for error to be thrown
-        b)exppect(resultFn).toThrow('some strng'); // also checks for error thrown and aprticular message, can be string or regular exp
+        b)expect(resultFn).toThrow('some strng'); // also checks for error thrown and a prticular message, can be string or regular exp or Class Cnstructor
 
-    3)not -
+    5)not -
         expect(a).not.toBe(0)
         expect(resultFn).not.toThrow(); //https://jestjs.io/docs/expect#tothrowerror
 
-    4)toBeTypeOf
+    6)toBeTypeOf
 
         expect(result).toBeTypeOf()
 
-    5)toBeNaN()
+    7)toBeNaN()
+        expect(result).toBeNan()
 
 
-    6)toContain(''someString)
+    8)toContain('someString')
+        expect(someSTr).toContain('sunStr)
 
-    7)expect(somevar).toMatch(regexp|string|object)
+        This checks if -
+            a)string conatins a subtring
+            b)if array contains a item
+
+        For checking onjects in array, you need to use toContainEqual()
+
+    9)expect(somevar).toMatch(regexp|string|object)
 
 
     7)expect(promise).resolves.

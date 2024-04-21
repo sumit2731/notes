@@ -1,44 +1,47 @@
-import { extractEnteredNumberValues, extractNumbers } from './src/parser.js';
+import { extractEnteredNumberValues, extractNumbers } from "./src/parser.js";
 
-import { calculateResult } from './src/math.js';
+import { calculateResult } from "./src/math.js";
 
-import { generateResultText, outputResult } from './src/output.js';
+import { generateResultText, outputResult } from "./src/output.js";
 
-const form = document.querySelector('form');
-
-// function formSubmitHandler(event) {
-//   event.preventDefault();
-//   const formData = new FormData(form);
-//   const numberInputs = extractNumbers(formData);
-
-//   let result = '';
-  
-//   try {
-//     const numbers = [];
-//     for (const numberInput of numberInputs) {
-//       validateStringNotEmpty(numberInput);
-//       const number = transformToNumber(numberInput);
-//       validateNumber(number);
-//       numbers.push(number);
-//     }
-//     result = add(numbers).toString();
-//   } catch (error) {
-//     result = error.message;
-//   }
-
-//   let resultText = '';
-
-//   if (result === 'invalid') {
-//     resultText = 'Invalid input. You must enter valid numbers.';
-//   } else if (result !== 'no-calc') {
-//     resultText = 'Result: ' + result;
-//   }
-
-//   output.textContent = resultText;
-// }
+const form = document.querySelector("form");
 
 /**
- * @cannot test now
+ * Code before splitting
+ */
+function formSubmitHandler2(event) {
+  event.preventDefault();
+  const formData = new FormData(form);
+  const numberInputs = extractNumbers(formData);
+
+  let result = "";
+
+  try {
+    const numbers = [];
+    for (const numberInput of numberInputs) {
+      validateStringNotEmpty(numberInput);
+      const number = transformToNumber(numberInput);
+      validateNumber(number);
+      numbers.push(number);
+    }
+    result = add(numbers).toString();
+  } catch (error) {
+    result = error.message;
+  }
+
+  let resultText = "";
+
+  if (result === "invalid") {
+    resultText = "Invalid input. You must enter valid numbers.";
+  } else if (result !== "no-calc") {
+    resultText = "Result: " + result;
+  }
+
+  output.textContent = resultText;
+}
+
+/**
+ * Code after splitting
  */
 function formSubmitHandler(event) {
   event.preventDefault();
@@ -48,4 +51,4 @@ function formSubmitHandler(event) {
   outputResult(resultText);
 }
 
-form.addEventListener('submit', formSubmitHandler);
+form.addEventListener("submit", formSubmitHandler);

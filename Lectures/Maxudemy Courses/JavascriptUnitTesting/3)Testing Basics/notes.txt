@@ -1,11 +1,15 @@
 Lecture 15 -
-    we will write unit test for src/math.js. because it is mallest unit.function in app.js is also unit, but math.js
-    is smaller unit because it is not calling other functions in the end.so you want to look for functions that not 
-    calling other functions,and that are your units.your unit should be small and not do too many things.
+    we will write unit test for src/math.js. a unit is smallest piece in your soft ware that works pretty much standalone you could say.
+    formSubmitHandler function in app.js is also unit, but math.js is smaller unit because it is not calling other functions in the end.
+    formSubmitHandler  is calling other functions.
+    so you want to look for functions that are not calling other functions,and that are your units.your unit should be small and not do too
+    many things.
 
 
     it or test - these can be used intrchangebably in boh jest and vitest.can we used without exporting by adding --global 
         flag. but importing gives better auto completion.
+
+    Then we write the first test in -  3)Testing Basics/js-testing-practical-guide-code/code/basic-testing-frontend/src/math.test.js
 
 
 Lecture 19 -
@@ -19,11 +23,13 @@ Lecture 19 -
     See first test of math.test.js
 
 
-20)Keep your tests simple
-    in add function , there is no point in adding like 10 numbers
+20)Keep your tests simple and concise as possible
+    in add function , there is no point in adding like 10 numbers.
+    do not make them overly complex, think about you coming back to these tests and making a update,
+    so you or your colleauge should be able to understand the test easily
 
 21)
-    a)write tests for thongs that should not happen
+    a)write tests for things that should not happen
 
     best practices -
         a)write more than 1 test.
@@ -35,3 +41,9 @@ Lecture 19 -
 
     a)When you have multiple functions in file
     b)Single functions is having lot of test
+
+
+In this section we added test cases -
+    a)math.test.js
+    b)numbers.test.js
+    c)validation.test.js
