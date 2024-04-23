@@ -4,16 +4,16 @@
         b)Making api calls
         c)Interacting with DB
 
-        In gneral interact with something outosde your code is side affcet.
+        In general interact with something outosde your code is side affcet.
 
 
         see comments in first test of io.test.js
 
-62)Introducing spies and mocks
+62)Introducing spies and mocks (see lecture)
     how to get rid of side affects and thrird party code -
         a)spies - Spies are in the end Wrappers around your functions or empty replacement functions for functions
-            where you're only interested in learning whether the function was called and maybe which argue it's received.
-        b)mocks - , mocks are also about replacement there, you also replace functions, but with mocks you often replace 
+            where you're only interested in learning whether the function was called and maybe which arguments it's received.
+        b)mocks - Mocks are also about replacement there, you also replace functions, but with mocks you often replace 
             bigger parts of an API of a certain module or code.And with mocks you also often implement some test specific 
             logic in the replacement function that does something else than the original function but helps you test different
             scenarios.
@@ -24,11 +24,11 @@
         See slide 1 for details
 
 63)Working with Spies
-    creating spies -
+    creating spies(I think this creates mocks) -
         jest.fn()
         vi.fn()
 
-    see first test of data.test.js
+    see first test of data.test.js. here we defined a empty mock function and use dit in testing
 
     You can also provide implementation function -
         jest.fn(implementation) is a shorthand for jest.fn().mockImplementation(implementation).
@@ -58,10 +58,11 @@
 66)Note on mocking
     1)production code is not affected.
     2)in vitest mocks are hoisted, in jest, max thinks they are not. so there you need to mock a module before it is imported.
+        because we want to make sure that module is mocked before we import from it.
     3)that this Mock is only active for the tests in this file kind of.Actually it does Mock away the module
         and other tests therefore also have that module Mocked away.But if you do have tests in another file that also use 
-        this module,then Vitest automatically sorts the tests such that the unmocked files the files that use this
-        module where you don't call mock, are executed first.So they get the unmocked module.Therefore calling VMOC in all 
+        this module,then Vitest automatically sorts the tests such that  the files that use this module unmocked , where you don't 
+        call mock, are executed first.So they get the unmocked module.Therefore calling vi.mock in all 
         the files where you want the Mock to be active is a good idea.
 
 67)Custom Mocking logic
@@ -98,3 +99,8 @@
     here is how we can use it with mocks -
 
         https://jestjs.io/docs/mock-function-api/#mockfnmockimplementationfn
+
+
+Files Changed -
+    data.test.js - crated a empty mock function and tested whther it is called or not.
+    io.test.js - here we mocked a built n nodejs module and then asserted that function in that module was called

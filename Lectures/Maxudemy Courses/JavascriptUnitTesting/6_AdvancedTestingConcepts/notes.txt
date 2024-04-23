@@ -1,5 +1,9 @@
 47)Advanced Concepts -
-    Testing Asynchronous Code
+    Testing Asynchronous Code - 
+        async-example.test.js (callback based and promise based)
+        jest docs -
+            https://jestjs.io/docs/asynchronous
+            https://jestjs.io/docs/tutorial-async#resolves
     Using Setup & CleanUp Hooks
     Vitest Specific features -
         Concurrent Tests
@@ -31,15 +35,20 @@
     afterAll
     afterEach
 
-    these hooks can be defined at file level as well as suite level.
+    these hooks can be defined at file level as well as suite level.there is difference in that
 
     code - hooks/hooks.test.js
 
 
 56)Concurrent Tests
-    describe.concurrent()
-    it.concurrent()
+    describe.concurrent() - all tests in suite will be executed paralelely.
+    it.concurrent() - all tests in same file which have this concurrent property will run in parallele
 
-    Test is different files are always executed concurrently -
+    Test in different files are always executed concurrently. -
 
         https://www.udemy.com/course/javascript-unit-testing-the-practical-guide/learn/lecture/31879108#questions
+
+
+Files changed -
+    a)async-example.test.js
+    b)hooks.test.js

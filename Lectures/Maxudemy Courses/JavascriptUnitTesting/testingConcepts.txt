@@ -1,0 +1,33 @@
+Units - Smallest building block of code.
+Good tests-
+    a)AAA pattern
+    b)only test one thing
+    c)are simple and short
+    d)keep assertions less
+
+ONly test your code, do not tests, library or API provided by ENV.
+
+Unit test can help us to write better code, we generally want functions to do single thing so that they are easier to test.
+    so this unit testing forces us to split our long functions which do lot of things, into smaller functions which do single
+    thing only.
+
+How to test functions which call other functions also - If that others functions are written by us, then we cann trest functions as whole,
+    without mocking anything, this will be called as integration tests.
+
+
+Testing async code-
+    callback based code -
+        you can pass done callback to 'it' or 'test' callback, then test will end only when this callback is called. and you need to call it manually
+            otherwise test will fail due to timeout error.
+    promise based code -
+        if you return promise from 'it' or 'test' block then test will not end untill that promise is resolves. there are 3 variants to this to execute
+        asynchronous code -
+
+            a)return a promise and in that promise use .then to execute some assertions.
+            b)use expect.resolves and return it from 'it' or 'test' block, this also returns promise.
+            c)use async await in your callback.because by default this aync function returns promise. here you can use try catch block to test failure
+                conditions also.use expect.assertions(3) to keep count, of how many assertions needs to be executed.
+
+            All these ways are present in jest documentation. see relevant section notes to find link of documentation.
+
+

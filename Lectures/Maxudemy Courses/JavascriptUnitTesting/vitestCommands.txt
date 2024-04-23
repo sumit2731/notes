@@ -1,8 +1,15 @@
 matchers -
     
     1)expect(a).toBe(0)
+        
 
     2)expect([1,2,3]).toEqual([1,2,3])
+        
+        toBe compares by value, cannot be used to compare refrence types.
+        for comparing refrence types use - expect([1,2,3]).toEqual([1,2,3])
+
+        It won't perform a deep equality check.
+
         Check section 6 lecture 48 for difference
 
     3)expect(a).toBeDefined()
@@ -43,23 +50,34 @@ matchers -
     7)expect(promise).resolves.
         after this you can use any jest matchers, like -
         expect(promise).resolves.toBe()
+
+        this returns promise and make sure that you return this assertion from your test , if you are testing asynchronous code 
     8)expect(promise).reject()
         expect(promise).resolves.toBe()
         expect(promise).rejects.toBeInstanceof(errorClass) //rejects with object that is instance of given class
+
+    9)expect(value).toBeUndefined()
+        asserts that value is undefined
 
     9)assertins on spies -
         expect(spy).toBeCalled()
         expect(spy).toBeCalledTimes(number)
         expect(spy).toBeCalledWith(argList)
 
+
     
 
 
 
-asertion count -
-    1)expect.assertions(3)
-    2)expect.hasAssertions()
+assertion count -
+    1)expect.assertions(3) -
+        Test will only pass if atleast 3 assertions are executed
+    2)expect.hasAssertions() - Test will pass if it has atleast 1 assertions
 
+
+Methods on it and describe - 
+    a)describe.concurrent()
+    b)it.concurrent()
 
 cmd flags -
     vitest --global
@@ -67,3 +85,25 @@ cmd flags -
             IDE support
     vites --run
         instead of getting into watch mode, runs it once only
+
+
+Mocks and Spies -
+
+    a)jest.fn(), vi.fn() - Optionally you can also provide a callback argument, which is implementation.
+        creates a empty mock function. there are various methods which can be used to do following -
+            a)mockReturnValues, mockResolvedValues, mockReturnValueOnce
+            b)mockImplementation,mockImplementationOnce
+            c)reset/restore/clear mock
+            d)to get hold of arguments,returnValue, this etc - mockFn.mock
+
+
+        When you call jest.module('path') all returned functions are replaced by empty mocks. you can use all functions described above on them.
+            see SCreenshotListEntry file for details
+
+    b)jest.mock('pathToModuke') - mocks built in nodemodules,thrid part modules and user defined modules. by default all exports are replaced by empty
+        mock(or spies). however you xan also provide implementation of what is returned from module. as second argument you can provide  a callback, whatever
+        this callback returns, is returned from module
+    Assertions on mocks -
+        a)expect(mock).toBeCalled()
+        a)expect(mock).toBeCalledWith(arguments)
+        a)expect(mock).toBeCalledTimes(number)

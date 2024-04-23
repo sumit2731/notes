@@ -1,35 +1,37 @@
-import { expect, it } from 'vitest';
+import { expect, it } from "vitest";
 
-import { generateToken, generateTokenPromise } from './async-example';
+import { generateToken, generateTokenPromise } from "./async-example";
 
 /**
- * wrong test, this always passes. because jest will not wait for function to be executed. it immediately runs the test
+ * wrong test, this always passes. because jest will not wait for our callback(which contains assertion) to be executed. it immediately runs the test
  *  as there is not expect statement, so test is passed.
  */
-// it('should generate a token value', (done) => {
+// it('should generate a token value', () => {
 //     const testUserEmail = 'test@test.com';
-  
+
 //     generateToken(testUserEmail, (err, token) => {
 //       expect(token).toBeDefined();
 //     });
 //   });
 
 /**
- * Using Done to tell jest to wait for callback to be called.Here our test case passes but if we try put a wrong asesrtion
+ * Using Done to tell jest to wait for callback to be called.Here our test case passes but if we try put a wrong assertion
  * test case fails with timeout error.Reason -
- * 
- * If done() is never called, the test will fail (with timeout error), which is what you want to happen.
- * If the expect statement fails, it throws an error and done() is not called.
- * 
- * If we want to see in the test log why it failed, we have to wrap expect in a try block and pass the error in the catch 
- * block to done. Otherwise, we end up with an opaque timeout error that doesn't show what value was received by expect(data).
- * 
- * course explanation - 
+ *
+ * When done is not there, test fails when a error is thrown(when a assertion fails it throws error)
+ *
+ * But when done is added test will not fail or pass until done is called. even if assertion fails, tests will not fail if
+ * done is not called. it will wait untill timeout to see if done is called if not, then it fails the test with timeout error.
+ * but we want test to fail with exact error that occured, for that we need to call done with error that occured. as we know
+ * when assertion fails it throws a error, we catch that error and pass it to done, to see that error.
+ *
+ *
+ * course explanation -
  *  All failing expects throws a error which is then picked by jest or vitest and it fails the test.but in case we are using
  *      done, error is not picked up by jest or vitest
- * 
- * so in this case and only in this case we need to use our own try-catch block. we write our assertionand IN case of error we need to pass that 
- * error to done In success case of success we do not pass any argument to done
+ *
+ * so in this case and only in this case we need to use our own try-catch block. we write our assertion and IN case of error
+ * we need to pass that error to done. In success case of success we do not pass any argument to done
  */
 
 // it('should generate a token value', (done) => {
@@ -40,44 +42,51 @@ import { generateToken, generateTokenPromise } from './async-example';
 //   });
 // });
 
-it('should generate a token value', (done) => {
-  const testUserEmail = 'test@test.com';
+it("should generate a token value", (done) => {
+  const testUserEmail = "test@test.com";
 
   generateToken(testUserEmail, (err, token) => {
     try {
-        // expect(token).toBe(2);
-        expect(token).toBeDefined();
-        done();
-    }
-    catch(e) {
-        done(err);
+      // expect(token).toBe(2);
+      expect(token).toBeDefined();
+      // in sucess case you dnt pass any arguments to then
+      done();
+    } catch (e) {
+      //here test fails with error passed to done
+      done(err);
     }
   });
 });
 
-
 /**
  * Testing promise based code.
- * 
+ *
  * a)return promise from your test, jest will wait for that promise to resolve. if promise is failed, then test fails.
  *  See example in jest docs - https://jestjs.io/docs/asynchronous
- * 
+ *
  * b)alternatively use async/await in your tests. this is same as first one because async function returns a promise, which
  * resolve when whole functions is executed. see docs how we can test failure
- * 
+ *
  * c)use .resolve/.reject - Be sure to return the assertion—if you omit this return statement, your test will complete before
  *  the promise returned from fetchData is resolved and then() has a chance to execute the callback.
  */
-it('should generate a token value', () => {
-  const testUserEmail = 'test@test.com';
+it("should generate a token value", () => {
+  const testUserEmail = "test@test.com";
 
-  expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
+  return expect(generateTokenPromise(testUserEmail)).resolves.toBeDefined();
 });
 
-it('should generate a token value', async () => {
-  const testUserEmail = 'test@test.com';
+it("should generate a token value", async () => {
+  const testUserEmail = "test@test.com";
 
   const token = await generateTokenPromise(testUserEmail);
 
   expect(token).toBeDefined();
 });
+
+/**
+ * see docs,how to details about testing asynchronous things, like testing failure usecases
+ *
+ * https://jestjs.io/docs/asynchronous
+ * https://jestjs.io/docs/tutorial-async#resolves
+ */
