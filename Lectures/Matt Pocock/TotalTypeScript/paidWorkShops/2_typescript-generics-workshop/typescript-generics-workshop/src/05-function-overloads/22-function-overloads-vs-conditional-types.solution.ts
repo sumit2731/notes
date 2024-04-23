@@ -40,8 +40,8 @@ function youSayGoodbyeISayHello(
    * because it will make sure that overloaded signatures are compatible with implementation
    * signature
    */
-  return "abc";
-  // return greeting === "goodbye" ? "hello" : "goodbye";
+  // return "abc";
+  return greeting === "goodbye" ? "hello" : "goodbye";
 }
 
 it("Should return goodbye when hello is passed in", () => {

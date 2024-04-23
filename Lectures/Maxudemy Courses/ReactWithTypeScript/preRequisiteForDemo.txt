@@ -1,6 +1,0 @@
-1)ways to define function types
-1)Function Overloading
-3)keyof operator
-4)index access
-5)conditional types
-6)infer 
