@@ -107,3 +107,25 @@ Mocks and Spies -
         a)expect(mock).toBeCalled()
         a)expect(mock).toBeCalledWith(arguments)
         a)expect(mock).toBeCalledTimes(number)
+
+
+Extra from Course -
+    a)jest.createMockFromModule(moduleName) - used when you want to implement your manual mock but want to inherit some functionality from orignal mock.
+        so that you do not need to define all functions.but note that functions will be mocked and not actual implementation.
+        https://jestjs.io/docs/manual-mocks
+    b)jest.requireActual(moduleName) - Returns the actual module instead of a mock, bypassing all checks on whether the module should receive a mock
+        implementation or not.
+        uses -
+            a)can be used to orignal function while defining mocks in __mocks__ folder.
+            b)can use used to get actual module implementation in file where you have already mocked the module.
+    c)jest.doMock - will not mock jest.mock to top of your file
+        https://github.com/kentcdodds/how-jest-mocking-works
+
+        vi.mock, but it's not hoisted to the top of the file, so you can reference variables in the global file scope. The next dynamic import of the 
+            module will be mocked.
+
+
+    TS types -
+        a)jest.Mocked<Source> - gives type to mocked module
+        b)jest.mocked(source,options)
+        c)Jest.Mock<T>

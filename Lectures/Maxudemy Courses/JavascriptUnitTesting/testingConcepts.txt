@@ -11,7 +11,7 @@ Unit test can help us to write better code, we generally want functions to do si
     so this unit testing forces us to split our long functions which do lot of things, into smaller functions which do single
     thing only.
 
-How to test functions which call other functions also - If that others functions are written by us, then we cann trest functions as whole,
+How to test functions which call other functions also - If that others functions are written by us, then we can test functions as whole,
     without mocking anything, this will be called as integration tests.
 
 

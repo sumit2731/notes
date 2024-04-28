@@ -13,6 +13,9 @@
     how to get rid of side affects and thrird party code -
         a)spies - Spies are in the end Wrappers around your functions or empty replacement functions for functions
             where you're only interested in learning whether the function was called and maybe which arguments it's received.
+            So you can use spies if you don't care about what a function does, but you just wanna know whether it was executed,
+            for example and then you can either wrap the original function with such a spy object, or you replace the function.
+            And the latter case is more common, I would say, because that then also allows you to get rid of a side effect
         b)mocks - Mocks are also about replacement there, you also replace functions, but with mocks you often replace 
             bigger parts of an API of a certain module or code.And with mocks you also often implement some test specific 
             logic in the replacement function that does something else than the original function but helps you test different
@@ -28,7 +31,7 @@
         jest.fn()
         vi.fn()
 
-    see first test of data.test.js. here we defined a empty mock function and use dit in testing
+    see first test of src/data.js. here we defined a empty mock function and use dit in testing
 
     You can also provide implementation function -
         jest.fn(implementation) is a shorthand for jest.fn().mockImplementation(implementation).
@@ -48,6 +51,8 @@
 
         vi.mock('fs');
 
+        but in order to assert on these functions we need to import 'fs' module in our code. so that we can use run assertons on 
+
     see first test of io.test.js
 
 
@@ -58,7 +63,7 @@
 66)Note on mocking
     1)production code is not affected.
     2)in vitest mocks are hoisted, in jest, max thinks they are not. so there you need to mock a module before it is imported.
-        because we want to make sure that module is mocked before we import from it.
+        because we want to make sure that module is mocked before we import from it.but see course questions jest mocks are also hoisted.
     3)that this Mock is only active for the tests in this file kind of.Actually it does Mock away the module
         and other tests therefore also have that module Mocked away.But if you do have tests in another file that also use 
         this module,then Vitest automatically sorts the tests such that  the files that use this module unmocked , where you don't 

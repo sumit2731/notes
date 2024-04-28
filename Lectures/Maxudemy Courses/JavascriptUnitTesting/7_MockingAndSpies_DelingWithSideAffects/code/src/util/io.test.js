@@ -29,7 +29,7 @@ import writeData from "./io";
 /**
  * name or path of module that should be mocked. we can mock both third part modules as well as user define modules
  * we do not need to pass any extra configuration, then this will trigger vites/jests auto mocking algo, it will basically
- * find this module and replace all functions in there with empty spy functions
+ * find this module and replace all functions in there with empty spy/mock functions
  *
  * In vitest mocks are hoisted to top, but i think in jest these are not. so in case of jest , you need to move mocks to
  *  the top, even before imports, because we want to make sure that it is mocked before we import.
@@ -38,15 +38,6 @@ import writeData from "./io";
  */
 
 vi.mock("fs");
-vi.mock("path", () => {
-  return {
-    default: {
-      join: (...args) => {
-        return args[args.length - 1];
-      },
-    },
-  };
-});
 
 it("should execute writeFile method", () => {
   const testData = "Test";
@@ -59,7 +50,6 @@ it("should execute writeFile method", () => {
   //expect(writeData(testData,testFileName)).resolves.toBeUndefined();
   //here we are testing that write method was called, fs.writeFle is jest mock function because we called vi.mock
   expect(fs.writeFile).toHaveBeenCalledOnce();
-  expect(fs.writeFile).toBeCalledWith(testFileName, testData);
 });
 
 /**

@@ -82,6 +82,8 @@ it("should generate a token value", async () => {
   const token = await generateTokenPromise(testUserEmail);
 
   expect(token).toBeDefined();
+
+  expect(token).resolves();
 });
 
 /**

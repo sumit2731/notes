@@ -14,7 +14,7 @@ function App() {
 
   function handleSave(data: unknown) {
     /**
-     * approach 1 - nGiving Type with type alias
+     * approach 1 - Giving Type with type alias
      */
     const extractedData = data as { name: string; age: string };
     console.log(extractedData);

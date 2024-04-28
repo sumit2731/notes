@@ -26,7 +26,7 @@ export default function App() {
    * If we give generic type to useState but does provide initial value then state type will be-
    *  ProvidedType| undefined
    */
-  // const [goals, setGoals] = useState();
+  //const [goals, setGoals] = useState([]);
   const [goals, setGoals] = useState<CourseGoal[]>([]);
   const handleAddGoal = (goal: string, summary: string) => {
     const newGoal: CourseGoal = {

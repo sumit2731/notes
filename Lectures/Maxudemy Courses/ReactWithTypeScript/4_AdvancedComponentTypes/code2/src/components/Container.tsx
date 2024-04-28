@@ -16,7 +16,7 @@ import {
  */
 
 type ContainerProps1 = {
-  // some valid idnetifier of component
+  // some valid identifier of component
   as: ElementType;
 };
 
