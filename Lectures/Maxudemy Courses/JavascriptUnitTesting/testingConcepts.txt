@@ -14,6 +14,13 @@ Unit test can help us to write better code, we generally want functions to do si
 How to test functions which call other functions also - If that others functions are written by us, then we can test functions as whole,
     without mocking anything, this will be called as integration tests.
 
+Testing whther functions throw error or not -
+    create a custom function that calls your function.
+    then pass that function expect and use -
+        expect(customFunction).toThrow();
+
+        If you want to check if ot throws with custom message then pass tht string to toThrow -
+            expect(customFunction).toThrow(customErrorMessage)
 
 Testing async code-
     callback based code -
@@ -30,4 +37,28 @@ Testing async code-
 
             All these ways are present in jest documentation. see relevant section notes to find link of documentation.
 
+
+
+Mocking Functions and Modules -
+    mocks can be created by -
+        jest.fn()
+        jest.spyon(object, 'methodname')
+
+    You can moc a entire module by -
+        jest.mock('pathToModule') - this can be built in module, userModule,thirdPart module.
+            This will create default mock function for all things in that module. How to customize that -
+                a)pass second argument to jest.mock
+                b)defining manual mocks in __mocks__ folder.
+
+
+
+Mocking Global Functions -
+
+    See separate notes for that
+
+
+Testing frontend Code -
+    You need to turn on this envirenment -  jsdom or happy-dom(vitest specififc)
+    then yu need to provide which HTML should be rendered in that env.
+    you can give str or you can readFile and get string from it.
 

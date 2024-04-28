@@ -14,13 +14,27 @@
 
 84) working with different testing envirenment
 
-    here we chnaged the testing envirement from node to happy-dom.(jest supports the jsdom).
+    here we chnaged the testing envirement from node to happy-dom.(jest supports the jsdom).there are various ways to do that in vitest -
+        a)add a flag in cmd command, that is what we did here - 
+             "test": "vitest --run --environment happy-dom"
+        b)Add comments in tests file -
+            @jest-envirement jsdom
+
+    ways to do that in jest -
+        a)install jsdom npm package
+        b)configure jest to use JSDOM -
+            In jest.config.js set testEnvironment -
+                module.exports = {
+                    testEnvironment: 'jsdom'
+                };
+            
+        c)instead of b use, comments in js file
     see lecture for details.
 
     our test in dom.test.js is still failing because it is not able to find a element in DOM.
 
 85)Setting up Virtual HTML Page
-    see dom.test.js, here we loaded ur html file in our virtaul DOM envirement.
+    See dom.test.js, here we loaded ur html file in our virtual DOM envirement.
 
     steps for doing similar thing in jest is also given in question.
 
@@ -30,3 +44,7 @@
     see second test in dom.test.js. here we tested that a p tag is created by element in document.
 
 87)DOM tests and cleanup work
+
+
+Files Changed -
+    a)dom.test.js

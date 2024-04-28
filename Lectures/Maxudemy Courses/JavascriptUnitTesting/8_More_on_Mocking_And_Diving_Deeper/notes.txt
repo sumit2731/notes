@@ -1,18 +1,18 @@
 71)Module Intro
-    Mocking global pbjects and functions
-    mocking frontedn Fetaures
+    Mocking global objects and functions
+    mocking frontend features
 
 
 76)Mocking global Values & Functions
 
-    see https.test.js to see howw to mock functions on global object in vitest.
+    see https.test.js to see how to mock functions on global object in vitest.
 
     In jest this can be done using spyon.spyOn returns a mock function, which we can configure mockimplementation and return
     value. see link in bookmarks.
 
 
-78)Test Specififc mocking
-    see seoncd test of http.test.js, here in mock we are rejecting the promise, if passed data is not stringified.
+78)Test Specific mocking
+    see second test of http.test.js, here in mock we are rejecting the promise, if passed data is not stringified.
     here we wanted to ensure that in code we are stringifying the data before calling fetch.
 
     And that is really the mindset you should get into when writing tests that you really build yourself an environment
@@ -33,3 +33,10 @@
     So we setup our argument in muach a way that it has get method.that's the mindset I wanna get you into.
     Look at the code you wanna test and think about what behavior you wanna test and then build a testing environment
     that allows you to test those things.
+
+
+Files changed -
+    errors.test.js(old concepts only)
+    validation.test.js(old concepts only)    
+    http.test.js (mocking of global objects, changing mock implementation to test code specific logic)
+    posts.test.js (mocked a DOM element)

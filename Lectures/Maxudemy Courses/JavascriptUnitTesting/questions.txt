@@ -1,3 +1,0 @@
-1)Jest and ESM Modules
-
-2)How mocking modules via jest.mock affects tests in other files?

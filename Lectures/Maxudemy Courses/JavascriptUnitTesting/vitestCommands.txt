@@ -8,7 +8,7 @@ matchers -
         toBe compares by value, cannot be used to compare refrence types.
         for comparing refrence types use - expect([1,2,3]).toEqual([1,2,3])
 
-        It won't perform a deep equality check.
+        It won't performs recursive property check.
 
         Check section 6 lecture 48 for difference
 
@@ -30,6 +30,9 @@ matchers -
     6)toBeTypeOf
 
         expect(result).toBeTypeOf()
+
+    7)toBeInstanceOf(class) - It uses instanceof operator underneath.
+        expect(obj).toBeInstanceOf(class)
 
     7)toBeNaN()
         expect(result).toBeNan()
@@ -76,15 +79,18 @@ assertion count -
 
 
 Methods on it and describe - 
-    a)describe.concurrent()
-    b)it.concurrent()
+    a)describe.concurrent() - all test in describe block will be executed concurrently
+    b)it.concurrent() - all tests in given file which have .concurrent will be executed concurrently.
 
 cmd flags -
     vitest --global
         makes the things like expect,it,describe avalible without import as global variables. but importing them gives better
             IDE support
-    vites --run
+    vitest --run
         instead of getting into watch mode, runs it once only
+
+    vitest --environment happy-dom
+        chnages the testing envirenment to use happy-dom
 
 
 Mocks and Spies -
@@ -95,12 +101,21 @@ Mocks and Spies -
             b)mockImplementation,mockImplementationOnce
             c)reset/restore/clear mock
             d)to get hold of arguments,returnValue, this etc - mockFn.mock
+                a)mockFn.mock.calls - An array containing the call arguments of all calls that have been made to this mock function. 
+                    Each item in the array is an array of arguments that were passed during the call.
+
+                b)mockFn.mock.results - An array containing the results of all calls that have been made to this mock function.
+                    Each entry in this array is an object containing a type property, and a value property
+                c)mockFn.mock.instances - An array that contains all the object instances that have been instantiated from this
+                    mock function using new.
+                d)mockFn.mock.lastCall - An array containing the call arguments of the last call that was made to this mock function.
+                    If the function was not called, it will return undefined.
 
 
-        When you call jest.module('path') all returned functions are replaced by empty mocks. you can use all functions described above on them.
-            see SCreenshotListEntry file for details
+        When you call jest.mock('path') all returned functions are replaced by empty mocks. you can use all functions described above on them.
+            see ScreenshotListEntry file for details(perfecto code base)
 
-    b)jest.mock('pathToModuke') - mocks built in nodemodules,thrid part modules and user defined modules. by default all exports are replaced by empty
+    b)jest.mock('pathToModule') - mocks built in nodemodules,thrid part modules and user defined modules. by default all exports are replaced by empty
         mock(or spies). however you xan also provide implementation of what is returned from module. as second argument you can provide  a callback, whatever
         this callback returns, is returned from module
     Assertions on mocks -
@@ -116,16 +131,29 @@ Extra from Course -
     b)jest.requireActual(moduleName) - Returns the actual module instead of a mock, bypassing all checks on whether the module should receive a mock
         implementation or not.
         uses -
-            a)can be used to orignal function while defining mocks in __mocks__ folder.
-            b)can use used to get actual module implementation in file where you have already mocked the module.
+            a)can be used to get orignal function while defining mocks in __mocks__ folder.
+            b)In your testing file, you can define mock using jest.mock("path"), here if you want to define API of mocked module, you can use this.
+            c)while defining mocks in testing file, we can use it (https://duckylele.medium.com/mocking-library-functions-and-global-methods-in-jest-ee9081649db8)
+    c)jest.requireMock(mockModule) - Returns a mock module instead of the actual module, bypassing all checks on whether the module should be required normally or not.
     c)jest.doMock - will not mock jest.mock to top of your file
         https://github.com/kentcdodds/how-jest-mocking-works
+
+        after calling this, you need to use require or dynamic import to get mocked module.
 
         vi.mock, but it's not hoisted to the top of the file, so you can reference variables in the global file scope. The next dynamic import of the 
             module will be mocked.
 
+    e)jest.resetModules() - Resets the module registry - the cache of all required modules. This is useful to isolate modules where local state might
+        conflict between tests.
+
+        https://jestjs.io/docs/jest-object#jestresetmodules
+
+        can used in combination with jest.doMock
+
 
     TS types -
-        a)jest.Mocked<Source> - gives type to mocked module
-        b)jest.mocked(source,options)
-        c)Jest.Mock<T>
+        a)jest.Mocked<Source> - gives type to mocked module i.e jest.fn().
+            it assumes that all function in given module have been mocked
+        b)jest.mocked(source,options) - The mocked() helper method wraps types of the source object and its deep nested members with type definitions of Jest mock
+            function. You can pass {shallow: true} as the options argument to disable the deeply mocked behavior.
+        c)Jest.Mock<T> - Return the type of jest mock.
