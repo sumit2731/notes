@@ -1,0 +1,11 @@
+Different variation sof events - 
+    https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+
+Market place for actions -
+    https://github.com/marketplace?category=&copilot_app=false&query=&type=actions&verification=
+
+Github actions  context -
+    https://docs.github.com/en/actions/learn-github-actions/contexts
+
+Github actions Expressions -
+    https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions

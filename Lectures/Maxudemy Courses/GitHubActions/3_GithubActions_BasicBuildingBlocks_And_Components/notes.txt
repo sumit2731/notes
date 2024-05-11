@@ -1,0 +1,123 @@
+Start - slide 27
+
+34)Key Components:WorkFlows,Jobs,Steps&More
+    refer slide 28 and 29.
+
+
+    runners - env in which Jobs run. you can use runners provide by github actions.
+        or yu can config your own runners.
+
+    Steps - It is a
+        Shell Script - a command in command line that should be executed
+            or
+        Action - predefined scripts that perform a certain task you could say.
+
+36)Creating First WorkFlows
+
+    Go to repo home page ->Actions -> Simple workflow -> configure
+
+    Location - repoName/.github/workflows/first-action.yml (Github action workkflows should be stored here on order to be detected by github)
+
+    see firstAction.yaml - it is first Action.
+
+    to see avalible runners - google github actions runners.
+
+    these changes are done in this repo - https://github.com/sumit2731/gh-first-action
+
+37)Running first WorkFlow
+    Here we commit the changes. and ran our workflow.
+    and saw how we can see the what was done in workflow.
+
+
+39)Onwards to more realistic example
+    Here we had a repo that contains some test cases.we want to execute those
+        test cases on each push.we had code locally, we created a new repo(private)
+        and linked that remote repo with local repo.
+    repo - https://github.com/sumit2731/second-action-react-demo
+    code - second-action-demo
+
+
+40)A new Workflow and push event
+    Here we defined a new workflow.locally see the test.yml file.
+
+    now when do we want to execute this workflow? what are various events available.
+    see slide 30. it divides events into 2 categories. also google "github actions events" -
+    you will get to know about various types of events. also within each event also there are 
+    various variations, to see details go to this page - 
+    
+    https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+
+    here we added event of push.within push also we can filter when push happened on specific branch
+    or affects specific files. check that docs.
+
+41)Using actions in workflows (slide 31)
+    an Action,in the context of GitHub Actions,is simply a custom or third-party application
+    that performs a typically complex, frequently repeated task.Like for example,fetching the code
+    from a GitHub Repository,and downloading it onto such a runner machine.
+
+
+    Actions,are predefined applications,which actually also can be distributed through a marketplace,
+    because you can build your own Actions,and will do that later in the course,but you can also 
+    use official, or community Actions.
+
+    In marketplace you can find actions for -
+        setting up nodejs envirenment
+
+    here we will use checkout action for getting repo code.
+    actions can be maintained by third party apps, github actions official team, as well as you
+        can create your own actions.
+
+41) checking out code in workflows
+    here we added a action - checkout to do.
+    this action by default will checkout repository in to which action is added, so e do not need
+        to pass any addiitonal parameters.
+
+42)used action to checkout github repo
+
+43)configuring actions
+    2 ways to check which software are included in our envirement -
+        a)google github action runners, go to doc and find pre-installed software.
+        b)In gitgub account see logs of previously ran actions.
+            a)go to "SetUp JOb"
+            b)Runner Image
+
+    nodejs was already included but we still used a action to install a different version.
+
+44)Adding more workflow JOb steps
+    Here we added commands for installing packages and running test acses
+
+49)expression and context object
+    see lecture
+
+    Inbuilt context object - 
+        github
+    functions or expressin to print value a=rather than string -
+        ${{}}
+    function to convert object to string -
+        toJSON()
+
+    see output.yml
+
+Important thing -
+
+    important files - output.yml, test.yml , firstAction.yml
+    Every Job runs on different Job , so you need to define runner.
+    Rest just see the workflow files.
+    Also we saw that how we can see logs of github actions 
+        how to see which preinstalled software are available in envirenment (lecture 43)
+
+    Concepts introduced -
+        workflow - needs trigger. we can define multiple triggers also.
+            different triggers have different variations also, like with push trigger we can
+                filter that push happened in specific branch and it affects specific file only
+        job - 
+            needs to define environment where it runs
+            different jobs by default runs parallely. but we can chnage it.
+        steps -
+            either runs a cmd command or uses a action
+        action - 
+             see lecture 41
+
+    Expressions & Context Objects - 
+        see lecture 49
+        

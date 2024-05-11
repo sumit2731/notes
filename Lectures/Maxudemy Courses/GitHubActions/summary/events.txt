@@ -1,0 +1,4 @@
+on:workflow_dispatch
+on:issues
+on:pull
+on: [push, workflow_dispatch]

@@ -1,0 +1,2 @@
+github
+    githubs.event - event specififc data

@@ -1,0 +1,17 @@
+workflow -
+    name
+    event trigger
+Job -
+    needs: test (name of jobs which should run successfully before this job starts, in case of 
+        multiple jobs use array)
+    name - name of job
+    runs-on - env on which it runs
+    steps
+steps -
+    name
+    run:  cmd commands
+    uses: actionToBeUsed
+        with: parameters for action
+            node-version: 18
+
+actions -
