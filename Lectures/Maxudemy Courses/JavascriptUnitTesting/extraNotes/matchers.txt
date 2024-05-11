@@ -1,0 +1,34 @@
+1).toMatchObject(object)
+
+2).contain()
+
+
+
+These are used instead of values -
+
+    1)expect.anything() - matches anything but null or undefined.
+
+        You can use it inside toEqual or toHaveBeenCalledWith instead of a literal value
+        expect(mock).toHaveBeenCalledWith(expect.anything());
+
+
+    2)expect.any(constructor) matches anything that was created with the given constructor or if it's a primitive that 
+        is of the passed type.You can use it inside toEqual or toHaveBeenCalledWith instead of a literal value
+        expect(mock).toHaveBeenCalledWith(expect.any(Cat));
+        expect(mock).toHaveBeenCalledWith(expect.any(Number));
+        
+
+
+    3)expect.objectContaining(object)
+
+        expect(mockFn).toHaveBeenCalledWith( //receivedObject
+        expect.objectContaining({ // expectedObject
+        x: expect.any(Number),
+        y: expect.any(Number),
+        })
+
+        expectedObject is subset of received Object
+
+
+
+ 

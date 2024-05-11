@@ -1,0 +1,4 @@
+1)Promise.resolve - returns a promise that immediately resolves with given value.
+    If value is promise itself then returns that promise itself.
+
+    It also flattens the promise,Read documentation on MDN docs.

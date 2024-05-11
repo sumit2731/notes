@@ -1,0 +1,5 @@
+1)asserting someTextContent
+    jestExpect(editMediaButton).toHaveTextContent('Select media');
+
+2)Assert whether an element has content or not -
+    jestExpect(mediaSelectorContainer).toBeEmptyDOMElement();

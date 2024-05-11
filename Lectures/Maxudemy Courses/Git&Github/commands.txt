@@ -74,7 +74,7 @@
         b)-d
             git branch -d "branch1Name" "branch2Name"
 
-            it deltes the mentioned branches only if they are merged into some other branch.
+            it deletes the mentioned branches only if they are merged into some other branch.
 
         c)-D
             git branch -D "branch1Name" "branch2Name"

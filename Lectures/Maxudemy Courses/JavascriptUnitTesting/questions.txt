@@ -1,0 +1,7 @@
+Project Config -
+    1)How is it supporting ESM modules.It is missing these config -
+        a)not using this node flg - --experimental-vm-modules
+        b)while mocking modules it is not using jest.unstable_mockModule, instead it is using
+            jest.mock
+
+    2)transformIgnorePatterns in jest.config

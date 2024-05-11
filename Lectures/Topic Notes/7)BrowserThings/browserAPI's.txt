@@ -2,8 +2,8 @@
 2)Mutation Observable
 3)worker - web worker and service worker
 4)queueMicrotask - 
-    If we’d like to execute a function asynchronously (after the current code), but before changes are rendered or new events 
-    handled, we can schedule it with queueMicrotask.
+    If we’d like to execute a function asynchronously (after the current code), but before changes 
+    are rendered or new events handled, we can schedule it with queueMicrotask.
 
     queueMicrotask(count);
 

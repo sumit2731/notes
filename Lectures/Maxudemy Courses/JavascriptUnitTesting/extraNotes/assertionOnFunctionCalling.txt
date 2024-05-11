@@ -1,0 +1,8 @@
+1)When we want to assert on some specific arguments only and some arguments can be anything
+    
+    expect(mockWriteFileSync).toHaveBeenNthCalledWith(
+      1,
+      "./some/folder/index.html",
+      "THIS IS NEW VALUE",
+      expect.anything()
+    );

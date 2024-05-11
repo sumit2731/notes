@@ -1,0 +1,2 @@
+Things Learned -
+    queueMicroTask - Adds function into into microtasks queue

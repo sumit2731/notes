@@ -1,4 +1,0 @@
-postMessage to communicate between different tabs
-
-1)In lecture 1 , kyle shares the useful links fpr reading abut service workers.
-    workbox is framework that lets you write service worker code.

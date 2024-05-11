@@ -135,20 +135,24 @@ Extra from Course -
             b)In your testing file, you can define mock using jest.mock("path"), here if you want to define API of mocked module, you can use this.
             c)while defining mocks in testing file, we can use it (https://duckylele.medium.com/mocking-library-functions-and-global-methods-in-jest-ee9081649db8)
     c)jest.requireMock(mockModule) - Returns a mock module instead of the actual module, bypassing all checks on whether the module should be required normally or not.
+        a)when you want to mock a module, replace some functions but use some orignal fucntions. inside callback
+            to jest.mock, you can use this function. used in Perfecto
+        b)require actual implementation in test file, where you have mocked a function.(use din Perfecto)
     c)jest.doMock - will not mock jest.mock to top of your file
         https://github.com/kentcdodds/how-jest-mocking-works
 
-        after calling this, you need to use require or dynamic import to get mocked module.
+        after calling this, you need to use require or dynamic import to get mocked module.because if you get ES modules, you will get unmocked value.
 
-        vi.mock, but it's not hoisted to the top of the file, so you can reference variables in the global file scope. The next dynamic import of the 
-            module will be mocked.
+        this can be useful if you use jestDoMock within a test and you want to mock dfferent values for same test.
 
     e)jest.resetModules() - Resets the module registry - the cache of all required modules. This is useful to isolate modules where local state might
-        conflict between tests.
+        conflict between tests.now if we use require in each test, we will get different copy for each test. this can be useful, if we want to
+        have different mocks for same module in different tests in file.
 
         https://jestjs.io/docs/jest-object#jestresetmodules
 
-        can used in combination with jest.doMock
+        can used in combination with jest.doMock(when jest modules are not moved to top)
+        here is such example that uses this - https://medium.com/trabe/mocking-different-values-for-the-same-module-using-jest-a7b8d358d78b
 
 
     TS types -

@@ -1,0 +1,19 @@
+1)Codility test
+2)DSA
+3)Design round
+4)Managerial round -
+     JS or DSA
+5)Group Manger round -
+    leetcode medium questions
+
+He added Performance optimization in his resume, so most questions were centered around it.
+
+
+DSA Patterns -
+    a)Sliding window
+    b)2 pointers
+    c)Array manupilation
+    d)DP
+    e)BFS
+    f)DFS
+

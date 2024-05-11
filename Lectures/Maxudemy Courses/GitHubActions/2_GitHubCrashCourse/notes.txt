@@ -1,0 +1,125 @@
+23)Connecting Local and Remote Repositories
+    in local run - 
+        git remote add "localNameForRemoteRepo" repoURL
+        git remote add origin https://github.com/sumit2731/notes.git
+
+    Here a connection is established between local and remote repositories. You can refer to remote repositories by name origin.
+        you can connect multiple remote repositories with local repo.
+
+
+24)Pushing commits and understanding permissions
+    if you try to push your code by "git push".You get an error -
+        current branch has no upstream branch
+        
+    This means Git doesn't know which branch in the remote Repository belongs to this local branch.
+    Right now we are in main branch.
+
+
+    There are 2 ways to tell git about this -
+        way 1 -
+            git push --set-upstream <identifierForRemoteRepo> <remote_branch_name>
+            git push --set-upstream origin main
+
+            It sets the upstream branch for your current local branch. if local nad remote branch name are same then you can skip branch name.
+
+            we need to run it once only, next time we ust need to run - "git push"
+
+        way 2 -
+            If it is one time push then, we can do this -
+
+            git push <identifierForRemoteRepo> <nameOfBranchInRemote>
+            git push origin main
+            Here git pushes the code in mentioned local branch into remote branch and it will target the branch with same name.if that
+            branch with that name does not exist in remote, that branch will be created.
+
+
+
+            but here ypu will get permission error, as not everyone can create branches. how to authenticate ourself?
+
+                1 common way - Set up remote connection in slightly different way. since here we have already setup the remote branch we can update the url by -
+                    Add username to url -
+                    git remote set-url origin https://githubUserName@restOfURL
+                    git remote add origin https://sumit2731@github.com/sumit2731/notes.git
+
+                    THis tells github that it should assume this username when you are interactive with repo. we could have done
+                    this when we set the remote repo, but we can also do it later, that is why we are using set-url command.
+
+                    now if we do run same command - git push origin main, you will be asked to enter password. now from github you need to generate a
+                        access token and enter it.see video for how to do that. once you use it, it should be automatically saved ny your OS.
+                        you will be allowed to create new branch.there are some other ways to save github credentials globally also.see dos for that.
+
+                other ways not dicsussed in code -
+                    a)use ssh
+                    b)use global email and id
+
+
+25)cloning repos
+    here we cloned the existing git hub repo and created a new branch and tried to pushed that branch to remote. we got error.
+
+    involve commands -
+    set global git configs(to make sure that whenever we access github , we use this account) -
+        git config --global user.name "sumitsood3127@gmail.com"
+        git config --global user.email "S$981h9898"
+
+
+    cloning a repo -
+        git clone <repo_url> <folder that should contains the repo code>
+            second argument is optional, if you do not use anything then folder name will be repo name.
+
+    git remote - shows you list of all connected remotes
+    git remote get-url <name of remote> - gives the url of remote
+
+    we created a new branch locally and made changes in that branch.after making some changes we tried to do this -
+        git push origin <feature_branch>
+
+    here we got error as we do not have permissions.
+
+
+29)GitHUb issues and collaborators
+    now we want to push changes to that repo? but how do we push chnages to repo that w do not own.
+
+    way 1 - owner should add you as collborator. for that you must reach out to owner of repo.you can do this via raising a issue.
+        this is how owner can add you as a collaborator -
+
+
+        1)adding a collaborator -
+            settings -> collaborators -> add username
+
+        2)now second account gets a request via email, that he needs to accept. now collaborator can push to that repo.
+
+        How to protect a branch from direct push -
+
+            1)how to make sure that collbaorators cannot push directly to main branch and needs to open a PR -
+                settings -> branches -> "Add branch protection rule"
+
+            2)select branch pattern -> this pattern decides which branches should be protected.
+
+            3)there are various rules, select type of protection you want. I selected -
+                    "Require Pull Request before merging"
+
+        Now when collaborator tries to push the code, he again gets the error because he needs to authenticate himself.
+        here we followed the url thing to authenticate, as we discussed in lecture 24.
+
+    now user pushed his brach on remote. now his change needs to be in main. for that he needs to raise a PR.
+
+
+30)Working with Pull Request
+    If try to push directly into main branch, we get error - "atleast 1 review is required".
+
+    then we raise a PR, in PR we can mention the issue by using #.github gives suggesstions to issue and we can select that to
+        refer to that. then PR is raised.
+
+    Now owner of that repo can come, review it and merge it.
+    In closing comments he can mention - closes #1, select issue.
+
+    then I can go to issues and close the issue.
+
+
+31)Understanding Forks
+    what if you are not a collaborator on repo?
+
+    a)fork the repo, create new brach push your changes. Original repo will have info that a fork has been created of this.
+    b)go to orignal repo , raise a PR. while raising PR, check the checkbox - compare across forks.
+    c)there i can select from which repo and branch I want to merge teh code.
+    d)then owner can review PR and merge the code.
+
