@@ -1,0 +1,55 @@
+repo - https://github.com/sumit2731/gh-actions-third-events
+
+
+57)Introducing Event Filters and Activity types
+    slide 36,37
+
+58)Using Activity Type
+    here we saw how we can mention activity type for event.
+    also along with mentioning activity type , how we can mention multiple events
+
+    file - demo1.yml
+
+59)Using Events filters
+    you can see event filters in github docs under workflow syntax.
+        https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
+
+    As of now github actions supports filters for push pull request and workflow_call (covered later)
+
+    types of filter - branches, branches-ignore, paths,paths-ignore
+
+    also you can use wildcard filters and regular expressions. in the above doc there is cheatsheet at last. check to see what can be used.
+    u=in demo1.yml, see difference between * and **.
+
+    in our workflow we attached different filters.
+        branches and paths-ignore
+
+60)Special behaviour with forks
+    If some one folks your repo and opens a PR then if that matches the filters, workflow will still not 
+    triggered, for first time contributers you need to approve it manually. after that it will run automatically.
+    for collaborators, this will run automatically even for first time, because these are people that you trust.
+
+61)Cancelling and skipping workflow (slide 39)
+    cancelling the workflow -
+        when workflow is running it can be canceled, via UI.
+        when a job in workflow fails, it is canceled(this setting can be changed)
+        when a step in job again that cancels the workflow(this setting can be changed)
+
+    how to skip - 
+        push workflows -
+            commit message needs to be of specific format
+            commit message - any message [skip ci or actions]
+        pull request workflows -
+            if last commit of pr has above message, then workflow will be skipped
+
+        This link contains all message formats that will make the workflow skip.
+
+        link to know about commit messages that skip the workflow - 
+            https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
+
+Importnat things -
+    Filter and Activiy types for events - slide 36, 37
+    filter and activity type - lecture 58 and 59
+
+Important File -
+    demo1.yml

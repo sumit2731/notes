@@ -1,6 +1,13 @@
 workflow -
     name
     event trigger
+        types: ['typeNames] (activity types)
+        types:
+            - typename1
+            - typename2
+        <filterName> (filters)
+            branches: 
+                - <branchName>
 Job -
     needs: test (name of jobs which should run successfully before this job starts, in case of 
         multiple jobs use array)
