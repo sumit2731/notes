@@ -7,6 +7,12 @@ Filters for events -
 Market place for actions -
     https://github.com/marketplace?category=&copilot_app=false&query=&type=actions&verification=
 
+    actions docs -
+        checkout - https://github.com/actions/checkout
+        upload-artifact - https://github.com/actions/upload-artifact
+        download-artifact - https://github.com/actions/download-artifact
+        cache - https://github.com/actions/cache
+
 Github actions  context -
     https://docs.github.com/en/actions/learn-github-actions/contexts
 
@@ -15,3 +21,8 @@ Github actions Expressions -
 
 skipping the workflows -
     https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
+
+setting value at stpe level -
+    https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
+
+

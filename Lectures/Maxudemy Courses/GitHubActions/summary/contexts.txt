@@ -1,2 +1,13 @@
 github
-    githubs.event - event specififc data
+    github.event - event specififc data
+
+steps - can be used at JOB level but get data at step level.
+    ${{steps.[stepsId].outputs.[keyThat you have in step]}}
+
+needs - This contains data of all the jobs that current job depends on.we used it to access output.
+ jobs needs to declare variables
+    via output fields
+    ${{needs.[jobId].outputs.[nameOfVariable]}}
+
+jobs - 
+    https://docs.github.com/en/actions/learn-github-actions/contexts#jobs-context

@@ -13,6 +13,9 @@ Job -
         multiple jobs use array)
     name - name of job
     runs-on - env on which it runs
+    outputs:
+        defines data that can be accessed outside using- needs.[jobId].outputs
+        script-file: ${{someValue}}
     steps
 steps -
     name
