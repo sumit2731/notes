@@ -98,7 +98,7 @@ Start - slide 27
 
     see output.yml
 
-Important thing -
+Important things -
 
     important files - output.yml, test.yml , firstAction.yml
     Every Job runs on different Job , so you need to define runner.
