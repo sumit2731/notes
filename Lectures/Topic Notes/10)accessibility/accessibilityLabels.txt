@@ -27,14 +27,35 @@
         });
 
 
-3)role -  "alert" : "status"
-    used in toast component problem of roadside coder.
+3)role -  
+    a)"alert" ,"status"
+        used in toast component problem of roadside coder.
 
-    for error and warning notifications we gave role of alert.
-    for info we used role of status
+        for error and warning notifications we gave role of alert.
+        for info we used role of status
+
+    b)progressbar
+        used in a11y lecture of roadside coder.
+        gave this role to container of progressbar.
+
+    c)radiogroup
+        used in a11y lecture of roadside coder.
+        gave this to container of star rating component
+
+    d)radio
+        used in a11y lecture of roadside coder.
+        gave this to individual stas of star rating system
+
 
 4)aria-live - 'assertive' | 'polite'
     used in toast component problem of roadside coder.
 
     for error and warning we gave aria-love of assertive
     for info we gave aria-live of polite
+
+5)aria-checked - true or false
+    used in star rating component, each star has having these attributes -
+    role="checkbox"
+    aria-checked = true
+
+6)

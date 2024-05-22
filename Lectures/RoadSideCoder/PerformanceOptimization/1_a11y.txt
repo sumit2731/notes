@@ -1,0 +1,63 @@
+1_Semantic HTML -
+    Proper Heading Order - 
+        only h1 tag per page.
+        other heading tags should be nested inside larger heading tags like -
+            h1
+                h2
+                    h3
+                h2
+    alt attribute with images (not needed for decorative images)
+    for headers use nav tag
+    side section is put under aside tag
+    for different sections use section tag
+    for fotter use footer tag
+    for different items of same type use ul and li tags
+
+
+2_contrast
+     2 Tools - 
+        a)WCAG contrast checker
+        b)WEbAIM:Contrast Checker checker
+
+
+3_labels -
+    label for input text, radio button. you might hide them for visual users but screnes reader should be able to detect them
+    if you are using same label then same placeholder should not be used(IMp rule)
+
+
+4_aria tags -
+    ideally do not use aria tags at all. use semantic html. use aria tags only when a thing cannot be represented by aria tag.
+    for ex -
+        a)for progress bar use used aria-tags -
+            role = "progressbar"
+            aria-value-min="0"
+            aria-valuemax="10"
+            aria-valuenow="3"
+            
+
+            This is because in html there is no no native progress bar element.
+
+        b)when instead of using button we are using div or span, we need to provide, role = button
+
+        c)we can use aria-labelby and aria-label to give label to our section. label is heading which is inside the section
+
+        d)we have filter in aside . we can give role of form to aside. and it can be label by some heading inside of aside.
+
+        e)Then we had a checkbox it already had a label, but we used aria-describedby attribute to link it to hidden
+            span.
+
+5_Making your website keyboard friendly
+
+    we had a star rating component which was not accessible by keyboard. we made these changes to make it accessible.
+    To container - 
+        role="radiogroup"
+        aria-label="rating"
+
+        Inside it each star was span -
+            role="radio"
+            aria-checked
+            tab-index=0 (see tab-index article is bookmarks, tab-index of zero makes a non focusable element to have focus)
+            aria-label = {3 of 5 stars}
+
+        Now we are able to focus on stars. but still we were to able to give rating using enter , so we added a keyDown event,
+        and added listeners for enter and space.
