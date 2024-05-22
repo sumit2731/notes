@@ -1,7 +1,10 @@
 New Things -
 
-Accessability Attributes -
-    role = alert | status
-    aria-live = assertive | polite
+    Accessability Attributes -
+        role = alert | status
+        aria-live = assertive | polite
 
-a)Solving Accessability by using tab-index and manual focus.
+    a)Solving Accessability by using tab-index and manual focus.
+        https://bitsofco.de/how-and-when-to-use-the-tabindex-attribute/
+
+    b)also why i have to focus on div instead of buttons

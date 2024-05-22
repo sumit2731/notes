@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import {
   AiOutlineCheckCircle,
   AiOutlineInfoCircle,
@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import "./Notification.css";
 
-const iconStyles: React.CSSProperties = {marginRight: "10px"};
+const iconStyles: React.CSSProperties = { marginRight: "10px" };
 const icons: Record<string, JSX.Element> = {
   success: <AiOutlineCheckCircle style={iconStyles} />,
   info: <AiOutlineInfoCircle style={iconStyles} />,

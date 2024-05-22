@@ -25,3 +25,16 @@
                 />
             `);
         });
+
+
+3)role -  "alert" : "status"
+    used in toast component problem of roadside coder.
+
+    for error and warning notifications we gave role of alert.
+    for info we used role of status
+
+4)aria-live - 'assertive' | 'polite'
+    used in toast component problem of roadside coder.
+
+    for error and warning we gave aria-love of assertive
+    for info we gave aria-live of polite

@@ -1,6 +1,6 @@
-import React, {useState, useCallback} from "react";
+import React, { useState, useCallback } from "react";
 import Notification from "../ts-components/Notification";
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 // Define the allowed positions
 type PositionType = "bottom-left" | "bottom-right" | "top-left" | "top-right";
@@ -23,7 +23,7 @@ const useNotification = (
   position: PositionType = "bottom-right"
 ): UseNotificationReturn => {
   const [notifications, setNotifications] = useState<
-    (NotificationProps & {id: string})[]
+    (NotificationProps & { id: string })[]
   >([]);
 
   const triggerNotification = useCallback(
@@ -31,7 +31,7 @@ const useNotification = (
       const toastId = uuidv4();
       setNotifications((prevNotifications) => [
         ...prevNotifications,
-        {id: toastId, ...notificationProps},
+        { id: toastId, ...notificationProps },
       ]);
 
       setTimeout(() => {
@@ -65,7 +65,7 @@ const useNotification = (
     </div>
   );
 
-  return {NotificationComponent, triggerNotification};
+  return { NotificationComponent, triggerNotification };
 };
 
 export default useNotification;
