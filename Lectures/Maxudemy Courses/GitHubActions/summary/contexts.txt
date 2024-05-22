@@ -9,5 +9,7 @@ needs - This contains data of all the jobs that current job depends on.we used i
     via output fields
     ${{needs.[jobId].outputs.[nameOfVariable]}}
 
-jobs - 
+jobs -
     https://docs.github.com/en/actions/learn-github-actions/contexts#jobs-context
+    a)to switch the shell -
+        jobs.<jobs_id>.steps[*].shell

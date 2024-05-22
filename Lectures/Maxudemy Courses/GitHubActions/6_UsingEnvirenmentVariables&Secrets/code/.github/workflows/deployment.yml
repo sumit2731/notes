@@ -1,0 +1,53 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+      - dev
+# this env variable will be avaloible in all jobs until and unless job overrides this
+env:
+  MONGODB_DB_NAME: gha-demo
+jobs:
+  test:
+    env:
+      MONGODB_CLUSTER_ADDRESS: cluster0.aukeznm.mongodb.net
+      #   MONGODB_USERNAME: sumitsood3127
+      MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+      #   MONGODB_PASSWORD: S$981h9898
+      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+      PORT: 8080
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-deps-${{hashFiles('**/package-lock.json')}}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run server
+        # this is how we access the enviremnet variable in run command. syntax depends on shell you are using
+        # for unbuntu this is the syntx, for windows by default power shell is used, syntax - $env:NAME
+        # see docs there you can chnage the shell which is used using jobs context
+        # link to learn more - https://docs.github.com/en/actions/learn-github-actions/variables
+        # so if you are switching to different shell, then you should go to official shell docs to see
+        # how to access envirement variable in that shell
+        # this is one way tron access envirement variables, there is another way also
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
+      - name: Run tests
+        run: npm test
+      - name: Output information
+        run: |
+          echo "MONGODB_USERNAME: ${{env.MONGODB_USERNAME}}"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "MONGODB_USERNAME: ${{env.MONGODB_USERNAME}}"
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+
+    # default envirement variables

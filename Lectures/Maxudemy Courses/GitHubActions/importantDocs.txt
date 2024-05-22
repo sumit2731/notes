@@ -25,4 +25,7 @@ skipping the workflows -
 setting value at stpe level -
     https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 
+Variables (ENV varibles in work flow) -
+    https://docs.github.com/en/actions/learn-github-actions/variables
+
 
