@@ -1,4 +1,13 @@
-import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
+import {
+  type ReactNode,
+  type PropsWithChildren,
+  Component,
+  FC,
+  JSXElementConstructor,
+  JSX,
+  ElementType,
+  ComponentProps,
+} from "react";
 
 type CourseGoalsProps = {
   id: number;
@@ -32,6 +41,8 @@ type CourseGoalsProps3 = PropsWithChildren<{
   title: string;
   onDelete: (id: number) => void;
 }>;
+
+const div: JSX.Element = <div>Hello</div>;
 
 // export default function CourseGoal(props: {title: string}) {
 export default function CourseGoal({

@@ -1,0 +1,7 @@
+New Things -
+
+Accessability Attributes -
+    role = alert | status
+    aria-live = assertive | polite
+
+a)Solving Accessability by using tab-index and manual focus.

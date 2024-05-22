@@ -25,8 +25,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *  
  * this is used in 
  *  a)to represent JSX element in reactNode type
- *  b)Function component types has return type of JSX.Element. JSX Element extends this interface
- *  only
+ *  b)Function component types has return type of JSX.Element. JSX Element extends this interface only
  */
 
 /**
@@ -45,9 +44,10 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *
  *
  * Alternate Type - ElementType (this also  InBuilt ReactComponent for HTML plus CustomComponent)
- *  how it differs from JSXElementConstructor is -
- *   a)Element Type represents both built ina dn custom components
- *   b)class and functional components have some extra properties
+ *  how ElementType differs from JSXElementConstructor is, Element Type is Union of -
+ *
+ *  a)All strings that represent nuilt in components like 'div', 'span'.
+ *  b)Custom Components - FunctionComponent and ComponentClass
  */
 
 /**
@@ -92,7 +92,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *
  * type FC<P = {}> = FunctionComponent<P>;
  *
- * This represents the Functional Component Type
+ * This represents the Functional Component Type, with some Extra properties
  *
  * This is alternative to define type of Functional Component.
  */
@@ -130,16 +130,15 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
 
 /**
  * 8)
- * @ElementType - This accepts a generic type which is prop type -
- *      a)checks whether this genericType is prop types of inbuilt elements if yes returns string represent that
- *          inbuilt element
- *      b)otherwise it returns- ComponentType<P>.
+ * @ElementType - THis represent either a string form of inbuilt jsx element or Ref to CustomReactElement
+ *      a)checks whether this genericType is prop types of inbuilt elements if yes returns component type for that.
+ *      b)otherwise it returns- ComponentType<P>. which is either Functional or class component
  * <as></as>
  *
  * Union of -
  *
  *  a)Built in HTML element(string like - h1,div, span) - checks whether this genericType is prop types of inbuilt
- *      elements if yes returns string represent that inbuilt element
+ *      elements if yes return component representing that type
  *  b)CustomComponent(Functional or Class) - ComponentClass<P> represents this
  *
  * ComponentClass is union of -
