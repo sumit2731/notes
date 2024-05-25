@@ -168,6 +168,10 @@ Filling Values into Array -
         let arr = [...Array(10)].map((val, index, array) => index)
 
 
+    4)
+        let arr = [...Array(5).keys()]
+
+
 Joining Arrays -
     1)concat - The concat method creates a new array consisting of the elements in the object on which it is called, followed in order
      by, for each argument, the elements of that argument (if the argument is an array) or the argument itself (if the argument is not
