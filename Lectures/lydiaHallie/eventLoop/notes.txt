@@ -1,0 +1,28 @@
+How Long running teaks are handled -
+    webAPI's - these are set of API that allow us to interact with browser's features.
+        some of these allow us to offload long runnings tasks to browser.These are of 2 types-
+            a)callback based
+            b)promise API based
+
+Task Queue - Holds the the web api callbacks and event handlers to be executed at some point later.
+    callback provided by webAPI's are pushed to task queue.
+
+
+Microtasks Queue- when we work with promises, we work with this queue.this is dedicated to
+ is dedicated to following -
+
+    then
+    catch
+    finally
+    function body execution after await
+    queueMicrotask callback - queueMicrotask(() => {})
+    Mutation observer callbacks - new Mutation Observer(() => {})
+
+    Microtask in given higher priority then task queue.first all tasks in microtasks queue are moved to call
+        stack only then task in tasks queue are moved to call stack.after executing tasks in
+        microtasks queue and task queue event loop checks if microtasks queue is empty or not, if yes,
+        only then it moves to tasks queue.
+
+        if a microtask keep adding a tasks to microtasks queue, we can end up creating a infinite loop
+            thus freezing everything. in nodejs you cam set maxTickDepth or someething like that, to 
+            prevent this.

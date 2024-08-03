@@ -1,0 +1,48 @@
+When we load a script or invoke a function a new execution context is created and pushed on the call
+    stack. call stack is just execution context stack.
+
+Execution context defines the envirenment in which our code is executed.It conatains many internal
+    components that engine uses to keep track of the execution flow of that peice of code.execution
+    context uses environment records to keep track and maintain the identifier bindings that have 
+    been created for variable declaration, function declarations, all the values within that context.
+
+lets see wat happens when script in figure 4 is executed.
+    1)globalExecutionContext is create. every execution context goes through 2 phases -
+        a)creation phase - memory space is setup for variable declarations, function declarations
+            and so within that context. figure 6. global execution context has many components but
+            for now lets just focus on these 3. refer figure 7.1.
+            1)realm - it points to realm record.realm is isolated envirenment in which code is executed.
+                in browser new relam is created when we open a new tab,refresh the page, service workers,
+                web workers and iframe and so on. realm has these 3 components -
+                    a)intrinsic - This provides all the standard built in objects and functions,that
+                        are foundational for executing js like array, function syntax error and so on.
+                    b)Global Object - this contains several types of properties.
+                        a)specification defined properties which essentially just expose the intrinsic,
+                            array,function, all the js stuff is on global object.
+                        b)Host defined properties - In browser - fetch, setTimeout, document. these all
+                            are also made available through global object.
+                        c)user defined properties - these are properties that developer has declared on
+                            object. developer can do that via -
+                                a)explicitly by directly defining properties on global object.
+                                a)implicitly by declaring a global variable using 
+                                b)implicitly by declaring a function in global scope.
+                            These are also made avalible on global object and now avalible to use throughout
+                            entire script.
+                    c)Global environment record - ER manage the identifier bindings within that context.in
+                    case of GER, these values are accessible throughout entire script. It contains -
+                        a)object record - this is just direct refrence to global object.this is used by variables
+                            with var keyword and function declarations on global scope.
+                        b)declarative record - this contains all variables  bindings that are'nt variables with 
+                            var keyword or function declaration.
+                        c)value of this keyword - which in case of global environment record is global this value,
+                            and in most cases this just points to global object.
+                        d)outer environment property - In case of GER this is null.
+
+            2)LexicalEnvironment - This points to environment records that contains bindings for everything
+                except for variables with VAR keyword.which in this case is GER. figure 8
+            3)variable environment - This points to envirement record that stores the bindings for the variables 
+                declared with var keyword, which in this case is also GER.
+
+            This all looks overwhelming(figure 8), so for rest of video we will be using figure 9 to refer to full lexical 
+            scope.
+        b)execution phase - when execution context is on callstack and code is actually executed.
