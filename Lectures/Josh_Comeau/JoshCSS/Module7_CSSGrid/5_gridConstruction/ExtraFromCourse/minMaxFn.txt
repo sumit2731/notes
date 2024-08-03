@@ -1,0 +1,25 @@
+refer to 2 bookmarks links
+
+valid values -
+    percentage
+    hardcoded values
+    fr units - can only be used in max values
+    min-content
+    max-content
+    auto -
+        a)when auto is used as a maximum, its value is identical to max-content.
+        b)When it’s used as a minimum, its value is specified by min-width/min-height rule, which means that 
+            auto is sometimes identical to min-content, but not always.
+
+
+Valid - 
+  grid-template-columns:minmax(100px, 200px) 1fr 1fr;
+    As grid width is increased width of first columns increases between 100 to 200px.Fr units occupy minwidth
+        required to support their contents. once first columns reaches 200px, then second and third column
+        takes any extra width on view port increase.
+  grid-template-columns:minmax(100px, 200px) 200px 200px;
+  grid-template-columns:minmax(100px, 200px) minmax(100px, 200px)minmax(100px,200px); 
+  grid-template-columns: minmax(50%, 80%) 1fr 1fr;
+  grid-template-columns: minmax(min-content, max-content) 1fr 1fr; 
+Invalid values
+    grid-template-columns: minmax(1fr, 2fr) 1fr 1fr;

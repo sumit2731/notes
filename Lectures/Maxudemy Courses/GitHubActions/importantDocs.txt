@@ -1,7 +1,10 @@
-Different variation sof events - 
+Available github runners -
+    https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#file-systems
+
+Different variation of events(slide 30) - 
     https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
 
-Filters for events -
+Filters for events(This contains workflow syntax) -
     https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
 
 Market place for actions -
@@ -13,19 +16,19 @@ Market place for actions -
         download-artifact - https://github.com/actions/download-artifact
         cache - https://github.com/actions/cache
 
-Github actions  context -
+Github actions context -
     https://docs.github.com/en/actions/learn-github-actions/contexts
 
-Github actions Expressions -
+Github actions Function and Expressions -
     https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions
 
-skipping the workflows -
+Skipping the workflows -
     https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
 
-setting value at stpe level -
+Setting value at step level -
     https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
 
-Variables (ENV varibles in work flow) -
+Variables (ENV variables in work flow) -
     https://docs.github.com/en/actions/learn-github-actions/variables
 
 

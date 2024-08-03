@@ -1,0 +1,10 @@
+See Bookmarks resources.
+    kevin videos -
+        a)https://www.youtube.com/watch?v=tX06aPu1aIg&list=PL4-IK0AVhVjM4Kjqw_zN-Y3neCFXWPDJ2&index=1&t=294s
+            How inner child of direct children can access columns, rows and areas of grandParent grid.
+        b)Using sib grid to get access to columns of main grid -
+            https://www.youtube.com/watch?v=dZHnAsYu2eU
+            https://www.youtube.com/watch?v=IIQa9f0REtM
+        c)using sub grid to make equal size rows -
+            https://www.youtube.com/watch?v=R7aHcgIeATE&list=PL4-IK0AVhVjM4Kjqw_zN-Y3neCFXWPDJ2&index=5
+

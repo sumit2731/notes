@@ -1,0 +1,13 @@
+how to place element in column/row or span them across columns row -
+    grid-column: 3/5
+    grid-row: 1/-1
+
+Things covered -
+    a)why negative line numbers exists.you can make item stretch across first and last row, even if you
+        keep adding new elements.
+
+    b)keyboard gotchas - keywrd navigation always happens in order of DOM. using grid-area, grid-column
+        and grid-row, we can change their visual appearnace but not order of keyboard navigation.
+
+
+    

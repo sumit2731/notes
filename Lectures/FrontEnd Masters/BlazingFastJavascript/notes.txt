@@ -1,0 +1,3 @@
+When you need to look up something use sets or maps instead of object.
+
+Hotspot optimizations - you look for worst offenders and try to fix that.

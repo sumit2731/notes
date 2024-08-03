@@ -19,7 +19,7 @@ grid container properties -
         200px 2fr 1fr
         auto - width will be according to content of widest item
 
-        250px repeat(5, 1fr)
+        250px repeat(5, 1fr) - column-row Count, height-width
         repeat(4, 200px)
         repeat(auto-fill, 150px) - Create as many as 150 columns as possible. some empty space will be left when left over space is not multiple of 150px. this can be 
             handled using justify-content; see auto-fit also
@@ -37,13 +37,15 @@ grid container properties -
         minmax(250px, 1fr)
 
     gap: 
-        8px(9px gap between both rows and columns)
+        8px (for both rows and columns)
         8px 0px; (row column)
 
         To Support IE use grid-gap
 
-    justify-content: It arranges the column in horizontal axis. if we do not specify any width of column then the default behaviour in
-        CSS Grid is to stretch the columns to take up all available space.
+    justify-content: It arranges the column in horizontal axis. if we do not specify any width of column then 
+        the default behaviour in CSS Grid is to stretch the columns to take up all available space.this property
+        change that.and places the column. if no width is specified for columns, it determines which row has
+        largest width and that becomes the width of that column.
             start,
             end,
             center,
@@ -52,19 +54,20 @@ grid container properties -
             space-around,
             space-evenly.
 
-    justify-items - It arranges the items in column.
+    justify-items - It arranges the items in a cell in horizontal deirection
         start
         end
         center
         stretch(default)
 
-    align-content(aligning rows in grid): 
-        start(default),
+    align-content - aligning rows in grid, in vertical direction. 
+        start,
         end,
+        stretch(default)
         space-between,
         space-around,
         space-evenly.
-    align-items(aligning a item in cell along vertical direction):  
+    align-items - aligning a item in cell along vertical direction.  
         stretch(default),
         start,
         end,
@@ -75,12 +78,6 @@ grid container properties -
     grid-template-areas :
         'sidebar header'
         'sidebar main'
-
-    
-
-
-   
-
 
 
     place-content: align-content / justify-content

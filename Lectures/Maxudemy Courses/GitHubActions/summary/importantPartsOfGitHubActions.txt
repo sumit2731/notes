@@ -1,16 +1,17 @@
 workflow -
     name
-    event trigger
-        types: ['typeNames] (activity types)
-        types:
-            - typename1
-            - typename2
-        <filterName> (filters)
-            branches: 
-                - <branchName>
+    on: ["eventName1","eventName2"] (here we cannot configure diffrent events)
+    on:
+        eventName1(pull_request)
+            types: [activityType1, activityType2] (opened)
+            types:
+                - activityType1
+                - activityType2
+            filter1 (branches)
+                - filter1Argument (branchName1)
+                - filter2Argument
 Job -
-    needs: test (name of jobs which should run successfully before this job starts, in case of 
-        multiple jobs use array)
+    needs: [job1, job2] (name of jobs which should run successfully before this job starts)
     name - name of job
     runs-on - env on which it runs
     outputs:
@@ -21,7 +22,7 @@ steps -
     name
     run:  cmd commands
     uses: actionToBeUsed
-        with: parameters for action
-            node-version: 18
+    with: 
+            node-version: 18 (parameters for action)
 
 actions -

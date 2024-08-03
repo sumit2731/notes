@@ -76,7 +76,8 @@ jest.spyOn(window, "ClipboardItem");
  *
  * 2 Ways -
  *  a)mock the module directly in jest.mock, that is provide second argument
- *  b)mock the module using jest.mock, then import function from module and mock it using mock implementattion
+ *  b)mock the module using jest.mock, then import function from module and mock
+ *    it using mock implementattion
  *
  *
  *

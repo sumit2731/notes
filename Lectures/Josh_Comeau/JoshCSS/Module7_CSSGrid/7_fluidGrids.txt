@@ -1,0 +1,60 @@
+Here This layout was explained -
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+
+minmax function -
+    grid-template-columns: minmax(250px, 1fr)
+
+    It means width of column can varies between 250px to 1fr. in short width cannot be less than 250px.
+        so it is way of specifying the min-width of columns and min-height of rows.
+
+    note - flexible unit has to come last.minmax(1fr, 250px) is invalid, because 1fr isn't a valid 
+        "minimum" value.
+
+Generating columns with auto-fill -
+    grid-template-columns: repeat(4, 250px)
+
+        repeat has another trick up its sleeve, though: it accepts special keywords in addition to
+            straight-up numbers.
+
+    grid-template-columns: repeat(auto-fill, 150px);
+        this fills as many 150px columns into row as possible.empty space is left as such.we will have
+            empty space when left over space is not multiple of 150px.
+
+    How to get rid of empty space also -
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+
+
+autofit vs autofill -
+    autofill - tries to fit as many columns asit can even if they are empty.
+    autofit - first it do same thing as autofill, but then emtpy columns are squashed and their
+        space is used by columns which have content.
+
+    See sara's article in bookmarks
+
+
+Responsive vs Fluid Approach
+    Later we decided that on smaller screens we do not want to have a overflow, so we came up with
+    2 approach responsive vs fluid one -
+
+    fluid -
+        grid-template-column: repeat(auto-fit, minmax(min(450px, 100%), 1fr))
+
+    responsive -
+      .grid {
+            display: grid;
+            padding: 16px;
+            gap: 16px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 450px) {
+            .grid {
+            grid-template-columns:
+                repeat(
+                auto-fill,
+                minmax(400px, 1fr)
+                );
+            }
+        }
+
+

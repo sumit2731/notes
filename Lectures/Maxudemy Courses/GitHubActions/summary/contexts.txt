@@ -1,5 +1,14 @@
-github
+github (contains info about workflow and event trigger)
     github.event - event specififc data
+
+    github.repoUrl
+    github.repo
+
+    In case of pull-request being opened -
+        github.event.requested_team.name
+        github.head_ref (Pull requests head branch name)
+
+    ${{github.repository}}
 
 steps - can be used at JOB level but get data at step level.
     ${{steps.[stepsId].outputs.[keyThat you have in step]}}

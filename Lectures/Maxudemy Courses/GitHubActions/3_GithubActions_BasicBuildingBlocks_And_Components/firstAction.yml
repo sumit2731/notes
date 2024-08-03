@@ -3,7 +3,7 @@
 name: First Workflow
 
 # Controls when the workflow will run
-# workflow_disoatch means we need to run it locally
+# workflow_dispatch means we need to run it locally
 on:
   workflow_dispatch
   # these are other Options,Triggers the workflow on push or pull request events but only for the "main" branch

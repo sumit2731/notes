@@ -4,7 +4,7 @@ Start - slide 27
     refer slide 28 and 29.
 
 
-    runners - env in which Jobs run. you can use runners provide by github actions.
+    runners - env in which Jobs run(machines ond OS). you can use runners provide by github actions.
         or yu can config your own runners.
 
     Steps - It is a
@@ -37,11 +37,19 @@ Start - slide 27
     code - second-action-demo
 
 
-40)A new Workflow and push event
+40)A new Workflow and push event (test.yml)
     Here we defined a new workflow.locally see the test.yml file.
 
     now when do we want to execute this workflow? what are various events available.
-    see slide 30. it divides events into 2 categories. also google "github actions events" -
+    see slide 30. it divides events into 2 categories. 
+    Other kind of events -
+        a)workflow_dispatch
+        b)repository_dispatch
+        c)schedule
+        d)workflow_call - workflows to be called by other workflows
+    
+    
+    also google "github actions events" -
     you will get to know about various types of events. also within each event also there are 
     various variations, to see details go to this page - 
     
@@ -72,8 +80,6 @@ Start - slide 27
     this action by default will checkout repository in to which action is added, so e do not need
         to pass any addiitonal parameters.
 
-42)used action to checkout github repo
-
 43)configuring actions
     2 ways to check which software are included in our envirement -
         a)google github action runners, go to doc and find pre-installed software.
@@ -83,10 +89,13 @@ Start - slide 27
 
     nodejs was already included but we still used a action to install a different version.
 
-44)Adding more workflow JOb steps
-    Here we added commands for installing packages and running test acses
+47)Jobs: Sequential vs parallel
 
-49)expression and context object
+    add "needs" field in job. then job will only run all jobs specified in needs fields have been 
+        successfully ran.
+    
+
+49)expression and context object (output.yaml)
     see lecture
 
     Inbuilt context object - 
@@ -112,7 +121,7 @@ Important things -
                 filter that push happened in specific branch and it affects specific file only
         job - 
             needs to define environment where it runs
-            different jobs by default runs parallely. but we can chnage it.
+            different jobs by default runs parallely. but we can chnage it, using "needs"
         steps -
             either runs a cmd command or uses a action
         action - 

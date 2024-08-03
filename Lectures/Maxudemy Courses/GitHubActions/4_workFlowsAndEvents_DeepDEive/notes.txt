@@ -6,7 +6,10 @@ repo - https://github.com/sumit2731/gh-actions-third-events
 
 58)Using Activity Type
     here we saw how we can mention activity type for event.
-    also along with mentioning activity type , how we can mention multiple events
+    also along with mentioning activity type , how we can mention multiple events.
+
+    For pull request, if we do not specify anything, by default opened, reopen and synchornise types
+    triggere a workflow.
 
     file - demo1.yml
 
@@ -14,14 +17,19 @@ repo - https://github.com/sumit2731/gh-actions-third-events
     you can see event filters in github docs under workflow syntax.
         https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
 
-    As of now github actions supports filters for push pull request and workflow_call (covered later)
+    As of now github actions supports filters for push, pull request and workflow_call (covered later)
 
-    types of filter - branches, branches-ignore, paths,paths-ignore
+    types of filter - 
+        branches, 
+        branches-ignore, 
+        paths,
+        paths-ignore
 
-    also you can use wildcard filters and regular expressions. in the above doc there is cheatsheet at last. check to see what can be used.
-    u=in demo1.yml, see difference between * and **.
+    Also you can use wildcard filters and regular expressions. in the above doc there is cheatsheet at last. 
+    check to see what can be used.
+    in demo1.yml, see difference between * and **.
 
-    in our workflow we attached different filters.
+    In our workflow we attached different filters.
         branches and paths-ignore
 
 60)Special behaviour with forks
@@ -33,7 +41,7 @@ repo - https://github.com/sumit2731/gh-actions-third-events
     cancelling the workflow -
         when workflow is running it can be canceled, via UI.
         when a job in workflow fails, it is canceled(this setting can be changed)
-        when a step in job again that cancels the workflow(this setting can be changed)
+        when a step in job it fails the job(this setting can be changed)
 
     how to skip - 
         push workflows -

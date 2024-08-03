@@ -1,28 +1,22 @@
-Implicit Grid - We haven't told the engine what the rows and columns should be, and so it's come up with its
-    own grid, based on the number of children.By default, it creates 1 new row for each element. Because our
-    grid parent is given 3 children, we'll wind up with a 1x3 grid.This is known as an Implicit grid.
+Default Behaviour (if you do not mention any rows and columns) -
+    Then it will create n number of rows for n children and each row will have width equal which fills the
+        contianer and height that is enough for children. Also children width is equal to width of row.
+   
+    THis is called ImplicitGrid.Implicit grids want to fill the available space. Notice that the elements 
+        stretch across the horizontal space like block-level elements in Flow.
+    If we give our grid a fixed height, we notice the same behaviour with rows.
+    Each element in our grid spans the entire width and height of its cell by default.but we can
+    control it by giving width and height to element.
+    
 
-    .wrapper {
-        display: grid;
-    }
-
-    Implicit grids want to fill the available space. Notice that the elements stretch across the horizontal
-        space like block-level elements in Flow.If we give our grid a fixed height, we notice the same 
-        behaviour with rows.height of rows is such that it occupies full height of container.
-
-    Because our grid is 300px tall, each row winds up being 100px tall. Each element in our grid spans the
-        entire width and height of its cell by default.
-
-Video -
-    dev tools helps us to see how grids row-columns, areas or, tracks are laid out, which helps us to 
-        understand why element is positioned at a place and what is size of this element.in grid, the lines
-        are the primary thing that we track by. So it's not really a matter of this element being in the first
-        row,it's actually more accurate to say that this element is spanning from row line 1 to row line 2, and
-        it's spanning from column line 1 to column line 2.
-
-
-Grid auto flow
+grid - Columns * Rows, by default grid will have -
+    a)1 * n - can be changed with grid-auto-flow
+    b)grid children will expand to occupy full cell.
 
 
 display:inline-grid
     container will have display:inline, and children will have grid layout
+
+Grid children are positioned according to grid layout, things like display:inline does not have any affect
+    in grid layout.However if child has layout module as positioned then that element does not participate
+    in flow layout.As far as the parent grid is concerned, this element doesn't exist.

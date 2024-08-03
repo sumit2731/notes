@@ -1,0 +1,24 @@
+grid-template-columns - This property controls two things:
+
+    The number of columns we want our grid to have
+    The individual widths of each column - Unlike in Flexbox, these values aren't “suggestions”, they're
+        hard limits.content larger than these will overflow the cell.
+
+    units for column width
+
+        a)percentage - Unlike in Flexbox, these values aren't “suggestions”, they're hard limits. 
+        b)fr  - after giving size to all columns, remaining width is distributed between fr units by ratio's.
+            also if width by fr ratios's causes overflow in a column, then minimum width according to content
+            will be given to column with fr units.THis behaviour happens with fr and auto.
+
+
+Implicit rows - If no. of items > columns, then new rows will be created. size(height) of these rows 
+    depends on height of largest item in that row.This is because by default,items will try to occupy
+    full cell.
+
+    Note - whether we define rows or columns in grid, in order to accomodate extra items, implicit rows will be created
+
+Exclicit rows - we can declare exlicit rows by gird-template-rows.if we want grid to occupy full screen then we
+    need to use min-height:100% trick rule from module1.
+
+Out of bound items - we we give more items than explicit cell then more rows wil

@@ -1,0 +1,8 @@
+properties -
+    justify-content - moves columns in grid
+    justify-items - moves items inside column
+    justify-self - moves ondividual item inside column
+
+    align-content
+    align-items
+    align-self

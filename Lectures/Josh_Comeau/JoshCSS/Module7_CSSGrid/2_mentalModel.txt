@@ -1,15 +1,28 @@
-Rules for valid grid -
-    a)In CSS Grid, our element's content box is sliced into rows and columns. 
-    
-    b)The rows/columns don't have to be the same size, but they do have to be consistent. 
-        1)Every cell in the same column needs to have the same width
-        2)every cell in the same row needs to have the same height.
+In grid we define rows and columns. 
+    each column should have same rows as next of grid
+    each row should have same columns as rest of rows.
 
-    c)We also can't end a row or column prematurely; If our grid has 2 columns and 3 rows,
-        each column will have 3 cells.
+Rows/Column and invisible Markers
+    Items dnt have to fit perfectly in cell. they can span over more cells.
+    Paint parking Example.Rules for valid grid -
+        a)In CSS Grid, our element's content box is sliced into rows and columns. 
+        
+        b)The rows/columns don't have to be the same size, but they do have to be consistent. 
+            1)Every cell in the same column needs to have the same width
+            2)every cell in the same row needs to have the same height.
 
-    d)A grid child can choose to span multiple rows and columns, but it must always produce
-        a rectangle. No tetrominoes allowed!
+        c)We also can't end a row or column prematurely; If our grid has 2 columns and 3 rows,
+            each column will have 3 cells.
+
+        d)A grid child can choose to span multiple rows and columns, but it must always produce
+            a rectangle. No tetrominoes allowed!
 
 
-Inset grids - In Container we can have some dead space that is not used by grid.
+Inset Grids - In Container we can have some dead space that is not used by grid.
+
+From Quiz -
+
+    a)By default child expands to fit its avalaible cell but it can be overridden in number of ways.
+    b)While not super common, grid children can be assigned to the same cell.they will overlap.
+    c)grid children can have some part of them overlapping, while other part can be free.
+    d)grid items can overflow from ther assigned calls and leak to other cells.

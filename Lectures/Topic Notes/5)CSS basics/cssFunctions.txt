@@ -57,4 +57,7 @@
     https://blog.webdevsimplified.com/2020-11/css-clamp/
 
 
+5)min,max
+
+
 

@@ -1,0 +1,11 @@
+how to define area in grid - 
+        grid-template-areas:
+            'header header header'
+            'sidebar main ad'
+            'footer footer footer';
+
+    here each line represents a row and within each row each word represents a cell.
+
+
+How to assign grid area to child -
+    grid-area: header;

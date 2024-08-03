@@ -1,6 +1,8 @@
-23)Connecting Local and Remote Repositories
+Slides - 24
+
+23)Connecting Local and Remote Repositories(Slide 25)
     in local run - 
-        git remote add "localNameForRemoteRepo" repoURL
+        git remote add "localNameForRemoteRepo" "repoURL"
         git remote add origin https://github.com/sumit2731/notes.git
 
     Here a connection is established between local and remote repositories. You can refer to remote repositories by name origin.
@@ -20,17 +22,19 @@
             git push --set-upstream <identifierForRemoteRepo> <remote_branch_name>
             git push --set-upstream origin main
 
-            It sets the upstream branch for your current local branch. if local nad remote branch name are same then you can skip branch name.
+            It sets the upstream branch for your current local branch. if local nad remote branch name are
+            same then you can skip branch name.
 
             we need to run it once only, next time we ust need to run - "git push"
 
         way 2 -
             If it is one time push then, we can do this -
 
-            git push <identifierForRemoteRepo> <nameOfBranchInRemote>
+            git push <identifierForRemoteRepo> <nameOfLocalBranch>
             git push origin main
-            Here git pushes the code in mentioned local branch into remote branch and it will target the branch with same name.if that
-            branch with that name does not exist in remote, that branch will be created.
+            Here git pushes the code in mentioned local branch into remote branch and it will target the 
+                branch with same name.if that branch with that name does not exist in remote, that branch will
+                be created.
 
 
 
@@ -53,8 +57,9 @@
                     b)use global email and id
 
 
-25)cloning repos
-    here we cloned the existing git hub repo and created a new branch and tried to pushed that branch to remote. we got error.
+27)cloning repos
+    Here we created a new gihub user and cloned the earlier repo. 
+    Then we created a new branch and tried to pushed that branch to remote. we got error.
 
     involve commands -
     set global git configs(to make sure that whenever we access github , we use this account) -
@@ -63,9 +68,9 @@
 
 
     cloning a repo -
-        git clone <repo_url> <folder that should contains the repo code>
-            second argument is optional, if you do not use anything then folder name will be repo name.
-
+        git clone <repo_url> <folder>
+            second argument is optional, it creates a folder which contains repo code. If you do not specify 
+            anything then repo name is used a s folder name.
     git remote - shows you list of all connected remotes
     git remote get-url <name of remote> - gives the url of remote
 
@@ -76,10 +81,13 @@
 
 
 29)GitHUb issues and collaborators
-    now we want to push changes to that repo? but how do we push chnages to repo that w do not own.
+    now we want to push changes to that repo?but how do we push changes to repo that we do not own.
+    First we need to raise a issue.
 
-    way 1 - owner should add you as collborator. for that you must reach out to owner of repo.you can do this via raising a issue.
-        this is how owner can add you as a collaborator -
+    way 1 - Owner should add you as collaborator. for that you must reach out to owner of repo.you can do this 
+        via raising a issue.
+        
+        Owner might decide to add you as  a collaborator.this is how owner can add you as a collaborator -
 
 
         1)adding a collaborator -
@@ -89,8 +97,9 @@
 
         How to protect a branch from direct push -
 
-            1)how to make sure that collbaorators cannot push directly to main branch and needs to open a PR -
-                settings -> branches -> "Add branch protection rule"
+            1)how to make sure that collaborators cannot push directly to main branch and needs to open a PR -
+                settings -> branches -> "Add branch protection rule" -> "select a branch name pattern"
+                -> "Require PR before merging" ("also check Require Approvals")
 
             2)select branch pattern -> this pattern decides which branches should be protected.
 
@@ -106,8 +115,8 @@
 30)Working with Pull Request
     If try to push directly into main branch, we get error - "atleast 1 review is required".
 
-    then we raise a PR, in PR we can mention the issue by using #.github gives suggesstions to issue and we can select that to
-        refer to that. then PR is raised.
+    then we raise a PR, in PR description we can mention the issue by using #.github gives suggestion to issue 
+    and we can select that to refer to that. then PR is raised.
 
     Now owner of that repo can come, review it and merge it.
     In closing comments he can mention - closes #1, select issue.
@@ -115,7 +124,7 @@
     then I can go to issues and close the issue.
 
 
-31)Understanding Forks
+31)Understanding and Using Forks
     what if you are not a collaborator on repo?
 
     a)fork the repo, create new brach push your changes. Original repo will have info that a fork has been created of this.

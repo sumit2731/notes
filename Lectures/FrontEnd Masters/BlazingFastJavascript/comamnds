@@ -1,0 +1,13 @@
+cd shooter
+tsc && node dist/src/server.js --logPath /tmp/testing
+
+
+
+cd shooter
+cargo run --release -- -q 500 -g 100000 -t 2
+    Simple rust program that is run in release mode, 500 connections are created to servers, then we refer
+        number of games to be played, then we menion time beteen connections
+
+
+cd shooter
+go run cmd/main.go
