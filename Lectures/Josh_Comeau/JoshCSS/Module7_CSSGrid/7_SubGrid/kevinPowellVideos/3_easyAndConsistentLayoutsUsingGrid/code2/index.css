@@ -10,6 +10,7 @@ body {
   grid-template-columns:
     minmax(6ch, 20ch) 1fr
     minmax(6ch, 20ch) 1fr;
+  grid-auto-rows: min-content;
 
   /*   other styling */
   width: min(90%, 60rem);
@@ -18,10 +19,12 @@ body {
 
 .card {
   grid-column: span 2;
+  grid-row: span 2;
   display: grid;
   /* grid-template-columns: minmax(6ch, 20ch) 1fr; */
   grid-template-columns: subgrid;
-  grid-template-rows: min-content 1fr;
+  /* grid-template-rows: min-content 1fr; */
+  grid-template-rows: subgrid;
   gap: 1em;
   border: 3px solid black;
 }

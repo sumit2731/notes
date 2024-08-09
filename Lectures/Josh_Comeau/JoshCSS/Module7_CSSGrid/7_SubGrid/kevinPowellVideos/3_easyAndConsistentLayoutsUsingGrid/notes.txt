@@ -6,3 +6,5 @@ Grid without subgrid (code1) -
 
 
 Gird with subgird (code2) -
+    In the code we used subgird to make width of columns sname in each column.(video)
+    Then i extented the logic to make even height of rows same in each row.
