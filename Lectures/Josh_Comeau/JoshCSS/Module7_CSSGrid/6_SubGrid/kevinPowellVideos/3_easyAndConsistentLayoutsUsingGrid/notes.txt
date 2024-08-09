@@ -1,0 +1,8 @@
+Grid without subgrid (code1) -
+    Using outer grid we managed to keep the height and width of boxes same.
+    this is because all cells in rows should have same height. but within each card
+    width of columns is not same. this is because of text is different in different
+    boxes.
+
+
+Gird with subgird (code2) -

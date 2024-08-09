@@ -5,8 +5,18 @@
 }
 
 .with-subgrid > ul {
+  /* this is trick */
   display: grid;
+  /* 
+  Here we are using subgird in grid-template-rows to make equal size rows
+  we tell that this grid should have same rows as its parent grid
+  */
   grid-template-rows: subgrid;
+  /* 
+  Since parent grid will by default have only 2 rows, we tell parent grid to have 99 rows.
+  By default grid adjusts the height of rows that n rows fills the longest child. but in this
+  case rows will have height to fill the child of subgrid 
+  */
   grid-row: span 99;
 }
 
@@ -39,6 +49,7 @@ h2 {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
+  /* If use this property then even empty rows will have height */
   /* grid-auto-rows: 1fr; */
   column-gap: 1em;
 

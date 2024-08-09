@@ -1,0 +1,34 @@
+1)You have 2 rows -
+    first row has 3 columns, second one has 2. second row elements occupy full width, so it looks
+    uneven.
+    
+    solution 1 with flexbox -
+        use flex-basis:33% on each column, but columns do not allign perfectly(2nd column on first and
+        second row are not align) as columns do have gap between them and it was not considered while
+        giving flex-basis: 33%, so flex box shrinks the content in first column.
+
+    solution 2 with flexbox -
+        use flex-wrap:wrap
+        and decrease the width from 33% to accomodate the gap.
+
+    solution with css grid -
+        grid-template-columns: repeat(3, 1fr)
+
+
+    Another problem with flexbox - if you use padding in flex-children then width of children will be
+        different.
+
+2)responsiveness with -
+
+    grid-template-columns: repeat(auto-fitt, minmax(300px, 1fr))
+
+    doing this kind of layout with flexbox without media query is bit tricky.
+
+
+
+3)making elements span across columns and rows.
+    you can make element
+
+
+4)makingContent overlap.
+    see figure 1.
