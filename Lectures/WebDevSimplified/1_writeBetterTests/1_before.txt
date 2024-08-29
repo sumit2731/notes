@@ -1,0 +1,31 @@
+1)Test should only fail if code behind them is actually incorrect and broken. there should be no
+    test that should fail sometimes or they should fail if you change how your code works even though
+    your code works perfectly.check article - golden rules for assertion.
+
+    Dnt test implementation details.While writing test you should try to abstract away everything
+    as if it is a black box and all you know is that input is going in and output is coming
+    out.
+
+2)dnt rely on things external things that are out of your control like api's and databases unless you
+    are doing E2E testing.
+
+3)if test passes sometimes but fails sometimes, delete it.
+
+4)Do TDD, so that you do not know the implementation details.This way you wnt include implementation
+    details in your testing because you do not know them.
+
+    If you do not want to do TDD, while writing tests assume your code as balckbox or think like
+    you are writing tests for someome else's code.
+
+
+5)while writing tests it is okay to repeat yourself. keep individual things inside tests.
+    dnt try to abstract things out. It is okay if tests are 90% same. That way if you want to
+    change something in tests other tests are not affected.
+
+6)more E2E test, then integration test, then Unit test.
+    Unit test are easy to write but they do not add that value.
+
+    Unit test and integration test are more useful for testing core business logics in codebase, like
+    pure function is perfect use case of for unit test.
+
+    Instead of writing 10 unit tests write a integration test.

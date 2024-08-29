@@ -1,0 +1,12 @@
+JDK - 
+    JavaSDK - allows you to write java code, compile it and generate byte code,package it into a 
+        application.it comes with run time.
+        needs only for developing java programs not running them. but do contains JVM.
+
+JRE -
+    It is language agnostic, does care from where .class were generates, it just runs them.
+
+JVM - Java Virtual machine. It is program that runs the byte code.
+    Point 4 - Instead of JVM running the code, JVM can convert byte code into machine level code,
+        which machine can execute without JVM being into a picture.There are certain optimizations
+        which machine coe can do and one of them is convert some code directly into machine code.

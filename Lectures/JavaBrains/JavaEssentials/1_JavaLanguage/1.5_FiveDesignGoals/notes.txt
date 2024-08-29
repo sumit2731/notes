@@ -1,0 +1,12 @@
+1) familiar - lot of syntax is familiar with c, c++.
+2)robust - dev cannot mess things up like in c/c++ with pointer yu can mess things up.
+   secure - JVM acts like sandbox.
+
+3)achieved with portability.
+
+4)point 3 was achieved with JVM, but what about speed. running on JVM wnt make things slow?
+    JVM is so optimized that it runs faster than natve compiled code.
+
+5) interpreted - it is interperet by JVM
+    threaded - treads and concurrency
+    dynamic - you will learn later

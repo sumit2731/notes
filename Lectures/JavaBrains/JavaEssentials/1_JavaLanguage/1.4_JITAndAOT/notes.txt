@@ -1,0 +1,6 @@
+JIT - JVM can convert some code into machine level code.as it identifies that it needs to run 
+    this code multiple times.
+AOT - compile all code int native code, before running it.This is experimnetal feature which
+    is enabled from JAVA 9.it is not used widely.
+
+see figures to - 3 ways of executing code.

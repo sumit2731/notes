@@ -1,0 +1,6 @@
+New Switch Statement(Figure 4) -
+    feature of Java 14.Its like ternary operator on steroids.It is not used as control statement but
+        can be used to return a value.
+
+For each loop (FIgure 6) -
+    collection is not modified

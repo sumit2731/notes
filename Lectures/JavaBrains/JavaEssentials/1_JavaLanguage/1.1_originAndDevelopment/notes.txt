@@ -1,0 +1,9 @@
+Fig 2 -
+    Different machine will have different run time. you need to install a run time, then that will run
+        any .class(byte) code.
+Fig 3 (Language vs RunTime) -
+    Bytecode is run on JVM (java virtual machine), JVM sits on top of actual machine and understand 
+        this .class files.today we can write code in bunch of other languages like scala or groovy
+        they have compilers which also compile to same .class files , then JVM runs those .class files.
+
+

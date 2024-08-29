@@ -1,0 +1,9 @@
+Every java project will have src folder which contains your code in package format.
+
+In notepad -
+    javac helloWorld.java
+    java  helloWorld.class
+
+    or directly -
+
+    javac helloWorld.java

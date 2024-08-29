@@ -1,0 +1,49 @@
+Figure 5 -
+    D means value is not integar. this is helpful when we declare
+
+
+Strings is not of primitive type in Java, It is value.
+
+
+Figure 7 - When java sees that 2 types are assigned to one other they are not same but type 
+    compatible, then it does something like type conversion.so it does conversion of right hand
+    side so that it can be assigned to left hand side.in figure 8 it convert int type into
+    double type and assigns it to variable.
+
+    generally if left hand side has bigger capacity hen right hand side then assignment is allowed.
+
+    lets say we have double value that we know can be converted into int, but compiler wnt allow
+        us, in that case we can tell compiler that allow me this conversion,how we do that?
+        by using something called casting.casting is the way for you to force convert from type a
+        to type b, when either one of these 2 rules are broken -
+            a)they are not of compatible types.
+            b)destination has smaller capacity than source
+
+        se figure 9 how to do it. by doing casting we are telling compiler let me do that and if
+            program throws a run time exception, let it be.note java will throw exceotion if and
+            only if there is no way to convert values, figure 10 shows that it makes coversion even
+            with losing some precision.
+
+Figure 11 -
+    On dividing int by int you always get int, so be careful you can get some precison loss.
+    last way shows how to avoid it.
+
+
+Automatic Type Promotion -
+    When on expression has multiple types it finds the type with biggest capacity and converts all
+    other variables into that type.
+
+
+Arrays -
+    int arr[] = [];
+    figure 13, space is allocated to array when we tell the size of array.
+    figure 14 even through int can fit into float, we do not allow assignment of int [] to
+        float array.
+
+
+Multidimesions array -
+    Figure 16 -
+        You can leave second dimension blank but but cannot leave both dimesions blank.
+    jagged array
+
+
