@@ -1,0 +1,25 @@
+#scroller * {
+  /* overflow-anchor: none; */
+}
+
+#anchor {
+  /* overflow-anchor: auto; */
+  height: 1px;
+}
+
+html {
+  font-family: system-ui, sans-serif;
+}
+body {
+  background-color: #7fdbff;
+  /* In case you need to kick off effect immediately, this plus JS */
+  /* height: 100.001vh; */
+}
+
+.message {
+  padding: 0.5em;
+  border-radius: 1em;
+  margin: 0.5em;
+  line-height: 1.1em;
+  background-color: white;
+}

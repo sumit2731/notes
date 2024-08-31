@@ -1,84 +1,143 @@
 overflow (deals with content overflowing in entire container)
     visible - default value.content overflows the container. 
-    hidden - hides the content when it crosses border of container, borders are ignored.
-    scroll - always displays the scrollbar even if content fits inside container
-    auto - displays scrollbar only if content does not fit.
-    clip - need to specify this for both x and y axis. similar to hidden but you can use another proeprty
-        overflow-clip-margin along with this to control how content overflows.
+    hidden - hides the content when it crosses border of container,content will overflow padding.
+    scroll - always displays the scrollbar even if content fits inside container.
+    auto - displays scrollbar only if content does not fit.It can display scroll in either or both axis.
+    clip - need to specify this for both x and y axis. It works similar to hidden unless you specify another
+        property - overflow-clip-margin , which allows you to specify how far you want content to overflow the
+        container.along with this to control how content overflows. this needs to specified on both direction
+        for it to work.you cannot do overflow-x: clip
         values for overflow-clip-margin -
-            border-box
-            padding-box
-            content-box
+            20px (here we specify how far we want to go after normal cutoff point, normal cutoff point is end of padding-box , even after border)
+            border-box (content is cutoff after it reaches the edge of border)
+            padding-box (content is cutoff after padding box, this is how hidden works)
+            content-box (text is cut off after content box)
             10px (useful in cases where you want your content to overflow a little)
             -10px
 
-    known bug -
-        you need to specify this property for both x and y axis.
-    relatively new property not supported in all browsers
+        known bug -
+            a)you need to specify this property for both x and y axis.
+            b)this is new property and not avalaible in all browsers.
+                values like border-box are only supported in chromium based browsers.
+
+                trick (even if clip is not supported , we will get hidden) -
+                    overflow: hidden
+                    overflow: clip;
+                    over-clip-margin: 20px
 
 
-    overflow-anchor -
-        auto - when new content is added, scroll position does not move.
-        none - when new content is added , scroll position is adjusted
+overflow-anchor -
+    auto - (default) when new content is added before your current position, you stay in exact same location, 
+        but scroll bar keeps getting smaller.
+    none - When new content is added , you keep on moving down.
+
+    https://css-tricks.com/almanac/properties/o/overflow-anchor/
 
 
-word-break - deals with long word that overflows the container -
-    1)word-wrap(browsers implemented this because ppl started using it) or overflow-wrap (use this). it controls
-        how a world wraps around new line if it overflows the container.
-            a)normal - default, content will overflow the container
-            b)break-word - It breaks the word and it wraps on new line.d/w between this word-break:break-all is
-                that it takes the word that is to be broken to new line. however if we use hyphen: auto, then
-                word is not moved to new line but hyphen is added.
+By default if we have long word, then it will not wrap, it will overflow container, or will be cutoff
+    by container based on overflow property on container.but we do not want to do that, we want to do
+    something to wrap that word to new line.this can be done by these properties -
+
+
+
+    1)overflow-wrap(earlier called word-wrap,browsers implemented this because ppl started using word-wrap) -
+        it controls how a world wraps around new line if it overflows the container.
+            a)normal - default, no wrapping will occur.content will overflow the container
+            b)break-word - It breaks the word and it wraps on new line.word to be broken is moved to new line.
+                see figure 1.if we use hyphen: auto, then word is not started from new line.
+                word-break:break-all also do same thing but it does not take word to be broken to new line.
             c)anywhere(not used that much) - same as breakword, but difference is how it works with min-width. 
                 container -
                     width: min-width;
                     max-width: 200px
                 with anywhere width of container wil depend upon some other longest word and span with this property
                     will be broken to nw line. however with breakword, span will be tried to fit in box util it reaches
-                    max-width, then it will be wrapped.
+                    max-width, then it will be wrapped.in short with anywhere child will not participate in min-width
+                    of parent.
+
+To control how a word breaks -
 
     2)word-break - deals with how word breaks when it overflows the container.
-        normal - does not break word, they stay exactly where they are.
-        break-all - breaks the word and moves it to new line. 
+        normal - does not break word, they stay exactly where they are. words are broken by space and hyphen.
+        break-all - breaks the word and moves it to new line. (figure 2) 
             dw between word-break: break-all and overflow-wrap:break-word -
                 overflow-wrap:break-word - moves word to next line
                 word-break:break-all - does not move word to next line 
+
+                another difference is that with word-break:break-all, you wnt get hyphen,if you use hyphens
+                property.
 
             It will not break chinese, japnese and korean symbols unless it is specific section where it is supposed to
             break those apart. this is because of way these languages are written, if you take 2 symbols and break them
             apart, it will complelty change the meaning of word or sentence.breaking these changes the meaning
                 of word.
-        keep-all - his only matters if you use one of above languages and it will prevent any breaks from happening
+        keep-all - this only matters if you use one of above languages and it will prevent any breaks from happening
             inside the word. if you are not using these languages then this works in same way normal(which is default).
-        break-word - Do not use it. it is same as setting overflow-wrap to anywhere and leaving
-            break-word to normal, so they discontinued this property
+        break-word - Do not use it. it is same as setting overflow-wrap: anywhere and leaving
+            break-word:normal, so they discontinued this property
 
 
 what happens when words do overflow the container, what can you do to notify the user that things are overflowing
     to make it easier for them to understand what's going on.
 
-    1)hyphen -
+    1)hyphens (https://css-tricks.com/almanac/properties/h/hyphenate/) -
         auto - when used with overflow-wrap: break-word or overflow-wrap: anywhere, it does not move word to new
             line, instead it adds hyphens to word to be broken.it does not add hyphen when we use word-break,
-        manual - it only shows hyphen, if it is mentioned in html. also hyphen is showed at same place where it
-            is mentioned in html.
+        manual(default) - Words are only broken at line breaks where there are characters inside the word that 
+            suggest line break opportunities(even if use overflow-wrap and word-break).However if no line break
+            opportunities are mentioned, then it breaks word whereever needed.
+            
+            There are two characters that suggest line break opportunity:
 
-            abcddfg&shytextContinue
-        none -
+            U+2010 (HYPHEN): the “hard” hyphen character indicates a visible line break opportunity. Even if the 
+                line is not actually broken at that point, the hyphen is still rendered. Literally a “-“.
+            U+00AD (SHY): an invisible, “soft” hyphen. This character is not rendered visibly; instead, it 
+                suggests a place where the browser might choose to break the word if necessary. In HTML, you can use 
+                &shy to insert a soft hyphen.
 
-    2)text-overflow -
-        clip - clips any text that is overflowing.
-        ellipses - shows eliipsis to user. this only works if -
-            a)
-                we have exactly one line of text.In order to have single line of text use -
+                abcddfg&shytextContinue
+        none - no hyphens
+
+    2)text-overflow - In order for this to work -
+        a)you should have exactly one line of text.
+            In order to have single line of text use -
                     white-space: nowrap
-
-                or
+            since this is very limiting, we have way to clamp the text if you are using multiple lines of text.
 
                 we limit the number of rows using -
-                    display:            -webkit-box;
+                    display:            -webkit-box | -webkit-inline-box;
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 2 
+        b)overflow content should be hidden. overflow: hidden
+        values -
+            clip - clips any text that is overflowing.
+            ellipses - shows eliipsis to user.
+
+        see figure 3.
+
+
+Extra From Video -
+    white-space (https://css-tricks.com/almanac/properties/w/whitespace/) -
+        normal - 
+            newLines - Collapse
+            Spaces and tabs - Collpase
+            Text Wrapping - wrap
+        nowrap -
+            newLines - Collapse
+            Spaces and tabs - Collpase
+            Text Wrapping - noWrap
+        pre - 
+            newLines - preserved
+            Spaces and tabs - preserved
+            Text Wrapping - no wrap
+        pre-wrap - 
+            newLines - preserve
+            Spaces and tabs - preserve
+            Text Wrapping - wrap
+        pre-line - 
+            will break lines where they break in code, but extra white space is still stripped.
             
-            b)overflow content is hidden -
-                overflow: hidden
+            newLines - preserve
+            Spaces and tabs - collapse
+            Text Wrapping - wrap
+        
