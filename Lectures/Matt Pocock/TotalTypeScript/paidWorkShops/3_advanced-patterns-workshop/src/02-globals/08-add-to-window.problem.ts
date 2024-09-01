@@ -12,6 +12,8 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 window.makeGreeting = () => "Hello, world!";
 
+window.AudioListener;
+
 it("Should let you call makeGreeting from the window object", () => {
   expect(window.makeGreeting()).toBe("Hello, world!");
 

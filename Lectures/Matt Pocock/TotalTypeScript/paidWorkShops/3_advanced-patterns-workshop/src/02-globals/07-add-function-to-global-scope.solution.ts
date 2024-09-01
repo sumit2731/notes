@@ -9,34 +9,14 @@ import { Equal, Expect } from "../helpers/type-utils";
 document;
 
 /**
- * Inside a declare global scope here, this basically gives us access to the global scope that
- * TypeScript can put things in. There are types inside the global scope that affects what globals
- * you can access.
+ * see lecture
  *
- * you have access to document, click on in and it will take you to a d.ts file.Anything you put in d.ts
- * file is automatically added to global scope. but in normal files (like this) you need to use
- * declare global and inside this, you can put things in global scope.
- *
- * how where does this d.ts came?
- *
- *
- * In tsconfig ,lib is a config option that allows you to specify global libraries that sort of get
- * bundled into the global scope here. by default it is commented out(DOM is included by default),
- * but if you comment that in then you need to add this value to have types like document  -
- *
- * lib: ['DOM']
- *
- * this specifies dom libraries in global scope.
+ * @Extra - this feature is called global augmentation. see ts docs
+ * Also in bookmarks -ts-> ts topics - see "declaration  merging" and "module augmentation"
  */
 declare global {
   /**
-   * Things that we add here will be avalaible all over the application without any import.
-   * you can declare function, values types, interface
-   *
-   * This how we add functions.we cannot provide definition -
-   * you get the error -> "An implementation cannot be declared in ambient contexts."
-   *
-   * this global area is ambient context
+   * cannot define function definition just provide declaration (general rule for module augmentation)
    */
   function mySolutionFunc(): boolean;
   /**

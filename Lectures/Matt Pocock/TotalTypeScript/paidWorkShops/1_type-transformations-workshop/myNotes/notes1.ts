@@ -1,27 +1,17 @@
 /**
- * 1-3 - Uisng Type utilities
+ * 3 - here we used awaited utility. see definition of this utility
  *
- * 4 - Convert object properties into union type. keyof
- *
- * 5- Union vs Discrinated union vs Enum
- *
- * 6 - extracting a type from union. used Extract to exact subset of types from union type
- *
- *7 - extracting the type(or union of types) from union using Exclude
+ *9 - Using indexed access on common property in discriminated union, we get union of all possible
+      values. if that property is not present in one of union types we get error, so this
+      works only with discriminated unions.
+ 
+10 - as const helps us to get literal value from broder type slike string, number. it works only at
+   type level. it works at nested level also.
 
- *8 - Got type of individual object properties into a new type. used indexed types
+ 11 - here we passed union into indexed access and got union of values out from object.
 
- *9 - Get union type where each type is value of common property in all types of  discriminated union. used common property in 
-    indexed type
-
- 10 - got values of different properties of object into individual literal types using "as const" and indexed access
-
- 11 - extending on 10 we want to have some property vaues as literal types in union
-
- 12 - here we want all properties not some
-
- 13 - convert array values into union type where each element maps to each literal type in union
-      convert array values into union type where each element maps to some literal types in union
+ 13 - in 12 we got all values of object into union type, here we get all values of array into union
+     type
  */
 
 /**
@@ -42,9 +32,6 @@
  *
  * Pick <Type, Keys>
  * Omit <Type,Keys>
- *
- * Parameters<Type>
- *
  */
 
 /**
