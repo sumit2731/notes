@@ -1,3 +1,7 @@
+/**
+ * read notes filder, there is notes about {} vs Object vs object
+ */
+
 export type Maybe<T extends {}> = T | null | undefined;
 
 type tests = [
@@ -9,5 +13,5 @@ type tests = [
   Maybe<string>,
   Maybe<false>,
   Maybe<0>,
-  Maybe<"">,
+  Maybe<"">
 ];

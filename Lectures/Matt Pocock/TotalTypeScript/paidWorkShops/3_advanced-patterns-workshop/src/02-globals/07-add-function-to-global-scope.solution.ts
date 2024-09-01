@@ -17,6 +17,7 @@ document;
 declare global {
   /**
    * cannot define function definition just provide declaration (general rule for module augmentation)
+   * also you cannot use declare function, as declare cannot be nested inside another declare
    */
   function mySolutionFunc(): boolean;
   /**
