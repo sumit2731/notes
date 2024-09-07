@@ -6,11 +6,20 @@ interface Attributes {
   username: string;
 }
 
+type helperH1<K extends keyof any> = {
+  [Prop in K]: string;
+};
+
 /**
  * How do we create a type helper that represents a union
  * of all possible combinations of Attributes?
  */
-type MutuallyExclusive<T> = unknown;
+
+type MutuallyExclusive<T> = {
+  [Prop in keyof T]: Record<Prop, string>;
+}[keyof T];
+
+type t1 = MutuallyExclusive<Attributes>;
 
 type ExclusiveAttributes = MutuallyExclusive<Attributes>;
 
@@ -28,5 +37,5 @@ type tests = [
           username: string;
         }
     >
-  >,
+  >
 ];

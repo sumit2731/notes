@@ -13,7 +13,9 @@ type Route =
   | { route: "/admin/users"; search: {} };
 
 /**
- * This is useful, but less powerful than solution 2:
+ * This is useful, but less powerful than solution 2.
+ *
+ * here value that we extract out in left hand part can be used in right hand side
  */
 type RoutesObject = {
   [R in Route["route"]]: Extract<Route, { route: R }>["search"];
@@ -33,5 +35,5 @@ type tests = [
         "/admin/users": {};
       }
     >
-  >,
+  >
 ];

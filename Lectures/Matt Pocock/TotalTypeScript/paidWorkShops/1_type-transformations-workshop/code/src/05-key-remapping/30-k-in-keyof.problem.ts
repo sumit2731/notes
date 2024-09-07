@@ -18,5 +18,5 @@ type tests = [
         age: () => number;
       }
     >
-  >,
+  >
 ];

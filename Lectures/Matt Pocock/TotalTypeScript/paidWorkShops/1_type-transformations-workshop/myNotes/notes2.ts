@@ -40,7 +40,22 @@
  *
  * 27 - new way of using infer. which helps us to avoid nested ternaries
  *
- * 28 - distributive nature of generics in condiitonal types (important)
+ */
+
+/**
+ * 34 - this is very important pattern, so see solution comments.
+ * pattern to transform
+ *  union into different union
+ *  union into objectTypes
+ *  object into union
+ *
+ *
+ * 36 - converted unions into other union type
+ *
+ * 39 - this little check is so useful for being able to extract things that you're not sure are they
+ *  in all members of the union.
+ *
+ * 40 - I solved it, but it is important exercise
  */
 
 /**
@@ -51,17 +66,15 @@
  *
  * 28 - When conditional types act on a generic type, they become distributive when given a
  *  union type.
+ *
+ * 32 - use of never type to prune some types out from object type.
+ *
+ * 33 - converting a discriminated union into object type. see comments on both solutions.
+ *
  */
 
 /**
- * 34 - pattern to transform union into different union or into object type
- *
- *
- * 36 - converted unions into other union type
- */
-
-/**
- * Challennges -
+ * Challenges -
  *
  * 37 - not able to solve
  *

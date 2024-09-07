@@ -1,0 +1,2 @@
+1)in order to put constraint on generic that is of type - string| number |symbol
+    use "keyof any"

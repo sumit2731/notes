@@ -16,6 +16,14 @@ type Person = {
 type PersonName = Person["name"];
 
 /**
+ * @mappedTYpe
+ */
+
+type MappedType = {
+  [Property in "prop1" | "prop2"]: string;
+};
+
+/**
  * @UserDefinedTypeGuards
  */
 interface Square {
@@ -63,7 +71,7 @@ console.log(getArea(mySquare)); // 100
 console.log(getArea(myRectangle)); // 40
 
 /* 
-Tye Inference - When ts guesses the types
+Type Inference - When ts guesses the types
 Type Annotation - Giving types in javascript
 Type Assertions - Type Casting
 

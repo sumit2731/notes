@@ -16,7 +16,7 @@ type Route =
  * Here, R represents the individual Route. The lesson here
  * is that the thing we're iterating DOESN'T have to be a
  * string | number | symbol, as long as the thing we cast it to
- * is.
+ * string|number and symbol types
  */
 type RoutesObject = {
   [R in Route as R["route"]]: R["search"];
@@ -36,5 +36,5 @@ type tests = [
         "/admin/users": {};
       }
     >
-  >,
+  >
 ];
