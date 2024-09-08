@@ -4,8 +4,8 @@ import { Equal, Expect } from "../helpers/type-utils";
 /**
  * we can see that the thing that's being captured in the generic slot is the entire object that's being passed in
  * Then we index into this type to get type of parameter for override and return of override.
- * 
- * This is a little bit messy, actually. It's got quite a lot of code. We're representing the generic on quite a high
+ *
+ * This is a little bit messy,actually. It's got quite a lot of code.We're representing the generic on quite a high
  * level, so quite a lot is being captured inside this argument here(TConfig)
  */
 export const getHomePageFeatureFlags = <
@@ -38,9 +38,7 @@ export const getHomePageFeatureFlags2 = <
   THomePageFlags = TConfig["rawConfig"]["featureFlags"]["homePage"]
 >(
   config: TConfig,
-  override: (
-    flags: THomePageFlags
-  ) => THomePageFlags
+  override: (flags: THomePageFlags) => THomePageFlags
 ) => {
   return override(config.rawConfig.featureFlags.homePage);
 };

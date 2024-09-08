@@ -12,11 +12,9 @@ export class Component<TProps> {
 }
 
 /**
- * Till now we were deriving the whole type of argument from generics.
- * It is also possible to derive generic part of argument from generics,
- * and here we are doing that.
- * 
- * so here TProps is dervied from first argument
+ * Key take away from this solution is that we're able to put this generic slot inside the type argument
+ *  of a class or a type helper. This is really cool. We could add this to a promise or something and
+ *  extract out the results of the promise. It shows you just how flexible these slots really are.
  */
 const cloneComponent = <TProps>(component: Component<TProps>) => {
   return new Component(component.getProps());
@@ -32,6 +30,6 @@ it("Should clone the props from a passed-in Component", () => {
   expect(result).toEqual({ a: 1, b: 2, c: 3 });
 
   type tests = [
-    Expect<Equal<typeof result, { a: number; b: number; c: number }>>,
+    Expect<Equal<typeof result, { a: number; b: number; c: number }>>
   ];
 });
