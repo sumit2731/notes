@@ -1,10 +1,16 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const makeSafe =
-  <TParams extends any[], TReturn>(func: (...args: TParams) => TReturn) =>
+/**
+ * @MyApproach - This approach is not able to captre more than one type of arguments in proper way
+ * this gives error in thrid case.
+ *
+ * there instead of capturing tupples it captures array of union type
+ */
+const makeSafe2 =
+  <TParams, TReturn>(func: (...args: TParams[]) => TReturn) =>
   (
-    ...args: TParams
+    ...args: TParams[]
   ):
     | {
         type: "success";
@@ -30,13 +36,13 @@ const makeSafe =
   };
 
 /**
- * @wrongWay of Doing this- here type TParams will be (string | number)
- * so type of argument will be (string | number)[] but instead we want TParams to be [string, number]
+ * The main lessons to take from this is to make sure that when you are representing the
+ * parameters of a function is to use an array type.
  */
-const makeSafe2 =
-  <TParams , TReturn>(func: (...args: TParams[]) => TReturn) =>
+const makeSafe =
+  <TParams extends any[], TReturn>(func: (...args: TParams) => TReturn) =>
   (
-    ...args: TParams[]
+    ...args: TParams
   ):
     | {
         type: "success";
@@ -84,7 +90,7 @@ it("Should return the result on a successful call", () => {
             error: Error;
           }
       >
-    >,
+    >
   ];
 });
 
@@ -116,7 +122,7 @@ it("Should return the error on a thrown call", () => {
             error: Error;
           }
       >
-    >,
+    >
   ];
 });
 

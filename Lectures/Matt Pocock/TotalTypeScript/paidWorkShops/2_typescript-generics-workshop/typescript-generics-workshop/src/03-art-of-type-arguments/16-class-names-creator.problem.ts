@@ -1,16 +1,9 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const createClassNamesFactory2 =
-  <TObj extends object>(classes: TObj) =>
-  (type: keyof TObj, ...otherClasses: unknown[]) => {
-    const classList = [classes[type], ...otherClasses];
-    return classList.join(" ");
-  };
-
 const createClassNamesFactory =
-  <TProps extends keyof any>(classes: Record<TProps, string>) =>
-  (type: TProps, ...otherClasses: unknown[]) => {
+  (classes: unknown) =>
+  (type: unknown, ...otherClasses: unknown[]) => {
     const classList = [classes[type], ...otherClasses];
     return classList.join(" ");
   };
@@ -19,7 +12,6 @@ const getBg = createClassNamesFactory({
   primary: "bg-blue-500",
   secondary: "bg-gray-500",
 });
-
 
 it("Should let you create classes from a className factory", () => {
   expect(getBg("primary")).toEqual("bg-blue-500");
