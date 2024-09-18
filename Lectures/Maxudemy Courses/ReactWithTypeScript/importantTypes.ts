@@ -9,7 +9,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  */
 
 /**
- * 2)ReactElement
+ * 2)ReactElement (JSX.Element)
  * 
  *  interface ReactElement<
         P = any,
@@ -29,7 +29,8 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  */
 
 /**
- * 3)JSXElementConstructor<P>
+ * 3)
+ * @JSXElementConstructor <P>
  *
  * a)Used in type property of ReactElement to represent custom components
  * b)In ComponentProps this is used to
@@ -43,15 +44,60 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  *  b)Class Component is  Constructor Function, this is called with props and returns - Component<P,S>
  *
  *
- * Alternate Type - ElementType (this also  InBuilt ReactComponent for HTML plus CustomComponent)
+ * @SimilarType - ElementType (this also  InBuilt ReactComponent for HTML plus CustomComponent)
  *  how ElementType differs from JSXElementConstructor is, Element Type is Union of -
  *
- *  a)All strings that represent nuilt in components like 'div', 'span'.
+ *  a)All strings that represent built in components like 'div', 'span'.
  *  b)Custom Components - FunctionComponent and ComponentClass
  */
 
 /**
- * 4)Component
+ * 4)
+ * @ElementType - Used to represent a type which we can render using <><>
+ *  represent either a string form of inbuilt jsx element or Ref to CustomReactElement.
+ *
+ * Union of -
+ *
+ *  a)Built in HTML element(string like - h1,div, span) - checks whether this genericType is prop types of inbuilt
+ *      elements if yes return component representing that type
+ *  b)CustomComponent(Functional or Class) - ComponentClass<P> represents this
+ *
+ * ComponentClass is union of -
+ *      a)ClassComponent (represent class component with extra props) and
+ *      b)FunctionalComponent(function with extra properties)
+ *
+ *
+ * Similar to - @JSXElementConstructor<P> plus adds inbuilt component types also.
+ *
+ * used in section 4. code2/src/components/Container.tsx
+ */
+
+/**
+ * 5)FunctionalComponent<P = {}>
+ * 
+ * This represents the FunctionalComponent, with some Extra Type
+ * 
+ *  interface FunctionComponent<P = {}> {
+        (props: P, context?: any): ReactNode;
+        propTypes?: WeakValidationMap<P> | undefined;
+        contextTypes?: ValidationMap<any> | undefined;
+        defaultProps?: Partial<P> | undefined;
+        displayName?: string | undefined;
+    }
+ */
+
+/**
+ * 6)FC<PropType>
+ *
+ * type FC<P = {}> = FunctionComponent<P>;
+ *
+ * This represents the Functional Component Type, with some Extra properties
+ *
+ * This is alternative to define type of Functional Component.
+ */
+
+/**
+ * 7)Component - This represents Class Components
  *
  * Our custom class components extends this class.It is defined at 2 places
  *
@@ -80,7 +126,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  */
 
 /**
- * 5)PropsWithChildren<PropType>
+ * 8)PropsWithChildren<PropType>
  *
  * Used to define prop type of component.
  *
@@ -88,32 +134,7 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  */
 
 /**
- * 6)FC<PropType>
- *
- * type FC<P = {}> = FunctionComponent<P>;
- *
- * This represents the Functional Component Type, with some Extra properties
- *
- * This is alternative to define type of Functional Component.
- */
-
-/**
- * 7)FunctionalComponent<P = {}>
- * 
- * This represents the FunctionalComponent, with some Extra Type
- * 
- *  interface FunctionComponent<P = {}> {
-        (props: P, context?: any): ReactNode;
-        propTypes?: WeakValidationMap<P> | undefined;
-        contextTypes?: ValidationMap<any> | undefined;
-        defaultProps?: Partial<P> | undefined;
-        displayName?: string | undefined;
-    }
- */
-
-/**
- * 7)ComponentProps<ComponentType>
- *
+ * 9)ComponentProps<ComponentType>
  * returns the prop types for given component. primarily used to get prop types of built in html elements
  *  div, button and a.
  *
@@ -126,27 +147,4 @@ import { type ReactNode, type PropsWithChildren, Component, FC } from "react";
  * Other variations -
  *      ComponentPropsWithRef<ComponentType>
  *      ComponentPropsWithoutRef<ComponentType> - here In constraints see descriptive type of ClassComponents
- */
-
-/**
- * 8)
- * @ElementType - THis represent either a string form of inbuilt jsx element or Ref to CustomReactElement
- *      a)checks whether this genericType is prop types of inbuilt elements if yes returns component type for that.
- *      b)otherwise it returns- ComponentType<P>. which is either Functional or class component
- * <as></as>
- *
- * Union of -
- *
- *  a)Built in HTML element(string like - h1,div, span) - checks whether this genericType is prop types of inbuilt
- *      elements if yes return component representing that type
- *  b)CustomComponent(Functional or Class) - ComponentClass<P> represents this
- *
- * ComponentClass is union of -
- *      a)ClassComponent (represent class component with extra props) and
- *      b)FunctionalComponent(function with extra properties)
- *
- *
- * Similar to - @JSXElementConstructor<P> plus adds inbuilt component types also.
- *
- * used in section 4. code2/src/components/Container.tsx
  */

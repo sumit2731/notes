@@ -4,6 +4,8 @@ import {
   type ElementType,
   type ReactNode,
   FC,
+  Component,
+  ReactElement,
 } from "react";
 
 /**
