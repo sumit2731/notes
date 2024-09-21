@@ -55,8 +55,11 @@ Automatic Type Promotion -
 
 
 Arrays -
-    int slNos[]; // here space is not allocated
-    int arr[] = [];
+    ways to declare array -
+        int arr[];
+        int arr[] = new int[5];
+        int arr[] = {1,2,3}
+
     figure 13, space is allocated to array when we tell the size of array.
     figure 14 even through int can fit into float, we do not allow assignment of int [] to
         float array.
@@ -65,6 +68,6 @@ Arrays -
 Multidimesions array -
     Figure 16 -
         You can leave second dimension blank but but cannot leave both dimesions blank.
-    jagged array
+    jagged array - second dimension is not consistent
 
 

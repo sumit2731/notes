@@ -1,0 +1,31 @@
+Fig 1,2 -
+    memory allocated only when you use new keyword.i.e space for instance variable is allocated
+        when you use 'new' keyword.
+    before that only refrence variables are created, there is no instances.when object
+    refrences are not pointing to anything else, then it has value of null.
+
+    so a object refrence can either point to object instance or contain value null(It means
+        it is not pointing to anything else)
+
+
+Fig 4,5 -
+    variable shadowing - instance varibles being shadowed by method arguments.
+    we can access instnace variable directly in class method but to avoid variable shadowing
+        we use this to access them
+
+    solution - use this
+
+fig 6,7 -
+    constructor syntax.
+    we can access member variables directly of use this
+
+    we can call other constructor form constructor by using this
+
+
+Fig 9 -
+    Copy Constructor pattern - When a constructor accepts argument of its own type and uses it
+        to initiatlize the instance.
+
+
+Fig 10 -
+    Java uses "call by value". but implications of passing a object id different.

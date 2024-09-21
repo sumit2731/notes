@@ -1,0 +1,90 @@
+Package -
+    Grouping of classes and interfaces. Class can have same name if they are in different 
+        groups. But in same Package class name cannot be same.
+    Package name format - a.b.c.d.
+    Package name which is specify should also reflect the directory in which this class is going
+        to be situated in source directory.
+
+    Figure 1 -
+        SourceFolder structure should match package name
+        how to include a class in package
+        how to refer to class in package
+
+
+    Figure 2 -
+        Point 4 - we can say that particular code cannot be accessed outside of class.
+        Point 5 - Package a.b.c.d does not belong to package a.b, they are totally different
+            packages.
+
+
+    What if you do not mention a package?
+     by default all code in src folder is under default package.this is not good practice.
+
+import -
+    When you mention a class in another class, java compiler assumes that you are refring to
+        class in same package. if you want to access class from different package use
+        import statement, see figure 4, or you need to use fully qualified class name -
+        a.b.c.d.className
+
+
+    Figure 5 -
+        You can also import all classes in package by using *.
+
+
+Encapsulation & Access Modifiers -
+    Access modifiers helps in achieving encapsulation, it basically means that certain parts
+    of code cannot be accessed outside of class.
+
+    Fig 7 - there are 3 access modifiers, they can used in front of variable name or methodName.
+
+    Default AccessModifier(Figure 8) - If you do not specify anything then this is used.default
+    access modifier is package private.
+
+    Figure 9 -
+        protected members can be access by other class which are in same package.
+
+    Figure 10 -
+        sometime state needs to be accessed outside the class, then use getters and setters.
+        package default is rarely used, there need to be string reason to use it.
+
+    Figure 11 -
+        java is pure OOP, but it breaks this paradigm at 2 places -
+            a)primitives are not objects
+            b)static members of class
+
+    Figure 12 -
+        final means that value cannot change in future.
+        you can do this -
+            final int i;
+            i = 10; (since value was initilaiazed, one change is allowed)
+
+    Figure 15 -
+        final helps to avoid magic value sin code(constnat that just show up in code without any
+            explanation)
+
+
+    Nested classes overview
+        1)static nested class - Car and wheel are related, we want them togather, how do we do that?
+            a)put them in same package - This seems artificial, creating a package just for
+                grouping class
+            b)create static nested class - figure 16. now somebody using wheels class will know
+                that it is related to Car class.
+
+        2)Inner class(Non-static nested class) - In order to create new instnace of wheel,
+            we have to associate it , instance of Car.now that wheel is wheel for specififc Car
+            instnace.
+
+        3)local Classes - classes defined in the scope.
+
+        4)Annonoumous inner class - used when we want to chnage only small behaviour of class.
+            see figure 19. here we override the function.
+
+Fig 20 -
+    In local class we cannot use a variable which is being modified within the scope.
+    Reason for that is JVM makes c opy of that variable and this class uses, it.
+    but if it chnages then that copy will be outdated.
+
+    fig 21, shows best practice to mark it as final. it also shows you the error that compiler
+    shows you
+
+        
