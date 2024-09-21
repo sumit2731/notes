@@ -1,16 +1,36 @@
 Figure 5 -
-    D means value is not integar. this is helpful when we declare
+    double means value is not integar. this is helpful when we declare.
+    In newer version of java this var syntax is also avalaible. compiler looks
+        at right hand side and assigns type. if on right hand side value is not avalible, then
+        it is not valid.
+
+Figure 3 
 
 
 Strings is not of primitive type in Java, It is value.
 
+Figure 5 -
+    5.12E15 -> (5.12) * 10 raised to power of 15
 
-Figure 7 - When java sees that 2 types are assigned to one other they are not same but type 
+
+Figure 7 - 
+    Static Type
+
+    variables can only hold values values which are of variable data type and this is decided at compile time,
+    so it is called sttaic typing. on the other hand we have dynamic typing in js.
+
+
+Figure 8 -
+    type conversion - when java automatically converts values. see figure 8.2, when casting is allowed
+When java sees that 2 types are assigned to one other they are not same but type 
     compatible, then it does something like type conversion.so it does conversion of right hand
     side so that it can be assigned to left hand side.in figure 8 it convert int type into
     double type and assigns it to variable.
 
     generally if left hand side has bigger capacity hen right hand side then assignment is allowed.
+
+Figure 9 -
+    Type Casting, when rules of type conversion are not valid, but you force compiler to do conversion
 
     lets say we have double value that we know can be converted into int, but compiler wnt allow
         us, in that case we can tell compiler that allow me this conversion,how we do that?
@@ -19,7 +39,7 @@ Figure 7 - When java sees that 2 types are assigned to one other they are not sa
             a)they are not of compatible types.
             b)destination has smaller capacity than source
 
-        se figure 9 how to do it. by doing casting we are telling compiler let me do that and if
+        se figure 9.2 how to do it. by doing casting we are telling compiler let me do that and if
             program throws a run time exception, let it be.note java will throw exceotion if and
             only if there is no way to convert values, figure 10 shows that it makes coversion even
             with losing some precision.
@@ -35,6 +55,7 @@ Automatic Type Promotion -
 
 
 Arrays -
+    int slNos[]; // here space is not allocated
     int arr[] = [];
     figure 13, space is allocated to array when we tell the size of array.
     figure 14 even through int can fit into float, we do not allow assignment of int [] to

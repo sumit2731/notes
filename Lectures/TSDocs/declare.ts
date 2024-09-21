@@ -10,15 +10,15 @@
 declare const backpack: string;
 declare var someThing: number;
 
-console.log(backpack);
+// console.log(backpack);
 
 /**
  * This tells that there will a function named this, whose type signature is provided
  *
  * but this will be avalaible in this file only
  */
-declare function dummyFunc(num: number): number;
+// declare function dummyFunc(num: number): number;
 
-declare const window: {
+declare const window {
   name: string;
 };

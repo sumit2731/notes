@@ -28,8 +28,7 @@ interface Source {
  * it looks like as soon as we pass in one type argument, the second type argument doesn't get
  * inferred. This is correct. This is how TypeScript works, and it's so annoying.
  *
- * It's annoying because you can't pass in type arguments and infer the actual arguments in the
- * same function call.
+ * It's annoying because you can't pass in type arguments and infer the actual arguments in the same function call.
  * */
 
 /**

@@ -1,4 +1,4 @@
-1) familiar - lot of syntax is familiar with c, c++.
+1)familiar - lot of syntax is familiar with c, c++.
 2)robust - dev cannot mess things up like in c/c++ with pointer yu can mess things up.
    secure - JVM acts like sandbox.
 

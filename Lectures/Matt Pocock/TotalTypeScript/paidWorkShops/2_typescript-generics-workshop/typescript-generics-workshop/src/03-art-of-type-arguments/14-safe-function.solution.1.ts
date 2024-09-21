@@ -8,9 +8,9 @@ import { Equal, Expect } from "../helpers/type-utils";
  * there instead of capturing tupples it captures array of union type
  */
 const makeSafe2 =
-  <TParams, TReturn>(func: (...args: TParams[]) => TReturn) =>
+  <TParams extends any[], TReturn>(func: (...args: TParams) => TReturn) =>
   (
-    ...args: TParams[]
+    ...args: TParams
   ):
     | {
         type: "success";

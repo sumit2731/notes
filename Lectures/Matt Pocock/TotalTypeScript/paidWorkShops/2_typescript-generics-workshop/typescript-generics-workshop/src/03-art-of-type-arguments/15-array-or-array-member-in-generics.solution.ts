@@ -1,12 +1,14 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
 /**
- * see lecture
+ * Read lecture Captions
  *
- * What this proves is that the rule of thumb of, "When you have a choice, go lower. Don't choose the high
- * representation. Choose the lowest, tightest representation," in general leads you to some good results.
- * Also, constraining this to be only the things that we care about is also important for getting this good
- * inference.
+ * a)When you have an object like this, because an array is an object, basically, then TypeScript is
+ *  not going to infer its members unless you point its focus there.
+ *
+ * b)it's often better to go lower. If you have a choice between representing the higher object or the
+ * members of that object, you should probably represent the members of that object, if that is ony
+ * what you care about
  */
 const makeStatus = <TStatus extends string>(statuses: TStatus[]) => {
   return statuses;

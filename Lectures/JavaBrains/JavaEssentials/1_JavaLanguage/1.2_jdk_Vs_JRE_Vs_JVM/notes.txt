@@ -1,10 +1,15 @@
 JDK - 
     JavaSDK - allows you to write java code, compile it and generate byte code,package it into a 
         application.it comes with run time.
-        needs only for developing java programs not running them. but do contains JVM.
+        needs only for developing java programs not running them.if you just to run java programs,
+        written by someone else,you do not need JavaSDK. 
+
+        It has JavaRun time because if you develop java applications, you would want to run them.
+        before giving to others.
 
 JRE -
-    It is language agnostic, does care from where .class were generates, it just runs them.
+    It is language agnostic, does care from where .class was generated, it just runs them.
+    It is different for different machines.
 
 JVM - Java Virtual machine. It is program that runs the byte code.
     Point 4 - Instead of JVM running the code, JVM can convert byte code into machine level code,

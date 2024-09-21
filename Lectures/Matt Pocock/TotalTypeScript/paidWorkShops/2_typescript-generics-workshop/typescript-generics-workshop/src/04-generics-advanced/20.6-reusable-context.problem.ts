@@ -39,16 +39,3 @@ const buttonStyle = useStyled<MyTheme>((theme) => ({
 const divStyle = useStyled<MyTheme>((theme) => ({
   backgroundColor: theme.color.primary,
 }));
-
-const makeUseStyled =
-  <TTheme>() =>
-  (func: (theme: MyTheme) => CSSProperties) => {
-    return {} as CSSProperties;
-  };
-
-const useStyled2 = makeUseStyled<MyTheme>();
-
-const buttonStyle2 = useStyled2((theme) => ({
-  color: theme.color.primary,
-  fontSize: theme.fontSize.small,
-}));

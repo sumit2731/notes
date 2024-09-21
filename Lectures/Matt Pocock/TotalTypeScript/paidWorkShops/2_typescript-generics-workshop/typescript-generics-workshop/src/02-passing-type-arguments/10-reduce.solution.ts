@@ -11,8 +11,8 @@ const array = [
 ];
 /**
  * See other 2 apporachs also in lecture
- * 
- * Here genrics was used at various places in function definition(as a generic, as type of accumulator)
+ *
+ * Here generics was used at various places in function definition(as a generic, as type of accumulator)
  * we can use any way to give value to generic argument
  */
 const obj = array.reduce<Record<string, { name: string }>>((accum, item) => {
