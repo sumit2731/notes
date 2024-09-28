@@ -11,15 +11,15 @@ Fig 1,2 -
 Fig 4,5 -
     variable shadowing - instance varibles being shadowed by method arguments.
     we can access instnace variable directly in class method but to avoid variable shadowing
-        we use this to access them
+        we use "this" to access them
 
     solution - use this
 
 fig 6,7 -
     constructor syntax.
-    we can access member variables directly of use this
+    we can access member variables directly or use 'this'
 
-    we can call other constructor form constructor by using this
+    we can call other constructor from constructor by using this (see figure 8)
 
 
 Fig 9 -

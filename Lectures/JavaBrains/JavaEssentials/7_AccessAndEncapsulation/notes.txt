@@ -12,7 +12,7 @@ Package -
 
 
     Figure 2 -
-        Point 4 - we can say that particular code cannot be accessed outside of class.
+        Point 4 - we can say that particular code cannot be accessed outside of package.
         Point 5 - Package a.b.c.d does not belong to package a.b, they are totally different
             packages.
 
@@ -50,13 +50,14 @@ Encapsulation & Access Modifiers -
     Figure 11 -
         java is pure OOP, but it breaks this paradigm at 2 places -
             a)primitives are not objects
-            b)static members of class
+            b)static members of class - this is also used while starting java application. who will create
+                first object? it is created in static method.
 
     Figure 12 -
         final means that value cannot change in future.
         you can do this -
             final int i;
-            i = 10; (since value was initilaiazed, one change is allowed)
+            i = 10; (since value was not initilaiazed, one change is allowed)
 
     Figure 15 -
         final helps to avoid magic value sin code(constnat that just show up in code without any

@@ -1,9 +1,13 @@
 Every java project will have src folder which contains your code in package format.
 
 In notepad -
+    creating java program -
+        vi HelloWorld.java
+        write prgram
+        in the end do - :wq
     javac helloWorld.java (generates the complied machine code in same folder - helloWorld.class)
-    java  helloWorld (here it runs the helloWorld.class generated in first step)
+    java  helloWorld (here jvm  runs the helloWorld.class generated in first step)
 
-    These 2 steps can be combined into single one  -
+    These 2 steps can be combined into single one(in newer version of java)  -
 
-    javac helloWorld.java
+    java helloWorld.java

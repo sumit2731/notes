@@ -1,0 +1,7 @@
+1)we can use - 
+    import io.javabrains.vehicles.*
+
+what if 2 packages are imported in class and both have class with same name.
+
+
+2)Nested Inner Class - how class instances are related
