@@ -3,9 +3,6 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 /**
  * See lecture
- *
- * function overloads can also specify the different generics. based on what types of generics
- * you pass, relevent overload signature will be triggered
  */
 function returnWhatIPassInExceptFor1(t: 1): 2;
 /**
@@ -22,14 +19,6 @@ function returnWhatIPassInExceptFor1(t: unknown): unknown {
 
 it("Should return the type 2 when you pass in 1", () => {
   const result = returnWhatIPassInExceptFor1(1);
-  /**
-   * if we hover over this, there's no type argument being inferred here(i.e no generic)
-   * What this means is we can use generics on different function overload signatures to
-   * map different type argument setups.(relationship between arguments)
-   *
-   * how to use generics to pick a particular overload signature (see lecture)
-   * you can differen generics signatures on different function overloads
-   */
   type test1 = Expect<Equal<typeof result, 2>>;
 });
 

@@ -38,3 +38,18 @@
  * How tRPC handles inheritable generics
  *
  */
+
+/**
+ * @section5
+ *
+ * 22,23 - When using function overload, function implementation is not exposed outside. so in overload signatures,
+ *  you need to cover remaining cases.
+ *
+ * 24 - When to use function overloads vs unions
+ *
+ * 25 - How to use generics in function overloads
+ *
+ * 26 - Function overloads can be used in interfaces also
+ *
+ * 28 - "could be instantiated with a subtype of" error and how to fix it
+ */

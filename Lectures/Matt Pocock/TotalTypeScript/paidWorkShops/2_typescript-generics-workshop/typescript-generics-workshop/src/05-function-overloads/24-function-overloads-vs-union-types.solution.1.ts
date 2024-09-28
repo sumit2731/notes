@@ -2,15 +2,7 @@ import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
 /**
- * Everything seems to be working here, You should be asking yourself, are function overloads
- * required here? What am I getting out of declaring these as function overloads that I wouldn't
- * get if I just declared it as a union?
- * 
- * That's because the return type doesn't change based on the thing that you're passing in here.
- * because function overloads are at their best when you have a different return type based on something that you pass in.
-
- *If you just have the same return type, no matter what happens, it's always going to return a
-  string, then you should probably be using a union to express these parameters instead.
+ * use function overloads only when return type of function differs based on type of params
  */
 function runGenerator(generator: () => string): string;
 function runGenerator(generator: { run: () => string }): string;
