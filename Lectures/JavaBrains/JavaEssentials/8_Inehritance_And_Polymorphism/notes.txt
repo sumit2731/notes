@@ -1,0 +1,189 @@
+Class Inheritance
+    It allows us to define common behaviour of similar classes at one place. se first 4 figure
+    class can extend from only one class.
+    Fig 5, 6
+        when class extends from another class, it's like getting what was defined in super class.It's
+            almost as if those members are defined in sub class()watch lecture 2.
+
+
+    Fig 7,8 - 
+        Inheritance and AccessModifiers
+        what members of SuperClass are avalaible inside sub class.
+
+    Fig 9 -
+        when you define member variable  with same name in sub class, it shadows(or hides) the member defined in
+            parent class.
+
+        Fog10, shows using super , you can still access those hidden or shadowed members.
+
+    method overriding -
+        see fig 11.
+        fig 12, shows says that you cannot change return type of overeidden method but keep arguments same.
+            because compiler will not know which method to call, as method of super class also kind of sits in subclass.
+            if you change the number and type of arguments, then its fine.
+        Fig 13 shows -
+            you cannot assign a weak access modifier in sub class.
+             public -> private (not allowed)
+             private -> public (allowed)
+
+    @Override -
+         you can add this annotation when you want to override method in sub class. it serves 2 purposes -
+            a)It will make sure that you are override the class.if you are not then it will give you an error.
+                you can be sure that are over-riding not over-loading
+            b)
+
+    Revisiting encapsulation with Inheritance -
+        Fig 16 - run method can access seats member variable(private) because run is also defined in parent.subclass
+            inherits it from super class.whatever works for parent will continue to work for child also.so as long as
+            it is inheriting from parent,access rules of parent applies.
+
+        Fig 17 - if you override a method, you cannot access restricted member variables.because now you have over-ridden the method
+            the access modifiers and rules of sub class will apply, and since subclass does not inherit seat, so you cannot access
+            seats from overriden run method.
+
+        so you can think of it as when inheritance happens,working state of method is what is inherited.
+
+        That is why there is pattern in java to use getters and setters to access private method,even when you are inheriting.
+        see figure 18, here we want seats varible to be accessible to overriden method, but we cannot want to make seat accessible to
+        subclass. so we define public getters and setters, which can also be accessible be overridden method.
+        
+        in run method fo super class , we have access to seats but we create public getrrs and setters , so that 
+        overridden method in sub class can access it.
+
+
+    constructor call with inheritance -
+        first parent constructor is called then child class constructor. If super class has a no arg constructor(and you have not called
+        super class constructor manually) then it is automatically called.
+        note - if you do ot define any constructor for class, compiler will add a default no arg constructor for that class.
+        
+        however if super class only has parameterized constructor , then you need to explicitly need to call super constructor by using super
+            and passing it parameters.see fgure 19
+
+    Abstract classes -
+        you can cannot create instances.why would we create such a class? 
+        but you can abstract classes can be inherited by non abstract classes or abstrcat classes.
+        see figure 21,22
+
+    Abstract methods - 
+        a method can also be defined abstract in a abstract class. we just need to define signature of method, not body.
+        fig 23, shows that it can be passed in inheritance chain, but in that chain when we have non-abstract class, we need
+        to define that abstract method.
+
+    abstract keyword -
+        fig 24 - last point. while defining abstract methods, over-riding rules apply.
+
+
+    Final in inheritance -
+        class with final keyword cannot be super class of any other class in inehritance.
+        class methods marked as final cannot be overriden in sub class. fig 26.
+
+
+
+    interface -
+        often confused with abstract classes. you can separate out any classes functionality from what needs to be used outside the class vs
+            whats classses internal i.e used inside the class. so if you want to separate those 2, define a class and say these are methods of
+            class that are to be called by somebody outside the class.
+
+        interface is how people outside the class will use class as.
+
+        fig - 28 shows , how to define intreface and how is it used in a class.instead of extends , we use implements.
+
+        class can implement multiple interfaces, and interfaces can extends other interfaces. see fig 29.
+
+        fig 30 - one use of interfaces is to have global constants. here interface has a memebr variable, any class that implements that interface,
+        can access this variable.
+
+    interface vs abstract classes
+        Both cannot be instantiated but there is improtant difference.
+        interface - define contract to outside world
+        abstrcat class - template or staing point for bucnh of classes
+
+    Default method in interface -
+        this is where interfaces are dangeorusly close to abstract classes. but remember interfaces represent the public intreface of class.
+        if method is  ot public then we cannot even use interface for it.
+        so interface can define implementation of class also. implementing class may orverride them or may not override it.
+
+        figure 33- Sports car does not need to define drive method.
+
+        figure 34 - we can choose to override the default method of interface in implementing class.
+
+        figure 35,36 - if class implements 2 interfaces and both of them provide default implementation which kind of conflict with each other,
+        then we are forced to implementing that method in our class.
+
+    interface summary -
+        fig36,37 - 
+            fig 37 -
+                point 2 - interfaces can define static methods on them and we can call them on interface.
+                3 - this is new addition to java, interface can have private methods also, these can be used by default methods to to do some common
+                    things, but these default methods are not accessible outside, interface i.e in implementing classes.
+
+
+Polymorphism - It means many forms.this is ability of java objects to change forms.
+    fig 39 - without polymorphism we need to create separate method for each class.It seems silly to create all these methods, as
+        they seem to do same thing - taking a instance and then call move on it.move methid is in cl;ass Animal, which all of these
+        classes ave inherited from.this is reason why in java,we have concept of polymorphism, where -
+        when you pass a object or you assign a object,to a refrence which is of another type, as long as type is super class, 
+        refrence assignment will work fine.
+
+
+        in our moveAnimal, we can pass any object which is sub class of Animal class. java syas any class that extends Animal Class
+        can be refered to as Animal class.when it is refred to as Animal, that instance changes shape, it is looked as Super Class not
+        as SubClass,that is what polymorphism is all about.
+
+        figure 40 - here we have Lion instance which is passed into Animal refrence variable.so in moveAnimal method, lion instance is
+        in disguise of Animal instance.
+
+        2 key principles of polymorphism(figure 41) -
+        
+            a)so subclass can take form of SuperClass (figure 42)
+            b)when a member of morphed instance is accessed, it is instance member that is accessed, not the class whose form it has taken.
+                so in figure 41, we can pass objects of different subClasses of animal, and different methods will be called.
+
+            so same method will call right method in subClass, whose instnace is passed.
+
+
+    Fig 43 - we assign Lion instnace to Animal refrence variable, so we cannot call any method that does exist on Lion but does not
+        exist on Animal.
+
+    Fig 44 - Lion does not define methiodName ,so it inherit it from Animal. so method define in Animal is called.
+
+    Fig 45 - If you override the method in SubClass, then method in SubClass is called.
+
+
+    Fig 46,47 - car can be assigned to any refrnec variable of type Drivable and FuekVehicle, at run time depending upon how class
+        implement that method, right method on instance will be called.
+
+
+    Fig 48 - here we cannot call a method that we know exist on instnace because refrence type does not have  that method, how can we solve it?
+        use casting. see figure 49,50
+
+
+    Is-a relationship - 2 classes are said to be have "Is-a relationship" if one of them can be  morphed into another, there is a polymorphic relationship.
+        idea is SubClass is a SuperClass.
+
+        Fish is a Animal.
+        Bird is a Animal
+        Lion is a Animal
+
+        "Is a " relationship defines what can be assinged to what else.
+        Fish can be assigned to Animal.
+
+        this is also applicable to intrefaces. see figure 53.
+
+
+    Object class - If a class do not extend from any other class, then it by default extends from object class.so eventually every class
+        in java extends from Object class.figure 54.
+        what is in this class? see figure 55.2 imp methods - toString and equals method.
+
+
+        toString - 
+            toString method is used to get string representation of object.
+        
+            figure 56 shows , default toString method in action.by default , It prints className followed by some number.
+            you can also override it. figure 57 shows customToString method.
+
+        equals - 
+            used to check if 2 instances of object have same value of member variables. figure 58 shows the example implementation of equals
+                methods.here note we have methods like getClass, o.getClass
+
+    
