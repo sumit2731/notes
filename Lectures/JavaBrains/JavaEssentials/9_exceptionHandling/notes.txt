@@ -1,0 +1,34 @@
+The basic of exception handling -
+    When something goes wrong it creates the object of particular class,that class is Exception.It creates it
+    throws it. see figure 1.
+
+    Steps in exception handling -
+
+        Protect the code that throw an exception.
+        Specify what needs to happen on exception
+        Specify what needs to happen no matter what
+        Throw the exception when something wrong happens
+
+    figure 3 - shows that you can have multiple catch blocks and in each catch block you can specify the exception
+        that you want to handle.which catch blocks is executed depends upon which type of exception is thrown.there are multiple
+        exception classes that you can create, multiple exception classes that can inherit from Exception and they can also be
+        thrown and caught.
+
+        figure 5 - ArithmeticException is subclass of Exception. when we hve multiple catch blcoks, Java starts from Top and decides
+        which catch block to execute.because of PolyMorphism, if excption thrown is subclass of class mention in catch block, then that
+        catch block will be executed. this is why in figure 5, we have genral excption is last and ArithmeticException first.
+
+    
+Throw and callstack -
+    
+    Figure 8 - If our try blocks calls a function which is in other place and if that function throws exception, then in call stack nearest
+        try -catch blocked is searched adn exception is thrown their. It means all executions within try block is protected, even if it calls
+        another functions. it makes sures that it traverse the call stack until it finds a try catch block.
+
+        however if we have try block in some other code, the  that would be executed.also if catch on right throws another error, then
+        catch on left is executed.
+
+
+    Uncaught Exceptions leads to end of program.
+        If you do not handle the exception, it goes to default handler and default handler in JVM prints the message in console and end the
+        program.figure 10. that is why it is god practice to catch exceptions.
