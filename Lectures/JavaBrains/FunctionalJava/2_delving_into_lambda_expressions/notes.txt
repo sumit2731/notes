@@ -1,0 +1,17 @@
+Introducing Lamdba Expression
+    see figure 1. here we are assigning a function to a variable.
+
+Lambda Expression Examples
+    figure 4 - here we are not giving type to argument, because it will get
+        it from left hand side expression.
+    you can skip the parenthesis when you have only 1 argument.
+    If you do not have {} then it returns whatever is in single statement.
+
+    which is better Object oriented programming or Functional programming -
+        some problems are easy to solve in functional programming, some are easy to solve in OOPs.
+        Once you learn tools that you have at your displosal for functional programming, you will know where
+        functional programming shines, it is not suited for all kind of problems.In Java default programming 
+        is OOPS, functional programming is additional tool that is made avalible to you. you cnt just avid OOP
+        and do only functional programming in java, it not even possible in java.so its never either-or question.
+        if you are working with java, you are doing OOP, choice is would you like to use fucntional programming 
+        paradigms, while doing OOP. answer is yes, in certain situations it helps.

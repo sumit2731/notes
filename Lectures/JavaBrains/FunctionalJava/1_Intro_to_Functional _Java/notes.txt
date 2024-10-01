@@ -1,0 +1,43 @@
+Functional programming in Java -
+    Figure 1- 
+
+    imperative language - any piece of code is written as series of steps.you do step1, then step2
+        then step3 and so on.so you write down series of steps
+
+
+    Java is not a functional language , but it has functional capabilities.
+    so you can do functional programming in java,even through it is not a pure
+    functional language. this is what we will learn here.
+
+Functions vs methods
+    figure 4 - its like mathematical Functions - f(x) = x + 5
+
+    Main difference is functions only operates on arguments, member methods can also access class instances.
+
+    Pure Functions - only operates on inputs and do not access external state.few more things which we will see later.
+
+    Functional Programming - composing code using pure functions. impure functions are not necessarily bad,they have a 
+    place, they have a need.we cannot build all application using pure functions, impure functions needs to be somewhere.
+    as far as functional programming is concerned ,best practice is to use pure functions as much as possible.
+
+    Is Functional Programming Declarative?
+        when we write functions then it is imperative programming, but when we compose those function togather
+         then it is declarative programming.
+
+
+Limitation of Object Oriented Programming -
+    In code folder see TaskRUnner.java file. here what we wanted to do was we want to measure the time it takes to execute a
+     something.for that we need to take what needs to be executed. for that we have to create a interface, then we have to create
+     a class, then we have to create object  that has that behaviour and we pass it to our runner. This is  object-oriented way 
+     of passing a behaviour.it would be nice if we can directly pass that  baehviour instead of creating class that has that 
+     that behaviour? just pass thing that runs.
+
+
+First Class Function
+    so instead of passing object that has behaviour(figure 6), can we directly pass the behaviour(figure 7).
+    First class function means that functions are thing on their own.This is essential concept of functional
+    programming.it means we can create a function, assign it to a variable and then pas sit around.
+
+    figure8 shows the examples of firstClass entities.lines of code corrosponds to actual thing that exists in memory.
+
+    In java we can have First Class Functions using Lambda Expressions.
