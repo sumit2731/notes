@@ -29,8 +29,7 @@ Class Inheritance
     @Override -
          you can add this annotation when you want to override method in sub class. it serves 2 purposes -
             a)It will make sure that you are override the class.if you are not then it will give you an error.
-                you can be sure that are over-riding not over-loading
-            b)
+            b)It clearly communicates the intent of programmer
 
     Revisiting encapsulation with Inheritance -
         Fig 16 - run method can access seats member variable(private) because run is also defined in parent.subclass
@@ -39,15 +38,15 @@ Class Inheritance
 
         Fig 17 - if you override a method, you cannot access restricted member variables.because now you have over-ridden the method
             the access modifiers and rules of sub class will apply, and since subclass does not inherit seat, so you cannot access
-            seats from overriden run method.
+            seats from overridden run method.
 
         so you can think of it as when inheritance happens,working state of method is what is inherited.
 
         That is why there is pattern in java to use getters and setters to access private method,even when you are inheriting.
-        see figure 18, here we want seats varible to be accessible to overriden method, but we cannot want to make seat accessible to
+        see figure 18, here we want seats variable to be accessible to overridden method, but we cannot want to make seat accessible to
         subclass. so we define public getters and setters, which can also be accessible be overridden method.
         
-        in run method fo super class , we have access to seats but we create public getrrs and setters , so that 
+        in run method fo super class , we have access to seats but we create public getters and setters , so that 
         overridden method in sub class can access it.
 
 
@@ -57,7 +56,7 @@ Class Inheritance
         note - if you do ot define any constructor for class, compiler will add a default no arg constructor for that class.
         
         however if super class only has parameterized constructor , then you need to explicitly need to call super constructor by using super
-            and passing it parameters.see fgure 19
+            and passing it parameters.see figure 19
 
     Abstract classes -
         you can cannot create instances.why would we create such a class? 
