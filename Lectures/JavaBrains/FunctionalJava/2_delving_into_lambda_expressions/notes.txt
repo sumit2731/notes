@@ -15,3 +15,37 @@ Lambda Expression Examples
         and do only functional programming in java, it not even possible in java.so its never either-or question.
         if you are working with java, you are doing OOP, choice is would you like to use fucntional programming 
         paradigms, while doing OOP. answer is yes, in certain situations it helps.
+
+
+Functional Interfaces -
+    no new functional type was introduced because they want to make java backward compatible i.e older
+    versions of java can also use libraries written in Lambda expressions.
+
+    Figure 5- 
+        Lambda expressions are represented by Functional Interfaces.these are special type of interfaces.
+        It is subtype of interface, special type of interface.but it has a rule -
+            Functional Interface needs to have a Single Abstract Method (SAM). it means interfaces
+            that have only one abstract method can be type for lambda expressions.it can have other
+            methods which are implemented(default methods), but only one abstract method.you need to
+            find type of lambda, look at abstract method in interface, that is type. you can have interface with only
+            one abstract method, that is going to type the lambda. see figure 6.
+
+        so we are using interfaces as a workaround to type the lambda.
+
+Lambda handOn-coding -
+    see tis file in code - LambdaExamles.java
+
+    It looks like interface, It behaves like a interface but it is a lambda expression, JVM treats it differently.
+    This is not a class, ypu can treat it as a class and execute it. this is done for backward compatibility.
+
+    now in code see that these lambda expressions can be assigned to each other and when we run them, we get different
+    behaviours.tyou can think of it as achieving different way what was possible with polymorphism,you say I will hold on to
+    parent type and then pass in different types and i can execute a method on the type and get different behaviour.thing
+    that you were doing there was, you were not passing different behaviours, you were passing different things that had 
+    different behaviours and it should just execute on that string.here you are passing the behaviour itself.you execute behaviour
+    itself rather than thing that has  a behaviour. there are no class instances being created here, no constructor being called.
+    there is whole different JVM instruction code that is being used, that is actually for some different reasons.But it kind of
+    reuses it and is little more efficient than creating class instances.
+
+
+

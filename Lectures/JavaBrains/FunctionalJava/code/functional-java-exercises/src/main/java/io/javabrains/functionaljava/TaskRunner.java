@@ -26,5 +26,3 @@ class HelloWorldTask implements Task {
         System.out.println("Hello World");
     }
 }
-
-myFunc = () -> System.out.println("Hello World");
