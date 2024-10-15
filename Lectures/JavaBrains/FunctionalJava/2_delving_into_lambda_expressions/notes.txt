@@ -3,7 +3,9 @@ Introducing Lamdba Expression
 
 Lambda Expression Examples
     figure 4 - here we are not giving type to argument, because it will get
-        it from left hand side expression.
+        it from left hand side expression. things regarding lambda expressions -
+            a)we can give parameter type or it can be infered from left hand side.
+            b)return type is always infered from left hand side
     you can skip the parenthesis when you have only 1 argument.
     If you do not have {} then it returns whatever is in single statement.
 
@@ -21,31 +23,47 @@ Functional Interfaces -
     no new functional type was introduced because they want to make java backward compatible i.e older
     versions of java can also use libraries written in Lambda expressions.
 
-    Figure 5- 
+    Figure 6- 
         Lambda expressions are represented by Functional Interfaces.these are special type of interfaces.
         It is subtype of interface, special type of interface.but it has a rule -
             Functional Interface needs to have a Single Abstract Method (SAM). it means interfaces
             that have only one abstract method can be type for lambda expressions.it can have other
             methods which are implemented(default methods), but only one abstract method.you need to
             find type of lambda, look at abstract method in interface, that is type. you can have interface with only
-            one abstract method, that is going to type the lambda. see figure 6.
+            one abstract method, that is going to type the lambda. see figure 7.
+
+        so type of Lambda is interface. A special subtype of interface, called Functional Interface.
 
         so we are using interfaces as a workaround to type the lambda.
 
+        Figure 7, figure shows, how to type lambda.
+
 Lambda handOn-coding -
-    see tis file in code - LambdaExamles.java
+    see this file in code - LambdaExamples.java
 
-    It looks like interface, It behaves like a interface but it is a lambda expression, JVM treats it differently.
-    This is not a class, ypu can treat it as a class and execute it. this is done for backward compatibility.
+    In code you can see that we used interfaces to type lambda expressions.we look at interface, it has only
+        on abstrcat method, so that is type of lambda expression.from their we get type of arguments and return type.
 
-    now in code see that these lambda expressions can be assigned to each other and when we run them, we get different
+    To execute the lambda expression we use the single method abstract method(which gave type to lambda expression) defined
+        in intreface.
+
+    we have lambda expressions as a handle.It looks like interface,It behaves like a interface but it is a lambda expression,
+    JVM treats it differently.This is not a class, you can treat it as a class and execute it.this is done for backward 
+    compatibility.language designers did not want to have new syntax for lambda expressions.
+
+    We have defined a type for operation(lambda expresison) that accepts a integar and return a integar.so this can be type
+        for any labda expressions that accepts a integra and returns integar.so we define newLambda.
+
+    Now in code see that these lambda expressions can be assigned to each other and when we run them, we get different
     behaviours.tyou can think of it as achieving different way what was possible with polymorphism,you say I will hold on to
     parent type and then pass in different types and i can execute a method on the type and get different behaviour.thing
     that you were doing there was, you were not passing different behaviours, you were passing different things that had 
-    different behaviours and it should just execute on that string.here you are passing the behaviour itself.you execute behaviour
-    itself rather than thing that has  a behaviour. there are no class instances being created here, no constructor being called.
+    different behaviours and it should just execute on that thing.here you are passing the behaviour itself.you execute behaviour
+    itself rather than thing that has  a behaviour. 
+    
+    there are no class instances being created here, no constructor being called.
     there is whole different JVM instruction code that is being used, that is actually for some different reasons.But it kind of
-    reuses it and is little more efficient than creating class instances.
+    reuses it and is little more efficient than creating class instances and then run it.
 
 
 

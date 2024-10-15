@@ -21,8 +21,8 @@ Functions vs methods
     as far as functional programming is concerned ,best practice is to use pure functions as much as possible.
 
     Is Functional Programming Declarative?
-        when we write functions then it is imperative programming, but when we compose those function togather
-         then it is declarative programming.
+        It is more declarative than impertaive programming.when we write functions then it is imperative programming, but
+            when we compose those function togather then it is declarative programming.
 
 
 Limitation of Object Oriented Programming -
@@ -36,8 +36,10 @@ Limitation of Object Oriented Programming -
 First Class Function
     so instead of passing object that has behaviour(figure 6), can we directly pass the behaviour(figure 7).
     First class function means that functions are thing on their own.This is essential concept of functional
-    programming.it means we can create a function, assign it to a variable and then pas sit around.
+    programming.functionas can exist on their own , like objects can exist on their own.it means we can create
+    a function, assign it to a variable and then pass it around.
 
     figure8 shows the examples of firstClass entities.lines of code corrosponds to actual thing that exists in memory.
+        here 10 and "hello" exists in memeory.
 
     In java we can have First Class Functions using Lambda Expressions.
