@@ -17,5 +17,5 @@ document.addEventListener(
   "",
   (event) => {
     console.log(event);
-  },
+  }
 );

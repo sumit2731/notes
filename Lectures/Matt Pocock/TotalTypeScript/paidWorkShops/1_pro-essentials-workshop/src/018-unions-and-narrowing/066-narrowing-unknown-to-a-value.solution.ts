@@ -1,6 +1,13 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
+/**
+ * But knowing that you can do this, I think is a really nice exercise to understand that
+ * TypeScript has your back when you're doing this kind of narrowing. And unknown really
+ * is just like.a massive union type of all of the possible things there are in TypeScript.
+ * And so if you know how to narrow unknown, then you're probably going to have a pretty
+ * easy job narrowing something that's a little bit clearer.
+ */
 const parseValue = (value: unknown) => {
   if (
     typeof value === "object" &&
