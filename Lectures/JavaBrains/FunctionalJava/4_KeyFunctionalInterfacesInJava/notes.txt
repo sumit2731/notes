@@ -1,0 +1,65 @@
+JDK Functional Interfaces
+    figur1 1. there are around 40 intrefaces, they keep chnaging with version to version.
+    These intrefaces fall under categories, see figure 2.there is 5th category also which
+    is not listed here.
+
+Functional Inerface
+    see figure 3. how does single inreface cover all cases? it is through generics(figure 4).
+    For primitives we have autoboxing and unboxing, just like it works in collections.
+    we use functional intreface in figure 5.
+
+Consumer, supplier and Pradicate
+    Consumer - figure 6
+    Supplier figure 7
+    Pradicate - figure 8, It is subtype if Function. but it is useful in lot of checks and filtering data
+        in case of streams.
+
+    What about function that takes no arguments and do not return anything?
+
+    Fo this they did not create separate interfaces, here we reuse Runnable intreface(this is used for 
+    threading).here it is not used in context of threading, so instead of recreating a new intreface,
+    they decide dto use the existing one.iN newwer version of java they have added @FunactionalInterface.
+
+
+JDK Functional Interfaces hands-on
+    see code in JDKFunctionalInterfacesDemo.java
+
+Functiona Arity
+    All intrefaces that we saw so far, accept single argumnets. what if we want to pass more than 1 argument.
+    for that we have different set of interfaces. we add "Bi" in front of all exosting interfaces.order
+    of genreics first param type, second param type, return type.
+
+    BiFunction
+    BiConsumer
+    BiPradicate
+
+    what if we need more than 2 argumets.built in supports ends at 2 arguments,For more than 2 argumnets,
+    you need to create your own or you will have to compose(something that we will discuss later)
+
+    But most of use cases are covered with uniary and binary argumnets only.
+
+
+Operator Interfaces
+    It is very common that function return same data type it accepts. when we something like this we can use
+    operators.see figure 10, here we have to mention Integar 2 times.to solve this problem we have operators.
+    figure 11.Operators are functions interfaces which are kind of extensions of what we have already seen.
+    If we have Function interface and it has same input and out put tyep we can use operator.
+
+    so if function has same input and output type, we can use Operator. see figure 11.there we mention
+    only ne type, it is same for input and output. for 1 argument we use UnaryOperator, for 2 we use 
+    BinanryOperator.
+
+    UnaryOperator<Integer>
+    BinaryOperator<Integer>
+
+    Operators extend their corrposting Functional Interfaces.figure 12.this specilaization comes with a cost
+    though.see figure 13.BiFunction is superclass of BinaryOperator.
+
+    This is readability vs length of code.You should prefer readability but should also prefer thing that
+    gives you more flexability depending upon context.this is one of those things wehre context applies.
+
+    If you want to create API that holds lambda expression, you want people to send lambda expression,
+    then do not use BinanryOperator because then pepople cannot send BiFunction type. so in that case
+    use BiFunction so that people can send both.
+
+    This is tradeoff, it is shorter but you can only accept BinanryOperator.
