@@ -63,3 +63,10 @@ Operator Interfaces
     use BiFunction so that people can send both.
 
     This is tradeoff, it is shorter but you can only accept BinanryOperator.
+
+
+Method refrences handson
+    see code in MethodrefrencesDemo.java
+
+    here we used method refrences in lambda expressions. also here we used constructor in method 
+        refrences also.

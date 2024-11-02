@@ -1,0 +1,35 @@
+MethodRefrences
+    When your lambda is just calling another method and not doing anything else on its own, then there is
+    syntactic shortcut to write lambda in such a way that you can avoid argument names.
+
+    see figure 1, it can be replaced with figure 2. we use ::.
+
+
+Method refrence Examples
+    See fig 3 , here lambda accepts a rguments but do not do anything with it, just passes it to another 
+        method.fg 4 shows samr thing via method refrence, so we skip the inut argument, runtime knows
+        that inout for lambda expressions go to refrenced method. see figure 4, it looks like there is
+        no inut argument, but point of giving a name, when you just need to pass it refrenced method. so we
+        skip it. run times knows that it needs to pass it to refrenced method.
+
+        Here method being refrneced has same number and type of arguments as lambda expression.
+
+    Fig 5 shows another examples. Now trim method exists on String class, now compiler knows, it needs to
+    call trim on string instance , which instance? one which is passed, otherwsie on which instance it will
+    call.it may look like it is static method call, but trim is not staic method, it is instnace method.
+
+    as far as method refrences are concered static method call does not look very difeerent from instnace
+    method call(figure 4 and figure5).in figure 4 we were not passing any arguments so it used sttic method,
+    in figure 5 we passed argument so we called method on parameter instance.
+
+    another example -
+        BiPredicate<String, String> isCaseInsenstiveEqual = (a,b) -> a.equalsIgnore(b);
+        BiPredicate<String, String> isCaseInsenstiveEqual = String::equalsIgnore;
+
+    It's obvious that we pass 2 argumnets, on one of argumnets instance method needs to be called and other
+     one needs to be passed as arguent.
+
+
+MethodRefrences Hands-On
+    
+
