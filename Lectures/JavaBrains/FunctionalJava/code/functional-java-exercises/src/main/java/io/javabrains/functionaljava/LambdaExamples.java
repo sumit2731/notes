@@ -11,10 +11,22 @@ public class LambdaExamples {
 
         newLambda = increment;
         System.out.println(newLambda.operation(20));
+
+
+        SecondMathOperaton secondMathOperaton = x -> x * 2;
+        System.out.println(secondMathOperaton.operation(10));
+
+        // This does not work because interface type is different
+        // secondMathOperaton = (SecondMathOperaton) increment;
     }
 }
 
 
 interface MathOperation {
+    int operation(int x);
+}
+
+
+interface SecondMathOperaton {
     int operation(int x);
 }

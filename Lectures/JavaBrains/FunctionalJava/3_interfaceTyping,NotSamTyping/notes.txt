@@ -1,0 +1,57 @@
+Interface Typing, Not SAM Typeing
+    In LambdaExample.java we assigned one labmda expression to another because they were of same type.
+    it is because type of interface is same. It is type of intreface that is being compared not type of
+    method.
+    we created another interface but kept method type same, still types are not assignable to each other.
+
+Revisiting The Task Example with Lamdas
+    here we wrote the code in TaskRunner .java using labda expresison. see TaskRunner2.java
+
+Functional Interface Annotation (Figure 1)
+    Refer code in TaskRunner2.java.
+
+    Point 2 means when we added more than 1 abstrcat method, error is thrown where lambda was used.
+    but that would mean you chnage something at interface level but at some other point in code, where
+    it is used to type lambda expression, code breaks. so it is imortant to have check at interface level.
+
+    This check is annotation - @FunctionalInterface. this marks interface as FunctionalInterface that means
+    it should have single abstract method.now error will happen at imterface level also.
+
+
+Lambda Code Demo
+    See code in Calculator.java
+
+Lambda vs Anonymous Classes
+    see code in TaskRunner2.java. 
+    islambda just syntactic sugar to announous class?NO. refer to slide 3.
+
+    With Anonymous Classes,object creation is triggerer, as we use new keywod.
+
+    With lambda's there is no object creation invloved.There is new JVM instruction 'invokedynamic'.
+    this was introduced in Java 7.
+
+    refer fig 4 - 
+        invoke dynamic is instruction code that is in compiled class file, this is what JVM looks at.
+        its callsed the JVM opcode, its operational code.just like we have machine code for machine language,
+        this is JAVA Virtual Machine Langugae, this is code that virtual machine understands.
+        it was introduced to support dynamic languages(lot of dynamically typed languages entered JVM) but 
+        this was kind of reused for lambdas.
+
+    Figure 5 -
+        when working with lambda ,it doesnt generate classs until first invocation of lambda.which is realy
+            powerfull. there is concpt of lazyness associated with lambda.
+
+        we send the lambda in line 14 and it is executed in line no 9. so untill the point it is executed,
+        there is very little overhead. for announous class, it has to create a instance of class, hold onto
+        that instnace in heap, pass that refrece around, so there is lot ceremony involved. but with lambdas
+        you do not need to do this in line 14, invokedynamic is going to take care of this.you can think of it
+        as thing that exis on its own,when we run this run(lambda) in line 9, it when it runs invokeDynamic
+        opcode, until then there is no work that needs to be done as opposed to classes where work needs to be
+        done, even before method is invoked.
+
+The Interface Overhead of Lambdas
+    JDK Functional Interfaces - Tgere are some common functional interface, that you can use instead of 
+        creating your own.benefits -
+
+        a)you do not create your own intrefaces, less code
+        b)because of consisteemnt typing intrefaces can be assigned tto each other

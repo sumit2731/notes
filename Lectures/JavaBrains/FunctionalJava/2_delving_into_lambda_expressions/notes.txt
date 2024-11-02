@@ -55,7 +55,7 @@ Lambda handOn-coding -
         for any labda expressions that accepts a integra and returns integar.so we define newLambda.
 
     Now in code see that these lambda expressions can be assigned to each other and when we run them, we get different
-    behaviours.tyou can think of it as achieving different way what was possible with polymorphism,you say I will hold on to
+    behaviours.you can think of it as achieving different way what was possible with polymorphism,you say I will hold on to
     parent type and then pass in different types and i can execute a method on the type and get different behaviour.thing
     that you were doing there was, you were not passing different behaviours, you were passing different things that had 
     different behaviours and it should just execute on that thing.here you are passing the behaviour itself.you execute behaviour
