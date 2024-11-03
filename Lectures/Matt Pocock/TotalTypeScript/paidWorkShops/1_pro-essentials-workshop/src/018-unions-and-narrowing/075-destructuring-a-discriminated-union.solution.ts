@@ -15,6 +15,7 @@ type Shape = Circle | Square;
 
 function calculateArea(shape: Shape) {
   if (shape.kind === "circle") {
+    // inside shape will of type Circle, hnece destructuring  is allowed
     const { radius } = shape;
     return Math.PI * radius * radius;
   } else {

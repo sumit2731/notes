@@ -58,20 +58,35 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  *
  * 71 - type narrowing was not working with object properties, so we used variable to store value.
  *      scpes have an impact on how typescript handkles narrowing in certain cases. until if scope
- *      type narrwoing wa shappening but under fucntion scope it is not happening. reason is we are passing
+ *      type narrwoing was happening but under fucntion scope it is not happening. reason is we are passing
  *      function to filter and ts does not know that this function is executed synchronously.ts assumes that
  *      it is asynchronous fucntion , in between object can be modified.
  *
  *
  *      we solve it by storing value in variable.with version 5.5 ts tracks updates to varible declared with
- *          let ketword also.Why can't TypeScript actually track like object properties in the same way that
- *          it does variables?Well, object properties can do slightly crazier things. They -- you can have 
- *          getters inside them that you can't have in variables. And so TypeScript tends to trust these 
+ *          let ketword also.Why can't TypeScript actually track object properties in the same way that
+ *          it does with variables?Well, object properties can do slightly crazier things. They -- you can have
+ *          getters inside them that you can't have in variables. And so TypeScript tends to trust these
  *          properties a little bit less than it does just with pure variables.
-
-
  *
+ * 74 -  Type narrowing with Discriminated Union. ts knows exactly which properties are
+ *      present inside union inside checks where we have narrowed down the types.
  *
+ * 75,22 - Destructuring while inside descriminated unions.
+ * 76,23 -  using switch statement and descriminated union. this iss match made in heaven
+ *    ts infers this -
+ *      a)Gives autocomplete in switch expressions
+ *      b)it is able to predict return type of function, by understanding whther we have
+ *          hanled all cases or not.i our code we handled all cases , so return type is number.
+ *
+ * 77, 24 - switch true pattern.
+ * 78, 25 - descriminated tupples.
+ * here first element
+ *  what is surprasing here is in function where use tupple ts is able make link vales even after
+ *      destruruting. which is opposite to what happened with object destruting in descriminted union
+ *      in lecture 75.
+ *
+ * 80, 27 - DEfaults in discrininated unions
  */
 /**
  * ToBe seen -
@@ -79,4 +94,13 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * 65 - Handing error
  * 66 - narrowing unknwo type
  * 71 - typscript does not trust object properties for null checking in type narrowing.
+ * 74,75,76 - destructing inside descriminatd unions.
+ *
+ * 78 - descriminated tupples.depending upon first member of tupple, typescript narrows
+ *   down second argument.
+ *
+ * 80- defaults in discriminated unions
+ *
+ * 80.5 - Should you provide Function return type
+ *   see how adding return type helps with covering all the cases in unions
  */

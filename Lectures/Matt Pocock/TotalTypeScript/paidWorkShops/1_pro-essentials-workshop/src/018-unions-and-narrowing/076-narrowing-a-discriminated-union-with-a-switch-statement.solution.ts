@@ -11,7 +11,7 @@ type Square = {
   sideLength: number;
 };
 
-type Shape = Circle | Square;
+type Shape = Circle | Square | { kind: "sumeet" };
 
 function calculateArea(shape: Shape) {
   switch (shape.kind) {

@@ -1,0 +1,19 @@
+Lambda Calling Labdas Calling Lambdas
+    See figure 1.
+    passing lambda to another lambda is main concept in functional programming.This illsutrates
+    functions as first class entities.what you can do with this is create composable functions,
+    you can compose functions from another functions. there are different techbniques for this -
+
+    a)higher order functions
+    b)currying
+
+    All these are techbniques from which you can create complex functions out fo simple functions and get
+    more variotions. it is like you are building small pieces which are these individual functions and then
+    composing them to form something bigger. for demo see LambdaComposability.java.
+
+    Curryiing - You have lambda which takes n argument. we create another lambda which calls that thing
+    but you pass one argument by defualt and then  have another 2 argumnets passed to it. so wrappwer 
+    lambda takes 2 argumnets but it sends 3 argumnets to inner lambda, with strict option about what 1 
+    argument is.
+
+    You you have n-1 argument lambda calling n argument lambda, with 1 defualt argument.
