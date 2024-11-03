@@ -1,7 +1,6 @@
 /**
  * IDE Superpowers
  *
- *
  * 40 - hovering over different paths in nested object notationa.b.c.d
  *
  * 42 - ts doc comments - @example
@@ -15,7 +14,7 @@
  *
  * 47 - rename symbol explained, this also works across the files.
  *
- * 46 -
+ * 46 - Navigating Code with "Go to Definition"
  *  cmd+click
  *  where function is used - It acts like "Go to definition"
  *  where function is defined - It acts like "Go to instances"
@@ -23,7 +22,8 @@
  *
  * 48 - Adding missing import
  *     a)Get sugesstions by autocomplete, move to end of line and press ctrl + space.
- *     b)open quick fixes by moving to error and pressing - "cmd + .", from there select  Add All missing imports.
+ *     b)open quick fixes by moving to error and pressing - "cmd + .", from there select
+ *          Add All missing imports.
  *
  *
  * 49 - From command pellete - "organize imports", prune imports that are not used.

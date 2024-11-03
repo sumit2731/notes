@@ -91,7 +91,7 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
 /**
  * ToBe seen -
  *
- * 65 - Handing error
+ * 65 - Handling error
  * 66 - narrowing unknwo type
  * 71 - typscript does not trust object properties for null checking in type narrowing.
  * 74,75,76 - destructing inside descriminatd unions.

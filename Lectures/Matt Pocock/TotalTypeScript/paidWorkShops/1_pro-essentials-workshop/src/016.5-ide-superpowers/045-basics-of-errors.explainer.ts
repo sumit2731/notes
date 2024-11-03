@@ -30,3 +30,12 @@ type FunctionThatReturnsAString = () => string;
 const fn: FunctionThatReturnsAString = () => {
   return 123;
 };
+
+/**
+ * If we reworked the fn to be a function with a return type of string, then the error message would
+ * move closer to the source:
+ */
+
+const fn2 = (): string => {
+  return 123; // red squiggly line under `return`
+};
