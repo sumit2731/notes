@@ -14,16 +14,6 @@ type Square = {
 type Shape = Circle | Square;
 
 /**
- * Note - this is not working
- */
-function calculateArea2s(shape: Shape) {
-  if (!shape.kind || shape.kind === "circle") {
-    return Math.PI * shape.radius * shape.radius;
-  } else {
-    return shape.sideLength * shape.sideLength;
-  }
-}
-/**
  * @Desc This is the way to mention optionals in discriminated unions
  */
 function calculateArea(shape: Shape) {
@@ -31,6 +21,17 @@ function calculateArea(shape: Shape) {
     return shape.sideLength * shape.sideLength;
   } else {
     return Math.PI * shape.radius * shape.radius;
+  }
+}
+
+/**
+ * @Note - Matt is not sure, why this is not working
+ */
+function calculateArea2s(shape: Shape) {
+  if (!shape.kind || shape.kind === "circle") {
+    return Math.PI * shape.radius * shape.radius;
+  } else {
+    return shape.sideLength * shape.sideLength;
   }
 }
 
