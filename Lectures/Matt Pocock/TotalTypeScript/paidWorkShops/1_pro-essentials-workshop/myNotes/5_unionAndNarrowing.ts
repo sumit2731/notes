@@ -11,10 +11,10 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * Type narrowing
  *   a)using typeof - 58
  *   b)narrowing of null, uisng if condition - 59
- *   c)narrowing uisng throw - 62
+ *   c)narrowing uisng throw - 62.
  *   d)narrowingg useing 'in' operator. If union member have different properties than they can be
  *      narrowed down using in operator - 64
- *   e)narrowing of unknwon using instanceof operator and handling errors -65
+ *   e)narrowing of unknown using instanceof operator and handling errors -65
  *
  * Narrowing Gotchas -
  *  a)narrowing does not work with Boolean constructor - 60
@@ -40,13 +40,17 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
 /**
  * @never
  *
- * 67 - unknown is top type and never is bottom type in ts.see figure 5.
+ * 67 -
+ *
+ * unknown is top type and never is bottom type in ts.see figure 5.
  *  never represents something that can never happen.
  *  you cannot assign anything to never excet for never itself.
  *  but never can be assigned to any other type.in other words anything that is in ts cannot be assgned to never.
- *   becuas eit is something that can never happen
+ *   becuase it is something that can never happen.
  *
- * 67.5 - never type of empty array. Olsution works because never[] is assignable to string[].
+ * example of never - function that throws error returns never
+ *
+ * 67.5 - never type of empty array. solution works because never[] is assignable to string[].
  *
  * 68 - Function that throws errors returns never.d/w unknown and never in union -
  *       unknown - removes everything else and expresson returns unknown
@@ -104,3 +108,18 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * 80.5 - Should you provide Function return type
  *   see how adding return type helps with covering all the cases in unions
  */
+
+const f1 = (a: unknown) => a;
+
+f1(1); // you are asisgning number to unknown
+
+type Square = {
+  kind: "square"; // Discriminator
+  size: number;
+};
+
+type Rectangle = {
+  kind: "rectangle"; // Discriminator
+  width: number;
+  height: number;
+};

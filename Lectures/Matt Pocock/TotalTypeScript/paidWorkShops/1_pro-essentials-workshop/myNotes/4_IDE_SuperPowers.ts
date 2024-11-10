@@ -34,7 +34,7 @@
  *   a)If you select variable name,
  *      1)You get "inline variable", which means it will remove the variable and use expression everywhere,
  *          varible was used.
- *      2)Move to file option - select file where you want to move the varible
+ *      2)Move to file option - select file where you want to move the variable
  *   b)when you select expression
  *      1)move to constant (current scope or module scope)
  *      2)Move to function (current scope or module scope)
@@ -44,7 +44,7 @@
  *       2)Move to file/newFile
  *
  *     d)select function body -
- *        a)cnvert function to on liner arrow function and back
+ *        a)cnvert function to one liner arrow function and back
  *        b)infer return type
  *        c)convert params to destructuring params
  *

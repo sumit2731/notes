@@ -7,6 +7,8 @@ import { expect, it } from "vitest";
  * is just like.a massive union type of all of the possible things there are in TypeScript.
  * And so if you know how to narrow unknown, then you're probably going to have a pretty
  * easy job narrowing something that's a little bit clearer.
+ *
+ * In production, isntead of all this we can use zod and do all this in single line of code.
  */
 const parseValue = (value: unknown) => {
   if (

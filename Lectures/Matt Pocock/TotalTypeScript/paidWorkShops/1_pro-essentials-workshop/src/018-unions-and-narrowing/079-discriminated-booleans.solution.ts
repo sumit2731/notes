@@ -3,7 +3,10 @@ import { Equal, Expect } from "@total-typescript/helpers";
 type User = {
   id: string;
 };
-
+/**
+ *  discriminated unions the discriminator doesn't have to be a string. It can be a boolean.
+ * this is true for discrinated union of objects as well as discriminated tupples
+ */
 type ApiResponse = [true, User[]] | [false, string];
 
 async function fetchData(): Promise<ApiResponse> {
@@ -26,7 +29,9 @@ async function fetchData(): Promise<ApiResponse> {
 
 async function exampleFunc() {
   const [succeeded, value] = await fetchData();
-
+  /**
+   * Here type of value is narrowed based on type of succeeded
+   */
   if (succeeded) {
     console.log(value);
     type test = Expect<Equal<typeof value, User[]>>;
