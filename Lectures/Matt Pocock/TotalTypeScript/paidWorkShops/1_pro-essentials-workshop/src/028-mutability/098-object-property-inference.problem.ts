@@ -3,7 +3,9 @@ type ButtonAttributes = {
 };
 
 const modifyButton = (attributes: ButtonAttributes) => {};
-
+/**
+ * By default ts gives it widest tyoe possible
+ */
 const buttonAttributes = {
   type: "button",
 };

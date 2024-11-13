@@ -35,7 +35,7 @@ const getAvatarImage = (entity: unknown) => {
     // @ts-expect-error
     entity.price;
   }
-
+  //should be able to access only those proeprties which are common in all types of union
   return {
     url: `https://via.placeholder.com/${entity.imageId}`,
     alt: `${entity.name} Avatar`,

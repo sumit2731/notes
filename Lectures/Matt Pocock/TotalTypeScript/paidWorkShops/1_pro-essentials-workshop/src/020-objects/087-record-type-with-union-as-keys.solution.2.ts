@@ -1,5 +1,8 @@
 type Environment = "development" | "production" | "staging";
 
+/**
+ * This is Mapped type (plus index signature)
+ */
 type Configurations = {
   [Env in Environment]: {
     apiBaseUrl: string;

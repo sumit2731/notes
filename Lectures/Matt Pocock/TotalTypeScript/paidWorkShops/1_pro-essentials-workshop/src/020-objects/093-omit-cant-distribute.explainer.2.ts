@@ -23,6 +23,9 @@ type Product = {
 
 type Entity = User | Organisation | Product;
 
+/**
+ * This works because - When conditional types act on a generic type, they become distributive when given a union type.
+ */
 type DistributiveOmit<T, K extends PropertyKey> = T extends any
   ? Omit<T, K>
   : never;

@@ -1,5 +1,8 @@
 import { Extends, Expect } from "@total-typescript/helpers";
 
+/**
+ * There is lot of dulication between these types
+ */
 type User = {
   id: string;
   createdAt: Date;

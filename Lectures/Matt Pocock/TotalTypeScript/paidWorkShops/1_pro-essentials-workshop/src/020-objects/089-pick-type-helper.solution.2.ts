@@ -7,6 +7,9 @@ interface User {
   role: string;
 }
 
+/**
+ * Pick only works for object
+ */
 type PickedUser = Pick<User, "name" | "email">;
 
 const fetchUser = async (): Promise<PickedUser> => {

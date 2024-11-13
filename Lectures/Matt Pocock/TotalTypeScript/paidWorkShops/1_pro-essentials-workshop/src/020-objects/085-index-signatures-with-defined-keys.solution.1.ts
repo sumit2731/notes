@@ -1,8 +1,15 @@
+/**
+ * Same thing is possible in types as well
+ *
+ * thing to be noted is specific proeprties should have values which are subtype
+ *  of value of index type. like last value is not allowed
+ */
 interface Scores {
   [key: string]: number;
   math: number;
   english: number;
   science: number;
+  //physics : sting
 }
 
 // @ts-expect-error science is missing!

@@ -8,7 +8,9 @@ interface Product {
 const addProduct = (productInfo: Product) => {
   // Do something with the productInfo
 };
-
+/**
+ * Derive this type from product
+ */
 addProduct({
   name: "Book",
   price: 12.99,

@@ -12,7 +12,9 @@ const fetchUser = async (): Promise<User> => {
   const user = await response.json();
   return user;
 };
-
+/**
+ * Problem - user should have some types from UserInterface
+ */
 const example = async () => {
   const user = await fetchUser();
 

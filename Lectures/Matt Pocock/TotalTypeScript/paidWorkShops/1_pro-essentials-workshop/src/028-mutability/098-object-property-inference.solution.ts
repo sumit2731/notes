@@ -9,6 +9,16 @@ const buttonAttributes: ButtonAttributes = {
 };
 
 modifyButton(buttonAttributes);
+/**
+ * TypeScript understands that in this setup, really, you can't modify this object literal before it gets passed
+ * in there, it's literally in the parentheses.
+ *
+ * I want to give you a proper sense of how object properties infer so that you can kind of change the way maybe
+ * you declare your variables and mostly you're gonna want to inline them.
+ */
+modifyButton({
+  type: "button",
+});
 
 // Example 2
 

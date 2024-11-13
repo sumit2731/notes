@@ -1,5 +1,7 @@
 import { Extends, Expect } from "@total-typescript/helpers";
-
+/**
+ * Solved using intersection
+ */
 type BaseEntity = {
   id: string;
   createdAt: Date;

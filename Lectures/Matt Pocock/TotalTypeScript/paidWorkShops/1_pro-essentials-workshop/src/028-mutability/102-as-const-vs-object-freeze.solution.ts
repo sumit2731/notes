@@ -11,6 +11,10 @@ type ButtonAttributes = {
 
 const modifyButtons = (attributes: ButtonAttributes) => {};
 
+/**
+ * This works because Object.freeze works only at uop level
+ * where as const works at all nested levels
+ */
 const buttonAttributes = {
   cancel: {
     type: "button",
