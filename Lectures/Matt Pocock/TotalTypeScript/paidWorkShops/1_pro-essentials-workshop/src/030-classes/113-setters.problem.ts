@@ -8,7 +8,10 @@ class CanvasNode {
     this.#x = position?.x ?? 0;
     this.#y = position?.y ?? 0;
   }
-
+  /**
+   * By default getter are read only
+   * we want to be able to set values from outside
+   */
   get position() {
     return {
       x: this.#x,
@@ -46,11 +49,11 @@ it("Should not be able to access x and y from the outside", () => {
 
   expect(
     // @ts-expect-error
-    canvasNode.x,
+    canvasNode.x
   ).toEqual(undefined);
   expect(
     // @ts-expect-error
-    canvasNode.y,
+    canvasNode.y
   ).toEqual(undefined);
 });
 
@@ -58,7 +61,9 @@ it("Should let you set the position", () => {
   const canvasNode = new CanvasNode();
 
   expect(canvasNode.position).toEqual({ x: 0, y: 0 });
-
+  /**
+   * this fails because without setters, getter are read only
+   */
   canvasNode.position = { x: 10, y: 20 };
 
   expect(canvasNode.position).toEqual({ x: 10, y: 20 });

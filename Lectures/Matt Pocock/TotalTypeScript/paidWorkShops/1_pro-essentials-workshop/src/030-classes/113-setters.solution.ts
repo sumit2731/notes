@@ -15,7 +15,13 @@ class CanvasNode {
       y: this.#y,
     };
   }
-
+  /**
+   * This is the setter.
+   * setters are super nice in tyoescript because now we do not need to give it a type.
+   * It is able to understand what type is from the thing that getter returns.
+   *
+   * note that getters and settrs exist at javascript level also. these also exits in normal objects
+   */
   set position(pos) {
     this.#x = pos.x;
     this.#y = pos.y;
@@ -51,11 +57,11 @@ it("Should not be able to access x and y from the outside", () => {
 
   expect(
     // @ts-expect-error
-    canvasNode.x,
+    canvasNode.x
   ).toEqual(undefined);
   expect(
     // @ts-expect-error
-    canvasNode.y,
+    canvasNode.y
   ).toEqual(undefined);
 });
 
@@ -63,7 +69,10 @@ it("Should let you set the position", () => {
   const canvasNode = new CanvasNode();
 
   expect(canvasNode.position).toEqual({ x: 0, y: 0 });
-
+  /**
+   * because of setter we are able to assign value.
+   * this is no longer a readonly property
+   */
   canvasNode.position = { x: 10, y: 20 };
 
   expect(canvasNode.position).toEqual({ x: 10, y: 20 });

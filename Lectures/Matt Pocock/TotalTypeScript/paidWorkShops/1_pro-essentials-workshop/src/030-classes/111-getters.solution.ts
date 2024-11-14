@@ -8,7 +8,12 @@ class CanvasNode {
     this.x = position?.x ?? 0;
     this.y = position?.y ?? 0;
   }
-
+  /**
+   * this is how we define getter
+   *
+   * now you can access position like it is proeprty, like canvas.position.x
+   * this can be accessed inside as we ll a soutside of class
+   */
   get position() {
     return {
       x: this.x,

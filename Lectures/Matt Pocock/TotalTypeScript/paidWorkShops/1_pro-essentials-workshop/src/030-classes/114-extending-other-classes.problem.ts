@@ -2,6 +2,9 @@ import { expect, it } from "vitest";
 
 type ViewMode = "hidden" | "visible" | "selected";
 
+/**
+ * Move all x and y related stuff into separate class and that CanvasNode should inheeirt it
+ */
 class CanvasNode {
   #x: number;
   #y: number;
@@ -66,11 +69,11 @@ it("Should not be able to access x and y from the outside", () => {
 
   expect(
     // @ts-expect-error
-    canvasNode.x,
+    canvasNode.x
   ).toEqual(undefined);
   expect(
     // @ts-expect-error
-    canvasNode.y,
+    canvasNode.y
   ).toEqual(undefined);
 });
 

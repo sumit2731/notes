@@ -1,6 +1,10 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
+  /**
+   * This is javascript way of saying that these preprties should not abe accessible outside.
+   * I always prefer javascript first way
+   */
   #x: number;
   #y: number;
 

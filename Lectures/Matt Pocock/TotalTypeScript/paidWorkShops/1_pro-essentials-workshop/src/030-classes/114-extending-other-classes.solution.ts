@@ -28,6 +28,9 @@ class CanvasNode extends Shape {
   #viewMode: ViewMode;
 
   constructor(options?: { x: number; y: number; viewMode?: ViewMode }) {
+    /**
+     * this calls constructor of parent class
+     */
     super(options);
     this.#viewMode = options?.viewMode ?? "visible";
   }
@@ -73,11 +76,11 @@ it("Should not be able to access x and y from the outside", () => {
 
   expect(
     // @ts-expect-error
-    canvasNode.x,
+    canvasNode.x
   ).toEqual(undefined);
   expect(
     // @ts-expect-error
-    canvasNode.y,
+    canvasNode.y
   ).toEqual(undefined);
 });
 

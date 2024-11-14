@@ -3,7 +3,9 @@ import { expect, it } from "vitest";
 class CanvasNode {
   readonly x: number;
   readonly y: number;
-
+  /**
+   * Either you have initial value for  aproperty or you initialize it in constructor
+   */
   constructor() {
     this.x = 0;
     this.y = 0;

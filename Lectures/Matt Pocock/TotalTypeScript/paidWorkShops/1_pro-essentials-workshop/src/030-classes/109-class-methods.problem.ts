@@ -10,7 +10,9 @@ it("Should be able to move", () => {
 
   expect(canvasNode.x).toEqual(0);
   expect(canvasNode.y).toEqual(0);
-
+  /**
+   * cl;ass needs to have a method
+   */
   canvasNode.move(10, 20);
 
   expect(canvasNode.x).toEqual(10);

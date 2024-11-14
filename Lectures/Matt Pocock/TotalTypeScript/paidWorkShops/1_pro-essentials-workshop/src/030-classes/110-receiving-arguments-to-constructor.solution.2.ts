@@ -1,6 +1,10 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
+  /**
+   * you do not need to give type here. ts gets the type based on assignments that you do in
+   * constructor
+   */
   x;
   y;
 
