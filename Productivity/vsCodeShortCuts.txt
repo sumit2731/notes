@@ -1,0 +1,19 @@
+Mulitcursor -
+    1)Have multicursors over all instance of selected text - cmd + shift + l
+    2)Have multicursor above and below - cmd + option + up/down
+
+Moving lines -
+    1)move file up or down - option + up/down
+
+Asking VS code for help -
+    a)autocomplete - option + space
+    b)quick fix - cmd + .
+    c)Giyhub copilot chat - cmd + i
+
+Selection/Copying -
+    a)Copy a line above or below - option + shift + up/down
+
+Code navigation -
+    a)back - cmd + '-'
+    b)forward - cmd + '+'
+    c)go to line ctrl + g

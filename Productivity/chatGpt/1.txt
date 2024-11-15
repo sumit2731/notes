@@ -1,0 +1,40 @@
+Video - Get to know GitHub Copilot in VS Code and be productive IMMEDIATELY
+
+1)ghost text -
+    How to get suggestions -
+        a)write function name and it starts giving suggestions for body of function
+        b)write a comment. go to next line(enter)
+    Accept/reject -
+        a)accept all - tab
+        b)reject all - esc
+        c)accept partial - cmd/ctrl + left/right
+
+
+2)Additional suggestions - 
+    Gohost text can give you what you want or not. to see alternative suggestions press 
+        "ctrl + enter". For ex you can write a comment and then do ctrl + enter.
+
+3)inline chat - cmd + i
+    YOu can ask it things like -
+        a)A sipmle express server
+        b)generate a react component
+        c)select  some code and ask chat to do some things like -
+            selected a handler in express app and type - "return the staticpublic/index.html file"
+                it then shows you what it has added or removed and you can accept or dsiacrd it
+4)dedicated chat section -
+    Add tests for my code
+    explain the code
+
+    Ghost text if for fast coding, this for you solve problems and help you to make decisions
+    quicker.terrific for brain stroming and  figuting out implementation details
+
+4)In Quick fixes we can use -
+    a)Fix with CoPilot
+    b)Explain with CoPilot
+
+
+5)anywhere you see Spark icon , you ca use it like -
+    a)terminal
+
+Turnoff copilot for specififc files or language -
+    a)click on copilot icon and select "disable completions"
