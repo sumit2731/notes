@@ -18,13 +18,14 @@ Consumer, supplier and Pradicate
 
     Fo this they did not create separate interfaces, here we reuse Runnable intreface(this is used for 
     threading).here it is not used in context of threading, so instead of recreating a new intreface,
-    they decide dto use the existing one.iN newwer version of java they have added @FunactionalInterface.
+    they decide to use the existing one.In newwer version of java they have added @FunactionalInterface
+    with Runnable.
 
 
 JDK Functional Interfaces hands-on
     see code in JDKFunctionalInterfacesDemo.java
 
-Functiona Arity
+Functiona Arity (Number of arguments a function accepts is arity of function - nulary, uniary, binary)
     All intrefaces that we saw so far, accept single argumnets. what if we want to pass more than 1 argument.
     for that we have different set of interfaces. we add "Bi" in front of all exosting interfaces.order
     of genreics first param type, second param type, return type.
@@ -39,21 +40,22 @@ Functiona Arity
     But most of use cases are covered with uniary and binary argumnets only.
 
 
-Operator Interfaces
+Operator Interfaces (Special Version of Functional Intrefaces - inpt and output type is same)
     It is very common that function return same data type it accepts. when we something like this we can use
     operators.see figure 10, here we have to mention Integar 2 times.to solve this problem we have operators.
     figure 11.Operators are functions interfaces which are kind of extensions of what we have already seen.
-    If we have Function interface and it has same input and out put tyep we can use operator.
+    If we have Function interface and it has same input and output type we can use operator.
 
-    so if function has same input and output type, we can use Operator. see figure 11.there we mention
-    only ne type, it is same for input and output. for 1 argument we use UnaryOperator, for 2 we use 
+    so if function(Interface) has same input and output type, we can use Operator. see figure 12.there we mention
+    only one type, It is same for input and output. for 1 argument we use UnaryOperator, for 2 we use 
     BinanryOperator.
 
     UnaryOperator<Integer>
     BinaryOperator<Integer>
 
-    Operators extend their corrposting Functional Interfaces.figure 12.this specilaization comes with a cost
-    though.see figure 13.BiFunction is superclass of BinaryOperator.
+    Operators extend their corrosponding Functional Interfaces.figure 13.this specilaization comes with a cost
+    though.see figure 14.both type have same lambda expressions. but you cannot assign value of super class to
+    variable of type subclass.so you loose interpoeratability here.
 
     This is readability vs length of code.You should prefer readability but should also prefer thing that
     gives you more flexability depending upon context.this is one of those things wehre context applies.

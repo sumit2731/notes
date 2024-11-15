@@ -80,6 +80,9 @@ Encapsulation & Access Modifiers -
         4)Annonoumous inner class - used when we want to chnage only small behaviour of class.
             see figure 19. here we override the function.
 
+            Exra Notes - Later in Lambda expressions we will see that this can also be used to create unnamed
+             classes that implement a interface.
+
 Fig 20 -
     In local class we cannot use a variable which is being modified within the scope.
     Reason for that is JVM makes c opy of that variable and this class uses, it.

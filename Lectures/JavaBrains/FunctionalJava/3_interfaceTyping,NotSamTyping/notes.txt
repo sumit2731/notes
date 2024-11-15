@@ -23,7 +23,7 @@ Lambda Code Demo
 
 Lambda vs Anonymous Classes
     see code in TaskRunner2.java. 
-    islambda just syntactic sugar to announous class?NO. refer to slide 3.
+    islambda just syntactic sugar to announous class?NO. refer to slide 3.there is difference at byte code level.
 
     With Anonymous Classes,object creation is triggerer, as we use new keywod.
 
@@ -50,8 +50,23 @@ Lambda vs Anonymous Classes
         done, even before method is invoked.
 
 The Interface Overhead of Lambdas
+    We saw that Labdas of 2 interfaces cannot be assigned to each other even if interface have same signature (or even name)
+     of single abstract method.that means we have reduced ease of use with lambdas, i just cannot pick a lambda and use it, i
+     need to create interface for it, might as ell create the class what is big deal.In order to solve the problem of needing
+     to create iterface, language authors have created some common interfaces for some common lambda expressions that people
+     tend to use.
     JDK Functional Interfaces - Tgere are some common functional interface, that you can use instead of 
         creating your own.benefits -
 
         a)you do not create your own intrefaces, less code
-        b)because of consisteemnt typing intrefaces can be assigned tto each other
+        b)because of consistent typing intrefaces can be assigned tto each other
+
+    Refer figure 7.
+        both pints means same thing typing is not checked at SAM level it is checked at interface level.
+
+    Figure 8 -
+        We have interface which types lambda which takes a integar and returns a integear. wnt be it good if
+        every labmda that takes a integar and returns a integar, to have a single interface.
+
+    Figure 9 - imagine if jdk library has a IntFunction, we dnt need to write our own interfaces.
+        that is where JDK Functional Interfaces comes into picture.

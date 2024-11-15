@@ -17,10 +17,10 @@ public class TaskRunner2 {
          * This is alternate syntax for passing lambda expression
          * you do not need to create a instance
          */
-        TaskRunner2.runner(() -> System.out.println("Hello World") );
+        TaskRunner2.runner(() -> System.out.println("Hello World"));
         /**
          * Similar thing can also be done by Announymous Classes
-         * we are passing  a instanceofn Task2 to runner method. we do not need to create new class
+         * we are passing  a instance of Task2 to runner method. we do not need to create new class
          * to get instnace of interface, we can just implement it inline. so rather than passing labmda
          * we are passing actual instance.
          * 
@@ -43,11 +43,12 @@ public class TaskRunner2 {
     }
 }
 /**
+ * @FunctionalInterface
  * Only single abstract method is allowed`
  * If more than 1 sabstract method is allowed then it wnt know with which method it should map
  * lambda expression. however defulat methods are allowed
  * 
- * If this had more than 1 abstract method, then error where it is used to type lambda.
+ * If this had more than 1 abstract method, then error comes at place where it is used to type lambda.
  * using this annotaion, error is thrown here itself
  */
 @FunctionalInterface

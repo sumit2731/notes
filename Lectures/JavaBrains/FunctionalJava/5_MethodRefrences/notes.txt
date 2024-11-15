@@ -1,35 +1,52 @@
 MethodRefrences
     When your lambda is just calling another method and not doing anything else on its own, then there is
-    syntactic shortcut to write lambda in such a way that you can avoid argument names.
+    syntactic shortcut to write lambda in such a way that you can avoid argument names. figure 1.
 
-    see figure 1, it can be replaced with figure 2. we use ::.
+    For ex- figure 2,It is calling another function and returning its result, it himslef is not doing anything else.
+        When something like this happens,
+        you can use special syntax where you are refrering to method directly, rathre than sying i have new lambda
+        expression which is calling that method.You are basically saying this lambda,suppier is basically random method
+        of Math class.why create a function which says I am function which calls that metod.Lambda is that method,
+        it is refrencing a another method and this is called method refrences.
+
+    This is syntantci shortcut, it is going to have lambda, which is going to call method.as far as writing is concerced
+    it becomes uite obvious that it is refrence to a mthod. syntax -
+        Supplier<Doucnle> s1 = Math::random
 
 
 Method refrence Examples
-    See fig 3 , here lambda accepts a rguments but do not do anything with it, just passes it to another 
-        method.fg 4 shows samr thing via method refrence, so we skip the inut argument, runtime knows
-        that inout for lambda expressions go to refrenced method. see figure 4, it looks like there is
-        no inut argument, but point of giving a name, when you just need to pass it refrenced method. so we
-        skip it. run times knows that it needs to pass it to refrenced method.
+    See fig 4 , here we have another example but this time it is not a static method.
+    lambda accepts a rguments but do not do anything with it, just passes it along.
+        fg 5 shows samr thing via method refrence, so we skip the inut argument, runtime knows
+        that inout for lambda expressions needs to go to refrenced method. it kind of implies that there is
+        no inut argument,but there is because type is Consumer<String>.but you do not need to give it a name, when
+        you re just going to pass ti along.
 
-        Here method being refrneced has same number and type of arguments as lambda expression.
+        When you arefreing to method that takes a input argument and it has same number and type of arguments as lambda(
+        on left hand side), it can kind of infer it, that same thing needs to go on right hand side(refrenced method).
 
-    Fig 5 shows another examples. Now trim method exists on String class, now compiler knows, it needs to
+
+    Fig 6 shows another examples. Now trim method does not exists on String class, now compiler knows, it needs to
     call trim on string instance , which instance? one which is passed, otherwsie on which instance it will
     call.it may look like it is static method call, but trim is not staic method, it is instnace method.
 
     as far as method refrences are concered static method call does not look very difeerent from instnace
-    method call(figure 4 and figure5).in figure 4 we were not passing any arguments so it used sttic method,
-    in figure 5 we passed argument so we called method on parameter instance.
+    method call(figure 3 and figure6).in figure 3 we were not passing any arguments so it used sttic method,
+    in figure 5 we passed argument, and refrenced method is instnace method so we called method on parameter instance.
 
-    another example -
+    another example(figure 7) -
         BiPredicate<String, String> isCaseInsenstiveEqual = (a,b) -> a.equalsIgnore(b);
         BiPredicate<String, String> isCaseInsenstiveEqual = String::equalsIgnore;
 
-    It's obvious that we pass 2 argumnets, on one of argumnets instance method needs to be called and other
+    It's obvious that we pass 2 argumnets,method refrenced is instance method and takes 1 argument.So it used first instnace to
+        call methid and passed secnd argument to that method.
+     on one of argumnets instance method needs to be called and other
      one needs to be passed as arguent.
+
+     If you laydon riles for this then this looks complicated but if yu look a it in logical way, it makes sense.
 
 
 MethodRefrences Hands-On
+    See code in Method refrences demo
     
 
