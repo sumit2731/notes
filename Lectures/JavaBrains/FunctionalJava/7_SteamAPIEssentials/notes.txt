@@ -1,0 +1,75 @@
+What are Streams?
+    It is different way of dealing with collections.
+    It is another design pattermns for processing elements inside the collections.
+
+
+Declarative Model
+    Java Streams API is alternative way fo operating on collections.there is new cosntruct
+    called streams,which provides a different way of examining, operating and prcessing on collectios.
+    way you do is not as declarative as SQL , stiull some imperative aspects to it but way more declaraive
+    than normal itemation code.we not going to writing those loops.
+
+
+Assembly Line Analogy
+    One point where this asembly line and streams analogy breaks is that in assembly line all works are working on
+        same assembly line.uoercase works on product which is worked upon by trim.With Java Streams everytime you 
+        process it , you get whole new stream.Java Streams are immutable.Java Collections are mutable(we can create immutable
+        collections, but mostly we want collections to be mutatble)
+
+    figure 6 -
+        You can get stream from collection, you ca get one of these instances. every collection has a stream method.this method is
+        in very Top interface Collection, so everyStraem has it.
+
+    figure 7 -
+        Once yoiu get stream you can apply lambda to stream by passing it lambda.For ex stream has method called forEach,you are not using
+        for Loop and iterating over stream, stream itself has forEach method and it accepts the lambda.Then it runs that lambda over each 
+        memebr of stream
+        it accepts a lambda.
+
+
+Streams Code Demo -
+    StreamsDemo.java.
+
+
+OtherWays to Create Stream
+    Stream is not associated with source any way other than,content of source is what is going in stream.
+    No matter Stream is created from ArrayList, List, or Stream.of , stream is tream.omce you have stream,
+    it is stream it does not matter, what kind of source was used to create it.Think it like tis -
+    Stream is d/w kind of DS which is meant for processing the elements and it is d.w from backend DS whose
+    content yu want to process.
+
+    In reactive programming Streams are used for many things like click of mouse.
+    Order of chaining method matters in performance of stream, especially if you are processing portions of the streams.
+    you want to order it in such a way that you get maximum performance.
+
+toList method -
+    stream can be converted to lists by a single method - toList. but for other collections , you need to do some extra work.
+
+Thre key Elements in Stream API -
+
+    Figure 8 -
+        b)intermediate operations - these are assembly line workers.
+            limit - we say stop after certain time,it does not end the stream,it has the stream with certain number of elements on 
+                which we can do foreach,toList etc.
+        c)terminal operations are what ends the stream.they are also what strats the stream.
+            toList  - convert stream into list and then end the stream
+            forEach - apply this lambda to each element in stream, then we dnt care about stream.
+
+    Figure 9(STream) -
+        till now we saw seuqnce streams.we can apply 1 other operator- parallel and we will get parallel stream. we do not have
+         to create cores and say assign this to this, it is declarative rogramming , it will figure out how many cores are there
+         and it splits them across those cores. There are some aspects that you can control.
+
+
+    Fgure 10(Every worker transforms the stream into new stream)
+        Every operators transforms the stream imto new stream.you ca think every assembly line has one wroker, tht worker process the elemen and
+        put it into another assembly line where other worker works on it.
+
+    Figure 11 -
+        finalResult - you get a list from stream
+        sidEffect - for each eleemnt , you print a new line to console
+
+        Main Point ofWhole Operation - wholww point of creation of stream is that either we want final result or sideeffect.think of stream as intermdeiate
+            thingm that is useful for processing.The end result is ofte terminal operation where it takes it back from intermediate to finakl step.analogy
+            is with stringBuffer,you create it becasue you want to do peration on strings, once done, you again create strng out from it. same is for stream,
+            you cannot do much with stream, so yu convert into something else, wwith which you can work with.

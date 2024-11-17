@@ -1,4 +1,7 @@
 Lambda Calling Labdas Calling Lambdas
+
+    We can pass labda to aniother lambdas , there is concept called higher order functions.
+    File - LambdaComposability.java
     See figure 1.
     passing lambda to another lambda is main concept in functional programming.This illsutrates
     functions as first class entities.what you can do with this is create composable functions,
@@ -13,7 +16,66 @@ Lambda Calling Labdas Calling Lambdas
 
     Curryiing - You have lambda which takes n argument. we create another lambda which calls that thing
     but you pass one argument by defualt and then  have another 2 argumnets passed to it. so wrappwer 
-    lambda takes 2 argumnets but it sends 3 argumnets to inner lambda, with strict option about what 1 
+    lambda takes 2 argumnets but it sends 3 argumnets to inner lambda, with strict opinion about what 1 
     argument is.
 
-    You you have n-1 argument lambda calling n argument lambda, with 1 defualt argument.
+    You you have n-1 argument lambda calling n argument lambda, with 1 argument being passed as default.
+
+
+Composability with andThen and compose
+    See lecture
+    See code in ComposableFunctions.java
+
+
+    See use of andThen with methiod refrences. sometimes we want to apply next method in chain only when some coditions is met
+        if that that is not met then go to next one in chain.these are little rarer,I have'nt seen conidtionally applying it,
+        most of this happens when you are processing streams.
+         i have'nt seen it, mostly it happens on streams,
+
+Closures In Java
+    See Code in ScopesProblem.java.
+    First we wrote the code in which lambda is trying to access the variable in same scope.
+    Later we return the lambda from function and call it somewhere else, still lambda has access to that variable defined in method, this
+     is because of closures. one thing to be noticed is becaise of closures lambda remebers the value not variable. so it remebers that it
+     needs to add 1 to 0. this is because outside of scpe there is no variable.since it remebers the value, it does not want you to chnage the value.
+     if try to chnage the variable value in lambda or outside lambda you will get errors.Error - "variable used in lambda expression should be final or
+     effectively final".This is basically java refusing to chnage the varible that is used in closure of lambda expression.because it is saying when
+     lambda goes out and is refreing to the variable that is not in scope,you cannot chnage the variable because i have locked it, i have remebered what
+     the varibale value is, because obviously it cannot get the varibale itself, it cannot hold on to the variable.It says you are doing something fishy here,
+     you are taking the varible which is in local scope and using it in lambda and then sending the lambda out, I cannot send the varible out as well so what
+     java is doing is it is remebering the value of variable and is sending the value.so it says i am sending the variable outide where it is not supposed
+     to go, so do no touch it, as someone lese might use this avriable later. It says either mark variable as final or effective final.
+
+
+    See Figure 4, oint 4, it locks the value not variable.
+
+    see figure 5. It is okay we have a refrence of Object , we use it in lambda expression, even then we can chnage the memebr properties of that
+    refrence inside lambda and even outside labmda. as long as refrence is not chnaged, for example we can have ot as array and chnage methods of array.
+
+    Useually we do not want to use closure, because in pure fucntions we do not want to use variables which are outside of scope of fucntion.
+
+Pure Functions
+    avoid closures and do not use variables which are in scope when lambda is defined
+    These are Way to do efficient, ellegent, testable fucntional programming.
+    Properties of pure functions -
+        As much as possible avoid side effects and using external state(do not refer to external state)
+        take input that they need and only operate on that input(do not refer to external state)
+        reliably , consistent return the same outout for same set of inputs    
+
+    We will be using lot of pure functions when working with java Streams, this is recommneded way of doing it.
+
+    figure 7, point 2 -
+        You know exactly what it does and you can predict what output is going to be, even if it is complicated.
+        Fist of all in functional programming you should not write complicated functions, you should have smaller primimitives. but
+            even if they are complicated it is easier to reason with them if they do not have any side effects.
+
+    figure 7, point 4 -
+        You pass it everything it needs , you know what output is going to be.
+        You do not need to set things up,You do nt need to mock anything, so that you can call the function.
+
+    Impure functions are not bad,It is not that you should not us ethem at all, sometimes they are required, you do need sidefefcts.
+     but in Functional programming Pure Functions are prefered,it saves you lot of headache.
+
+
+
+    

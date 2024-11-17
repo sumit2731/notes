@@ -55,9 +55,12 @@ public class TaskRunner2 {
 interface Task2 {
     void run();
     // int run2();
-    default int foo() {
-        return 1;
-    }
+    /**
+     * DEfault methods are allowed in Functional Interafces
+     */
+    // default int foo() {
+    //     return 1;
+    // }
 }
 
 // class HelloWorldTask2 implements Task2 {

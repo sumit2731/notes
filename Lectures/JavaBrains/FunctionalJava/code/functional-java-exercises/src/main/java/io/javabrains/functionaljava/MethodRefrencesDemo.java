@@ -12,6 +12,7 @@ import java.util.function.Function;
  * These are code examples of
  */
 public class MethodRefrencesDemo {
+
     public static void main(String[] args) {
         Supplier<Double> random = () -> Math.random();
         /**
@@ -35,6 +36,15 @@ public class MethodRefrencesDemo {
 
         Person p1 = new Person("Foo", 25);
         Person p2 = new Person("Foo", 25);
+
+        /**
+         * NotCoveredInCourse
+         * 
+         * This is example form Chat GPT, here we are using method
+         * refrence on instnace of string, not on parameter
+         */
+        String str = "Hello, World!";
+        Supplier<String> methodRef = str::toUpperCase; // Using method reference
 
         BiPredicate<Person, Person> isEqual = (per1, per2) -> per1.equals(per2);
         /**
