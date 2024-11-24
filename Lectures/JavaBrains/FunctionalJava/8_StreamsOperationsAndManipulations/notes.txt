@@ -1,0 +1,55 @@
+Stream vs Collections
+    Collection - Data stirage mechanism
+    Streams - Dtata processing mechanism
+        It is sequence of elements that you get from source and you can process it sequentially or paralelly.
+
+
+    D/W -
+        mutability
+        laziness - when you are using intermediate stpes in streams API,think of it as writing your SQL statement.
+            its writinga  sql query,you have written it, but it wnt be executed until you run it.
+            You cannt setup workers but there is differetn API call to start the stream.You have setup the worke, it 
+            does not mean that actual execution will happen.there is separate API call to intiaite the stream.
+        Processing Intent -
+            collection focus on storing
+            streams on processing and transforming
+
+        Parallelist Support
+
+    Streams are Immytable and created with intent of transformation - conradict?
+        It is intedded design. benefits(figure 5) -
+            a)safe for parelle processing.consider if 2 threads are precissing a collection, one deletes a element, then there
+                needs to be some interbal operations that canbe done on stream, before it is ready for processing, if second
+                thread access it in between it is in messed up state. but in case of streams , there is no such thing s because
+                a new stream is created. so this helps in avoiding some overheads for paraellel execution.
+            b)encourages stateless behaviour - each worker sees a single item, it does not see complete stream. so it cannot place
+                anhything in stream and say , i will visist it later.
+
+
+Limit and Filter Operators
+    how does streams implement immutablity? by providing a API that does not mutate the stream and returns new stream.
+    see code in Intermediate Operators
+
+The Map Operator
+
+The Peek operator and Debugging
+
+The Effect of terminal operator
+    D/w peek and forEach - in both we print something.
+    forEach is not intermediate operator. it does not return stream. same things goes for toList.
+    both of them are terminal operators.
+
+    Also we said that streams are lazy, so stream does not start until we do not have someone to consume the stream. that is terminal
+    operators. terminal operators can return anything,(like forEach returns void, tolIst returns list), but they take us out from stream
+    paradigm.
+
+Distinct and Sorted Operators
+    see code in IntermediateOperators.java
+    Figure 6, point 5 -sorted needs to look at all elements in stream before it can sort them. figure 6,7,8
+    you can also provide a comparator function. see figure 7,8.
+
+
+Concatenating Stream
+    Stream.concat is not a stream , this is API which combines 2 streams
+
+
