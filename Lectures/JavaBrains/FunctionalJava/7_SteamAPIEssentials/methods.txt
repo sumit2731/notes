@@ -1,0 +1,19 @@
+operators -
+
+    terminalOperators -
+        forEach
+        findFirst - hort-circuiting terminal operation. gets the first element and then terminates the stream.
+        anyMatch - short-circuiting terminal operation. returns true/false, on returning rue terminates stream
+
+
+    other -
+        limit
+        filter
+        sorted
+        distinct
+        takeWhile - takes until pradicate return false, when it returns true, terminates the stream
+
+
+    methods on collections that are related to stream -
+        stream - creates a stream from collection
+        parallelStream - creates a parallel stream from collection

@@ -1,26 +1,72 @@
 What are Streams?
-    It is different way of dealing with collections.
-    It is another design pattermns for processing elements inside the collections.
+    It is different way of dealing/processing with collections.
+    It is another design pattern for processing elements inside the collections.we saw iterator pattern
+        of doing this. see code in fgure 1 and 2. here we have to write code for oterating through loop.
+        here logic of looping through collection is external to collection(figre 3).
 
+    see figure 4, we define common thing(looping) in function and pass lambda to whoch is called with
+        individual collection element.
 
 Declarative Model
-    Java Streams API is alternative way fo operating on collections.there is new cosntruct
+    What is big deal about second approach? first way is imperative code.figure 5 shows steps in imperative
+    programming. example of declarative programming is sql state. figure 6 and 7.here we do not specify to use
+    loop and do this, internally it might do that but here we are not doing this.
+
+    This is power of Java Streams API.
+    Java Streams API is alternative way of operating on collections.there is new cosntruct
     called streams,which provides a different way of examining, operating and prcessing on collectios.
     way you do is not as declarative as SQL , stiull some imperative aspects to it but way more declaraive
-    than normal itemation code.we not going to writing those loops.
+    than normal iteration code.we not going to writing those loops.
 
+Stream API Characteristics
+    Figure 8
+    Figure 9 - stream API and functional programming is match made in heaven.
+        Point 1 - we can achieve cool results with composability.we saw how lambda are composable.
+            when you have pure and short functions, you can compose them in powerful way using stream API.
+        Point 2 - you can  have collections processed in parallel, you have one portion of it running
+            on one processor core and another portion of it running on second processor core.It is very tricky
+            to do multiple processors programming in java, you need to bring out all concurrency api, but you
+            do not need to do any of that with streams, you have like built in support because thing that you need
+            to split between different processing cores,which is iteration and all, you are not doing it any way.
+            so you can leave that to framework to handle the splitting it across multiple processor cores.
+            parallel streams is how you do it.it basically splits is across how many cores you have.
+
+            search parallelStream on chatGPT.
+        point 3 - 
+            parallel processing
+            short circuit(some opeartors end the stream when certain conditions are met, so that further processing 
+                does not happen)takeWhile, findFirst, anyMatch
+            lazy - sometimes processing is not even trigegred. sometimes you have processing setup but since certain condition is not
+                met,processing never happens.because it happens lazily, it happens only when it really needs to.so extra
+                resources are not consumed just because you have chain of processing setup.If no data qualifies for processing,
+                no resources are spent.
+
+    when you are working with large collections and doing multiple operations(do this, then do this and all), you should try stream API,
+    rather than using loops.
 
 Assembly Line Analogy
-    One point where this asembly line and streams analogy breaks is that in assembly line all works are working on
-        same assembly line.uoercase works on product which is worked upon by trim.With Java Streams everytime you 
+    figure 10
+    figure 11 - its not single lambda, its chain of lambda's.
+    Key to stream API is generic Stream Interface.
+        Stream<String> = myStream;
+    Figure 13 - stream takes a content of collection and put it on assembly line.
+        each worker works on each items as it comes one by one.
+        One point where this assembly line and streams analogy breaks is that in assembly line all works are working on
+        same assembly line.uppercase works on product which is worked upon by trim.With Java Streams everytime you 
         process it , you get whole new stream.Java Streams are immutable.Java Collections are mutable(we can create immutable
         collections, but mostly we want collections to be mutatble)
 
-    figure 6 -
-        You can get stream from collection, you ca get one of these instances. every collection has a stream method.this method is
-        in very Top interface Collection, so everyStraem has it.
+    Advantages of stream - I wnt say using streams as compared to regular loops provides better performance, but it provides a better
+        programming model, more readable code, declarative approach.it is easier to do parallel processing with streams.so reason
+        for using streams is more elegent readable code. 
 
-    figure 7 -
+
+    You can get stream from collection, you ca get one of these instances. every collection has a stream method.this method is
+        in very Top interface Collection, so every collection has it.once getting stream, you can apply lambda to each stream by passing
+        lambda to stream.for ex, stream has method called forEach.compare it with code in figure in figure 4, we dnt need to write loop 
+        and all.
+
+    figure 14 -
         Once yoiu get stream you can apply lambda to stream by passing it lambda.For ex stream has method called forEach,you are not using
         for Loop and iterating over stream, stream itself has forEach method and it accepts the lambda.Then it runs that lambda over each 
         memebr of stream

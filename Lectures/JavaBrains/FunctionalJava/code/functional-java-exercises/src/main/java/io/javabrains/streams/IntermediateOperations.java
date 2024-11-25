@@ -24,7 +24,7 @@ public class IntermediateOperations {
                  * 
                  * Just see each operator returns a differen stream, we can store it in variable
                  * 
-                 * form now onwads we are going to use the fluent API
+                 * from now onwards we are going to use the fluent API
                  */
                 numbers = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
                 Stream<Integer> evenStream = numbers.filter((x -> x % 2 == 0));
