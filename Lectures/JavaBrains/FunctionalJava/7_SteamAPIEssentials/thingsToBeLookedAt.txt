@@ -1,0 +1,6 @@
+1)how to convert list into different collection. for list we have toList method.
+    Search in chatGpt , you will get answer
+
+Extra from course -
+    Things to be taken care of when we do parellel processing on stream.
+    in chat GPT just seach - parallelStream

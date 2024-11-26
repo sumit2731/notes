@@ -1,3 +1,13 @@
+creating stream -
+    collectionInstnace.stream()
+    collectionInstnace.parallelStream()
+    Array.stream(arrayInstance)
+    Stream.of(ele1,el2,el3)
+    Files.lines(PathofFile)
+    Stream.generate(supplierFunction)
+    Stream.iterate(initialValue,unaryOperator)
+
+
 operators -
 
     terminalOperators -
@@ -14,6 +24,7 @@ operators -
         takeWhile - takes until pradicate return false, when it returns true, terminates the stream
 
 
-    methods on collections that are related to stream -
-        stream - creates a stream from collection
-        parallelStream - creates a parallel stream from collection
+streamMethods -
+    toList - converts stream into list
+    collect - used to convert stream into different collection. using Collectors
+    parallel - converts stream into parallel stream

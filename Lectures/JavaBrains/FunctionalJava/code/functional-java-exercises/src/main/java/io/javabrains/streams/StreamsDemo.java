@@ -30,7 +30,7 @@ public class StreamsDemo {
                  * when you created the stream, run time sets up the assembly line and tells ,
                  * tell me what you need to do with stream.place all the workers before first
                  * element comes.
-                 * betwwen these 2 lines is your oppsotunity to place all the workers in
+                 * between these 2 lines is your oppsotunity to place all the workers in
                  * assembly line.we added one worker, forEach is special type of worker which
                  * triggers the assembly line(terminal operation).worker is added and then
                  * elements starts coming.
@@ -50,7 +50,7 @@ public class StreamsDemo {
                  * Stream.generate() takes supplier as argument,It is going to invoke the
                  * supplier get the value and then create stream from it.often these kind of
                  * stream are infinite so we need to limit it, here we say limit the stream to
-                 * 10 eleemnts
+                 * 10 elemnts
                  * 
                  * Here we use new in nextDouble refrence because this method existing on
                  * instance of
@@ -73,9 +73,9 @@ public class StreamsDemo {
 
                 /**
                  * Converting stream to list- toList method
-                 * tlist has out of box implmenetation.there is not toMap, toSet
+                 * list has out of box implmenetation.there is not toMap, toSet
                  * 
-                 * there is alternative way to do same
+                 * there is alternative way to do same, we will have allok at it
                  */
 
                 List<Integer> uptoHundered = Stream.iterate(0, x -> x + 1)
