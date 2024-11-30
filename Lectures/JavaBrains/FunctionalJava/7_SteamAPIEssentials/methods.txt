@@ -10,21 +10,25 @@ creating stream -
 
 operators -
 
-    terminalOperators -
+    terminalOperators(start and end the stream, they do not return new stream but end the stream) -
         forEach
-        findFirst - hort-circuiting terminal operation. gets the first element and then terminates the stream.
-        anyMatch - short-circuiting terminal operation. returns true/false, on returning rue terminates stream
+        toList - converts teh stream into a list
+        findFirst - short-circuiting terminal operation. gets the first element and then terminates the stream.
+        anyMatch - short-circuiting terminal operation. returns true/false, on returning rue terminates stream.
 
 
-    other -
-        limit
+    intermediate operators(return a different stream) -
+        limit(number)
         filter
-        sorted
+        peek
         distinct
+        sorted
         takeWhile - takes until pradicate return false, when it returns true, terminates the stream
 
 
 streamMethods -
-    toList - converts stream into list
     collect - used to convert stream into different collection. using Collectors
     parallel - converts stream into parallel stream
+
+Static Methods on Stream Class -
+    Stream.concat(stream1, stream2) - combines 2 streams

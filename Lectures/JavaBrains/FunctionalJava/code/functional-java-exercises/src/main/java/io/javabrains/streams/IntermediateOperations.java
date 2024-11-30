@@ -20,10 +20,8 @@ public class IntermediateOperations {
                                 .limit(2)
                                 .forEach(System.out::println);
                 /**
-                 * filter takes a pradicate and return new stream
                  * 
                  * Just see each operator returns a differen stream, we can store it in variable
-                 * 
                  * from now onwards we are going to use the fluent API
                  */
                 numbers = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -32,6 +30,7 @@ public class IntermediateOperations {
                 first2Evens.forEach(System.out::println);
 
                 /**
+                 * here we can also print numbers in map but
                  * recommended practice is not to have a side effect in map
                  */
                 Stream.of("apple", "banana", "cherry", "mangao")
@@ -40,7 +39,7 @@ public class IntermediateOperations {
                                 .forEach(System.out::println);
 
                 /**
-                 * For side efcts use peek
+                 * For side effects use peek
                  * It takes consumer and returns new Stream
                  */
                 Stream.of("apple", "banana", "cherry", "mangao")

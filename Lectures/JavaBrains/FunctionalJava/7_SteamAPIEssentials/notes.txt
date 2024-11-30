@@ -90,6 +90,7 @@ OtherWays to Create Stream
 
 toList method -
     stream can be converted to lists by a single method - toList. but for other collections , you need to do some extra work.
+    extra form lecture - call collect method on stream and use Collectible classes.
 
 Three key Elements in Stream API -
 
@@ -106,7 +107,7 @@ Three key Elements in Stream API -
             till now what we saw is sequential streams.we can apply 1 other operator- parallel and we will get parallel stream.
             we do not have say i will allocate this thread to this thing and this thread to this thing.you just need to say that
             i want this stream to be processsed parallel,freamwork will say ok, how many cores this system have, it has 5 cores,
-            ok, lets split it across those 5 cores.you have some ways n which you can control it, but basically you do not need
+            ok, lets split it across those 5 cores.you have some ways in which you can control it, but basically you do not need
             to go to imperative level and say ok i am going to create 5 thereads and assign this to this thread.this is declarative
             programming remember.
 
