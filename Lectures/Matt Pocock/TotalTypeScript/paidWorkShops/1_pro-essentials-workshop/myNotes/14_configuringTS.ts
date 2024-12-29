@@ -28,4 +28,6 @@
  *          commonjs modules
  *
  * 180 - module and moduleResolution
+ *
+ * 180.4 - verbatin
  */
