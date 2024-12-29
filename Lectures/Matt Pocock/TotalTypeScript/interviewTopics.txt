@@ -1,0 +1,7 @@
+1)module augmentation
+2)declaration files
+3)indexed accsed type
+
+Questions from total typescript -
+    pro-essentials-workshop -
+        a)105

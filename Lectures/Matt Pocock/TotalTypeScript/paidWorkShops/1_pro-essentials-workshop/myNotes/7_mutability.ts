@@ -1,11 +1,14 @@
 /**
- * 97,98 - See how using variables and cardcoded value hile creating object chnages type.
- * 99 - we can define some proeprty  as readonly. this does not add anything at run time, just at type level.
+ * 97,98 - By default javascript defines types to widest types. which is not always what we want.
+ *  here we narrow down types.
  *
- * 103 - readonlyArray - readonly string[] or ReadonlyArray<string>, it only allows method whch does not modify existing array
- * 104 - readonly array cannot be assigned to mutable array. but other way arund is possible
- * 104.5 - readyonly tupple - readonly[number, number]
- * 106 - effect of using "as const" on array
+ * 101 - as const
+ * 103 - readonlyArray - readonly string[] or ReadonlyArray<string>,it only allows those methods
+ *  to be called on array which does not modify the array.
+ * 104 - readonly array cannot be assigned to mutable array. but other way around is possible
+ * 104.5 - readyonly tupple - readonly[number, number]. prevents removing element from tupples.
+ *   so we can ensure that structure remains intact.
+ * 105 - cannot call include on readonly array
  * 107 - using as const on string literal as opposed to using it on objects
  */
 

@@ -4,12 +4,12 @@
     /**
      * For when you're using 'tsc' to transpile:
      */
-    "module": "NodeNext",
+    // "module": "NodeNext",
     // implies: "moduleResolution": "NodeNext",
     /**
      * For when another bundler is transpiling your code:
      */
-    // "module": "Preserve",
+    "module": "Preserve",
     // implies: "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "strict": true,

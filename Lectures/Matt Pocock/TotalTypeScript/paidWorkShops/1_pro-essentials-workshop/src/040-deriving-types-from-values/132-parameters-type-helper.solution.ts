@@ -8,7 +8,7 @@ const makeQuery = (
       [key: string]: string;
     };
     body?: string;
-  },
+  }
 ) => {};
 
 type MakeQueryParameters = Parameters<typeof makeQuery>;

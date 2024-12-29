@@ -7,7 +7,7 @@ import { Equal, Expect } from "@total-typescript/helpers";
 const fetchData = async () => {
   const result = await fetch("/");
   if (!result.ok) {
-    return [new Error("Could not fetch data.")];
+    return [new Error("Could not fetch data.")] as const;
   }
 
   const data = await result.json();
@@ -27,7 +27,10 @@ const fetchData = async () => {
 
 const example = async () => {
   /**
-   * Note how desturted array works with  tupple types
+   * Note how destructuring array works with tupple union types.
+   *
+   * first type is union of first type, since second type only exists in second member it union of undefined and type,
+   * which resolves to any here
    */
   const [error, data] = await fetchData();
 

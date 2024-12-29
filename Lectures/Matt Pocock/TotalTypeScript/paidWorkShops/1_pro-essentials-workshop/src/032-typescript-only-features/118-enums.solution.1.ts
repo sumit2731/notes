@@ -6,7 +6,9 @@ enum LogLevel {
   WARN,
   ERROR,
 }
-
+/**
+ * here you can either pass a enum or you can pass hard coded value(which is supported in enum)
+ */
 function log(opts: {
   globalLogLevel: LogLevel;
   level: LogLevel;

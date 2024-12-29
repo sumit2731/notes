@@ -3,8 +3,11 @@
  * tuples because they prevent weirdnesses like this from occurring. And actually, when I've asked about
  * this on Twitter and spoken to people in the community, they say, yeah, I basically only use read-only
  * tuples. I never use the other kind because it just prevents dangerous situations like this one.
+ *
+ * It uses the concept that readonly type cannot be assigned to mutable type
  */
 type Coordinate = readonly [number, number];
+
 const myHouse: Coordinate = [0, 0];
 
 const dangerousFunction = (arrayOfNumbers: number[]) => {

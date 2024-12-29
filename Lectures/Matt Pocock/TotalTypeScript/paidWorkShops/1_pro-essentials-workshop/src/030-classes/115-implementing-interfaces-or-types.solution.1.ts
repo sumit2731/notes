@@ -4,7 +4,7 @@ interface ShapeOptions {
 }
 /**
  * interface mentions the things that need to be present in public api of class.
- * you cannot mention private preprties here.
+ * you cannot mention private properties here.
  *
  * class can implement both interface as well as type.
  *
@@ -21,6 +21,8 @@ type IShape = {
 class Shape implements IShape {
   #x: number;
   #y: number;
+  // you can mention extra properties also
+  name: string = "sumeet";
 
   constructor(initial?: ShapeOptions) {
     this.#x = initial?.x ?? 0;

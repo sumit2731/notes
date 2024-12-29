@@ -7,6 +7,10 @@ const Method = {
   DELETE: "DELETE",
 };
 
+/**
+ * Problem is user should be forced to use enum type only.
+ */
+
 const request = (url: string, method: "GET" | "POST" | "PUT" | "DELETE") => {
   // ...
 };
@@ -15,13 +19,13 @@ it("Should force you to use the enum values", () => {
   request(
     "https://example.com",
     // @ts-expect-error
-    "GET",
+    "GET"
   );
 
   request(
     "https://example.com",
     // @ts-expect-error
-    "POST",
+    "POST"
   );
 
   request("https://example.com", Method.GET);
@@ -39,6 +43,6 @@ it("Should give you an error if you pass a different enum with the same value", 
   request(
     "https://example.com",
     // @ts-expect-error
-    Method2.GET,
+    Method2.GET
   );
 });

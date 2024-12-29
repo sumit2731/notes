@@ -7,10 +7,13 @@ import java.util.function.UnaryOperator;
 
 public class LambdaComposability {
     /**
-     * It takes a Operation to run and Logs start time and endTime.
      * 
-     * we want to define this also as lambda instaed of sttaic function.
-     * see version 1 of logger
+     * @Version 1
+     * 
+     *          It takes a Operation to run and Logs start time and endTime.
+     * 
+     *          we want to define this also as lambda instead of static function.
+     *          see version 1 of logger
      */
     public static void operationLogger(UnaryOperator<Integer> operator) {
         System.out.println("Start: " + LocalDateTime.now());
@@ -20,60 +23,49 @@ public class LambdaComposability {
 
     public static void main(String[] args) {
         /**
-         * Version 2
+         * Version 1
          */
-        // Runnable logStart = () -> System.out.println("Start: " +
-        // LocalDateTime.now());
-        // Runnable logEnd = () -> System.out.println("End: " + LocalDateTime.now());
-
-        /**
-         * Version 3
-         * 
-         * I am reusing the fucntionality,all these are individual smaller pieces , I am
-         * composing them to form bigger pieces. on elmabda class another lambda, which
-         * then calls another one and so on.
-         */
-        Consumer<String> logMessage = (msg) -> System.out.println(msg + ": " + LocalDateTime.now());
-        Runnable logStart = () -> logMessage.accept("Start");
-        Runnable logEnd = () -> logMessage.accept("End");
-
         UnaryOperator<Integer> increment = x -> x + 1;
+        operationLogger(increment);
 
-        BiConsumer<UnaryOperator<Integer>, Integer> logger = (operator, number) -> {
-
-            /**
-             * Verion 1 - labmda that takes a anther labmda and number, logs time
-             * before and after executing that lambda
-             */
-
-            /*
-             * System.out.println("Start: " + LocalDateTime.now());
-             * operator.apply(number);
-             * System.out.println("End: " + LocalDateTime.now());
-             */
-
-            /**
-             * Version 2
-             * 
-             * we can create lambda exoression for logging state as well
-             */
-
-            // logStart.run();
-            // operator.apply(number);
-            // logEnd.run();
-
-            /**
-             * Version 3
-             */
-            logStart.run();
-            operator.apply(number);
-            logEnd.run();
-        };
         /**
-         * we can create lambda's inline passe them to functions directly.
-         * although our labmda return a number, we can assign them to consumer
+         * Version 2 - we want operationLogger to be lambda nota static method
          */
+
+        BiConsumer<UnaryOperator<Integer>, Integer> logger = (operation, number) -> {
+            System.out.println("Start: " + LocalDateTime.now());
+            operation.apply(number);
+            System.out.println("End: " + LocalDateTime.now());
+        };
         logger.accept(x -> x + 1, 20);
         logger.accept(x -> x * 100, 42);
+
+        /**
+         * Version 3 - we can make printing of statement also a lambda
+         */
+
+        Runnable logStart = () -> System.out.println("Start: " + LocalDateTime.now());
+        Runnable logEnd = () -> System.out.println("End: " + LocalDateTime.now());
+        BiConsumer<UnaryOperator<Integer>, Integer> logger2 = (operation, number) -> {
+            logStart.run();
+            operation.apply(number);
+            logEnd.run();
+        };
+
+        /**
+         * Version 4 - Instead of defining separate lambdas for start and end time, we
+         * can define a common lambda
+         */
+
+        Consumer<String> logMessage = (msg) -> System.out.println(msg + ": " + LocalDateTime.now());
+        Runnable logStart2 = () -> logMessage.accept("Start");
+        Runnable logEnd2 = () -> logMessage.accept("End");
+        BiConsumer<UnaryOperator<Integer>, Integer> logger3 = (operation, number) -> {
+            logStart2.run();
+            operation.apply(number);
+            logEnd2.run();
+        };
+
     }
+
 }

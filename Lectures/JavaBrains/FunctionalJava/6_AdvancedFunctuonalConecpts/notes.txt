@@ -1,11 +1,11 @@
-Lambda Calling Labdas Calling Lambdas
+Lambda Calling Lambas Calling Lambdas
 
-    We can pass labda to aniother lambdas , there is concept called higher order functions.
+    We can pass lambda to another lambdas , there is concept called higher order functions.
     File - LambdaComposability.java
     See figure 1.
-    passing lambda to another lambda is main concept in functional programming.This illsutrates
+    passing lambda to another lambda is main concept in functional programming.This illustrates
     functions as first class entities.what you can do with this is create composable functions,
-    you can compose functions from another functions. there are different techbniques for this -
+    you can compose functions from another functions. there are different techniques for this -
 
     a)higher order functions
     b)currying

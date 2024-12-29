@@ -1,7 +1,14 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
-  constructor(private x: number, private y: number) {}
+  /**
+   * These are added to class with keywords given in constructor
+   *  laternate way to define variable is to define variable outside constructor
+   */
+  constructor(
+    private x: number,
+    private y: number
+  ) {}
 
   move(x: number, y: number) {
     this.x = x;

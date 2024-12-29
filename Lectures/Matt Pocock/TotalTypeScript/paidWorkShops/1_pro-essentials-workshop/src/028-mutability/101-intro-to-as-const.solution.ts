@@ -6,7 +6,11 @@ const modifyButton = (attributes: ButtonAttributes) => {};
 
 /**
  * as const works at type level, it has no implications at run type.
- * It works recuursively at all levels. it marks each proeprty as read only
+ * It works recursively at all levels. it marks each property as read only.
+ * also tightens the type for each property
+ *
+ * also as const can also be used on array, see lecture 105 for details.
+ * it also marks a array as literal type and readonly
  */
 const buttonAttributes = {
   type: "button",

@@ -9,7 +9,11 @@ namespace GeometryUtils {
     }
   }
 }
-
+/**
+ * extra from course - we can have them in different files also
+ *
+ * in non module system where we want to use them, we need to include both of them using '///' syntax
+ */
 namespace GeometryUtils {
   export namespace Rectangle {
     export interface Rectangle {

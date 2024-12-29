@@ -15,6 +15,13 @@ namespace GeometryUtils {
   }
 }
 
+/**
+ * same name interfaces in same name namespaces are merged
+ *
+ * Understanding this merging behavior will be useful when we
+ * look at global declaration merging later on.
+ */
+
 // @ts-expect-error color required!
 const rect: GeometryUtils.Rectangle.Rectangle = {
   width: 10,

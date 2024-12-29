@@ -1,12 +1,19 @@
 import { Equal, Expect } from "@total-typescript/helpers";
+import { unknown } from "zod";
 
 /**
  * @Reason for any type - see snippet at end of code.
- * Here we are returing different tupples in different branches of function, so ts tries to come up with a return type,
- * here in this case, that return type is any[]. seecode snippet at end of code to see why it is any.
+ * Here we are returning different tupples in different branches of function, so ts tries to come up
+ * with a return type,here in this case, that return type is any[]. see code snippet at end of code
+ * to see why it is any.
  *
  *  but we can define our own return type and then all values should be
- * asignable to that type.
+ * assignable to that type.then that type will be assumed as return type of function.
+ * rare usecases where we should give type to function return types.
+ *
+ * this solution works but it is bit cumbersome to type types manually, to avoid this see second solution
+ *
+ *
  */
 const fetchData = async (): Promise<[Error | undefined, any?]> => {
   const result = await fetch("/");
@@ -22,10 +29,11 @@ const fetchData = async (): Promise<[Error | undefined, any?]> => {
 
 const example = async () => {
   /**
-   * Note how desturted array works with  tupple types
+   * how destructuring array works with tupples.
+   *
+   * data has type - any | undefined which resolves to any
    */
   const [error, data] = await fetchData();
-
   type Tests = [
     Expect<Equal<typeof error, Error | undefined>>,
     Expect<Equal<typeof data, any>>,
@@ -33,8 +41,23 @@ const example = async () => {
 };
 
 /**
- * @Here Because of any type in one array,It generalize the return type to array.
- * if we do not have any type then we get a return tyoe which is union typoe
+ * @CodeSnippets 1
+ *
+ * because one meber is unknown, type of a should be number | unknown , which resolves to unknown
+ */
+
+const b: unknown;
+
+const a = [1, b];
+
+/**
+ * @CodeSnippets 2
+ *
+ * Using context established above, return type of else is - Promise<(undefined | unknown)[]> which
+ *  resolves to Promise<unknown[]>. return type of if block - Promise<Error[]>, again union of 2
+ *  results in Promise<unknown[]>
+ *
+ *
  */
 const randomNumber = async () => {
   const num = Math.random();
@@ -49,6 +72,5 @@ const randomNumber = async () => {
      * if we remove any return type then return type of function changes
      */
     return [undefined, b];
-    // return [undefined];
   }
 };

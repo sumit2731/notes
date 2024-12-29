@@ -25,7 +25,7 @@ public class ComposableFunctions {
                  * function.
                  * 
                  * we have a new lambda, i did nt write this lambda,
-                 * this lambda is created by composing 2 existig exiting lambdas togather
+                 * this lambda is created by composing 2 existing exiting lambdas togather
                  */
                 Function<Integer, Integer> combine = doubleIt
                                 .andThen(increment)
@@ -39,14 +39,13 @@ public class ComposableFunctions {
                  * because this is how we think, but both of them can get the job done
                  */
                 /**
-                 * Main use case of andThen is with function refrences
+                 * common use case of andThen is with function refrences
                  * 
                  * Let's You have to create a lambda which is a calling a bunch of API calls and
                  * each one of them can be method refrence,it is much easier to string them
-                 * togather
-                 * with andThen rather thn create a block of code which does all that. thhis is
-                 * popular paradigm
-                 * and i have seen it many times in code bases.
+                 * togather with andThen rather thn create a block of code which does all that.
+                 * this is
+                 * popular paradigm and i have seen it many times in code bases.
                  * 
                  * Ex - given astring, trim psaces from bith end then convert it into uppercase
                  */

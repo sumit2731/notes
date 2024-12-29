@@ -4,7 +4,7 @@ class CanvasNode {
   readonly x: number;
   readonly y: number;
   /**
-   * Either you have initial value for  aproperty or you initialize it in constructor
+   * Either you have initial value for  a property or you initialize it in constructor
    */
   constructor() {
     this.x = 0;

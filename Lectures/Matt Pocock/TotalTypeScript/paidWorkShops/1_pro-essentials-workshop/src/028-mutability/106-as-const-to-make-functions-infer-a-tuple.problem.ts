@@ -20,3 +20,7 @@ const example = async () => {
     Expect<Equal<typeof data, any>>,
   ];
 };
+
+/**
+ * Problem explained with code snippets
+ */

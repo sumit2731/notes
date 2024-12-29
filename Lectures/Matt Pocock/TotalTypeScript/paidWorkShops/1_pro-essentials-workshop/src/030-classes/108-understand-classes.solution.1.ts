@@ -2,7 +2,7 @@ import { expect, it } from "vitest";
 
 class CanvasNode {
   /**
-   * Either you have initial value for  aproperty or you initialize it in constructor
+   * Either you have initial value for property or you initialize it in constructor
    */
   readonly x: number = 0;
   readonly y: number = 0;

@@ -2,8 +2,8 @@ import { expect, it } from "vitest";
 
 class CanvasNode {
   /**
-   * This is typescript first way of not letting access to these proeprties
-   * outside of the class.it intrroduces new keyword. we can use public also which is defualt.
+   * This is typescript first way of not letting access to these properties
+   * outside of the class.it introduces new keyword. we can use public also which is defualt.
    */
   private x: number;
   private y: number;

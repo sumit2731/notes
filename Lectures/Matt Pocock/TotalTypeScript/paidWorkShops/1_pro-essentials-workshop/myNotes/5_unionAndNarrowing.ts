@@ -10,9 +10,10 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
 /**
  * Type narrowing
  *   a)using typeof - 58
- *   b)narrowing of null, uisng if condition - 59
- *   c)narrowing uisng throw - 62.
- *   d)narrowingg useing 'in' operator. If union member have different properties than they can be
+ *   b)narrowing of null, using if condition - 59
+ *      also if conditiona can be narrowed out. like in final solution.
+ *   c)narrowing using throw - 62.
+ *   d)narrowing using 'in' operator. If union member have different properties than they can be
  *      narrowed down using in operator - 64
  *   e)narrowing of unknown using instanceof operator and handling errors -65
  *
@@ -61,7 +62,7 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  *
  *
  * 71 - type narrowing was not working with object properties, so we used variable to store value.
- *      scpes have an impact on how typescript handkles narrowing in certain cases. until if scope
+ *      scopes have an impact on how typescript handkles narrowing in certain cases. until if scope
  *      type narrwoing was happening but under fucntion scope it is not happening. reason is we are passing
  *      function to filter and ts does not know that this function is executed synchronously.ts assumes that
  *      it is asynchronous fucntion , in between object can be modified.
@@ -98,6 +99,8 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * 65 - Handling error
  * 66 - narrowing unknwo type
  * 71 - typscript does not trust object properties for null checking in type narrowing.
+ *
+ * 72.5 - function automatically acts as typegurad
  * 74,75,76 - destructing inside descriminatd unions.
  *
  * 78 - descriminated tupples.depending upon first member of tupple, typescript narrows
@@ -108,18 +111,3 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * 80.5 - Should you provide Function return type
  *   see how adding return type helps with covering all the cases in unions
  */
-
-const f1 = (a: unknown) => a;
-
-f1(1); // you are asisgning number to unknown
-
-type Square = {
-  kind: "square"; // Discriminator
-  size: number;
-};
-
-type Rectangle = {
-  kind: "rectangle"; // Discriminator
-  width: number;
-  height: number;
-};

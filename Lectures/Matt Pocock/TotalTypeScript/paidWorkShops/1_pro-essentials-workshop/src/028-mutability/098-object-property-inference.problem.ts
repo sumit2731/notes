@@ -4,7 +4,7 @@ type ButtonAttributes = {
 
 const modifyButton = (attributes: ButtonAttributes) => {};
 /**
- * By default ts gives it widest tyoe possible
+ * By default ts gives it widest type possible
  */
 const buttonAttributes = {
   type: "button",

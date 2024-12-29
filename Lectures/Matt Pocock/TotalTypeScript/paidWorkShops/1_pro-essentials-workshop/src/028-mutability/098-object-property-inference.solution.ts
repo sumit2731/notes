@@ -34,3 +34,12 @@ const buttonsToChange: ButtonAttributes[] = [
 ];
 
 modifyButtons(buttonsToChange);
+
+/**
+ * @ExtraFormCourse
+ *
+ * OtherWays ton solve this issue
+ *
+ * a)use as const at object level (101)
+ * b)use as const after string literal
+ */

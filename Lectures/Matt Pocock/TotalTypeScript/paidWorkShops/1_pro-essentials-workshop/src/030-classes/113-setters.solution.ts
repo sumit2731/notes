@@ -17,10 +17,10 @@ class CanvasNode {
   }
   /**
    * This is the setter.
-   * setters are super nice in tyoescript because now we do not need to give it a type.
+   * setters are super nice in typescript because now we do not need to give it a type(to argument of setter).
    * It is able to understand what type is from the thing that getter returns.
    *
-   * note that getters and settrs exist at javascript level also. these also exits in normal objects
+   * note that getters and setters exist at javascript level also. these also exits in normal objects
    */
   set position(pos) {
     this.#x = pos.x;

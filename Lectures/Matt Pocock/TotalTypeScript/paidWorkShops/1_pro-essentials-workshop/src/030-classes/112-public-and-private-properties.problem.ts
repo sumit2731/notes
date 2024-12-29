@@ -2,7 +2,7 @@ import { expect, it } from "vitest";
 
 class CanvasNode {
   /**
-   * Make these properties inaccessibke outside of class
+   * Make these properties in accessible outside of class
    */
   x: number;
   y: number;

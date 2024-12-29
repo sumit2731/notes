@@ -7,6 +7,10 @@ const LogLevel = {
   ERROR: 3,
 };
 
+/**
+ * Problem-
+ * you should get error , when you try to pass a number, which is not defined at log level
+ */
 function log(opts: { globalLogLevel: number; level: number; message: string }) {
   if (opts.level >= opts.globalLogLevel) {
     console.log(opts.message);

@@ -1,6 +1,9 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
+/**
+ * here function automatically acts as typeguard
+ */
 const isArrayOfStrings = (value: unknown) => {
   return (
     Array.isArray(value) && value.every((item) => typeof item === "string")
