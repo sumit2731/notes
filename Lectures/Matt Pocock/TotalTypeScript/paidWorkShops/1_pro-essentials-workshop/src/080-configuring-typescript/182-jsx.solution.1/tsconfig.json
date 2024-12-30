@@ -10,6 +10,9 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "moduleDetection": "force",
+    // this creates a jsx file, jsx is remains as it is
+    // this is good option if you are not bundling with tsc. 
+    // if we are bundling for a library we want this to be transformed into js
     "jsx": "preserve"
   },
 }

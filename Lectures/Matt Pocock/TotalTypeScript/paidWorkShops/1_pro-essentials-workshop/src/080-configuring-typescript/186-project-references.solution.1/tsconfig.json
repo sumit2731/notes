@@ -7,5 +7,8 @@
       "path": "./src/server/tsconfig.json"
     }
   ],
+  //By default, TypeScript includes all .ts and .d.ts files in the project directory unless they are excluded using 
+  // the exclude option or not matched by include.When files is used, only the specified files are included in the 
+  // compilation process.
   "files": []
 }

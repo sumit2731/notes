@@ -11,6 +11,9 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "declaration": true,
+    // this solves the problem is in problem folder, you want to use it when
+    //you're in a monorepo where you actually have access to the source and when you change the source it changes the build code then 
+    //declaration maps are really really important because they actually let you kind of go directly where you need to go without
     "declarationMap": true
   },
   "include": [

@@ -5,13 +5,17 @@
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "outDir": "dist",
+    // this means everything inside source will be compiled
     "rootDir": "src",
     "strict": true,
     "skipLibCheck": true,
     "isolatedModules": true,
     "moduleDetection": "force",
+    // this makes sure that we get declaration files
+    // which is critical for publishing on npm or distributing inside a monorepo.
     "declaration": true
   },
+  // this includes the src directory in compilation
   "include": [
     "src"
   ]

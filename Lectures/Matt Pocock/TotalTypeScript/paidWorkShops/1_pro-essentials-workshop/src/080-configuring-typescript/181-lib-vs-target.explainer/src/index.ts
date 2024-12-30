@@ -13,3 +13,10 @@ const myFunc = (input?: { search?: string }) => {
   // Nullish coalescing
   const defaultedSearch = search ?? "Hello";
 };
+
+/**
+ * target and lib can be set to different values.
+ * typescript will transform syntax but not API.
+ *  Target and lib should probably stay in sync unless you're doing something interesting with actually polyfilling old APIs manually
+ *  yourself and just using it to transform the syntax.
+ */
