@@ -54,11 +54,20 @@
  * 186 - If we multiple tsconfigs for different projects in same repo. We want a single place where we can run ts compiler and
  *    and see results. setup -
  *    Solution 1  -
- *     a)In package.json we have single command which runs the tsc in batch mode(its only in batch mode refrences are run
+ *     a)In package.json we have single command which runs the tsc in batch mode(its only in build mode refrences are run
  *       , see in chatgpt what build mode means)and we refer to tsconfig in project root.
  *     b)This tsconfig contains -
  *       1)refrences to other tsconfig files.This tsconfigs assume there current directory as ts project.
  *       2)empty files array tells that this is not a config file but file which refrences other tsconfigs i.e it is used
  *        as refrences tsconfig.
+ *
+ *     c)In tsconfig.base.json we have composite: true. this makes sure that tsbuildinfo files are generated.
+ *   Solution 2 -
+ *     a)Here all tsconfigs files are moved to root of project
+ *
+ *   Solution 3 -
+ *     a)we kept single tsconfig at root level, all others are moved into config folder.
+ *
+ *   recommeneded - solution1 or solution 2
  *
  */

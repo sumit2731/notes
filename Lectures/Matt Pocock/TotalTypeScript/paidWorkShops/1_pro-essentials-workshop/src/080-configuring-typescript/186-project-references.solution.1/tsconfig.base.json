@@ -11,3 +11,18 @@
     "composite": true
   },
 }
+
+/*
+  composite option in tsconfig -
+    a)Enables the project to be referenced by other TypeScript projects via the references 
+        field.
+    b)Ensures that the project can be built incrementally, meaning only changed files are 
+        recompiled.TypeScript generates a .tsbuildinfo file in the outDir. This file stores 
+        metadata about the build and is used for incremental builds. hence very useful in 
+        large projects.
+    c)Requires certain settings in the tsconfig.json to ensure the project is compatible 
+        with project references.
+    d)Declaration files (.d.ts) are always generated, even if declaration is not explicitly set.
+    e)Automatically builds dependent projects in the correct order when using tsc --build. if a project
+        refers to another via refrence build then that project is build first.
+*/

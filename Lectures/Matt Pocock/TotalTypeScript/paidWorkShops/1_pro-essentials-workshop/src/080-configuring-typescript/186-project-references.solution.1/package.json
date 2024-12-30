@@ -6,3 +6,13 @@
     "dev": "tsc -b --watch"
   }
 }
+
+/* 
+  build option
+ a)incremental compilation
+    If incremental: true is set in the tsconfig.json, TypeScript generates a .tsbuildinfo file in the 
+    output directory. This file stores metadata about the last build, enabling TypeScript to skip 
+    unchanged files in subsequent builds.
+ b)You can define dependencies between projects using the references field in tsconfig.json.
+    project-a depends on project-b, so TypeScript ensures project-b is built before project-a.
+*/
