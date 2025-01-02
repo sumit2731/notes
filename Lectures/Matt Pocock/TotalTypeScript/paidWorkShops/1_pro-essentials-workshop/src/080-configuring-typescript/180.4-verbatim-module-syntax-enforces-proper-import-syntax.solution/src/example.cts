@@ -15,7 +15,9 @@ const example = () => {
 secondFile.iWantToImportThis();
 
 // True CJS:
-
+/**
+ * common.js export syntax in typescript
+ */
 export = {
   example,
 };

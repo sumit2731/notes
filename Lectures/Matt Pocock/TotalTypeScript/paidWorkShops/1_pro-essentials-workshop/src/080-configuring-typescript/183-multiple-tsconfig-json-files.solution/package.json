@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:client": "tsc --project ./src/client/tsconfig.json --watch",
-    "dev:server": "tsc --project ./src/server/tsconfig.json --watch"
+    "dev:client": "tsc --project ./src/client/tsconfig.json --watch --listFiles",
+    "dev:server": "tsc --project ./src/server/tsconfig.json --watch --traceResolution"
   }
 }

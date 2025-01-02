@@ -46,12 +46,17 @@
    lecture - Pro essentials, 176.5
  */
 
+//defaultValue of include - "include": ["**/*"]
+
 /**
  * @extra from course
  *
- * 1)typeRoots,include - be default ts looks for d.ts files in node_modules/@types folder and project directpry.
- *  if you have d.ts files in different location, you need to tell tsc about it by specifying that that in
- *   typeRoots or in include option.
+ * 1)include -  which files to be included in compilation.
+ *     defaut value - 
+ *      a)All TypeScript (.ts, .d.ts, and .tsx) files in the project directory and subdirectories
+ *      b)If allowJs is set to true, it also includes JavaScript (.js and .jsx) files
+ * 
+ * 
  * 
  * 2)paths - used to define alias for a path. ex -
  * 

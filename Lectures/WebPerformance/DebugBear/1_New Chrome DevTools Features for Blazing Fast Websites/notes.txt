@@ -1,0 +1,41 @@
+Performance landing page
+    a)shows core web vitals
+        LCP - 
+            Shows LCP element
+            BreakDown of LCP
+                time to first byte
+                Resource load delay
+                resource load duration
+                element render delay
+        CLS
+            Shows all elements which caused layout shift, with their score
+        INP 
+            Shows element INO and their respective time
+    b)field data
+    c)throttling
+Record -
+    Layout Shift Culprits - on right hand side see "Layout shifts"
+    LCP request Discovery -
+        On Click of it, request for LCP resource is highlighted in network tab,if there is any big "Resource load delay",
+         it is shown. see figure 1.1 and figure 1.2.
+        Status of Recommendations for LCP
+            fetch priority should be high
+            It should be discoverable in initial document
+                If not shows a gap in network request when it was discoverable, and when fetching of it started
+            Image should not be lazily loaded
+            url of image - from network tab on right, you can click on url for that image and get details 
+                about that network call.preview,priority. duration of request.
+    LCP by phase -
+        shows breakup of how LCP i.e how each phase takes time.It depends upon type of LCP element.
+        on opening this tab on left hand side,on right hand side it shows the breakup of all 4 phases in network panel.
+        
+        When you click on each phase, each phase is highlighted and zoomed in on network panel on right.
+            Time to First Byte - This is TTFB of html doc.
+            Resource load delay - Resource Load Delay refers to the time between when the browser receives the first byte of 
+                the HTML document (Time to First Byte or TTFB) and when it begins downloading the LCP resource.
+            Resource load duration
+            Element Render Delay
+
+
+question -
+    In network panel there are 2 timelines on 

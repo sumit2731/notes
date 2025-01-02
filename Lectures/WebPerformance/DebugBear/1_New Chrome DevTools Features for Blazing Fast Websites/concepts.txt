@@ -1,0 +1,23 @@
+"Resource Load Delay" in LCP
+    Resource Load Delay evaluates how quickly the browser identifies and starts downloading the LCP element after 
+    receiving the server response.This delay can occur due to several factors:
+        Render-blocking resources: CSS and JavaScript files that prevent the browser from quickly identifying and
+            loading the LCP element4.
+        Discovery time: The time it takes for the browser to parse the HTML and discover the LCP resource.
+        Prioritization: How quickly the browser prioritizes the loading of the LCP resource among other page elements.
+
+    Strategies to Reduce Resource Load Delay - 
+        a)Preload critical resources: Use the <link rel="preload"> tag to prioritize loading of the LCP element.
+        b)Optimize CSS delivery: Generate critical CSS and inline it in the <head> of the document to reduce render-blocking.
+        c)Defer non-critical JavaScript: Use async or defer attributes on script tags to prevent JavaScript from blocking the
+            parsing of the HTML3.
+        d)Prioritize above-the-fold content: Ensure that the LCP element is discoverable early in the HTML structure.
+        e)Use fetchpriority attribute: Apply fetchpriority="high" to the LCP resource to signal its importance to the
+         browser7.
+
+
+Optimizing LCP -
+    a)In html we can add some resources to be prefetched using link tag.
+    b)in server we can have early hints to tell browser to download some assets early.
+    c)we can use fetchpriority attribute
+        <img src="hero.jpg" fetchpriority="high" alt="Hero section image">
