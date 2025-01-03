@@ -6,6 +6,12 @@ type ErrorShape = {
   };
 };
 
+/**
+ * Goal here is to reduce duplication.
+ *
+ * we want to define a typehelper that can generate UserDataShape and PostDataShape
+ */
+
 type UserDataShape =
   | {
       data: {

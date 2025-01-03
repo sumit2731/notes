@@ -69,33 +69,42 @@
  *   react-jsx - tsx -> js, jsx is replaced by more modern jsx transform. it is recommneded option.
 
  *
- * 183 - By default, TypeScript determines which tsconfig.json to use by looking for the closest
- *  one to the .ts file in question. If there are no other tsconfig.json files, TypeScript
- *  defaults to using the one in the root of the repo.
+ * 183 - here we need to have different tsconfigs for different files.so created diffrent folder and had
+ *   tsconfig in each folder.
+ * 
+ *  a)For typechecking vscode uses nearest tsconfig file. hence files under client and server will correct
+ *     tsconfigs checked for their files.
+ *  b)for compilation, we can mention tsconfig for tsc server using --project. see packahe.json.
+ *     now under each tsconfig we can ention which files to compile using include,exclude and files.
+ *     if we do not mention anything(which is case here), so here it takes all files under client(or server)
+ *     folder for compilation. this is because default value for include is - (see single line comment at end 
+ *     of file), which means include all files in this path, where tsconfig is located.
+ * 
+ * 184 -since both client and server folder have different tsconfigs , which include different files for
+ *     compilation(ts and d.ts files), we can have different global declarations through d.ts files in each
+ *     of them.
  *
- *  Here we had different tsconfig for client and server. they have different option for lib as a
- *  result different globals are avalaible for them.
+ * 185 - extends. this helps to define a single tsconfig and other files can extends from it.
  *
- * see package.json to see how we can specify location of tsconfig while running tsc from
- *  terminal.
- *  tsc --project "locationOfTsconfig"
- *  tsc --project ./src/client/tsconfig.json --watch
- * Here see that 
- *
- * 185 - you can define a base config for tsConfig and then other files  can extend
- *  the compilerOptions using extends keyword
- *
- * 186 - If we multiple tsconfigs for different projects in same repo. We want a single place where we can run ts compiler and
- *    and see results. setup -
+ * 186 - If we have multiple tsconfigs for different projects in same repo. We want a single place where we can run ts
+ *    compiler and see results. setup -
  *    Solution 1  -
- *     a)In package.json we have single command which runs the tsc in batch mode(its only in build mode refrences are run
- *       , see in chatgpt what build mode means)and we refer to tsconfig in project root.
+ *     a)In package.json we have single command which runs the tsc in build mode and we refer to tsconfig in project root.
+ *      In build mode -
+ *       1)its only in build mode tsc also runs refrence tsconfigs too,(see in chatgpt what build mode means)
+ *       2) it emits tsconfig.tsbuildinfo files, which are large and should not be committed to your repository.
+ *         These files cache the results of type checking, which makes subsequent checks much faster. because 
+ *         it's caching the results of my type checks.So project references are a superb way of coordinating 
+ *         type checks across an entire repo.you run one command in the root. It caches the result of various things.
+ *          it means that you can just run a single command to type check everything.
+ * 
  *     b)This tsconfig contains -
  *       1)refrences to other tsconfig files.This tsconfigs assume there current directory as ts project.
- *       2)empty files array tells that this is not a config file but file which refrences other tsconfigs i.e it is used
- *        as refrences tsconfig.
+ *       2)empty files array tells that this file is not responsible for actually type checking any files.
+ *        All it's going to be used for is as a reference tsconfig.json
  *
- *     c)In tsconfig.base.json we have composite: true. this makes sure that tsbuildinfo files are generated.
+ *     c)In tsconfig.base.json we have composite: true. So this means that this enables constraints, as it says here, 
+ *        to allow a TypeScript project to be used with project references.
  *   Solution 2 -
  *     a)Here all tsconfigs files are moved to root of project
  *
@@ -108,20 +117,4 @@
 /**
  * Option not discussed -
  * esModuleInterop
- * declarationMap
- */
-
-// defaultValue - "include": ["**/*"]
-/**
- * extra from course
- *
- * 1)include - which files to be included in compilation.
- * 2)rootDir - purpose
- *    a)To determine the structure of the output directory
- *    b)To enforce that all compiled files are located within the specified root
- *
- * default -
- *  a)If not explicitly set, TypeScript infers the rootDir as the longest common path of
- *    all non-declaration input files
- *  b)If composite is set, the default is the directory containing the tsconfig.json file
  */

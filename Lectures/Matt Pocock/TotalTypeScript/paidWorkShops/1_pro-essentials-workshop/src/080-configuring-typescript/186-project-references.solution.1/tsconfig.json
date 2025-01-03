@@ -7,8 +7,9 @@
       "path": "./src/server/tsconfig.json"
     }
   ],
-  //By default, TypeScript includes all .ts and .d.ts files in the project directory unless they are excluded using 
-  // the exclude option or not matched by include.When files is used, only the specified files are included in the 
-  // compilation process.
+  //When files is used, only the specified files are included in the compilation process.
+  //it overrides the include option. here we use it to tell tsc that this tsconfig.json, the one in the root
+  //is not responsible for actually type checking any files. All it's going to be used for is 
+  //as a reference tsconfig.json
   "files": []
 }
