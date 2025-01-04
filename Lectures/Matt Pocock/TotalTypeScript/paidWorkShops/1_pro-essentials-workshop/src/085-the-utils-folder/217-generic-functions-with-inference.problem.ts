@@ -1,6 +1,9 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
+/**
+ * Here return type is []any
+ */
 const uniqueArray = (arr: any[]) => {
   return Array.from(new Set(arr));
 };

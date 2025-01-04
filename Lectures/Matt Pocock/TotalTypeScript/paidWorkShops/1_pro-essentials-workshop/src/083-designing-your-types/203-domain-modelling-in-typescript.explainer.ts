@@ -4,4 +4,4 @@
 
 // Compose those types together
 
-// Think about types as containers for other types
+// Think about types as containers for other types. have single source of thruth

@@ -1,6 +1,11 @@
-1)module augmentation
-2)declaration files
-3)indexed accsed type
+1)declaration files - 
+  module augmentation
+  declaring global things
+  declaring things on windiw object
+  giving types of envirement variables
+2)indexed accsed type
+3)Mapped types (modification code also)
+4)Template Literal Types - useful in problem where we need to convert name of proeprties into something else in mapped types
 
 Questions from total typescript -
     pro-essentials-workshop -

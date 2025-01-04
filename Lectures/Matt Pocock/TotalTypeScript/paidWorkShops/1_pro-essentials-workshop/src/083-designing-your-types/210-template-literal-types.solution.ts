@@ -1,3 +1,6 @@
+/**
+ * between {} we can pass other string types - literal, union
+ */
 type AbsoluteRoute = `/${string}`;
 
 const goToRoute = (route: AbsoluteRoute) => {
@@ -10,5 +13,5 @@ goToRoute("/contact");
 
 goToRoute(
   // @ts-expect-error
-  "somewhere",
+  "somewhere"
 );

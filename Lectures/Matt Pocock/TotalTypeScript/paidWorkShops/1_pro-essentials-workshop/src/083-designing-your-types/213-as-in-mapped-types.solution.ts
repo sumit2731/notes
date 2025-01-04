@@ -5,7 +5,12 @@ interface Attributes {
   lastName: string;
   age: number;
 }
-
+/**
+ * 3 concepts -
+ *   a)Mapping using as
+ *   b)Template literal types
+ *   c)Capitalize Helper
+ */
 type AttributeGetters = {
   [K in keyof Attributes as `get${Capitalize<K>}`]: () => Attributes[K];
 };

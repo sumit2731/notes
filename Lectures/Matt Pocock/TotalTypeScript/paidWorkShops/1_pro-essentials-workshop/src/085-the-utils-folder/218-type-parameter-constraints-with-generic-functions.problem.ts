@@ -2,7 +2,11 @@ import { Equal, Expect } from "@total-typescript/helpers";
 import { it } from "vitest";
 
 const UNKNOWN_CODE = 8000;
-
+/**
+ * Place a constraint on generic that it -
+ *   a)should have message property
+ *   b)might have code property
+ */
 const addCodeToError = <TError>(error: TError) => {
   return {
     ...error,
@@ -48,6 +52,6 @@ it("Should fail if you pass something without a message in", () => {
     // @ts-expect-error
     {
       code: 4000,
-    },
+    }
   );
 });

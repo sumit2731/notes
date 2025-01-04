@@ -35,3 +35,13 @@ type CustomAwaited2<T> = T extends { then: (cb1: infer cb, cb2: any) => any } //
     ? CustomAwaited2<V> //// recursively unwrap the value
     : never
   : T;
+
+type CustomPick<T, K extends keyof T> = {
+  [Key in K]: T[Key];
+};
+
+type CustomOmit<T, K extends keyof T> = {
+  [Key in keyof T as Key extends K ? never : Key]: T[Key];
+};
+//this is orgnal implementation
+type CustomOmit2<T, K> = Pick<T, Exclude<keyof T, K>>;

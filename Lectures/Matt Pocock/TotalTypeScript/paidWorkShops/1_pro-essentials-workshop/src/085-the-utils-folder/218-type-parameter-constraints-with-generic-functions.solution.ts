@@ -3,8 +3,13 @@ import { it } from "vitest";
 
 const UNKNOWN_CODE = 8000;
 
+/**
+ * Here we passed another stuff also, i.e extra properties also. extends specifies bare minimum.
+ *
+ * whatever we return from here is remebered to have those extra properties
+ */
 const addCodeToError = <TError extends { message: string; code?: number }>(
-  error: TError,
+  error: TError
 ) => {
   return {
     ...error,
@@ -50,6 +55,6 @@ it("Should fail if you pass something without a message in", () => {
     // @ts-expect-error
     {
       code: 4000,
-    },
+    }
   );
 });
