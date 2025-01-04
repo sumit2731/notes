@@ -1,5 +1,9 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
+/**
+ *  So satisfies is really useful when you're doing key of type of tricks because it means that you can
+ * still get the inference,still get the single source of truth from the value that you're adding.
+ */
 const configurations = {
   development: {
     apiBaseUrl: "http://localhost:8080",

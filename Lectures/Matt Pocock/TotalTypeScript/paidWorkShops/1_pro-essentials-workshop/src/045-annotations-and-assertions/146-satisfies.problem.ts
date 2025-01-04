@@ -12,6 +12,10 @@ const config: Record<string, Color> = {
   border: "transparent",
 };
 
+/**
+ * we want these errors to go away
+ */
+
 config.border.toUpperCase();
 
 console.log(config.foreground.r);

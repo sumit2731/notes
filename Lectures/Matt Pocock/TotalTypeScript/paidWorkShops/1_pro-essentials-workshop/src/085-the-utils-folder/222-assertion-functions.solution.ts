@@ -9,7 +9,11 @@ interface User {
 interface AdminUser extends User {
   roles: string[];
 }
-
+/**
+ * Type Assertion
+ *
+ * This means that if this function is called, then it means hat user is AdminUser
+ */
 function assertIsAdminUser(user: User | AdminUser): asserts user is AdminUser {
   if (!("roles" in user)) {
     throw new Error("User is not an admin");

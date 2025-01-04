@@ -1,5 +1,12 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
+/**
+ * 'as' is used when you want to Basically tell TypeScript that you know more than it
+ * 'satisfies' is used when you want to basically make sure a value is checked without
+ *    changing the inference on that value.
+ * 'variable annotation' is used all of the rest of the time
+ */
+
 // 1
 
 const obj: Record<string, number> = {};

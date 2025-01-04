@@ -1,5 +1,10 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
+/**
+ * solve below errors.
+ * some these need - satisfies, some need - as, some need - variable annotations
+ */
+
 // 1
 
 const obj = {} as Record<string, number>;

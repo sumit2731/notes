@@ -1,8 +1,12 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
+/**
+ * Sometimes ts automatically adds pardicatte(upto 3 lines)
+ * but since here logic was bit complicated, we had to add logic manually
+ */
 const hasDataAndId = (
-  value: unknown,
+  value: unknown
 ): value is {
   data: {
     id: string;

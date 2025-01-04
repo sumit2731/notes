@@ -2,10 +2,7 @@ import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
 type PromiseFunc<TResult> = (...args: any[]) => Promise<TResult>;
-/**
- * here the type that input function expects should be infered so that target function also
- * receives that type
- */
+
 const safeFunction =
   <TResult>(func: PromiseFunc<TResult>) =>
   async (...args: any[]) => {

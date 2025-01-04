@@ -1,5 +1,9 @@
 import { Equal, Expect } from "@total-typescript/helpers";
-
+/**
+ * type Environment should be derived from configuration but
+ * we should get error when using notAllowed property
+ * but still
+ */
 const configurations = {
   development: {
     apiBaseUrl: "http://localhost:8080",
