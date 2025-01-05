@@ -1,4 +1,8 @@
 /**
+ * @Note - mo need to go through lectures just refer notes ad see code comments
+ */
+
+/**
  * 159- If no import-export is their, then it is treated as script.
  *  it means anything you define their is avalaible globally, so
  *  it can be used in another files.

@@ -1,0 +1,40 @@
+q1 - how ts linked d.ts files defined in @types/ with package name in ts
+ans - 
+    Automatic Type Acquisition
+        TypeScript automatically looks for type definitions in the node_modules/@types directory. When you 
+            import a package in your TypeScript code, the compiler searches for a matching @types package 
+            without any additional configuration2.
+        For example, if you import a package named foo-bar, TypeScript will automatically look for type definitions in:
+            a)node_modules/foo-bar/index.d.ts
+            b)node_modules/@types/foo-bar/index.d.ts
+    TypeScript Compiler Behavior
+        When the TypeScript compiler encounters an import statement or a reference to a module, it follows these 
+        steps:
+            a)Look for a .ts or .d.ts file with the same name as the module.
+            b)Check the node_modules directory for a package with that name and look for its types/typings field in 
+                package.json.(default is index.d.ts in same path as package.json)
+            c)If not found, look in the node_modules/@types directory for a package matching the module name.
+
+    Declaration Files Structure
+        The main declaration file (index.d.ts) in an @types package typically uses the declare module syntax to
+        define the shape of the module.
+
+            declare module 'foo-bar' {
+                export function someFunction(): void;
+                export const someConstant: number;
+                // ... other type definitions
+            }
+
+        This structure allows TypeScript to associate the type definitions with the correct module name when 
+            it's imported in your code.
+
+q2 - how to configure where ts looks for typeDefinations(d.ts files)
+ans -
+    a)All files which will be compiled by tsc, all d.ts files are included.
+    b)The typeRoots option specifies directories where TypeScript should look for type definitions.
+     If typeRoots is set, TypeScript will only look in the specified directories and will not automatically look in 
+     node_modules/@types.if not defined ./node_modules/@types is default value, so it will look at that path
+    c)it looks at types field in tsconfig, if it is not defined then all files under ./node_modules/@types are picked,
+        otherwise =you can specify name of package and d.ts files of that package will be picked.
+
+
