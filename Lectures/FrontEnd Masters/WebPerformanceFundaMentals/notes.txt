@@ -1,0 +1,25 @@
+Importance Of WebPerformance
+    WaterFallChart
+        colorCodes (slide 50)
+    Legacy Metrics(we use to measure web performance using these, but now we do not)
+        DOMContentLoaded - 
+            HTML is fully downloaded and parsed(we know everything in it), DOM tree is fully built
+            all script tags with defer attribute are executed
+            Before stylesheets, images, and other non-critical resources are fully loaded.
+            It is useful for setting up event listeners, modifying the DOM, or initializing features that do not depend on external resources.
+
+            you can listen to this event on window and document.
+        load -
+            HTML and all known resources have been downloaded and rendered.
+            this waits for all external resources (e.g., images, CSS) to load,except those that are lazy loaded.
+            notice world known - with js we can add mor images dynamically, here we mean only those images which is in html, we can img with js
+                anytime if they are added before load event, then load event will wait for them to be rendered.
+
+
+Events -
+    DOM is loaded and parsed
+    domInteractive
+        HTML is loaded,parsed and the DOM is built
+        CSS and images at this point are still to be parsed and loaded
+    deferScriptsExecuted
+    DOMContentLoaded
