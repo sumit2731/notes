@@ -1,7 +1,7 @@
 /**
  * In d.ts only type declaration are allowed and no type implementations.
- * each declaration should start with 'export' (which makes d.ts file a module) or with
- * 'declare'(with no import/export this makes d.ts file a script so it will put things in
+ * each declaration should start with 'export' (which makes d.ts file a module, see useage in lecture 164)
+ * or with'declare'(with no import/export this makes d.ts file a script so it will put things in
  * global scope).
  */
 declare const DEBUG: {
