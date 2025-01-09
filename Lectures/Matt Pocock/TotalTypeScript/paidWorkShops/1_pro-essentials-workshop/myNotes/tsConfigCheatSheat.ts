@@ -63,6 +63,10 @@
          compilations to speed up subsequent builds. it generates tsbuildinfo files, means it cache the results of compilation
           and type checking.
         rootDir (if not explicitly set) defaults to the directory containing the tsconfig.json file.
+
+  i)skipLibCheck:true
+    It does not check the types of all declaration files (*.d.ts). This can significantly speed up
+    compilation.
  */
 
 /**

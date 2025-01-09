@@ -4,7 +4,7 @@ interface User {
   id: number;
   name: string;
 }
-
+// here we widen the type
 function printUser(user: Record<string, any>) {
   for (const key in user) {
     console.log(user[key]);

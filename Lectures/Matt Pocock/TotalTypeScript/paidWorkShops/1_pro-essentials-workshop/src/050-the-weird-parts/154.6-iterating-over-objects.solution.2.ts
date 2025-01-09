@@ -4,7 +4,7 @@ interface User {
   id: number;
   name: string;
 }
-
+// here we widen the type to Record<string, any>
 function printUser(user: Record<string, any>) {
   Object.keys(user).forEach((key) => {
     console.log(user[key]);

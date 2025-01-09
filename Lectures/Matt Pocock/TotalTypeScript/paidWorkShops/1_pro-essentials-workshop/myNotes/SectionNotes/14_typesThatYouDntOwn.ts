@@ -65,6 +65,7 @@
  * in our code which is not js.
  *
  * 176.5 - skipLibCheck:true
+ *  It does not check the types of all declaration files (*.d.ts). This can significantly speed up compilation.
  *
  */
 

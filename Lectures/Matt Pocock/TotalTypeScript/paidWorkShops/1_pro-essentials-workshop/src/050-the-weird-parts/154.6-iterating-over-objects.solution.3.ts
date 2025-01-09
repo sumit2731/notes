@@ -4,7 +4,7 @@ interface User {
   id: number;
   name: string;
 }
-
+// here again typecasting is used
 function printUser(user: User) {
   for (const key in user) {
     console.log(user[key as keyof User]);

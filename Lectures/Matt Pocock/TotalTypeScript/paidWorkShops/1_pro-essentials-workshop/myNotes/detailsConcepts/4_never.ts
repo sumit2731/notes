@@ -27,6 +27,10 @@
 
 5)type for function that never actually returns, type for promise that rejects
 
+6)type for empty object -
+  type t1 = Record<Property, never>
+   total ts  - Pro essentials, The weird types of Ts, lecture - 151
+
 */
 
 //1

@@ -2,47 +2,51 @@ const acceptOnlyEmptyObject = (input: {}) => {};
 
 acceptOnlyEmptyObject({});
 
+/**
+ * we should get error when we try to pass something otherthan emty object
+ */
+
 acceptOnlyEmptyObject({
   // @ts-expect-error
   a: 1,
 });
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  "hello",
+  "hello"
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  42,
+  42
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  true,
+  true
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  Symbol("foo"),
+  Symbol("foo")
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  [],
+  []
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  () => {},
+  () => {}
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  /foo/,
+  /foo/
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  new Error("foo"),
+  new Error("foo")
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  null,
+  null
 );
 acceptOnlyEmptyObject(
   // @ts-expect-error
-  undefined,
+  undefined
 );

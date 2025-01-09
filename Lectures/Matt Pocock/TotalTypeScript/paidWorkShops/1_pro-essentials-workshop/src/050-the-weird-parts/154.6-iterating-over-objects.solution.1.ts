@@ -4,7 +4,7 @@ interface User {
   id: number;
   name: string;
 }
-
+// here we used typecasting
 function printUser(user: User) {
   Object.keys(user).forEach((key) => {
     console.log(user[key as keyof User]);

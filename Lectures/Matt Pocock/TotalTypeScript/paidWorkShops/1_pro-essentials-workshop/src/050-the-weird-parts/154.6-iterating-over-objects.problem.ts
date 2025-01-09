@@ -5,7 +5,11 @@ interface User {
   name: string;
 }
 
-function printUser(user: User) {}
+function printUser(user: User) {
+  // test case passes like this- we want this test case to pass by using loop
+  console.log(user.id);
+  console.log(user.name);
+}
 
 it("Should log all the keys of the user", () => {
   const consoleSpy = vitest.spyOn(console, "log");

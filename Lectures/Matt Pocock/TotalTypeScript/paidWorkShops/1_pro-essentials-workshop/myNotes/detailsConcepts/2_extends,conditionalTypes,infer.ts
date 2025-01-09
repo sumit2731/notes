@@ -1,4 +1,15 @@
 /**
+ * @extends
+ *
+ * A extends B - if value of type A can be assigned to typeB. types -
+ *   a)objTypeA extends objTypeB - If objTypeA has all properties in objTypeB. It can also
+ *      have extra properties. see 208
+ *   b)UnionTypeA extends UnionTypeB -UnionTypeA is a subset of UnionTypeB(each value of UnionTypeA is
+ *     present in UnionTypeB, UnionTypeB can have some extra values)
+ *
+ */
+
+/**
  * @conditional types
  *
  * read ts handbook docs

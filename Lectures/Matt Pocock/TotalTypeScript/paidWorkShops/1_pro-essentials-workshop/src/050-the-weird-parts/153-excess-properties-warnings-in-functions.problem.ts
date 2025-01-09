@@ -11,7 +11,9 @@ const users = [
     name: "Zain",
   },
 ];
-
+/**
+ * why this is not erroring out
+ */
 const usersWithIds: User[] = users.map((user, index) => ({
   ...user,
   id: index,

@@ -1,5 +1,5 @@
 import { Equal, Expect } from "@total-typescript/helpers";
-
+// here type of arr evolves over time
 const arr = [];
 
 arr.push(1);

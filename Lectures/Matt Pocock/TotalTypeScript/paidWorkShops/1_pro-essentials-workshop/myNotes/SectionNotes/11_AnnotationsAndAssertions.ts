@@ -1,4 +1,8 @@
 /**
+ * No need to go through lectures read comments and see notes.
+ */
+
+/**
  * 143.5 - not null assertion (!)
  *  see comments on code
  *

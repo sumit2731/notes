@@ -1,5 +1,8 @@
 import { Equal, Expect } from "@total-typescript/helpers";
-
+/**
+ * this is evolving any.
+ * it is assigned tyoe according to code flow
+ */
 let selectedId;
 
 selectedId = 123;

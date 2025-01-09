@@ -8,7 +8,9 @@ const logName = (obj: { name: string }) => {
 };
 
 const loggers = [logId, logName];
-
+/**
+ * figure out the type of obj
+ */
 const logAll = (obj) => {
   loggers.forEach((func) => func(obj));
 };

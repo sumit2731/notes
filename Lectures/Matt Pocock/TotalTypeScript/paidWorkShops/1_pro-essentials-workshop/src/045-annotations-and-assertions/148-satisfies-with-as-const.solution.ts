@@ -1,5 +1,7 @@
 import { Equal, Expect } from "@total-typescript/helpers";
-
+/**
+ * here we use as const with satisfies
+ */
 const routes = {
   "/": {
     component: "Home",
