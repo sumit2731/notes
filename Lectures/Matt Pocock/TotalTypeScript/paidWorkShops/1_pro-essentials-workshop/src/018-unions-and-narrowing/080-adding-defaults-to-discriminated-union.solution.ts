@@ -15,6 +15,8 @@ type Shape = Circle | Square;
 
 /**
  * @Desc This is the way to mention optionals in discriminated unions
+ * making a property as optional in discriminated union, removes property
+ * access error that we get when we add a third type
  */
 function calculateArea(shape: Shape) {
   if (shape.kind === "square") {
