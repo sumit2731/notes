@@ -17,7 +17,7 @@ async function fetchData(): Promise<ApiResponse> {
       ];
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as User[];
     return [true, data];
   } catch (error) {
     return [false, "An error occurred"];

@@ -33,6 +33,7 @@ async function exampleFunc() {
   /**
    * here typescript is able to guess the second tuple based on first tuple.
    * this works with discriminated tuples not with discriminated of objects
+   * (when i tried it, it worked with discriminated union also)
    */
   if (status === "success") {
     console.log(value);

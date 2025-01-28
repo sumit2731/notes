@@ -2,7 +2,7 @@ import { Equal, Expect } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
 type Circle = {
-  kind?: "circle";
+  kind: "circle";
   radius: number;
 };
 
@@ -14,10 +14,10 @@ type Square = {
 type Shape = Circle | Square;
 
 function calculateArea(shape: Shape) {
-  if (shape.kind === "square") {
-    return shape.sideLength * shape.sideLength;
-  } else {
+  if (shape.kind === "circle") {
     return Math.PI * shape.radius * shape.radius;
+  } else {
+    return shape.sideLength * shape.sideLength;
   }
 }
 
@@ -52,3 +52,7 @@ it("Should calculate the area of a circle when no kind is passed", () => {
 
   type test = Expect<Equal<typeof result, number>>;
 });
+
+/**
+ * if there is no kind  property available in the object, then it should calculate the area of a circle
+ */
