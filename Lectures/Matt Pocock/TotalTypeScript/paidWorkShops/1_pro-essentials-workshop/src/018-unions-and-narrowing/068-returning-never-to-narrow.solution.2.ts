@@ -3,6 +3,10 @@ import { Equal, Expect } from "@total-typescript/helpers";
 const throwError = (message: string) => {
   throw new Error(message);
 };
+// here return type lies badly to us
+const throwError2 = (message: string): { name: string } => {
+  throw new Error(message);
+};
 
 const handleSearchParams = (params: { id?: string }) => {
   const id = params.id || throwError("No id provided");

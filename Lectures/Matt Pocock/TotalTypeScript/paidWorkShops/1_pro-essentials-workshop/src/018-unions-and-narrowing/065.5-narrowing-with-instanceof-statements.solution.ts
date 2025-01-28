@@ -9,6 +9,7 @@ const somethingDangerous = () => {
 try {
   somethingDangerous();
 } catch (error) {
+  // compare it with 'in' operator solution
   if (error instanceof Error) {
     console.error(error.message);
   } else {

@@ -4,7 +4,9 @@ type User = {
   id: string;
 };
 /**
- * Here descrimininator is first member of typle and that defines econd member of tuple
+ * Here discriminator is first member of tupple and that defines type of second member of tuple
+ *
+ * this is Discriminator Union of Tupples
  */
 type ApiResponse = ["success", User[]] | ["error", string];
 
@@ -19,7 +21,7 @@ async function fetchData(): Promise<ApiResponse> {
       ];
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as User[];
     return ["success", data];
   } catch (error) {
     return ["error", "An error occurred"];
@@ -30,7 +32,7 @@ async function exampleFunc() {
   const [status, value] = await fetchData();
   /**
    * here typescript is able to guess the second tuple based on first tuple.
-   * this works with desceimininator tuples not with descriminator objects
+   * this works with discriminated tuples not with discriminated of objects
    */
   if (status === "success") {
     console.log(value);

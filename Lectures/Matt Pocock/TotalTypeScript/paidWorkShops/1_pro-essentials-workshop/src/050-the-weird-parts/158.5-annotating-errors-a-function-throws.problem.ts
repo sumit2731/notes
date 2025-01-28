@@ -1,5 +1,10 @@
 /**
  * How do we annotate the errors this function throws?
+ *
+ * How do we make this e typed as PossibleErrors?
+ * Basically we want to tell consumers of our functions what types of errors this function
+ * can throw.
+ *
  */
 
 type PossibleErrors = SyntaxError | DOMException;
@@ -15,7 +20,4 @@ const getUserFromLocalStorage = (id: string) => {
 
 try {
   const user = getUserFromLocalStorage("user-1");
-} catch (
-  // How do we make this typed as PossibleErrors?
-  e
-) {}
+} catch (e) {}

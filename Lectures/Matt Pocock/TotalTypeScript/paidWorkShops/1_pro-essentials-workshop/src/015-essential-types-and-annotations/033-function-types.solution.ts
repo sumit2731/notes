@@ -5,6 +5,13 @@ type User = {
 
 type MakeChangeFunc = (user: User) => User;
 
+/**
+ * @Extra from lecture
+ * Alternate syntax to type functions
+ */
+interface StringManipulation {
+  (input: string): string;
+}
 const modifyUser = (users: User[], id: string, makeChange: MakeChangeFunc) => {
   return users.map((u) => {
     if (u.id === id) {
@@ -29,5 +36,5 @@ modifyUser(
   // @ts-expect-error
   (user) => {
     return { ...user, name: 123 };
-  },
+  }
 );

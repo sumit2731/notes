@@ -1,5 +1,7 @@
+type PossibleErrors = SyntaxError | DOMException;
+
 const getUserFromLocalStorage = (
-  id: string,
+  id: string
 ):
   | {
       success: true;
@@ -38,7 +40,12 @@ const getUserFromLocalStorage = (
     throw e;
   }
 };
-
+/**
+ * AS of now there is no way of annotating the error that function throws.
+ * so we use return type for this. now user knows what type of errors user will be getting and how
+ *  he can handle them.
+ * now user knows that what type of errors this function can throw
+ */
 const user = getUserFromLocalStorage("user-1");
 
 if (user.success) {

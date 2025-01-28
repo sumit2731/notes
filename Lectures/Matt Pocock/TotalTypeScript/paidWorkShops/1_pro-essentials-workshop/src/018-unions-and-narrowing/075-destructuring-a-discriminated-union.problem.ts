@@ -13,6 +13,7 @@ type Square = {
 
 type Shape = Circle | Square;
 
+//here error is radius and sideLength does not exists on all types in union
 function calculateArea({ kind, radius, sideLength }: Shape) {
   if (kind === "circle") {
     return Math.PI * radius * radius;

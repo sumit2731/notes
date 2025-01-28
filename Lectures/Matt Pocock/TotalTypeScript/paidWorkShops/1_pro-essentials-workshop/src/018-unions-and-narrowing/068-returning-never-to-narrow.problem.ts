@@ -5,6 +5,7 @@ const throwError = (message: string): undefined => {
 };
 
 const handleSearchParams = (params: { id?: string }) => {
+  // here type of id should be string
   const id = params.id || throwError("No id provided");
 
   type test = Expect<Equal<typeof id, string>>;

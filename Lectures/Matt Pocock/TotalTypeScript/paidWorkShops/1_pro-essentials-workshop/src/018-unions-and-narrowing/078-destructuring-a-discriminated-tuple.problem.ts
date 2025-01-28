@@ -6,6 +6,10 @@ type User = {
 
 type ApiResponse = [string, User[] | string];
 
+/**
+ * make sure that first member of array is either "sucess" or "error"
+ *
+ */
 async function fetchData(): Promise<ApiResponse> {
   try {
     const response = await fetch("https://api.example.com/data");
@@ -28,6 +32,7 @@ async function exampleFunc() {
   const [status, value] = await fetchData();
 
   if (status === "success") {
+    // here inside this if condition we should get proper typing for value
     console.log(value);
     type test = Expect<Equal<typeof value, User[]>>;
   } else {

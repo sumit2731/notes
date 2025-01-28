@@ -9,6 +9,6 @@ const format = (input: string | number | boolean) => {
   // here function type is union of individual type
   const formatter = objOfFunctions[inputType];
   // but while calling all union types are merged into one and function param types are intersected,
-  // same as ;ast question
+  // same as last question
   return formatter(input);
 };

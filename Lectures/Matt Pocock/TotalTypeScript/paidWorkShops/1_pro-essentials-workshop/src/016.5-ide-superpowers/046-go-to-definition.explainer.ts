@@ -19,3 +19,5 @@ type Example = PropertyKey;
 // It can also take you to mysterious places:
 
 document;
+
+myFunction();

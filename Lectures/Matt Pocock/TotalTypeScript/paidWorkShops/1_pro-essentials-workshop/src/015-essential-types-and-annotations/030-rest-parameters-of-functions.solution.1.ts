@@ -1,6 +1,9 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
 
+/**
+ * type of rest parameters is Array
+ */
 export function concatenate(...strings: string[]) {
   return strings.join("");
 }

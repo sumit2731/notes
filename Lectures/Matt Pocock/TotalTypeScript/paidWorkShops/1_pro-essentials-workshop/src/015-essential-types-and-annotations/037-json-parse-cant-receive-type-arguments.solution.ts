@@ -1,6 +1,11 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
-
+/**
+ * any typeof value can be assigned to variable of type unknown
+ * but variable of type unknown cannot accept any other value
+ *
+ * this is differrence between any and unknown
+ */
 const parsedData: {
   name: string;
   age: number;

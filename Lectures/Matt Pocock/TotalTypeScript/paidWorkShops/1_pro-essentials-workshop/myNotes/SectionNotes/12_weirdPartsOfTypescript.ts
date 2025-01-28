@@ -29,4 +29,7 @@
  * 157 - when you have functions with incompatible type signatures being union together, you're
  * sometimes going to need to use as never in these situations to get yourself out of a bit of bother.
  *
+ * 158 - When we have union of function, parameter types intersect togather and return types union
+ * togather
+ *
  */

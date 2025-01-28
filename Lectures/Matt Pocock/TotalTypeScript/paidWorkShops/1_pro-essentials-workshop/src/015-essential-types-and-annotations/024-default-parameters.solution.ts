@@ -1,6 +1,8 @@
 import { Expect, Equal } from "@total-typescript/helpers";
 import { expect, it } from "vitest";
-
+/**
+ * when we specify a default value for a parameter, it becomes optional
+ */
 const concatName = (first: string, last = "Pocock") => {
   return `${first} ${last}`;
 };

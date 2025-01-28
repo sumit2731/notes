@@ -9,6 +9,7 @@
 5)satiesfied operator
 6)infer
 7)project refrences
+8)discriminated unions
 
 Questions from total typescript -
     pro-essentials-workshop -

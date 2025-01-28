@@ -1,7 +1,12 @@
 /**
- * a) noEmit: true - it means do not generate output files
+ * a) noEmit: true - it means do not generate output files(used in bundlers like vite)
  * b)"outDir": "./dist"
  *      This gives the output folder, where compiled js files will be genrated.
+ * c)allowImporigTsFiles: true
+ *    Allow us to use importing ts files, can set to true either when, these are set -
+ *     noEmit:true
+ *        or
+ *     emitDeclaratuonsFilesONly: true
  * c)noImplicitOverride - need to add override in front of method that is present in parent class but
  *  needs to be overrideen.if this is trues and you do not add anything, in front of method,you will
  *  get error. if you add it a dn method does not exists then also you will get error. it makes sure
