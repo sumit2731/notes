@@ -26,8 +26,9 @@ type Entity = User | Organisation | Product;
  * Omit is not distributive i.e it does not iterate over every member of union.Instead,
  * it mushes the union into a structure it comprehends, and then operates on this new construct
  *
- * Here it combines 3 union types and picksnproeprties common to them and excludes provided property
- * If we provide a property which does not exists then it just combines them togather
+ * Here it combines 3 union types and picks the properties common to them and excludes provided property
+ * If we provide a property which does not exists then it just combines all common proeprties
+ * without removing any
  */
 type EntityWithoutId = Omit<Entity, "id">;
 //   ^?

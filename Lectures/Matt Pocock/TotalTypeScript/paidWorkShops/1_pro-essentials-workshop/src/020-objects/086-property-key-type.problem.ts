@@ -1,5 +1,10 @@
 import { expect, it } from "vitest";
 
+/**
+ * here key if of type string, but we can also have number or symbol
+ * we can use union of string | number | symbol, but in ts there is built in
+ * type for this
+ */
 const hasKey = (obj: object, key: string) => {
   return obj.hasOwnProperty(key);
 };

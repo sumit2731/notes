@@ -1,7 +1,7 @@
 /**
  * 81 - 83
  *  (1-4 in videos) - Types vs interfaces. extends is better than intersection
- *   video 3 shows Interfaces gives warning againts incomitable type
+ *   video 3 shows Interfaces gives warning againts incompatible type
  */
 
 /**
@@ -11,11 +11,16 @@
  *
  * 93(13) - Omit is not distributive
  *
- * 96 - if a function accepts union of Object, we can access common proeprty wothout narrowing
+ * 96 - if a function accepts union of Object, we can access common property without narrowing
  */
 
 /**
  * @must see
- * 89 - pick
- * 93(13) - Omit is not distributive. then see implementation of distributive Omit
+ * 82.5 - how using interface to extends gives error when 2 interfaces have incompatible types. this is one advantage of using
+ *  types over interface
+ * 85 - index signature can also be used with interfaces,we can also give specific properties along with index signature
+ * 89 - pick, omit pick also works with interfaces
+ * 93(13) - Omit is not distributive.
+ *  In DeepSeek, see the meaning of distributive and
+ *  then see implementation of distributive Omit
  */

@@ -1,3 +1,0 @@
-where to use "declare modue" - normal ts or d.ts  ?
-    normal ts - chnage only visisble in that file
-    d.ts - change visisble globally

@@ -62,7 +62,7 @@ type CustomType = "small" | "medium" | "hard" | (string | {});
  * 80, 27 - DEfaults in discrininated unions
  */
 /**
- * ToBe seen -
+ * @ToBe seen -
  *
  * 65 - see figure 4.any type of value is assignable to unknown type.this is useful when we do not know what is the type but we want to keep typechecking on this.
  *    but before using we have to narrow it down

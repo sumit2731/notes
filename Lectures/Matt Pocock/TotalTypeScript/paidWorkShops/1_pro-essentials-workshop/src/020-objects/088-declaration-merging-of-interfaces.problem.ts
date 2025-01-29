@@ -13,8 +13,9 @@ const myLogger: Logger = {
 };
 
 /**
- * becaue of declaration merging both r=types are supported
+ * because of declaration merging both types are supported
  */
+myLogger.log("My message");
 myLogger.log(
   "My message",
   // @ts-expect-error Level is NOT needed

@@ -13,7 +13,7 @@ const fetchUser = async (): Promise<User> => {
   return user;
 };
 /**
- * Problem - user should have some types from UserInterface
+ * Problem - user should have some types from User interface
  */
 const example = async () => {
   const user = await fetchUser();

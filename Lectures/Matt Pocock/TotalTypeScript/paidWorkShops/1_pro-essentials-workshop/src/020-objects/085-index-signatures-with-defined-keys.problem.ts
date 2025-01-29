@@ -1,3 +1,6 @@
+/**
+ * we expect score to have some specific properties along with index signature
+ */
 interface Scores {}
 
 // @ts-expect-error science is missing!
