@@ -1,4 +1,5 @@
 const shoppingCart = {
+  //but if you declare emty rray outise object, its type is nay[]
   items: [],
 };
 

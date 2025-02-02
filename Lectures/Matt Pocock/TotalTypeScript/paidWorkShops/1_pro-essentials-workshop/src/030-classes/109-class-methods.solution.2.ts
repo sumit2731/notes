@@ -4,7 +4,8 @@ class CanvasNode {
   x = 0;
   y = 0;
   /**
-   * This is arrow function which kind of gets autobound to class
+   * This is arrow function which kind of gets autobound to class,
+   * in normal functions 'this' can point to something else
    */
   move = (x: number, y: number) => {
     this.x = x;

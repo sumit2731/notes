@@ -4,9 +4,19 @@ type ButtonAttributes = {
 
 const modifyButton = (attributes: ButtonAttributes) => {};
 
+/**
+ * @way1
+ */
 const buttonAttributes: ButtonAttributes = {
   type: "button",
 };
+
+/**
+ * @way2
+ */
+// const buttonAttributes = {
+//   type: "button",
+// } as const;
 
 modifyButton(buttonAttributes);
 /**
@@ -15,6 +25,8 @@ modifyButton(buttonAttributes);
  *
  * I want to give you a proper sense of how object properties infer so that you can kind of change the way maybe
  * you declare your variables and mostly you're gonna want to inline them.
+ *
+ * @way3
  */
 modifyButton({
   type: "button",

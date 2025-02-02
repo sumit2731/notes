@@ -9,7 +9,8 @@ function add(this: { x: number; y: number }) {
 /**
  * we cannot use an arrow function as a method when we do objects like this. So with classes, you
  * can use an arrow function within the class and it will kind of automatically bind the this to
- * the context of the class. Very useful. But in this setup, it just doesn't work.
+ * the context of the class. Very useful. But in this setup, it just doesn't work. in arrow functions
+ * you cannot give type to 'this'. so we have to chnage it back to normal function
  *
  * only way to get this working actually is to change it to a normal function declaration.
  * And now as a normal function declaration, it has access to the this in which it's being
@@ -32,6 +33,15 @@ it("Should add the numbers together", () => {
 
     add,
     setValues,
+    /**
+     * if we define function like this then, this is automatically typed.
+     * this just looks very similar to a class. And often what you'll see, this is kind of how classes run under the hood
+     *
+     */
+    someOtherFunc(num: number) {
+      this.x = num;
+      this.y = num;
+    },
   };
 
   calculator.setValues(1, 2);

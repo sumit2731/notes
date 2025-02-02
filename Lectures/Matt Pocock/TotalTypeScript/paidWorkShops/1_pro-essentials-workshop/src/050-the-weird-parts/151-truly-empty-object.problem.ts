@@ -3,7 +3,7 @@ const acceptOnlyEmptyObject = (input: {}) => {};
 acceptOnlyEmptyObject({});
 
 /**
- * we should get error when we try to pass something otherthan emty object
+ * we should get error when we try to pass something other than empty object
  */
 
 acceptOnlyEmptyObject({

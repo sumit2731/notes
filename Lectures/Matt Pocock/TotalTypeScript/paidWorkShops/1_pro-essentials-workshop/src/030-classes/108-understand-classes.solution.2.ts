@@ -1,10 +1,12 @@
 import { expect, it } from "vitest";
 
 class CanvasNode {
-  readonly x: number;
+  readonly x;
   readonly y: number;
   /**
-   * Either you have initial value for  a property or you initialize it in constructor
+   * Either you have initial value for  a property or you initialize it in constructor,
+   * you can even skip the types in above, types will assigned according to the values you
+   * assign to them in constructor. see code in 110
    */
   constructor() {
     this.x = 0;

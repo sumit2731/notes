@@ -16,7 +16,7 @@ type CallbackType = (
 
 const listenToEvent = (callback: CallbackType) => {
   /**
-   * when we callit , we have to pass all parameters
+   * when we call it , we have to pass all parameters
    *
    * When implementing a function, it doesn't have to pay attention to everything that has
    * been passed in.It can choose to ignore all parameters or pay attention to just the event,

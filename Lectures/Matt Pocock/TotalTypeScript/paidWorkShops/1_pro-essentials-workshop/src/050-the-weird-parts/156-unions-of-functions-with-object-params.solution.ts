@@ -13,9 +13,10 @@ const loggers = [logId, logName];
  * saw in previous sections. here we use that only
  *
  * if you see type of func in param it is union of function(so you might thing that obj needs
- * to be union of all individual types), but when called both union types are mushed togather.
+ * to be union of all individual types), but when called both union types are mushed togather(now
+ * its single function whose argument type is intersection of individual argument types)
  * the union of function is turned into one function with one call signature that says its a
- * fucntion which takes in object with properties - id and name (again this is because of reason 1).
+ * function which takes in object with properties - id and name (again this is because of reason 1).
  *
  * when we call this function now, it has to be a function that contains all of the
  * possibilities of things being passed into it. that means obj type needs not to be union of all
@@ -23,7 +24,12 @@ const loggers = [logId, logName];
  */
 const logAll = (obj: { id: string; name: string }) => {
   loggers.forEach((func) => func(obj));
-  // consider you can even call individual function with obj
+  /**
+   * consider you can even call individual function with obj,
+   * because ts does not complain about extra properties and it makes sense how
+   * functions behave in java script
+   */
+  //
   logId(obj);
   logName(obj);
 };

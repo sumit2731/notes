@@ -34,6 +34,8 @@ const userKeys = usersWithIds.map((user) => {
    * it lets you pass excess properties all over the place.Then the looseness or the perceived
    * looseness of object dot keys and object dot entries will start to feel like it makes a bit
    * more sense
+   *
+   * its not losseless its more precise type that typescript can provide
    */
   const keys = Object.keys(user);
 

@@ -29,7 +29,7 @@ class CanvasNode extends Shape {
 
   constructor(options?: { x: number; y: number; viewMode?: ViewMode }) {
     /**
-     * this calls constructor of parent class
+     * this calls constructor of parent class, this is required
      */
     super(options);
     this.#viewMode = options?.viewMode ?? "visible";

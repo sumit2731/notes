@@ -1,3 +1,8 @@
+/**
+ * {} represents everything except null or undefined
+ * It can also accept object with some properties i.e
+ * you can pass extra properties to it.
+ */
 const acceptAnythingExceptNullOrUndefined = (input: {}) => {};
 
 acceptAnythingExceptNullOrUndefined("hello");
@@ -12,9 +17,9 @@ acceptAnythingExceptNullOrUndefined(new Error("foo"));
 
 acceptAnythingExceptNullOrUndefined(
   // @ts-expect-error
-  null,
+  null
 );
 acceptAnythingExceptNullOrUndefined(
   // @ts-expect-error
-  undefined,
+  undefined
 );

@@ -1,5 +1,7 @@
 import { Equal, Expect } from "@total-typescript/helpers";
-
+/**
+ * Both members are infered as unknown , improve the return types of functions of function
+ */
 const fetchData = async () => {
   const result = await fetch("/");
 
@@ -20,7 +22,3 @@ const example = async () => {
     Expect<Equal<typeof data, any>>,
   ];
 };
-
-/**
- * Problem explained with code snippets
- */

@@ -1,7 +1,7 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
 /**
- * Same problem as last one buut we solved this problem by assigning more specififc types to our
+ * Same problem as last one but we solved this problem by assigning more specific types to our
  * return type by using as const
  */
 const fetchData = async () => {
@@ -21,7 +21,6 @@ const fetchData = async () => {
    * this array. because of which whole return type of fucntion defaults to any. using as const we assign
    * specififc type to this
    */
-  //
   return [undefined, data] as const;
 };
 

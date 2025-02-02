@@ -48,7 +48,7 @@ const example = async () => {
 
 const b: unknown;
 
-const a = [1, b];
+const a = [1, b]; // array of unknown
 
 /**
  * @CodeSnippets 2

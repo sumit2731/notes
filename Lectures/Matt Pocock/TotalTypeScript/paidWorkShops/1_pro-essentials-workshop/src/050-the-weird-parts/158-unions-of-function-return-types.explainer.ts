@@ -10,14 +10,14 @@ const funcs = [idToUppercase, idToInt];
 const resolveAll = (obj: { id: string }) => {
   //here type of func is union of all function types
   return funcs.map((func) => {
-    //while calling func, type is para,eters are intersected togather and return types is union togather
+    //while calling func, type is parameters are intersected together and return types is union togather
     return func(obj);
   });
 };
 
 /**
- * When we have union of function, parameter types intersect togather and return types union
- * togather
+ * When we have union of function, parameter types intersect together and return types union
+ * together
  */
 const result = resolveAll({
   id: "123",

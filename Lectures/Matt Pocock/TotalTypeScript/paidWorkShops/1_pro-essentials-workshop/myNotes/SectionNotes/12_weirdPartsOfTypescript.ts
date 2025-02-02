@@ -3,23 +3,29 @@
  */
 
 /**
+ *@ToBeSeen
  *
+ * 150 - see lecture.
+ *  see figure 6 and 7.
  *
- * 150 - see lecture.empty objects anything except null or undefined.
- *  empty objects represents anything which is not null or undefined.
- *  It represents anything with 0 or more properties.
+ *  {} represents anything except null or undefined.
+ *  as per figure 7, their are 3 types at second level. so anything apart from null and
+ *     undefined can be assigned to {}
  *
  * 151 - proper typing of object with no property
  *
- * 152, 153 - excess property check
+ * 152 - way to trigger extra property check
  *
- * 154 - Reason for why object.keys is typed as string
+ * 153 - if we define return type for function, then we cannot return object with extra
+ *   properties from function, provided object is inlined.
  *
- * 154.8 - evloving any, just see the code
+ * 154 - Reason for why object.keys is typed as string. because ts lets you pass extra
+ *  properties into object as speciffied by object type
  *
+ *
+ * 154.8 - evolving any, just see the code
  * 154.9 - evolving any for arrays
- *
- * 155 - function does need to provide all argumnets when implementing it.
+ * 155(Imp) - function does need to provide all argumnets when implementing it.
  *  but while calling it needs to provide all
  *
  * 156 - function parameters objects can have extra properties can required.

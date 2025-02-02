@@ -20,7 +20,8 @@
  *  types over interface
  * 85 - index signature can also be used with interfaces,we can also give specific properties along with index signature
  * 89 - pick, omit pick also works with interfaces
- * 93(13) - Omit is not distributive.
+ * 93(13) - Omit is not distributive.that explains need why some time libraries have such code,
+ *  that doe snot seem to do anything
  *  In DeepSeek, see the meaning of distributive and
  *  then see implementation of distributive Omit
  */

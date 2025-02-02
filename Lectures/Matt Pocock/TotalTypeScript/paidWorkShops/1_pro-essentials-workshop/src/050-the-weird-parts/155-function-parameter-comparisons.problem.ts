@@ -3,7 +3,7 @@ import { Equal, Expect } from "@total-typescript/helpers";
 type Event = "click" | "hover" | "scroll";
 
 /**
- * Problem - figure out the type to be given to callback type, so that
+ * Problem - figure out the type, that should be given to callback type, so that
  * we have a listenToEvent function that takes a callback that can handle
  * a varying number of parameters based on how it's called.
  */

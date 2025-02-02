@@ -47,3 +47,9 @@ function getPermissions(role: UserRole): string[] {
  * But if you just have a very, very, very simple function here like return string or number, usually it's going to be more
  * accurate just to not use the return type there.
  */
+
+/**
+ * @extra from code - see this lecture -
+     section - mutability
+     code - 106
+ */

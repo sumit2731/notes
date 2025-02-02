@@ -3,6 +3,9 @@ interface ShapeOptions {
   y: number;
 }
 /**
+ * note teh naming convention here, for Shape class we have IShape interface
+ *
+ *
  * interface mentions the things that need to be present in public api of class.
  * you cannot mention private properties here.
  *
