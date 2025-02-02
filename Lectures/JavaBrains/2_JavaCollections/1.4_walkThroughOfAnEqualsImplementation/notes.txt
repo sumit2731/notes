@@ -1,0 +1,17 @@
+we have class(figure 1), we try to write equals implementation (figure 2)
+ but this will not work because name is string and 2 strings are equals when refrence is same.
+ we need to compare values. so any time you are comparing member variables in equals method and
+ it is not prmitive, you need to use equals method of that object(fig 3).but this will also not work,
+ when we call equals methods, we need to use null check.name could be null and it will throw null pointer
+ exception.see figure 4. 
+
+ In figure 4 also there is problem, what if name is null in both objects, in that case we are still returning
+    false.so we need to check if both are null then return true, instance that calls .equals is null return false,
+     otherwise continue with calling equals. os it is complicating the condition. so instead we can use Object.equals
+     it, it takes 2 things checks if they are equal, it does this by calling equals methods.it also protects against null,
+     and handles case that we discussed above(figure 5).so we need to all instance variables have their equals method
+     defined.
+
+
+ this is also not correct, because we are using type casting, may be passed object is not even of type
+    person, in that case we will get casting exception, so you need to check first(figure 6) is correct implementation.

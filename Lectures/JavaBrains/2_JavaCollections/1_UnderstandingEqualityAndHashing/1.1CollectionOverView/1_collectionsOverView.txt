@@ -1,0 +1,134 @@
+Intro(Figure 1)
+Types of collections(figure 2)
+    List - items are stored in order, just like array
+    Set - no duplicates, order does not matter. all elements are unique.
+    map - key value pairs
+
+What to learn? 
+    which collection to use in which case.(better performance in terms of time and space).
+        
+Framework not library(figure 3)
+        This is collection framework, not library.It is not utility library you can pick to do whatever you want.
+        it is not bunch of classes that you can use,it is also guideline to how to implement your own collections.
+        It gives you interfaces or guidelines , to how to implement your own collections.
+
+Benefits(figure 4)
+    1 - its already done, no need to write your won code.
+    2- because it is framework,it offers you guidelines how to use the framework, how to write code for using collections.
+        it improves reusability a lot.
+    4- whenever we need a data structure, we have these 3-4 options(there are few more other than list,set,map) to pick 
+        instead of thinking from scratch.
+
+What collections gives us
+    Core Interfaces - Collection Interface and SubInterfaces 
+        List 
+        Set
+        Map
+    specific implementation - ArrayList is specific implementation of List.
+        naming convention for interface - 
+            first -way it is implemented
+            second part - interface it implements
+    Abstract Implementation - not to be used directly, but to be used as starting point to implement your own collections.
+        You looked at all List implementations, but you are not happy,it does not meet your need, not common, but not so
+        surprising to happen want to implement your own.instead of from scratch(List Interface, interface have no implementations
+        just signatures),these provides you some starting point, i.e stuff that it thinks most list should have.
+
+    Concurrent Implementations - We have concurrent implementations for these things.We have HashMap.Concurrent versions of
+        this is useful when you are in multi threaded env.by default implementations are not thread safe,it assumes that you
+        are taking care of that, you do not have multi threads working on same object reference.when you want to work in multi
+        threaded env use concurrent version of Collection. so ConCurrentHashMap has same behaviour as HashMap but useful in
+        multi threaded env.
+        naming convention is not always accurate, Concurrent is added most of time, but their are some concurrent implementations,
+        which do not have concurrent in name.Ex -
+            List -> CopyOnWriteArrayList
+
+            It is trying to tell you how it gets concurrency, it is not telling you that it is concurrent.It is being Concurrent by
+             copying on write.
+
+    Algorithms - it also provides algorithms. you want to sort a Collection, there are some algorithm for it.
+     you want to search, there are some algorithms that you can choose.
+    Utilities - in addition to all of this,It has utilities also, there is Class - Array ,which has some static methods
+        For ex - Array.compare, you can compare things in collections.
+
+
+    We wnt cover everything, we will cover imp things.
+
+
+Main Collection Interface
+    Collection
+    Map
+
+    All Collection implement Collection interface except for Map, because Map needs key,value paid.
+
+java.util.Collection - see docs, just know they are thier.
+
+Generalization
+    Flexibility vs Power - when you are picking types for collection specifically but in general when you are picking types
+        where polymorphism is involved.you need to make choice between Flexibility vs Power.
+            You can assign a value to its Parent type variable -
+                more flexibility, now it can be passed to all methods which expects Parent Class values.
+                less power - only those methods can be called which are present on parent class.
+            If you assign a value to its own type variable - 
+                more power- you can all methods that are present on that subclass.
+                less flexibility - you can pass this variable only to method which expect sub class type.
+
+Types of Collection (figure 7)
+    index based retrieval (get me first ) - list
+    immutable collections
+    order based retrieval collection - for ex in TreeSet, you have sense of order like, give me next element, ive me previous
+        element.
+
+
+    which collection to use -
+        a)Make use of right data structure
+        b)whatever variable I am holding that collection in, that needs to be of right type.
+
+    For example if we need index based retrieval collection, we can have ArrayList and we can hold it in ArrayList varible, here we have
+        more power but less flexibility.we cannot have very generic type as well, because how can you a generic type which contains features,
+        of all types of lists(index based, immutable, order based).if you say I want to have a Collection as type, how do you have a type which
+        supports all features of all types of collection(index based,immutable, order based ), its not going to work.
+
+    If think of collection as RootInterface for all Collections, then it cannot have method listed in figure 8.
+
+    Java Collections solves this methods in 2 ways(figure 9) -
+        a)Optional methods - there are too many collections types and I want to have one top level Collection Interface, which is Root for all those things.
+         but because of all these differences this collection interface can have no methods.so they said, for most data structures there are some methods
+         which can be used, there are some small exceptions  and for those exceptions, we will say this is not supported.but for most part we will leave
+         that part in there.so if something does not work, it can throw "method not supported" exception or something like that. to make things generic.
+
+        b)Iterator pattern - every collection follows iterator pattern as a mechanism  to get elements and iterate over them.it is important because there
+         is no way for you to say that i want to look at each element in collection,because different collection need you to traverse them differently.
+         so using iteration pattern , they have abstracted it out.
+        
+
+    check docs for Collection Interface, every Collection should have methods defined in this interface(apart for map).goal is to identify common things
+     that apply to all collections and stick into Collection Inmterface. they should ideally want to put everything there.
+    
+        a)size
+        b)isEmpty
+        c)contains- tells if element is present or not
+        d)toArray
+        e)add(without specifying where it goes) - Immutable collection should have this. but java team decided to include this method,in Collection interface because,
+         because they said that it makes sense for most of collections, so lets add it here. but they provide the capabilty to implementor to throw 
+          error - "UnsupportedOperationException ", if it does not support it.there are other exceptions also, have a look at them.
+          also even if add is supported it may not always add element to collection, like Set, for that it returns boolean indicating whether
+          element was added or not.
+
+        f)remove(without specifying anything else) - same as add.
+        g)conatinsAll, addAll, removeAll - perform operation on collection
+        h)clear - clears all collection. can also throw exception.
+
+    
+    
+    General Rule -  WE talked about generic vs specififc , flexibility vs power. lets say we want to have set of student , you can do this -
+            Set mySet = new HashSet();
+        You can hold onto it as SET, but if all you are going to do is add or remove elements then recommendation is to hold onto it as Collection.
+        Go as higher in hierarchy as you can, without losing the power.if you want to do some set operation, then you need go hold onto variable asset.
+        authors have made as any of these common methods available on Collection ,so that you dnt need to reach out to specific implementation for these
+        common things.if you need indexed based access, store it in List rather than ArrayList.so go for interface rather than implementation.
+
+    Collection Interface has these things(figure 10) -
+        a)bunch of constructor for creating collection - empty constructor, as well as constructor that takes other collections and create collection from it.
+        b)methods that we already discuussed
+
+

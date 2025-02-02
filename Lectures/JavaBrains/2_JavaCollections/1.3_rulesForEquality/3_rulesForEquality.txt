@@ -1,0 +1,8 @@
+Rules that need to follow while implementing equals contract(figure 1)
+    reflexivity(figure 2)- when it could we violated this rule, when equals method
+        changes state of object, it not read only operation.
+    symmetry(figure 3)
+    transitivity (figure 4)
+    consistency (figure 5) - first 2 values were equal, then we changed one object state,
+         they they were not equal, then we changed state back to original, again they are equal.
+    Non-Nullity(figure 6) - why? because we called null ob object, and if object is null then we should get null pinter exception.

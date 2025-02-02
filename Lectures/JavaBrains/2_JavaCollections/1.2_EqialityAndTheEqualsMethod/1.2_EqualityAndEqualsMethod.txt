@@ -1,0 +1,13 @@
+Object Equality is Not Refrence equality(Fig 11)
+    how to check object equality - Object class has equals method.default implementation is  refrence check only,
+    but in your class you need to override it. API -
+     obj1.equals(obj2)
+
+
+Why Object equality is important in Collections?
+    Collection contract requires you to have strong equals method(fig 13).
+    so when your own class is going into collection, you need to have your won implementation of equals method.
+
+Collections holds refrences to other objects, collection does not hold primitive
+
+contains method and how it uses EqualsMethod (fig 14,15)
