@@ -1,0 +1,20 @@
+There is contract that you need to dhere to when you are implementing equality, and that has got to do
+ with hashcode.see figure 1.
+
+just like we have isEquals method ob Object class, we have hashCode method on Object class.that method returns
+ integar.so we are reducing whole state of object into those 4 bytes.
+
+
+Options for calculating HasCode HasCode(figure 3)
+    1)it takes memory address of object and hashes it.This is default implementation of hasCode method on Object
+        class.
+    2)you can generate a unique hashcode implementation by using unique member variable like id etc.you can directly
+        use id as hashcode also.
+    3)if such unique member variable does not exist then generate hasCode by using combination of member variables.
+
+How to generate HashCode (figure 4)
+    1)first point means if you want to use single member variable to hash.then jus use that in Objects.hasCode
+    2)if you want to use multiple member variables to generate hash, then use Objects.hash
+
+    Point ot be noted is if member variables are instance of another class, then it class hasMethod of respective classes,
+    this is just like Object.equals

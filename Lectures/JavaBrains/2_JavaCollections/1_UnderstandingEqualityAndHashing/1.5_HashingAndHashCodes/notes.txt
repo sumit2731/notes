@@ -1,0 +1,28 @@
+Hashing(Figure 1)
+    It is not compression, because you cannot take small thing and expand it to full thing.
+    their is lot of data loss that happens,it is way of map it to something that uniquely
+    represents it.
+    ex - class example, we arrange students files alphabatically, here hash  function is - convert student name
+        into first letter. so because of hash we know where to find student file.
+
+    also hash function should always give same hash ofr a given dat otherwise we cnt use that hash to look
+     up the value.
+
+HashUseCases
+    Password storage - website compare password hash, they do not compare actual passwords.so different passwords
+        can have same hash, that is why we have 2 factor authentication.
+    File Integrity checking - if hash of 2 files matches, then files are same.
+    cache - to check if value is cache, we compare the hashes.
+
+    Hashing is th way to compare 2 values without having to compare each and everything.
+
+HashCollision - amount of data tha you have in hash leads to different levels of hash collisions.hash collisions means
+    different value produces same hash. larger is siz eof hash lesser are chances of hash collisions.
+
+
+Collections
+    In collections Hashing is way to look up.we has hashMap, hashSet, they take object and hash it, in order to figure
+    out how to look it up.there are different uses for this -
+
+    a)Finding the object in collection - instead of comparing large object we compare hash, f hash does not match object wnt match.
+        if hash matches the we can go ahead and compare object.
