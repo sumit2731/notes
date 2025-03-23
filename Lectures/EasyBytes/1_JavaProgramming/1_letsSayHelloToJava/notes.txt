@@ -1,0 +1,41 @@
+ 6-
+    Java Release Timelines - LTS(Long term support) and Ono-lTS versions
+
+7- why so many jdk vendors
+    Open JDK - Responsible for build new features of java programming language.this open source community developers along with the Oracle,
+        they are going to build newer versions of java in 6 months.They are not going to provide the JDK binaries to install inside a production
+        server, or to install inside a system. Open JDK is also responsible to define the specifications on how a Java language should work on 
+        how a Java language should execute.by using these Open JDK source code, companies are any developer they cannot install or set up Java 
+        inside their local system.
+
+    Oracle JDK -with the help of the source code that is developed by the Open JDK team, they are going to generate the binaries
+        or they going to provide the JDK installations to the organizations and the developers who want to use a particular Java version.
+        on top of that, Oracle is also going to enhance the Open JDK version by doing some optimizations in terms of performance and in terms of 
+        stability and security.there is licence fee for using this in production.
+
+    Adoptium JDK - this is working group formed by various organizations.they are going to do same job as Oracle JDK.but is free.
+
+    Amazon Corretto - optimized to work better in aws servres.
+
+    Azul - performance based but paid.
+
+    Many More ...
+
+    Code Runs in same way -
+
+        regardless of which JDK you install inside your local system,the Java program is going to run very similarly, and the output you are going to get is going to be
+        same.How it is going to be possible is, like I said before, open JDK is responsible to define specifications for Java programming language.
+        So these specifications we can also call them as TCK.So what is TCK Technology Certification Kit.So any JDK provider who are trying to generate the JDK binaries 
+        from the open JDK source code, they need to make sure they're not changing the source code of Java.Instead, they can do some optimizations on how fast a Java program
+        is running.But if I give a Java statement like System.out.println(), it has to work very similarly inside all the JDK s and the output has to be same.
+        The only thing that can deviate is, the amount of time it is taking to execute a particular Java statement.
+
+
+8,9 - Installing Java
+
+10 - JShell
+    how to open jShell - jShell
+    terminating jeshell - /exit or/ ex
+
+
+

@@ -1,0 +1,150 @@
+448 - Intro to functional programming
+    Go through lecture
+449 - Imperatie vs Functional programming (figure 2-6)
+    go through lecture
+
+450 - What are lambda expression and their syntax (figure 7-8)
+    whenever you are trying to implement a functional style of programming inside your Java
+    program, the very first basic requirement is you should know how to express your business
+    logic using lambda expression.
+
+
+451 - how to build lambda expression (figure 9 -11)
+    In lambda expression you do not need to mention type for parameter and return type.
+    type of parameter is optional.
+
+452 - Deep dive into functional interfaces (slide 12-14)
+    Whenever we want to write a lambda expression, we need a supporting component.
+    Such a supporting component is Functional interface.We can only build a lambda expression 
+    in the context of a Functional interface.
+
+453 - How functional Interface & lambda expressions are linked (slide 15-16)
+    see code, files -
+        a)Hello.java
+        b)LambdaExpressionDemo.java
+
+    Now we are sending business logic as an input parameter.So previously in the imperative approach we can
+        only send that data as an input parameter.But with the lambda expression we can pass the behavior as
+        an input to the methods.So this is one of the great advantage that we have with the lambda expressions.
+
+454 - part 2
+    file -
+        ArithmeticOperation.java
+
+    This is just tip of iceberg,when you start using these lambda expressions inside the collections
+        by leveraging the streams API, you are going to be mad by looking at the power of these lambda expression,
+        providing to the developers.
+
+455 - Anonymous inner class in lace of lambda expressions (slide 17,18)
+    code -
+        AnonymousClassDemo.java
+
+456 -Predefined Functional Interfaces inside JDK (slide 19)
+    YOu dnt need to create a Functonal Inerface each time you need to write lambda expression. java provides some predefined
+        Functional Interface.
+
+    Then we opened the Predicate Interface in itelliJ. Then we saw what other FunctionalInterfaces are
+        avalible in intelliJ.
+
+457,458 - Deep Dive on Predicate(slide 20)
+    See file PredicateDemo.java
+    methods explored -
+        .test
+    default methods -
+        .and
+        .negate
+        .or
+    Static Methods -
+        .not
+        .isEqual - It is going to compare two different objects with the help of equals() method.
+            And accordingly it is going to give the output as true or false.It is static method
+            which takes first object as input and returns a second pradicate which accepts second object
+            as input.
+        
+    See PredicateDemo.java, see code where we use streams with lambda expresion
+    If you try to combine these lambda expressions with the streams and the collections, you can write
+        any complex of code with a breeze.in file we used it, So here you can see this is looking like 
+        a requirement.Now where I am providing low level instructions like iterating the list of elements,
+        checking each element, using the if condition, and collecting all the elements into a new collection.
+        With that, I'm able to achieve my output with a single line of code, whereas with the imperative approach
+        you need to write at least ten lines of code, you're going to see more and more power of lambda expressions
+        in the coming lectures when we start discussing about the streams API.
+
+459 - Deep Dive on Function (slide21,22)
+    FunctionDemo.java
+    methods -
+        apply - calls the function by accepting a argument.
+    Static Method -
+        Function.idenity - accepts a input and returns same as output
+    default methods -
+        andThen - first lambda on left side is called then lambda on right
+        compose - vice versa of andThen
+
+460- Deep Dive on Unary Operator(slide 23)
+    UnaryOperator.java
+    this is SubClass of functon
+    andThen and compose can be used on these but return type is always Function.
+
+461 - DeepDive into Consumer Interface (slide 24)
+    ConsumerDemo.java
+    Abstract methods -
+        accept
+    Default method -
+        andThen - first calls lambda on left , then calls lambda on right, with same parameter
+
+
+462 - Deep dive on supplier interface (slide 25,26)
+    SupplierDEmo.java
+    methods -
+        get
+    Static, default - None
+        With that there is no need of chaining, like you don't have to send the output from one lambda expression to
+        the other lambda expression, because Supplier it is not going to accept any input data.
+
+
+463 - Deep Dive on BiFunctional Interfaces - Part 1 (slide 27,28)
+    all the functional interfaces that we have discussed so far, they accept a single input data type.
+    what if we want to 2 arguments?For this we have BiFunctional Interfaces.
+    Under these BiFunctional interfaces they have various functional interfaces which which are equivalent to 
+        Predicate - BiPredicate
+        Function - BiFunction
+        Consumer - BiConsumer
+        UnaryOperator - BinaryOperator
+
+    BinaryOperator is subclass of BiFunction. it inherits all methods from BiFunction,additionally it has these
+        2 additional static methods, these returns BinaryOperator which returns one of arguments based on
+        comparator logic,we passed -
+            minBy
+            maxBy
+464 - Dep Dive on BiFunctional Interfaces - Part 2
+    Code - BinaryOperator.java
+    see minBy and maxBy, same lambda is passed to both of them, but they behave different.
+
+    No TriFunctional Interface
+
+
+
+465,466 - Functional Interfaces(slide 30-38)
+
+467 - Lexical Scoping in lambda (slide 39)
+    Code - LexicalScopeTest.java
+    a)lambda expressions do not create their own scope. they scope same scope as method in which they are defined.
+    b) variable from outer function which used inside lambda expression should be final or effective final.
+        Think like once you have created this lambda expression, you're trying to pass this behavior to multiple
+        other methods and each of the other methods, if they are trying to assign different-different values
+        to these input at some point of time, especially inside the multithreading environment, you're going
+        to get unexpected results, because each execution of your lambda expression is trying to have different-
+        different values.And with that, you are going to corrupt the original value which you have defined here.
+        That's why this limitation is enforced.
+    c)since varble from outer scope used in lambda expression are final/effectively final, you cnt even modify
+        those even inside method , which contains lambda expression.
+
+
+468 - This and Super inside lambda expression (slide 40)
+    ThisDemo.java
+    inside lambda - 
+        this - class inside which lambda is defined
+        super - class inside which lambda is defined
+    inside anonymous class -
+        this - Anonymous class
+        super - Anonymous class

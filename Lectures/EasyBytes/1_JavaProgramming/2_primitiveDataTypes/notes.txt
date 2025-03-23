@@ -1,0 +1,177 @@
+12- intro to java keywords
+    java is case senstive.
+    All keywords are lowercase. 
+    there is link in repo to see all keywords. most of keywords are from day 1. some exceptions are dere.
+        in case of those version number is specified.
+    you can use keywords as variable by changing case, as java is case senstive.
+
+13,14- Intro to primitive DataTypes
+    see slide to see different primitive data types.
+    why character has size of 16 bits?
+        there are lot of languages in world and emojis are there.to accomodate all this its size is 16 bits.
+
+    to store decimal values -
+        float - stores number, with decimal upto 8 points.
+        double - go with this if you to want to store number with 8 decimal points.
+
+15 - syntax to declare variables (slide 5)
+    i has default value of 0, j has value of 8.if you want to give initial value to both -
+        int i = 1, j = 8;
+    only declaration, or declaration plus initialization.
+    
+
+17 - How to name variable(slide 6,7)
+    identifier name cannot start with number;
+    also variable name with all numbers is not allowed.
+    only 2 special characters are allowed - _ and $.
+
+    best practice is to follow camelcase.
+
+
+18 - Case Styles in programming (slide 8)
+    java - uses camelCase for variables.
+    For values that Does not chnage, it uses snake_case.
+
+
+19 - boolean data type (slide 9)
+    boolean variable name should be prefixed with 'is' or 'has' so that it appears as question.
+
+20,21,22 - character data types (slide 10)
+    characters are stored in form of Unicode format. unicode format can represents all characters of
+        all languages in world.you can google unicode values and you will get all unicode values.
+    Sometimes you need to assign some smiley value to variable, that you cannot type with help of keyboard.
+        so either you can give unicode value(starts with /u) or you can also directly assign the decimal value of that 
+        special character inside the Unicode format(with /u we use hexadecimal number, but when we do not use /u we need 
+        to give decimal equivalent of that hexadecimal number).Only use this Unicode format in a scenario where you can't type that
+        character with the help of your keyboard.
+
+    Inside Java there is a class called Character.So for char data type we have a Character Java class.
+    Inside this Java class there are number of static methods are available that we can use inside our business
+    logic.
+
+    You add 2 characters, since chacters are stored in unicode format, they will be converted in number form(decimal) and will be added.
+
+
+23 - intro to integar primitive data types(slide 12,13)
+    wrapper classes - For byte primitive data type, there is a Byte class.
+    Very similarly, there is a Short class, for int the class name is going to be Integer, not int,
+    and for long the class name is going to be Long.The reason why we call them as wrapper classes is these wrapper classes provide a lot of functionality
+    and helper methods to deal with the primitive data types like byte, short, int, long, char, 
+    boolean.
+
+
+24 -demo code (slide 14)
+
+
+    byte ageOfPerson = numberLargerThan128;
+
+        it fails with error -> possible lossy conversion from int to byte.this is because number on right is integar, which is assigned
+        to data type of byte, which is looser data type hence error.
+
+    long totalNumOfTrees = numberOutsideIntegarRange
+        it fails with -> integar number too long.
+
+        This is because in Java by default, all the whole numbers without any decimal values will be  considered as int data type values.
+        So since compiler is treating this number as int data type value,since int cannot store such a large number, the compiler throws 
+        an error before even considering assigning it to a long.So the solution for this is we need to make sure we are appending the 'l' 
+        or 'L' as a suffix towards the end of the number to convey that I want to store a long number.
+
+25 - OverFlow and UnderFlow(slide 15 and 16)
+    In case of overflow, number moves to left side.
+    In case of underflow it moves to right side
+
+
+26 - Introduction to floating data types(slide - 17)
+    by default, every number that you are going to write is going to act as an int value.
+    If you want a specific whole number to be acting as an long value, then we need to mention the suffix
+    of l, very similarly inside that decimal values also, by default, all your decimal values are going to act as a double data type.
+    But if you want to treat a specific decimal number using float data point, then it is mandatory to mention the suffix f either in
+    small case letter or in the capital case letter after your decimal number.
+
+    for precise values dnt use float or double, instead use java.math.BigDecimal(will see this later)
+
+    float - precise upto 7 digits
+    double - precise upto 15 digits
+
+27 - Demo
+    float piValue = 3.14 (throws error), be deafult decimal numbers are double, so use -
+    float piValue = 3.14F
+
+28 - Demo2(slide 19, 20)
+    constant inside Float and Long class -
+        Float.POSITIVE_INFINITY
+        Float.NEGATIVE_INFINITY
+        Float.NaN
+
+        These can be used in comparing values.
+    
+    Comparison of float and double not allowed -
+
+        3.14 and 3.14f is not going to same.so never compare float and double using ==, use < or >.
+        however if you compare other data types i.e int an byte , they can be compared.
+
+    Arithmetic operation between data types(slide 20) -
+        By default result of int calculation is int and floating point calculation is double in java.
+        when we do calculation of int and double, result is double.
+        when we do calculation of int and float, result is float.
+        here smaller data type is converted into larger data type.
+
+
+29 - using _ in numeric literal(slide 21, introduced in java 7)
+
+    Note - any number of _ is allowed
+
+30 - Other formats supported by number data type (slide 22)
+
+    binary (0B)
+    octa (0, after 0 atleast 2 numbers should be their)
+    hexadecimal (0x or 0X)
+
+31 - demo of octa number(slide 23)
+    declaring(after 0 atleast 2 numbers should be dere) -
+        int i1 = 0346;
+        here number is treated as hexadecimal but while printing it is converted into decimal number.
+        upto number 7 if we have one digit after 0 it fine, because upto 7, decimal and hexadecimal are same.
+            but after that we need atleast 2 digits. if we use '08' the  it fails because in oct system 8 is not allowed.
+    
+34 - type casting in java (slide 26,27)
+    type casting of boolean data type is not allowed.
+
+36 - typecasting demo 2(slide 28,29)
+    when doing typecasting also overflow and underflow happens.
+
+        int num1 = 13;
+        long num2 = 2147483648L; (number outside of range of int)
+        num1 = (int) num2;
+
+        now as int do not have required range, then upper bound happens, i.e control goes to starting.
+
+    casting of char
+        see the position of char in casting hierarchy(fig 26). char(16 bits) is wider than byte 
+        and short.how is char value translated to other data types?each character has a ASCII code,
+        which is hexadecimal number. this hexadecimal is converted into decimal number.while casting
+        char to number type.
+
+    from (int to float) or (long to double)
+        float has 23 bits for represting number. so values that can be accomodated in 23 bits are converted
+        safely from int to float. but for large values their is precision is loss.
+
+
+
+
+37 - Introduction to String in java(slide 30)
+    String Literals
+        chr literals are mentioned inside ''
+        String literal are mentioned inside """
+    null value in string
+        If string variable is not initialized it will hold null value.
+        It is good practice to assign null values explicitly -
+            String s1 = null
+        instead of simply declaring like String input, it is always recommended or a good practice to initialize
+        it with a null.So whoever is trying to use your String input variable inside their methods or inside
+        their classes,they'll have information that your variable may have null value, and they'll be very 
+        cautious while dealing with the null value.
+    why string is not a primitive data type 
+        because primitive data types have fixed memory.
+        refrence data types can have variable memory.
+        All refrence Data types starts with capital letter, so String also starts with capital letter.

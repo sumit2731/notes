@@ -1,0 +1,11 @@
+1)cancelling api calls
+2)removing event listeners
+3)AbortSignal - controller.signal also has this same type
+    AbortSignal.abort("abort") - gives a already aborted signal, if we use it in fetch request, request wnt be made.
+    AbortSignal.timeout(timeOut) - signal that is automatically aborted after given time.
+    AbortSignal.any([]) - takes array of signals and returns a signal which is aborted when any of input signal
+        is aborted
+
+4)customAbort
+    signal.addEventListener('abort', callback) => callback will be executed when signal will be aborted
+    signal.aborted => signal is already aborted

@@ -3,10 +3,10 @@
   declaring global things
   declaring things on window object
   giving types to envirement variables
-2)indexed accsed type
+2)indexed acccsed type
 3)Mapped types (modification code also)
 4)Template Literal Types - useful in problem where we need to convert name of proeprties into something else in mapped types
-5)satiesfied operator
+5)satisfies operator
 6)infer
 7)project refrences
 8)discriminated unions

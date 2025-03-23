@@ -1,0 +1,93 @@
+197 - Intro to structuring (Figure 1)
+    Why structure -
+        a)easy to maintain
+        b)third party library can have same name as your class
+
+    Modules were introduces in jdk 9 and are optional. they are made optional for backward
+        compatibility.there are large codebases which do not use modules. first we will understand
+        packages, then we will know about modules(as they are optional).
+
+198 - Intro to packages and benefits
+    Figure 2.
+    So whenever you try to create Java classes without any package, all your Java Classes or Interfaces
+        or any other data types, they will end up in an unnamed or default package that is going to be 
+        maintained by the JVM behind the scenes.
+
+    java Team has also segregated source code into modules and package. Open intelliJ, go to 
+    external libraries -> jdk version -> java.base(modules) -> java.lang (package) -> String (Class)
+
+    Inside String class, first line -
+        package Java.lang
+
+    This is line you need to add, if you want your class to be part of a particular package.
+
+199 - Creating a package - part 1
+    slide 3.
+    package should contain small letters only.
+
+    a file can have only one package statement, even if their are multiple classes inside it.
+
+    How to provide name to package
+        two approaches -
+            a)slide 3 - So it is a good standard to always mention the domain name of your organization in and reverse order
+            as a starting prefix of the package.For example, I own that domain name which is eazybytes.com.If I'm 
+            building some Java classes for the easybytes organization, I can first try to mention the domain
+            name of the organization.But when you are trying to mention the domain name we should mention in and
+            reverse form.here we are going 3 levels, we will have this folder hierarchy -
+                com -> eazybytes -> employee
+
+                But you can go to any no of hierarchy.
+
+            b)slide 4 - packages based on architecture patterns.
+                model layer - It has java classes which holds data for all application, like Employee class - name, id etc.
+                    simply fields, but no other Java methods.these are POJO classes or entity classes.
+
+
+
+200- Creating a Package - Part2
+    right click on src - create package - > com.easybytes.model
+    it will create a folder structure -
+        com -> easybytes -> models
+    but in ide, it will be shown as single folder only.
+    now right click on package -> new -> class
+    in created class, package line is automatically added at top.If this line is not added, we get compilation error.
+    Also name of package should match folder structure, if that mismatch is dere, then also we get compilation error.
+
+
+202 - Using package members wih import statement (slide 6,7)
+    In order to use a class from package1 in class into package 2, you need to use import statement. 
+    Instead of importing individual classes, you can import entire package using '*'.
+
+    Some optimizarion in intellij settings -
+        Intellij -> settings -> editor -> general -> auto import
+            check these options -
+                a)Add unambiguous imports on the fly
+                b)optimize imports on the fly
+
+            With second setting - 
+                unnecessary imports are removed
+                after number certain form package, we switch to wildcard import
+
+
+207 - Demo of access modifiers - part 1
+    In order to access members of class, first class should be accessible, i.e means you cannot
+        access public members of private class outside the class.
+
+    Using access modifiers with class -
+        a)private, protected - you cannot use it on tp level class, i.e class that is not nested.
+            these can only be used for inner classes.
+        b)public - it means class can be accessed anywhere, even outside package.
+        c)default - class cannot be accessed outside package, even after adding import statements.
+
+        See example in code -> OuterClass.java
+
+210 - Deep Dive on Pojo Classes
+
+    POJO classes - Whenever we use a Java class, just to transfer the data from one place to other place, we 
+        can call such classes as Pojo classes.I'm not going to write any business logic inside this Java 
+        class.the purpose is to carry data from one place to another.They do not have any business logic.
+        Ex - sending data from backend to UI, accepting data from UI.
+
+211 - Deep Dive on POJO classes - part2
+    POJO classes should have getters and setters.
+    fields should be private, but getters and setters should be public.

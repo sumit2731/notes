@@ -1,0 +1,169 @@
+a)java.util.function.Predicate <T>
+    methods -
+        abstract method -
+            .test
+        default method -
+            .and
+            .or
+            .negate
+        static methods -
+            isEqual
+            not
+    classes -
+        java util.function.BiPredicate <T,U>
+            methods -
+                abstract method -
+                    .test
+                default -
+                    and
+                    or
+                    negate
+        IntPredicate
+            abstract method -
+                .test
+            default method -
+                .and
+                .or
+                .negate
+        DoublePredicate
+            same as above
+        LongPredicate
+            same as above
+b)java.util.function.Function <T,R>
+    methods -
+        abstract method -
+            apply
+        default methods -
+            andThen
+            compose
+        static methods -
+            identity
+    classes -
+        IntFunction
+            R apply(int value);
+        IntToLongFunction
+            applyAsLong
+        IntToDoubleFunction
+            applyAsDouble
+        ToIntFunction
+            int applyAsInt(T value)
+        
+        DoubleFunction
+            R apply(double value)
+        DoubleToInt
+            int applyAsInt(double value)
+        DoubleToLong
+            long applyAsLong(double value)
+        ToDoubleFunction
+            double applyAsDouble(T value)
+        
+        LongFunction
+            R apply(long value)
+        LongToInt
+            int applyAsInt(long value)
+        LongToDouble
+            double applyAsDouble(long value)
+        ToLongFunction
+            applyAsLong
+        
+        javautil.function.UnaryOperator <T> (extends Function)
+            methods -
+                Static -
+                    identity
+        IntUnaryOperator
+            abstract method -
+                int applyAsInt(int operand)
+            default method -
+                IntUnaryOperator compose(IntUnaryOperator before)
+                IntUnaryOperator andThen(IntUnaryOperator after)
+                IntUnaryOperator identity()
+        LongUnaryOperator
+            abstract method -
+                long applyAsLong(lomg operand)
+            default method -
+                LongUnaryOperator compose(LongUnaryOperator before)
+                LongUnaryOperator andThen(LongUnaryOperator after)
+                LongUnaryOperator identity()
+        DoubleUnaryOperator
+            abstract method -
+                long applyAsLong(lomg operand)
+            default method -
+                DoubleUnaryOperator compose(DoubleUnaryOperator before)
+                DoubleUnaryOperator andThen(DoubleUnaryOperator after)
+                DoubleUnaryOperator identity()
+        
+        
+        java.util.function.BiFunction <T,U,R>
+            abstract method -
+                apply
+            default method -
+                andThen
+        ToIntBiFunction
+            int applyAsInt(T t, U u)
+        ToDoubleBiFunction
+            double applyAsDouble(T t, U u)
+        ToLongBiFunction
+            long applyAsLong(T t, U u)
+
+        BinaryOperator <T> (extends BiFunction)
+            methods -
+                static methods -
+                    minBy
+                    maxBy
+
+        IntBinaryOperator
+            int applyAsInt(int left, int right);
+        LongBinaryOperator
+            long applyAsLong(long left, long right);
+        DoubleBinaryOperator
+            double applyAsDouble(double left, double right)
+
+c)java.util.function.Consumer < T>
+    methods -
+        abstract method -
+            accept
+        default method -
+            andThen
+    IntConsumer
+        abstract method -
+            accept
+        default method -
+            andThen
+    LongConsumer
+        abstract method -
+            accept
+        default method -
+            andThen
+    DoubleConsumer
+        abstract method -
+            accept
+        default method -
+            andThen
+    java util.function.BiConsumer < T,U>
+        methods -
+            abstract method -
+                void accept(T t, U u)
+            default method -
+                BiConsumer<T, U> andThen(BiConsumer<? super T, ? super U> after)
+
+    ObjIntConsumer -
+        void accept(T t, int value)
+    ObjLongConsumer
+        void accept(T t, long value)
+    ObjDoubleConsumer
+        void accept(T t, double value)
+
+d)java.util.function.Supplier <T>
+    methods -
+        abstract method -
+            get
+
+    classes -
+        IntSupplier
+            int getAsInt()
+        LongSupplier
+            long getAsLong()
+        DoubleSupplier
+            double getAsDouble()
+        BooleanSupplier
+            boolean getAsBoolean()

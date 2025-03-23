@@ -1,0 +1,14 @@
+Annotations -
+    a)@FunctionalInterface - Used while defining functional interfaces. makes sure that interface has
+        only "One abstract method".
+keywords -
+    a)final - 
+        a)used to mark a  member as constant in java class.
+            final int value = 10;
+            static final double PI = 3.14159;
+        b)make a method non-overideable -
+            final void show() {}
+        c)using final with classes prevents that class to be inherited by any other class
+            final class Animal{}
+        d)final with object, refrence cannot be changed (inside method) -
+            final Person p = new Person();

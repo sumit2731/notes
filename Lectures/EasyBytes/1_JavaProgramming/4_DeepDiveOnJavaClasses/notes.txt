@@ -1,0 +1,103 @@
+53 - java Supports OOP's (slide 1,2,3)
+    Why OOP's
+        Inside the object oriented programming paradigm it is always going to prioritize data over imperative commands.
+        So what is an imperative commands.Like I said before, one of the programming style that we have is imperative style.
+        Inside the imperative style, we are going to give clear instructions using the language for each and every step.
+        At this step, what my computer has to do.So when we try to give this clear steps inside a program, we call that style
+        as imperative style.So Java also follows imperative style.That's why whenever we are trying to build logic with the help
+        of Java, we are going to give clear instructions to the JVM.But the advantage with Java is it is not going to blindly follow
+        the imperative approach.Apart from imperative approach, it is going to first prioritize everything as an objects.
+        So instead of telling like do this, do that to the JVM, my Java language first encourages developers to create the classes, methods, 
+        and from these classes we can create objects,and using these objects, we can build the imperative commands.
+        So that's why inside the Java, any logic that you want to write, first you need to define a Java class,java object, java methods.
+        Without defining these components, you cannot issue any commands to the JVM.So this hybrid approach of object oriented along with the
+        imperative commands, brings a lot of advantages to the Java programming language.These advantages are like reusability, modularity, 
+        easy maintenance, encapsulation, inheritance,and polymorphism.
+
+    modularity - all logic is not dumped into single class, so it is modular.
+
+
+54 - What is Java Class(slide 3,4,5)
+    access modifier -  whenever we define a public just before the class keyword that represents any other class inside my Java project, 
+    they can invoke my class.They can invoke the methods inside my class.They can access the variables inside my class.
+
+
+58 - Intro to methods- part 1(slide 7.8,9)
+
+    slide - 8 - see throws clause, it tells what kind of exceptions this method can throw.
+
+
+62 - Intro to method Signatures(slide 12,13)
+    This signature is going to help to uniquely identify a method within a specific context or within a specific class.
+    return type is not considered in method signature.
+
+
+65 - say hi to main method again (slide - 16,17)
+    We can multiple main method in class provided they have different signatures.
+    but JVM will always execute main methiod with its prefered signature.
+
+67 - How to create and initialize Java Objects - Demo
+
+    Build Project
+        there is a option to do build - build project.
+        if you don't do the build process manually, it should work perfectly without any issues.
+        Because when you try to run your Java class at that time, the compilation will take care if the compilation
+        is already not completed.But in some scenarios, if you have too many classes and dependencies between them, then you are going
+        to get some compilation errors to resolve that you can do the build manually.
+
+
+68 - Introduction to constructor Data (slide 20,21)
+    same name as class
+    no return type
+
+    default constructor - you can skip the constructor , JVM will provide a default one.
+
+    access level of default constructor is same as access level of class
+
+69 - Demo of constructor in Java & intro to debugging
+    best practice to is to define constructor between fields and methods of class.
+
+
+71 - constructor overloading in java
+    In class methods we can access class variables without this keyword.
+    we can do same in constructor also, but in order to avoid variable shadowing we use 'this' inside constructor.
+
+
+
+72 - constructor chaining(slide 23,24)
+
+84- Static Initialization Block
+    it is executed when calass is loaded in memory. so in a class when we try to create the instance of other
+     class(Class B), only when that line where object of class B is created , static Initialization block of classB
+     will be executed.
+
+    Static initialization block is executed before main method.
+
+86 - Where does Java store classes,objects,variables,methods
+    Garbage Collector only deletes refrence data types.it does not delete primitive data types.It does not track them.
+    it deletes object when controls moves out from scope.
+
+    Method Area - class definitions, method definitions and other runtime constants like static variables are going to be stored.
+
+    NativeHeap - This is the area of memory where native libraries and the code are going to be loaded are stored.So what is native code?
+        When we discussed about the compilation and interpretation process of Java, I explained about a process called JIT compilation 
+        Just In Time compilation.So what my JIT compiler is going to do, my JIT compiler is going to identify the hotspots inside my
+        classes and methods, which are going to be executed many times or very frequently all such hotspots bytecode is going to be converted
+        into a native executable code by the JIT compiler, and it is going to cache it inside a memory.And that memory is native heap.
+        my JVM is also going to create some objects with the help of native code and native libraries.But whatever objects that JVM is going 
+        to create inside the native heap, they are not going to be tracked by the Garbage collector.
+
+
+    This space is allocated to JVM by OS system based on JVM version,JVM then cretes these 4 types of spaces. if required we can customize the 
+    allocation of memeory to JVM.
+
+87 - Deep Dive on Heap memory and stack memory(38,39)
+    When a element is removed from call stack, heoa memory is not cleared. it is cleared 
+     only be garbage collector.
+
+88 - Demo fo heap Memory In IntelliJ
+    here we saw how can we inspect the stack and heap memory in intellij.
+
+     
+
+    

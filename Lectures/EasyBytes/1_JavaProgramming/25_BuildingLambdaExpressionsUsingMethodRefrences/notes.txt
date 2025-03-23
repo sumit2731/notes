@@ -1,0 +1,58 @@
+471 - Intro to Method References (slide 1)
+    These are used to create lambda expressions.
+
+472 - Demo of Static Method reference(slide 2)
+    code - StaticMethodReference.java
+
+473 - Demo of Instance method reference using Class (slide 3)
+    code - InstnaceMethodreference.java
+
+474 - Demo of Instance method reference using Class type (slide 4)
+    code - ClassMethodReference.java
+    we are trying to leverage an instance method available inside the System.out
+    out is a static variable inside the System class.So when we try to invoke the static variable behind the scenes, 
+    we are going to get an object of PrintStream.And using the object of PrintStream we are going to invoke a instance
+    method which is println().
+    So here I can't mention the PrintStream object because the PrintStream object it is going to be created
+    behind the scenes, and at the same time we can't simply mention the System class name.
+    
+    So the syntax that we need to follow to implement method reference in these kind of special scenarios
+    is, you can type as usually whatever you have like System.out post that you need to mention two colons
+    followed by your instance method.So this System.out behind the scenes it is going to create an object of PrintStream.
+    And using the same object of PrintStream, we are trying to invoke these println() instance method.
+
+    Extra Notes from ChatGPT -
+
+    In additon to use case mentioned above  "Instnace method reference using Class", can be used in one more use case 
+        also -
+
+        This type of method reference refers to an instance method of an arbitrary object of a specific class. It's 
+        used when the first parameter of the lambda expression becomes the target of the instance method call.
+
+        Imagine you have a lambda expression like this:
+
+            (obj, arg) -> obj.instanceMethod(arg)
+
+        This lambda takes two arguments: obj (an object of a specific class) and arg (an argument for the instance method).
+        It then calls instanceMethod on obj, passing arg.You can replace this lambda with the method reference:
+            Class::instanceMethod
+
+        The compiler understands that the first parameter of the lambda will be the object on which the instance method is 
+        called, and the second parameter (if any) will be passed as the argument to the method.
+
+        public class MethodReferenceExample {
+            public static void main(String[] args) {
+                List<String> names = Arrays.asList("Alice", "bob", "Charlie", "dave");
+
+                // Using method reference for instance method (ClassName::instanceMethod)
+                names.sort(String::compareToIgnoreCase);
+
+                System.out.println(names);
+            }
+        }
+
+475 - Demo of Constructor Reference(slide 5)
+    Code - ConstructorReferenceDemo.java
+    Sometimes while you are trying to create a lambda expression, the only logic that you may have inside
+    your lambda expression is to create an object of a class.In this kind of scenarios, you can leverage
+    the constructor reference.

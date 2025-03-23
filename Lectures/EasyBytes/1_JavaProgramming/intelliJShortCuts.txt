@@ -1,0 +1,27 @@
+Settings -
+    1)side by side tab -
+        right click on tab -> open in right
+
+    2)plugins 
+        Intellij -> settings -> plugins
+
+    3)debug window -
+        view -> tool windows -> debug
+    4)To see the opened file in file explorer -
+        On file explorer click the circle
+
+ShortCuts -
+    a)Search class/file/text -
+        cmd + o
+    b)show all methods on class -
+        cmd + f12
+        cmd + 7
+    c)collapse all -
+        cmd + shift + (-)
+
+    d)generating getters and setters -
+        cmd + n
+
+Templates(type text and press tab) -
+    a)psvm - public static void main
+    b)sout - System.out.println()
