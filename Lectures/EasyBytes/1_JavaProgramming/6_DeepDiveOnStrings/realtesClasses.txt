@@ -1,0 +1,23 @@
+String
+StringBuilder
+    This is mutable, so Prefered when we have large strings and frequent updates are needed.
+StringBuffer
+    same as String builder but it is safe for multi threading
+CharArray
+CharArrayWriter
+    CharArrayWriter uses an internal char[] buffer, which is mutable.
+    The buffer can grow dynamically
+    CharArrayWriter is a Writer subclass, designed to work seamlessly with Java's character 
+        streams. This makes it ideal for capturing output from other stream-based operations.
+    The writeTo(Writer out) method allows you to efficiently write the contents of the CharArrayWriter
+        to another Writer without creating an intermediate String object. This can be beneficial when 
+        you want to process the character data further using other stream operations.
+    Prefered over String when we have large Characters and frequent updates are needed.
+    When to use -
+        a)CharArrayWriter is primarily designed as a character stream for capturing output. 
+            It's not as versatile for general string manipulation as StringBuilder.
+        b)It's main focus is to be a destination for character streams, and then to provide
+            the stored data as a char array, or String.
+        c)CharArrayWriter is for capturing character output from streams into an in memory buffer.
+
+   

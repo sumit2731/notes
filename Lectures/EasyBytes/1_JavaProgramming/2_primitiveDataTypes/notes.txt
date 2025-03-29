@@ -42,21 +42,22 @@
     Sometimes you need to assign some smiley value to variable, that you cannot type with help of keyboard.
         so either you can give unicode value(starts with /u) or you can also directly assign the decimal value of that 
         special character inside the Unicode format(with /u we use hexadecimal number, but when we do not use /u we need 
-        to give decimal equivalent of that hexadecimal number).Only use this Unicode format in a scenario where you can't type that
-        character with the help of your keyboard.
+        to give decimal equivalent of that hexadecimal number).Only use this Unicode format in a scenario where you can't
+        type that character with the help of your keyboard.
 
     Inside Java there is a class called Character.So for char data type we have a Character Java class.
     Inside this Java class there are number of static methods are available that we can use inside our business
     logic.
 
-    You add 2 characters, since chacters are stored in unicode format, they will be converted in number form(decimal) and will be added.
+    You add 2 characters, since chacters are stored in unicode format, they will be converted in number form(decimal)
+    and will be added.
 
 
 23 - intro to integar primitive data types(slide 12,13)
     wrapper classes - For byte primitive data type, there is a Byte class.
     Very similarly, there is a Short class, for int the class name is going to be Integer, not int,
-    and for long the class name is going to be Long.The reason why we call them as wrapper classes is these wrapper classes provide a lot of functionality
-    and helper methods to deal with the primitive data types like byte, short, int, long, char, 
+    and for long the class name is going to be Long.The reason why we call them as wrapper classes
+    is these wrapper classes provide a lot of functionality and helper methods to deal with the primitive data types like byte, short, int, long, char, 
     boolean.
 
 

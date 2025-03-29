@@ -1,0 +1,53 @@
+instanceMethods -
+    1)hashCode()
+    2)contact(str)
+    3)length()
+    4)equals(str), equalsIgnoreCase(str)
+        return boolean
+        recommended approach to check if string is empty - "".equals(str)
+    5)comparesTo, comparesToIgNoreCase()
+        returns int
+        used to know which word should come before which word. 
+            compares character by character. if 2 characters are equals, moves to next.
+            get the unicode value of both characters and subtracts them from each other and returns result.
+        lecture 112.
+
+    6)charAt(int) - returns character at given index.
+    7).isEmpty() - return s true, if length is empty.
+    8).isEmpty() - return true if string is empty or contains whitespaces
+    9)toUpperCase(), toLowerCase()
+    10)toUpperCase(Locale locale) - you can pass language of your input and it will consider language rules
+        while converting it.
+    11)indexOf(str) - int
+    12)contains(atr) - boolean
+    13)startsWith,endsWith()
+    14)matches(regularExpressions)
+    15)trim() - removes extra spaces and control characters at beginning and end
+    16)substrng(startIndex,endIndex) -
+        length - endIndex-startIndex
+        startIndex is inclusive, endIndex is exclusive (endIndex can be skippeed)
+        negativeIndex not allowed, throws errors - StringIndexOutOfBoundException
+    17)replace(oldSAtr,newStr) - 
+        both values can either be character or string
+        replaces all occures of oldStr with newStr
+    18)replaceAll(String regex, String newStr)
+    19)replaceFirst(Staring regEx, String newStr) - replaces only first instance, not all
+    20)split(String delimeter) - returns array string
+    21)toCharArray - converts a string into string into character array
+
+
+
+Errors -
+    a)StringIndexOutOfBoundException
+
+Static Methods -
+    a)String.valueOf() - takes value from other data types and converts it into string
+    b)String.join(String delimeter, elements) - Java 8
+        Delimeter - the character or sequence of characters that will be used to separate the elements in resultant string.
+        elements - the strings to be joined.
+            It can be any no of individual strings.
+            It can Collection of String or List of Strings
+
+        String.join(" ","Hello", "World", "Java") - Hello world java
+    c)String.format(string, ...arguments)
+        slide 23,24,25

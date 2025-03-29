@@ -1,0 +1,24 @@
+Java Docs link -
+
+
+99)Intro to javaDoc comments
+
+    Open offcial java docs -
+        Java SE Techninal Documentation -> API specification
+    same as jsdocs
+    you can see all memebers of class - cmd + f12
+    In Intellij you can switch between code view and webpage view by clicking on icon on left.
+
+    Extra tags -
+        @code - changes format
+        @linkClass#Method - takes you to docs of gien method
+        <p></p> - Takes the comment to next line
+        @param
+        @return
+
+100,101) JavaDocs Comments Demo
+    shortcut to generate javadoc via intellij - select method, press option + enter
+
+102) generating javadoc using intelliJ
+    tools -> generate java doc
+

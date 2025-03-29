@@ -12,15 +12,22 @@ Settings -
 
 ShortCuts -
     a)Search class/file/text -
-        cmd + o
+        cmd + o (Go to class, Mac)
+        ctrl + n(window)
     b)show all methods on class -
         cmd + f12
         cmd + 7
+    c)find useage in file -
+        cmd + f7
     c)collapse all -
         cmd + shift + (-)
 
     d)generating getters and setters -
         cmd + n
+
+    e)gnerating javadocs -
+        select methd name
+        option + enter
 
 Templates(type text and press tab) -
     a)psvm - public static void main

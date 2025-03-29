@@ -1,0 +1,44 @@
+105 - Intro to String Pool (slide 1)
+    String is refrence data type.
+
+106 - Demo of String Pool in Java
+    StringPoolDemo.java
+    hashCode -  based upon the content that you are trying to store inside your object?
+        This hash code value is going to be calculated.
+
+
+122 - Joiniing Strings
+    String.join() - How does join methid accept variable no of arguments?
+    Whenever we are using these join() static method inside our Java programs behind the scenes, it is 
+    going to leverage the StringBuilder class, which is present inside the string ecosystem, to 
+    concatenate various multiple strings into a single string.
+    
+    So with the help of StringBuilder, only the join() is going to perform this joining operation very
+    efficiently.StringBuilder is a class inside the string ecosystem, which we are going to discuss in
+    the coming lectures. With the help of this class, we can overcome the challenges of String 
+    immutability.We know strings are immutable in nature for some reason if you want to make them 
+    mutable, then instead of String, we can use the classes like StringBuffer and StringBuilder.
+
+    Also when we looked at definition of join method, we saw that we have class called CharSequence
+     which is very similar to String.
+
+     CharSequence - sequence of character, provides only readonly methods.Mutations methods can 
+     be mutable or immutable, Character Sequence does not provide implementation of this.
+        several classes like String,StringBuffer implement these.
+
+
+124- System.out.printf()
+    System.out.print() - pritnts the string
+    System.out.println() - prints the string and moves cursor to next line
+    System.out.printf() - formats the string, then prints the string on next line.
+        to have cursor on next line use, '%n'
+
+
+
+128 - Text Block in Java (Java 15) (slide 32)
+    how to store string that are multi line without txt blocks -  TextBlockDemo.java
+    by using TextBlock enter and tab buttons are also accounted for.
+
+
+
+

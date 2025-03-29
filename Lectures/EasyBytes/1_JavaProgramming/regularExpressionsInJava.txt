@@ -1,0 +1,7 @@
+1) a| e| i| o |u - 
+    '|' is or symbol
+2) ".*World.*"
+    . - a dot matches any character (except for a line terminator like newline \n).
+    * - An asterisk means "zero or more occurrences" of the preceding character
+        or group.
+
