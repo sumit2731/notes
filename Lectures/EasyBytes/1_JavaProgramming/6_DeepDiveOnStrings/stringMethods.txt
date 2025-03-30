@@ -1,6 +1,6 @@
 instanceMethods -
-    1)hashCode()
-    2)contact(str)
+    1)hashCode() - generates a integar based on string contents
+    2)contact(str) - returns a new string by combining 2 strings
     3)length()
     4)equals(str), equalsIgnoreCase(str)
         return boolean
@@ -13,7 +13,6 @@ instanceMethods -
         lecture 112.
 
     6)charAt(int) - returns character at given index.
-    7).isEmpty() - return s true, if length is empty.
     8).isEmpty() - return true if string is empty or contains whitespaces
     9)toUpperCase(), toLowerCase()
     10)toUpperCase(Locale locale) - you can pass language of your input and it will consider language rules
@@ -23,7 +22,7 @@ instanceMethods -
     13)startsWith,endsWith()
     14)matches(regularExpressions)
     15)trim() - removes extra spaces and control characters at beginning and end
-    16)substrng(startIndex,endIndex) -
+    16)substring(startIndex,endIndex) -
         length - endIndex-startIndex
         startIndex is inclusive, endIndex is exclusive (endIndex can be skippeed)
         negativeIndex not allowed, throws errors - StringIndexOutOfBoundException
@@ -41,7 +40,9 @@ Errors -
     a)StringIndexOutOfBoundException
 
 Static Methods -
-    a)String.valueOf() - takes value from other data types and converts it into string
+    a)String.valueOf() - takes value from other data types and converts it into string. can be used on primitive
+        as well as refrence DataTypes.
+        Behind the scenes calls - .toString on given parameter.
     b)String.join(String delimeter, elements) - Java 8
         Delimeter - the character or sequence of characters that will be used to separate the elements in resultant string.
         elements - the strings to be joined.
