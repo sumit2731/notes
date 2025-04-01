@@ -1,7 +1,29 @@
 1) a| e| i| o |u - 
     '|' is or symbol
-2) ".*World.*"
-    . - a dot matches any character (except for a line terminator like newline \n).
-    * - An asterisk means "zero or more occurrences" of the preceding character
-        or group.
+
+2).
+    it means any single character except for line terminators (\n or \r)
+
+3)\w
+
+    Meaning: Matches a "word character." This is a much more restricted set of characters.
+    Scope: Typically matches:
+        Uppercase letters (A-Z)
+        Lowercase letters (a-z)
+        Digits (0-9)
+        Underscore (_)
+
+4)^
+    Matches the beginning of the URI.
+
+5)$
+    Matches the end
+
+6)+
+matches one or more occurances of preceding letter -
+    \w+ - means or more any world letters
+
+7)* 
+    Matches the preceding character or group zero or more times.
+
 

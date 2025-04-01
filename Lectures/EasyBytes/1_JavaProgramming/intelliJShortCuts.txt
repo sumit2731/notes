@@ -10,12 +10,18 @@ Settings -
     4)To see the opened file in file explorer -
         On file explorer click the circle
 
+    5)to see alll child classes of class -
+        a)click on arrow on left hand side
+        b)right click on it -> got to -> implementations
+    6)to see parent -
+        right click on it -> got to -> super class
+
 ShortCuts -
     a)Search class/file/text -
         cmd + o (Go to class, Mac)
         ctrl + n(window)
     b)show all methods on class -
-        cmd + f12
+        cmd + f12 (also helps to see inherited members, and which class they are inherited)
         cmd + 7
     c)find useage in file -
         cmd + f7

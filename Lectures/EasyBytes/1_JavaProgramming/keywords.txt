@@ -9,6 +9,18 @@ keywords -
         b)make a method non-overideable -
             final void show() {}
         c)using final with classes prevents that class to be inherited by any other class
-            final class Animal{}
+            public final public class Animal{}
         d)final with object, refrence cannot be changed (inside method) -
             final Person p = new Person();
+
+    b)abstract -
+        a)can be used in class to indicate that -
+            a)class will have abstract method (only abstract class can have abstract methods)
+            b)you cannot create instances from this class
+
+            public abstract class className {}
+        b)can be used in method to indicate the this is abstrcat method, it will
+            not have any definition, child class needs to implement it. we will
+            just provide signature here.
+
+            public abstract void methodName();

@@ -1,0 +1,82 @@
+213 - Agenda
+    Inheritance ,Polymorphism, and abstraction are related to each other.
+
+216,217 - Inheritance Demo
+    How to check which methods are ava;aible inside intelliJ - cmd + f12
+        It also shows whether it is method or field
+        whether it is overriden or not (direction of arrow)
+    In MarvelsMain.java, we were not able to access protected members of Person class. see comemnts.
+218 - Object class is default Superclass
+
+
+222,223 - Upcasting
+    Files - UpcastingDemo.java
+
+228 - PolyMorphism
+    polymorphism allows objects of different classes to be treated as objects of a common 
+    type. This enables you to write code that can work with objects of various types 
+    without needing to know their specific class beforehand
+
+
+230 - method Overriding
+    Files -IronMan.java
+    when you override a method,use @Overrid annotations
+    also while seeing all method in IntelliJ(cmd + f12), direction arrow chnages, confirming
+        overriding
+
+231 - DynamicPolyMorphism
+    File -  DynamicPoly.java
+
+
+234 - Overloading
+    File - IronMan.java, eat method
+           StaticPoly.java
+
+
+236,237 - Field and Method Hiding
+    your compiler or Java always is going to look at what is the object reference data type.
+    Using the same, it is going to invoke the fields present inside that class data type.
+    code -
+        TestMethodHiding.java
+        TestFieldHiding.java
+
+238,239 - The story of constructors & Inheritance together - Part 1 (35,36,37)
+    Even we do not define any constructor a default constructor is created by java.
+    This constructor does not take any arguments.but when you create a constructor,
+        manually, then this default constructor is not created.
+
+    In child class, by default parent class constructor will be called. java automatically
+     adds super(), at begining of constructor.so it automatically class default constructor
+     of parent.
+
+    problem arises when you define constructor in parent class manually and it takes
+    some arguments. in case default line that java adds - super(), is not sufficient,
+    because their is no such constructor.
+
+    Code - ConstructorDemo.java 
+
+241 - types of inheritance(39,40,41)
+    Java does not support multiple inheritance but their is a work around for that with interfaces
+
+242,243 - abstract methods and classes - Part 1
+    Both inheritance and abstraction are tightly coupled with inheritance.
+    Polymorphism can be easily achieved with the help of Inheritance.Very similarly Abstraction
+    also we can only implement along with the Inheritance.That's why whenever you are trying
+    to implement Inheritance inside your Java project, you should also try to take care of 
+    implementing and balancing other pillars of object oriented programming, which
+    are Polymorphism and Abstraction.
+
+    abstract methods can be written only in abstract classes.
+    icon for abstract classes in intellij is bit different from normal claases.
+
+    code -
+        Subject.java
+
+245 - sealed classes interfaces
+    sealed class can define which classes can inherit it.
+    their are constraint on classes that inherit these. see on chat gpt, why they are required.
+Things to be looked at -
+
+    Slide - 
+        29, 
+        33 - can we use object name to call static methods of class?

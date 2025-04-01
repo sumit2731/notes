@@ -1,1 +1,4 @@
 1)java.util.function - Functional Interfaces for writing lambda expressions.
+2)java.lang -
+    String
+    Object
