@@ -1,0 +1,4 @@
+1)start - 
+    nginx
+2)restart -
+    nginx -s reload

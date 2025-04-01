@@ -1,0 +1,49 @@
+web server, used for -
+    reverse proxying (figure 2)
+    load balancing  (figure 3)
+    caching
+
+why use nginx -
+    a)load balancing.
+    b)when we have multiple servers we do not need to encrypt all servers, we just need
+        to encrypt one. figure 4.
+
+install nginx -
+    brew install nginx
+    
+    It creates a nginx directory  in -
+        usr/local/rtc/nginx (in course)
+        /opt/homebrew/etc/nginx(actual)
+
+    Important files -
+        /opt/homebrew/etc/nginx/nginx.conf
+
+Starting nginx -
+    nginx
+
+    go to - localhost:8080
+
+Terminologies -
+    directives - key-value pair
+    context - you can create context using {}, within these you can directives for that
+        specific context.
+
+created new nginx.conf file. served a static html.
+added a css file, styles were not applied.  in response header-
+    Content-Type: text/plain (it should text/css)
+    then we added types context inside http and told that for this type of files, this should
+        be ContentType. then we included already defined types in using include.
+
+added location block
+    root inside location
+    alias inside location block
+    try_files directive
+    using regular exprssion in location file
+    redirect
+    rewrite - matching via regex and then using that while specifying target
+
+As LoadBalancer -
+    
+
+
+
