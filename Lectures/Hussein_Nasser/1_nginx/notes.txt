@@ -1,0 +1,36 @@
+5 -Layer 4 vs Layer 7 
+    slide 9. at layer 4 , nginx can detect whether it is syn or TLS hello and can
+        can raise events that can be helpful.
+
+    It doesn't really look at the content and try to derive, oh, this is a get request.
+    For example, at layer four proxy doesn't usually do that.It can with deep packet 
+    inspection, but there is no really point to that at that point.You're just a layer
+    seven reverse proxy.
+
+    Layer 7 -
+        you can see which url it is visiting(at layer 4 , you can just see IP )
+        you see headers,cookies, http methods
+        This stuff is encrypted , so you need to decrypt it.
+
+    When to opt for Layer 4 proxy -
+        When nginx doesnt undertand protocol like grpc,webRTC etc.
+        you can opt in for a layer four proxy and say, hey, blindly just take whatever I
+            give you in this packet or this segment.Just forward it to backend.
+
+    When to use layer 7 Proxy -
+        Understand and rewrite headers
+        does more to content itself
+
+    Difference in loadbalancing -
+        Because we don't understand the context in layer four, it's very dangerous to start a swizzling and
+        load balancing packets on the back end.It's like, hey, the moment you do a layer four load balancing
+        the TCP connection is pegged to one and only one back end.You cannot share it.You cannot use another
+        back end connection
+
+
+        At layer 7,it udnerstand this is Http and Http is stateless.
+        I'm not going to do any of that stuff.I can share my request on any of these back end 
+        connection.So load balancers become more efficient in layer seven, but there is a cost 
+        of decryption and the cost of sharing the certificate, which we're going to talk about 
+        in lecture.
+
