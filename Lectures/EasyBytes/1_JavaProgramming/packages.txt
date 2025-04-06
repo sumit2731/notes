@@ -1,4 +1,36 @@
-1)java.util.function - Functional Interfaces for writing lambda expressions.
+1)java.util
+    Objects - It was introduced in Java 7 and provides static helper methods for working with objects. 
+        It helps to write cleaner, safer, and null-friendly code.
+        some methods -
+            int Objects.hash (Object... values) - generates hash code for multiple fields
+            Objects.equals - Safely compares two objects for equality (handles nulls).
+            Objects.requireNonNull(obj) -Checks that an object is not null, otherwise throws NullPointerException.
+            Objects.compare (a, b, compare) - Compares two objects using a provided comparator (Java 8+).
+            Objects.null(obj) - Returns true if the object is null.
+    java.util.function - Functional Interfaces for writing lambda expressions.
 2)java.lang -
     String
-    Object
+    Object (Parent class of all classes in java)
+    Class - when you call Object.getClass() - you get object fo this type.
+        then you can call various methods on this.
+        An object of type Class represents a class or interface in a running Java application.
+            Method[] getMethods()
+            Method[] getDeclaredMethods()
+            Method getMethod
+            Fields[] getFields
+            Field getField("fieldName")
+            Field getDeclaredField
+            T cast(Object obj)
+            isRecord():boolean
+            getRecordComponents()
+
+    Record
+
+            
+
+    java.lang.reflect -
+        Method - represents the method of class
+            invoke - calls the method
+        Field - represents the fields of class
+            set
+        RecordComponent - represents theRecord  memebers of record

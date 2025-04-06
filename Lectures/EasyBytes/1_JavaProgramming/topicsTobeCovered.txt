@@ -1,1 +1,2 @@
-Creating my own annotations
+a)Creating my own annotations
+b)Marker Interfaces - Serilizable

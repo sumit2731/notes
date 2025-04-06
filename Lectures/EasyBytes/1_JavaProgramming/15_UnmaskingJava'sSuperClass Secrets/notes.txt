@@ -1,0 +1,84 @@
+324 - Intro to the methods
+    Object is part of java.lang package. This package is present as part of java.base module.
+    
+    
+325 - deep dive getClass (figure 5)
+    see return type of getClass() -
+        what is the purpose of this question mark?So the question mark here it is indicating a wild card.
+        So what is a wild card?With the help of this wild card, we are able to build the method signature that can return any class
+        detail at runtime based upon the object that we are trying to return.
+        
+        It return the Object of type Class, see the details in packages class.
+        related question -
+            https://www.udemy.com/course/java-programming-a-comprehensive-bootcamp-from-zero-to-hero/learn/lecture/42589044#questions/23220019/
+
+    Code - GetClassDemo.java
+
+326, 327 - deep dive hashCode (figure 6,7,8)
+    hashCode is used in structures like hashMap, hashSet
+    if obj1.equals(obj2), then hasCode should also be equal, but vce versa is not true.
+
+329,330 - override hashCode and equals Method
+    code - HashCodeEqualsDemo.java,Person.java
+
+    In IntelliJ - select template that has java 7+, for generating these
+
+
+331 - Deep dive on toString() in Object class
+    by default when you pass a object to System.out.println(someObject)
+    it will print someObject.toString()
+
+334 - Deep Dive on clone() in Object class (slide 15)
+    Code - CloneDemo.java,Person.java
+    Class should implement the interface Clonable and should overwrite the clone method.
+    Why implement clonable -
+        Clonable's purpose is to signal to the Object.clone() method that cloning is permitted.
+        If class does not implement then we get - CloneNotSupportedException 
+        Clonable is MarkerInterface, see keywords.txt.
+    Why overwrite -
+        default method is protected
+        define return type
+
+
+335,336 - Shallow cloning & Deep cloning (slide 16- 19)
+    Code - CloneExample.java
+
+    wait - 
+        Causes the current thread to wait until it is awakened, typically by being notified or interrupted.
+    notify - akes up a thread
+        Wakes up a single thread that is waiting on this object's monitor
+
+337 - Immutable Objects (slide - 20,21,22)
+    make field as private
+    have no setters
+    make field as final
+    make class as final
+
+    why we want immutable Objects?
+        we can pass objects into methods1, then method2, then method3. but contents are not changed.
+        so if we have senstive information ,then use this.
+        ex- Objects sent from frontend
+    
+    These are also called Data Carrier Classes.
+
+    d/w mutable and immutable
+        mutable - synchronization is needed if these are to be used in multi-threading env
+
+    since mutable obj are more performant, most of objects are mutable only. immutable objects are only created 
+     when we have  specific requirements.
+
+
+
+339 - Record Classes Part 1, part 2 (slide 23 -  25)
+    code - recordDemo.java, PersonRecord.java
+    JVM does following things when you create a Record -
+        a)make a class as final, so that ypu cannot have setters in subClass.
+        b)make fields as final and private
+        c)generate getters without any prefix
+        d)generate a constructor with fields mentioned inside record header(this constructor is called Canonical constructor)
+        e)it also overwrites the toString, equals and hashCode according to member variable defined in record
+
+    All Records Inherit the Record class.this is evident when we see all the methods inside a class - cmd + f11.
+    All methods are inherited from record Classes, so you cannot extend from any other class.
+
+

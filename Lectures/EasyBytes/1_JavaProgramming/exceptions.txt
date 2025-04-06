@@ -1,0 +1,3 @@
+1)CloneNotSupportedException - When we call clone method on a object, but it does not implements clonable ,method
+2)IllegalArgumentException - We throw this error when correct arguments are not passed to our constructor that
+    we define in Record.

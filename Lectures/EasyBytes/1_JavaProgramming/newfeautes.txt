@@ -1,0 +1,5 @@
+Java 10-
+    var (section 15, lecture 341)
+
+Java 16 -
+    Record classes (section 15, lecture 339)

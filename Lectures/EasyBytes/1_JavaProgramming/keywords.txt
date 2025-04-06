@@ -1,6 +1,7 @@
 Annotations -
     a)@FunctionalInterface - Used while defining functional interfaces. makes sure that interface has
         only "One abstract method".
+    b)@Override
 keywords -
     a)final - 
         a)used to mark a  member as constant in java class.
@@ -24,3 +25,9 @@ keywords -
             just provide signature here.
 
             public abstract void methodName();
+
+MarkerInterfaces - they act as a "marker" or a signal to the Java Virtual Machine (JVM) or other Java code that a class possesses
+    a certain characteristic or should be treated in a particular way. 3 marker Interfaces -
+        a)java.io.Serializable
+        b)java.lang.Cloneable
+        c)java.rmi.Remote
