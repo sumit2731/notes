@@ -1,0 +1,49 @@
+Server component is react feature, nextjs implements it in its own way.
+Nextjs has most robust support for server component.
+Next.js  renders client component once on server for SEO.
+
+Advantages -
+    a)you can have straight forward flow, make api call use async flow, no need to handle loading and error
+        state.but if you want to handle it, you can do so by using creating new files.
+    b)api calls are made on server,can pass senstive info to server, without any security concerns,
+        because these calls are made on server so client is not involved.
+    c)Perfromance -
+        a)caching at happen at server level. it is avalible to every single user.
+            you can cache what html is needed based on todos, every single user an access it.
+        b)if we are using avery big library, no bundle is sent to client side. because all processing
+            happens on server side.
+        c)page will load load faster
+            in client component -
+                a)first load html and js
+                b)make api call
+                c)do processing on client and show page.
+            In server -
+                a)send back html only.
+    d)server components are better at SEO. serach engines have gotten better at this and you can do certain
+        server rendering tools inside of react, with server components all this is automatically baked
+        in for you.
+
+Downside -
+    a)No Interactivity. no event listener. no useState, useEffect,you cannot use almost any hooks inside
+        server component.what we do is make as many components as server components as possible, where
+        we need Interactivity make them as client component, fetch data in server component and pass
+        it to client component as props.
+    b)Cannot use browser API
+
+
+
+
+How to use -
+    a)client components can be nested as children in server component.
+    b)fetch data in client component and pass it to children component.
+
+
+ServerCmp can have ClientCmp as child but not vice-versa.all components which have are child of client components
+    are child components itself.even if you dnt use - "use client" in those component, they will still be
+    rendered on client.you only get once chance to go from server -> client. once you go to client, you cannot
+    go back to server.
+But their is one way -
+    create jsx in server component.
+    use client as child in server component.
+    pass that jsx which has server component, to child as prop.
+    now within child you can render server component
