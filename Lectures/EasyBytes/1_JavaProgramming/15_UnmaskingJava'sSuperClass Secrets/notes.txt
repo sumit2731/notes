@@ -70,7 +70,7 @@
 
 
 339 - Record Classes Part 1, part 2 (slide 23 -  25)
-    code - recordDemo.java, PersonRecord.java
+    code - RecordDemo.java, PersonRecord.java
     JVM does following things when you create a Record -
         a)make a class as final, so that ypu cannot have setters in subClass.
         b)make fields as final and private

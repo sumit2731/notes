@@ -1,3 +1,9 @@
+java 8 -
+    Default and Static methods inside interface
+
+java 9 -
+    private methods inside interface
+
 Java 10-
     var (section 15, lecture 341)
 

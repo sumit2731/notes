@@ -1,0 +1,94 @@
+248 - Intro to Interfaces
+    Why interfaces ?
+        so that we can write common code for functionalities and reuse that code for similar objects.
+        for ex in slide, for different superheors, we have a common code for heros, so similar code,
+        can be reused to use powers of heros.
+
+    Why not solve the above problem with classes ?
+        because with classes we need to define implementation.its like forcing devs to write a funtionality,
+        when we want to overwrite it as subclass level.
+
+249 - How to create a interface
+    Inside interface we can define these -
+        methods(By default all methods inside interface are public, so you can skip mentioning public access modifier) -
+            abstract - ypu dnt need to specify abstract, as by default all methods are abstract
+            default
+            private - these can be static and non static.
+            static
+
+            access modifiers for methods -
+                public
+                private - These methods are only accessible from other default or private methods within the same interface.
+                    implemeting classes cannot access or overwrite private methods.
+                    private static - only other private static methods can access or call these.
+                    private non-static - methods can be called by default methods.
+        fields(By default all fields are public, static , final) -
+            static
+        Note -  
+            we cannot define instant fields inside interface. 
+            fields are always public
+    interface(interface defined at top level, see chatGpt for nested intreface) can have only 2 access modifiers -
+        a)default
+        b)public
+
+250 - Implementing Interface
+
+    For methods defined in interface, classes can also define overloaded methods.
+
+    interface can also inherit interface. In that case we need to use extends keyword.
+    when class implements a interface, either it should implement all abstract methods inside interface.
+        or class should be declared as abstract.
+    use @Override when you are implementing a method define din interface.
+
+    Files - 
+        SuperHero.java
+        IronMan.java
+        SpiderMan.java
+        CaptainAmerica.java
+
+251 - Advantages of Interfaces
+    Files -
+        MarvelHeroDemo.java
+    see code comments
+
+252 - constant field declaration inside interface (slide 7-8)
+    by default fields are - public, static and final.
+    interface fields are always public, you cannot use any other access modifier with them.
+    but if package is not public, then these fields wnt be accessible outside the package.
+
+    Interface fields are always final.
+
+    They are inherited by classes which implements them
+
+    code - SuperHero.java, here we define field UNIVERSE_NAME
+
+
+253 - Different method declarations allowed in interface (slide 9- 10)
+    By default a method inside java is public and abstract
+
+
+254 - why we need default methods in interface (slide 11)
+    why default method?
+        whenever a new feature want to be introduced inside an existing interface, instead of creating the method as an abstract method,
+        they are going to create a default method with some default business logic inside it.
+
+
+255 - How to built default methods in Interfaces (slide 12-13)
+    default methods -
+        default method in interface cannot be static.
+        code - trackLiveLocation inside Superhero.java
+
+    private methods -
+        when Java team decided to allow the default methods inside Java 8.They end up writing a lot of default method in many of the
+        interfaces.When a developer is writing a lot of default methods, which is going to have a lot of business logic,
+        at some point of time, they are going to hold some common business functionality, which needed by multiple default methods inside
+        the same interface.So to avoid that repetition of the business logic in multiple default methods, Java team provided a
+        flexibility to define private methods in interface from Java 9.
+
+        whatever private methods that you are going to define inside your interface, they are not going to be inherited by your implementation
+        classes.These private methods are strictly for your default methods common business logic.
+
+
+
+
+

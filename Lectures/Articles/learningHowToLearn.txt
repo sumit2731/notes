@@ -1,0 +1,8 @@
+1)Human memory seems to have a “read-and-update” operation, wherein fetching a memory
+    can both strengthen and modify it—a process known as reconsolidation.
+
+    curious feature of human memory is “spreading activation.
+    Our memories are stored in interconnected neural pathways. When we try to remember
+    something, we activate a pathway of neurons to access the targeted information. 
+    However, activation is not contained within one pathway. Some of the activation 
+    energy spreads to other connected pathways
