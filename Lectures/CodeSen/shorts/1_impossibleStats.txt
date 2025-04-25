@@ -1,0 +1,5 @@
+instead of these 2 state -
+    isSubmitting
+    isError
+maintain a single state with 3 possible value s-
+    'ready'| 'submitted' | 'done'

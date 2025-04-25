@@ -1,0 +1,16 @@
+RSC(new components0 render exclusively on the server. Their code isn't included in the JS 
+bundle, and so they never hydrate or re-render.
+This means that a big chunk of React's API is incompatible with Server Components.
+For example, we can't use state, useEffect.
+
+It also means that we have a bit more flexibility when it comes to the rules. 
+For example, in traditional React, we need to put side effects inside a useEffect
+callback or an event handler or something, so that they don't repeat on every render.
+But if the component only runs once, we don't have to worry about that!
+
+
+Normal components that we know are called Client Components, these render on client 
+    and server.
+
+Server Components. These new components render exclusively on the server. Their code isn't 
+    included in the JS bundle, and so they never hydrate or re-render.

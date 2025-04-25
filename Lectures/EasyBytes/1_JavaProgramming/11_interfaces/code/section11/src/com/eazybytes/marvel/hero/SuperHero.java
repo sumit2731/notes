@@ -19,8 +19,7 @@ public interface SuperHero   {
     String stopVillain(char c);
 
     /**
-     * dfault method , can be overriden in class, but in class do not use default keyword
-     * @return
+     * default method , can be overriden in class, but in class do not use default keyword
      */
     default String trackLiveLocation() {
         String liveLocation = "USA";

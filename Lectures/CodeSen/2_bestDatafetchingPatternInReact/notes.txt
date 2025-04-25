@@ -1,0 +1,22 @@
+Drawback of code 1 -
+    a)component is polluted with data fetching code.you need to manage loading and error states,
+        also.
+    b)generally routers load component lazily. so first you load js bundle, then after 
+        loading bundle we make api call.
+    c)multiple rerenders of component, if we  need more than 1 api call.
+        In solution component re-renders only once
+
+
+Solution -
+    Do this if data that you want to fetch is result of user navigation.
+    a)Figure2, fetch data during router transition, loader function.
+        component wnt be rendered until data is loaded.
+    b)Figure 3 - in component use useSuspenseQuery instead of useQuery.
+        it will defer the loading and error and all of fetching to nearest suspense boundary and it handle
+        the loading the fallback ad actually getting the data to this component.this suspense boundary is
+        created by tanstack router around every single route in your component, which shows a loading state,
+        until promise returned by loader function is resolved.so component will only be loaded when data is
+        already dere.
+
+        also get rid of loading state, because data will always be dere.
+        error state also will not be handled inside component

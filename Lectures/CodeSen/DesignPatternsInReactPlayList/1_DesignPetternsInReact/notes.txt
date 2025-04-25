@@ -1,0 +1,14 @@
+1)Single Responsibility Principle - One component should be responsible for 1 thing.
+    Everything else should be delegated to other components.
+2)
+    Page Component - signInPageComponent
+    Feature Component - handles a feature like signinForm handles the user signing into application.
+        this means all code related to signin the user should go into this component and should be
+        responsibility of this component.feature components are almost always made up of smaller UI components.
+    UI Component - like applies some styles in container and renders the children. no logic, no state, no effects,
+        no hooks.
+
+3)Compound Component -
+    A component is only rendered inside a another component, they use context to share state.
+
+4)Extracting Things into hooks,even if they are not reuseable.

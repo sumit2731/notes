@@ -1,0 +1,57 @@
+Server components are react feature. But next.js has has best and most stable implementation of Server components.
+All components by default are server components if you are using App Router.
+In Server components, only HTML sent to browser.
+To mark a component as client component, we use - "use client".
+their can be no event handlers and hooks in server components.
+You can made server component as asynchronous function.
+
+
+Advantages -
+    See pages.tsx, problem.
+    a)While fetching data in client component - You have to manage state,keep track of loading and error states.
+        In server components you can just use await.
+    b)
+        In client component - 
+            first js code loads,
+            then it executed on browser, 
+            component renders on browser,
+            then useEffect is executed,
+            then api call is made. 
+            after fetching data, again component is re-rendered to show data.
+        In Server component -
+            a)API call is made fetch data.
+            b)some loading component is shown to client.
+            c)when data comes client sees the component in single render.
+
+        Things needed for this -
+            a)declare your component as async
+            b)await the data in your component
+            c)wrap it up in suspense,otherwise your page wnt load, until promise is resolved in your code.
+                even after resolving the package you wnt see updated data.
+
+        link - https://www.nico.fyi/blog/simplify-data-fetching-with-rsc-suspense-and-use-api-in-next-js
+        here data is fetched in server and used in client component.
+
+    c)if we want to execute a logic in component , that logic ends up being sent to client.
+        in server component,that does not happen.because client receives HTML to be rendered.
+
+Architecture -
+    Use server component along with client component.
+    Component that needs interactivity they should be client components.
+    Rest can be server components.
+    Putting client component inside server component(server/pages.tsx) -
+        Hydration(this is party specific to next.js) -
+            You can mix server and client components.when you render a client component inside server component,
+            first next.js runs it on server(client component also) to generate initial html to send it user.
+            Then client component is run once more on client and this time it's going to add all of javascript to
+            make this component interactable.This is called hydration.so this is 2 way process.
+
+    Putting Server Component in Client Component -
+        All component inside Client component , even if they are server will run on client.
+        when we use  "use client" we are marking a boundary, and you are saying that this file and everything beyond,
+            is going to run on client.It;s one way direction and you cannot go back.when we use "sue client" we say that
+            everything that runs in this file including these imports should be run on client.since server component is imported
+            and used in client component,it will run now run exclusively on client.si you cannot have anything beyoned this component
+            to be rendered on server.
+
+        but their is a way to render server components inside client component and still have serverComponents run on server.

@@ -9,6 +9,7 @@ public class CaptainAmerica implements SuperHero {
     public String usePower() {
         return "CaptainAmerica using his power";
     }
+    
 
     /**
      * If Y received kill the villain

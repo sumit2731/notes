@@ -1,0 +1,21 @@
+index.tsx
+    post-list.tsx
+        post-card.tsx
+
+Problem - type of prop  of post-card post, component expects some extra props.api is returning that extra prop.
+    similarly in in some other component we expect we expect Post plus some extra proeprties.`
+
+solution -
+    a)Add new properties to prop types of component using intersection.
+        drawback -
+            a)we need to make this change at wherever this prop types comes into component hierarchy. 
+            b)which ever component is consuming this prop, we need to make change their also.
+
+    b)if you ca get hold of type type returned by backend, directly use that type in component.if backend is node, then
+        use RetunType<typeof function>.
+        drawback -
+            a)component is tied with API response, cannot be used to render other type of posts.
+
+
+Problem - our component expects some different properties with posts type.
+    see solution on figure 3.

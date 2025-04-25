@@ -30,9 +30,10 @@ public class MarvelHeroDemo {
         invokeSuperhero(captainAmerica2);
 
         /**
-         * accessing a field inside a class
-         * this class does not implement that interface- so we need interface name to access it
-//         */
+         * This class does not implement the interface.
+         * so we need actual(or interface that inherits the actual interface) to access field
+         * same can be done by class also
+         */
         System.out.println(SuperHero.UNIVERSE_NAME);
         System.out.println(IronMan.UNIVERSE_NAME);
 
@@ -48,5 +49,6 @@ public class MarvelHeroDemo {
     private static void invokeSuperhero(SuperHero superHero) {
         System.out.println(superHero.usePower());
         System.out.println(superHero.stopVillain('N'));
+        System.out.println(SuperHero.commonCharacteristics());
     }
 }

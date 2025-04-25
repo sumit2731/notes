@@ -10,20 +10,27 @@
 
 249 - How to create a interface
     Inside interface we can define these -
-        methods(By default all methods inside interface are public, so you can skip mentioning public access modifier) -
-            abstract - ypu dnt need to specify abstract, as by default all methods are abstract
-            default
+        methods(By default all methods inside interface are public, so you can skip mentioning public access modifier
+            only access modifier that you can use on methods - public and private) -
+            abstract - you dnt need to specify abstract, as by default all methods are abstract
+            default - defaults methods cannot be static.these acts more like instance methods.
             private - these can be static and non static.
-            static
+                static private methods can only be called by other static and defaults methods in interface
+                non-static private methods can be called by other default methods in interface.
+            static -
+                These can be accessed by class name as well as interface name.
+                    but better practice is to access by interface name.
 
             access modifiers for methods -
                 public
                 private - These methods are only accessible from other default or private methods within the same interface.
-                    implemeting classes cannot access or overwrite private methods.
+                    implementing classes cannot access or overwrite private methods.
                     private static - only other private static methods can access or call these.
                     private non-static - methods can be called by default methods.
         fields(By default all fields are public, static , final) -
             static
+            you can cannot use any other access modifier in class other than public
+            no instance fields are allowed
         Note -  
             we cannot define instant fields inside interface. 
             fields are always public
@@ -58,7 +65,7 @@
 
     Interface fields are always final.
 
-    They are inherited by classes which implements them
+    They are inherited by classes which implements them.
 
     code - SuperHero.java, here we define field UNIVERSE_NAME
 
@@ -76,7 +83,9 @@
 255 - How to built default methods in Interfaces (slide 12-13)
     default methods -
         default method in interface cannot be static.
-        code - trackLiveLocation inside Superhero.java
+        code - trackLiveLocation inside Superhero.java.
+        default methods are only allowed in interfaces, not in classes. but in classes
+            you can override them.
 
     private methods -
         when Java team decided to allow the default methods inside Java 8.They end up writing a lot of default method in many of the
@@ -88,6 +97,22 @@
         whatever private methods that you are going to define inside your interface, they are not going to be inherited by your implementation
         classes.These private methods are strictly for your default methods common business logic.
 
+256  - Static methods in Interface
+    Reason for static methods -
+        When you start writing lot of business logic inside your interface with the help of private methods,
+        or with the help of default methods.Obviously at some point of time you will have some utility logic
+        which is specific to your interface.Before Java 8, all the utility logic related to an interface they
+        used to maintain in a separate class with the multiple static methods, but from Java 8, since we can 
+        define business logic within the interface, there is a strong need came for the utility methods
+        or  static methods also to be allowed inside the interface?
+
+    accessing static interface methods -
+        Inside class that implements interface - access by interfaceName.
+        Inside any other class - access by interfaceName.
+        Inside interface - directly by name
+
+    You can only access static methods in interface through Interface 's name and not class name that implements it.
+    while static fields you can access with class name, it is considered to be bad practice.
 
 
 
