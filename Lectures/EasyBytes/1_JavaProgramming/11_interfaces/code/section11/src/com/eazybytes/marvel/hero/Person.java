@@ -6,8 +6,6 @@ public interface Person {
         System.out.println("Hello World from Interfaces");
     }
 
-    default void walk() {
-        System.out.println("Walking");
-    }
+    default void walk() {}
 
 }

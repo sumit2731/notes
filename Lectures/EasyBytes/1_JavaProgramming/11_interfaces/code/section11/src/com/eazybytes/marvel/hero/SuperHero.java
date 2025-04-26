@@ -1,6 +1,6 @@
 package com.eazybytes.marvel.hero;
 
-public interface SuperHero   {
+public interface SuperHero extends Person,Hero   {
     /**
      * All instance fields are by default -public , static, final
      * This field will inherited by all classes that implemented this
@@ -32,7 +32,11 @@ public interface SuperHero   {
     }
 
 //    @Override
-//    default void walk() {
-//        Person.super.walk();
-//    }
+//    void walk();
+
+    @Override
+    default void walk() {
+        //this is how you can call default methods of interface- default methods belongs to instances
+        Hero.super.walk();
+    }
 }

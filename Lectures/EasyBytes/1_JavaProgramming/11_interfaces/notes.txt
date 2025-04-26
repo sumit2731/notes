@@ -82,12 +82,21 @@
 
 255 - How to built default methods in Interfaces (slide 12-13)
     default methods -
-        default method in interface cannot be static.
+        default methods are instance based.so,default method in interface cannot be static.
+        You need an object of a class that implements the interface to call its default methods.
+        They are treated like instance methods and are inherited by implementing class.
+        How to call -
+            a)Within same interface call them just by method name.
+            b)within interface that extends main interface,m their also, you can call it just by name.
+            c)Implementing classes inherit them,they can be called on object of class which implements the interface.
+            d)however if inheriting class/interface overwrite sthe default method, then use this syntax to call default method of parent -
+                INterfaceName.super.methodName
         code - trackLiveLocation inside Superhero.java.
         default methods are only allowed in interfaces, not in classes. but in classes
             you can override them.
 
-    private methods -
+
+    private methods(can be static and instance, they are not exposed outside world) -
         when Java team decided to allow the default methods inside Java 8.They end up writing a lot of default method in many of the
         interfaces.When a developer is writing a lot of default methods, which is going to have a lot of business logic,
         at some point of time, they are going to hold some common business functionality, which needed by multiple default methods inside
@@ -96,6 +105,15 @@
 
         whatever private methods that you are going to define inside your interface, they are not going to be inherited by your implementation
         classes.These private methods are strictly for your default methods common business logic.
+        a)private instance methods
+            can only be called from default methods within the same interface.
+            these called directly by name.
+        b)private static methods -
+            can only be called from  -
+                a)other static methods
+                    directly by name.
+                b)default methods within the same interface.
+                    directly by name
 
 256  - Static methods in Interface
     Reason for static methods -
@@ -111,9 +129,60 @@
         Inside any other class - access by interfaceName.
         Inside interface - directly by name
 
-    You can only access static methods in interface through Interface 's name and not class name that implements it.
+    You can only access static methods of interface inside implementing class, through Interface 's name and not class name that implements it.
     while static fields you can access with class name, it is considered to be bad practice.
 
 
 
+257 - Multiple Inheritance using interfaces - Part 1
+    How to solve diamond problem, when interface extends multiple interfaces
+    slide - 18, 19
+
+    slide 19 - (Code - Superhero,Person,Hero)
+        Usecase 1(both interface have abstract method) -
+            Case 1(If signature of methods is same) - 
+                then their is no problem, your interface can inherit from any.Generally it extends from interface which appears first after extends.
+                In intellij also, while seeing all methods of a class, you will see that method appear only once and is inherited from
+                first interface.but recommend practice is that you define method in interfaceC by using @override.
+            Case 2 - if signature is different
+                Then interface inherits from both. Even if you override a particular signture, second signature is still inherited.
+        Usecase 2 - (one is default method , one is abstract method)
+            case 2.1 - Signature is same.
+                You will get error,as their is ambiguity about which method to inherit, so their is error.You can use @override annotation, can 
+                either define abstract method, or you can define default method.but signature needs to be same. you can even call default 
+                method of super class, syntax -InterfaceName.super.defaultMethodName().
+
+            Case 2.2 - signature os different
+                No problem. interface inherits same
+
+
+        UseCase 3 - both have interfaces have default methods
+            same as useCase2
+
+
+258 - Multiple inheritance using interfaces Part2
+    slide - 19
+        when their is ambiguity- class vs interface, class always wins.
+        code - Developer
+
+
+259 - Interface defines a new Type
+    Slide 22 -
+        You cannot assign a interface data type to class data type.
+        vice versa is allowed i.e class value type can be assigned to interface data type.
+
+    Slide 23 -
+        if we give assurance to compiler that interface data type holds the value is class type, then above
+        operations is allwoed.
+
+260 - Marker Interfaces
+    slide 24
+
+    Serilization - serialization is a process of converting an object into the stream of bytes data, so that these streams
+        of byte data I can save into a disk space, or I can send to some other application over the network.
+
+262 - Class vs Abstrcat vs Interface
+    Sealed Interface - interface decides which classes can implemented them.this is same as sealed classes.
+
+        sealed interface Animal permits Dog,Cat{}
 

@@ -9,3 +9,7 @@ Java 10-
 
 Java 16 -
     Record classes (section 15, lecture 339)
+    Pattern matching instanceof syntax -
+        if(person instance of IronMan ironMan) {
+            / / ironMan which i s a IronMan type can be used here in the logic
+        }

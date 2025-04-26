@@ -9,7 +9,7 @@ public class CaptainAmerica implements SuperHero {
     public String usePower() {
         return "CaptainAmerica using his power";
     }
-    
+
 
     /**
      * If Y received kill the villain
@@ -25,5 +25,9 @@ public class CaptainAmerica implements SuperHero {
         } else {
             return "CaptainAmerica stopped the Villain";
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("hello");
     }
 }
