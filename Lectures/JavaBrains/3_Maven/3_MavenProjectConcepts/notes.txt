@@ -1,0 +1,49 @@
+5)Creating a maven project
+    Either you can create a project by learning all maven rules,i.e what should be path of application, test files.
+    second option is you can create your own project using maven. maven can do that with arch types.
+    archetype - project template
+    to create a java project from maven using archetype -
+        mvn archetype:generate
+
+        now select yur template, we selected default. next steps
+
+        a)select version
+        b)define value of groupId - way to group maven projects, like package groups java classes.
+            select - io.javabrains
+        c)artifactId - name of maven project, cannot have spaces, separate by '-'.
+        d)version of project - this is associated with artifact that this project generates.this will change over time. we choose default value -
+            1.0-SNAPSHOT (snapshot is maven concept, it means i cannot send this project out I am working on it)
+            week later it will be 1.00 then 2.00 and so on.
+        e)package - it is starting package for your java classes,we went with default value which is groupId.
+
+
+6)Project creation - What actually happened
+ figure 1
+
+
+8)Understanding Maven coordinates
+    see figure 2. through maven coordinates we identify each artifact in maven universe(space where
+    all artifacts generated from maven project are stored).
+    these are coordinates are mentioned in pom.xml.
+
+
+9)making changes for compilation
+    maven project lifecycle - different phases of project , like dev, testing and release
+
+10)compiling the code
+    mvn compile
+    .class files are generated in target folder.
+
+11)Testing and packaging with maven
+    testing - mvn test
+    package - mvn package
+
+
+    these steps - compile,test and generate artifact
+    these are 3 of several steps in main life cycle of maven.
+
+14)Adding a new dependency
+    search for maven coordinates of libaries on website - https://mvnrepository.com/ (their are other ones also, like maven central)
+    maven artifact can be avalible at multiple maven repositories, by default every maven project points to central repository.while
+    searching artifact, you have option to select coordinate for particular repository.
+    add those to pom.xml and then run mvn compile.

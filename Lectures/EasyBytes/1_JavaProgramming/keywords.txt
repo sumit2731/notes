@@ -1,7 +1,3 @@
-Annotations -
-    a)@FunctionalInterface - Used while defining functional interfaces. makes sure that interface has
-        only "One abstract method".
-    b)@Override
 keywords -
     a)final - 
         a)used to mark a  member as constant in java class.

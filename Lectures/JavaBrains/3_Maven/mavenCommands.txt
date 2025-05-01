@@ -1,0 +1,13 @@
+1)mvn archetype:generate
+    used while creatig a project from maven, shows all avalible archetype. you need
+    to select one. see lecture 5
+2)mvn compile
+    compiles the maven project and generates the .class files in  target folder.
+
+3)mvn test
+    It finds all the tests, compiles them, then runs them.
+    I think it also compiles the other code also.
+    
+4)mvn package
+    compiles the project and generates the jar file in target folder.
+    the jar file name is as per coordinates specified in pom.xml.

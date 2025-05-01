@@ -1,0 +1,10 @@
+272 - Copying Array using arraycopy and copyof
+
+    System.arraycopy
+    Arrays.copyOf(OrignalArray, length)
+        This method is overloaded, see a implementation where we want our destination array of a different type
+        See general version of copy of methiod and see how yu can create array of classes at run time
+    Arrays.copyofRange(orignalArray,fromIndex, toIndex)
+        Similar to copy but let us start copy from custom position
+        fromIndex is included
+        toIndex is not included

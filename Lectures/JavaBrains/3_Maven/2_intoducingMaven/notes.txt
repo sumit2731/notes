@@ -1,0 +1,21 @@
+concept of a project -
+
+    figure 1 - primary goal of maven is not be build tool  but to me project management tool.
+
+    figure 2 -  this is what project looks like.java does not have support for project atleast in IDE
+        agnostic way.this is where maven comes into picture, it manages project by using something called
+        Project object model.
+
+Characteristics of Maven -
+    figure 3
+    Characteristics of maven - figure4,5
+
+
+Setting up Maven -
+    Download apache maven.
+    copy to some path
+    add path till bin to path variable -
+        export PATH="pathToBIn":$PATH
+            explanation -
+                to read PATH - ECHO $PATH, it has various values separated by ':'.
+                to write - export PATH=value, so in case we append our value to existing values

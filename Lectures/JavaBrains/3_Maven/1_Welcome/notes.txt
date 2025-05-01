@@ -1,0 +1,1 @@
+Things that maven does - see figure

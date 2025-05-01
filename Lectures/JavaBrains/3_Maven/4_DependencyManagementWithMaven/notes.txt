@@ -1,0 +1,23 @@
+12)declarative dependency management explained
+    Without maven , you need to download jar(contents of jar- classes and libraries) and copy it to 
+    your class path in order to use it.if you use maven you just need to mention all dependencies in
+    pom.xml and maven will make them avalaible in your class path.
+
+    these dependencies are artifacts of other maven projects which are identified by their coordinates
+    in maven universe. see figure 1.
+
+13)Examining the POM dependencies section
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.11.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    groupId, artifactid and version is common, we will talk about scope later.

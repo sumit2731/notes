@@ -1,0 +1,5 @@
+1)copyOf(sourceArray,arrayLength) - returns newArray, copy starts from 0 index.
+2)copyOfRange(sourceArray, startIndex, endIndex)
+3)toString()
+4)asList()
+5)stream
