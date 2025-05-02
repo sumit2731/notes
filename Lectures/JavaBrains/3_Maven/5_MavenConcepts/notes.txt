@@ -1,0 +1,39 @@
+19)Maven local repository concepts
+    Before talking to remote repository first maven checks the local cache. in mac that cache is at  -
+        .m2/repository folder in home directory. here yoy ca see name accroding to groupId, if you go into groupId
+        folder than you can see name by artifacts id, under artifactid folder, you can see versions, under version
+        you can see .jar.
+
+    If version that you have mentioned of a artifact contains snapshot, then after 24 hours maven  goes
+    to remote repository directly even if match is in cache, because that match is 1 day older.
+    in all other cases if there is match found in local cache, then it doe snot go to remote repository.
+
+    also if you made any changes in maven convention, you can mention those by defining settings.xml file in .m2.
+    but remember - convention over configuration
+
+
+20)Maven architecture in enterprise
+    see figure 1. orgs maintain a internal repository also before going to remote repository.
+    In this repository they can put internal packages published by them.if some package is not found on this internal repository
+    then it reachs to maven central repository abd downloads the package and cache's it.
+
+
+21)running mvn install
+    you can also publish your artifact and use it in other project.for that you need to use  -
+        mvn install
+    It generates the artifact/package/jar in target folder as well as it also generate sit in local repository.
+
+    so now you can use maven coordinates and in your next project, you can use your artifact.
+
+
+22)here we created a new maven project in IDE
+    It is in folder folder code.
+
+
+23)creating and running a web application using maven
+    here we create a servlet app using a different archetype.
+    then we ran the application on server , provided by jetty plugin -
+    mvn jetty:run
+
+    this plugin lets us run eclipse jetty as maven command.this comamdn builds up war file , spins up a jetty server container and deploys
+    that file on it.

@@ -1,3 +1,5 @@
 a)Creating my own annotations
 b)CompletableFuture
-c)reflection
+c)ways to include a depednency at run time -
+    a)reflection
+    b)service loading

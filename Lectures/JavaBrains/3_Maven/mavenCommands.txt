@@ -11,3 +11,7 @@
 4)mvn package
     compiles the project and generates the jar file in target folder.
     the jar file name is as per coordinates specified in pom.xml.
+
+
+5)mvn install
+    generates jar, same as step 4. but also publishes this jar to your local repository.

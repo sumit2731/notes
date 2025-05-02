@@ -41,9 +41,4 @@
 
     these steps - compile,test and generate artifact
     these are 3 of several steps in main life cycle of maven.
-
-14)Adding a new dependency
-    search for maven coordinates of libaries on website - https://mvnrepository.com/ (their are other ones also, like maven central)
-    maven artifact can be avalible at multiple maven repositories, by default every maven project points to central repository.while
-    searching artifact, you have option to select coordinate for particular repository.
-    add those to pom.xml and then run mvn compile.
+    
