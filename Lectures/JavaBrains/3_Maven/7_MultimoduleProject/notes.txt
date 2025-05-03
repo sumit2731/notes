@@ -1,0 +1,35 @@
+30)Creating Parent and child Modules
+    maven application can have multiple modules.their is specific heirarchy and strucure that you need to follow.
+
+    first we create a default maven project.after generating it we delete everything except pom.xml.because we do
+    not want this project to generate any jar, we want it to act as parent project, where all other projects will reside.
+    we know that by default packaging type is jar, but here we dnr=t want to generate jar. we want to act it as parent.
+    way to specify this as parent project is by marking the packaging as pom(instead of default jar).
+
+    <packaging>pom</packaging>
+
+    then we create 2 new project inside this one. maven was intelligent enough to understand that we want them to child of this.
+    in parent project a new entry was added automatically for each project -
+
+      <modules>
+        <module>my-library</module>
+        <module>distributable-app</module>
+      </modules>
+
+    In child project also a entry was added specifying who is parent of this -
+        <parent>
+            <artifactId>website</artifactId>
+            <groupId>io.javabrains</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </parent>
+
+
+31)How multimodule projects work
+    advantages -
+    a)removes duplicates- these parts are inherited by child pom's from parent -
+        1)dependencies
+        2)build (which contains the plugin management part)
+        3)properties
+    b)build phases of parent and child are related, when we run build phase for parent it runs for all child.
+        There is something known as reactor build order, which looks at whole project and determine order in which
+        it has to execute this phase. generally this is order in which modules are listed in pom.xml
