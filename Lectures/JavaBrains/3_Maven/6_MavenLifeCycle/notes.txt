@@ -1,0 +1,91 @@
+24_The maven build lifecycle
+    these commands are phases of single build life cycle.
+        compile
+        test
+        package
+        install
+    these are order steps maven recommend you to do.
+
+    Alls Steps are shown in figure 1. 
+        validate - this is step that maven runs to validate if project is correct.It validates all info available in pom.xml, it validates structure of
+            project.there is lot of basic checks that maven does,to make sure that it is ready to proceed with next steps.
+        just checks that project structure is proper, it is able to resolve all dependencies in pom.xml.
+        verify - It is step where tests run are more of like to ensure quality.you can imagine that this steps run integrations tests and it runs any checks on 
+            those integration tests. there are bunch of quality checks that you can setup and say their are bunch of things that i want to check before
+            this is published.
+        deploy - copies the generated artifact and deploys it to remote repository, for other developer  to use.
+    
+    Note - when you run a command all phases before eit are automatically ran. so when you run compile, validation is automatically
+        done.
+
+
+25- clean and site life cycles
+    above was default life cycle.their are 2 other lifecycles-
+        a)clean - very short lifecycle. this does not have many steps as default lifecycle.there is only one step - clean
+            their are 2 phases pre clean and post clean.we wnt get into that its just one.
+            this is used to remove build generated files.deletes the target directory.
+            it is separate lifecycle, because this does not run automatically when you run any default build lifecycle. 
+        b)site - This is not directly related to build, but it their because it is another way of using bunch of maven features. 
+            site - this generate documentation.we discussed maven has reporting nd documentation as one of feature.reporting that
+                it does is on different things - test coverage, code quality, test failure. these reports are in html.
+            site-deploy - takes all reports generated in previous steps and deploy them.
+
+        Note their are phases with whom you do not interact directly. like pre-clean, pre-site, post clean, post site. these are rarely used
+        infact no one uses them.
+
+    figure 2 - so we have 3 lifecycle, each lifecycle has phases that we can run individually or it will run automatically if you run
+        a phase that comes after it.
+
+
+26 - Running clean and site lifecycle phases
+    here we ran mvn site which genetares a html doc.here meaningful section was dependency management, which showed inf related to dependencies.
+    this ws deault reports provided by maven, you can extend it to show test coverage and all, we can do this by using plugins.
+
+
+27 - Maven plugins explained
+    all actions of maven that we saw are done by plugins.all phases that we saw in maven lifecycle are done be plugins, not by maven.
+    inside build section, their is pluginManagement section, where we can see these plugins.these plugins have same coordinates as dependencies.
+    so all that we saw, nothing is done by maven, maven is just orchestrating these plugins which do all work.
+    Everything that we saw is because these plugins added a phase in lifecycle.we saw different phaees in default lifecycle, how are these added?
+    these are added because these plugins add it to lfe cycle of maven.
+    we can add new plugins also by adding them to pom.xml, and if those plugins have phases we can use these phases,syntax -
+        mvn pluginName:phaseName
+
+    full form of mvn compile - mvn compiler:compile, it is shortcut, it invokes compile phase of compiler plugin.
+    you can see terminal output, it clearly mentions which phase of which compiler is being executed.
+
+    In lecture we also saw resources phase of resources plugin, which is not discussed here.
+    surefire plugin runs the tests.
+
+    this works not nly with these plugins but also with default maven syntax. for ex -
+        mvn generate:archetype
+
+        here we call generate phase of archetype plugin.this plugin is not part of project, this plugin gent bundled with maven distributable.
+
+
+28 - maven surefile report plugin
+    here we added a site plugin which allows us to generate more reporting.
+    maven surefire report plugin
+
+    we add it by adding a new section - reporting to our pom.xml
+
+    it added a test case summary. again their are new plugins that yu can add.
+    we added jetty plugin.
+
+
+29) a note on default plugins
+    1)we saw that these plugins contribute phases to  default lifecycle of maven, so these plugins come by default with maven.some archetype mentions them in
+    pom.xml, just to lock down their version. if you dnt do that then you will use maven default version.
+
+    2)you can configure these default plugins, go to website and see configurations. for compile plugin,we can mention jdk version, see page
+        of that maven plugin.you mention these configurations under plugin tag.or you can define properties. thimgs which can be configured -
+        source version
+        target version
+        memory used
+
+        link for all default plugins - https://maven.apache.org/plugins/index.html
+
+        different configs for compiler plugin - https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html
+        see examples sectin on left.
+
+        https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-release.html

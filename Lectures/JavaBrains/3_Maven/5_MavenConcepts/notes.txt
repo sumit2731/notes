@@ -35,5 +35,5 @@
     then we ran the application on server , provided by jetty plugin -
     mvn jetty:run
 
-    this plugin lets us run eclipse jetty as maven command.this comamdn builds up war file , spins up a jetty server container and deploys
+    this plugin lets us run eclipse jetty as maven command.this command builds up war file , spins up a jetty server container and deploys
     that file on it.

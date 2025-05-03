@@ -5,35 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98216b4c-fb51-414d-b268-4e32eb05905f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/jvm.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/maven.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/javabrains/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/io/javabrains/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../../EasyBytes/1_JavaProgramming/topicsTobeCovered.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../EasyBytes/1_JavaProgramming/topicsTobeCovered.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/.mvn/jvm.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/.mvn/maven.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/src/main/java/io/javabrains/Addition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/src/main/java/io/javabrains/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/src/test/java/io/javabrains/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/target/classes/io/javabrains/Addition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/target/classes/io/javabrains/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code/calculator-app/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/quickstart-template.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/src/main/java/io/javabrains/ExampleServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/src/main/java/io/javabrains/GreetingApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/src/main/java/io/javabrains/GreetingResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/code2/calculator-app/src/main/webapp/WEB-INF/jboss-web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../3_MavenProjectConcepts/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../4_DependencyManagementWithMaven/figures/1DependencyManagement.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../4_DependencyManagementWithMaven/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../4_DependencyManagementWithMaven/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../mavenCommands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../mavenCommands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../notes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../../Maxudemy Courses/GitHubActions/3_GithubActions_BasicBuildingBlocks_And_Components/second-action-demo" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../Maxudemy Courses/GitHubActions/3_GithubActions_BasicBuildingBlocks_And_Components/second-action-demo" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +58,8 @@
       <updated>1746112793887</updated>
       <workItem from="1746112795303" duration="2178000" />
       <workItem from="1746127634578" duration="598000" />
-      <workItem from="1746161690138" duration="600000" />
+      <workItem from="1746161690138" duration="3165000" />
+      <workItem from="1746250420981" duration="696000" />
     </task>
     <servers />
   </component>

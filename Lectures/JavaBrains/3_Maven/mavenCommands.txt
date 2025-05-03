@@ -14,4 +14,7 @@
 
 
 5)mvn install
-    generates jar, same as step 4. but also publishes this jar to your local repository.
+    generates jar, same as step 4.but also publishes this jar to your local repository(.m2/repository).
+
+6)mvn deploy
+    deploy - copies the generated artifact and deploys it to remote repository, for other developer  to use.
