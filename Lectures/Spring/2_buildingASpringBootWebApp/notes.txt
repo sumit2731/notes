@@ -1,0 +1,33 @@
+12- Intro to Spring Boot
+    EJB - enterprise java beans (XML hell)
+
+    Slide 4 -
+
+        In Spring 3 java based config was started seen, until now there wer lot of XML.
+        with Spring 5, we saw reactive programming.
+
+    Slide 7 - major components of spring.
+
+
+13 - Overview of application to be built
+    slide 3 - Database operations will be handled by Spring data JPA repository.
+    So we you'll see that we write the repository interface.
+    Actually the implementation is provided by Spring Data JPA.
+    this dotted framework will be generated for us.
+    database will be handled by hibernate which implements the JPA standard.
+
+    slide 4 - 
+        we create packages for - these 4.
+        services we typicaly write as interface and create implementation later for dependency
+        injection to be writing to an interface.
+
+        we dnt do MVC controller in interface because we dnt need to perform depednecy injection on them.
+        However services it's very common to write multiple implementations of services.
+        So we will follow that design pattern inside this course.
+
+        And then repositories you'll see coming up in the course. You provide an interface for the repository
+        and Spring Data JPA will generate the implementation.
+
+         we will have a package called domain.And within that package we will create POJOs plain old Java objects
+         which are just objects with properties and getters and setters, and we will configure those to be JPA entities 
+         that JPA /Hibernate will use for persistence operations.
