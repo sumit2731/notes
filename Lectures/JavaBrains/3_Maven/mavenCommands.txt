@@ -1,7 +1,7 @@
 1)mvn archetype:generate
     used while creatig a project from maven, shows all avalible archetype. you need
     to select one. see lecture 5
-2)mvn compile
+2)mvn compile (compiler:compile)
     compiles the maven project and generates the .class files in  target folder.
 
 3)mvn test
@@ -18,3 +18,19 @@
 
 6)mvn deploy
     deploy - copies the generated artifact and deploys it to remote repository, for other developer  to use.
+
+7)mvn dependency:tree
+
+8)mvn:clean
+    Deletes the generated artifacts
+
+9)mvn:site
+    generates report for project. shows these details -
+        a)dependecies sorted by scope wise
+        b)transitive dependencies -
+        c)depednecie graph
+        d)plugins
+
+
+10)syntax of plugins -
+    mvn pluginName:phaseName

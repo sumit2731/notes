@@ -1,0 +1,6 @@
+1)How to deploy java project using maven?
+2)maven tasks? maven task runner.
+3)snapshot in maven - https://www.udemy.com/course/maven-essentials/learn/lecture/47979879#questions/23332205
+4)https://www.udemy.com/course/maven-essentials/learn/lecture/47979887#questions/23333093
+5)depenednecyManagement section
+6)how to tell maven to exclude a transitive dependency, while installing a dependemcy?

@@ -1,0 +1,2 @@
+1)Default repository - https://repo1.maven.org/maven2/ (central)
+2)url of search coordinates of maven repositories - https://mvnrepository.com/

@@ -29,7 +29,6 @@
     select repository, then select version. then copy maven coordinates in pom.xml.
     now we issue a maven command so that new dependency is downloaded, so we ran mvn compile
 
-
 16)Maven strategies for transitive dependencies
     see figure 2 for problem.
     we cannot different versin sof same class
@@ -45,7 +44,7 @@
     this is default option, what if you want to down load a particular version, then ou need to include that dependency manually in pom.xml and
     only that version will be downloaded.
 
-    also their is a excldue option which allows you to exclude a transitive dependency dependency.
+    their is a exclude option which allows you to exclude a transitive dependency dependency.
 
 
         <dependency>
@@ -70,12 +69,24 @@
         c)provided - it means you do not need it to part of build. it will be provide by run time env.
             so this will be part of compilation, but it wnt be part of final distribution.
             ex - java EE or Java servelet container contains all api's.so you dnt need to bundle server/javaEE api's when deploying
-            app on servelet/java EE container. .server that holds your app will have all the api's.so we need these for development process
+            app on servelet/java EE container.server that holds your app will have all the api's.so we need these for development process
             not for distribution process.we say i need this api while coding but not provide me these when distributing.this will be provided
             to me by container.i just need them now so that I can write teh code and have them compiled.when I am running it, it will be provided
             for me.
-        d)runtime - Opppsite of provided.  these are not needed at development but neeed at run time.ex - db connection driver.
-        i do not need at compile time, but only need it at run time
+        d)runtime - Opposite of provided.  these are not needed at development but neeed at run time.ex - db connection driver.
+            i do not need at compile time, but only need it at run time
+        extra from course -
+            e)import -  It allows you to inherit the <dependency> declarations (including groupId, artifactId, version, and other attributes) from
+                another POM file (typically a "Bill of Materials" or BOM POM).
+
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-dependencies</artifactId>
+                    <version>3.2.5</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency> 
+
 
         this comes under dependencies.
 

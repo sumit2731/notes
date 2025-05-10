@@ -1,0 +1,37 @@
+1)coordinates -
+    groupId
+    artifactId
+    version
+    packaging
+
+2)dependencies -
+    dependency
+        groupId
+        artifactId
+        version
+        scope (covered later)
+        exclusions
+            exclusion
+                groupId
+                artifactId
+
+3)properties
+
+4)build
+    pluginManagement
+        plugins
+            plugin
+                groupId
+                artifactId
+                version
+                configuration
+
+
+5)reporting (section 28)
+    reporting
+        plugins
+            plugin
+                groupId
+                artifactId
+                version
+        

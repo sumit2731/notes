@@ -1,0 +1,9 @@
+Default -
+    1)maven-surefire-plugin -
+        runs the tests
+    2)maven-jar-plugin
+    3)maven-compiler-plugin
+
+Additional Plugins -
+    1)maven-surefire-report-plugin
+    2)eclipse.jetty

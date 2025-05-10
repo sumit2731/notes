@@ -78,7 +78,7 @@
     pom.xml, just to lock down their version. if you dnt do that then you will use maven default version.
 
     2)you can configure these default plugins, go to website and see configurations. for compile plugin,we can mention jdk version, see page
-        of that maven plugin.you mention these configurations under plugin tag.or you can define properties. thimgs which can be configured -
+        of that maven plugin.you mention these configurations under plugin tag.or you can define properties. things which can be configured or compiler -
         source version
         target version
         memory used

@@ -1,0 +1,7 @@
+1)Local maven repository -
+    .m2/repository (.m2 folder is in home folder)
+    this contains all the jar that you downloaded and all the the jar that you have published
+        using mvn install
+
+2)settimgs.xml -
+    .m2/repository
