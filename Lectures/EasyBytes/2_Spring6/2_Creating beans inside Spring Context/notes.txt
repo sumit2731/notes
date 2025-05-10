@@ -1,0 +1,30 @@
+13- Creating Maven Project
+    we created a new Intellij Project, build option selected maven.
+    Then we wen to this site - https://mvnrepository.com/repos/central
+    copied maven coordinates of maven dependency and pasted in pom.xml.
+    IntelliJ automatically downloaded these dependencies.
+    You can see these dependencies on right hand side under maven, also on left hand side under "external dependencies".
+    
+    default path where maven downloads dependencies -  /Users/sumeet.sood/.m2/repository
+
+    why this path, because in maven folder, dere is conf/settings.xml. it mentions tis isd default path.
+    it also specifies the way to override it.
+
+    then we saw how to open a existing maven project in Intelij.
+
+
+14 - creating bean using @Bean Annotation(slide - 18)
+    the very first are basic approach to create a spring bean is with the help of bean annotation on top of any Java method.
+    Whenever we mention these annotation on top of any Java method, the return type from the method is going to be converted as 
+    a spring bean and the same will be maintained by the spring context or spring IOC container.
+
+    Here you may have a question like even inside the Java method also I'm using a new operator.
+    Of course, that's a very valid question.This is the most basic approach.And when we want to create the bean very first time, 
+    definitely we have to create with the help of new operator post that once my object is converted into a bean, my spring context will take care of
+    autowiring, dependency injection, which we are going to discuss in the coming sections.
+
+    But there are many other approaches also to create a bean.And in those approaches we don't even have to use the new operator.
+
+    code - example1
+
+

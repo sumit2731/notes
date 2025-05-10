@@ -20,11 +20,16 @@ ShortCuts -
     a)Search class/file/text -
         cmd + o (Go to class, Mac)
         ctrl + n(window)
+    b)search in files -
+        cmd + shift + f
     b)show all methods on class -
         cmd + f12 (also helps to see inherited members, and which class they are inherited)
         cmd + 7
     c)find useage in file -
         cmd + f7
+    c)find useages in file -
+        right click on identifier and select "find useages"
+        option + f7
     c)collapse all -
         cmd + shift + (-)
 
