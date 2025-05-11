@@ -1,0 +1,26 @@
+1)docker config file - see Dockerfile of code1 of section 2
+2)docker image
+3)docker container
+4)layer based architecture of image - 
+    optimizations of image
+    conatiner is just one more layer over image
+    when we pus a image on dockerHub, if our image is based on node, only our code is pushed. node part is taken from dockerHub
+5)container attached/detached mode
+6)docker logs
+6)interactiveMode - -i,-t and -it
+7)deleting images and conatiner -
+    docker rm container1 container2
+    docker prune
+8)copying files into and out from container.
+    docker cp
+
+9)images tags, container names
+
+10)sharing images - 
+    docker hub -
+        renaming image (for pushing name needs to be in a particular format -  docker push repositoryName/imageName:imageTag)
+        creating repository on dockerHub
+        pushing your image
+        pulling your image
+    private registry
+    

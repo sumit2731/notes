@@ -28,7 +28,7 @@ commands -
 
                 docker build -t custom-tag -f ./frontend/DockerFile.prod ./frontend
 
-                note - here you need to frontend ath 2 times because first one gives the location of file and second one sets the context
+                note - here you need to have frontend 2 times because first one gives the location of file and second one sets the context
                 of build command. see lecture 155 for details.
 
                 c)--target
@@ -41,8 +41,8 @@ commands -
 
         2)docker run "imageId"
             docker run "imageName or tag"
-            creates a contianer from image and runs that container in attached mode by default. imageid can exist on system or
-                on dockerHub.If it does not exist on system then first it will download the imageId.
+            creates a container from image and runs that container in attached mode by default. imageId can exist on system or
+                on remote repository(default is dockerHub).If it does not exist on system then first it will download the imageId.
 
             Examples - 
 
@@ -63,7 +63,7 @@ commands -
                 1)-p = for attaching port.
                     docker run -p "loalPort":"containerPort" dockerImage
                     it runs the dockerImage into contianer and connect port 3000 of local system with port 80 of docker container.
-                2)-d = dettached
+                2)-d = detached
                     docker run -d "imageId"
                         for running container in detached mode. it returns the id of detacched container. which can be later used to
                         attach the container. using -
@@ -74,12 +74,10 @@ commands -
                         docker run -p 8000:80 -d "imageid"
 
                 3)-i
-                    It measn run the docker in interative mode. it allows us to give input to the process.when we run a container from image
-                    then by default it runs in attached mode. it means we can see the output but we cannot give the input.In section 2, see
-                    code 2. if you normally run the container form image it will fail, because it needs inputs from user. this flag allow us
-                    to give input also. i stands for interactive. form docker help - Keep STDIN open even if not attached.
-
-                    docker run -i "imageName"
+                    some programs like code 3 of section 2 needs input from user. in case of programs like this we use i f;ag along with -t flag.
+                    also when we start such stopped containers, then we need to use this flag.-t flag is memorized if contianer was created by using -t flag.
+                    It means run the docker in interactive mode. it allows us to give input to the process.when we run a container from image
+                    
 
                 4)-t
                     this allocates a pseudo TTY and in the end this means it creates a terminal.typically we combine -i flag with t and 
@@ -89,12 +87,12 @@ commands -
 
                 5)-it  interactive
                             docker run -it "imageId"
-                                runs docker container from image, and give intercative terminal.now you can give inputs and also see the outputs.
-                                In code it was used to execute node image and interact with cli.
+                                runs docker container from image, and exposes a interactive session from inside the container to our hosting machine.
+                                now you can give inputs and also see the outputs.In code it was used to execute node image and interact with cli.
                                 when you only need to see output try to use only -i or -t flag.
 
                 6)--rm
-                    it automatically removes the container when it exists.
+                    it automatically removes the container when it exist.
                             docker run -p 3000:80 -d --rm "imageId"
                 7)--name - gives the naame to container
                     docker run -p 3000:80 -d --rm --name "nameString" "imageId"
@@ -169,7 +167,15 @@ commands -
                     docker image prune -a
 
         6)docker image inspect "imageId"
-            gives the details about a image.
+            gives the details about a image. gives this info -
+                a) creation date
+                b)container details -
+                    a)ports exposed
+                    b)entrypoint - command to be executed
+                    c)envVariables
+                    d)OS system
+                    e)different layers
+
 
         7)docker tag
             creates the clone of existing image with new tag. but both images will have same imageId and will existing simultaneously.
@@ -188,6 +194,9 @@ commands -
 
         9)docker pull "repo:tag"
             pulls a image from git hub
+
+        10)docker images
+            shows all images
 
     2)containers -
 
@@ -221,11 +230,11 @@ commands -
         4)docker container attach "containerId or ContainerName"
             or 
             docker attach "containerID"
-            Attcahes a detacched container.
+            Attcahes a running container which is detached.
 
 
         5)docker logs "containerName"
-            fetches the past logs for containers.
+            fetches all the logs for containers(including past one).This means terminal output
 
             flags -
 

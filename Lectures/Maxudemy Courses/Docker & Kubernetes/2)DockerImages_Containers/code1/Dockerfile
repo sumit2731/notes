@@ -1,6 +1,3 @@
-
-
-
 # This allows us to build our image up on other base image. image with this name should exist on your system or on docker hub
 FROM node
 
@@ -9,10 +6,10 @@ FROM node
 
 WORKDIR /app
 
-# which files from here should go from docker image
-# copy takes 2 paths, first path.The first path is outside of the image where the files leave that should be copied into the image.
+# which files from here should go from local file system to  docker image
+# copy takes 2 paths, first path.The first path is outside of the image where the files live that should be copied into the image.
 
-# And if you just specify a dot here that basically tells Docker that it's the same folderthat contains the Dockerfile. but excluding DockerFile
+# And if you just specify a dot here that basically tells Docker that it's the same folder that contains the Dockerfile. but excluding DockerFile
 # And now the second dot is the path inside of the image where those files should be stored.And actually here it is a good idea to not 
 # use the root folder, the root entry in your Docker container but some sub folder which is totally up to you, this folder will
 # created if it does not exist
