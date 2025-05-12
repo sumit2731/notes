@@ -1,26 +1,67 @@
-1)docker config file - see Dockerfile of code1 of section 2
-2)docker image
-3)docker container
-4)layer based architecture of image - 
-    optimizations of image
-    conatiner is just one more layer over image
-    when we pus a image on dockerHub, if our image is based on node, only our code is pushed. node part is taken from dockerHub
-5)container attached/detached mode
-6)docker logs
-6)interactiveMode - -i,-t and -it
-7)deleting images and conatiner -
-    docker rm container1 container2
-    docker prune
-8)copying files into and out from container.
-    docker cp
+2)Docker Images & Containers
+    1)docker config file - see Dockerfile of code1 of section 2
+    2)docker image
+    3)docker container
+    4)layer based architecture of image -
+        images are read only
+        optimizations of image
+        conatiner is just one more layer over image
+        when we pus a image on dockerHub, if our image is based on node, only our code is pushed. node part is taken from dockerHub
+    5)container attached/detached mode
+    6)docker logs
+    6)interactiveMode - -i,-t and -it
+    7)deleting images and conatiner -
+        docker rm container1 container2
+        docker prune
+    8)copying files into and out from container.
+        docker cp
 
-9)images tags, container names
+    9)images tags, container names
 
-10)sharing images - 
-    docker hub -
-        renaming image (for pushing name needs to be in a particular format -  docker push repositoryName/imageName:imageTag)
-        creating repository on dockerHub
-        pushing your image
-        pulling your image
-    private registry
-    
+    10)sharing images - 
+        docker hub -
+            renaming image (for pushing name needs to be in a particular format -  docker push repositoryName/imageName:imageTag)
+            creating repository on dockerHub
+            pushing your image
+            pulling your image
+        private registry
+            will be covered later
+
+3)Managing Data & Working with Volumes
+   1)container data is retained when we stop container, it is deleted only when we remove container.
+   2)solution - volume, slide 3
+   3)Volumes -
+        named  -
+            specified while when running container (cannot be specified in Dockerfile as it is specific to container)
+            survives container removal
+        anonymous -
+            mentioned in Dockerfile
+            deleted when container is removed (if container is started with --rm flag)
+            when container is created, it is recreated (even if last volume is not deleted)
+   3)2 types of externalStorage - 
+        volumes - dev is not aware of location on local system 
+        Bind Mounts - 
+            dev is aware of position on local system
+            specified while creating container(cannot be specified in Dockerfile as it is specific to container)
+
+    4)problem we faced while using mount -
+        node_module folder was overwritten with bind mount.
+        so we used anonymous volumes to sync nodu_modules folder and named volume to sync rest of code.
+        this is use of anonymous volume.
+
+        so we used all 3 types of storage here - code2
+        bind mounts cannot be deleted via docker command.
+        see side 7 for sumary.
+
+    6)readonly volumes 
+        -v "pathOrName":"dockerPath":ro
+        also we saw how to make one folder writable also by using anonymous volumes
+    7).dockerignore
+    8)arguments and env variables -
+        env variables - code3
+        arguments - code4
+
+
+4)Networking:(Cross-)Container Communication
+        
+        

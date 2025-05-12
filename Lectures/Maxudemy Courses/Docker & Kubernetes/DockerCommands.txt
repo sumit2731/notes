@@ -38,6 +38,11 @@ commands -
                     more complex version - 
                         docker build --target "stageName" -f frontend/Dockerfile.prod ./frontend
 
+                d)--build-arg
+                    used to provide build time arguments
+
+                    docker build --build-arg DEFAULT_PORT=8000 .
+
 
         2)docker run "imageId"
             docker run "imageName or tag"
@@ -144,7 +149,7 @@ commands -
                         lets you pass a file, which contains value of envirement variables.
 
                         ex - 
-                            docker run ---env-file ./.env imageName
+                            docker run --env-file ./.env imageName
 
                         see lecture 61
 
@@ -234,7 +239,9 @@ commands -
 
 
         5)docker logs "containerName"
-            fetches all the logs for containers(including past one).This means terminal output
+            fetches all the logs for containers(including past one).This means terminal output.
+            You can only see logs of running/stpped containers. you can see logs to troubleshoot why a container was shutdown.
+            we do this in lecture 52.
 
             flags -
 
@@ -269,7 +276,7 @@ commands -
             gives name of all volumes setup by docker. it shows only named and annonymous volumes. bind mounts are not shown.
 
         b)docker volume rm VOL_NAME
-            you get error if you try to remove a volume which is ised by some contianer which is currently running.
+            you get error if you try to remove a volume which is issued by some contianer which is currently running.
         
         
         c)docker volume prune
@@ -283,6 +290,8 @@ commands -
             it shows the details of volumen like when it was created , path  and options used while creating the volume. path is not in local file 
             system, but it path in virtual machine that docker has setup on your system. under options you can see whether this volume is read only or
             not.
+
+        Note - bind mounts are not controlled by docker,so you cannot see it via cmd.
 
     4)network -
 
