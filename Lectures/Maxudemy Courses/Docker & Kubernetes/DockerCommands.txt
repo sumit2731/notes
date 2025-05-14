@@ -255,7 +255,7 @@ commands -
 
         8)docker container inspect "containerName"
 
-            this commands isnpects the container. we used it to get IP address of container where our mongoDB container was running.
+            this commands inspects the container. we used it to get IP address of container where our mongoDB container was running.
             then we used ip address of this container to connect to mongodb from container that was running node code.
 
 

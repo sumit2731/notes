@@ -63,5 +63,12 @@
 
 
 4)Networking:(Cross-)Container Communication
+    a)see figure 1 , this is what we intend to do
+    2)type 1 and type 2 are allowed by default.
+        for type2 we see slide instead of local host we need a different string.
+    3)connecting 2 docker containers -
+        a)By using IP address
+        b)by using docker network
+    4)docker network driver
         
         

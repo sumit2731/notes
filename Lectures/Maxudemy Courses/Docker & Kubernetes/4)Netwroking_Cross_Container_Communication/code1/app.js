@@ -84,10 +84,12 @@ app.get("/people", async (req, res) => {
 
 /**
  * If you are running this code in docker and mongo db is running on localhost use this code to connect to local host -
+ * host.docker.internal - this is understood by docker and this is translated to ip of your local machine as seen inside from docker container
+ *
  */
 
 /* mongoose.connect(
-  'mongodb://host.docker.internal:27017/swfavorites',
+  "mongodb://host.docker.internal:27017/swfavorites",
   { useNewUrlParser: true },
   (err) => {
     if (err) {
@@ -99,7 +101,7 @@ app.get("/people", async (req, res) => {
 ); */
 
 /**
- * If you are running this app on docker and mongo db is also running on docker, then isnpect the mongo db container by -
+ * If you are running this app on docker and mongo db is also running on docker, then inspect the mongo db container by -
  *  docker container inspect containerName
  *    here get IP address
  */
@@ -117,7 +119,7 @@ app.get("/people", async (req, res) => {
 ); */
 
 /**
- * mongo db is also running in container but both containers are part of same network then here we can use the name of container
+ * mongo db (name o container) is also running in container but both containers are part of same network then here we can use the name of container
  * instead of IP address. docker will resolve IP address form name of container
  */
 
@@ -132,4 +134,3 @@ mongoose.connect(
     }
   }
 );
-app.listen(3001);
