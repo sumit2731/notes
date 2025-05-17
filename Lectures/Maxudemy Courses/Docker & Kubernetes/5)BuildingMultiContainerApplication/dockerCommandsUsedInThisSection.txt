@@ -1,0 +1,25 @@
+creating images -
+    1)backend code -
+        docker build -t goals-node .
+    2)frontend code -
+        docker build -t goals-react .
+
+Connection by exposing the port to local system -
+    1)Running mongoDb in container but also exposing a port so that we can connect from localhost to this mongoDb -
+        docker run --name mongodb --rm -d -p 27017:27017 mongo
+    2)running backend container(exposing port so that frontend can connect) -
+        docker run --name goals-backend -p 80:80 -d --rm goals-node
+    3)run frontend container
+        docker run --name goals-frontend --rm -d -p 3000:3000 -it goals-react
+Connection through network -
+    1)create network -
+        docker network create goals-net
+    2)running mongoDb container -
+        docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+    3)running backend container -
+        docker run --name goals-backend -v $(pwd):/app -v logs:/app/logs  -v /app/node_modules -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret -d --rm  -p 80:80 --network goals-net goals-node
+        docker run --name goals-backend -v "/Users/sumeet.sood/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/5)BuildingMultiContainerApplication/code/backend:/app" -v logs:/app/logs  -v /app/node_modules -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret  -d --rm  -p 80:80 --network goals-net goals-node
+    4)run frontend container
+        docker run -v "/Users/sumeet.sood/notes/Lectures/Maxudemy Courses/Docker & Kubernetes/5)BuildingMultiContainerApplication/code/frontend/src:/app/src"  --name goals-frontend --rm -p 3000:3000 -it goals-react (it is important otherwise you wnt see chnages)
+
+    

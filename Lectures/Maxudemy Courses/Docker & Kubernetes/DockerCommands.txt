@@ -323,21 +323,20 @@ commands -
                         starts the all services in container in dettached mode.
 
                 b)--build
-                    this forces the images to be rebuild even if nothing has chnaged in file since last time image was rebuild
+                    this forces the images to be rebuild even if nothing has changed in file since last time image was rebuild
                     this forces to docker to through dockerFiles again and then recreate the image if something changed.if nothing has chnaged
                     then because of layer concept in images and images are cached , it will not rebuild the image.so it will just reuse the 
                     cached layers.
 
         b)docker-compose down
-            removes all services and removes all containers.deltes all container, default network it created and shuts everything down.
+            removes all services and removes all containers.delets all container, default network it created and shuts everything down.
              this does not delete volumes(named volume).
 
             flags -
 
                 a)-v 
                     docker-compose down -v
-
-                    details - https://docs.docker.com/engine/reference/commandline/compose_down/
+                    It also removes volumes now.
 
         c)docker-compose build
             docker builds the images without starting the containers

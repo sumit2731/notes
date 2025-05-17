@@ -12,8 +12,8 @@ docker run --name mongodb \
   -e MONGO_INITDB_ROOT_USERNAME=max \
   -e MONGO_INITDB_ROOT_PASSWORD=secret \
   -v data:/data/db \
-  --rm \
-  -d \
+  --rm \ (default option with docker compose)
+  -d \  (can be speciffied when we start our all services togather)
   --network goals-net \
   mongo
 
@@ -62,4 +62,3 @@ Stop all Containers
 ---------------------
 
 docker stop mongodb goals-backend goals-frontend
-

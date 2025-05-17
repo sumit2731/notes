@@ -70,5 +70,47 @@
         a)By using IP address
         b)by using docker network
     4)docker network driver
+    5)connection via local system -
+        mongodb container exposed port to local
+        node server connects that port using - host.docker.internal.node also exposes a port to local
+        react connects to node using localhost
+    6)connection via network -
+        1)run mongodb in container.
+        2)run nodejs container and then connect to mongodb using container name. expose a port to local
+        3)run frontend container, expose a port to local, connect with nodejs server by port exposed by nodejs server
         
-        
+    7)persisting data and auth -
+        a)we persist data we used volume.
+        b)for auth we set the env variables while running mongo db. and used that in string while connecting to mongo db. 
+
+    8)other optimizations -
+        a)live changes using bind mount
+        b)passing mongo password through env variables
+        c)using dockerignore fle to avid copying node_modules.
+
+    9)limitations -
+        a)log docker commands
+        b_dev only setup
+
+
+5)DockerCompose:Elegant MultiContainer Orchestration
+    a)created a docker-compose.yaml.
+    b)things that can be mentioned in docker-compose file -
+        version
+        service(container)
+            image
+            build 
+                (path of Dockerfile that can be used to build image 
+                    or 
+                context, docker file name, arguments value)
+            container_name
+            volumes
+            env variable/enVFile
+            container name
+            networks - in addition to default network
+            ports
+            stdin_open
+            tty (both this and above for -it flag)
+            depends_on - whether this container depends upon another container
+        volumes section(for named volumes used in any service)
+    

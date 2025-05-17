@@ -1,3 +1,4 @@
 1)section 2, code 1 - intro to basic tags
 2)scetion 2, code 2 - optimization based on image layers
 3)section3, code 1 - volumes
+4)section 6 - docker-compose.yaml

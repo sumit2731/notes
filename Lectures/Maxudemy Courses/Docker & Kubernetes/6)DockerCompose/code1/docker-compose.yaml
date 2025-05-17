@@ -22,7 +22,8 @@ version: "3.8"
 # containers a name.
 
 # You can use any names you want here.They should all be on the same level though. All indented by two blanks,since they
-# all are equal children to services.
+# all are equal children to services.these are names that you can use to leverage the network created by docker compose for you.
+# original name of container, is `nameOfFolder-${servicename}1`
 services:
   # Now we can define a configuration for every container and you might already be guessing it. We do that by indenting again.
   # all container by default started with --rm which means if they are stopped they are removed
@@ -40,15 +41,14 @@ services:
     volumes:
       - data:/data/db
 
-    # envirement variables
+    # envirement variables, we have 2 syntaxes of defining envirement variables
 
     # environment:
-    # we have 2 syntaxes of defining envirement variables
     # name: value
     # - name=value
 
     # MONGO_INITDB_ROOT_USERNAME: max
-    # MONGO_INITDB_ROOT_PASSWORD: secret
+    # -MONGO_INITDB_ROOT_PASSWORD: secret
 
     # envirenment variable file
     env_file:
@@ -82,12 +82,13 @@ services:
 
     # this is folder in which Dockerfile is placed.And also another note about the context.It can be the path to your Dockerfile,
     # like this example here,but it will also be the place where the Dockerfile is built thereafter,so where the image will be
-    # generated.So if in your Dockerfile, you are copying some folder into the image, the context must be set to a folder
+    # generated.And that means that your context should be set to a folder, which includes everything the Dockerfile might be 
+    # referring to.So if in your Dockerfile, you are copying some folder into the image, the context must be set to a folder
     # that includes that to be copied folder. see lecture 122, it explains this concept.
 
     # if your Dockerfile would be in some other nested folder and needs access to folders outside of that nested folder,then your
-    # context should be set to a higher level folder. see 02:50 of levture 97.
-    # if this is not clrea now then it will be clarified in section where we build php laravel project
+    # context should be set to a higher level folder. see 02:50 of lecture 98.
+    # if this is not clear now then it will be clarified in section where we build php laravel project
 
       # context: ./backend
 
@@ -126,7 +127,7 @@ services:
       - mongodb
 
 
-  forntend:
+  frontend:
     build: ./frontend
     ports:
       - '3000:3000'
