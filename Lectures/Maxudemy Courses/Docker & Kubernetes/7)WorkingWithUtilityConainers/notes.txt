@@ -134,7 +134,7 @@
         docker-compose up 
 
 
-    it will ust start the container and start building npm, dnt know what exactly it is trying to do.problem in it just executed
+    It will just start the container and start building npm, dnt know what exactly it is trying to do.problem in it just executed
     "npm" command,because that is our entry point. but we want to pass command from outside which should run in container.
 
     we have got "docker-compose exec" to run command in already running containers which were created by docker-compose. but here our 

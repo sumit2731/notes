@@ -23,7 +23,7 @@ version: "3.8"
 
 # You can use any names you want here.They should all be on the same level though. All indented by two blanks,since they
 # all are equal children to services.these are names that you can use to leverage the network created by docker compose for you.
-# original name of container, is `nameOfFolder-${servicename}1`
+# original name of container, is `nameOfFolder-${servicename}1`, you can specify container name through this - container_name
 services:
   # Now we can define a configuration for every container and you might already be guessing it. We do that by indenting again.
   # all container by default started with --rm which means if they are stopped they are removed

@@ -308,6 +308,7 @@ commands -
 
         a)docker-compose up
             starts the all services and containers mention in docker-compose.yaml. see lecture 96. by default all services are in attached mode.
+            --rm option is default
 
             another variant -
                 a)docker-compose up serviceName
@@ -323,13 +324,11 @@ commands -
                         starts the all services in container in dettached mode.
 
                 b)--build
-                    this forces the images to be rebuild even if nothing has changed in file since last time image was rebuild
-                    this forces to docker to through dockerFiles again and then recreate the image if something changed.if nothing has chnaged
-                    then because of layer concept in images and images are cached , it will not rebuild the image.so it will just reuse the 
-                    cached layers.
+                    By default docker-compose will rebuild a image if image does not exist.next time you run docker compose, it will not rebuild the
+                    image ,if it founds a existing image.but with this flag, you force the docker-compose to do rebuild the image.
 
         b)docker-compose down
-            removes all services and removes all containers.delets all container, default network it created and shuts everything down.
+            removes all services and removes all containers.deletes all container, default network it created and shuts everything down.
              this does not delete volumes(named volume).
 
             flags -
@@ -346,15 +345,11 @@ commands -
             list all the services running under container
 
         e)docker-compose run serviceName 
-            varient - docker compose run serviceName command. if you want your container to be destroyed after running the service
+            variant - docker compose run serviceName command.This command will be appended after entryPoint mentioned in Dockerfile
+             if you want your container to be destroyed after running the service
                 then use --rm flag.
 
-                also this respects the entrypoint mentioned in Dockerfile.
-
-            note - it can be used to just run a single service. optionally you can also give a command that you need to run in container.this comamnd
-                will replace the default command in container.this will always spin up a new container.
-
-            Commands you use with run start in new containers with configuration defined by that of the service, including volumes, links,
+            Commands you use with run, start in new containers with configuration defined by that of the service, including volumes, links,
              and other details. However, there are two important differences:
 
                 a)command passed by run overrides the command defined in the service configuration.
@@ -370,6 +365,7 @@ commands -
             see docs - https://docs.docker.com/engine/reference/commandline/compose_run/
 
         f)docker-compose exec [options] [-e KEY=VAL...] SERVICE COMMAND [ARGS...]
+            this for running the command in container which were created by docker-compose
 
             docker-compose exec is meant to interact with a container that is already running. That also explains why it requires a 
              COMMAND argument, because it’s expecting the container that is currently running to already be executing the default command
@@ -381,7 +377,7 @@ commands -
         docker exec german npm init
         The Docker exec command allows you to execute certain commands inside of a running container besides the default command, this 
         container executes.So besides the command that might've been specified in a Docker file, that command still continues running.
-        So the application still continues to run but you can't run additional commands inside of a container.
+        So the application still continues to run but you can run additional commands inside of a container.
 
 
         use this command you can do these things inside file system of container -
@@ -399,8 +395,10 @@ commands -
                 docker exec -it containername Command
 
                 use this if you want to stay connected to that process, you're starting up here and if you want to be able to provide input.
-
-    7)docker hub -
+    7)overwriting the default command in container -
+        docker run imageName command
+        docker run --it node npm init
+    8)docker hub -
 
         a)docker login -
             allows you to enter username and passowrd to login into dockerhub

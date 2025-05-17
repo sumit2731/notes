@@ -51,7 +51,7 @@
 
         so we used all 3 types of storage here - code2
         bind mounts cannot be deleted via docker command.
-        see side 7 for sumary.
+        see side 7 for summary.
 
     6)readonly volumes 
         -v "pathOrName":"dockerPath":ro
@@ -113,4 +113,20 @@
             tty (both this and above for -it flag)
             depends_on - whether this container depends upon another container
         volumes section(for named volumes used in any service)
+
+6)Utility Containers
+    a)idea is that we want to setup projects without installing any tools on local machine.
+    b)we can run commands inside docker container using "docker exec" command.
+    c)we use bind mount to sync our local path with container path, run commands inside docker,
+        get result back in our filesystem.
+    d)ways to run commands -
+        a)run commands inside running container by using "docker exec".
+        b)while starting container we run our own command instead of default command of container -
+            docker run -it containerName customCommand
+
+        here we used second option see code1,code2. also we had a look at entryPoint Option. command we give while running
+        container will be appended to entrypoint specified in Dockerfile.
+    e)using docker-compose, here we ran commands inside containers started by docker-compose.
+        docker compose run serviceName command
+        see code3
     
