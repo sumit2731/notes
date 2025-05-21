@@ -130,3 +130,32 @@
         docker compose run serviceName command
         see code3
     
+7)A More Complex Setup
+    a)Required Laravel setup - 
+        figure 1 - we will have laravel code inside our system(in center image in figure), this will be exposed to PHP interpreter container.That is a container which has PHP installed inside of it.
+        And that's a container which will have access to our source code so that it can interpret this source code and generate a response for incoming requests.
+
+        incoming request are handled by nginx server, which then triggers PHP interpreter which runs our php code, for those requests.php container
+        generates response for incoming requests and sends backs to client who requested it.For data base we have separate container. all these are
+        application containers.we can say that PHP container, is in the end used by nginx to funnel individual files through it.
+
+        For laravel application, we also need 3 kinds of utilities, so we have 3 utility containers also.
+            a)composer - Composer is basically to PHP what NPM is to Node.It's a package manager which we can use to install third party packages and
+                we will use Composer to create Laravel application and also Laravel will use Composer to install dependencies, which it needs.
+            b)laravel Artisan - In addition Laravel ships with its own tool called Laravel Artisian.Now this is a command which we for example use
+                to run migrations against our database and write initial starting data to the database.And we use it for a couple of other things as well.
+
+            c)npm- Laravel uses it for some of its front end logic.So if in your views, which are returned by Laravel you need some Java script code, 
+                for example.
+
+    b)steps for setup -
+        we setup 3 app containers in docker-compose.yaml file.
+        see notes in docker-compose.yaml and corrosponding dockerfiles,
+        then we setup a utility container - composer.
+        first we run this utility container to generate laravel project. see first command in comamndsUsedInThisSection.txt.
+        this creates sample project in src folder.
+        now we change the DB connections settings in laravel project -
+            go to .env file in source.
+            change these things - DB username, password,host.
+            make chnages - resources->views -welcome
+        

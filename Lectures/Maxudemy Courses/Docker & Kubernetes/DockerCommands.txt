@@ -395,7 +395,7 @@ commands -
                 docker exec -it containername Command
 
                 use this if you want to stay connected to that process, you're starting up here and if you want to be able to provide input.
-    7)overwriting the default command in container -
+    7)overwriting the default command(specified in image) while running container -
         docker run imageName command
         docker run --it node npm init
     8)docker hub -

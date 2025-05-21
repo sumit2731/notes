@@ -1,0 +1,17 @@
+code 1 -
+    a)creating laravel project using composer utility container -
+        docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+    b)bring app containers up -
+        docker-compose up -d server php mysql
+    c)running only one container(reset services are automatically started) -
+        docker-compose up -d  server
+    d)building images each time -
+        docker-compose up -d --build server
+            This rebuilds the image before running. which is good if something is changed.
+            If nothing changed because of that layer concept in images and because layers are cached,
+            it will of course not rebuild the image. It will effectively not rebuild anything,
+            it will just reuse these cached layers.
+    e)using artisan utility container -
+        a)write some data into database
+        docker-compose run --rm artisan migrate
+        
