@@ -1,0 +1,8 @@
+section 11)Getting Started with Kubernetes
+    Kubernetes is additional tool, even though it's not really a tool, it's more like a framework, a collection
+    of concepts,a standard, you could say. It will help us with Container Orchestration and large scale deployments,
+    independent of the cloud provider we might be using
+
+
+    container is managed by a  pod.pod is smallest unit in kubernetes world, which you can define in sme configuration file
+        for kubernetes to create.pod simply contains the containers.

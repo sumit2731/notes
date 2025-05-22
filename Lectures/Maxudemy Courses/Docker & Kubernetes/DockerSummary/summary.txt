@@ -157,5 +157,26 @@
         now we change the DB connections settings in laravel project -
             go to .env file in source.
             change these things - DB username, password,host.
-            make chnages - resources->views -welcome
+            make changes in file - resources->views -welcome
+            go to localhost:8000, to see your changes live.
+
+    c)setting up last 2 utility containers -
+        then we setup 2 utility containers. dere we use option to mention some configs(entryPoint) in docker-compose file , instead of dockerFile,
+        this is purely optional. Max prefer to have dockerFile.also dere are some configs like copy and run that we can only mention in
+        DockerFile.
+
+        while containing artisan utility container,we used dockerFile that we have for php container, but we gave it a EnrtyPoint.
+        then we used artisan to do data base migration.
+    d)Then we discussed about having configs in DockerFile vs docker-compose.
+        we can have simpler configs in docker-compose file - EntryPoint and WorkingDir
+        we cannot have complex instructions like RUN and COPY in docker.
+
+    e)then we discussed that bind mount is great for development. but in production we do not need that.in prod we need to copy the snapshot
+    for that we have code2.In folder 2 we have copied file into the containers, because in prod we do not want to change code
+    and we want snapshot only. changes made -
+        a)added a dockerFile of nginx because we want to copy file into that.
+        b)then we saw importance of context in generating image.
+        c)then we copied files into php container also. dere we got a error about read/write permission, so we we gave
+            read/write access to user created by image.
+
         

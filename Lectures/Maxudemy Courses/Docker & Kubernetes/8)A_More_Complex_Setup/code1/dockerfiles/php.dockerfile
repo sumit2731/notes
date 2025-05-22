@@ -1,5 +1,6 @@
 # for useage with nginx we need fpm image
-FROM php:7.4-fpm-alpine
+# FROM php:7.4-fpm-alpine
+FROM php:8.1-fpm-alpine
 # This folder might look strange,but it is a pretty standard folder on web servers to serve your website from.
 # So we will actually ensure that in all the containers we're going to build throughout this module,we always 
 # use this as the folder which should hold our final application.

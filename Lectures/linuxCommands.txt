@@ -1,0 +1,9 @@
+1)To give a user Read.write access for a folder - 
+
+
+    chown -R www-data:www-data /var/www/html
+    # chown - changeOwnership , 
+    # -R - recursive, 
+    # read access to user, 
+    # www-data write access to user
+    # /var/www/html - filePath

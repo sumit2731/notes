@@ -7,4 +7,6 @@
     how it was solved in laravel project -
         https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/23172898#questions/14040174
 
-3)steps on install docker on servers is given in lecture 133.
+3)to create new user - lecture 119
+
+4)steps on install docker on servers is given in lecture 133.

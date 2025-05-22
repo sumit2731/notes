@@ -3,14 +3,19 @@ version: '3.8'
 services:
   server:
     # image: 'nginx:stable-alpine'
+    # context is path where image is built, so it should have access to all files mentioned in dockerfile
+    # all paths in dockerFile should be relative to context.
+    # here since in dockerFile we need access to nginx/nginx.conf and src folder , we set working
+    # directory accordingly.. means same path as docker-compose
     build:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
     ports:
       - '8000:80'
-    volumes:
-      - ./src:/var/www/html
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    # volumes:
+      # - ./src:/var/www/html
+      # # inside the nginx, config file needs to be default.conf because it is merged with another config files, to create resultant config file
+      # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
       - mysql
@@ -22,7 +27,7 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/php.dockerfile
-    volumes:
+    # volumes:
       # by the way,also improve performance a little bit by adding delegated after a colon at the end, that if the containers
       # should write some data there,it's not instantly reflected back to the host machine,instead it is basically processed in
       # batches, you could say,and therefore performance is a bit better.It's a optimization, we don't have to do it here,but we
@@ -30,9 +35,10 @@ services:
       # to be reflected back to the host machine instantly.Because it won't write anything which we need to access instantly on the
       # host machine.Read only is not an option because it will write some data to our disc. The Laravel framework will also generate
       # some files when it runs,for example the views which are sent back as part of responses.
-      - ./src:/var/www/html:delegated
+      # - ./src:/var/www/html:delegated
 
   mysql:
+    platform: linux/x86_64
     image: mysql:5.7
     env_file:
       - ./env/mysql.env

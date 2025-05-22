@@ -1,6 +1,6 @@
 code 1 -
     a)creating laravel project using composer utility container -
-        docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+        docker-compose run --rm composer create-project --prefer-dist laravel/laravel:^8.0 .
     b)bring app containers up -
         docker-compose up -d server php mysql
     c)running only one container(reset services are automatically started) -
@@ -14,4 +14,7 @@ code 1 -
     e)using artisan utility container -
         a)write some data into database
         docker-compose run --rm artisan migrate
+
+
+    with this our dev setup is done, now we will see how to setup prod setup.
         

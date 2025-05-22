@@ -81,7 +81,8 @@ services:
   npm:
     image: node:14
     #  we could either write a docker file to set the working directory and the entry point or we use our newly gained knowledge 
-    # that we can add or override certain things here in docker compose
+    # that we can add or override certain things here in docker compose. you cannot have copy and run command sin docker-compose
+    # that anyway you need to have in d
     working_dir: /var/www/html
     entrypoint: ["npm"]
     volumes:

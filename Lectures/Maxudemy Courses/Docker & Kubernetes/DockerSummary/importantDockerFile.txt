@@ -1,0 +1,9 @@
+1)section 2, code 1 - intro to basic tags
+2)section 2, code 2 - optimization based on image layers
+3)section3, code 1 - volumes
+4)section 6 - docker-compose.yaml
+5)section 7 
+    code 2 - entry point
+6)section 8
+    code 1 - some Dockerfile configs can be mentioned in docker-compose
+    code 2 - context option in docker-compose, command to change user permissions.

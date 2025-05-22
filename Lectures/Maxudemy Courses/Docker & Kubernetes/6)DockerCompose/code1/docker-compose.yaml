@@ -84,7 +84,9 @@ services:
     # like this example here,but it will also be the place where the Dockerfile is built thereafter,so where the image will be
     # generated.And that means that your context should be set to a folder, which includes everything the Dockerfile might be 
     # referring to.So if in your Dockerfile, you are copying some folder into the image, the context must be set to a folder
-    # that includes that to be copied folder. see lecture 122, it explains this concept.
+    # that includes that to be copied folder. see lecture 123, it explains this concept.
+    # In short all since image is built in that path, it should have access to all folders included inside the dcokerFile
+    # all paths should be relative to this path
 
     # if your Dockerfile would be in some other nested folder and needs access to folders outside of that nested folder,then your
     # context should be set to a higher level folder. see 02:50 of lecture 98.
