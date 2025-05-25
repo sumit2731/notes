@@ -1,0 +1,2 @@
+1)section 12 , code 2 - deployment.yaml.
+2)section 12, code 3 - service.yaml, master-deployment.yaml

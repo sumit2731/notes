@@ -1,0 +1,79 @@
+Starting minikube cluster -
+
+    1)minikube start --driver=docker (in course max uses hyper wiser)
+        starts the minikube cluster
+    2)minikube status
+        checks the status of cluster whether is running or not
+Code 1 -
+    1)docker build -t kub-first-app .
+        creates image
+    2)docker tag kub-first-app sumeet27/kub-first-app
+    3)docker push sumeet27/kub-first-app
+    4)kubectl create deployment first-app --image=sumeet27/kub-first-app
+        creates and sends the deployment object to cluster. we specify the image for container.
+    5)kubectl get deployments
+    6)kubectl get pods
+    7)kubectl dashboard
+    8)kubectl expose deployment first-app --port=8080 --type=LoadBalancer
+        exposes the deployment by creating a service object.service can also be created by  command -
+            kubectl create service, but above is more convenient
+    9)kubectl get services
+        Shows the services. we will see 2 services, first one named kubernetes is created automatically(typ - ClusterIp) is created by default.
+        now for each  service we can see ClusterIP(internal to cluster) and External IP.If we would have deployed on a cloud provider, we can see
+        the external IP address here,for minikube it will always be in pending state.
+        so, if you created this service on a Cloud provider,which supports a LoadBalancer, you will see an external port here.
+
+    10)minikube service first-app
+        minikube has a command,which will give us access to the service by basically mapping a special port to an IP
+            which we can reach from our local machine,and which identifies this virtual machine running on our local 
+            machine.we then need to specify our deployment and our service name therefore, in this case, first app.
+            here we get the IP and our we can access our service using that ip.
+
+        You need this command only in case of minikube.
+
+    11)kubectl scale deployment/first-app --replicas=5
+        create replicas of pods. since our service typ is loadbalancer, it will automatically route incoming traffic.
+    12)updating image -
+        a)change image tag -
+            docker build -t sumeet27/kub-first-app:2 .
+            docker push sumeet27/kub-first-app:2
+        b)update the image in pod -    
+            kubectl set image deployment/"deployemntName" "containerName"="newImageTag"
+            kubectl set image deployment/first-app kub-first-app=sumeet27/kub-first-app:2
+
+        c)status of last rollout
+            kubectl rollout status deployment/first-app
+
+    13)deployment rollback -
+        a)try to update image that does not exist -
+            kubectl set image deployment/first-app kub-first-app=sumeet27/kub-first-app:30
+
+            you will see sucess message. but you need to see update of your rollout
+
+        b)last rollout status -
+            kubectl rollout status deployment/first-app
+
+            you will see message that old replica is waiting to be killed.if you go on dashboard in pods, you can see 2 pods,
+                old one is not killed because new one is not started and it is facing problem with image pulling.this remain like this.
+
+        c)revert problematic deployment -
+            a)go to last stable deployment(just revert last deployment)
+                kubectl rollout undo deployment/first-app
+            b)go to a specific version -
+                kubectl rollout undo deployment/first-app --to-revision="revisionTag"
+
+    14)taking down everything -
+        kubectl delete service first-app
+        kubectl delete deployment first-app
+
+code 2 -
+    1)kubectl apply -f=deployment.yaml
+code 3 -
+    1)kubectl apply -f=deployment.yaml
+    2)kubectl apply -f=service.yaml
+    3)expose the service (only required in minikube) setup -
+        minikube service backend
+    4)kubectl delete -f=deployment.yaml
+    5)kubectl delete -f=service.yaml
+    6)kubectl delete -f=master-deployment.yaml
+    6)minikube service backend

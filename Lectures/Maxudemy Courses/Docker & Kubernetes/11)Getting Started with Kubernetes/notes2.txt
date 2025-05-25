@@ -1,0 +1,49 @@
+section 11)Getting Started with Kubernetes
+    Kubernetes is additional tool, even though it's not really a tool, it's more like a framework, a collection
+    of concepts,a standard, you could say. It will help us with Container Orchestration and large scale deployments,
+    independent of the cloud provider we might be using.
+
+    you can give kubernetes file to any cloud provider or your local machine withkubernetes software install and it .It
+    can then pick up on that Kubernetes configuration to then create the resources and the deployment specified in that configuration.
+
+    also we can specify the things specific to cloud provider here, when we switch cloud provider, we need to remove or replace these
+    configs only, not entire fle.
+
+    Kubernetes Architecture
+        container is managed by a  pod.pod is smallest unit in kubernetes world, which you can define in sme configuration file
+        for kubernetes to create.pod simply contains the containers.
+        
+        when working with Kubernetes, you typically don't directly interact with your worker nodes or pods,though you could do that, but
+        you typically don't do that,instead you let Kubernetes and this control plane do that heavy lifting and you as a developer just
+        define the desired end state Kubernetes should take into account.
+
+        master node simply another server another remote machine,which has this control plane running on it,which then is responsible for
+        interacting with the worker nodes and the pods running on them.Now on the master node, this control plane thing,is actually a collection
+        of different tools different services, which are running on the master node.
+
+        master node is able to send instructions to a cloud provider API,to tell that cloud provider to create it's cloud provider specific resources
+        to replicate this desired big picture this end state on that cloud provider.
+
+    Closer Look at Worker Node(slide 10)
+
+        Additional software on worker node
+            Docker
+            kubelet - communication device between the Worker Node and the Master Node.
+            kube-proxy - controls incoming and outgoing traffic.which traffic is allowed and which is blocked
+
+        with Kubernetes,you just need to define the desired end state,and if you're then using a cloud provider like AWS, they have services which allow
+        you to provide this Kubernetes definition, and then AWS will set up all the instances and install all the required software for you.
+
+    Closer Lok at master Node(slide 11)
+        see lecture. node - slide shown is misisng in downloaded slides.
+
+    Important Terms and Concepts(slide 14)
+        Pods - it's a Kubernetes term. And it simply means the Application Containers as well as their required resources combined together into this unit 
+            which is called a Pod,which is just this shell around your Container,which in the end will start the Container and manage that specific Container.
+            And Pods themselves as mentioned are then managed by the Master Node.And if a Pod is created,that's equivalent to running the Container in the Pod.
+
+        services - Services, I can already tell you that are logical sets,so in the end, groups of Pods with a unique Pod and Container-independent IP address.
+            And services will be important for reaching our Pods,and therefore the Containers inside of them.service is just a term in the Kubernetes world
+            for exposing certain Pods to the outside world,for ensuring that certain Pods are reachable with a certain IP address or domain.
+
+

@@ -1,0 +1,2 @@
+1)Pod volumes/Networking.
+2)Ingres in kubernetes.

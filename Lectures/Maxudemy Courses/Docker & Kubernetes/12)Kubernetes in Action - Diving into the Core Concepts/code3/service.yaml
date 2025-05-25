@@ -4,19 +4,21 @@ metadata:
   name: backend
 spec:
   # A selector identifies which other resources should be controlled or connected to this resource.
-    # In this case here, we wanna define which pods should be part of this service.
+  # In this case here, we wanna define which pods should be part of this service.
 
-  # Now this eslector of the service object works a bit differently than the one from the deployment object.There, we had matchlabels
-    # and then our label key value pairs,which we wanted to connect.Now, we had this syntax here because the deployment resource type is a bit newer.
-    # than service resource type. so selector for service is simpler. here you can match only labels, so matchLabels is no required.
+  # Now this selector of the service object works a bit differently than the one from the deployment object.There, we had matchlabels
+  # and then our label key value pairs,which we wanted to connect.Now, we had this syntax here because the deployment resource type is a bit newer.
+  # than service resource type. so selector for service is simpler. here you can match only labels, so matchLabels is no required.
+  # so you can directly specfy key value pairs. also it matches  by 'OR' not by and.it means it selects any pods which has atleast 1 such label.
   selector:
     app: second-app
   # You can expose more than one port
   ports:
     # default is TCP only
-    - protocol: 'TCP'
+    - protocol: "TCP"
+      # this port which outside world should see
       port: 80
-      # this is port inside container
+      # this is port inside container, to which you want to give access
       targetPort: 8080
     # - protocol: 'TCP'
     #   port: 443

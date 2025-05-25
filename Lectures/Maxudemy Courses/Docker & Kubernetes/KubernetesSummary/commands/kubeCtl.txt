@@ -1,0 +1,126 @@
+kebectrl - It is install on local system , it talks with cluster. it gives commands to master node, which then gets things done by worker
+    node.
+
+    installation -
+        brew install kubectl
+
+    commands -
+        1)Deployments -
+            1)kubectl create deployment "nameOfDeployment"
+                creates a deployment object with a given name and sends it to masterNode of cluster.
+                a)image - images to be used in container.
+                    kubectl create deployment "nameOfDeployment" --image="name OfImage"
+                    you can also use multiple images -
+                    kubectl create deployment "nameOfDeployment" --image="i1,i2,i3"
+
+            2)kubectl get deployments 
+                we can see how many deployments we have in our cluster to which we connected here. 
+            3)kubectl expose deployment "nameOfDeployment" --port=1000 --type=LoadBalancer
+                exposes the pod,created by a deployment by creating a service.
+
+                kubectl expose deployment first-app
+                    a)--port = port that will be exposed from container (lecture 190)
+
+                    b)--type = type of service that we want to create, different types are - (lecture 190)
+                    
+                        a)ClusterIP - default type. This means it will only be reachable from inside the cluster.Still, we will then at 
+                            least get an address which doesn't change.
+
+                        b)NodePort - which actually means this deployment should be exposed with help off the IP address of the worker node
+                            on which it's running.this then will be accessible from outside.
+
+                        c)LoadBalancer -Now LoadBalancer utilizes a LoadBalancer which has to exist in the infrastructure on which our cluster
+                            runs.And then this LoadBalancer will actually generate a unique address for this service.it will also evenly 
+                            distribute incoming traffic across all pods, which are part of this service.Now LoadBalancer, this type here
+                            is only available if your cluster and the infrastructure on which the cluster runs supports it.AWS does, for 
+                            example, and minikube thankfully also does it. so this command we can use in minikube.
+
+                    ex - kubectl expose deployment first-app --type=LoadBalancer --port=8080
+            4)kubectl scale deployment/"nameOfDeployment"
+                It scales the no of pods present n deployment.
+                options -
+                    a)replicas - it means how many instances for pod you want to have.
+
+                ex - kubectl scale deployment/first-app --replicas=3
+
+            5)kubectl set image deployments/"name of deployment" containerName="new image name"
+
+                This replaces the image in container of given deployment with new image.by default kubernetes will downloaded new image only if
+                tag of image is changed. so change the tag. there are ways to override this.if image name is changed kubernetes  will download
+                your iage and restart the container based on that.
+
+                Verify in dashboard -
+
+                    dashboard -> pods -> yourPod -> events (should see events for pulling new image, creating/starting container)
+                    dashboard -> pods -> yourPod -> image (should see new image)
+
+                Note - this kills the existing pods and starts new one
+
+            6)rollouts -
+                a)Status of last rollout -
+
+                    kubectl rollout status deployment/"name of deployment"
+
+                    output - 
+                        prints the status of rollout. 
+                        this to check whether last deployment or update to last deployment was successful or not.
+                        This is either a success message, failure message or waiting message
+
+
+                b)to see rollout history -
+
+                    kubectl rollout history deployment/"nameOfDeployment"
+                    here you will not see revision which is currently deployed.
+
+                c)to get details of particular rollout of particular deployment -
+
+                    kubectl rollout history deployment/first-app --revision="identifier"
+
+                    identifier we get from last command.here we will get details like which image was used.
+            
+                d)how to go back to previous deployment -
+                    kubectl rollout undo deployment/first-app
+                    By default reverts the last deployment and takes to version before that.
+                    options -
+                        a)--to-revision - takes user back to specific version.
+                            kubectl rollout undo deployment/first-app --to-revision="revisionTag"
+                            kubectl rollout undo deployment/first-app --to-revision=2
+    
+
+        2)pods - 
+            1)kubectl get pods
+                we will see pods created by our deployments.
+
+
+
+        3)kubectl apply
+            We can create file describing how kubernetes objects should be created, then then we can send these file to cluster(master node)
+            using this command.
+
+            flags -
+                a)-f
+                    kubectl apply -f="pathToFile"        
+                    kubectl apply -f=deployment.yaml
+
+                    if you have multiples files to be applied then you can use multiple -f f;lags.       
+
+        4)kubectl delete  -
+            a)deleting objects by name - 
+                kubectl delete deployment "nameOfDeployment"
+            b)deleting resources created by file - 
+                kubectl delete -f=deployment.yaml
+                kubectl delete -f=deployment.yaml,services.yaml
+                kubectl delete -f=deployment.yaml -f=services.yaml
+            c)deleting by selectors(l stands for labels, here we mention labels for objects to be deleted) -
+                kubectl delete -l
+        1)kubectl cluster-info --context kind-kind
+                returns the info about cluster. context is name of cluster created by kind.
+
+
+
+
+kubernetes objects -
+
+    a)pods
+    b)deployment
+    c)service

@@ -40,7 +40,7 @@ worker node - lecture 175(slide 10). important terms -
         kubeproxy controls which traffic is allowed to each the pod and which traffic is allowed to leave workker node.
 
 
-master node - lecture 176(slide 12) -
+master node - lecture 176 -
 
     API Server - counter part of kubectl on worker node
     scheduler - selects nodes on which new pods should be created either because of scaling or some pod went down

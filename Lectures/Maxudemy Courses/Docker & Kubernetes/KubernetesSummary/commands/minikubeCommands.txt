@@ -1,0 +1,23 @@
+Minicube - sets the dummy cluster locally.it will use a virtual machine on your machine, to create the cluster in there.So it simulates
+    another machine on your machine by using such a virtual machine and the this virtual machine then holds this cluster.It will actually
+    create a single node cluster which means there the worker and master node is combined into one single virtual machine.
+
+    installation -
+        brew install minikube
+
+    commands -
+        minikube start --driver=docker -
+            creates the cluster
+        minikube status - 
+            to check whether cluster is running or not
+        minikube dashboard -
+            brings up web dashboard of our cluster.
+            shows the Ui in browser
+        
+        minikube delete --all -
+            deletes all minibute clusters
+
+        minikube service "nameOfService" (lecture 190)
+            When we create kubernetes service we do not external IP in minikube,so this is workaround of it.
+            this will give us access to the service by basically mapping a special port to an IP which we can reach from our local 
+            machine,and which identifies this virtual machine running on our local machine. so we can reach the service via this IP.

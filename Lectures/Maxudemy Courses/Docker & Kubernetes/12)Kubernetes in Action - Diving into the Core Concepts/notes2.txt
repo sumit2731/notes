@@ -1,0 +1,53 @@
+183)Kubernetes does not manage your infrastructure
+    For creating resources, yu can use tools like
+        Kubermatic
+        EKS - AWS do have dedicated services like in AWS,EKS, Elastic Kubernetes Service which actually helps you
+            with that as well.That is a service which will allow you to bring your own Kubernetes configuration
+            so that you don't have to use the AWS specific configuration as you did have to use with ECS but EKS.
+            So this Elastic Kubernetes Service will then also set up all the resources needed by your Kubernetes
+            configuration.we'll set up a Kubernetes environment locally.So we'll set up a worker and master node
+            locally and we'll ensure that we'll have all the software Kubernetes needs on these nodes installed locally.
+
+184)Kubernetes:Required setup and installation parts
+    figure 2.
+    kubectl is installed on your machine where you give instructions to master node.
+    So the cluster is the technical infrastructure the kubectl tool is your communication device for talking with that infrastructure
+        and for talking with this Kubernetes set up.
+    Don't confuse the kubectl tool with the API server or with the master node.The master node is really the thing in your cluster
+    which then basically applies your commands and ensures that your commands are executed correctly.The kubectl tool is really just a thing
+    with which you give the commands.
+
+    tool fir setting up cluster locally - minikube
+
+    minikube sets cluster locally on on your machine.It creates a virtual machine and sets cluster on that.
+        It will actually create a single node cluster which means there the worker and master node is combined into one single virtual machine.
+
+    But you sill need to install kubectl.
+
+187)Understanding Kubernetes Objects(slide 3,4)
+    you can create such an object by executing a certain command.And then Kubernetes will take that object created by you,which of course is just
+    a thing in code in the end,and it will then do something based on the instructions encoded in that object, you could say.And these objects can
+    actually be created in two different ways, imperatively or declaratively.
+
+    If you wanna tell Kubernetes,that it should create a pod,run a container and do that on some worker node in the cluster.You would tell Kubernetes
+    to do that,by creating a pod object in code or with help of a command,and sending that object to Kubernetes.
+
+    Pod has cluster internal ip address by default. other pods can interact with it using this IP. containers in same pod can reach out to each other using
+    local host.
+
+    
+    In addition, and that's also very important to understand,when working with Kubernetes,we can create pods on our own and start them on some
+    worker node in our cluster,but that's typically not what we will do.Instead, we want Kubernetes to manage these pods for us.
+
+
+191)The Service Object
+    By default pods have a internal IP address which is specific to cluster.
+    it can be used by others pods within the cluster to communicate to it. but their is a problem -
+        a)It changes when pod restarts.
+        b)cannot be used outside of cluster.
+
+    We need service object to connect pod from outside world.
+
+    Services groups pods together and gives them a shared IP address.This address does not change.
+    so you can move various pods in a service an make them reachable on that IP address.this address
+    can even be exposed outside te cluster.we need to specify our deployment and our service name therefore, in this case, first app.

@@ -11,9 +11,9 @@ spec:
   template:
     metadata:
       labels:
-        app:  second-app
+        app: second-app
         tier: backend
     spec:
       containers:
         - name: second-node
-          image: kub-first-app:1.0.0
+          image: sumeet27/kub-first-app:2

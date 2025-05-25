@@ -3,50 +3,53 @@ apiVersion: apps/v1
 # kind of kubernetes object that you would like to create.value can be only supported kubernetes objects
 # you can check API refrence of kubernetes to see all supported objects and configurations - kubernetes docs -> refrence-> api refrence, then
 #   serach required object like deployment. you can see all config that this object supports
-# https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#deployment-v1-apps
+# https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/
 kind: Deployment
 # under API refrence if kubvernetes go to deployment then go to metadeta, to see full possible object. many objects dnt need so many objects
 metadata:
   name: second-app-deployment
 # the specification of this deployment.And that's the meat of this object because here, we will define how this deployment
-# should be configured.
+# should be configured.  (DeploymentSpec)
 spec:
   # no of pod instances. we can either start deployment with extra replicas or later we can scale it based on some matrix.
   replicas: 1
   selector:
-    # key-value pair of pod labels that we want to match with this deployment.a deployment continuously watches all the pods
-      # which are out there and sees if there are any pods it should control.And it selects the to be controlled pods with a so-called 
-      # selector.Now there are different types of selectors here for a deployment we can use two different kinds of selecting -
-      # matchLabels and matchExpressions.later is more complex so for now we will look at only matchLeabels.
-      # you simply have key/value pairs of labels on the pods which should be controlled by that deployment.
-
-      #  you will see selectors on pretty much all resources Kubernetes works with.For example, Also Services.
+    # key-value pair of pod labels that we want to match with this deployment. we already define which pods should be created by this deployment, so why we need selectors?
+    # pods defined in this deployment will be created when deployment is applied. but deployment is dynamic things in kubernetes
+    # a deployment continuously watches all the pods which are out there and sees if there are any pods it should control.And it selects the to be controlled pods with a
+    # so-called selector.Now there are different types of selectors here for a deployment we can use two different kinds of selecting -
+    #   matchLabels - you simply have key/value pairs of labels on the pods which should be controlled by that deployment.see template section deployment object.
+    #   matchExpressions - more complex so for now we will look at only matchLabels.
+    # you will see selectors on pretty much all resources Kubernetes works with.For example, Also Services.
     matchLabels:
-      # now I would tell this deployment that all the pods which have a label of app with a value of second app,and which have a label
-      # with a name of tier with a value of backend,should be controlled by this deployment.Other pods which only have app,second app,
-      # but not this tier or which have a different app label or which don't have the app and tier label at all will not be controlled
-      # by this deployment.
+      #     # now I would tell this deployment that all the pods which have a label of app with a value of second app,and which have a label
+      #     # with a name of tier with a value of backend,should be controlled by this deployment.Other pods which only have app,second app,
+      #     # but not this tier or which have a different app label or which don't have the app and tier label at all will not be controlled
+      #     # by this deployment.
+
+      # Note - deployment always needs to select the pods that it creates
       app: second-app
       tier: backend
 
-  # Here You will define the pods that should be created as part of this deployment.
+  # Here You will define the pods that should be created as part of this deployment. PodTemplateSpec
   template:
-    # since template defines pod which is another kubernetes object, so we add metadata. we can give it name if we want to give it.
+    # since template defines pod which is another kubernetes object, so we add metadata. w
     # we do not need kind here because template always describes the pod.you can optionally give name also in metadata
     metadata:
-      #any key value pair is acceptable.But you can have one or more labels on a given object in this case on a pod.
+      # we can give it name but here we give it label.
+      #any key value pair is acceptable.you can have one or more labels on a given object in this case on a pod.
       # And then you can connect that to another object in this case, to the deployment with a so-called selector
       labels:
-        app:  second-app
+        app: second-app
         tier: backend
     # This is the specification of individual pod that should be created for deployment. here it one type of pod der deployment.
     #   we can different replicas of same pod type. but in on deployent there can be one pod type. if you have multiple pods types
-    #   i.e diffrent pods with different containers, then you need to create different deployent objects.
+    #   i.e different pods with different containers, then you need to create different deployment objects.
     spec:
       # here we have list of containers so we need to have '-'
       containers:
         - name: second-node
-          image: kub-first-app:1.0.0
+          # image: kub-first-app:1.0.0
+          image: sumeet27/kub-first-app:2
         # - name: third-node
         #   image:
-
