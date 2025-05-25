@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: second-app-deployment
+  labels:
+    group: example
 spec:
   replicas: 1
   selector:
@@ -16,4 +18,14 @@ spec:
     spec:
       containers:
         - name: second-node
+          # if we define latetst at image tag, then it is equivalent of defining imagePullPolicy: Always
           image: sumeet27/kub-first-app:2
+          # this means always pull the image - Never, IfNotPresent,Always
+          imagePullPolicy: Always
+          # This how Kubernetes checks whether your pods and containers,and the pods are healthy or not,
+          livenessProbe: 
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5

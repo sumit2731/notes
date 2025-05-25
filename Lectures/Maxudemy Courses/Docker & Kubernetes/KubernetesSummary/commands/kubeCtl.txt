@@ -112,7 +112,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 kubectl delete -f=deployment.yaml,services.yaml
                 kubectl delete -f=deployment.yaml -f=services.yaml
             c)deleting by selectors(l stands for labels, here we mention labels for objects to be deleted) -
-                kubectl delete -l
+                kubectl delete resourcesToBeDeleted -l group=example
+                kubectl delete deployments,services -l group:example
         1)kubectl cluster-info --context kind-kind
                 returns the info about cluster. context is name of cluster created by kind.
 

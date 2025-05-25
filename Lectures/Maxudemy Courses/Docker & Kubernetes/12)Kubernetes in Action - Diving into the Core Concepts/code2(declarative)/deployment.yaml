@@ -8,6 +8,9 @@ kind: Deployment
 # under API refrence if kubvernetes go to deployment then go to metadeta, to see full possible object. many objects dnt need so many objects
 metadata:
   name: second-app-deployment
+  # this to select this service, for example while deleting with -l flag. Using selectors(or by - l flag) we cannot select by name we always need to use labels only
+  labels:
+    group: example
 # the specification of this deployment.And that's the meat of this object because here, we will define how this deployment
 # should be configured.  (DeploymentSpec)
 spec:
@@ -27,7 +30,7 @@ spec:
       #     # but not this tier or which have a different app label or which don't have the app and tier label at all will not be controlled
       #     # by this deployment.
 
-      # Note - deployment always needs to select the pods that it creates
+      # Note - deployment always needs to select the pods that it creates.
       app: second-app
       tier: backend
 

@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
+  # this to select this service, for example while deleting with -l flag
+  labels:
+    group: example
 spec:
   # A selector identifies which other resources should be controlled or connected to this resource.
   # In this case here, we wanna define which pods should be part of this service.
