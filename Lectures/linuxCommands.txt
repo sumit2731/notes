@@ -7,3 +7,6 @@
     # read access to user, 
     # www-data write access to user
     # /var/www/html - filePath
+
+2)refer to pwd(mac) -
+    $(pwd)
