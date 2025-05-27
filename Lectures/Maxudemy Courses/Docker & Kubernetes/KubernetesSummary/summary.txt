@@ -1,33 +1,51 @@
-    12-Kubernetes In Action: Diving into the core Concepts
-        Code 1 
-            here we learned about important kubernetes objects - pods, deployment and services.
-            we created a cluster, ran containers exposed them to internet, updated those containers, reverted back to previous versions,
-            but all that done via kubectl commands. which is imperative command, now we will see declarative appraoch.
-        Code 2 
-            here we created a file for creating a deployment object(deployment.yaml) and then we applied it to cluster by using command -
-                kubectl apply -f=deployment.yaml
-                but we got selector error.then we defined the selectors for deployment object and ran command again this time our deployment was created,
-                pods were also created. but still we cannot access them.because we have not defined services.and applied that -
-                kubectl apply -f=services.yaml
+12-Kubernetes In Action: Diving into the core Concepts
+    Code 1 
+        here we learned about important kubernetes objects - pods, deployment and services.
+        we created a cluster, ran containers exposed them to internet, updated those containers, reverted back to previous versions,
+        but all that done via kubectl commands. which is imperative command, now we will see declarative appraoch.
+    Code 2 
+        here we created a file for creating a deployment object(deployment.yaml) and then we applied it to cluster by using command -
+            kubectl apply -f=deployment.yaml
+            but we got selector error.then we defined the selectors for deployment object and ran command again this time our deployment was created,
+            pods were also created. but still we cannot access them.because we have not defined services.and applied that -
+            kubectl apply -f=services.yaml
 
-            Then we saw that if we want to update some resources we can do that with updating the file and then applying that file again.
-            to delete the resources, we can delete objects by name or we can tell kubernetes to delete all resources created by a file.
-                kubectl delete -f=deployment.yaml
+        Then we saw that if we want to update some resources we can do that with updating the file and then applying that file again.
+        to delete the resources, we can delete objects by name or we can tell kubernetes to delete all resources created by a file.
+            kubectl delete -f=deployment.yaml
 
-            Then we combined both deployment.yaml and service.yaml into a single config file - master-deployment.yaml.
-            when we define multiple resources we separate them with '---'.when we combine deployment object and service object into
-            one file,it is best practice to first define service and then deployment.Also these objects are living organisms,service once
-            created while actively keep looking for what other pod match its selectors and if new matching pods are added,it will be added
-            to service.
+        Then we combined both deployment.yaml and service.yaml into a single config file - master-deployment.yaml.
+        when we define multiple resources we separate them with '---'.when we combine deployment object and service object into
+        one file,it is best practice to first define service and then deployment.Also these objects are living organisms,service once
+        created while actively keep looking for what other pod match its selectors and if new matching pods are added,it will be added
+        to service.
 
-            then we saw matchExpression option in selector(for deployment).this is advance selector. you can also use selectors when running commands.
-            for example, with the delete command,
-                kubectl delete deployments,services -l group=example
+        then we saw matchExpression option in selector(for deployment).this is advance selector. you can also use selectors when running commands.
+        for example, with the delete command,
+            kubectl delete deployments,services -l group=example
 
-            Then we saw how we can configure kubernetes checks the health of our container using livenessProbe(deployment.yaml file in code 3).
-            for more ways see the corosponding config and google - kubernetes pod readiness.
+        Then we saw how we can configure kubernetes checks the health of our container using livenessProbe(deployment.yaml file in code 3).
+        for more ways see the corosponding config and google - kubernetes pod readiness.
 
-            then at the last we had allok at container configration in deployment object. link for same -
-                https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container
-            here we saw that we can configure containers in lot of ways. lot of ptioms that we specify while running docker run or in docker-compose file,
-            can be specified here. he had things like envirenment variabkes.we ha look at imagePullPolicy
+        then at the last we had a look at container configration in deployment object. link for same -
+            https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container
+        here we saw that we can configure containers in lot of ways. lot of ptioms that we specify while running docker run or in docker-compose file,
+        can be specified here. he had things like envirenment variabkes.we ha look at imagePullPolicy.
+
+13 - Managing Data & volumes with Kubernetes
+    slide 3-
+        Kubernetes supports a broad variety of volume types and drivers,and that's not something we necessarily know from just Docker.
+        But since with Kubernetes we run our application possibly across multiple nodes,and possibly on different cloud and hosting providers.
+        It supports different types of volumes which simply means it is quite flexible regarding where the data is actually stored.It supports
+        local volumes.So simply a folder on the worker node,where the pod is running.But it also supports cloud provider specific volumes.
+
+        by default volume lifetime depends upon pod lifetime, but dere are solutions form same.
+
+    slide 4 - kubernetes volumes are more powerful than docker volumes.kubernetes volumes have different types and drivers which gives great
+        control over data is stored.
+
+    Then we created the image on local and pushed it into dckerHub. then we created deployment and service objects and sent it to our cluster.
+    then exposed our service in minikube and we hit the get and post api by url returned by (minikube service story-service).
+
+
+

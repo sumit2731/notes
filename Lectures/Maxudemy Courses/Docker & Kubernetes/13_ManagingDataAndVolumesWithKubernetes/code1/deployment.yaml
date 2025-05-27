@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-deployment
+# deployment specification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: story
+  # this is pod template, for pods created by this deployment.So for the one kind of port that is attached
+  # to the supplement and which can then be replicated by changing the replica's number.
+  template:
+    metadata:
+      labels:
+        app: story
+    # this is specififcation for pod
+    spec:
+      containers:
+        - name: story
+          image: sumeet27/kub-data-demo

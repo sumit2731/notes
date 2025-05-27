@@ -1,0 +1,10 @@
+code 1 -
+    To locally run the code -
+        docker-compose up -d --build
+        docker-compose down
+    Push image into docker hub -
+        docker build -t sumeet27/kub-data-demo .
+        docker push sumeet27/kub-data-demo
+    Starting deployment with kubernetes -
+        kubectl apply -f=deployment.yaml -f=service.yaml
+        minikube service story-service
