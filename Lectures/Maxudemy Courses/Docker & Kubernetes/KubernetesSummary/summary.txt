@@ -33,19 +33,60 @@
         can be specified here. he had things like envirenment variabkes.we ha look at imagePullPolicy.
 
 13 - Managing Data & volumes with Kubernetes
+    Goal - store some dta when container is restarted and pod is shut
     slide 3-
         Kubernetes supports a broad variety of volume types and drivers,and that's not something we necessarily know from just Docker.
         But since with Kubernetes we run our application possibly across multiple nodes,and possibly on different cloud and hosting providers.
         It supports different types of volumes which simply means it is quite flexible regarding where the data is actually stored.It supports
         local volumes.So simply a folder on the worker node,where the pod is running.But it also supports cloud provider specific volumes.
 
-        by default volume lifetime depends upon pod lifetime, but dere are solutions form same.
+        by default volume lifetime depends upon pod lifetime, but their is solution for same.
 
     slide 4 - kubernetes volumes are more powerful than docker volumes.kubernetes volumes have different types and drivers which gives great
         control over data is stored.
 
-    Then we created the image on local and pushed it into dckerHub. then we created deployment and service objects and sent it to our cluster.
+    Then we created the image on local and pushed it into dockerHub. then we created deployment and service objects and sent it to our cluster.
     then exposed our service in minikube and we hit the get and post api by url returned by (minikube service story-service).
+    Kuberentes has lot of volumes, see in docs. we will see -
+        csi
+        emptyDir
+        hostPath
+
+     difference here just is that,how the data is stored outside of the container. inside container
+     its always some path.
+
+    remember volume is linked with pod,so we defined volume in place where we configure pod.
+    
+    then we setup first kind of volume emtyDir(deployment.yaml, code), this specific to Pod. It is destroyed when pod is destroyed.
+    downside sof this -
+        a)if we have multiple replicas, we do not have access to all data.
+        b)when pod is destroyed(on image update), data is also destroyed.
+
+    then we setup hostpath type of volume.now data is stored in node instead of pod. problem -
+        a)in multi-node setup, where different pods are on different nodes,all pods will not have access to same data. 
+
+    CSI(Container Storage Interface) -
+        This is a relatively new volume type,which was added by the Kubernetes team.And it was added to make sure that they don't have to add more and more built-in types
+        for different cloud providers and different use cases.But instead, they expose a clearly defined interface.And then anyone can build driver solutions that utilize
+        this interface.we wnt use it here, we will have a look at it when we deploy our kubernetes cluster.
+
+    Then we had a look at Persistent Volume (slide 5).This is volume independent of pod and container. see lecture 218. why this different kind of volume when
+        with normal volumes also(aws type), we can achieve same goal?
+        The key idea however is,that the volume will be detached from the Pod.And that includes a total detachment from the Pod life cycle.
+        Instead with persistent volumes,we will have that Pod and Node independence and as a cluster administrator we will have full power over how this volume is 
+        configured.We don't need to configure it multiple times for different Pods and indifference deployment YAML files or anything like that.
+        Instead, we'll be able to define it once and then use it in multiple Pods if you want to.
+
+        slide 6 - We have new entity inside cluster, fir persistent volumes. now Pods will have PV claim inside them using which they can request access to Persistent
+            volume.if we see docs we can see that types of volumes and persistent volume is kind of same.but we see that emptyDir type is not in persistent volume.
+
+    we define a persistent volume in code1, file - host-pv.yaml.
+    We first of all have to configure this claim and then we have to use it on all the pods that do wanna use it.we define claim using host-pvc.yaml.
+    then in deployment.yaml we defined which claim our container should use.
+    then we re ran everything again this tme using persistent volume.
+    Then we used env variables.First we hardcoded value of env variables in deployment.yaml itself, where we define pods.
+    we defined them in deployment.yaml, where we configure the pod.
+    Then we define a another kuberentes object - configMap and used values form their as env varibles in our pod
 
 
 

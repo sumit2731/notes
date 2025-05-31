@@ -1,0 +1,2 @@
+1)https://www.udemy.com/course/docker-kubernetes-the-practical-guide/learn/lecture/22627813#questions/23405089/
+2)1:1  relationshp between PV and PVC

@@ -4,7 +4,7 @@ metadata:
   name: story-deployment
 # deployment specification
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: story
@@ -14,8 +14,54 @@ spec:
     metadata:
       labels:
         app: story
-    # this is specififcation for pod
+    # This is specification for pod,volumes are also added here
     spec:
       containers:
         - name: story
-          image: sumeet27/kub-data-demo
+          image: sumeet27/kub-data-demo:1
+          # Their are 2 options - one is to give value here
+          # second option is to use values from file
+          env:
+            - name: STRORY_FOLDER
+              # if want to specify value from here
+              # value: "story"
+              # If we want to take value from ConfigMap
+              valueFrom:
+                configMapKeyRef:
+                  # name of configMap
+                  name: data-store-env
+                  # key whose value should be assigned to environmentVariable
+                  key: folder
+          # here we make volumen avalible to container
+          volumeMounts:
+              # This is container's internal path
+            - mountPath: /app/story
+              name: story-volume
+      # These are list volumes in this pod ,all containers inside this pod can use this volume
+      # each volume need to have a name and then type of volume
+      volumes:
+        - name: story-volume
+          # This is volume type. depending upon which type we chose we have more options which we can set.
+          # here we want to use default setting so we use {}.
+          # emptyDir simply creates a new empty directory whenever the pod starts.And it keeps this directory
+          # alive and filled with data as long as the pod is alive.Containers can then write 
+          # to this directory.And if containers restart or are removed,the data survives.But if the pod should be removed,
+          # this directory is removed.
+          
+          # emptyDir: {}
+          
+          # here data is stored to stored on host machine, not on pod.
+          # It is somewhat like bindMount, you can also share some data that exists on machine with pod
+          # hostPath:
+          #   # path on host ,machine where data will be stored
+          #   path: /data
+          #   # create this path of it does not exists yet(/data)
+          #   # if you use Directory , then it will fail if the directory does not exists
+          #   type: DirectoryOrCreate
+
+
+          # here we use persistent volume
+          persistentVolumeClaim:
+            # this is name of claim that we want to use
+            claimName: host-pvc
+

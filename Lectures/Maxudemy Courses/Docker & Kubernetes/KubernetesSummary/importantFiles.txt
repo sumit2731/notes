@@ -1,2 +1,7 @@
 1)section 12 , code 2 - deployment.yaml.
 2)section 12, code 3 - service.yaml, master-deployment.yaml
+3)section 13 - code - 
+    deployment.yaml (see volumes section)
+    persistentVolume - host-pv.yaml
+    persistentVolumeClaim - host-pvc.yaml
+    envVariables - environment.yaml

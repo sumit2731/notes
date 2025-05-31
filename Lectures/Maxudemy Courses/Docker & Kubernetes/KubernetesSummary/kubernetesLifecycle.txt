@@ -1,0 +1,6 @@
+1)when deployment.yaml is updated(image is updated, configmaps is updated) -
+    container is destroyed
+    pod is destroyed
+2)When container shuts down(/error) -
+    pod is restarted, volume is preserved
+    container is destroyed

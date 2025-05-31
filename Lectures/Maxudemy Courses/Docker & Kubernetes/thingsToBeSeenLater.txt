@@ -1,2 +1,7 @@
 1)Pod volumes/Networking.
 2)Ingres in kubernetes.
+3)lecture 216,1:22, better way to handle case when request goes to different replica we is not having
+    emptyDir.
+4)dynamic volume provisioning
+5)advance kubernetes concepts -
+    storageClassname in kubernetes

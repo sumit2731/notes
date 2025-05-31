@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   server:
@@ -11,11 +11,11 @@ services:
       context: .
       dockerfile: dockerfiles/nginx.dockerfile
     ports:
-      - '8000:80'
+      - "8000:80"
     # volumes:
-      # - ./src:/var/www/html
-      # # inside the nginx, config file needs to be default.conf because it is merged with another config files, to create resultant config file
-      # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    # - ./src:/var/www/html
+    # # inside the nginx, config file needs to be default.conf because it is merged with another config files, to create resultant config file
+    # - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php
       - mysql
@@ -28,14 +28,14 @@ services:
       context: .
       dockerfile: dockerfiles/php.dockerfile
     # volumes:
-      # by the way,also improve performance a little bit by adding delegated after a colon at the end, that if the containers
-      # should write some data there,it's not instantly reflected back to the host machine,instead it is basically processed in
-      # batches, you could say,and therefore performance is a bit better.It's a optimization, we don't have to do it here,but we
-      # can add it.this container shouldn't write frequently to this folder,or even if it does the things it does right don't need
-      # to be reflected back to the host machine instantly.Because it won't write anything which we need to access instantly on the
-      # host machine.Read only is not an option because it will write some data to our disc. The Laravel framework will also generate
-      # some files when it runs,for example the views which are sent back as part of responses.
-      # - ./src:/var/www/html:delegated
+    # by the way,also improve performance a little bit by adding delegated after a colon at the end, that if the containers
+    # should write some data there,it's not instantly reflected back to the host machine,instead it is basically processed in
+    # batches, you could say,and therefore performance is a bit better.It's a optimization, we don't have to do it here,but we
+    # can add it.this container shouldn't write frequently to this folder,or even if it does the things it does right don't need
+    # to be reflected back to the host machine instantly.Because it won't write anything which we need to access instantly on the
+    # host machine.Read only is not an option because it will write some data to our disc. The Laravel framework will also generate
+    # some files when it runs,for example the views which are sent back as part of responses.
+    # - ./src:/var/www/html:delegated
 
   mysql:
     platform: linux/x86_64

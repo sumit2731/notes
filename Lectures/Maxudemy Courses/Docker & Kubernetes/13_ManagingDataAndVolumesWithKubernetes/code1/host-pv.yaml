@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: host-pv
+spec:
+  # persistent volume needs some extra options than regular volumes
+  # we need to define a capacity.The capacity matters because as an administrator we might want to control how much capacity can be used
+  # by the different pods which are later executed in our cluster.And therefore we can set a capacity here. A capacity for this persistent
+  # volume and the pods,when they claim this volume later,can then define how much capacity they need
+  capacity:
+    storage: 1Gi
+  # 2 modes - fileSystem and block, this is not specific to kubernetes, storage is of 2 types. Here, we have file system storage
+  # because we have a folder on the file system inside of our virtual machine.
+  volumeMode: Filesystem
+  # Kubernetes has a concept called storage classes and you got a storage class by default.if you run "kubectl get sc", you will dere is storage class by default
+  # on minikube.The storage class is concept,which you have in Kubernetes to give administrators fine grain control over how storage is managed and how volumes can be configured.
+  # The storage class in the end defines to Kubernetes how exactly that storage, which we want to use in this case,the host path storage should be provisioned, you could say.
+  # So behind the scenes to storage class will provide important information to the PersistentVolume configuration we set up.It works together with the PersistentVolume
+  # and our standard storage class,which we got on minikube is already configured for this host path type,which is why here we can use "standard"
+  storageClassName: standard
+  # This is how it can be accessed. their are 3 modes, you can specify all 3. because its only when you claim
+  # this volume, you define how you want to claim it for given pod. here yu define how it can be claimed
+  # in official dos you can find which mode is avalaible for which type off volume
+  accessModes:
+    #  this volume can be mounted as a read-write volume by a single node.So by multiple pods,
+    # but they all have to be on the same node.
+    - ReadWriteOnce
+    # It's read-only but it can be claimed by multiple nodes.So multiple pods on different nodes
+    # can claim this same persistent volume.
+    - ReadOnlyMany
+    # both read and write but can be claimed by pods on multiple nodes
+    - ReadWriteMany
+  # this is same as regular volume
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate

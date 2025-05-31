@@ -1,0 +1,30 @@
+# 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # name is important for later using it in pod
+  name: host-pvc
+spec:
+  # here we specify which persistent volume we want to claim.
+  # when it comes to claiming Persistent Volumes,Kubernetes, again offers you a lot of flexibility.
+  # You cannot just claim by name,there also ways of claiming by resource,you could say.
+  # So that you don't claim one specific Persistent Volume,but if you had different volumes,
+  # you could just say,"I want the volume with that much space and this and that configuration."
+  # That would be dynamic volume provisioning and is advance administration topic. we stick to "Static provisioning".
+  # in docs of PV you will see different ways of claiming a persistent volume
+  # claiming by name is very straight forward and is best suited here
+  volumeName: host-pv
+  # we define accessModes which we want to use for claiming the volume
+  # you could again, list multiple modes here, if you would use this claim on different pods
+  # and some pods only need read access,other need read-write access.You could specify multiple access modes here
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  # This is counterparty of capacity in volume. we can now specify which resources we wanna getfor this claim.
+  resources:
+    requests:
+      # here we specify how much storage we want to get for this claim. volume has capacity of  1 gi, this is max we can claim here
+      #  we could also request less for this claim.If we had multiple claims to the same Persistent Volume, we might wanna request less,
+      # so that in total we don't request more than we got available.This could lead to errors,if we then try to use all these claims
+      # on our pods and we started writing more data than we have capacity.
+      storage: 1Gi

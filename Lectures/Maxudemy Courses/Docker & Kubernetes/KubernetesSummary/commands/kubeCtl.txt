@@ -114,6 +114,12 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
             c)deleting by selectors(l stands for labels, here we mention labels for objects to be deleted) -
                 kubectl delete resourcesToBeDeleted -l group=example
                 kubectl delete deployments,services -l group:example
+
+        5)persistent volumes and persistent volume claims -
+            kubectl get pv
+            kubectl get pvc
+        6)configMaps
+            kubectl get configmap
         1)kubectl cluster-info --context kind-kind
                 returns the info about cluster. context is name of cluster created by kind.
 
@@ -125,3 +131,6 @@ kubernetes objects -
     a)pods
     b)deployment
     c)service
+    d)persisatnt volume
+    e)persistent volume claim
+    f)configmaps
