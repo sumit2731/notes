@@ -5,3 +5,6 @@
 4)dynamic volume provisioning
 5)advance kubernetes concepts -
     storageClassname in kubernetes
+
+6)what if i do not want to take image from dockerHub ?
+7)"ExtrenalName" - learn more about this type of service.

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  # Template for pod - PodTemplateSpec. Deployment can manage only 1 kind of pod
+  template:
+    metadata:
+      labels:
+        app: users
+    # PodSpec - Specification of the desired behavior of the pod.
+    spec: 
+      containers:
+        - name: users
+          # On using latest tag kubernetes always refetches and reevaluate the image, when something changes about deployment config
+          image: sumeet27/kub-demo-users:latest
+          env:
+            - name: AUTH_ADDRESS
+              value: localhost
+
+

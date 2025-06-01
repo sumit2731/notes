@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  # Template for pod - PodTemplateSpec. Deployment can manage only 1 kind of pod
+  template:
+    metadata:
+      labels:
+        app: auth
+    # PodSpec - Specification of the desired behavior of the pod.
+    spec: 
+      containers:
+        - name: auth
+          image: sumeet27/kub-demo-auth:latest
+
+

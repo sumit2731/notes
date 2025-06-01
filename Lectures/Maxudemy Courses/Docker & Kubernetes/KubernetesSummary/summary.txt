@@ -90,3 +90,10 @@
 
 
 
+14 - Kubernetes Networking
+    see figure 1.
+    Run docker-compose file.UserAPi and Tasks API are exposed to local. and they reach to Auth api. this is happening via docker networks
+    
+
+
+
