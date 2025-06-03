@@ -20,6 +20,10 @@ spec:
           image: sumeet27/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              value: localhost
+              # here we access the clusterIP of service by - kubectl get services
+              # value: 10.106.37.75
+              # Internal DNS creates a url for reaching to service - `{serviceName}.{namespaceName}`. these are internal to cluster
+              # If you do not give any namescapec while creating service, then it is 'default'
+              value: "auth-service.default"
 
 

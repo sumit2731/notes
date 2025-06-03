@@ -28,9 +28,9 @@
         5)docker apply -f=users-deployment.yaml -f=users-service.yaml.with This you should be able to hit api's of userService using postman.
             url is serviceIp and port is port exposed by service.
 3)implementing slide2(code2) -
-    1)create a separate deployment for authApi - auth-deployment.yaml
+    1)as we need different pod ofr authService,create a separate deployment for authApi - auth-deployment.yaml
     2)now we need service for authAPi as containers in another pod need to reach it. so we created - auth-service.yaml
-        type-ClusterIP , not LoadBalancer because we do not want o expose service outside.
+        type-ClusterIP , not LoadBalancer because we do not want to expose service outside.
     3)apply service config -
         kubectl apply -f=users-service.yaml
     4)now we need  the IP for reaching the auth-service, so that in usersApi we can us that api to reach authApi.
@@ -39,14 +39,27 @@
             2)copy IP CLUSTER-IP, this will not change.
         b)way 2 -
             1)Kubernetes will give you automatically generated environment variables in your programs, with information about all the services,
-                which are running in your cluster.these variables
+                which are running in your cluster.through these environment variables,kubernetes will automatically give us information,like the 
+                IP addresses of the different services
             2)name of env variable -
                 a)all charcters are caps
                 b)'-' is replace be '_'
                 auth-service - AUTH_SERVICE_SERVICE_HOST
 
-        In usersAPI we use both of these ways.
-    5)in docker-compose file for users Service add new env variable - AUTH_SERVICE_SERVICE_HOST.
-        so that our setup works locally also.
-    6)build users image and push to docker hub
-    7)kubectl apply -f=users-service.yaml -f=auth-service.yaml -f=users-deployment.yaml -f=users-service.yaml
+        In usersAPI we use both of these ways. wo we need to provide 2 env's -
+            AUTH_ADDRESS -
+                docker-cpompose - name of network
+                kubernetes - first start service then copy the IP, then provide it in users-deployment.yaml 
+            AUTH_SERVICE_SERVICE_HOST - kubernetes provides it automatically, but in case of docker-compose we need to provide it
+    5)build users image and push to docker hub
+    6)kubectl apply -f=users-service.yaml -f=auth-service.yaml 
+    7)run - kubectl get services
+        copy CLUSTER_IP and use it in users-deployment.yaml.
+    8)kubectl apply -f=users-deployment.yaml -f=auth-deployment.yaml
+    9)then we saw there is third way of reaching to a service inside  a cluster, there is a internal DNS mapping is created for each service -
+        `{serviceName}.{namespaceName}`
+    10)we used this instead of getting IP address. also this is prefered way of reaching to service.
+
+
+    Adding third container - 
+

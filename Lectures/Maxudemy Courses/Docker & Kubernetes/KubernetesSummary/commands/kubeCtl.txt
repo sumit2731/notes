@@ -133,4 +133,5 @@ kubernetes objects -
     c)service
     d)persisatnt volume
     e)persistent volume claim
-    f)configmaps
+    f)configmaps (not covered in course but i read in in docs)
+    c)namespaces
