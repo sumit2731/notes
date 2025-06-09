@@ -1,0 +1,2 @@
+When new image is pulled -
+//     container is destroyed1)updated image but no chnages in yaml file, need to delete deployment and then create again.

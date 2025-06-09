@@ -58,8 +58,48 @@
     8)kubectl apply -f=users-deployment.yaml -f=auth-deployment.yaml
     9)then we saw there is third way of reaching to a service inside  a cluster, there is a internal DNS mapping is created for each service -
         `{serviceName}.{namespaceName}`
+        if you dnt specify namespace while creating service, then it is default.
     10)we used this instead of getting IP address. also this is prefered way of reaching to service.
 
 
     Adding third container - 
+    11)Then we added a third container for tasks, we created 2 files -
+        a)tasks-deployment.yaml
+        b)tasks-service.yaml
 
+    Commands to up everything -
+        kubectl apply -f=auth-service.yaml,tasks-service.yaml,users-service.yaml
+        kubectl apply -f=auth-deployment.yaml,tasks-deployment.yaml,users-deployment.yaml
+
+        minikube service users-service
+        minikube service tasks-service
+
+
+code 3 (adding containerized frontend app) -
+    First we want to run the code locally using docker and hit the task service deployed in kubernetes -
+        1)In app.js  -
+            1)we added the internal cluster IP of tasks-service, to reach backend.
+            2)added required headers required by backend like  AuthToken etc.
+        2)docker build -t sumeet27/kub-demo-frontend .
+        3)docker run -p 80:80 --rm -d sumeet27/kub-demo-frontend
+        4)now we get get the coors error, so we need to redeploy the tasks service -
+            update image -
+                docker build -t sumeet27/kub-demo-tasks .
+                docker push sumeet27/kub-demo-tasks
+            delete old deployment  -`
+                kubectl delete -f=tasks-deployment.yaml
+            new deployment -
+                kubectl apply -f=tasks-deployment.yaml
+
+    Deploying frontend in kubernetes -
+        1)push docker image into docker hub.
+            docker push sumeet27/kub-demo-frontend
+        2)then we created 2 files -
+            a)frontend-deployment.yaml
+            b)frontend-service.yaml
+        3)then we applied those files into kubernetes cluster -
+            kubectl apply -f=frontend-deployment.yaml,frontend-service.yaml
+        4)then we used minikube service frontend-service to access the frontend app.
+            minikube service frontend-service
+
+    Using reverse proxy in frontend code - 

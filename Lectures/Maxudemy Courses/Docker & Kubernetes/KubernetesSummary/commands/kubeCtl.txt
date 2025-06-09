@@ -125,7 +125,6 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
 
 
 
-
 kubernetes objects -
 
     a)pods

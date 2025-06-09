@@ -28,6 +28,10 @@ app.post("/signup", async (req, res) => {
      */
     // const hashedPW = await axios.get("http://auth/hashed-password/" + password);
     // const hashedPW = "dummy text";
+    /**
+     * THis is env variable is provided automatically by kubernetes for each service
+     * This has internal IP address of the service
+     */
     const hashedPW = await axios.get(
       `http://${process.env.AUTH_ADDRESS}/hashed-password/` + password
     );
@@ -67,6 +71,10 @@ app.post("/login", async (req, res) => {
   //   "http://auth/token/" + hashedPassword + "/" + password
   // );
   // const response = { status: 200, data: { token: "abc" } };
+  /**
+   * we provide this env variable, value is DNS mapping which is automatically created by kubernetes for
+   *  for each service.
+   */
   const response = await axios.get(
     `http://${process.env.AUTH_SERVICE_SERVICE_HOST}/token/` +
       hashedPassword +
