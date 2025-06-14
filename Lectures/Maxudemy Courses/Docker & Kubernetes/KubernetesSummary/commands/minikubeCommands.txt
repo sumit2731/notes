@@ -5,8 +5,9 @@ Minikube - sets the dummy cluster locally.it will use a virtual machine on your 
     installation -
         brew install minikube
     commands -
-        minikube start --driver=docker -
-            creates the cluster
+        minikube start --driver=docker
+            driver is the hyperwise you use, I am using docker. max used hyopervisor, but that needs to be installed separately.
+            This creates the kubernetes cluster.
         minikube status - 
             to check whether cluster is running or not
         minikube dashboard -

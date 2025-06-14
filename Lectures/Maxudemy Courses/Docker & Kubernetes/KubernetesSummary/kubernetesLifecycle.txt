@@ -1,3 +1,14 @@
+In imperataive approach,by default kubernetes will only fetch the image when image tag is changed.
+ so if you update image and push it. kubernetes will download it again because it already has this image
+
+Also in each update(image update for ex), old container is shut down and new container is created.
+but old container is not shutdown until new container is live.you see status of last update by using
+rollout command.
+
+1)When application crashes -
+    pod is restarted.
+    but a new container is created.
+
 1)when deployment.yaml is updated(image is updated, configmaps is updated) -
     container is destroyed
     pod is destroyed

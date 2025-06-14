@@ -1,75 +1,72 @@
-Kubernetes - Kubernetes is an additional tool, you could say,even though it's not really a tool,it's more like a framework, a 
-    collection of concepts,a standard, you could say.And it's a tool, this collection of standards and it's framework,
-    which will help us with Container Orchestration,and large scale deployments,independent of the cloud provider we might be using.
+section 11)Getting Started with Kubernetes
+    Kubernetes is additional tool, even though it's not really a tool, it's more like a framework, a collection
+    of concepts,a standard, you could say. It will help us with Container Orchestration and large scale deployments,
+    independent of the cloud provider we might be using.
+
+    Slide 1 - problem with manual deployment.services like ECS can help
+    Slide 2,3 - Services like ECS can help with these challenges.but these lock us.
+     we can use AWS UI to setup ECS, you can also use ecs-cli to configure this.you can also define configuration files, where we write down our configs
+     we want to have ECS clsuter and tasks, And then we can use that AWS ECS-CLI to pick up on these configuration files and create the appropriate cloud
+     resources based on that.but all this is cloud specific.
+
+    slide 4,5,6,7 -
+
+        you can give kubernetes file to any cloud provider or your local machine with kubernetes software install and it .It
+        can then pick up on that Kubernetes configuration to then create the resources and the deployment specified in that configuration
+        also we can specify the things specific to cloud provider here, when we switch cloud provider, we need to remove or replace these
+        configs only, not entire fle.
+
+    Slide 8
+        kubernetes is nit just a software it is collection of concepts and tools
     
-    Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized 
-        applications.
+    Slide 9 -Kubernetes Architecture, 176- - Kuberentes Architecture and core concepts
+        container is managed by a  pod.pod is smallest unit in kubernetes world, which you can define in some configuration file
+        for kubernetes to create.pod simply contains the containers.
 
+        proxy -  is another tool Kubernetes sets up for you in the end on such a worker node to control the network traffic of the pods on that worker node.
+            So basically to control whether these pods can reach the internet and how these pods and therefore the containers running inside of them, can be
+            reached from the outside world.If you are running a web application in a container in such a pod for example,the proxy needs to be configured such that
+            traffic from the outside world from your users is able to reach this container.
+        
+        when working with Kubernetes, you typically don't directly interact with your worker nodes or pods,though you could do that, but
+        you typically don't do that,instead you let Kubernetes and this control plane do that heavy lifting and you as a developer just
+        define the desired end state Kubernetes should take into account.
 
-problems in container deployment - see slide 1.
+        master node simply another server another remote machine,which has this control plane running on it,which then is responsible for
+        interacting with the worker nodes and the pods running on them.Now on the master node, this control plane thing,is actually a collection
+        of different tools different services, which are running on the master node.
 
+        master node is able to send instructions to a cloud provider API,to tell that cloud provider to create it's cloud provider specific resources
+        to replicate this desired big picture this end state on that cloud provider.So if we think about AWS, we might interact with AWS such that AWS creates 
+        all the required EC2 instances a load balancer which might be needed and everything else which is required to have this network and to then have Kubernetes and 
+        some Kubernetes tools running on the master node, EC2 instance,which then in turn controls the other EC2 instances,which belong to this network to then run 
+        containers in these pods on them.
 
-how AWS ECS solves those problems but then there is problem of lockin.
+    Slide 13
 
+    Closer Look at Worker Node(slide 10)
+        Idea typically is you have more than one pod running on a container.these pods can be same copies of each other or can be different pods.
 
-Kubernetes can help us with this because with kubernetes,we have a way of defining our deployments,our scaling of containers
-    and how containers should be monitored and replaced if they fail.We have a way of defining all of that independent from the 
-    cloud service we're using. see slides 4-7 how kubernetes solves this problem.
+        Additional software on worker node
+            Docker
+            kubelet - communication device between the Worker Node and the Master Node.
+            kube-proxy - responsible for handling incoming and outgoing traffic to insure that everything is working as desired, and only allowed traffic is able to
+                reach the Pods,and only allowed traffic is able to leave the Worker Node.
 
-    you can define kubernetes config file, then this config is understood by all cloud providers, you can even install kubernets on 
-    your cloud machine and then it will create the infrastructure defined in kubernetes config file.
+        with Kubernetes,you just need to define the desired end state,and if you're then using a cloud provider like AWS, they have services which allow
+        you to provide this Kubernetes definition, and then AWS will set up all the instances and install all the required software for you.
 
+    Closer Lok at master Node(slide 11)
+        see lecture. node - slide shown is misisng in downloaded slides.
 
-kubernetes architecture - lecture 174(slide 9). see slides also.Important terms -
-    worker node
-    pods
-    master node
-    cluster
-    control plane
+    Important Terms and Concepts(slide 14)
+        Pods - it's a Kubernetes term. And it simply means the Application Containers as well as their required resources combined together into this unit 
+            which is called a Pod,which is just this shell around your Container,which in the end will start the Container and manage that specific Container.
+            And Pods themselves as mentioned are then managed by the Master Node.And if a Pod is created,that's equivalent to running the Container in the Pod.
 
-
-worker node - lecture 175(slide 10). important terms -
-
-    pods can have single contianer or multiple containers that need to work closely.these pods are controller by kubernetes.
-    typical idea is that worker can have multiple pods.These pods can be copy of each other(for scalling) or these pods can 
-        have entirely diffrent contianer inside of them to do entirely diffrent task. its like running diffrent containers on
-        same machine.
-    additional softwares in worker node -
-        docker
-        kubelet - this allows  master node to controls the pods running in worker node.
-        kubeproxy controls which traffic is allowed to each the pod and which traffic is allowed to leave workker node.
-
-
-master node - lecture 176 -
-
-    API Server - counter part of kubectl on worker node
-    scheduler - selects nodes on which new pods should be created either because of scaling or some pod went down
-    kube-controller manager - watches and controls worker nodes overall.sees if correct no of pods up and running.
-        works closely with scheduler and API Server.
-    cloud controller manager -specific version of kube-controller manager,which is doing the same thing,but this is 
-        cloud-provider specific.And this actually knows how to tell that cloud provider,for example AWS or Microsoft
-        Azure, what to do.So this cloud-controller manager basically just translates instructions to AWS or Azure or
-        whatever you're using.
-
-
-    The big cloud providers, which you are very likely to use in reality anyways, already got services which take all 
-    that away from you and where you therefore just needs to provide your kubernetes configuration and they do all the
-    heavy lifting.
-
-
-important terms and concepts -lecture 178 (slide 14) -
-
-    new term is services - Services, I can already tell you that are logical sets,so in the end, groups of Pods with a unique Pod
-        and Container-independent IP address.And services will be important for reaching our Pods,and therefore the Containers 
-        inside of them.Services therefore, of course,are related to this proxy thing which I did mention in this section section.
-    And at the end,service is just a term in the Kubernetes world for exposing certain Pods to the outside world,for ensuring that
-    certain Pods are reachable with a certain IP address or domain.
-
-
-
-
-
-
-
+        services - Services, I can already tell you that are logical sets,so in the end, groups of Pods with a unique Pod and Container-independent IP address.
+            And services will be important for reaching our Pods,and therefore the Containers inside of them.services are related to proxy things.service is just
+            a term in the Kubernetes world for exposing certain Pods to the outside world,for ensuring that certain Pods are reachable with a certain IP address 
+            or domain.
 
 

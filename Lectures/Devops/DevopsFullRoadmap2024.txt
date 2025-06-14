@@ -1,0 +1,35 @@
+1)Focus on fundamentals:
+    a)One flavour of linux inside out,even at operating system level.
+    b)Learn 1 programming Language - java,c++,.net. make a application in it, code in github. deploy it. follow in sdlc.deploy it in
+        2-3 env's - dev test,stage, production.this is part of sdlc.
+    c)learn  1 interpreted language.mastery level.shell scripting, python,perl.
+    d)go to sdlc part, do automation.pick jenkins, put azure devops server.then go to kubernetes,ansible etc.
+
+2)Learn in public
+    a)declare in linkedin - I am am string learning ansible in 8 weeks.In each week i will post and share my exp.
+    b)learn,join course, learn it on your won- Code goes in github, prepare a doc that goes in hashnode and dev.io (some dev centric collaboration website).
+    this will have -
+        a)I learn these concepts, these commands.
+        b)i learn t from these tutorials.
+        c)this is good course, this is good video,article.
+    c)each friday, post on linkdin, THis week i learnt this, code is in github,doc is in hasnode.
+
+    do this for 1 year.Then you will ahve one
+
+3)check the fruit on the tree.
+
+4)Built your onw lab. whateve work you are doing,code yu are writing, application you are making, running commands, do it on your instances.
+    even if you have not learnt cloud, atleast learn how to create your instance in aws, azure, gcp.this is where you will face problems and
+    learn something new.some courses provide their own lab, that is controlled env.even if you do not want to learn on cloud do it on your computer.
+
+5)stay away from noise and focused on your plan.
+    a)10 min guided meditation
+    b)Try some programs - art of living, sadhguru.
+
+If you are in devops for 2-4 years -
+    a)Art of acceptance - I have to learn new langugae
+    b)Soft Skills -
+        art of negotaion
+        art of gentle persuation
+        NIL - Neouro Linguistic Programming
+        how to talk to seniour executive

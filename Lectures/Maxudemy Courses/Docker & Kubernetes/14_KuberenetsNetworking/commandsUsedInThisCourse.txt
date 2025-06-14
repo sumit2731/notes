@@ -103,3 +103,8 @@ code 3 (adding containerized frontend app) -
             minikube service frontend-service
 
     Using reverse proxy in frontend code - 
+        1)in nginx config we added a config to forward /api calls to ip of our service.
+        2)In app.js code we started making calls to /api.
+        3)build image and push to docker hub.
+        4)delete old deployment object for frontend-deployment.yaml and create new one.
+        5)

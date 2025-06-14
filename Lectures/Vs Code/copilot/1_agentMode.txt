@@ -1,0 +1,46 @@
+https://www.youtube.com/watch?v=dutyOc_cAEU&list=PLj6YeMhvp2S7rQaCLRrMnzRdkNdKnMVwg
+
+TOPICS - AgentMode, MCP, NextEdit Suggestions.
+
+3 Modes -
+    ask - Gives answers.
+    edit - Exact same thing but we have given it permission to change files.
+    agent - It acts like you.
+        a)fetching docs -
+            install tailwind css in this project.#fetch https://tailwindcss.com/docs/installation
+            follow the instructions exactly
+        b)PRD docs -.md file
+        c).github -> copilot-instructions.md
+            name of app
+            tech stack
+            technologies to be used
+            best practices(use LLM to generate such best practices)
+        d)Now we need app to talk to DB servers -
+            vs code can talk with different databases via MCP.
+            MCP are little programs that you can download on your machine, they run on your machine and they know how to talks with things, like db.
+            VSCODE knows how to talk to these things via model context protocol.
+            google - postgress MCP server. you will find something. you can cosnsume in it diffrent options -
+                docker container
+                npm package
+                python package
+            VSCode command pallete -
+                Add MCP Server -> option on how to add it
+                give package name
+                run it, give it DB connection url
+                name it, put in user settings or workspace settings.
+                i used user settings - settings.json
+                hover over it, click on run option
+                now in chat editor, at bottom you will see settings icon. click on it you will see query tool provided by this MC server.
+                now you can use this query tool in chat like - 
+                    what is schema of my database #query
+                It runs a query and gives you schema of your database.
+
+        e)now we dragged and dropped the product requirement doc into chat. asked it to build application defined in product.
+
+NextEdit Suggestions
+
+ManageModels -
+    You can use any model, you want.
+
+            
+        

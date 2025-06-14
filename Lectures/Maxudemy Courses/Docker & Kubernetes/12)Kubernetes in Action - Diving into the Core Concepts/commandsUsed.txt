@@ -67,16 +67,24 @@ Code 1 -
         kubectl delete deployment first-app
 
 code 2 -
-    1)kubectl apply -f=deployment.yaml
+    we created deployment declaratively. file - deployment.yaml
+    then we applied this command -
+        kubectl apply -f=deployment.yaml
 code 3 -
+    we created file for service - service.yaml
     1)kubectl apply -f=deployment.yaml
     2)kubectl apply -f=service.yaml
     3)expose the service (only required in minikube) setup -
         minikube service backend
     4)kubectl delete -f=deployment.yaml
     5)kubectl delete -f=service.yaml
-    6)delete all previous resources and combine all files int a single file and use that
+    6)then we combined multiple .yaml files into single file  and used that -
         kubectl delete -f=master-deployment.yaml
     7)minikube service backend
     8)delete objects by selector -
         kubectl delete deployments,services -l group=example
+
+
+Imp Files -
+    code2 - deployment.yaml
+    code3 - service.yaml

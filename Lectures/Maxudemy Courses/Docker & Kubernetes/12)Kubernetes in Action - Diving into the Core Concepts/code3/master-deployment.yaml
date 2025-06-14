@@ -1,3 +1,4 @@
+# Good Practice to put service first when we define service and deployment in same file
 apiVersion: v1
 kind: Service
 metadata:

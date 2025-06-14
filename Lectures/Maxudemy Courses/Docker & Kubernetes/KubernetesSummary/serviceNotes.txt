@@ -1,0 +1,57 @@
+ClusterIP service  -
+    1) When the Service is created, the Kubernetes control plane (specifically, the kube-apiserver and kube-controller-manager) assigns a unique 
+        virtual IP address (the ClusterIP) from the cluster's service IP range.
+    2)The Kubernetes endpoint-controller continuously monitors the API server for Pods that match the Service's selector. As Pods matching the selector come up,
+        become ready, or go down, the controller updates an EndpointSlice object associated with the Service.An EndpointSlice essentially lists the IP addresses
+        and ports of the healthy, ready Pods that can serve traffic for that Service.
+    3)Every node in the Kubernetes cluster runs a component called kube-proxy. Kube-proxy watches the Kubernetes API server for Service and EndpointSlice changes.
+        Based on these changes, kube-proxy configures network proxy rules on the node's kernel.
+
+        iptables (default for most): Kube-proxy typically uses iptables rules. When a Pod on the node tries to connect to a ClusterIP, the iptables rules intercept 
+            that traffic and randomly select an IP address from the EndpointSlice for that Service, then redirect the traffic to the targetPort of that chosen backend
+            Pod.
+        IPVS (more advanced): For higher performance and more sophisticated load balancing algorithms, kube-proxy can also use IPVS (IP Virtual Server). IPVS offers 
+            better performance for a large number of Services and provides more advanced load balancing algorithms (e.g., round-robin, least connections).
+
+
+NodePort service - The NodePort Service in Kubernetes is a type of Service that allows you to expose an application running in your cluster to external traffic by 
+    opening a specific port on every node in your cluster. This means that you can access the application using <NodeIP>:<NodePort>, where <NodeIP> is the IP address
+    of any node in the cluster and <NodePort> is the port assigned to the Service. It builds upon the ClusterIP Service and adds external accessibility.
+    When you create a Service of type: NodePort, Kubernetes does a few things:
+        a)Creates a ClusterIP Service: Internally, a NodePort Service automatically creates a ClusterIP Service. This means it still has a stable internal IP address 
+            for in-cluster communication and load balancing.
+        b)Allocates a NodePort: Kubernetes allocates a static port (the "NodePort") from a predefined range (by default, 30000-32767) on every node in your cluster.
+        c)Kube-proxy configuration -
+            a)Listen on the NodePort: It opens the allocated nodePort (e.g., 30080) on all network interfaces of that node.
+            b)Redirect Traffic: Any incoming traffic to <NodeIP>:<NodePort> is intercepted. Kube-proxy then uses NAT (Network Address Translation) to rewrite the 
+                destination IP address to the Service's ClusterIP and the port of the Service.
+            c)From the ClusterIP, the traffic is then further routed and load-balanced to one of the backend Pods, similar to how a ClusterIP Service functions internally,
+            using its targetPort.
+        c)Opens a Port on Each Node: Kube-proxy, running on each node, configures network rules (typically using iptables or IPVS) so that any traffic hitting that
+            NodePort on any node's IP address will be forwarded to the Service's ClusterIP, and then load-balanced to one of the healthy backend Pods.
+
+
+LoadBalancerServiceType - It is core abstraction that allows you to expose your applications to the outside world, particularly when your Kubernetes cluster is running
+    on a cloud provider like AWS, Google Cloud Platform (GCP), Azure, Oracle Cloud, etc.Essentially, a LoadBalancer Service takes the concept of a NodePort Service and
+    automatically puts a cloud-managed load balancer in front of it.
+
+    When you declare a Kubernetes Service with type: LoadBalancer, the Kubernetes control plane (specifically, the cloud-provider specific controller component, often
+    integrated into kube-controller-manager) performs the following key actions:
+
+        a)Cloud Load Balancer Provisioning: It interacts with your underlying cloud provider's API to request and provision a dedicated, external network load balancer
+            resource (e.g., an Elastic Load Balancer (ELB/NLB) on AWS, a Network Load Balancer on GCP, an Azure Load Balancer).
+        b)Public Endpoint Assignment: This newly provisioned cloud load balancer is assigned a stable, publicly routable IP address or a DNS hostname. This is the endpoint
+            that external users or systems will use to access your application.
+        c)Automatic NodePort Creation: Behind the scenes, the LoadBalancer Service implicitly creates a NodePort Service. This means a specific port (the NodePort, typically
+            in the 30000-32767 range) is opened on every node in your Kubernetes cluster.
+        d)Health Checks and Traffic Forwarding: The external cloud load balancer is then configured to perform health checks against the NodePorts of your cluster's worker 
+            nodes. It will only forward incoming traffic from external clients to healthy nodes on these NodePorts.
+
+
+LoadBalancer have this concept -
+    externalTrafficPolicy:
+        Cluster (default): Traffic is routed to any Node in the cluster, and then kube-proxy on that Node routes it to a healthy Pod, even if that Pod is on a different Node.
+            This might result in an extra hop and obscures the client's source IP address.
+        Local: Traffic is routed only to Nodes that have healthy Pods for the Service. This preserves the client's source IP address but can lead to uneven traffic 
+            distribution if Pods are not evenly distributed across Nodes. It also requires the cloud provider's load balancer to be able to perform health checks 
+            on the NodePort.

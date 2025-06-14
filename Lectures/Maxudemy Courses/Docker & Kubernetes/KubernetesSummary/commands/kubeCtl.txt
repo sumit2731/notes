@@ -3,6 +3,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
 
     installation -
         brew install kubectl
+    checking version -
+        kubectl version --client
 
     commands -
         1)Deployments -
@@ -10,13 +12,75 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 creates a deployment object with a given name and sends it to masterNode of cluster.
                 a)image - images to be used in container.
                     kubectl create deployment "nameOfDeployment" --image="name OfImage"
-                    you can also use multiple images -
+                    you can also use multiple images(this will create multiple containers in pod) -
                     kubectl create deployment "nameOfDeployment" --image="i1,i2,i3"
 
-            2)kubectl get deployments 
-                we can see how many deployments we have in our cluster to which we connected here. 
-            3)kubectl expose deployment "nameOfDeployment" --port=1000 --type=LoadBalancer
-                exposes the pod,created by a deployment by creating a service.
+            2)kubectl scale deployment/"nameOfDeployment"
+                It scales the no of pods present in deployment.
+                options -
+                    a)replicas - it means how many instances for pod you want to have.
+
+                ex - kubectl scale deployment/first-app --replicas=3
+
+            5)kubectl set image deployments/"name of deployment" containerName="new image name"
+
+                This replaces the image in container of given deployment with new image.by default kubernetes will downloaded new image only if
+                tag of image is changed. so change the tag. there are ways to override this.if image tag is changed kubernetes  will download
+                your image and restart the container based on that.
+
+                Verify in dashboard -
+
+                    dashboard -> pods -> yourPod -> events (should see events for pulling new image, creating/starting container)
+                    dashboard -> pods -> yourPod -> image (should see new image)
+
+                Note - this kills the existing pods and starts new one
+
+            6)rollouts -
+                a)Status of last rollout -
+
+                    kubectl rollout status deployment/"name of deployment"
+
+                    output - 
+                        prints the status of rollout. 
+                        this to check whether last deployment or update to last deployment was successful or not.
+                        This is either a success message, failure message or waiting message. so this basically shows 
+                        whether the last deployment was successful or not.what is happening with deployment
+
+
+                b)to see rollout history -
+
+                    kubectl rollout history deployment/"nameOfDeployment"
+                    here you will not see revision which is currently deployed.
+                    there are 2 columns - revisionNo and chnagecause
+
+                c)to get details of particular rollout of particular deployment -
+
+                    kubectl rollout history deployment/first-app --revision="identifier"
+
+                    identifier we get from last command.here we will get details like  -
+                        a)pod template
+                        b)container template
+            
+                d)how to go back to previous deployment -
+                    kubectl rollout undo deployment/first-app
+                    By default reverts the last deployment and takes to version before that.
+                    options -
+                        a)--to-revision - takes user back to specific version.
+                            kubectl rollout undo deployment/first-app --to-revision="revisionTag"
+                            kubectl rollout undo deployment/first-app --to-revision=2 
+
+                e)kubectl rollout restart deployment/"deloymentName"
+                    It specifically modifies the spec.template.metadata.annotations field by adding or updating kubectl.kubernetes.io/restartedAt with the current timestamp.
+                    it is useful when you updates a image, but nothing is chnaged in your deployment file.
+
+
+        3)services -
+            1)kubectl get services
+                shows the services in cluster. we will see their types, externalIP etc.
+
+            2)kubectl expose deployment "nameOfDeployment" --port=1000 --type=LoadBalancer
+                creates a services and selects the pods created by deployment.
+                exposes the pod,created by a deployment by creating a service.it automatically selects all the the pods created by deployment.
 
                 kubectl expose deployment first-app
                     a)--port = port that will be exposed from container (lecture 190)
@@ -35,74 +99,23 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                             is only available if your cluster and the infrastructure on which the cluster runs supports it.AWS does, for 
                             example, and minikube thankfully also does it. so this command we can use in minikube.
 
+                        For detail see serviceNotes.txt
+
                     ex - kubectl expose deployment first-app --type=LoadBalancer --port=8080
-            4)kubectl scale deployment/"nameOfDeployment"
-                It scales the no of pods present n deployment.
-                options -
-                    a)replicas - it means how many instances for pod you want to have.
-
-                ex - kubectl scale deployment/first-app --replicas=3
-
-            5)kubectl set image deployments/"name of deployment" containerName="new image name"
-
-                This replaces the image in container of given deployment with new image.by default kubernetes will downloaded new image only if
-                tag of image is changed. so change the tag. there are ways to override this.if image name is changed kubernetes  will download
-                your iage and restart the container based on that.
-
-                Verify in dashboard -
-
-                    dashboard -> pods -> yourPod -> events (should see events for pulling new image, creating/starting container)
-                    dashboard -> pods -> yourPod -> image (should see new image)
-
-                Note - this kills the existing pods and starts new one
-
-            6)rollouts -
-                a)Status of last rollout -
-
-                    kubectl rollout status deployment/"name of deployment"
-
-                    output - 
-                        prints the status of rollout. 
-                        this to check whether last deployment or update to last deployment was successful or not.
-                        This is either a success message, failure message or waiting message
-
-
-                b)to see rollout history -
-
-                    kubectl rollout history deployment/"nameOfDeployment"
-                    here you will not see revision which is currently deployed.
-
-                c)to get details of particular rollout of particular deployment -
-
-                    kubectl rollout history deployment/first-app --revision="identifier"
-
-                    identifier we get from last command.here we will get details like which image was used.
-            
-                d)how to go back to previous deployment -
-                    kubectl rollout undo deployment/first-app
-                    By default reverts the last deployment and takes to version before that.
-                    options -
-                        a)--to-revision - takes user back to specific version.
-                            kubectl rollout undo deployment/first-app --to-revision="revisionTag"
-                            kubectl rollout undo deployment/first-app --to-revision=2
-    
-
-        2)pods - 
-            1)kubectl get pods
-                we will see pods created by our deployments.
-
-
 
         3)kubectl apply
             We can create file describing how kubernetes objects should be created, then then we can send these file to cluster(master node)
-            using this command.
+            using this command.kubernetes will then make changes in cluster to reach this end State.
 
             flags -
                 a)-f
                     kubectl apply -f="pathToFile"        
                     kubectl apply -f=deployment.yaml
 
-                    if you have multiples files to be applied then you can use multiple -f f;lags.       
+                    if you have multiples files to be applied then you can use multiple -f f;lags. 
+
+                    kubectl apply -f="pathToFile,path2"             
+                    kubectl apply -f="pathToFile" -f="path2"             
 
         4)kubectl delete  -
             a)deleting objects by name - 
@@ -113,7 +126,17 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 kubectl delete -f=deployment.yaml -f=services.yaml
             c)deleting by selectors(l stands for labels, here we mention labels for objects to be deleted) -
                 kubectl delete resourcesToBeDeleted -l group=example
-                kubectl delete deployments,services -l group:example
+                kubectl delete deployments,services -l group=example
+
+        5)kubectl get
+            kubectl get deployments
+                name
+                ready - shows the status of the Pods managed by the Deployment. It's displayed as (current_ready_replicas)/(desired_replicas).
+                avalible -  number of healthy Pods that are available to the users
+            kubectl get pods
+                If some pod is facing some error. you will see that error also.
+            kubectl get services
+                name type,port used,clusterIP,externalIP,age
 
         5)persistent volumes and persistent volume claims -
             kubectl get pv
