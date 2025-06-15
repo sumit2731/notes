@@ -2,14 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: story-deployment
-# deployment specification
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: story
-  # this is pod template, for pods created by this deployment.So for the one kind of port that is attached
-  # to the supplement and which can then be replicated by changing the replica's number.
   template:
     metadata:
       labels:
@@ -22,42 +19,55 @@ spec:
           # Their are 2 options - one is to give value here
           # second option is to use values from file
           env:
-            - name: STRORY_FOLDER
-              # if want to specify value from here
-              # value: "story"
-              # If we want to take value from ConfigMap
+            
+            # Option 1 - Specifying env variables here (name - name of envVariable)
+            # - name: STRORY_FOLDER
+            #   value: "story"
+
+            # Option 2 - Taking env from configMap object 
+            # name of env variable
+            - name: STORY_FOLDER
               valueFrom:
+                # here we point to specififc configMap
                 configMapKeyRef:
-                  # name of configMap
+                  # name of configMap object which we want to use
                   name: data-store-env
-                  # key whose value should be assigned to environmentVariable
+                  # key whose value should be assigned to environmentVariable, this is defined in configMap
                   key: folder
-          # here we make volumen avalible to container
+          # here we make volume avalible to container
+          # volume with this name needs to be defined in volume section
           volumeMounts:
               # This is container's internal path
             - mountPath: /app/story
+            # here we define volume we are using for this path.
+            # This volume name should match the name defined in volumes section i.e i that volume should be avalible in pod
               name: story-volume
-      # These are list volumes in this pod ,all containers inside this pod can use this volume
-      # each volume need to have a name and then type of volume
+      # Since volumes are linked to Pod,so we define them at place we define and configure pod.we define them inside PodSpec
+      # These are list volumes in this pod ,all containers inside this pod can use these volume each volume need to have a name 
+      # and at same level of name we need to setup volume type.
       volumes:
         - name: story-volume
           # This is volume type. depending upon which type we chose we have more options which we can set.
-          # here we want to use default setting so we use {}.
-          # emptyDir simply creates a new empty directory whenever the pod starts.And it keeps this directory
-          # alive and filled with data as long as the pod is alive.Containers can then write 
+          # here we want to use default setting so we use {}.emptyDir simply creates a new empty directory whenever the pod starts.
+          # And it keeps this directory alive and filled with data as long as the pod is alive.Containers can then write 
           # to this directory.And if containers restart or are removed,the data survives.But if the pod should be removed,
-          # this directory is removed.
+          # this directory is removed.then when pod restarts an empty volume is created
+          # point to be noted - data is stored in pod.
           
           # emptyDir: {}
           
-          # here data is stored to stored on host machine, not on pod.
-          # It is somewhat like bindMount, you can also share some data that exists on machine with pod
-          # hostPath:
-          #   # path on host ,machine where data will be stored
-          #   path: /data
-          #   # create this path of it does not exists yet(/data)
-          #   # if you use Directory , then it will fail if the directory does not exists
-          #   type: DirectoryOrCreate
+          # here data is stored to stored on host machine, not on pod.It is somewhat like bindMount, you can also share some data 
+          # that exists on machine with pod
+          #   path - path on host ,machine where data will be stored this path here is generally up to you,you just shouldn't use 
+          #       any paths which are reserved in Linux,
+          #   type - Now we just also need to provide a type where we let Kubernetes know how this path should be handled.
+          #     DirectoryOrCreate - create this path of it does not exists yet(/data)
+          #     Directory - it will fail if the directory does not exists
+          
+          #   hostPath:
+          #     path: /data
+          #     type: DirectoryOrCreate
+          
 
 
           # here we use persistent volume

@@ -1,0 +1,118 @@
+code 1 -
+    To run code code locally we have docker and docker-compose files.
+    To locally run the code -
+        docker-compose up -d --build
+        docker-compose down
+    Push image into docker hub -
+        docker build -t sumeet27/kub-data-demo .
+        docker push sumeet27/kub-data-demo
+    Starting deployment with kubernetes -
+        kubectl apply -f=deployment.yaml -f=service.yaml
+        minikube service story-service
+    Using volumes -
+        In kubernetes we have different types of  volumes because unlike docker volume which always runs on our local machines,
+        we use kubernetes to deploy your application to some cloud provider or some data center.And therefore you have a broad variety
+        of ways of storing your data.Because it's not just your local hard drive as the case of just Docker volumes,but instead maybe
+        you are using AWS and you wanna use their elastic block store service.or you want to using azure and you want to use services
+        provided  by them.
+
+        Volume lifetime depends upon pod lifetime(not entirely true).
+        here we will see three types of volumes -
+            1. EmptyDir
+            2. HostPath
+            3. CSI
+        The key thing is that all these types don't influence how volumes work inside of a container.There it's always just some path,
+        which is then also stored outside of the container.So basically just like volumes work with just Docker as well.
+        But the difference here just is that,how the data is stored outside of the container depends on which type or driver you use
+        here.
+        
+        push image into dockerHub(after adding /exit route(that kills the container)) -
+            docker build -t sumeet27/kub-data-demo:1 . (changed the imageTag)
+            docker push sumeet27/kub-data-demo:1
+            kubectl apply -f=deployment.yaml
+        now if we hit error route, container is destroyed, all data is lost.
+        Added volume config in deployment.yaml -
+            kubectl apply -f=deployment.yaml
+            emptyDir. 
+                see file. here volume is stored in pod.so when if request goes to another pod,it will not have that data.
+                We created 2 replicas of pod, intentionally hit /error route on first pod, so request went to another pod and
+                that pod was not having any data.
+            hostPath
+                here data is stored on hostMachine not on pod.So it is better than emptyDir, but it it does not handle case when we
+                will have pods on different nodes.this can also serve a different use case when I have some data that i want to
+                share with pod/container, like bind mount.but here we are not doing that.
+                In the lecture,it was said repeatedly we will find a solution which will work for pods which are on different nodes.
+            CSI(Container storage interface) - It was added so that kubernetes do not have to add more and more types for different 
+                cloud providers ans different usecases.But instead, they expose a clearly defined interface And then anyone can build
+                driver solutions.For example if we want to use AWS Elastic File System,then AWS team has built such CSI integration
+                for AWS EFS.And long story short,thanks to this CSI feature,it would be super easy to add EFS as a storage solution
+                for your Kubernetes volumes.So the CSI volume type is a very flexible type,which allows you to attach any storage
+                solution out there in the world,as long as there exists an integration for this CSI type that utilize this interface.
+                In deployment section we will use AWS EFS.
+    Using persistent volumes(slide 5) -
+        Drawbacks of Volumes -
+            1. Volumes are tied to a pod, so if pod is deleted, data is lost.
+            2. if you scale your Pods,and you go from one Pod to two Pods then depending on the type of volume you're using,
+                the new Pod might not have access to the data written by the first Pod.
+            hostPath partially solved this problem on local system but on cloud service providers, we will again face this problem.
+        Persistent Volumes - Pod and node independent.
+        Now lot of volume types like awsElasticBlockStore and azureDisk solved above 2 drawbacks before data is stored on aws servers.
+        Then why persistent volumes?
+            The persistent volume concept is more than just independent storage.The key idea however is,that the volume will be detached 
+            from the Pod.And that includes a total detachment from the Pod life cycle. Instead with persistent volumes, we will have that
+            Pod and Node independence and as a cluster administrator we will have full power over how this volume is configured.We don't 
+            need to configure it multiple times for different Pods and in difference deployment YAML files or anything like that.Instead,
+            we'll be able to define it once and then use it in multiple Pods if you want to.so we define persistent volumes in central place.
+            It also gives us all the control that as a cluster administrator we want. 
+
+        Slide 6 -
+            Now with persistent volumes,the idea is that you have new resources,new entities in your cluster.Which are detached from your
+            Nodes and from your Pods.Instead you can create so-called persistent volume claims.These will be part of Pods.
+
+            In docs you can see types of PV's. They are almost similar to regular volume but for example emptyDir is missing. because PV's
+            are node independence.HostPath is only available when you have single node setup.This is because then all pods are on single
+            node and all of them can access data.
+
+            we will see CSI type in deployment section.here we will use hostPath type.
+
+        Then we define PV - host-pv.yaml. read file comment.
+        Then we define a PVC - host-pvc.yaml, which claims this volume. 
+        we attach them PVC to PV by refering to name of persistant volume in PVC. but their are other ways also. see file.
+        now this claim needs to be connected to pods, so that pods reach out to persistent volume and gets it volume.
+        In deployment object,we uses claim(by name) in volume section in PodSpec.
+        we keep same name just config is different as this is PV.In Container config, nothing needs to be changed, as
+        it needs to refer to volume no matter what type of volume that is.then we apply everything.
+        
+            kubectl apply -f=service.yaml
+            kubectl apply -f=host-pv.yaml (first apply volume then apply claim)
+            kubectl apply -f=host-pvc.yaml (apply)
+            kubectl apply -f=deployment.yaml
+    env variables - 
+        Then we added some env variables. we added them in containers in PodSpec.we use this env folder name inside which our file is
+        placed.
+
+    configMap -
+        instead of defining env variables in deployment.yaml file, we defined them in configMap, which is another kubernetes object.
+        And as the name suggests,it creates a map of configurations.So a key value pair list basically.then we refeered to this
+        confiMap object in  env section of podSpec.contianer in deployment.yaml.
+
+        then we applied this config map using  -
+            kubectl apply -f=configMap.yaml
+
+        Then we can use this configMap in our deployment file, by referring to it in env section of PodSpec.
+
+    
+    Important things(Extra from course) -
+        a)Mapping between PV and PVC -
+            mapping between PV and PVC is 1:1 at a time i.e at a time PV can be claimed by only one PVC.
+            PVC can access only one volume at a time. if you want multiples pods to access same volume, then you,
+            need to attach all pods to PVC which is connected to required PV.
+        b)Persistent Volume Reclaim Policy - use gemini to know more
+        c)configMap can also be used as volumeType -
+            1)can be used for non confidential data
+            2)in configMap, value of key will be single line string or multiple line string
+            3)All keys inside configMap will be mounted as files in container.by default all keys are mounted but
+                you can choose which one to pick.
+                see deployment.yaml and configMap.yaml in sample files.
+            For detail explanation use gemini
+        

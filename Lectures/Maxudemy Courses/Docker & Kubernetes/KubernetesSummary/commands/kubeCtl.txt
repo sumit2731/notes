@@ -137,6 +137,23 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 If some pod is facing some error. you will see that error also.
             kubectl get services
                 name type,port used,clusterIP,externalIP,age
+            kubectl get pv
+                name
+                capacity
+                accessModes - ReadWriteOnce, ReadOnlyMany, ReadWriteMany
+                persistentVolumeReclaimPolicy - Retain, Delete ()
+                reclaimPolicy
+                status - bound, Released
+                claim - name of persistent volume claim that is using this persistent volume
+                stoageClass -standard
+
+            kubectl get pvc
+                name
+                status - bound
+                volume - name of volume which is claimed by this pvc
+                capacity - 10 Gi
+                accessMode
+                storageClass
 
         5)persistent volumes and persistent volume claims -
             kubectl get pv
@@ -150,10 +167,10 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
 
 kubernetes objects -
 
-    a)pods
-    b)deployment
-    c)service
-    d)persisatnt volume
-    e)persistent volume claim
-    f)configmaps (not covered in course but i read in in docs)
-    c)namespaces
+    a)deployment
+    b)service
+    c)persisatnt volume
+    d)persistent volume claim
+    e)configmaps (not covered in course but i read in in docs)
+    f)pods
+    g)namespaces

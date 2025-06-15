@@ -4,4 +4,6 @@ metadata:
   name: data-store-env
 data:
   # here we define environment variables that will be used in the container
+  # no '-' are required here, define as many key value pairs as needed
   folder: story
+  # key:value

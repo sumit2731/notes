@@ -7,12 +7,13 @@ apiVersion: apps/v1
 # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/deployment-v1/
 kind: Deployment
 # See docs , which other values can be added in metadata section.metadata is not applicable for all objects but for many it is
-# althrough most options are relevent in most of cases
+# althrough most options are irrelevent in most of cases
 metadata:
   # Name of deployment
   name: second-app-deployment
   # Labels are used to select a resource by other resource like deployment selects pod, service selects pod.
   # We can also use labels to select object while running command. for example - kubectl delete deployments,services -l group=example
+  # this commands delete deployments and services with this labels
   labels:
     group: example
 # the specification of this deployment.And that's the meat of this object because here, we will define how this deployment
@@ -33,7 +34,7 @@ spec:
     #   matchExpressions - more complex so for now we will look at only matchLabels.
     # you will see selectors on pretty much all resources Kubernetes works with.For example, Also Services.
     matchLabels:
-      #     # both of these lables with exact same values needs to be in pod, which will be manged by this deployment
+      # both of these lables with exact same values needs to be in pod, which will be manged by this deployment
       # Note - deployment always needs to select the pods that it creates.
       app: second-app
       tier: backend
@@ -58,8 +59,7 @@ spec:
     #   we can different replicas of same pod type. but in on deployment there can be one pod type. if you have multiple pods types
     #   i.e different pods with different containers, then you need to create different deployment objects.
     spec:
-      # check this doc, to see what other options we can have in containers
-      # here we have multiple containers so we need to have '-'
+      # here we can have multiple containers so we need to have '-'
       # this is like docker-compose, you can specify large list of options for each container, like you cn specify when
       # manually starting container, entryPoint etc
       # docs - https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container
@@ -68,9 +68,9 @@ spec:
           # image: kub-first-app:1.0.0
           image: sumeet27/kub-first-app:2
           # This not speciffied this default to always ,if image tag is :latest
-          # if explicitly defined - always, then it will always pull the image even if no tag is present
+          # if explicitly defined - always, then it will always pull the image even if lastest tag is present
           # otherValues - Never, IfNotPresent
-          # Note - even with Always value kubernetes will only fetch the image when it sees a chnage in desired state.
+          # Note - even with Always value kubernetes will only fetch the image when it sees a change in desired state.
           # If you just update the tag and nothing in deployment, then image will not be pulled.
           # use - kubectl rollout restart deployment/"deloymentName" , in such cases
           imagePullPolicy: Always

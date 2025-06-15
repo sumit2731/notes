@@ -1,38 +1,41 @@
 183)Kubernetes does not manage your infrastructure(Slide 1)
     For creating resources(Right side of picture), you can use tools like
         Kubermatic - helps create infra on cloud provider like aws.So that's a tool which can help you if you don't wanna create everything manually there.
-        EKS - AWS do have dedicated services like in AWS,EKS, Elastic Kubernetes Service which actually helps you
+        EKS - AWS do have dedicated services. like in AWS,EKS, Elastic Kubernetes Service which actually helps you
             with that as well.That is a service which will allow you to bring your own Kubernetes configuration
             so that you don't have to use the AWS specific configuration as you did have to use with ECS but EKS.
             So this Elastic Kubernetes Service will then also set up all the resources needed by your Kubernetes
             configuration.
     These tools help us to create infra.
 
-184)Kubernetes:Required setup and installation parts
+184)Kubernetes:Required setup and installation parts(Slide 2)
     install kubectl
     tool for setting up cluster locally - minikube
 
-    minikube sets cluster locally on on your machine.It creates a virtual machine and sets cluster on that.
-        It will actually create a single node cluster which means there the worker and master node is combined into one single virtual machine.
+    minikube sets cluster locally on your machine.It creates a virtual machine and sets cluster on that.
+    It will actually create a single node cluster which means there the worker and master node is combined 
+    into one single virtual machine.
 
     But you sill need to install kubectl.
 
 187)Understanding Kubernetes Objects(slide 3,4)
     you can create such an object by executing a certain command.And then Kubernetes will take that object created by you,which of course is just
-    a thing in code in the end,and it will then do something based on the instructions encoded in that object, you could say.And these objects can
-    actually be created in two different ways, imperatively or declaratively.
+    a thing in code in the end,and it will then do something based on the instructions encoded in that object, you could say.And these 
+    objects can actually be created in two different ways, imperatively or declaratively.
 
     If you wanna tell Kubernetes,that it should create a pod,run a container and do that on some worker node in the cluster.You would tell Kubernetes
     to do that,by creating a pod object in code or with help of a command,and sending that object to Kubernetes.
 
-    Pod has cluster internal ip address by default. other pods can interact with it using this IP. containers in same pod can reach out to each other using
-    local host.
+    Pod has cluster internal ip address by default. other pods can interact with it using this IP. containers in same pod can reach out to each other
+    using local host.
 
-    In addition, and that's also very important to understand,when working with Kubernetes,we can create pods on our own and start them on some
-    worker node in our cluster,but that's typically not what we will do.Instead, we want Kubernetes to manage these pods for us.
+    In addition,and that's also very important to understand,when working with Kubernetes,we can create pods on our own and start 
+    them on some worker node in our cluster,but that's typically not what we will do.Instead, we want Kubernetes to manage these
+    pods for us.we want kubernetes to create,remove and replace pods for us.This is why we use kubernetes.
 
-    The entire idea behind using Kubernetes is that it also manages the deployment for us. And that's why we typically don't just create pod objects
-        and send them to the cluster,but why we create controller objects,specifically the deployment object,which then actually will create pods for us.
+    The entire idea behind using Kubernetes is that it also manages the deployment for us. And that's why we typically don't just
+    create pod objects and send them to the cluster,but why we create controller objects,specifically the deployment object,which
+    then actually will create pods for us.
 188) deployment object(slide 5)
     we do not want to create pods manually , we want kubernetes to create that for us, so we use deployment object.see figure 5
 
@@ -50,11 +53,10 @@
 
     Services groups pods together and gives them a shared IP address.This address does not change.
     so you can move various pods in a service an make them reachable on that IP address.this address
-    can even be exposed outside te cluster.we need to specify our deployment and our service name therefore, in this case, first app.
-
+    can even be exposed outside te cluster.
 
 196)Deployment rollback and history
-    For each deployment update it shuts down all container and starts new one.
+    For each deployment update it shuts down old container and starts new one.pods remains same
     But it does not shut down old container until new one comes in.
 
 

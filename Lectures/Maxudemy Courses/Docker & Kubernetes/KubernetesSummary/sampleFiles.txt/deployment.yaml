@@ -58,7 +58,6 @@ spec:
     #   we can different replicas of same pod type. but in on deployment there can be one pod type. if you have multiple pods types
     #   i.e different pods with different containers, then you need to create different deployment objects.
     spec:
-      # check this doc, to see what other options we can have in containers
       # here we have multiple containers so we need to have '-'
       # this is like docker-compose, you can specify large list of options for each container, like you cn specify when
       # manually starting container, entryPoint etc
@@ -86,5 +85,75 @@ spec:
             periodSeconds: 10
             #  How much time it should wait to check health first time
             initialDelaySeconds: 5
+                    # here we make volume avalible to container
+          # volume with this name needs to be defined in volume section
+          volumeMounts:
+              # This is container's internal path
+            - mountPath: /app/story
+            # here we define volume we are using for this path.
+            # This volume name should match the name defined in volumes section i.e this volume should be avalible in pod
+              name: story-volume
+          env:
+
+            # Option 1 - Specifying env variables here (name - name of envVariable)
+            # - name: STRORY_FOLDER
+            #   value: "story"
+
+            # Option 2 - Taking env from configMap object (only 1 option is allowed)
+            # name of env variable
+            - name: STORY_FOLDER
+              valueFrom:
+                # here we point to specififc configMap
+                configMapKeyRef:
+                  # name of configMap object which we want to use
+                  name: data-store-env
+                  # key whose value should be assigned to environmentVariable, this is defined in configMap
+                  key: folder
         # - name: third-node
         #   image:
+      # Since volumes are linked to Pod,so we define them at place we define and configure pod.we define them inside PodSpec
+      # These are list volumes in this pod ,all containers inside this pod can use these volume
+      # each volume need to have a name and then type of volume
+      volumes:
+        - name: story-volume
+          # This is volume type. depending upon which type we chose we have more options which we can set.
+          # here we want to use default setting so we use {}.
+          # emptyDir simply creates a new empty directory whenever the pod starts.And it keeps this directory
+          # alive and filled with data as long as the pod is alive.Containers can then write 
+          # to this directory.And if containers restart or are removed,the data survives.But if the pod should be removed,
+          # this directory is removed.
+          # then when pod restarts an emoty volume is created
+          # point to be noted - data is stored inn pod.
+          
+          # emptyDir: {}
+          
+          # here data is stored to stored on host machine, not on pod.It is somewhat like bindMount, you can also share some data 
+          # that exists on machine with pod
+          #   path - path on host ,machine where data will be stored this path here is generally up to you,you just shouldn't use 
+          #       any paths which are reserved in Linux,
+          #   type - Now we just also need to provide a type where we let Kubernetes know how this path should be handled.
+          #     DirectoryOrCreate - create this path of it does not exists yet(/data)
+          #     Directory - it will fail if the directory does not exists
+          
+          #   hostPath:
+          #     path: /data
+          #     type: DirectoryOrCreate
+
+
+          # here we use persistent volume
+          persistentVolumeClaim:
+            # this is name of PvcClaim object that we want to use
+            claimName: host-pvc
+        - name: config-volume
+          configMap:
+            name: my-app-config # Name of the ConfigMap to mount
+            # The items field allows you to selectively mount specific keys from the ConfigMap and even rename the files as 
+            # they appear in the container. This is useful if you only need a subset of the ConfigMap data or if the file 
+            # names need to match specific conventions for your application.
+            # optional: 
+            # items: # You can specify which keys to mount as files
+            #   - key: log_level
+            #     path: logging.conf # Mounts 'log_level' as 'logging.conf'
+            #   - key: application.properties
+            #     path: app.properties # Mounts 'application.properties' as 'app.properties'
+            # defaultMode: 0644 # Optional: set file permissions (octal)

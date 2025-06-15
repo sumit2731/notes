@@ -26,7 +26,7 @@ Code 1 -
     10)minikube service first-app
         minikube has a command,which will give us access to the service by basically mapping a special port to an IP
             which we can reach from our local machine,and which identifies this virtual machine running on our local 
-            machine.we then need to specify our deployment and our service name therefore, in this case, first app.
+            machine.we then need to specify our service name therefore, in this case, first app.
             here we get the IP and our we can access our service using that ip.
 
         You need this command only in case of minikube.
@@ -48,13 +48,16 @@ Code 1 -
         a)try to update image that does not exist -
             kubectl set image deployment/first-app kub-first-app=sumeet27/kub-first-app:30
 
-            you will see sucess message. but you need to see update of your rollout
+            you will see message - deployment updated
 
         b)last rollout status -
             kubectl rollout status deployment/first-app
 
-            you will see message that old replica is waiting to be killed.if you go on dashboard in pods, you can see 2 pods,
-                old one is not killed because new one is not started and it is facing problem with image pulling.this remain like this.
+            you will see message that -
+             "waiting for deployment rollout to finish: 1 old replicas are pending termination..."
+                             
+            old one is not killed because new one is not started and it is facing problem with image pulling.this remain like this.
+            If we go to dashboard -> pods,we can see error i 1 pod is related to image pull.
 
         c)revert problematic deployment -
             a)go to last stable deployment(just revert last deployment)

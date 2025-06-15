@@ -1,10 +1,9 @@
-1)Pod volumes/Networking.
-2)Ingres in kubernetes.
-3)lecture 216,1:22, better way to handle case when request goes to different replica we is not having
-    emptyDir.
-4)dynamic volume provisioning
-5)advance kubernetes concepts -
+1)Ingres in kubernetes.
+
+2)dynamic volume provisioning
+3)advance kubernetes concepts -
     storageClassname in kubernetes
 
-6)what if i do not want to take image from dockerHub ?
-7)"ExtrenalName" - learn more about this type of service.
+4)what if i do not want to take image from dockerHub ?
+5)"ExtrenalName" - learn more about this type of service.
+6)autoscaling in kubernetes.
