@@ -1,10 +1,36 @@
-272 - Copying Array using arraycopy and copyof
+272 - Copying Array using arraycopy and copyof (slide 13-16)
 
-    System.arraycopy
+    System.arraycopy(sourceArray, sourceStartPosition, destinationArray, destinationStartPosition, lengthToBeCopied)
     Arrays.copyOf(OrignalArray, length)
-        This method is overloaded, see a implementation where we want our destination array of a different type
-        See general version of copy of methiod and see how yu can create array of classes at run time
+        copy always starts from 0.
+        This method is overloaded, see a implementation where we want our destination array to be of a different type
+        See general version of copy of method and see how you can create array of classes at run time
     Arrays.copyofRange(orignalArray,fromIndex, toIndex)
         Similar to copy but let us start copy from custom position
         fromIndex is included
         toIndex is not included
+
+    File - ArrayCopyDemo.java
+
+
+273 - Converting Ararys(slide 18)
+    Array methods - java.utils.Arrays
+        toString() - we can quickly check the content of array (int arrays prints tgis - [1,2,3])
+        toList()
+        toStream()
+
+    otherMethods -
+        binarySearch - searches a element after sorting
+        compare
+        copyOf
+        copyOfRange
+        fill - fills with a static value
+        setAll -> initilizes the array elements with lambda
+        parallelSort
+        sort
+
+274 - Sorting Arrays (slide 18)
+    sort
+    parallelSort(larger than 1,000) - sorts array parallely by using all cores.
+
+    for sorting for custom data types we need to complete - Collections, lambdas and Functional Programming.

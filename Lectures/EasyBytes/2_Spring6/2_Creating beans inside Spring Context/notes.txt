@@ -1,16 +1,34 @@
+11_ Installation of Maven
+    without maven you need to download the jars of all third party libraries and configure them inside classPath of your
+    application.
+    1)make sure that jdk is installed.
+    2)download maven zip file from website.
+
+    
+
 13- Creating Maven Project
     we created a new Intellij Project, build option selected maven.
-    Then we wen to this site - https://mvnrepository.com/repos/central
+    In Advance settings, we have artifactId and groupId.
+    
+    Then we went to this site - https://mvnrepository.com/repos/central, searched - "Spring Context"
     copied maven coordinates of maven dependency and pasted in pom.xml.
+    
+    In top,right side we see a option to refresh maven dependencies.
     IntelliJ automatically downloaded these dependencies.
     You can see these dependencies on right hand side under maven, also on left hand side under "external dependencies".
     
     default path where maven downloads dependencies -  /Users/sumeet.sood/.m2/repository
 
-    why this path, because in maven folder, dere is conf/settings.xml. it mentions tis isd default path.
+    /Users/sumeet.sood/.m2/repository/org/springframework/spring-expression/6.2.8
+
+
+    why this path, because in maven folder, dere is conf/settings.xml. Their under localRepository, default is mentioned -
+        ${user.home}/.m2/repository
     it also specifies the way to override it.
 
-    then we saw how to open a existing maven project in Intelij.
+    then we saw how to open a existing maven project in Intelij -
+        1)on right hand side click maven.
+        2)On the top, click on plus icon.
 
 
 14 - creating bean using @Bean Annotation(slide - 18)
@@ -20,11 +38,79 @@
 
     Here you may have a question like even inside the Java method also I'm using a new operator.
     Of course, that's a very valid question.This is the most basic approach.And when we want to create the bean very first time, 
-    definitely we have to create with the help of new operator post that once my object is converted into a bean, my spring context will take care of
-    autowiring, dependency injection, which we are going to discuss in the coming sections.
+    definitely we have to create with the help of new operator post that once my object is converted into a bean, my spring context
+    will take care of autowiring, dependency injection, which we are going to discuss in the coming sections.
 
     But there are many other approaches also to create a bean.And in those approaches we don't even have to use the new operator.
 
-    code - example1
+    code - example1.
+    file - Vehicle.java, ProjectConfig.java, Example1.java
+
+19 - Creating Beans using @Component Annotation(slide 23)
+    "Stereotype annotations" in Spring are special annotations that indicate the role or purpose of a class
+    within your application's architecture.Think of them as labels that tell the Spring container: "This class
+    is a component, and it performs a specific function, so please recognize it and manage it as a Spring
+    bean."
+
+    When you configure Spring for "component scanning" (e.g., using @ComponentScan in a configuration class 
+    or relying on Spring Boot's defaults), Spring automatically looks for classes marked with these 
+    Stereotype annotations. When it finds them, it registers these classes as Spring beans in the application
+    context.
+
+    @Component is a generic stereotype annotation that we can use on top of any Pojo Java class which will 
+    make that pojo Java class as a spring bean because spring IOC container during startup, whenever it sees
+    its annotation, itn will create object by itself rather than looking for a code where we create it with
+    the new operator.
+
+    since your spring IOC container can't go and scan all of your packages and thousands and thousands of classes
+    available inside your web application,To make spring IOC container performance better,Spring team decided
+    that it's a responsibility of the developer to tell to the spring IOC container where it has to go and scan.
+    we do this by using @ComponentScan
+
+    @ComponentScan - With @ComponentScan which we are mentioning on top of the configuration class,
+    we are instructing spring, go ahead and look for the Java classes which are annotated with the stereotype
+    annotations like @component.we mention basePackage as name of package where our class is present.
+
+    There is a caveat - developer does not have any control.It's the spring framework that can do the object creation.
+    so we cannot call setter and set values.but their are other ways around it, which we will be see later.
+
+    code - example 5.
+    File - Vehicle.java, ProjectConfig.java, Example5.java
+
+
+20 - Stereotype Annotations In Spring(slide 24)
+    These annotations provides the readability to your code.
+    @Repository - All DAO classes (Data Access Objects )
+
+
+23- Understanding @PreDestroy Annotation (slide 26,27)
+    @PostConstruct - This can be used not only with Stereotype annotations, it can be used with other methods
+        of beans creation too.
+
+    @PreDestroy - Sometimes we may have some business logic that needs to be executed just before spring IOC
+        container trying to clear and destroy the spring context, which means while destroying all the beans,
+        which usually happens during the shutdown of the application or during the destroying of the context,
+        programmatically. in those scenarios, we can use @PreDestroy annotation to execute the business logic
+        that we want.Just before the spring IOC container trying to destroy a particular bean.
+
+    compared to @PostConstruct the usage of @PreDestoy is very rare because most of the times spring framework
+    itself take care of closing all the database connections resources.But if you have any rare scenario which
+    spring framework is not handled, then you can use @PreDestroy.
+
+    code - example 6
+
+25- creating beans using XML (slide 30)
+    code - example8.
+    See beans.xml file. 
+    why you do not need to spcify path for beans.xml?
+        When you build the project, Maven copies everything from src/main/resources to the root of the 
+        classpath in the compiled output. This is why Spring can find beans.xml with just the filename. 
+        If your XML configuration was in a subdirectory like src/main/resources/config/beans.xml, you 
+        would need to specify "config/beans.xml" as the path parameter.
+
+
+27 - Intro to spring Projects (slide - 31-35 )
+
+
 
 

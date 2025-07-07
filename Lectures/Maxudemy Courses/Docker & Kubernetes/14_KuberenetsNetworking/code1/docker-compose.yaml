@@ -5,6 +5,7 @@ services:
   users:
     build: ./users-api
     environment:
+      # we use this to reach to auth service
       AUTH_ADDRESS: auth
     ports:
       - "8080:8080"
@@ -12,5 +13,6 @@ services:
     build: ./tasks-api
     ports:
       - "8000:8000"
+    # this is folder where we store tasks file
     environment:
       TASKS_FOLDER: tasks

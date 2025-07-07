@@ -1,0 +1,22 @@
+344)Array have limitations (figure 1,2,3,4)
+    array elements are store in continues memory location, when you try to add new element, if their is no space for new element,
+    in continuity , then it has to move array to new location in heap.
+
+
+    set - unique elements
+    List - maintains order of insertion
+    map - dictionary
+    queue - First in first out
+    stack - last in first out
+
+346 - Intro to wrapper classes (slide)
+    wrappper classes can be used to convert from one data type to another.
+
+347 - converting primitive type to wrapper class(slide 6)
+    approach 1 is deprecated.
+    in approach 1 , if you pass invalid string, then you will get - "NumberFormatException".
+
+    useful methods on wrapper classes -
+
+    Integer.parseInt("string") -> converts string into number
+    every wrapper class has above method to convert string into required type.

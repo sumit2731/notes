@@ -16,6 +16,11 @@ Settings -
     6)to see parent -
         right click on it -> got to -> super class
 
+    7)Adjust Zom level -
+        intelliJ ->settings -> appearance & behavior -> Appearance -> accessibility -> zoom
+    8)Font Size - 
+        intelliJ ->settings -> Editor -> Font
+
 ShortCuts -
     a)Search class/file/text -
         cmd + o (Go to class, Mac)

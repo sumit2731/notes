@@ -5,6 +5,7 @@ metadata:
 data:
   # here we define environment variables that will be used in the container
   folder: story
+  log_level: INFO
   # key:value, here we can also use multiline string when we wnt to consume configMap as volume
   # when used as volume each property will corrpospond to file in volume
   application.properties: |

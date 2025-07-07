@@ -8,6 +8,8 @@
             Objects.compare (a, b, compare) - Compares two objects using a provided comparator (Java 8+).
             Objects.null(obj) - Returns true if the object is null.
     java.util.function - Functional Interfaces for writing lambda expressions.
+    java.util.Array - contains array methods
+    java.util.Collection
 2)java.lang(no need to import) -
     String
     Object (Parent class of all classes in java)
@@ -25,6 +27,7 @@
             getRecordComponents()
 
     Record
+
 
             
 

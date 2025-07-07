@@ -12,10 +12,14 @@ Characteristics of Maven -
 
 
 Setting up Maven -
-    Download apache maven.
-    copy to some path
+    Download apache maven(binary zip archive) file is independent of OS.
+    copy to some path(java folder in home directory)
     add path till bin to path variable -
-        export PATH="pathToBIn":$PATH
+        export PATH=pathToBIn:$PATH
             explanation -
                 to read PATH - ECHO $PATH, it has various values separated by ':'.
                 to write - export PATH=value, so in case we append our value to existing values
+
+
+    Note - CHAT_GPT shows that we also need to setup the MAVEN_HOME variable, also in mac to persist chnages we need to
+    add the export command to .bash_profile or .zshrc file.follow a different path

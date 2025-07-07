@@ -18,8 +18,8 @@
 
 
 6)Project creation - What actually happened
- figure 1
- url of default maven repository - repo1.maven.apache.org
+    figure 1
+    url of default maven repository - repo1.maven.apache.org
 
 7)examining the project structure
     pom.xml -

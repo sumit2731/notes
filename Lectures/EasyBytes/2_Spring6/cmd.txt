@@ -1,0 +1,11 @@
+JDK variables -
+    $PATH (till bin)
+    $JAVA_HOME (bin is not included)
+
+Maven Variables -
+    $PATH (till bin)
+    $MAVEN_HOME (bin is not included)
+
+How JAVA path is resolved in mac -
+    When you type java in your terminal, the /usr/bin/java wrapper likely calls /usr/libexec/java_home internally to get the 
+    path to the "best" or currently selected JDK.

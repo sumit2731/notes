@@ -1,0 +1,12 @@
+1_ClassPath -
+    target/classes
+    During build -
+        Maven compiles Java sources from src/main/java to target/classes
+            Maven ignores physical folder structure when compiling
+            Only the package declaration in Java files matters
+            Classes are placed in the classpath according to their package declaration
+        Maven copies resources from src/main/resources to target/classes
+        All dependencies (JARs) are resolved from your local Maven repository
+    In Compiled Applications -
+        The classpath root becomes target/classes
+        All dependency JARs are included in the classpath

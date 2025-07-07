@@ -1,0 +1,16 @@
+1)Finding Element -
+    a)using for-each loop and return
+    b)using streams - filter, findFirst,orElse
+    c)Using lambdas - same as first but creates a reuseable version. i.e lambda is passed from outside.
+
+
+2)Sorting -
+    1)Using Comparator -
+        a) Anonymous Inner Class (Traditional approach before Java 8)
+            use Array.sort - second argument is Comparator Object with custom compare function
+            (Annoynous inner class)
+        b)Lambda expressions provide a much more concise way to implement Comparator (since Comparator is a functional interface).
+            here again second argument is comparator but this time it is created by lambda expression.
+        c)Comparator.comparing(lambda or FunctionalRefrence) and Comparator.thenComparing(lambda or FunctionalRefrence)
+    2)Implementing Comparable(interface) in class - define a method in class (compareTo)
+        just call Array.sort(array)

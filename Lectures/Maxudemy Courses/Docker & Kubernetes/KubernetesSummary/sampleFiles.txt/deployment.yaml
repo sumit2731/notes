@@ -153,7 +153,7 @@ spec:
             # optional: 
             # items: # You can specify which keys to mount as files
             #   - key: log_level
-            #     path: logging.conf # Mounts 'log_level' as 'logging.conf'
+            #     path: logging.conf # Mounts 'log_level' as 'logging.conf', i.e we will have logging.conf file avalaible inside container
             #   - key: application.properties
             #     path: app.properties # Mounts 'application.properties' as 'app.properties'
             # defaultMode: 0644 # Optional: set file permissions (octal)

@@ -1,1 +1,5 @@
 a)messaging in spring
+2)signifance of these annotations -
+    @Controller
+    @Service
+    @Repository

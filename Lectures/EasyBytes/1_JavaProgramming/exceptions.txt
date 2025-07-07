@@ -3,3 +3,6 @@
     we define in Record.
 3)ClassCastExceptionDemo - When we do a casting but in actual casting is not possible.
 4)ArrayIndexOutOfBound - when we try to access index that is greater than array lengtrh.
+5)NumberFormatException - when we try to convert illegal string valur to other primitive type.
+6)NullPointer Exception -
+    a)try to autobox a null value into primitive type.this is because compiler will try to invoke a method on null.

@@ -1,0 +1,7 @@
+1)@Bean - @Bean annotation lets Spring know that it needs to call this method when it initializes its context and adds the 
+    returned object/value to the Spring context/Spring loC Container.Also returned value is converted into bean.
+2)@Configuration - code 1
+3)@Primamry - slide 22
+4)@Component - slide 23
+5)@Controller, @Service,@Repository - slide 24
+6)@PostConstruct - slide 27

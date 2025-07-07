@@ -1,0 +1,5 @@
+Things I leant -
+    a)Installed a github MCP server.
+    b)how to check which MCP servers are running, which are stopped.How to start a MCP server.
+    c)what if you want a mcp server just in your project.
+        While setting up project open, mcp.json folder in .vscode.

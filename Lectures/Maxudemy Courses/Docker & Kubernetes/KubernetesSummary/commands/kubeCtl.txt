@@ -131,7 +131,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
         5)kubectl get
             kubectl get deployments
                 name
-                ready - shows the status of the Pods managed by the Deployment. It's displayed as (current_ready_replicas)/(desired_replicas).
+                ready - It shows the status of the Pods managed by the Deployment. It's displayed as (current_ready_replicas)/(desired_replicas).
+                    i.e no of pods.
                 avalible -  number of healthy Pods that are available to the users
             kubectl get pods
                 If some pod is facing some error. you will see that error also.
@@ -154,6 +155,8 @@ kebectrl - It is install on local system , it talks with cluster. it gives comma
                 capacity - 10 Gi
                 accessMode
                 storageClass
+
+            kubectl get namespaces
 
         5)persistent volumes and persistent volume claims -
             kubectl get pv

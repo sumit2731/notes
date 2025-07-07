@@ -10,3 +10,14 @@
 
 2)refer to pwd(mac) -
     $(pwd)
+
+
+3)to create sym link -
+    sudo ln -s /path/to/original /path/to/symlink
+    sudo ln -s /usr/local/apache-maven-X.Y.Z /usr/local/maven
+
+
+    useage -
+        You can refer to this symlink while setting env variables -
+            export M2_HOME=/usr/local/maven
+            export PATH=$PATH:$M2_HOME/bin

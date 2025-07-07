@@ -1,9 +1,9 @@
 1)Running things locally -
     docker compose up -d --build
 
-2)implementing slide 1(code1)
+2)implementing slide 1(code1)(communication between 2 containers in same pod using localhost)
     deploying users-api on kubernetes -
-        1)In code remove all refrences to auth-api.
+        1)In code remove all refrences to auth-api.use dummy values. first we just want the users service to be containerized.
         2)push image to docker hub -
             docker build -t sumeet27/kub-demo-users .
             docker push sumeet27/kub-demo-users
@@ -12,55 +12,63 @@
             kubectl apply -f=users-service.yaml
             minikube service users-service
 
-            Now we hit the API's now were able to get response.
+            Now we were able to hit the users API's and get response.
     Deploying auth api on kubernetes -
-        1)In usersAPI start using refrences for authAPI, instead of hard coding URL, use env Variables.
-        2)create new image for userAPI and push it in docker hub.
-        3)provide value of envVariable at 2 places -
-            a)docker-compose.yaml (here value should be name of service)
-            b)In userAPI container config of pod. their value should be localhost, as container runs in same pod.
+        1)create new image for userAPI and push it in docker hub.
+        2)In usersAPI start using refrences for authAPI, instead of hard coding URL, use env Variables -
+            AUTH_ADDRESS
+        3)In docker-compose.yaml, provide value for AUTH_ADDRESS in users service. value is name of auth service - 'auth'.
         4)push auth image in ducker hub -
             docker build -t sumeet27/kub-demo-auth .
             docker push sumeet27/kub-demo-auth
         5)Auth API needs to be in same pod as users api. so we add a container config in users-deployment.yaml.
-        6)we do not expose the port used by auth API in users-service, so no changes are required in users-service.yaml.this makes sure that authAPI
+            because creating a new deployment will create a new pod. In a deployment, we can have 1 type of pod and
+            that pod can have multiple containers.so we add new container to existing pod.
+            so update users-deployment.yaml
+        6)now in users-deployment.yaml,provide env variable to user-api contianer -
+            AUTH_ADDRESS - 'localhost'
+            THis is because both containers are running on same pod. so they can communicate using localhost
+        7)we do not expose the port used by auth API in users-service, so no changes are required in users-service.yaml.this makes sure that authAPI
             is not reachable to outside world.
-        5)docker apply -f=users-deployment.yaml -f=users-service.yaml.with This you should be able to hit api's of userService using postman.
+        8)docker apply -f=users-deployment.yaml -f=users-service.yaml.with This you should be able to hit api's of userService using postman.
             url is serviceIp and port is port exposed by service.
 3)implementing slide2(code2) -
-    1)as we need different pod ofr authService,create a separate deployment for authApi - auth-deployment.yaml
-    2)now we need service for authAPi as containers in another pod need to reach it. so we created - auth-service.yaml
-        type-ClusterIP , not LoadBalancer because we do not want to expose service outside.
-    3)apply service config -
-        kubectl apply -f=users-service.yaml
-    4)now we need  the IP for reaching the auth-service, so that in usersApi we can us that api to reach authApi.
-        a)way 1 -
-            1)kubectl get services.
-            2)copy IP CLUSTER-IP, this will not change.
-        b)way 2 -
-            1)Kubernetes will give you automatically generated environment variables in your programs, with information about all the services,
-                which are running in your cluster.through these environment variables,kubernetes will automatically give us information,like the 
-                IP addresses of the different services
-            2)name of env variable -
-                a)all charcters are caps
-                b)'-' is replace be '_'
-                auth-service - AUTH_SERVICE_SERVICE_HOST
+    a)separate container for auth-pod
+        1)as we need different pod ofr authService,create a separate deployment for authApi - auth-deployment.yaml.
+        2)remove auth container from users-deployment.yaml.
+        3)now we need service for authAPi as containers in another pod need to reach it. so we created - auth-service.yaml
+            type-ClusterIP , not LoadBalancer because we do not want to expose service outside.
+        4)apply service config -
+            kubectl apply  -f=auth-service.yaml -f=auth-deployment.yaml
+            minikube service auth-service
+        5)now we need  the IP for reaching the auth-service, so that in usersApi we can us that api to reach authApi.
+            we use env variables  for this, we need to give env variables in container conifg.
+            a)way 1 -
+                1)kubectl get services.
+                2)copy IP CLUSTER-IP, this will not change.
+            b)way 2 -
+                1)Kubernetes will give you automatically generated environment variables in your programs, with information about all the services,
+                    which are running in your cluster.through these environment variables,kubernetes will automatically give us information,like the 
+                    IP addresses of the different services
+                2)name of env variable -
+                    a)all charcters are caps
+                    b)'-' is replace be '_'
+                    auth-service - AUTH_SERVICE_SERVICE_HOST
 
-        In usersAPI we use both of these ways. wo we need to provide 2 env's -
-            AUTH_ADDRESS -
-                docker-cpompose - name of network
-                kubernetes - first start service then copy the IP, then provide it in users-deployment.yaml 
-            AUTH_SERVICE_SERVICE_HOST - kubernetes provides it automatically, but in case of docker-compose we need to provide it
-    5)build users image and push to docker hub
-    6)kubectl apply -f=users-service.yaml -f=auth-service.yaml 
-    7)run - kubectl get services
-        copy CLUSTER_IP and use it in users-deployment.yaml.
-    8)kubectl apply -f=users-deployment.yaml -f=auth-deployment.yaml
+            In usersAPI we use both of these ways. wo we need to provide 2 env's -
+                AUTH_ADDRESS -
+                    docker-compose - name of network
+                    kubernetes - first start service then copy the IP, then provide it in users-deployment.yaml 
+                AUTH_SERVICE_SERVICE_HOST - kubernetes provides it automatically, but in case of docker-compose we need to provide it
+        6)IN users-api, use above 2 env variables.
+        7)update image in docker hub.
+        8)kubectl apply -f=users-deployment.yaml 
     9)then we saw there is third way of reaching to a service inside  a cluster, there is a internal DNS mapping is created for each service -
         `{serviceName}.{namespaceName}`
         if you dnt specify namespace while creating service, then it is default.
     10)we used this instead of getting IP address. also this is prefered way of reaching to service.
-
+        so we change value of AUTH_ADDRESS in users-deployment.yaml.
+--------------------------------------------------------------------------------
 
     Adding third container - 
     11)Then we added a third container for tasks, we created 2 files -

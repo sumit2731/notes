@@ -1,40 +1,125 @@
-4)jakarta EE vs Spring
-    spring build on top of enterprise edition specifications or APIs or interfaces.
-    Even today, spring leverages the Servlets present inside Enterprise edition.
-    It leverages the JPA specifications defined by Enterprise Edition team.
+3)what is spring(slide 7)
+    Spring provides mechanisms to support all the requirements that I need for a Java 
+    Web applications in the form of defining dependencies, writing configurations.
 
-    It leverages the JPA specifications defined by Enterprise Edition team.
+    Spring competitor -
+        a)EJB (oracle handed it over to community - now its called jakarta)
+        b)Struts
+
+    Why spring is successful -
+        a)it evolves on day to day basis 
+            It evolves over the period based upon the market trends, like in the initial days.
+            It evolves over the period based upon the market trends, like in the initial 
+            days.Spring came up with only spring core and spring MVC pattern to build 
+            monolithic applications.Later on when industry is moving towards a microservices 
+            cloud native applications.Then spring also started evolving by introducing lot
+            of features like Spring Boot, which will make developer life very easy in 
+            building web applications, microservices applications.
+        b)it's very simple to use
+        c)it will make developer life easy.
+
+4)jakarta EE vs Spring (slide 8,9)
+
+    J2EE -> Java -> Jakarta EE
+
+    Java has 3 flavours -
+        a)Java Standard Edition - This will have all the core Java classes, interfaces 
+        like Object Class,Collections,API, JDBC, exception handling.
+        b)Java Mobile Edition - For Mobile applications.
+        c)Java EE - since this supports web applications development, all the advanced concepts 
+         like Servlets Jsps Ejbs,JMS JPA(which is used for persistent framework) JavaServer Faces,
+         which is JSF and all web services related Jax-ws,Jaxb and  WebSockets.So all these 
+         advanced concepts are present inside Enterprise Edition, which can be used to build 
+         web applications that will accept a request and send a response from an servlet
+         container.
+
+    Why working with EJB is diffcult -
+        If I take an example as a developer,if my requirement is to fetch the records 
+        or results from a database, my focus should be only on writing the queries,
+        building the where conditions or criteria.But I should not be worrying about -
+            a)how to get a connection of the database,
+            b)how to close the connection,
+            c)how to exception handling, 
+            d)how to handle the transactions, 
+            e)how to commit a transactions.
+
+        So these are all not related to my business logic.So all these kind of extra
+        complexities that developer has to handle is made very simple inside spring 
+        framework where developer don't have to worry about it.He just had to provide
+        database credentials with that spring framework will take care of these.
+        Whereas in Enterprise Edition, all these are the responsibilities of developer.
+
+        In early 2000 people used to suffer a lot in building web applications because
+        you have to define many servlet mappings inside your web.xml which make things 
+        super complex.
+
+        Spring simplifies all this.
+
+        but dnt think that Spring framework is alone enough for us to build web applications
+        and we don't need any libraries or support from Enterprise Edition.The reason is spring
+        build on top of enterprise edition specifications or APIs or interfaces.Even today,spring
+        leverages the Servlets present inside Enterprise edition.It leverages the JPA specifications
+        defined by Enterprise Edition team.It's just that it made development of web applications 
+        using all these specifications very easy.
+
+    They will travel hand in hand with the role of enterprise Edition is to come up with the
+    latest specifications around Java programming language.spring framework also evolved a
+    lot based upon the needs of the developers and introduced many projects based upon the 
+    market trends.We will be discussing all those projects in the coming lectures.
+
+    Spring Started with Spring MVC. Later it introduced -
+        Spring Security
+        Spring Data
+        Spring Boot
+        Spring Cloud - Helps in building microservice that can be deployed on docker
+            and kubernetes.
+        Spring Batch - Focuses on batches executions.
 
 
-5)Intro to Spring Core
-    Slide 10 -
-        Spring has many frameworks for all these projects, spring core is at the center and this is the base
-        for all the projects available inside the spring framework.Without learning the spring core components,
-        we cannot really build spring Web applications or spring boot web applications.
+5)Intro to Spring Core(slide 10)
+    spring, it is not a single framework.Spring is a version of frameworks where it has 
+    more than 50 frameworks covering each scenario of a web development.
 
-6_IOC and Dependency Injection(slide 11)
-     Spring core built based upon the principles of inversion of control, which means any project that you 
-     pick inside spring framework will follow the software design principle, which is inversion of control.
+    For all these projects, spring core is at the center and this is the base for all
+    the projects available inside the spring framework.
 
-     IOC is a software design principle followed by other languages also. what is says never ever create the objects or the dependencies
-        that you need inside your program directly.Instead, describe the ways object has to be created to an external entity which means,
-        as a developer,I should never take the responsibility of creating my own dependencies or the objects that my program needed.
-        Instead, I should rely on a framework or an external entity by providing the configurations.
+6)IOC and Dependency Injection(slide 11)
+    All projects inside Spring follow principle of "Inversion of Control".Spring core, which is again the base for all the spring
+    projects and spring framework built on core principles called inversion of control and dependency injection.
+    
+    IOC is a software design principle followed by other languages also. what is says never ever create the
+        objects or the dependencies that you need inside your program directly.Instead, describe the ways 
+        object has to be created to an external entity which means,as a developer,I should never take the
+        responsibility of creating my own dependencies or the objects that my program needed.Instead, I should
+        rely on a framework or an external entity by providing the configurations.
+        
+    But IOC just an principle, which will define you guidelines.So what the inversion of control means is instead
+        of programmer controlling the flow of a program,a framework or an external entity should take control of 
+        the program flow.
 
-     this is just a principle,which will define you the guidelines. Now coming to the dependency injection.
-        It is a pattern through which inversion of control is achieved
+    DI - Inversion of control is just an principle, whereas dependency injection is an implementation of that
+    inversion of control.So we can call dependency injection as a design pattern.
+    
+    Through dependency injection,The responsibility of creating the objects inside any application is shifted
+    from the application or programmer to the any external framework or inside spring we call it as IOC container.
 
-    So why spring adopted dependency injection and inversion control means to achieve loose coupling between the components that we
-    build or between the classes that we build inside any application.
+    So why spring adopted dependency injection and inversion control means to achieve loose coupling between the components 
+    that we build or between the classes that we build inside any application.
 
 
 7 - demo of IOC and dependency injection
-    first we saw code befoe dependency injection.
-    then we saw code with dependency injection, but we have to create Factory Class.
+    first we saw code before dependency injection.
+    
+    then we saw code with dependency injection, but we have to create Factory Class.This class takes a input i.e
+    kind of object it should return, and it returns the object of type general interface.Limitation -
+
+        a)you still need to write code inside your class. so testing is required.
+        b)you need to write lot of boiler plate code.
+    
     then we saw code where dependencyInjection is handled by spring.(used @AutoWire)
 
 
-8 - advantages of IOC and DI (slide 12)
+8 - advantages of IOC and DI (slide 12,13)
     a)loose coupling - CarManufacturer class is loosely decoupled from WheelManufacturer and MusicSystem.
         when we change dependencies we do not need to change any code.
     b)less code - I can use the same object instead of creating each and every time.Suppose inside 
@@ -49,17 +134,17 @@
         business logic is not at ready, I can inject some mock objects using spring unit testing framework.
         That way I can continue my development on the vehicle manufacturer.
 
+    Loose coupling is main advantage od Spring.
+
 
 9 - Intro to Beans,Context and SpEL(Slide 14)
 
-    beans - spring bean is nothing but any normal pojo java class that is instantiated, assembled and maintained by the spring IOC container.
-        inside spring everything will work based upon the bean configurations or the bean autowiring.Even the application or programmer also should 
-        define the dependencies with the help of beans.how spring knows which classes to maintain?
-        As a developer, it's our responsibility to mention those details with the help of configurations that we supply to the spring IOC container,
-        either in the form of XML configurations or annotations.
+    Point 2 in slide - how would  spring knows which classes to maintain?As a developer, it's our responsibility to 
+        mention those details with the help of configurations that we supply to the spring IOC container,either in
+        the form of XML configurations or annotations.
         
-        it is the responsibility of the spring IOC container to maintain the lifecycle of the spring beans, their scope and to inject the required
-        dependencies using dependency injection pattern that we discussed previously.
+        it is the responsibility of the spring IOC container to maintain the lifecycle of the spring beans, their scope
+         and to inject the required dependencies using dependency injection pattern that we discussed previously.
     
     context - So context is like a memory location of your web application in which all the objects that are instantiated
         by the framework are present and managed by it with the help of context information. By default, spring
@@ -69,53 +154,75 @@
         If an object is never available inside spring context, then there is no way spring framework to maintain that.
         That's why please have an understanding that context is a place where all your beans information and
         the dependencies which will be maintained by your spring IOC container based upon the configurations that we 
-        give to the spring framework.
-    Spel(Spring expression language) - spring maintains our thousands and hundreds of beans and their methods and their values available
-        inside those objects, we need an expression language for querying and manipulating any information or to fetch any information
-        from the objects at runtime.So like setting and getting property values or invoking a method or property assignment.So to perform all these operations,
-        Spring Framework uses an powerful expression language which we call it as spring expression language
+        give to the spring framework, will be present..
+    SPEL(Spring expression language) - Spring maintains our thousands and hundreds of beans and their methods and their values
+        available inside those objects,we need an expression language for querying and manipulating any information or to fetch
+        any information from the objects at runtime.So like setting and getting property values or invoking a method or property
+        assignment.So to perform all these operations,Spring Framework uses an powerful expression language which we call it as
+        spring expression language
 
 10 -Intro to Spring Ioc Container(slide 15, 16)
-    spring IOC container is a component inside spring core framework, which is responsible for creating
+    Spring IOC container is a component inside spring core framework, which is responsible for creating
         the beans, for configuring the objects and the dependencies between them.So basically all the lifecycle 
-        of the beans will be maintained by the spring IOC container.Whether you want to create a bean, whether you want to destroy a bean.
-        So all those events will be controlled by the spring IOC container.So this is a entity that is responsible inside spring framework 
-        to manage all your Java objects by converting them into the beans and based upon the configurations, dependencies that we defined 
-        inside our application,It is the IOC container that at runtime dynamically injects the dependencies between multiple objects
+        of the beans will be maintained by the spring IOC container.Whether you want to create a bean, whether
+        you want to destroy a bean.So all those events will be controlled by the spring IOC container.
+        
+        So this is a entity that is responsible inside spring framework to manage all your Java objects by converting
+        them into the beans and based upon the configurations, dependencies that we defined inside our application,It
+        is the IOC container that at runtime dynamically injects the dependencies between multiple objects
         with the dependency injection pattern that we discussed previously.
 
     Again, when I say container,these are implemented inside spring with 2 types of IOC containers.refer slide for interface names.
-    So there are many implementations of these interfaces inside Spring Framework Library, which will act as a spring IOC container based upon
-    how we want to use them.
+    So there are many implementations of these interfaces inside Spring Framework Library,which will act as a spring IOC 
+    container based upon how we want to use them.
 
     Like if you have your configurations inside XML, we have XML style of IOC container.
     Similarly, we have classpath style of IOC container, annotation style of IOC containers.
     difference between bean factory and application context IOC container -
-        Bean factory is a very basic IOC container.so it can only handle the bean creation, bean maintenance, auto wearing them and injecting the dependencies
-            based upon dependency injection pattern.
-        application context is an advanced IOC container, it implements bean factory.On top of that, it provides extra features to the developers.
+        BeanFactory is a very basic IOC container.so it can only handle the bean creation, bean maintenance, auto wearing them
+            and injecting the dependencies based upon dependency injection pattern.
+        ApplicationContext is an advanced IOC container, it implements bean factory.On top of that, it provides extra features
+            to the developers.
             a)where after creating a bean, you want some code to be executed or just
             b)before destroying a bean if you want to execute a business logic.
 
-            So all these kind of event publishing around the spring beans can be handled with the help of application
-            context interface and its implementations.it provides another advance features which are needed for enterprise applications, especially around 
-                a)internalization
-                b)messaging.(search on gemini)
+            So all these kind of event publishing around the spring beans can be handled with the help of ApplicationContext 
+                interface and its implementations.it provides another advance features which are needed for enterprise applications, 
+                especially around 
+                    a)internalization
+                    b)messaging
 
-        So if you want to write a very basic spring application where you don't want to use any advanced features of spring framework, then you should go for the bean
-            factory implementation.Otherwise I would always recommend you to go with the application context.
+        So if you want to write a very basic spring application where you don't want to use any advanced features of spring 
+        framework, then you should go for the BeanFactory implementation.Otherwise I would always recommend you to go with the
+        application context.
 
 
     slide 16 -
         If you look the representation that I'm showing on the screen, the spring IOC container leverages four important information.
+        It uses these 4 components to maintain objects inside web applications.
             a)The very first one is all the core libraries available from the spring framework and the core principles
                 that spring framework is adopted, like inversion of control and dependency injection.
-            b)post that spring IOC container also leverages the context, which is a virtual memory location inside spring framework
-                where all the configurations around how to create a bean,What are the dependencies that it has, what are the initial values that 
-                we want to instantiate,So all those information available inside a memory location called context.So spring IOC container during the 
-                startup of the application will go ahead and look for the context information.So based upon the configurations available inside the context location,
-                it will convert all the applicable Java objects into the beans and after converting the Java objects into the spring beans, it will also
-                understand what are the dependencies between all these hundreds and thousands of beans are available inside a web application 
+            b)post that spring IOC container also leverages the context, which is a virtual memory location inside spring
+                framework where all the configurations around how to create a bean,What are the dependencies that it has, what
+                are the initial values that we want to instantiate,So all those information available inside a memory location
+                called context.So spring IOC container during the startup of the application will go ahead and look for the 
+                context information.So based upon the configurations available inside the context location,it will convert all
+                the applicable Java objects into the beans and after converting the Java objects into the spring beans, it will
+                also understand what are the dependencies between all these hundreds and thousands of beans are available inside
+                a web application 
             c)during runtime,by using spring expression language, it will try to inject the dependencies based upon the configurations
                 that we mentioned inside the context location.
+
+        on Right Side -
+            To spring application context, you provide - 
+            a)the list of application classes, which are your pojo classes that you have written, all your business logic 
+            b)configuration instructions like - 
+                a)classes that you want to convert to beans
+                b)what are dependencies that a bean or object has
+                c)what are the initial values that you want to set for a bean
+            these configs are provided using XML instructions or annotation configuration.
+
+            by taking these 2 info spring application context will prepare a fully configured application.
+
+
         
