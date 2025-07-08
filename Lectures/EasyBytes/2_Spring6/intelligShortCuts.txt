@@ -21,6 +21,9 @@ Settings -
     8)Font Size - 
         intelliJ ->settings -> Editor -> Font
 
+    9)Open debugger in another window -
+        click on 3 dots on top right in debugger view -> vide mode -> window
+
 ShortCuts -
     a)Search class/file/text -
         cmd + o (Go to class, Mac)

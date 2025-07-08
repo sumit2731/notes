@@ -1,6 +1,8 @@
 1)NoUniqueBeanDefinitionException  - Slide 20
+    Multiple beans of single type exists. we need to use bean name also.
 2)NoSuchBeanDefinitionException
 3)BeanDefinitionOverrideException -
     When you try to give same name to 2 beans and override is allowed.even in alias.
 4)BeanNotOfRequiredTypeException - when we try to get bean with unique identifier and type.bean exists but
     is not of required type
+5)UnsatisfiedDependencyException - circular dependencies

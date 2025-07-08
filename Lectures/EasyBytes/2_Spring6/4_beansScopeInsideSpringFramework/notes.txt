@@ -1,0 +1,65 @@
+40_Introduction to bean scope inside spring(slide 49)
+    Bean scope is a concept inside spring which will define how a bean has to be created and maintained
+    by spring IOC container, whether it needs to be maintained forever inside an application till the restart
+    happens, or whether it needs to create a new bean every time a reference is asked.So all these are controlled
+    with the help of bean scopes inside spring. And there are five types of scopes are available inside spring.
+
+    last 3 are related to web Application. here we will discuss first two scopes.
+
+
+41_Singleton Design Pattern(slide 50)
+    you will have a same single object instance for each beanfor same data type if we have multiple beans,
+    each bean will have separate instance.
+
+
+42_Race Condition(figure 51)
+    So it's our responsibility as a developer, whatever bean that we are choosing as a singleton bean scope,
+    there is no data related updation or correction or deletion is happening inside these beans.
+    So in Java, how we used to avoid this race condition is with the help of synchronization locking,
+    which is unnecessarily complex to handle inside spring applications.
+    That's why, while you are choosing the scope of a bean as a singleton, spend few minutes asking whether
+    this will result into any race conditions.
+
+
+43_UseCases of SingleTon Bean Scope(slide 52)
+    Singleton beans should be immutable.When I say immutable, once it is created by the spring IOC container,
+    they should not be anywhere a scenario where you are trying to change the data inside that object.
+    So that's why the singleton bean scope is more suitable for the beans which handle only business logic or which
+    have only methods inside them like service layer, repository layer.
+
+
+    But if you have a bean where it will also handle the data also like you are doing previously, we have
+    a vehicle bean, we have a person bean and inside that we have a name field or age field.
+    If there is a scenario inside your application where it can be changed by some other business logic,
+    where I have defined a name as an initial value with some random name, and if some part of the application
+    is trying to update that, then in those scenarios it is strictly not recommended to create singleton
+    bean scopes because the bean is a mutable in that scenario.
+
+    So that's why always create or go for the singleton bean scope if you are Java class has purely business
+    logic in the form of Java methods and there are no field variables.And even if there are field variables
+    available, they should not be any scenario where you want to update once the bean is created.
+
+    That's why doing autowiring and dependency injection with the constructor injection will allow you
+    to make that bean maintained as a final, which will make it as a immutable object.
+
+
+    But if you try to build mutable singleton beans, it will result into race conditions like we discussed
+    before inside the multi threaded environments.Though there are ways to avoid race conditions with the help
+    of synchronization, locking of the object when some part of the application is trying to access it.But it is
+    not recommended to create mutable singleton beans.
+
+    The reason is it brings a lot of complexity inside your application and it will also create a lot of performance
+    issues because if you try to implement synchronization or locking inside your application on top of a singleton
+    bean, every time an application is trying to access, trying get a reference of that, your code has to check whether
+    the particular bean object is being used by someone else.If not, it will try to give that reference and put a 
+    temporary lock on that.So doing all this will attract a lot of performance issues inside your application.
+
+
+    also don't try to create a bean until unless it is needed. Like if you have a simple Java pojo class without any 
+    business logic methods inside it, and it has simple getters and setters along with the field names.So in those
+    scenarios, don't ever create that as a bean.The reason is you are not getting anything from these kind of scenarios.
+    And when you try to inject these kind of beans into other part of the application, so there is no business
+    logic inside it, just a data pojo that's why whenever you have data pojo objects inside your application don't 
+    create beans.So please only create beans for Java classes where we have a business logic methods inside it.
+
+

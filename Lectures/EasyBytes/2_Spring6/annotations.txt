@@ -5,3 +5,8 @@
 4)@Component - slide 23
 5)@Controller, @Service,@Repository - slide 24
 6)@PostConstruct - slide 27
+7)PreDestroy -slide 28
+8)@Autowired
+9)@Qualifier - slide 46
+10)@Scope - slide 50
+11)@Lazy - slide 53

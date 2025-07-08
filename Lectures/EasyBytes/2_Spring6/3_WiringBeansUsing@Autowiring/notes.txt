@@ -1,0 +1,69 @@
+29)Introduction to wiring & auto-wiring inside spring (slide 36,37, 38)
+    In any web application inside Java, usually the objects will delegate certain functionality or responsibilities 
+    to other objects inside web applications.So we will never write all the business logic inside a same class because
+    it will be super, super complex to maintain in the future.
+
+    so we segregate business logic into corresponding layers.see figure.
+    To perform CRUD operations onto the database, we have a vehicle DAO object or a DAO layer inside our web
+        app.
+    In Figure - So in this flow, vehicle controller object has a dependency or it is handing over certain. 
+    responsibilities.
+
+    So creating beans for all of your Java classes alone will not be enough.We need to wire them.We need to 
+    understand the dependencies between them and we need to let the spring framework know that so and so bean
+    has so and so dependency.So this concept is called wiring or autowiring inside spring framework.
+
+
+    figure 37 -
+        left - spring created beans , it is tracking their life cycle.But unfortunately these three objects is
+            not aware of each other. Because I have not configured or I have not provided details of wiring and
+            autowiring to my spring framework
+        right - I have done the wiring configurations inside my web application.That way my spring IOC container
+            now is smart enough to understand the dependencies that all these objects has in between them, and
+            with the help of wiring configurations, it will do dependency injection when my code  runs.Like whenever
+            I'm trying to execute the code in the controller object.By the time my code is looking for the service
+            object, my spring framework will make sure it is injecting the service object.That way my code will
+            not have null pointer exception.
+
+    figure 38 -
+        If my person trying to access the vehicle by using the getters and setters available inside person pojo
+            class for a vehicle, definitely the code will throw null pointer exception.
+
+
+30 - Wiring beans using method call (figure 38)
+    not recommended in production.The reason is this is very dirty way of mentioning the dependencies to your spring
+    framework.So in future, if the dependencies are changing, you need to go to all the places where your person
+    object is getting created and you need to change in all those places.
+
+    code - example9
+
+    note - when we call vehicle method inside person method, it will not created a separate bean of  vehicle.Spring
+    calls vehicle method during startup of framework to create a bean and it will return that same bean instead of
+    calling the function again.And if there is a scenario where my person Bean is getting created very first time
+    before the vehicle bean,then it will the  vehicle bean method from person bean method, but will not call call
+    vehicle method again.
+
+
+31 - Wiring Beans using method parameters(slide 39)
+    So while creating a person bean, my spring framework is smart enough to look if there is a bean of vehicle data
+    type.If not, it will try to create a bean based upon the configurations that we made, post that it will try to
+    autowire the person and vehicle.
+
+    code - Example10
+    file - ProjectConfig.java
+
+
+32,33,34- Writing Beans using @Autowired on class Fields (slides - 41,42,43)
+    This is not recommeneded in production - Using @Autowired on top of a field inside a class.
+    Why it is not recommended is for some reason if you want your vehicle object to be a final, like if
+    I try to mention the final, definitely your Java will throw an error saying that vehicle might have
+    not initialized.
+
+    code - Example 11.
+    file - Person.java,Vehicle.java ProjectConfig.java, Example11.java
+
+
+35 - Deep dive of Autowiring inside Spring- theory (slide 44,45,46)
+    note Step 1 is removed from Spring 6.1.0 version
+
+    code - example 12

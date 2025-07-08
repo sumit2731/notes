@@ -1,0 +1,21 @@
+7 Jul -
+
+    1)XML Configs
+    2)how maven compiles projects
+    3)Spring Projects
+    4)Wiring and AutoWiring
+        a)@Bean
+            a)Calling @Bean method manually inside another another @Bean
+            b)passing argument to @Bean method
+        b)Autowiring (also how to make it optional)
+            a)On Field
+            b)On Setter Method
+            c)On Constructor
+    5)How spring resolves conflicts in autowiring
+    6)SingleTon bean Scope-
+        Race Condition
+        When to create SingleTon Bean or Normal beans
+
+8 Jul -
+
+
