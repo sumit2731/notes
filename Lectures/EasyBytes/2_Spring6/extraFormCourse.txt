@@ -1,0 +1,6 @@
+1)ObjectProvider
+    a)used to get a new instance of prototype bean every time you refer to it inside singleton bean.
+    b)gives Stream all beans of a type
+
+2)@LookUp
+    helps to inject prototype bean inside singleton bean.

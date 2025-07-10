@@ -9,14 +9,18 @@ public class Example17 {
 
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        var vehicleServices = context.getBean(VehicleServices.class);
+        VehicleServices vehicleServices = context.getBean(VehicleServices.class);
+        /**
+         * Here type differs before and after you introduce AOP
+         * After AOP this is proxy
+         */
         System.out.println(vehicleServices.getClass());
-        Song song = new Song();
-        song.setTitle("Blank Space");
-        song.setSingerName("Taylor Swift");
+//        Song song = new Song();
+//        song.setTitle("Blank Space");
+//        song.setSingerName("Taylor Swift");
         boolean vehicleStarted = true;
         String moveVehicleStatus = vehicleServices.moveVehicle(vehicleStarted);
-        String playMusicStatus = vehicleServices.playMusic(vehicleStarted,song);
-        String applyBrakeStatus = vehicleServices.applyBrake(vehicleStarted);
+//        String playMusicStatus = vehicleServices.playMusic(vehicleStarted,song);
+//        String applyBrakeStatus = vehicleServices.applyBrake(vehicleStarted);
     }
 }

@@ -1,0 +1,21 @@
+AspectJ pointcut designators
+
+    1)execution - Match method executions -	execution(* foo(..))
+    2)within(com.example.MySecured) -	All methods within class/package  matched by expression -
+        within(com.example..*). this is checked compile time.
+        If BaseClass is matched, child class is not, then all methods declared in BaseClass will be intercepted.
+    3)this(com.example.AccountService) - matches join points (like method executions) where the proxy object — the Spring-managed
+        AOP proxy — is an instance of the specified type.
+    4)target(com.example.PaymentService) -  where the actual object (target) being advised is an instance of
+        the specified type, regardless of the proxy type.this is checked runtime.this includes subclasses 
+        and implementations
+    5)args(String, int) -	Match by parameter types -args(String)
+    6)@target(com.example.Auditable) - Matches join points where the actual target object (bean instance)
+        is of a class annotated with the given annotation.Use @target when you want to target any method execution 
+        on a bean whose class is annotated — even inherited ones.
+    7)@args - here we place annotation on class. when object of that class is passed to method, then
+        this is triggered.
+    8)@within() - method is declared in a class that is annotated with the specified annotation.
+        All methods inside Class, which is  annotated with something	@within(MyAnno)
+            If SuperClass is annotated,child class is not.methods defined in Base class will be intercepted
+    9)@annotation - matches only those methods which are annotated with a specific annotation.

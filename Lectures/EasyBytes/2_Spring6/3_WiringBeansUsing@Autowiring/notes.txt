@@ -54,7 +54,7 @@
 
 
 32,33,34- Writing Beans using @Autowired on class Fields (slides - 41,42,43)
-    This is not recommeneded in production - Using @Autowired on top of a field inside a class.
+    This is not recommended in production - Using @Autowired on top of a field inside a class.
     Why it is not recommended is for some reason if you want your vehicle object to be a final, like if
     I try to mention the final, definitely your Java will throw an error saying that vehicle might have
     not initialized.
@@ -67,3 +67,20 @@
     note Step 1 is removed from Spring 6.1.0 version
 
     code - example 12
+
+
+39 - assignment solution
+    Imp Point - 
+        So instead of I injecting directly the Sony speakers or Michelin tyres or whatever implementation that I have, 
+        I will try to inject the interfaces to the vehicle service.So at runtime, based upon the configurations that I
+        define inside the autowiring, the corresponding Implementation of speakers and tyres will be injected into this 
+        vehicle services.
+
+        here in VehicleService.Java,I have mentioned that I need bean of Type Speakers. Speakers is a interface.
+        We define a class SonySpeakers which implements Speakers interface. We mark that class as Primary bean.
+        now Spring will inject SonySpeakers bean into VehicleService class.tmrw if we want to change it, we just
+        need to change our Primary bean.
+
+        Also we cannot create beans from interface.
+    
+    code - example 13

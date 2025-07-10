@@ -1,12 +1,38 @@
-1)@Bean - @Bean annotation lets Spring know that it needs to call this method when it initializes its context and adds the 
-    returned object/value to the Spring context/Spring loC Container.Also returned value is converted into bean.
-2)@Configuration - code 1
-3)@Primamry - slide 22
-4)@Component - slide 23
-5)@Controller, @Service,@Repository - slide 24
-6)@PostConstruct - slide 27
-7)PreDestroy -slide 28
-8)@Autowired
-9)@Qualifier - slide 46
-10)@Scope - slide 50
-11)@Lazy - slide 53
+Form Course -
+    1)Defining Beans -
+        1)@Bean - @Bean annotation lets Spring know that it needs to call this method when it initializes its context and adds the 
+            returned object/value to the Spring context/Spring loC Container.Also returned value is converted into bean.
+        3)@Primary - slide 22
+        4)@Component - slide 23
+        5)@Controller, @Service,@Repository - slide 24
+        6)@PostConstruct - slide 27
+        7)@PreDestroy -slide 28
+        11)@Lazy - slide 53
+    2)Configurations -
+        1)@Configuration - code 1
+        2)@ComponentScan
+            @ComponentScan(basePackages = {"com.example.implementation","com.example.services"})
+            @ComponentScan(basePackageClasses = {com.example.beans.Vehicle.class,com.example.beans.Person.class})
+    3)Bean Injection -
+        1)@Autowired
+        2)@Qualifier - slide 46, specifies the name of bean which should be injected, if more than 1 bean exists for
+            given type
+        3)@Value - slide 47
+    4)Bean Scope
+        1)@Scope(BeanDefinition.SCOPE_PROTOTYPE) - slide 50
+        2)@Lookup - when you inject Prototype scoped bean into Singleton scoped bean, you can use @Lookup annotation
+         to get new instance of prototype bean every time you refer to it inside singleton bean.
+            
+            @Lookup // This method will be overridden by Spring to return a new Task instance
+            public abstract Task createTask(); // The return type is the prototype bean
+
+    5)AOP -
+        1)@EnableAspectJAutoProxy - Slide 63
+        2)@Aspect - Defines a aspect
+        3)@Before, @AfterReturning, @AfterThrowing, @After, @Around - - Defines the advise (when aspect will be executed).
+            It takes pointcut expression as argument
+        4)@Order
+    
+
+Extra in Course -
+    1)@Lookup - use over abstract method to different bean of prototype scope inside bean of singleton scope.

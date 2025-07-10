@@ -17,6 +17,10 @@ configuration class.
 @Configuration
 @ComponentScan(basePackages = {"com.example.implementation",
             "com.example.services", "com.example.aspects"})
+/**
+ * @AspectJ refers to a style of declaring aspects as regular Java classes
+ * annotated with annotations.
+ */
 @EnableAspectJAutoProxy
 public class ProjectConfig {
 

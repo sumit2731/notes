@@ -17,7 +17,15 @@ public class VehicleStartCheckAspect {
 
     private Logger logger = Logger.getLogger(VehicleStartCheckAspect.class.getName());
 
+    /**
+     * here Argument is of type JoinPoint becaue here we do not get control to execute the function
+     * which we were getting in ProceedingJoinPoint in case of around
+     */
     @Before("execution(* com.example.services.*.*(..)) && args(vehicleStarted,..)")
+    /**
+     * Use this one as it avoids run time exceptions
+     */
+//@Before("execution(* com.example.services.*.*(..)) && args(boolean, ..)")
     public void checkVehicleStarted(JoinPoint joinPoint, boolean vehicleStarted) throws Throwable {
         if(!vehicleStarted){
             throw new RuntimeException("Vehicle not started");

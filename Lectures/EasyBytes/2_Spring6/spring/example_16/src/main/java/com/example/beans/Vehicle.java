@@ -8,7 +8,12 @@ import org.springframework.stereotype.Component;
 public class Vehicle {
 
     private String name="Honda";
-    private final VehicleServices vehicleServices;
+    @Autowired
+    public void setVehicleServices(VehicleServices vehicleServices) {
+        this.vehicleServices = vehicleServices;
+    }
+
+    private VehicleServices vehicleServices;
 
     @Autowired
     public Vehicle(VehicleServices vehicleServices){

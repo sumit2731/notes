@@ -17,5 +17,24 @@
         When to create SingleTon Bean or Normal beans
 
 8 Jul -
+    1)Eager and Lazy instantiation
+    2)Prototype Scope
+    3)Injecting Prototype beans inside Singleton beans
+        ObjectProvider
+        Provider
+
+9 JUly -
+    AOP -
+    1)AOP Jargons
+        a)Aspect - What
+        b)Advice - When
+        c)Pointcut - Which (method)
+        d)JoinPoint - This is event on which Advice is executed.
+        e)Target Object - Beans that contains method which will be intercepted
+        e)Weaving
+
+    2)Types of Advices
+    3)AspectJPointCut Expression
+    4)PintCut designators
 
 

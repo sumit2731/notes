@@ -14,6 +14,13 @@ a)sumitsood3127@gmail.com - S$981h9898,
         1)Java
         2)Spring & SpringBoot
         3)Master MicroServices
+        4)Event Driven Microservices with CQRS,Saga,Event Sourcing
+
+    Java Brains -
+        1)Maven Essentials
+
+    Hussein Naseer -
+        1)Intro to NGINx
 
 
     Angular university-
@@ -64,31 +71,28 @@ a)sumitsood3127@gmail.com - S$981h9898,
 
 b)sumeetsood3127@gmail.com - Freshworks@27
 
-Max Courses-
-    1)Angular styling and animation
-    2)Understanding Typescript
-    3)accelerated ES6 js training
-    4)MongoDB
-    5)ChatGPT & Generative AI
+    Max Courses-
+        1)Angular styling and animation
+        2)Understanding Typescript
+        3)accelerated ES6 js training
+        4)MongoDB
+        5)ChatGPT & Generative AI
 
 
-Angular University-
-1)angular Rxjs Reactive programming renamed to
-  Reactive Angular Course
+    Angular University-
+    1)angular Rxjs Reactive programming renamed to
+    Reactive Angular Course
 
-Anderew Mead -
-1)Nodejs
+    Anderew Mead -
+    1)Nodejs
 
-Chad Durbey -
-1)spring
+    Chad Durbey -
+    1)spring
 
-Other courses- Node course, devops course, jenkins course, Bootstrap Course,
-Webpack 4: beyond basics
+    Other courses- Node course, devops course, jenkins course, Bootstrap Course,
+    Webpack 4: beyond basics
 
-
-c)sumitsood2714 - old courses
-
-d)sumitudemy@gmail.com- divalovesme (Done)
+c)sumitudemy@gmail.com- divalovesme (Done)
 
     Max Courses-
         1)clean Code
@@ -145,34 +149,37 @@ d)sumitudemy@gmail.com- divalovesme (Done)
 
 
     Ohnas Emmanuel -
-    [Legacy] Advanced React Component Patterns
+    [   Legacy] Advanced React Component Patterns
+
+d)sumitsood2714 - old courses
+    Account blocked
+
 
 e)sumitnetflix2@gmail.com - SSSS981S
 
-Angular University-
-1)Ngrx in depth
-2)Angular Material
-3)Angular Universal masterclass
-4)RxJs 6 In Practice (with FREE E-Book)
+    Angular University-
+        1)Ngrx in depth
+        2)Angular Material
+        3)Angular Universal masterclass
+        4)RxJs 6 In Practice (with FREE E-Book)
 
 
-JavaScript DOM manipulation
+    JavaScript DOM manipulation
 
-@$981h2798
+    @$981h2798
 
-f)sumitnetflix27@gmail.com
-S$981h9898
-1)nodejs advanced concepts
-2)devtools pro: beginer to expert
-3)just expess
-4)socket.io
-5)ES6,7 & 8
-6)Advanced JavaScript Concepts(ztm)
-7)Learn vs code
+f)sumitnetflix27@gmail.com (No GMail, account)
+    1)nodejs advanced concepts
+    2)devtools pro: beginer to expert
+    3)just expess
+    4)socket.io
+    5)ES6,7 & 8
+    6)Advanced JavaScript Concepts(ztm)
+    7)Learn vs code
 
-Angular University - 
- pwa apps, 
- angular core
+    Angular University - 
+    pwa apps, 
+    angular core
 
 
 f)santoshsood2714@gmail.com, S$981h9898

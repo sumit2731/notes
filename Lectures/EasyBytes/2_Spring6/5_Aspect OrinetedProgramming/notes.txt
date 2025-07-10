@@ -1,0 +1,98 @@
+49_Intro to AOP (slide 57)
+    So aspect is a simple piece of code that you want to execute by the spring framework
+    whenever you call some specific methods inside your app, which having some business logic inside them.
+
+    you can maintain the code related to non functional requirements inside a aspect.tmrw if these change, you need
+    to make change at single place only.
+
+    So this aspect oriented programming dynamically injects the logic present inside aspect whenever a particular
+    method is executing inside your application.So you don't have to call that logic present inside aspect manually.
+    It will be all taken care by spring framework dynamically during the runtime based upon the configurations
+    that you have done.
+
+    So that way, this is always a pluggable code into your application whenever you want you can configure that and
+    you can plug it and play with that code.If you don't want that code, you can unplug it just with the help of
+    configurations.
+
+    And again, understanding aspect oriented programming is very important because spring itself will use aspect oriented
+    programming a lot in other projects of spring like spring security, spring data JPA.So each and every project that 
+    we have under spring umbrella, they use this aspect oriented programming to a great extent and it is very much needed
+    for any developer to understand what is AOP.
+
+    Without knowing AOP, you will be clueless what is happening inside your application and inside spring framework
+    because These are all driven by configurations, but not with a simple Java methods invocation, which we can
+    easily identify.If a method is invoking another method, you can easily identify that by looking at the code.
+    But since AOP is something which is driven with the help of configurations, you should know how to configure how 
+    to understand these configurations of AOP.
+
+    we have a Module called Spring AOP inside Spring Core Framework.
+
+
+50- Understanding Problem without AOP (slide 58)
+    code - Example17
+
+    In VehicleService.java, we have 3 methods -
+        a)playMusic
+        b)moveVehicle
+        c)applyBrake
+    This has one line of functional code and majority of Non-functional code related to logging and 
+    security.
+
+52-AOP Jargons
+    JoinPoint - A point during the execution of a program, such as the execution of a method or the 
+        handling of an exception. In Spring AOP, a join point always represents a method execution.
+    PointCut - A predicate that matches join points. Advice is associated with a pointcut expression and runs at any join point 
+        matched by the pointcut (for example, the execution of a method with a certain name)
+
+55- Configuring Advices Inside AOP (slide 63)
+    Enable AOP programming - @EnableAspectJAutoProxy
+    First define Aspect - this is logic, logic will be inside a class.It is class which is both bean and aspect
+        Now inside that class we can define any methods which will hold aspect logic.
+    Give advise type to method using -  @Before, @AfterReturning, @AfterThrowing, @After, @Around
+    Define method which will be intercepted,need to pass configuration to advise annotations.multi approaches -
+        1)Using AspectJPointcutExpression -  execution expression approach.
+            we pass regex or pointcut expression explaining which method needs to be intercepted.
+
+            format for expression 
+
+                execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)throws-pattern?)
+            
+            explanation for format -
+                
+                modifiers-pattern - public, private, protected
+                return-type-pattern  - return type of function
+                declaring-type-pattern - package or class pattern
+                name-pattern
+                param-pattern
+                throws-pattern
+
+
+            Sample -
+                Around("execution(* com.example.services.*.*(..))")
+            sample Explanation -
+                * - any return type 
+                com.example.services.* - any class within this package
+                .* - '.' is separator , '*' - any method name
+                (..) - any parameters
+
+                parameters -
+                    () - no arguments
+                    (*)- one parameter
+                    (String) - one parameter of type String
+
+
+    Official doc link - https://docs.spring.io/spring-framework/reference/core/aop/ataspectj/pointcuts.html
+
+
+56 - Configuraing @Around Advice
+    Code - example 17
+    files - 
+        LoggerAspect.java, read comments
+
+        VehicleCheckAspect
+
+
+59 - Configuraing advices inside AP with Anotation approach (slide 64)
+    see aspectJPointDesignators.txt, dere are other ways also to define pointcut expressions.
+    here we used only @aspect.
+    see Example, LoggerAspect.java, here we defined a new logger method which uses annotations.

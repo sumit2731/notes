@@ -63,3 +63,38 @@
     create beans.So please only create beans for Java classes where we have a business logic methods inside it.
 
 
+44- DeepDive of Eager and Lazy instantiation of singleton bean
+    Use it for having logics that are executed very less.
+    Saves initialization time.most of time go with eager initialization only.
+
+
+47- DeepDive into prototype beans
+    code - 16
+
+    Here VehicleService Bean is prototype. we get this bean 2 times. but constructor is called 3 types.
+    why?
+    because this prototype bean is also injected nto another singleton bean(Vehicle). 
+
+
+    so you inject a prototype scope inside Singleton scope.But in these scenarios,injected PrototypeBean
+    will acts as singleton bean.What I mean with this statement is you have VehicleService, injected inside
+    this Vehicle bean, you can refer to this VehicleService 1000 times, but you will get only same one instance
+    because your parent vehicle is of scope singleton.
+
+    what thsi means -
+        no matter how many times you try to execute the code of VehivleClass inside vehicle, it will be executed 
+        on same instance.
+
+    When to use this -
+        Please use this in the scenarios where your bean is going to do a lot of data manipulation inside its objects.
+        That way you can avoid race conditions inside multi threading environment.
+
+
+    Extra from course -
+        If you need a different instance of prototype bean everytime you refer to it inside prototype bean -
+            a)Use ObjectProvider (perferered)
+            b)Use @LookUp
+    Observation -
+        If you inject the Prototype scoped bean in singleton at different places , lets say we use autowrite at constructor
+            and at setter, we will get different beans.
+

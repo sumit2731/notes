@@ -3,3 +3,7 @@ a)messaging in spring
     @Controller
     @Service
     @Repository
+3)Loggers in Java
+    Log4J
+
+4)ProxyProgramming in Java
