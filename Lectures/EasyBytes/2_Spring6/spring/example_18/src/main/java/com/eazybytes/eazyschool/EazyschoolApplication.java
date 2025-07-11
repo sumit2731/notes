@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class EazyschoolApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(EazyschoolApplication.class, args);
     }
 

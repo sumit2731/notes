@@ -10,3 +10,9 @@
     In Compiled Applications -
         The classpath root becomes target/classes
         All dependency JARs are included in the classpath
+
+2_default location of maven
+
+    default path where maven downloads dependencies -  /Users/sumeet.sood/.m2/repository
+    why this path, because in maven folder, dere is conf/settings.xml. Their under localRepository, default is mentioned -
+        ${user.home}/.m2/repository

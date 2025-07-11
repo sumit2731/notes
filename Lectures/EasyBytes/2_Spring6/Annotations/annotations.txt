@@ -10,6 +10,23 @@ Form Course -
         11)@Lazy - slide 53
     2)Configurations -
         1)@Configuration - code 1
+            a)Can Have @Bean Method, so this class is passed as argument to Spring Bean to register beans.
+            b)Why we use it when we use @ComponentScan -
+                a)Manual bean creation: You want fine-grained control over object creation.
+                b)External library integration: Third-party classes don’t have @Component, and you can’t add annotations to them.
+                c)Conditional Bean Creation Complex bean creation logic that depends on conditions.
+                    @Bean
+                    @ConditionalOnProperty(name = "app.feature.enabled", havingValue = "true")
+                    public FeatureService featureService() {
+                        return new FeatureService();
+                    }
+
+                    @Bean
+                    @Profile("production")
+                        public CacheManager cacheManager() {
+                        return new RedisCacheManager();
+                    }
+                d)Configuration Classes can be imported into other configuration classes using @Import.
         2)@ComponentScan
             @ComponentScan(basePackages = {"com.example.implementation","com.example.services"})
             @ComponentScan(basePackageClasses = {com.example.beans.Vehicle.class,com.example.beans.Person.class})
@@ -20,7 +37,7 @@ Form Course -
         3)@Value - slide 47
     4)Bean Scope
         1)@Scope(BeanDefinition.SCOPE_PROTOTYPE) - slide 50
-        2)@Lookup - when you inject Prototype scoped bean into Singleton scoped bean, you can use @Lookup annotation
+        2)@Lookup (not covered in course) - when you inject Prototype scoped bean into Singleton scoped bean, you can use @Lookup annotation
          to get new instance of prototype bean every time you refer to it inside singleton bean.
             
             @Lookup // This method will be overridden by Spring to return a new Task instance
@@ -32,7 +49,13 @@ Form Course -
         3)@Before, @AfterReturning, @AfterThrowing, @After, @Around - - Defines the advise (when aspect will be executed).
             It takes pointcut expression as argument
         4)@Order
-    
+        5)@PointCut (not covered in course)
+        6)Defining annotations - 
+            @Retention
+            @Target
 
-Extra in Course -
-    1)@Lookup - use over abstract method to different bean of prototype scope inside bean of singleton scope.
+
+    6)WebApp -
+        @SpringBootApplication
+        @Controller
+        @RequestMapping("/home")

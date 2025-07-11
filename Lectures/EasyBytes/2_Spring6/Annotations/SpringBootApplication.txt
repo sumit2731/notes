@@ -1,0 +1,17 @@
+1)@ComponentScan(
+    excludeFilters = {@Filter(
+    type = FilterType.CUSTOM,
+    classes = {TypeExcludeFilter.class}
+), @Filter(
+    type = FilterType.CUSTOM,
+    classes = {AutoConfigurationExcludeFilter.class}
+)}
+)
+    explanation -
+        TypeExcludeFilter.class - It's used to exclude certain types from component scanning, typically based on a
+            set of types that have already been processed or are specifically marked for exclusion by Spring's 
+            internal mechanisms. 
+        AutoConfigurationExcludeFilter.class - prevent Spring Boot's auto-configuration mechanism from re-processing
+            or registering beans that have already been handled by auto-configuration.It's crucial for ensuring that
+            auto-configured beans (those provided by Spring Boot's "magic" based on your classpath and configuration)
+            aren't accidentally picked up again by a regular component scan, which could lead to duplicate bean definitions or unexpected behavior.
