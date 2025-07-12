@@ -56,9 +56,9 @@ Form Course -
 
 
     6)MVC -
-        1)@SpringBootApplication -
+        1)@SpringBootApplication(exclude = ...) -
             1)@SpringBootConfiguration - @Configuration, @Indexed
-            2)@EnableAutoConfiguration - Enables auto-configuration of Spring application context.
+            2)@EnableAutoConfiguration(exclude = ...) - Enables auto-configuration of Spring application context.
             3)@ComponentScan - Scans for components, configurations, and services in the specified package and its sub-packages.
         2)@Controller - Defines controller in MVC, this will have method which will executed for incoming requests.
         3)@RequestMapping(value={"", "/", "home"}, method = POST) - method inside Controller.

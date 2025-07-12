@@ -20,11 +20,10 @@
 
     Before Spring Boot -
         I need to configure a servlet container(Tomcat,jetty),First, I need to download that server and I need to configure 
-        that inside my eclipse IDE post that I need to establish a link between Tomcat and dispatcher Servlet provided by 
-        the Spring framework,which means I need to deploy my web applications into the Tomcat.And I also need to mention a 
-        small configuration inside web.xml about dispatcher Servlet.also I need to do certain configurations like what is
-        the port that server has to start, what are my database credentials, what are my properties?So there are many 
-        configurations.
+        that inside my eclipse IDE post that I need to establish a link between Tomcat and dispatcher Servlet which means I
+        need to deploy my web applications into the Tomcat.And I also need to mention a small configuration inside web.xml
+        about dispatcher Servlet.also I need to do certain configurations like what is the port that server has to start,
+        what are my database credentials, what are my properties?So there are many configurations.
 
     Developers again started asking we need something else which help us in adopting latest trends like microservices docker
         containers very efficiently.Spring Boot came. it helps eliminating lot of configurations about dispatcher servlet or
@@ -32,7 +31,7 @@
 
     Slide 70 -
         Last point on left - 
-            It means different jars may need differebt versions of same jat leading to dependency erros.
+            It means different jars may need different versions of same jat leading to dependency erros.
 
         Point on right -
             And Spring Boot also provides production ready features like once you deploy a spring boot web application
