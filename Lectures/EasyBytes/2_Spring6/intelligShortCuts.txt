@@ -1,27 +1,20 @@
 Settings -
     1)side by side tab -
         right click on tab -> open in right
-
     2)plugins 
         Intellij -> settings -> plugins
-
     3)debug window -
         view -> tool windows -> debug
-    4)To see the opened file in file explorer -
-        On file explorer click the circle
-
-    5)to see alll child classes of class -
+    4)to see alll child classes of class -
         a)click on arrow on left hand side
         b)right click on it -> got to -> implementations
-    6)to see parent -
+    5)to see parent -
         right click on it -> got to -> super class
-
-    7)Adjust Zom level -
+    6)Adjust Zom level -
         intelliJ ->settings -> appearance & behavior -> Appearance -> accessibility -> zoom
-    8)Font Size - 
+    7)Font Size - 
         intelliJ ->settings -> Editor -> Font
-
-    9)Open debugger in another window -
+    8)Open debugger in another window -
         click on 3 dots on top right in debugger view -> vide mode -> window
 
 ShortCuts -
@@ -40,11 +33,11 @@ ShortCuts -
         option + f7
     c)collapse all -
         cmd + shift + (-)
-
     d)generating getters and setters -
         cmd + n
-
-    e)gnerating javadocs -
+    e)Go Forward/Backward -
+        cmd +shift + 
+    e)Generating javadocs -
         select methd name
         option + enter
 

@@ -3,6 +3,7 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 -->
 <!doctype html>
+<!--this tells that th attributes should be processed by thymleaf engine-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -17,7 +18,7 @@ Author URL: http://w3layouts.com
 </head>
 
 <body>
-    <!-- header -->
+    <!-- header, this imports a existing header file -->
     <div th:replace="~{header :: header}">...</div>
     <!-- //header -->
 

@@ -55,7 +55,14 @@ Form Course -
             @Target
 
 
-    6)WebApp -
-        @SpringBootApplication
-        @Controller
-        @RequestMapping("/home")
+    6)MVC -
+        1)@SpringBootApplication -
+            1)@SpringBootConfiguration - @Configuration, @Indexed
+            2)@EnableAutoConfiguration - Enables auto-configuration of Spring application context.
+            3)@ComponentScan - Scans for components, configurations, and services in the specified package and its sub-packages.
+        2)@Controller - Defines controller in MVC, this will have method which will executed for incoming requests.
+        3)@RequestMapping(value={"", "/", "home"}, method = POST) - method inside Controller.
+            4)@PostMapping(value ="/abc") - shortcut for @RequestMapping(method = POST)
+            4)@GetMapping(value ="/abc")
+        5)public ModelAndView saveMessage(@RequestParam String name, @RequestParam)
+            This is used to get value from body into method parameter

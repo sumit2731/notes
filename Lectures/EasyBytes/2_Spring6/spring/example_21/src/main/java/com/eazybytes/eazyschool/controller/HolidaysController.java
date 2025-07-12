@@ -13,7 +13,13 @@ import java.util.stream.Collectors;
 @Slf4j
 @Controller
 public class HolidaysController {
-
+    /**
+     * Since it is going to fetch the data from the backend whenever UI is trying to
+     * load this page.So that's why we put it as @GetMapping instead of @PostMapping.
+     *
+     * I want to send some data to frontend , so I am using Model as Input.
+     * Alternative is ModelAndView object see comments in ContactController
+     */
     @GetMapping("/holidays")
     public String displayHolidays(Model model) {
         List<Holiday> holidays = Arrays.asList(
@@ -28,9 +34,14 @@ public class HolidaysController {
         );
         Holiday.Type[] types = Holiday.Type.values();
         for (Holiday.Type type : types) {
+            // this is how you add data to model
             model.addAttribute(type.toString(),
                     (holidays.stream().filter(holiday -> holiday.getType().equals(type)).collect(Collectors.toList())));
         }
+        /**
+         * Value returned is passed to ViewResolver,
+         * which then injects the Model into Holiday template
+         */
         return "holidays.html";
     }
 }
