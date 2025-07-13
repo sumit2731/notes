@@ -132,3 +132,14 @@ Form Course -
             param - 
                 name,value - same as @RequestParam
                 required - same as @RequestParam
+
+        6)@ModelAttribute  - This is used on parameter of method of controller class. It adds a the parameter
+            to model of view.
+
+            @RequestMapping(value = "/saveMsg",method = POST)
+            public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors, Model model) {}
+        7)@Valid - It is imported from jakarta package.When user submits the form it compares the form data
+            with POJO class annonated with jakarta validation annotations and if it is not valid, passses
+            the errors to error object and adds that to model as well.
+
+            code - Example 24, ContactController.java

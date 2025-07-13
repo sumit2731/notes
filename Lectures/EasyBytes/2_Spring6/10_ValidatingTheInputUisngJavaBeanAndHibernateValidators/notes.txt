@@ -1,0 +1,37 @@
+98 - Importance of Validations inside webApplications
+    a)you will end up having lot of invalid data inside your database.
+    b)Maybe you might be performing some null pointer checks or you might be converting some String data to numbers.
+        So if you are doing such kind of business logic inside your code and if you have bad data, you will get a lot
+        of null pointer exceptions, number format exceptions.
+
+
+
+99 - Intro to Java bean Validations(slide - 85)
+    POM.XML - spring-boot-starter-validation
+        Includes packages mentioned on slide.
+    For Older version of packageName of jakarta validations is - javax.validations.constraints
+    from java17 all javax packages were renamed to jakarta.
+
+101 - Adding Bean Validation related inside Application (87,88)
+    
+
+
+Code changes -
+    Project - 24
+
+    Contact.java - added validation related annotations to fields.
+    contact.html - Made changes in html, so that field names and values are derived from Contact.java class.
+        Also it loops over error object passed to it and displays the error message.
+    ContactController.java -
+        /contact - we add empty Contact object to Model. so that fields have proper name.
+        /saveData - Now we validate the object 
+
+
+
+Extra from course -
+    dere is @Validated from spring, which is same as this one,how it differs -
+     a)but it supports validation based on form groups.
+     b)Method-Level Validation: @Validated can be applied at the class level on Spring components (like services,
+        controllers, or repositories) to enable validation of method parameters and return values within that 
+        class. 
+    c)Also you ca create your own custom validations - to be explored

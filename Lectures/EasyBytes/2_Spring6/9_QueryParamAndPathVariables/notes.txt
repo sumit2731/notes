@@ -1,8 +1,8 @@
 files -
-    example 22
+    example 22 (slide 83)
         footer.html - added queryParam in /holidays
         HolidaysController - handling queryParam (@RequestParam)
         holidays.html - added if conditions in template
-    example 23
+    example 23 (slide 84)
         footer.html - added urlParams  in /holidays
         HolidaysController - handling urlParam (@PathVariable), changed model data.

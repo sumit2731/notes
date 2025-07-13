@@ -38,3 +38,7 @@
     4)PintCut designators
 
 10 July - 
+
+
+Using LomBork to Skip BilerPlate Code
+Handling queryParams and urlParameters

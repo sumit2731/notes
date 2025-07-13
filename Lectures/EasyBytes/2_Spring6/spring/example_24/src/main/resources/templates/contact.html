@@ -46,13 +46,28 @@ Author URL: http://w3layouts.com
             <div class="row contact-block">
                 <div class="col-md-7 contact-right">
                     <ul>
+                        <!--This is for displaying the errors, fields.errors('contact.*') - ['error1', 'error2']
+                            #fields: This is a built-in Thymeleaf utility object that provides convenient methods
+                                for working with form fields and their associated validation errors. It's especially
+                                useful when you're using Spring MVC with Jakarta Bean Validation
+
+                            .errors - This is a method of the #fields utility object. It's used to retrieve error messages.
+                                Other cases - ${#fields.hasErrors('email')}
+                            'contact.*' -
+                                .*: This is a wildcard operator. It means "match any property directly under contact."
+
+                            Another Alternate - ${#fields.hasErrors('contact.email')}
+                        -->
                         <li class="alert alert-danger" role="alert"
                             th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
                     </ul>
+                    <!--After submitting data, if details are invalid, we return same view, but we need
+                      to populate the data, so link contact object with form-->
                     <form th:action="@{/saveMsg}" method="post" class="signin-form" th:object="${contact}">
                         <div class="input-grids">
                             <div class="row">
                                 <div class="col-sm-6">
+                                    <!--Instead of using name and id, attributes. use the fields of bean -->
                                     <input type="text" th:field="*{name}" placeholder="Your Name"
                                         class="contact-input" />
                                 </div>
