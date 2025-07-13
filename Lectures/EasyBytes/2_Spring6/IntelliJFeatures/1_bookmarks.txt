@@ -1,0 +1,14 @@
+
+a)Making Bookmarks (unnonymous and named) - 
+    1)On Line - right click on line gutter, or file, package
+    2)Files,Folders,packages,modules - Right Click on file, folder, package, module -> add bookmark
+    c)All Opened Editor tabs -Right Click On 3 Dots, and add to BookMarks
+b)Seeing Bookmarks -
+    1)All Bookmarks -
+        a)cmd + 2
+        b) view -> tool windows -> bookmarks - (Multiple bookmarks in same file can be grouped togather)
+        c)Here you can create BookMarks List Also.Click On First icon in Bookmarks tab.
+            a)Next Time You Add A BookMark, you can select the List, that you want it to be added to.
+            b)Drag and Drop is also avalible in Bookmark List, between list or within list.
+    2)Line BookMarks (NOt Useful Use First Only)
+        a)cmd+ f3 (edit->bookmarks->show bookmarks) - Shows all Line(named) Bookmarks

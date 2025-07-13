@@ -1,0 +1,21 @@
+1)Creating a new Maven Project
+    1)Adding new things to POM.XML
+        open pom.xml => code -> generate, you will get code completion
+    2)Maven window -
+        Dependencies -> dependencies and transitive dependencies
+        IN Project window -> External dependencies(flattened structure)
+        Running lifecycles with single click
+        Running Tests -
+            a)from maven window
+            b)right click on test folder -> Run tests in "folder/packageName"
+        Enabling/disabling Profiles - All maven profiles are displayed on top, you can enable./displayed them while running maven Lifecycles
+            or maven goals(Under plugins)
+        Analyze Dependencies - All Dependencies and when you select one, path of that
+        Show Diagram -
+            a)Tree
+            b)switch on/Off different dependecies - compile, test, runtime, provided
+            c)test are shown in green
+
+
+1)Opening existing project -
+    new -> project from existing sources -> select pom.xml

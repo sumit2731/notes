@@ -1,0 +1,12 @@
+a)generating getters and setters -
+    RC on class -> generate -> getters and setters
+
+b)Copy same line down -
+    cmd + d ( Edit → Duplicate Line or Selection )
+
+c)Moving current line up/ down -
+    cmd + shift + up/down (Edit → Move Line Up/Down)
+
+Templates(type text and press tab) -
+    a)psvm - public static void main
+    b)sout - System.out.println()

@@ -62,7 +62,73 @@ Form Course -
             3)@ComponentScan - Scans for components, configurations, and services in the specified package and its sub-packages.
         2)@Controller - Defines controller in MVC, this will have method which will executed for incoming requests.
         3)@RequestMapping(value={"", "/", "home"}, method = POST) - method inside Controller.
-            4)@PostMapping(value ="/abc") - shortcut for @RequestMapping(method = POST)
-            4)@GetMapping(value ="/abc")
-        5)public ModelAndView saveMessage(@RequestParam String name, @RequestParam)
-            This is used to get value from body into method parameter
+            @PostMapping(value ="/abc") - shortcut for @RequestMapping(method = POST)
+            @GetMapping(value ="/abc")
+
+            param -
+                name - The name parameter in @RequestMapping is used to assign a logical identifier to the mapping, which 
+                    can be referenced later for URL generation and reverse routing.
+                    
+                    Default is empty string.
+                    If not specified, Spring automatically generates a name based on the handler method.
+
+                    useage -
+                        @Autowired private MvcUriComponentsBuilder mvcUriComponentsBuilder;
+                        String url = MvcUriComponentsBuilder
+                            .fromMappingName("getUserById")
+                            .arg(123L)
+                            .build();
+
+                value/path - Defines the URL patterns this mapping handles. These are aliases of each other.
+                    @RequestMapping(value = "/users")
+                method - Specifies which HTTP methods this mapping accepts (GET, POST, PUT, DELETE, etc.).
+                params - The params constraint is evaluated against query parameters (for GET requests) or form parameters 
+                    (for POST requests). The mapping will only match if ALL specified parameter conditions are met.
+                    @RequestMapping(value = "/search", params = "query") - Matches: /search?query=spring
+                    @RequestMapping(value = "/data", params = "!debug") - Does NOT match: /data?debug=true
+                headers - HTTP headers that must be present/absent for mapping to match.
+                    @RequestMapping(value = "/api", headers = "!X-Custom-Header")
+                consumes - The consumes parameter in @RequestMapping specifies which media types (Content-Type headers) the endpoint
+                    can accept in the request body. It acts as a filter that restricts which requests can be handled based on their 
+                    Content-Type header.
+                    
+                    JSON - application/json
+                    XML - application/xml
+                    Form Data - application/x-www-form-urlencoded
+                    File uploads - multipart/form-data
+                    
+                produces - The produces parameter in @RequestMapping specifies which media types (Content-Type 
+                    values) the endpoint can generate in the HTTP response.It works with content negotiation 
+                    to determine the response format based on the client's Accept header.Spring matches the 
+                    client's Accept header against the produces values. The mapping only matches if the client 
+                    accepts at least one of the specified response media types.
+
+                    whole process -
+                        Client Side:
+                            Client sends Accept header indicating preferred response formats
+                            Client sends Content-Type header indicating request body format
+                        Server Side:
+                            Server checks produces parameter against client's Accept header
+                            Server checks consumes parameter against client's Content-Type header
+                            Server selects best matching format or returns error
+                
+        4)@RequestParam - used to accept queryParam or formData.used in method of Controller.
+            @RequestMapping(value = "/saveMsg",method = POST) - slide 83
+            public ModelAndView saveMessage(@RequestParam String name)
+
+            Parameters -
+                value/name - Specifies the name of the request parameter to bind to the method parameter.
+                required(default: true)
+                defaultValue
+            Note - value parameter can be skipped.
+        5)@PathVariable - slide 84
+            Used to accept variable URL
+            
+            @RequestMapping(value = "/holidays/{display}",method = GET`) - slide 83
+            public ModelAndView saveMessage(@PathVariable String display)
+
+           
+
+            param - 
+                name,value - same as @RequestParam
+                required - same as @RequestParam

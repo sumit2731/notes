@@ -1,0 +1,17 @@
+1)to Searach (File,Class,Actions, TextAnyTHing) - shift + shift
+    you can search IDE actions -
+        a)Open maven window
+        2)hide tabs
+        c)open settings menu about some features
+
+    also you can chnage some settings - /editor
+
+2)recently edited files -
+    a)3 dots on editor (cmd + E)
+    2)You can also use it to open windows that do not have any keyboard shortcuts associated with them, like maven 
+
+3)Navigate to implementation - on interfaces
+    click on i icon in gutter (option + cmd + B)
+
+4)find useages -
+    RC on symbol -> find useages (option + f7)

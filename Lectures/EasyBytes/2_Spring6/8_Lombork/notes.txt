@@ -1,0 +1,23 @@
+91- Intro To Lombork
+
+    How this Lombok works is whenever we have Lombok inside our classpath and I'm using an annotations like @Getter 
+    and @Setter on top of my model class.So what it will do is whenever I'm doing a build of my project,.class files
+    will be generated.So during the compilation, Lombok will do all this magic.So it will pledge itself during the
+    build process and it will auto generate the methods like getters and setters and it will make sure those methods
+    are available inside the bytecode generated for your Java classes.So that's why as a developer, we can never see
+    those methods inside our Java source files.But they will be present inside bytecode of class files, which will 
+    not create any problems for us.
+
+
+    Common annotations - 
+        @data - generates everything
+
+    Also we saw that in IntelliJ you check what kind of getters and setters will be created by Lombok by pressing cmd+f12.
+        a)for final fields it will create constructor which accepts all params,
+        b)for non final fields it will create geters and setters and o param constructor.
+
+93 - @Slf4j
+    It declares static logger method variable automatically.
+    You can use it to prevent initializing logger method with wrong class.
+     
+    It is used in Project 21 - >HolidayController.java

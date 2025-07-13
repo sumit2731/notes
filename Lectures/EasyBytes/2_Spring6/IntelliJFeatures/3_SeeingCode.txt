@@ -1,0 +1,9 @@
+1)show all methods on class -
+    cmd + f12 (also helps to see inherited members, and which class they are inherited)
+    cmd + 7
+
+2)fold/unfoldAll -
+    cmd + shift + (-)/(+)
+
+3)Go Forward/Backward -
+    cmd +shift + ([) or (])

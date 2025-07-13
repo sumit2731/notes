@@ -1,0 +1,13 @@
+Request Headers -
+    Content-Type: - Indicating request body format. ex - application/json
+    Accept: Indicating preferred response formats - application/json
+
+Response Headers -
+    Content-Type: application/json
+
+Status -
+    200 - success
+    302 - redirect
+    400 - Bad Request, parsing error, because of Content-Type
+    406 - Not Acceptable is returned (no accepted  content type is supported by server)
+    415 -  Unsupported Media Type

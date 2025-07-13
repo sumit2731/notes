@@ -1,0 +1,38 @@
+Show Context Action - option + enter
+
+a)new Code base -
+    What does this project do?Please Find relevent Files
+
+b)refrence to file -
+    /explain #fileName
+
+    you ask follow up questions.
+
+    attaching schema - #schema. exhances sql queries generated in context of our schema
+
+a)Explain Code -
+    select code -> option + enter -> Ai Action ->explain code
+
+b)Quick concise summary what a file does -
+    option + enter - AOI Actions - write Documentation
+
+c)Ask questions  about code -
+    select code - option + enter - AI Actions - New Chat with Selection
+
+    selected code will be added to chat and we can ask question.
+
+
+d)Explain commit with Ai -
+    Rc on line gutter -> annotate with git blame -> click on commit
+    This will open commit in commit history
+    RC on commit -> Explain Commit with AI Assistant
+
+
+e)renaming anything -
+    RC on variable name -> renaming, you will see suggestions
+
+f)Terminal -
+    In terminal ,you can see "Explain with AI", for errors
+
+g)understanding regex, cron -
+    Ai Actions - Explain Regex/CronFragment

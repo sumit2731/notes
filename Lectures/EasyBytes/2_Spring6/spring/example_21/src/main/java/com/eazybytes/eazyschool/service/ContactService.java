@@ -7,8 +7,13 @@ import org.springframework.stereotype.Service;
 /*
 @Slf4j, is a Lombok-provided annotation that will automatically generate an SLF4J
 Logger static property in the class at compilation time.
+
 * */
 @Slf4j
+/**
+ * Above extension adds this line
+ * private static Logger log = LoggerFactory.getLogger(ContactService.class)
+ */
 @Service
 public class ContactService {
 

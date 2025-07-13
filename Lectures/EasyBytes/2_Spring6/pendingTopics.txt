@@ -7,3 +7,6 @@ a)messaging in spring
     Log4J
 
 4)ProxyProgramming in Java
+
+5)Annonations do not have any code, then how do they add value.
+    like @data from Lombork

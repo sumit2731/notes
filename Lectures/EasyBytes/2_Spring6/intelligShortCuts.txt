@@ -14,33 +14,15 @@ Settings -
         intelliJ ->settings -> appearance & behavior -> Appearance -> accessibility -> zoom
     7)Font Size - 
         intelliJ ->settings -> Editor -> Font
-    8)Open debugger in another window -
-        click on 3 dots on top right in debugger view -> vide mode -> window
 
 ShortCuts -
-    a)Search class/file/text -
-        cmd + o (Go to class, Mac)
-        ctrl + n(window)
     b)search in files -
         cmd + shift + f
-    b)show all methods on class -
-        cmd + f12 (also helps to see inherited members, and which class they are inherited)
-        cmd + 7
-    c)find useage in file -
-        cmd + f7
-    c)find useages in file -
-        right click on identifier and select "find useages"
-        option + f7
-    c)collapse all -
-        cmd + shift + (-)
-    d)generating getters and setters -
-        cmd + n
-    e)Go Forward/Backward -
-        cmd +shift + 
+
     e)Generating javadocs -
         select methd name
         option + enter
+    f)
 
-Templates(type text and press tab) -
-    a)psvm - public static void main
-    b)sout - System.out.println()
+
+
