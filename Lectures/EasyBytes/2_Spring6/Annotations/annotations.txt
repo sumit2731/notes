@@ -36,7 +36,11 @@ Form Course -
             given type
         3)@Value - slide 47
     4)Bean Scope
-        1)@Scope(BeanDefinition.SCOPE_PROTOTYPE) - slide 50
+        1)@Scope(BeanDefinition.SCOPE_PROTOTYPE) - slide 50,90
+            @PrototypeScope
+            @RequestScope
+            @SessionScope
+            @ApplicationScope
         2)@Lookup (not covered in course) - when you inject Prototype scoped bean into Singleton scoped bean, you can use @Lookup annotation
          to get new instance of prototype bean every time you refer to it inside singleton bean.
             

@@ -1,0 +1,53 @@
+103)Intro to Spring Web Scope (slide 90)
+    The reason why we can only use these three scopes inside web applications is, these three scopes
+    they work based upon the web Request
+
+    @RequestScope
+    @SessionScope
+    @ApplicationScope
+
+    extra from course -
+        Singleton - 
+            a)One instance per IOC Container. bean is cached and stored in IOc container.
+                lifecycle managed by the IOC container.
+        Application -
+            a)One instance per web application. The bean instance is stored as an attribute of the 
+                ServletContext (the global application scope in a servlet container).but its 
+                lifecycle is explicitly managed by the web container's ServletContext.
+
+104_UseCases of Spring WebSCopes (slide 91)
+    
+    RequestScope - The perfect use case that you can consider for request to bean scopes is any bean that is trying to
+        store the sensitive information or any data that you want to be reset.Whenever a new request or page refresh is 
+        happening, like in the login page of an any web application,I will enter my username and password so those credentials
+        will be submitted to the backend server when I try to log in into your web application.So as a developer, I should 
+        make sure the credentials that I'm passing in that HTTP request are never getting stored inside my backend server.
+        They should be always invalidated and they should never be scenario where I want to store this sensitive information
+        inside any HTTP session.So those kind of scenarios are a perfect match for the RequestScope.
+
+    SessionScope - if there is a scenario where you want to store some information and reuse that information on all the pages
+        inside your web application, like if you take the same bank web application, regardless of whatever page I'm trying to 
+        navigate, there should be a top header information like welcome user.
+
+
+        please don't try to store a lot of information inside these kind of beans.As long as you are storing some text values,
+        that should be fine.Otherwise, if you started using and storing images, some binary data payloads information which
+        is usually heavy in nature, then they will degrade your web application performance.
+
+    Application WebScope - please make sure just like how we create Singleton bean scope for immutable objects in a very similar
+        style, we should make sure that we are defining application web scope for immutable objects only.
+
+        Note - Please try to fetch or maintain most info through a caching or a database, but not with the application bean scope
+            because holding lot of data inside application bean scope definitely will affect your web application performance.
+
+105, 106 - Code Demo
+    How does it decide session is same of different. In course, sending request from same browser meant same session.
+    Sending request from different browser meant different sessions.
+
+Code -
+    Example 25.
+    ContaxtService
+
+
+
+

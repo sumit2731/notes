@@ -53,7 +53,8 @@ Author URL: http://w3layouts.com
 
                             .errors - This is a method of the #fields utility object. It's used to retrieve error messages.
                                 Other cases - ${#fields.hasErrors('email')}
-                            'contact.*' -
+                            'contact.*' - Refers to a property within your form-backing object (e.g., a DTO or command object)
+                                that is itself an object.
                                 .*: This is a wildcard operator. It means "match any property directly under contact."
 
                             Another Alternate - ${#fields.hasErrors('contact.email')}

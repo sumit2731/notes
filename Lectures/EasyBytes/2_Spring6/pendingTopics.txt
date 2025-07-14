@@ -11,3 +11,5 @@ a)messaging in spring
 5)Annonations do not have any code, then how do they add value.
     like @data from Lombork
     Bean validations (lecture 99)
+
+6)We can have bean of sessionScope,but in server, how is a session defined.
