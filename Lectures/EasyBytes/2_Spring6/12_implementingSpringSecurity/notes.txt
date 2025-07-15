@@ -1,0 +1,70 @@
+110 - Demo of Spring Security(slide 93,94)
+    Their are different project for integration of spring security with oauth, okta ldap.
+
+    just by adding a dependency, we see login page.
+
+    username - user, password is logged in console.
+
+    Once you login, you are redirect to page you intended to go, and now you can move across the app without need
+    to login again.
+
+113 - Understanding default Security Configurations inside Spring Framework (slide 95)
+
+    Bean used for Protecting Routes - SecurityFilterChain
+    It is creatd only when no other bean of same type is configured in application context,it uses thsi conditional
+        annotation for this - @ConditionalOnDefaultWebSecurity
+    
+    I looked into source code of @ConditionalOnDefaultWebSecurity to understand how conditional beans in general work.
+
+
+114,115 - permitAll, deny All (slide -96,97)
+
+
+117 - Demo of CSRF Protection & CSRF Disable inside Spring Security framework   
+    CSRF - Someone can steal your token and pose as you and perform some operations on server.
+
+    By default, your spring security framework will stop all the HTTP invocations that is going to update the data on
+    the backend database server.The http methods like post, put.So for these kind of HTTP methods until unless you
+    handle csrf inside your web application properly,your spring security is going to block them with an error 403 and
+    that's the default behavior of the spring security.
+
+    Our post request on /saveMsg is not blocked , because we are using thymleaf and since thymleaf
+        has good integration with spring securoty and /saveMsg is allowed route, post request works.
+
+    But if you are using some other SPA framework, request will be blocked.
+
+    I read abput CSRF attack and how thymleaf prevents blocking by adding a hiiden field with CSRF token, which is 
+    linked with user session.that token cannot be added by hacker.
+
+    But in this pecture we just disabled the CSRF
+
+118 - Configuring the multiple users using inMemoryAuthentication() of Spring Security (slide 99)
+    here we added 2 users in code. see example 29
+    Only to be used for POC
+
+
+112 - Demo of integration between thymleaf and spring security (slide 101)
+
+code -
+    
+    Project 29 -
+        Files - 
+            ProjectSecurityConfig
+            application.properties -
+                see Commneted configs - for allowing all, denying all users
+                Config for allowing some routes
+                added users in memory, use only for POC
+                aplication.properties - dummy username and password (later we moved to adding users in memory)
+                added login and logout pages
+
+            Controllers - 
+                LoginController(on login, on succesful logout, login error), 
+                DashboardController(on successful error)
+            Integration of thymleaf with Spring Security -
+                header.html
+
+
+
+
+Questions - 
+    a)https://www.udemy.com/course/spring-springboot-jpa-hibernate-zero-to-master/learn/lecture/30806178#questions

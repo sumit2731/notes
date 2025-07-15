@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DashboardController {
 
     @RequestMapping("/dashboard")
+    /**
+     * First Object is model that will be automatically injected into our view
+     * Spring Injects authentication, while calling this controller
+     */
     public String displayDashboard(Model model,Authentication authentication) {
         model.addAttribute("username", authentication.getName());
         model.addAttribute("roles", authentication.getAuthorities().toString());

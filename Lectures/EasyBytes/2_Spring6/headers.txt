@@ -9,5 +9,7 @@ Status -
     200 - success
     302 - redirect
     400 - Bad Request, parsing error, because of Content-Type
+    401 - Unauthorized, authentication failed
+    403 - Authorization fails
     406 - Not Acceptable is returned (no accepted  content type is supported by server)
     415 -  Unsupported Media Type

@@ -16,19 +16,51 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf((csrf) -> csrf.disable())
-                .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
+
+        /**
+         * default is requests.anyRequest().authenticated()
+         */
+/*        http.authorizeHttpRequests(requests ->
+                        requests.anyRequest().permitAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());*/
+
+        // Deny All Requests inside the Web Application
+            /*
+            http.authorizeHttpRequests(requests -> requests.anyRequest().denyAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
+            */
+                .authorizeHttpRequests((requests) -> requests
+                        //methods not mentioned here are by default protected
+                        .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/", "/home").permitAll()
                 .requestMatchers("/holidays/**").permitAll()
                 .requestMatchers("/contact").permitAll()
                 .requestMatchers("/saveMsg").permitAll()
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
+                        // this needs to be permitted as this is our login page
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/assets/**").permitAll())
+                /**
+                 * This adds custom LOgIN page
+                 */
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
-                        .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
-                .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")
-                        .invalidateHttpSession(true).permitAll())
+                        /**
+                         * pages for login success and login failure
+                         */
+                        .defaultSuccessUrl("/dashboard")
+                        /**
+                         * We need to permit this page otherwise user will keep on seeing /login page
+                         */
+                        .failureUrl("/login?error=true").permitAll())
+                .logout(logoutConfigurer ->
+                        logoutConfigurer
+                                //url of successFul logout
+                                .logoutSuccessUrl("/login?logout=true")
+                                //invalidate the session and permitAll
+                                .invalidateHttpSession(true).permitAll())
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
