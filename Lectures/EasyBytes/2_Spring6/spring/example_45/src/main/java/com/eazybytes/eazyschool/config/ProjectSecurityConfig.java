@@ -14,8 +14,11 @@ public class ProjectSecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**")
-                //disabled the CSRF protection for
+        http.csrf((csrf) ->
+// //disabled the CSRF protection for
+                        csrf.ignoringRequestMatchers("/saveMsg")
+                                .ignoringRequestMatchers("/public/**")
+
                 .ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
                     .requestMatchers("/displayMessages/**").hasRole("ADMIN")

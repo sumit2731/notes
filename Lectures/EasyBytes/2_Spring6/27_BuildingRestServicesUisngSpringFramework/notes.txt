@@ -25,7 +25,9 @@ code -
     Project_45
     Files -
         projectSecurityConfig.java - Disabled csrf for /api, and enabled authentication for /api.
-        ContractRestController.java
-        models/Resonse
+        ContractRestController.java -
+            used ResponseEntity
+            Validation via Beans
+        models/Response
 
 
