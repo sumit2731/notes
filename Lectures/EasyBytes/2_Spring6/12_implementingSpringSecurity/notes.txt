@@ -68,3 +68,5 @@ code -
 
 Questions - 
     a)https://www.udemy.com/course/spring-springboot-jpa-hibernate-zero-to-master/learn/lecture/30806178#questions
+    b)https://www.udemy.com/course/spring-springboot-jpa-hibernate-zero-to-master/learn/lecture/30810902#questions/23551457/
+        How to define spring seeions by themself

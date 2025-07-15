@@ -147,3 +147,60 @@ Form Course -
             the errors to error object and adds that to model as well.
 
             code - Example 24, ContactController.java
+
+
+    7)Error handling-
+        1)@ControllerAdvice/@RestControllerAdvice(section 13, slide 102) -
+            a)handle exceptions across all contollers by defining using @ExceptionHandler.
+            b)Global Model Attributes - add attributes to all models
+                @ModelAttribute("currentYear")
+                public int getCurrentYear() {
+                    return LocalDate.now().getYear();
+                }
+            c)allows you to configure how form data is processed and converted across all controllers in your application using @InitBinder
+                @ControllerAdvice
+                public class GlobalDataBinder {
+
+                    @InitBinder
+                    public void initBinder(WebDataBinder binder) {
+                        // Automatically trim whitespace from all String inputs
+                        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+                    }
+                    @InitBinder
+                    public void initBinder(WebDataBinder binder) {
+                        // Configure global date format
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        dateFormat.setLenient(false); // Strict date parsing
+                        
+                        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+                    }
+                }
+
+        2)@ExceptionHandler - This is used to handle specific exceptions thrown by controller methods.
+            It can be used to handle exceptions -
+                a)Globally in all controller by using it inside @ControllerAdvice.
+                b)IN a particular Controller by using it inside @Controller
+            params -
+                a)
+            Return -
+                a)ModelAndView
+                b)string representing view
+                c)ResponseEntity - api response or JSON
+
+
+
+    8)RestServices -
+        1)@RestController(slide 171) - Same as @Controller.but with this extra thing - we are telling to our DispatcherServlet 
+            saying that please do not send any view details as part of my response because the other application which
+            is trying to consume my REST service, they just need a data,they don't need a view. but now methods inside
+            controller do not need to use @ResponseBody. 
+        2)@ResponseBody(slide 168) - If you do not use @RestController, then on each method you need to use this.
+            to our DispatcherServlet saying that please do not send any view details as part of my response because
+            the other application which is trying to consume my REST service, they just need a data, they don't
+            need a view.
+        3)@RequestBody
+        4)@RequestHeader("invocationFrom") - accepts value from header.
+                
+
+
+    

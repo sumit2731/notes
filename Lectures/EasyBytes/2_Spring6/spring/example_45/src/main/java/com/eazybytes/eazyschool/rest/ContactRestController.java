@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
+
+/*
+@Controller
+@RequestMapping(path = "/api/contact")
+@CrossOrigin(origins="*")
+public class ContactRestController {}
+*/
 @RestController
 @RequestMapping(path = "/api/contact",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 @CrossOrigin(origins="*")
@@ -23,24 +31,37 @@ public class ContactRestController {
     @Autowired
     ContactRepository contactRepository;
 
+    /**
+     * Spring uses library called jackson to convert java object to json object
+     */
     @GetMapping("/getMessagesByStatus")
-    //@ResponseBody
+//    @ResponseBody
     public List<Contact> getMessagesByStatus(@RequestParam(name = "status")  String status){
         return contactRepository.findByStatus(status);
     }
 
     @GetMapping("/getAllMsgsByStatus")
     //@ResponseBody
+    /**
+     * Here we are accepting the data from Body
+     * Only those fields will be populated whose , which fields are present in json
+     */
     public List<Contact> getAllMsgsByStatus(@RequestBody Contact contact){
         if(null != contact && null != contact.getStatus()){
             return contactRepository.findByStatus(contact.getStatus());
         }else{
+            //return an empty lis
             return List.of();
         }
     }
 
     @PostMapping("/saveMsg")
-    // @ResponseBody
+    /*
+       This is returns a HTTP response,
+       we can configure all things - Status,header, Body
+
+       we need to tell it data type of body
+     */
     public ResponseEntity<Response> saveMsg(@RequestHeader("invocationFrom") String invocationFrom,
                                             @Valid @RequestBody Contact contact){
         log.info(String.format("Header invocationFrom = %s", invocationFrom));

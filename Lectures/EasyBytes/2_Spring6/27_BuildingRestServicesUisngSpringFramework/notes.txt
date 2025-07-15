@@ -1,0 +1,31 @@
+205_Intro to REST SERVICES using spring framework (slide 168)
+    webServices - The very first one is using soap based web services.So soap based web services, they have a predefined
+    schema defined and they strictly follow the XML style of communication.Since soap based web services are heavy in 
+    nature these days, every developer is using REST based web services.The reason why everyone is liking and adopting
+    the rest based web services is inside rest based web services.
+
+
+    The reason why everyone is liking and adopting the rest based web services -
+        a)is inside rest based web services.You don't need to have predefined schema or predefined contract between 
+            the applications.That's one advantage.
+        b)The other advantage with the rest based web services is the communication can happen in the format of
+            XML or in the format of JSON.So there is no lock with XML.
+
+
+206_Build REST services using SpringMVC styles & ResponseBody annotation (slide 169)
+
+     @ResponseBody. - So whenever we are using this @ResponseBody annotation on top of the method we are telling
+        to our DispatcherServlet saying that please do not send any view details as part of my response because
+        the other application which is trying to consume my REST service, they just need a data, they don't
+        need a view.
+
+
+
+code -
+    Project_45
+    Files -
+        projectSecurityConfig.java - Disabled csrf for /api, and enabled authentication for /api.
+        ContractRestController.java
+        models/Resonse
+
+
