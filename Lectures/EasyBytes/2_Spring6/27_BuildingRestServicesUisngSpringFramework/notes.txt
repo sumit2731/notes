@@ -19,15 +19,34 @@
         the other application which is trying to consume my REST service, they just need a data, they don't
         need a view.
 
+213 - Demo of update
+
+
+216 - Sending Response in XML format in Rest Services
+    1)Add this to POM.xml - jackson-data-format-xml
+    2)Add this to RestController -
+        @RequestMapping(path = "/api/contact",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+    3)While sending API call, add this header to request =
+        Accept - application/xml
+
+217 - Content Filtering in Spring (slide 175)
+    slide - 175
+
+    Extra Details - see jackson in impApi
 
 
 code -
     Project_45
     Files -
         projectSecurityConfig.java - Disabled csrf for /api, and enabled authentication for /api.
-        ContractRestController.java -
+        ContractRestController.java(Imp) -
             used ResponseEntity
             Validation via Beans
         models/Response
+        GlobalExceptionRestController which extends ResponseEntityExceptionHandler - handles errors.
+            Also changed the order of ControllerHandler using @Order.
+        Added @CORS annotation
+        Responses in XML - jackson-data-format-xml
+        BaseEntity - @JsonIgnore, @JsonName
 
 

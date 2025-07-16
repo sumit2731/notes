@@ -1,0 +1,81 @@
+1)context.getBeanNamesForType(Person.class)
+
+
+Spring -
+    a)RequestEntity<Contact> requestEntity -  org.springframework.http.*;
+        Syntax -
+            @RestController 
+            class c1 {
+                @DeleteMapping("/deleteMsg")
+                public ResponseEntity<Response> deleteMsg(RequestEntity<Contact> requestEntity){}
+            }
+
+        API - 
+            requestEntity.getHeaders()
+            requestEntity.getBody()
+        Use - 
+            This represent the whole HTTP request. This is passed as first argument to controller method.
+    b)ResponseEntity<Response> - org.springframework.http.*
+        Syntax -
+            Refer Above
+        API - 
+            ResponseEntity
+                .status(HttpStatus.OK)
+                .header('headerName', 'headerValue')
+                .body(response);
+            Constructor can be called with either body,status or header.
+        Use - Return param of controller method can be this, allowing us to set, headers, sttaus.
+            If we return a JavaPojo then that is automatically added to resonseBody.
+
+    c)ResponseEntityExceptionHandler - Example 45 code. GlobalExceptionRestController
+
+2)jackson - In spring jackson is default library used for -
+        Serializing Java objects → JSON (sending response)
+        Deserializing JSON → Java objects (parsing request)
+
+        It works through ObjectMapper internally.ObjectMapper is class in jackson package.spring creates the bean of ObjectMapper.
+        Spring Uses MappingJackson2HttpMessageConverter which Which internally uses the ObjectMapper to serialize User into JSON.
+
+        Flow -
+            Client --> [JSON] --> Spring --> HttpMessageConverter --> ObjectMapper --> Java Object
+
+        Steps -
+
+            Spring sees Content-Type: application/json
+            It looks for a converter that supports it → finds MappingJackson2HttpMessageConverter
+            This converter uses the auto-configured ObjectMapper
+            JSON body is parsed into a User object using Jackson
+
+        Jackson provides a set of powerful annotations — and Spring fully supports them out of the box. common annotations -
+            Property level -
+                @JsonProperty
+                @JsonIgnore,@JsonIgnoreProperties
+                @JsonInclude(JsonInclude.Include.NON_NULL) - Controls inclusion of fields based on value:, skips non nul.
+                @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") - Formats values like dates, numbers, enums.
+            Constructor / Factory Control - 
+                @JsonCreator - Tells Jackson which constructor or factory method to use for deserialization.
+                @JsonProperty - Used with @JsonCreator to map JSON keys to constructor parameters.
+                @JsonSetter/@JsonGetter - Specifies a custom setter method for deserialization.
+            Custom (De)Serializers -
+                a)@JsonSerialize
+                    @JsonSerialize(using = CustomDateSerializer.class)
+                    private LocalDate date;
+
+
+
+General java -
+    a)Optional<Contact> contact - java.util.Optional
+        contact.isPresent()
+        contact.get()
+        contact.orElseThrow(() -> new RuntimeException("Contact not found"));
+        contact.orElse(null);
+        contact.ifPresent(c -> System.out.println(c.getName()));
+        contact.ifPresentOrElse(
+            c -> System.out.println(c.getName()),
+            () -> System.out.println("Contact not found")
+        );
+        contact.map(Contact::getName).orElse("Unknown");
+        contact.filter(c -> c.getName().startsWith("A")).orElse(null);
+        contact.flatMap(c -> Optional.ofNullable(c.getName())).orElse("Unknown");
+        contact.orElseGet(() -> new Contact("Default Name", "Default Email"));
+        contact.orElseThrow(() -> new ContactNotFoundException("Contact not found"));

@@ -20,11 +20,13 @@ public class BaseEntity {
 
     @CreatedDate
     @Column(updatable = false)
+    // this means that this entity wnt to sent in api response
     @JsonIgnore
     private LocalDateTime createdAt;
 
     @CreatedBy
     @Column(updatable = false)
+    // this means that this entity wnt to sent in api response
     @JsonIgnore
     private String createdBy;
 

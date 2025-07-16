@@ -65,6 +65,7 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>6.2.2</version>
 		</dependency>
+<!--		This is for having responses in XML format-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>

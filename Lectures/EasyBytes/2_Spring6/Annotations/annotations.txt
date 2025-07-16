@@ -68,6 +68,7 @@ Form Course -
         3)@RequestMapping(value={"", "/", "home"}, method = POST) - method inside Controller.
             @PostMapping(value ="/abc") - shortcut for @RequestMapping(method = POST)
             @GetMapping(value ="/abc")
+            @DeleteMapping(value ="/abc")
 
             param -
                 name - The name parameter in @RequestMapping is used to assign a logical identifier to the mapping, which 
@@ -109,8 +110,8 @@ Form Course -
 
                     whole process -
                         Client Side:
-                            Client sends Accept header indicating preferred response formats
                             Client sends Content-Type header indicating request body format
+                            Client sends Accept header indicating preferred response formats
                         Server Side:
                             Server checks produces parameter against client's Accept header
                             Server checks consumes parameter against client's Content-Type header
@@ -151,37 +152,76 @@ Form Course -
 
     7)Error handling-
         1)@ControllerAdvice/@RestControllerAdvice(section 13, slide 102) -
-            a)handle exceptions across all contollers by defining using @ExceptionHandler.
-            b)Global Model Attributes - add attributes to all models
-                @ModelAttribute("currentYear")
-                public int getCurrentYear() {
-                    return LocalDate.now().getYear();
-                }
-            c)allows you to configure how form data is processed and converted across all controllers in your application using @InitBinder
-                @ControllerAdvice
-                public class GlobalDataBinder {
+            Uses -
+                a)handle exceptions across all contollers by defining using @ExceptionHandler.
+                b)Global Model Attributes - add attributes to all models
+                    @ModelAttribute("currentYear")
+                    public int getCurrentYear() {
+                        return LocalDate.now().getYear();
+                    }
+                c)Using @InitBinder - This is used to customize the data binding(form request to params of controller) process 
+                    for all controllers.It can be used to register custom editors, formatters, or validators that apply globally.
+                    For example, you can create a global data binder that automatically trims whitespace from all String inputs
+                    and configures a global date format for Date objects.
 
-                    @InitBinder
-                    public void initBinder(WebDataBinder binder) {
-                        // Automatically trim whitespace from all String inputs
-                        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-                    }
-                    @InitBinder
-                    public void initBinder(WebDataBinder binder) {
-                        // Configure global date format
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        dateFormat.setLenient(false); // Strict date parsing
-                        
-                        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-                    }
-                }
+                    Can be used inside Controller , their it affects mapping of all methods defined inside that controller.
+                    see figure1.
+
+                    Syntax -
+
+                        @ControllerAdvice
+                        public class GlobalDataBinder {
+
+                            @InitBinder
+                            public void initBinder(WebDataBinder binder) {
+                                // Automatically trim whitespace from all String inputs
+                                binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+                            }
+                            @InitBinder
+                            public void initBinder(WebDataBinder binder) {
+                                // Configure global date format
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                dateFormat.setLenient(false); // Strict date parsing
+                                
+                                binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+                            }
+                        }
+
+                    param - If you don’t provide a name (i.e., just use @InitBinder without any argument), the method applies to all binding 
+                        operations in that controller.
+                    
+                        It takes a parameter, then mapping will only be applied if specififc form/model object is being
+                            used in controller methods. This allows you to customize the data binding process for specific types 
+                            of bound by providing its name.
+
+                                @InitBinder("user")
+                                public void initUserBinder(WebDataBinder binder) {
+                                    binder.setDisallowedFields("password");
+                                }
+
+                                will be applied when -
+                                    @PostMapping("/register")
+                                    public String registerUser(@ModelAttribute("user") User user) {
+                                        // binding happens here
+                                        return "success";
+                                    }
+
+                    Note this does not work for JSON object because JSON binding uses Jackson (or Gson) via HttpMessageConverters
+                        ,not WebBinders.to see how to modify JSON binding see rEST section.
+
+            Params -
+                It can be passed para,es to alter the scope of Controller s it affects.
+                ByClass
+                ByPackage
+                ByAnnotation
+                You mention a class, it will affect all classes in package
 
         2)@ExceptionHandler - This is used to handle specific exceptions thrown by controller methods.
             It can be used to handle exceptions -
                 a)Globally in all controller by using it inside @ControllerAdvice.
                 b)IN a particular Controller by using it inside @Controller
             params -
-                a)
+                a)It accepts the ErrorClass that it should handle. If passed base error class, it handles all types of errors.
             Return -
                 a)ModelAndView
                 b)string representing view
@@ -193,14 +233,68 @@ Form Course -
         1)@RestController(slide 171) - Same as @Controller.but with this extra thing - we are telling to our DispatcherServlet 
             saying that please do not send any view details as part of my response because the other application which
             is trying to consume my REST service, they just need a data,they don't need a view. but now methods inside
-            controller do not need to use @ResponseBody. 
-        2)@ResponseBody(slide 168) - If you do not use @RestController, then on each method you need to use this.
-            to our DispatcherServlet saying that please do not send any view details as part of my response because
-            the other application which is trying to consume my REST service, they just need a data, they don't
-            need a view.
-        3)@RequestBody
-        4)@RequestHeader("invocationFrom") - accepts value from header.
+            controller do not need to use @ResponseBody.
+
+            1)@ResponseBody(slide 168) - If you do not use @RestController, then on each method you need to use this.
+                to our DispatcherServlet saying that please do not send any view details as part of my response because
+                the other application which is trying to consume my REST service, they just need a data, they don't
+                need a view.
+            3)@RequestBody - Places the request body in method param.
+            4)@RequestHeader("invocationFrom") - accepts value from header.
+
+        2)@ResponseStatus - Used to set the HTTP status code for the response.
+            @ResponseStatus(HttpStatus.CREATED)
+            public void createUser(@RequestBody User user) {
+                // User creation logic
+            }
                 
+        3)@RestControllerAdvice -combination of @ControllerAdvice and @ResponseBody. So it will intercept the errors
+            thrown by controllers but always returns json in response body.
+
+        4)@CORS - prevents the CORS error on client.
+
+        3)To customize the data received from clinet before it eaches handlers -
+            a)Jackson annotations
+                public class User {
+                    @JsonFormat(pattern = "yyyy-MM-dd")
+                    private LocalDate dob;
+                }
+
+            b)Custom deserializers 
+                public class CustomDateDeserializer extends JsonDeserializer<LocalDate> {
+                    @Override
+                    public LocalDate deserialize(JsonParser p, DeserializationContext ctxt)
+                        throws IOException {
+                        return LocalDate.parse(p.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    }
+                }
+
+                Then register using:
+                
+                    public class User {
+                        @JsonDeserialize(using = CustomDateDeserializer.class)
+                        private LocalDate dob;
+                    }
+
+            c)Custom deserializers can be registered globally using ObjectMapper configuration.
+                @Configuration
+                public class JacksonConfig {
+                    @Bean
+                    public ObjectMapper objectMapper() {
+                        ObjectMapper mapper = new ObjectMapper();
+                        SimpleModule module = new SimpleModule();
+                        module.addDeserializer(LocalDate.class, new CustomDateDeserializer());
+                        mapper.registerModule(module);
+                        return mapper;
+                    }
+                }
+
+
+
+    9)Jackson Library -
+        1)@JsonProperty("alternate ") - Changes the name of properties while sending response.
+        2)@JsonIgnore - Ignores the property while sending response.can also be mentioned on top of class
+            if we want to ignore several properties.
 
 
     

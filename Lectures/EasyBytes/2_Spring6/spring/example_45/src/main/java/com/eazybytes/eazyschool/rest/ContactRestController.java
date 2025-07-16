@@ -37,7 +37,8 @@ public class ContactRestController {
     @GetMapping("/getMessagesByStatus")
 //    @ResponseBody
     public List<Contact> getMessagesByStatus(@RequestParam(name = "status")  String status){
-        return contactRepository.findByStatus(status);
+        var contacts = contactRepository.findByStatus(status);
+        return contacts;
     }
 
     @GetMapping("/getAllMsgsByStatus")
@@ -57,10 +58,8 @@ public class ContactRestController {
 
     @PostMapping("/saveMsg")
     /*
-       This is returns a HTTP response,
-       we can configure all things - Status,header, Body
-
-       we need to tell it data type of body
+       This is returns a HTTP response,we can configure all things - Status,header, Body
+       we need to Pass generic to tell type of body
      */
     public ResponseEntity<Response> saveMsg(@RequestHeader("invocationFrom") String invocationFrom,
                                             @Valid @RequestBody Contact contact){
@@ -75,6 +74,10 @@ public class ContactRestController {
                 .body(response);
     }
 
+    /**
+     * Here we get all the data in Response uisng Response Entity, again type of body is generic
+     * argument
+     */
     @DeleteMapping("/deleteMsg")
     public ResponseEntity<Response> deleteMsg(RequestEntity<Contact> requestEntity){
         HttpHeaders headers = requestEntity.getHeaders();
@@ -95,6 +98,9 @@ public class ContactRestController {
     @PatchMapping("/closeMsg")
     public ResponseEntity<Response> closeMsg(@RequestBody Contact contactReq){
         Response response = new Response();
+        /**
+         * See this Optional Object
+         */
         Optional<Contact> contact = contactRepository.findById(contactReq.getContactId());
         if(contact.isPresent()){
             contact.get().setStatus(EazySchoolConstants.CLOSE);

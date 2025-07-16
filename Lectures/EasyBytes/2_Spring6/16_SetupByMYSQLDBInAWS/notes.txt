@@ -1,13 +1,15 @@
 what we done -
     a)First we created a database in AWS
-        It was AWS RD  -> MySQL
+        It was Aurora and RDS.
         We made it public
         userName - admin, password - MYSQLSPRING
         Then in securityGroup - we added inbound groups to allow access from outside
 
     b)Then we downloaded the client - Sqlectron
         connected it to aws database by using endpoint and port from aws.
-        then executed some scripts on that table to create tables and insert some data.
+        then executed some scripts -
+            a)Added 2 tables
+            b)Populated them with data
     c)Then we connected this table with spring boot application.
         a)From spring boot started form added mysql dependency, added it t pom.xml
         b)Updated application.properties with 3 things -
@@ -15,3 +17,6 @@ what we done -
             spring.datasource.username
             spring.datasource.password
         c)From security config removed some exceptions related to H2 DB.
+
+
+code - example_34

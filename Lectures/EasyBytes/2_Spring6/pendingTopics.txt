@@ -13,3 +13,5 @@ a)messaging in spring
     Bean validations (lecture 99)
 
 6)We can have bean of sessionScope,but in server, how is a session defined.
+
+7)Filters,Interceptors EventListeners n Spring
