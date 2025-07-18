@@ -29,6 +29,9 @@ Spring -
 
     c)ResponseEntityExceptionHandler - Example 45 code. GlobalExceptionRestController
 
+    d)HttpEntity - org.springframework.http.HttpEntity
+        Project 46, used in Resdttemplate to snd a request with headers and body
+
 2)jackson - In spring jackson is default library used for -
         Serializing Java objects → JSON (sending response)
         Deserializing JSON → Java objects (parsing request)

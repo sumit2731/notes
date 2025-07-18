@@ -1,0 +1,19 @@
+218 - Introduction to consuming rest Services (slide 176)
+    The reason why the spring team deprecated this RestTemplate is RestTemplate has certain limitations
+    like it can't consume the REST services in an asynchronous mode.It will always consume the REST services
+    in an synchronous mode.That means it is always blocking in nature and it can never run in a non-blocking
+    style.
+
+    Maven, concept of BOMs (Bill of Materials) is used to manage the versions of dependencies
+
+
+
+Prefrences -
+    a)OpenFeign
+    b)WebClient
+    c)RestTemplate
+
+Project - 46
+    see POM.XML, uses BOM to give versions to spring cloud dependencies
+    EasySchoolApplication - @EnableFeignClients(basePackages = "com.eazybytes.eazyschool.proxy")
+    ContactProxy.java

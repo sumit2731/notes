@@ -1,8 +1,6 @@
 1)ControllerAdvice, 
     Adding values to model
     Changing handling of data - formatting, fields removal and all
-
-
 3)@CORS Error
 4)Conversion to XML format
 5)@CustomValidators - @Jakarta
@@ -13,6 +11,12 @@
 6)Jakson Annotations
     a)preporocessing of data
     b)Post processing of data
-
-7)2)RestControllerAdvice
+7)RestControllerAdvice
     ResponseEntityExceptionHandler - how to take action on the basis of arguments typed in custom validators
+
+8)concept of BOMs
+
+9)Consuming API's -
+    a)FeingClient
+    b)RestTemplate
+    c)WebClient(To be covered)

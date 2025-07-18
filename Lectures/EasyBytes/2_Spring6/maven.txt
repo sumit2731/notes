@@ -16,3 +16,53 @@
     default path where maven downloads dependencies -  /Users/sumeet.sood/.m2/repository
     why this path, because in maven folder, dere is conf/settings.xml. Their under localRepository, default is mentioned -
         ${user.home}/.m2/repository
+
+3_parent POM is for inheritance
+    things inherited -
+        <dependencyManagement>: Version and scope info for dependencies (not the dependencies themselves)
+        <pluginManagement>: Plugin versions/configurations
+        <properties>: Custom properties
+        <build> section: Plugin configurations, resources, etc.
+        <reporting> section
+        <distributionManagement>
+        <profiles>
+        <repositories>  - This tells Maven where to look for dependencies outside of Maven Central.
+        <pluginRepositories>
+
+    Not Imported -
+    <dependencies>: Actual dependencies are not inherited; you must declare them in your child POM.
+    <modules>: Only relevant for the parent (aggregator) POM.
+    <parent>: Only one level of parent is used.
+
+    Order fo search of parent -
+        a)Local file system using <relativePath> (if specified in the child POM).
+        b)Default local file system location: If <relativePath> is not set, Maven looks for ../pom.xml (one directory 
+            up from the child project).
+        c)If not found in the file system,Maven checks your local repository (~/.m2/repository).
+        d)Remote repositories: If still not found,Maven searches remote repositories defined in your settings or POM.
+
+4_BOM (Bill of Materials)
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+            <groupId>org.springframework.cloud</groupId>      <!-- The group that provides the BOM -->
+            <artifactId>spring-cloud-dependencies</artifactId> <!-- The BOM's artifact name -->
+            <version>2024.0.0</version>                        <!-- BOM version to use -->
+            <type>pom</type>                                   <!-- Indicates this is a POM, not a library JAR -->
+            <scope>import</scope>                              <!-- Tells Maven to import dependency versions from this BOM -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+5)Where version is taken if it is not specified in pom.xml -
+    a)If the version is managed in your POM’s BOM, that version is used.
+    b)If not found in your BOM, Maven checks the parent POM’s dependencyManagement for the version.
+    c)If still not found, Maven checks BOMs imported by your BOM, in order.
+
+
+6)maven profiles
+    a)Define or Override Properties
+    b)include/exclude a dependencies
+    c)plugin configuration
+    d)change resource path
+    e)customize build directory or output

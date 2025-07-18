@@ -10,12 +10,17 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class ProjectConfiguration {
-
+    /**
+     * This is for Feign Client
+     */
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
         return new BasicAuthRequestInterceptor("admin@eazyschool.com", "admin");
     }
 
+    /**
+     * This is for REST Template
+     */
     @Bean
     public RestTemplate restTemplate() {
         RestTemplateBuilder restTemplateBuilder =
