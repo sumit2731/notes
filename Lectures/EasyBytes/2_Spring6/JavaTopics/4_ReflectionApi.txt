@@ -1,0 +1,16 @@
+1)getting class type -
+    Class<?> clazz = Class.forName("com.example.impl.PaypalGateway", true, loader);
+
+    "com.example.impl.PaypalGateway" — Fully qualified name of the class to load.
+    true — Whether to initialize the class (i.e., run static blocks and initializations).
+    loader — A ClassLoader instance (often a custom loader or the thread context class loader).
+
+1)Getting instance of class and creating object -
+    Object obj = clazz.getDeclaredConstructor().newInstance();
+    //Object obj = clazz.newInstance(); // deprecated since Java 9
+    Object obj = clazz.getDeclaredConstructor().newInstance();
+
+
+    getDeclaredConstructor - 
+        Returns a Constructor<?> object representing the no-argument constructor of the loaded class.
+        Unlike getConstructor(), this can access even private constructors (with proper access permissions).

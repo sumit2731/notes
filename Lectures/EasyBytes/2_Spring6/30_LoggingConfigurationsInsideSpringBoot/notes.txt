@@ -1,0 +1,81 @@
+229 - Logging Configurations InsideSpringBoot (Slide 186)
+    So if you are building microservices or web applications with the help of SpringBoot, we don't have
+    to worry about how to configure Logging and all.As long as you are writing a log statements inside your 
+    business code, you should be good with that because your SpringBoot is going to take care of lot of 
+    Logging configurations and it will make sure all the log statements are printed on the logger files or 
+    on the console of your eclipse.
+
+
+    Code Examples -
+        see aspects folder - we have aspects for method executions and exceptions.
+
+    Log Levels -
+        a)fatal,error - Very critical for your application, without this your app will not work correctly.
+        b)warn - needs to be addressed ASAP, this is not impacting application immediately, application and usecase
+            may work, but i want someone to look into this.
+        c)Info - just info for developer
+        d)debug - will only be printed if you start your application in debug mode.So usually when you start your
+            web application in DEBUG mode, especially inside your local environment,you want to print each and every
+            statement like how your method execution is happening, how your request is being processed, how your request
+            is traversing through a microservice network.So for all those scenarios, you can put as many log statements
+            as you want inside your business logic,
+        e)trace - So whenever we use TRACE Severity, we are trying to log each and every details that are happening inside
+            my code.So using TRACE Severity use usually many frameworks like Spring ,SpringBoot.They will try to communicate
+            to developer what is happening internally whenever some server is being started or whenever whenever a particular
+            class inside a library is being invoked.So when you want to log each and every minute details, then in those scenarios
+            we will use the TRACE Severity.
+
+
+    logback is used by spring framework for logging.Fatal severity is not supported by logback.it may be possible
+    that you you are using some jar and that jar is using some other framework for logging.So just to make sure
+    that Logging is working perfectly in these kind of scenarios, SpringBoot also has appropriate logback routing
+    to ensure that Logging is working regardless of which framework that dependent libraries are using.
+
+    these levels of log messages are logged by default in spring boot -
+
+        error (fatal is not supported)
+        warning 
+        info
+
+
+230 - Logging Configurations inside Spring Boot (slide 187)
+    we can add these flags in application.properties -
+        debug= true
+        trace= true
+    These only affect the framework code not our code, for Ex code that I have written inside my DashboardController.
+
+    Log Statements have serious impact on your startup time.
+
+    For custom logging -
+
+        logging
+            level
+                root: INFO (This for entore app, until and unless you overwrite for some packages)
+                eazybytes.eazyschool.aspects: ERROR
+                eazybytes.eazyschool.controller: TRACE
+
+        OR
+
+        logging.level.root=INFO
+        #logging.level.com.eazybytes.eazyschool.aspects = ERROR
+        #logging.level.com.eazybytes.eazyschool.controller = ERROR
+
+        see application.properties
+
+232 - Store Log Statements into file
+    Since spring by default uses logback, in order to log statement into file, we need to add some configuartions in 
+        logback.xml
+
+Questions -
+    1)logback routing
+    
+
+
+Code -
+    Project - 48
+
+    File - 
+        a)src/main/resources/application.properties
+            we can config the log levels using different approaches
+        a)src/main/resources/logback.xml.
+            here we explained the format of log messages and in which file it should be vased

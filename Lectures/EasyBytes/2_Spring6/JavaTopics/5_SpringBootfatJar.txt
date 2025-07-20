@@ -1,0 +1,130 @@
+Fat JAR - A Fat JAR (also known as an uber JAR) is a single .jar file that contains:
+
+    Your application classes
+    All of its dependencies (libraries, frameworks, etc.)
+    A special launcher (Spring Boot’s own org.springframework.boot.loader.Launcher) that knows how to 
+        start the application.
+
+Structure - `
+
+    When you open a Spring Boot fat JAR:
+
+            myapp.jar
+        ├── META-INF/
+        │   ├── MANIFEST.MF
+        │   └── other metadata...
+        ├── org/springframework/boot/loader/
+        │   ├── ... Spring Boot launcher classes
+        ├── BOOT-INF/
+        │   ├── classes/
+        │   │   └── com/example/YourApp.class
+        │   └── lib/
+        │       ├── spring-boot-3.3.0.jar
+        │       ├── spring-context-6.1.4.jar
+        │       └── other-dependency.jar
+    Components -
+
+        1. META-INF/MANIFEST.MF
+
+            Manifest-Version: 1.0
+            Main-Class: org.springframework.boot.loader.JarLauncher
+            Start-Class: com.example.MyApplication
+            Spring-Boot-Version: 3.3.0
+
+            Main-Class: 
+                Standard Java Manifest attribute
+                Tells the JVM which class contains the public static void main(String[] args) method to start the application.
+                For Spring Boot, this is typically set to a Spring Boot launcher class, like:
+                    Main-Class: org.springframework.boot.loader.JarLauncher
+                This class is part of Spring Boot’s custom class loader infrastructure and is responsible for:
+                    Bootstrapping the application
+                    Loading nested JARs inside the fat JAR
+                    Delegating control to your application
+                            Start-Class: the class with your main() method
+
+            StartClass
+                Spring Boot–specific manifest attribute
+                Tells the Spring Boot launcher which class to delegate to (your actual @SpringBootApplication class).
+                For example:
+                    Start-Class: com.example.MySpringBootApp
+                This is not understood by the JVM — only by Spring Boot’s JarLauncher.
+                Internally, JarLauncher reads this attribute and invokes the main method of your application class.
+        2)org/springframework/boot/loader/
+            Contains Spring Boot’s runtime bootstrap classes:
+                JarLauncher – the default launcher for executable JARs
+                LaunchedURLClassLoader – Custom class loader that can read JARs inside the JAR.JAR Launcher Instantiates it.
+                    LaunchedURLClassLoader classLoader = new LaunchedURLClassLoader(URL[] urls, parent);
+                    This extends URLClassLoader.Each nested JAR is given a custom URL that knows how to read from inside the main JAR
+                    It doesn’t unzip them — it reads their content via a stream from inside the outer JAR.
+                ExecutableArchive, Archive, JarFileArchive, etc. – classes to parse nested structure
+                These are loaded by the system(Application) classloader and form the core of Spring Boot’s bootstrapping process.
+
+        3)BOOT-INF - This is where Spring Boot separates your code and dependencies:
+            
+            🔸 BOOT-INF/classes/
+                Contains your compiled .class files and resource files
+                Equivalent to target/classes/ in Maven/
+
+            🔸 BOOT-INF/lib/
+                Contains all dependency JARs
+                Every .jar here is treated as a classpath entry at runtime
+
+            These are not extracted — they remain as nested JARs, loaded dynamically.
+
+Why Spring does not place everything inside single JAR
+    a)Class Name Collisions
+        If you extract all dependency JARs into one directory, you risk overwriting classes with same names:
+
+        org/json/JSONObject.class  <-- from json-20210307.jar
+        org/json/JSONObject.class  <-- from some-other-json-lib.jar
+    b)Signature Files & Metadata in META-INF/
+        Multiple JARs often have:
+
+        META-INF/MANIFEST.MF
+
+        META-INF/LICENSE
+
+        META-INF/services/...
+
+        Flattening would overwrite or merge these in undefined ways.
+
+
+    c)❌ 3. Licensing and Integrity
+        Some JARs are signed (META-INF/*.SF, .RSA), and altering their structure invalidates those signatures.
+
+
+    d)It also Enables Layered JARs (for Docker caching)
+
+    Spring Boot supports layered JARs:
+
+        Dependencies, snapshot dependencies, app classes, and resources are in different layers
+
+    Useful in Docker to cache layers separately and rebuild faster
+
+Why NormalClassLoader cannot read nested JARs
+    Nested JAR's - jar file that is contained inside another .jar file.
+    Spring Boot's Fat JARS do this -
+    
+            myapp.jar
+        ├── BOOT-INF/
+        │   └── lib/
+        │       ├── jackson-core-2.17.1.jar
+        │       └── spring-context-6.1.4.jar
+    The standard Java ClassLoader (like URLClassLoader) cannot read nested JARs directly because:
+
+    1) It expects a flat directory structure, not nested JARs.
+    2) It cannot handle the special URLs that Spring Boot’s LaunchedURLClassLoader provides to read from inside the main JAR.
+
+    So, Spring Boot uses its own custom class loader (LaunchedURLClassLoader) to handle this complexity.
+
+
+What happens at Run time -
+    1)JVM reads META-INF/MANIFEST.MF
+        Sees Main-Class: org.springframework.boot.loader.JarLauncher
+    2)Bootstraps Spring Boot launcher
+        JarLauncher creates a LaunchedURLClassLoader
+        It scans BOOT-INF/lib/*.jar and adds them to the runtime classpath
+    3)Locates Start-Class (your main() method) from manifest
+    4)Invokes your main() method
+        Inside com.example.MyApplication
+    5)Spring Boot starts up as usual

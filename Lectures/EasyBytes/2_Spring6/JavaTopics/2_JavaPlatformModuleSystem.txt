@@ -1,0 +1,55 @@
+1)Why JPMS
+
+    Before Java 9, Java applications were structured as:
+        Classes → grouped into Packages → packaged as JAR files
+        But there was no formal way to define relationships or boundaries between JARs
+
+
+    JPMS adds a new level of structure to Java: the Module.
+
+    Problems with pre-Java 9 system:
+        No strong encapsulation – all public classes were accessible to everyone.
+        Classpath hell – duplicate/conflicting JARs, class not found errors
+        Hard to scale – especially large applications (e.g., Java SE itself)
+        Poor dependency management – dependencies were implicit, not declared
+        No split packaging protection – multiple JARs with same package caused issues
+
+    JPMS solves this by introducing:
+
+        Defines clear rules for who can access what.
+        Makes Java programs easier to maintain.
+        Helps create custom, smaller Java runtimes using only the modules you need.
+
+2_ what is JPMS
+
+    A module is a group of related classes and packages with clear boundaries.
+    A module is like a box that:
+
+        Contains some Java packages.
+        Says which packages it wants to share (exports).
+        Says which other boxes (modules) it depends on (requires).
+
+    Every module has a special file:
+        
+        module-info.java - 
+            module com.myapp {
+                requires java.sql;
+                exports com.myapp.api;
+            }
+
+
+
+
+
+com.util - a utility library:
+
+    module com.util {
+        exports com.util.helpers;
+    }
+
+com.myapp - your main app:
+
+    module com.myapp {
+        requires com.util;
+        exports com.myapp.api;
+    }

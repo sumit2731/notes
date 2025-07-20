@@ -2,19 +2,27 @@
 <configuration>
 
     <property name="LOGS" value="C://logs" />
-
-    <appender name="Console"
-              class="ch.qos.logback.core.ConsoleAppender">
+    <!--This defines the log format for logs printed on console-->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--
+            %d - Prints the date/time in ISO8601 format, colored black.
+            %highlight(%-5level): Prints the log level (e.g., INFO, ERROR), left-padded to 5 characters, with color highlighting based on severity.
+            %blue(%t)]: Prints the thread name in blue, inside brackets.
+            %yellow(%C{1}): Prints the simple class name (last part only) in yellow.
+            %msg: Prints the log message.
+            %n: New line.
+            %throwable: Prints the stack trace if there is an exception.
+            -->
             <Pattern>
                 %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1}): %msg%n%throwable
             </Pattern>
         </layout>
     </appender>
-
-    <appender name="RollingFile"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--This is config doe writing logs into file-->
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS}/spring-boot-logger.log</file>
+        <!--Log format for printing the logs in file-->
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
@@ -22,9 +30,12 @@
 
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- rollover daily and when the file reaches 10 MegaBytes -->
+            <!-- This is name of file, we use date(%d) and counter(%i), this way if multiple files are archived
+                        in same day we can differentiate between them-->
+
             <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
+            <!-- Archive current file if size increases beyond 10 mb            -->
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>10MB</maxFileSize>
@@ -34,11 +45,13 @@
 
     <!-- LOG everything at INFO level -->
     <root level="info">
+        <!-- Log both in console and as well as file -->
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
-
-    <!-- LOG "com.eazybytes.eazyschool*" at ERROR level -->
+    <!-- additivity="false" means that log events from the com.eazybytes.eazyschool logger will not be passed
+    to its parent loggers. Only the appenders explicitly attached to this logger (in this case, RollingFile
+    and Console) will handle its log messages. This prevents duplicate log entries in the output-->
     <logger name="com.eazybytes.eazyschool" level="error" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />

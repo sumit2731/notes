@@ -1,0 +1,132 @@
+ClassLoader
+    In Java, the ClassLoader is a part of the Java Runtime Environment that dynamically loads classes 
+    into memory when they are first referenced in the code.their is hierarchy of class loaders.
+    When a class loader is asked to load a class:
+        a)It first delegates the request to its parent.
+        b)The parent tries to load the class.
+        c)If the parent cannot load it, only then the current loader tries to load the class.
+
+    Advantages - 
+        1)Ensures that core Java classes are not overridden by custom classes.
+        2)Dynamic Loading - Classes can be loaded at runtime, allowing for flexibility and modularity.
+        3)Isolation - Different class loaders can load classes independently, preventing conflicts.
+        4)Security - Class loaders can
+
+    Custom Loaders Usecases -
+        Web Containers – Each web app gets its own class loader
+        Modular applications/plugins – Each module can have separate dependencies
+        Bytecode manipulation – Libraries like ASM, Javassist, or frameworks like Spring use it to enhance classes 
+            at runtime
+        Dynamic loading – Load code from external sources (JARs downloaded at runtime)
+Types -
+    Parent Child Hierarchy
+        1) Bootstrap ClassLoader - 
+            Loads core Java classes (java.lang.*, java.util.*, etc.) which are required to start the JVM from 
+                JAVA_HOME/lib/rt.jar (Java 8 and below) and Java 9+: From jrt:/modules/java.base/...
+            It is implemented in native code (C/C++) inside JVM, because it it not written in java.When you call 
+                getClassLoader() on a core class, it returns null.so we cannot customize it.
+            Doesn't have a parent 
+
+        2. Platform(earlier called extension) ClassLoader
+            Loads platform modules (like JDBC, XML, etc.) separated from core modules
+            accessible via - ClassLoader.getPlatformClassLoader()
+            written in java, you cannot customize it
+
+        3.Application(System) ClassLoader
+            Loads your application classes and external dependencies
+            Loads from classPath - -cp / -classpath option, CLASSPATH environment variable, META-INF/manifest.mf
+            How to access in code - MyClass.class.getClassLoader()
+            customize it - You can extend and use your own ClassLoaders
+
+        4)Custom/User-Defined ClassLoaders (context class loaders)
+            Dynamically load classes from custom sources (e.g., DB, network, byte array)
+            used in Web servers, app containers, OSGi, plugin systems.
+            written in - Java (You write it)
+            Used in - URLClassLoader, custom loader for JAR isolation in Tomcat, etc.
+
+    Context ClassLoader- Context ClassLoader is a ClassLoader associated per-thread in Java. It’s not part of the 
+        parent-child classloader hierarchy,It was introduced in Java to solve visibility and modularity issues when
+        code running in one ClassLoader (e.g., JDK or framework) needs to access application-specific classes
+        (which are usually loaded by another ClassLoader).This can be set and retrieved like this -
+
+            Thread.currentThread().setContextClassLoader(classLoader); // Set
+            ClassLoader loader = Thread.currentThread().getContextClassLoader(); // Get
+
+        Example -
+            a) JDBC drivers - 
+                In java.sql -
+                    a)Users could write their own JDBC drivers (like com.mysql.cj.jdbc.Driver).
+                    b)But the DriverManager class in java.sql (loaded by the Bootstrap ClassLoader) needed a way to
+                        discover and load drivers from application classpath.Bootstrap ClassLoader could not see 
+                        mysql-connector.jar (user jars).Because these jars were loaded by the Application ClassLoader.
+                    c)Oracle's engineers added logic to DriverManager that uses the Thread Context ClassLoader to load 
+                        drivers from the user classpath.
+            b) Spring Framework - In Spring Boot we use a custom clasloader to to load your code.
+
+        why was it introduced -
+
+            Originally, Java had a parent-delegation model: child classloaders delegate class loading to their
+            parent.This worked well until frameworks appeared, especially in J2EE containers, which load classes
+            from multiple modules and need the ability to:
+
+            "Let framework code load classes that actually belong to the application."
+
+💡          So Java introduced Thread.setContextClassLoader() to break the rigid parent-delegation model safely,
+            by allowing class loading to be delegated through the thread context, rather than the fixed hierarchy.
+
+        Diagram -
+            
+            BootstrapClassLoader (loads java.*)
+                    ↓
+            PlatformClassLoader (loads jdk.*)
+                    ↓
+            ApplicationClassLoader (loads your app)
+                    ↓
+            [Framework Code in Spring or JDBC]
+                ↳ Uses ↓
+            Thread.currentThread().getContextClassLoader()
+            ↳ points to:
+            [App's ClassLoader or PluginLoader]
+
+        Summary -
+
+
+            What is it?	    A ClassLoader reference held per-thread
+            Why needed?	    Allows code in one module to load classes defined elsewhere
+            Set by?	        Thread.setContextClassLoader(loader)
+            Used by?	    SPI frameworks, JDBC, Spring, web containers
+            Benefits	    Decouples class loading from strict hierarchy
+            Risks	        Improper use can cause class visibility issues or memory leaks in containers
+
+
+
+
+API -
+    How to accesss it - 
+        MyClass.class.getClassLoader()
+        ClassLoader.getPlatformClassLoader()
+        ClassLoader.getSystemClassLoader()
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+    Loading classes -
+        Class.forName("com.example.MyClass") - Loads class and initializes it
+        ClassLoader.loadClass("com.example.MyClass") - Loads class without initialization
+
+    GetParent -
+        cl.getParent();
+Signifinace -
+
+
+    a)ClassNotFoundException or ClassCastException occurs if:
+        1)A class is loaded by two different class loaders
+        2)You try to cast an object loaded by WebAppClassLoader to a class loaded by a parent (Tomcat) class loader
+    b)It is used by spring -
+        a)Search and load classes annotated with Annotations
+        b)Web Applications Use ClassLoader Isolation
+            If you deploy a Spring app to Tomcat, each app gets its own class loader.
+            This lets you:
+                a)Run multiple Spring apps at once
+                b)Use different versions of libraries like Spring or Jackson in each app
+                c)Avoid class conflicts
+        c)Spring DevTools Uses a Restart ClassLoader
+            a)Reloads only your code when files change
+            b)Keeps Spring and dependencies in memory

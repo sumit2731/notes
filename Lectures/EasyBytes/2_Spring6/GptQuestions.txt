@@ -1,0 +1,7 @@
+Explain these -
+    a)Binding process in log4j in detail.
+    b)why we need to configure logger at each class.i.e this -
+        Logger logger = LoggerFactory.getLogger(MyClass.class);
+    3)How is this efficient than concatination -
+        logger.debug("Name: {}", name); // Efficient
+    4)How it unifies the logs from another jar, if another jar is uisng some other frameowrk for logging

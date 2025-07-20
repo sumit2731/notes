@@ -1,0 +1,2 @@
+223- Intro To Spring DataRest Rst & HAL Explorer
+    HAL explorer can be sean at - http://localhost:8080/

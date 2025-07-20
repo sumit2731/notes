@@ -1,0 +1,20 @@
+A normal JAR is just a zip file with:
+
+    Your compiled .class files
+    A META-INF/MANIFEST.MF file with an optional Main-Class entry
+
+    ✅ To run a normal JAR:
+
+        java -jar myapp.jar
+    But this only works if: The myapp.jar has a valid Main-Class in MANIFEST.MF
+
+    All external dependencies are manually provided via the classpath
+
+Strucrure -
+
+        myapp.jar
+    ├── META-INF/
+    │   └── MANIFEST.MF  (with Main-Class)
+    └── com/example/Main.class
+
+    It does not include any of its dependencies. You must handle those yourself.

@@ -1,0 +1,111 @@
+SLF4J -SLF4J is a logging facade.That means:
+
+    ❗ It does not do the actual logging itself
+    ✅ It provides a common interface (API) for logging
+    ✅ It lets you plug in your favorite logging framework behind the scenes (like Logback, Log4j, etc.)
+
+Architecture -
+    
+    [ Your App Code ]
+       |
+     uses SLF4J API
+       |
+    [ SLF4J Binding (like slf4j-log4j2) ]
+        |
+    [ Actual Logging Framework (e.g., Log4j2, Logback) ]
+
+What happens at run time -
+    SLF4J uses ServiceLoader to discover the binding.
+        You call LoggerFactory.getLogger(...).
+        SLF4J searches for a binding JAR in your classpath.
+
+
+Behind The code -
+    a)LoggerFactory is a class from slf4j-api.jar, It has a static method getLogger(String name or Class<?>).when you call
+        this In your class - 
+        
+        Logger logger = LoggerFactory.getLogger(MyClass.class);
+        you call that method.
+
+        Class - org.slf4j.LoggerFactory, Found in: slf4j-api-1.x.jar
+            public static Logger getLogger(Class<?> clazz) {
+                return getLogger(clazz.getName());
+            }
+
+            public static Logger getLogger(String name) {
+                ILoggerFactory iLoggerFactory = getILoggerFactory();
+                return iLoggerFactory.getLogger(name);
+            }
+
+            private static ILoggerFactory getILoggerFactory() {
+                if (INITIALIZATION_STATE == UNINITIALIZED) {
+                    performInitialization();
+                }
+                return StaticLoggerBinder.getSingleton().getLoggerFactory();
+            }
+    b)This is a hardcoded class name: org.slf4j.impl.StaticLoggerBinder.It seaches for this class in the classpath.
+    
+        SLF4J Searches for Binding JAR in the Classpath
+
+            What is a Binding?
+            A binding is a JAR file like:
+
+            slf4j-logback-classic.jar
+            slf4j-log4j2.jar
+            slf4j-jdk14.jar
+
+            These JARs contain:
+
+                An implementation of org.slf4j.ILoggerFactory
+                A file called StaticLoggerBinder.class (this is key 🔑)
+
+            How it looks for binding class -
+
+                1)In version 1.x -
+                    a)It looks for this class in classPath - org.slf4j.impl.StaticLoggerBinder. via -
+                        Class.forName("org.slf4j.impl.StaticLoggerBinder", true, cl);
+                        Where cl is typically the context class loader (like the application class loader in most environments).
+                    b)So this is plain classpath scanning, i.e., the JVM looks inside all JARs listed in the classpath for this class.
+                    c)this is provided by the binding library (like slf4j-log4j2 or slf4j-logback).Inside class - 
+                        public class StaticLoggerBinder {
+                            public static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
+
+                            public static StaticLoggerBinder getSingleton() {
+                                return SINGLETON;
+                            }
+
+                            public ILoggerFactory getLoggerFactory() {
+                                return new LoggerContext(); // Logback-specific factory
+                            }
+                        }
+                    
+
+                2)In version 2.x(ServiceLoader)
+                    a)You call - Logger logger = LoggerFactory.getLogger(MyClass.class);
+                    b)SLF4J looks for a provider of - org.slf4j.spi.SLF4JServiceProvider
+                    c)It uses  - ServiceLoader.load(SLF4JServiceProvider.class)
+                    d)In each binding JAR (e.g., logback-classic-1.4.x.jar), there is, file - META-INF/services/org.slf4j.spi.SLF4JServiceProvider (matches with name of interface , whose implementation you are looking for)
+                        It Contains - org.slf4j.logback.LogbackServiceProvider    
+                    e)The class is instantiated, and its initialize() method is called.The provider returns -
+                        ILoggerFactory - getLoggerFactory() - Inside it, it creates a LoggerContext from Logback and exposes it like this:
+                            private final ILoggerFactory loggerFactory = new ch.qos.logback.classic.LoggerContext();
+                            public ILoggerFactory getLoggerFactory() {
+                                return loggerFactory;
+                            }
+                        MDCAdapter - getMDCAdapter()
+                        MarkerFactory - getMarkerFactory()
+
+    c)Class StaticLoggerBinder is found.
+
+        public static StaticLoggerBinder getSingleton() {
+            return SINGLETON;
+        }
+
+        public ILoggerFactory getLoggerFactory() {
+            return loggerFactory;
+        }
+        This class links the SLF4J API to the actual logging implementation by returning an ILoggerFactory that produces
+        Logger objects backed by the real logger (Logback, Log4j, etc.).
+
+
+    

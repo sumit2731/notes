@@ -1,0 +1,36 @@
+What is ServiceLoader?
+    Discover and load implementations (providers) of a given interface (service) at runtime, without hardcoding
+    their class names.
+
+Why We Need It?
+    Imagine you are writing a framework (like JDBC, SLF4J, or SPI-based logging). You want users 
+    to plug in their own implementation without modifying your code.Without ServiceLoader: You
+    must know the implementing class name and use Class.forName() and reflection.
+
+    With ServiceLoader: Java can dynamically discover and load implementations just by scanning
+        metadata files — without any hardcoding.
+
+Structure & Useage -
+    a)Define Interface -
+        
+        public interface PaymentGateway {
+            void pay(double amount);
+        }
+
+    b)create implementation -
+
+        public class PaypalGateway implements PaymentGateway {
+            public void pay(double amount) {
+                System.out.println("Paid $" + amount + " using PayPal");
+            }
+        }
+    c)register provider - META-INF/services/com.example.PaymentGateway
+        contents - com.example.impl.PaypalGateway
+
+    d)Load Provider -
+        
+        ServiceLoader<PaymentGateway> loader = ServiceLoader.load(PaymentGateway.class);
+
+        for (PaymentGateway gateway : loader) {
+            gateway.pay(100.0);
+        }
