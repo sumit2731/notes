@@ -58,6 +58,15 @@ Spring -
             Constructor / Factory Control - 
                 @JsonCreator - Tells Jackson which constructor or factory method to use for deserialization.
                 @JsonProperty - Used with @JsonCreator to map JSON keys to constructor parameters.
+
+                    public class User {
+                        private final String name;
+
+                        @JsonCreator
+                        public User(@JsonProperty("name") String name) {
+                            this.name = name;
+                        }
+                    }
                 @JsonSetter/@JsonGetter - Specifies a custom setter method for deserialization.
             Custom (De)Serializers -
                 a)@JsonSerialize

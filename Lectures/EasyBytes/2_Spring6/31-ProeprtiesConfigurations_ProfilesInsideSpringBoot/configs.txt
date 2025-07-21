@@ -1,0 +1,14 @@
+a)System properties -
+    set -
+        java -Dapp.name=MyApp -Dlogging.level=DEBUG -jar myapp.jar
+        System.setProperty("my.custom.prop", "someValue");
+    get - 
+        System.getProperty("my.prop"); 
+
+
+b_env variables -
+    Setting -
+        export MY_ENV=value
+        java -jar app.jar
+    Reading -
+        System.getenv("MY_ENV");

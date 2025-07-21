@@ -26,6 +26,8 @@ public class LoggerAspect {
 
     @Around("execution(* com.example.services.*.*(..))")
     public void log(@NotNull ProceedingJoinPoint joinPoint) throws Throwable {
+        //We can also have a dynamic logger which prints classname
+        //    Logger logger = Logger.getLogger(joinPoint.getTarget().getClass().getName());
         logger.info(joinPoint.getSignature().toString() + " method execution start");
         Instant start = Instant.now();
         //args of orignal method, you can modify them and pass to method

@@ -20,3 +20,8 @@
     a)FeingClient
     b)RestTemplate
     c)WebClient(To be covered)
+
+
+11) Spring profiles
+    How to activate profiles
+        application.properties

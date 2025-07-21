@@ -143,11 +143,49 @@ Form Course -
 
             @RequestMapping(value = "/saveMsg",method = POST)
             public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors, Model model) {}
-        7)@Valid - It is imported from jakarta package.When user submits the form it compares the form data
-            with POJO class annonated with jakarta validation annotations and if it is not valid, passses
-            the errors to error object and adds that to model as well.
+        7)@Valid - It is imported from jakarta package.Use @Valid for field-level validation inside request bodies.
+            When user submits the form it compares the form data with POJO class annonated with jakarta validation annotations 
+            and if it is not valid, passses the errors to error object and adds that to model as well.
 
             code - Example 24, ContactController.java
+            @RequestMapping(value = "/saveMsg",method = POST)
+            public String saveMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors, Model model) {}
+
+        8- @Validated - similar to @Valid but can be used on validation groups.Use @Validated at class level for method-level validation.
+            Ex1 (can also be used at class level for method validations) - 
+                RestController
+                @RequestMapping("/users")
+                @Validated
+                public class UserController {
+
+                    @GetMapping("/{id}")
+                    public String getUserById(@PathVariable @Min(1) Long id) {
+                        return "User ID: " + id;
+                    }
+                }
+
+            Ex2 (validating groups) -
+                DTO Layer -
+                    public interface CreateGroup {}
+                    public interface UpdateGroup {}
+
+                    public class UserDto {
+                        @NotNull(groups = UpdateGroup.class)
+                        private Long id;
+
+                        @NotBlank(groups = {CreateGroup.class, UpdateGroup.class})
+                        private String name;
+                    }
+                Controller Layer -
+                    @PostMapping("/create")
+                    public ResponseEntity<?> createUser(@RequestBody @Validated(CreateGroup.class) UserDto userDto) {
+                        // Only CreateGroup validations will apply here
+                    }
+
+            This requires AOP-based proxying, so Spring must manage the bean (i.e., it should be annotated with @Component, 
+            @Service, etc.)
+
+
 
 
     7)Error handling-
@@ -296,5 +334,25 @@ Form Course -
         2)@JsonIgnore - Ignores the property while sending response.can also be mentioned on top of class
             if we want to ignore several properties.
 
+        Rest check in ImpAPI.txt
 
+    10)lombork anootations -
+        1)@Data - Generates getters, setters, toString, equals, hashCode methods and @RequiredArgsConstructor.
+        2)@Getter/@Setter - Generates only getter/setter methods.
+        3)@ToString - Generates toString method.
+        4)@EqualsAndHashCode - Generates equals and hashCode methods.
+        5)@NoArgsConstructor - Generates a no-argument constructor.
+        6)@RequiredArgsConstructor - Generates a constructor with required (final or @NonNull) fields only.
+        7)@AllArgsConstructor - Generates a constructor with all fields as parameters.
+        8)@Builder - Implements the builder pattern for object creation.
+            User user = User.builder()
+                .name("Sumeet")
+                .age(30)
+                .address("Delhi")
+                .build();
+
+    11)Reading Configs -
+        a)@Property
+        b)@PropertySource - lecture 236
+        c)@Configurationproeprties - lecture 236
     

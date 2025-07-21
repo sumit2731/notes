@@ -42,6 +42,7 @@ public class ContactService {
     }
 
     public Page<Contact> findMsgsWithOpenStatus(int pageNum,String sortField, String sortDir){
+//            Read values in config @ConfigurationValues
         int pageSize = eazySchoolProps.getPageSize();
         if(null!=eazySchoolProps.getContact() && null!=eazySchoolProps.getContact().get("pageSize")){
             pageSize = Integer.parseInt(eazySchoolProps.getContact().get("pageSize").trim());

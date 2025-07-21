@@ -14,6 +14,10 @@ import java.util.Map;
 @Component("eazySchoolProps")
 @Data
 @ConfigurationProperties(prefix = "eazyschool")
+/**
+ * Here this means do the validation for property values mentioned in app.properties
+ * agains the validations defiend here
+ */
 @Validated
 public class EazySchoolProps {
 
