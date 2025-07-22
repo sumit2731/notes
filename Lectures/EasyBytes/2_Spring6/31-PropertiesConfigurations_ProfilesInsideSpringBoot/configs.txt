@@ -1,4 +1,6 @@
 a)System properties -
+    In Java, System Properties are a set of key-value pairs that provide information about the runtime 
+        environment, user settings, and configuration of the Java Virtual Machine (JVM).
     set -
         java -Dapp.name=MyApp -Dlogging.level=DEBUG -jar myapp.jar
         System.setProperty("my.custom.prop", "someValue");

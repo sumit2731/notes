@@ -1,0 +1,158 @@
+233- Introduction to externalized properties inside spring boot web application (slide 191)
+    In spring boot application all configs in application.properties or application.yml is loaded.these values are made
+        avaliable in -
+
+        @Value("${...}")
+        Environment.getProperty("...")
+        @ConfigurationProperties
+    
+    In Spring no file is loaded speciffically. you need to use @PropertyValue, even after using this, you need to do
+    some minor config - Register a PropertySourcesPlaceholderConfigurer bean for @Value and Environment.getProperty
+    
+
+    The order of overwrite (follow slide till Os environment varaibles) - 
+
+    5️⃣ Profile-specific application-{profile}.properties	e.g., application-dev.properties
+    6️⃣	application.prop enties or application.yml	In classpath:/config/, then classpath:/
+    7️⃣	@PropertySource (manual)	From custom config files
+    8️⃣	Default values in @Value or @ConfigurationProperties	e.g., @Value("${timeout:5000}")
+    9️⃣	Spring default values	e.g., default server port is 8080
+
+
+234- Reading Properties using @Value (slide 192)
+    it uses SPEL
+
+235 - Reading Properties using Environment Interface (slide 193)
+    Environment is a interface
+    One advantage here that we have is we don't have to follow the spring expression language to to mention our 
+    property names.You can straight away mention what is your property name inside double quotes and my environment 
+    bean is going to take care of fetching the value from the property file and giving it back to me as a return
+    value of this get property method.
+    
+    It can even read properties from env variables(In latest spring version even @Property can do it)
+
+
+236 - Reading properties using @ConfigurationProperties (slide 194, 195, 196), 197
+    You can use use @PropertySource along with @ConfigurationProperties, if your configs are defined in
+    file other than application.properties or application.yml.
+
+    @ConfigurationProperties, we need to tell what is the prefix that you have maintained inside your property file.
+         one more thing that you need to take care is you should make sure that the field names inside your Java class 
+         are matching with the property names inside your property files along with the name and along with the data 
+         type as well.
+
+        see the mapping of properties to fields in the class.we can map to individual fields,maps and arrays.
+
+        And one more advantage whenever you are using this approach is if you mention @Validated annotation, the spring 
+        framework will make sure that what ever validations that you are mentioning on top of these fields are being 
+        validated during the startup of the web application.This works by default in spring boot but in spring you need
+        to do some config.
+
+        In order to make it in work in spring, you need to do some configurations.
+
+    @PropertySource(value = "classpath:config.properties",name = "customProps",encoding = "UTF-8",ignoreResourceNotFound = true) - 
+        See notes of first lecture in detail.
+        This annotation is used to specify the location of properties files to be loaded by the Spring Environment.It parses all 
+        key-value pairs, Adds them into the Spring Environment (Environment object).so that these can be accessed using -
+            1) @Value("${...}")
+            2) Environment.getProperty("...")
+            3) @ConfigurationProperties - Class where you use should be registered as bean.
+        where to use it -
+                a)@Configuration ✅ (most common and recommended one)
+                b)Along with @Component,@Service and @@ConfigurationProperties
+        Order of Overwrite -
+            a)If you use @Configuration at multiple places and load multiple files.
+                The first loaded @PropertySource wins if both keys are defined
+                Spring will not override a property that was already set earlier from another @PropertySource.
+            b)If you mention multiple files in same config, then later file overwrites the earlier one.
+            c)If use @import to import config classes, then also later one overwrites the earlier one.
+        Limitations -
+            a)No automatic profile support (unlike application-{profile}.properties)
+            b)No Yaml support
+        params -
+            a)value - specifies the path 
+        Specifying path - 
+
+            1)Classpath-based (most common) - @PropertySource("classpath:app.properties")
+                This loads app.properties from the src/main/resources folder.
+                src/main/resources/config/db.properties ->	classpath:config/db.properties
+
+                🔸 Note: classpath: prefix tells Spring to look inside the compiled resources folder.
+
+            2) Absolute File System Path
+                @PropertySource("file:/opt/configs/app.properties") -> Loads file from /opt/configs/app.properties on your disk.
+
+            3)Relative File System Path
+                @PropertySource("file:./external/app.properties") -> Relative to the current working directory from which the app is run.
+
+            4)Using Environment Variable or Placeholder (Spring 4.3+) -> @PropertySource("file:${config.dir}/app.properties")
+                Spring will resolve ${config.dir} from:
+
+                    System Properties (-Dconfig.dir=/some/path)
+                    Environment Variables
+                    application.properties
+
+    @Validated we can use @Validated while reading proeprties to have some validations while reading the properties
+
+238 - Concept of profile in Spring
+
+    IN Spring -
+        a)@Profile to add beans conditionally based on active profile. you use it on @Component,@Bean,
+            @Configuration etc.
+
+    In SpringBoot -
+        see notes of next lecture
+
+
+239 - Implementation & Demo of profiles inside Eazy School Web App (slide - 198)
+    Note(This is only applicable for spring boot) -
+        Default profile is always activated.
+        When you activate any other profile, first properties of default profile are loaded, then properties of activated profile
+        are override them(properties of same name are over-riden, rest all are used as it is).
+
+
+240 - Various Approaches to activate profiles inside Spring (Slide 199)
+    At a time you can activate more than one profile.
+    Third way way -
+        this command runs a JAR.
+        This comamnd runs a spring boot application using maven plugin
+    How to set profile in programmatic way -
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.getEnvironment().setActiveProfiles("dev", "qa");
+        context.register(AppConfig.class);
+        context.refresh();
+    During Testing -
+        @ActiveProfiles is a Spring testing annotation used to set active Spring profiles only during test execution.
+    recommended way - Env variables or System Properties.
+
+    generating jar -
+        Add this at root - <packaging>jar</packaging>
+        From terminal run(path should be pom.xml) -
+            mvn clean install -Dmaven.test.skip=true
+    Then we ran(This runs spring boot aplication) -
+        mvn spring-boot:run "-Dspring-boot.run.profiles=prod"
+
+241 -Creating Comditional beans based on active profile
+    here we created conditional beans, in non-prod env, we do not want to check for password, we only want to check for 
+    email.so wecrateed bean of class which implemmetes AuthenticationProvider conditionally.
+
+    we created different bean of same interface for non -prod, env which does not check for password.
+
+    we use @profile('prod') and @Profile('!prod')
+
+Code - 
+    Example 49
+        DashboardController.java -
+            Read values using @Value
+            Read values by Injecting Environment
+        application.properties.
+        EazySchoolProps.java - @Validated, @ConfigurationProperties
+        Profiles - 
+            application_prod.properties
+            application_uat.properties
+            application.properties - 
+                how to define profile files 
+                activate the profile through application.properties
+        EazySchoolUsernamePwdAuthenticationProvider,EazySchoolNonProdUsernamePwdAuthenticationProvider -
+            Conditional beans.
+        

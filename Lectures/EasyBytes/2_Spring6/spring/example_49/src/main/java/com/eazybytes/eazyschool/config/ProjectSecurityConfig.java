@@ -16,7 +16,8 @@ public class ProjectSecurityConfig {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**")
                 .ignoringRequestMatchers("/api/**").ignoringRequestMatchers("/data-api/**"))
-                .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
+                .authorizeHttpRequests((requests) ->
+                        requests.requestMatchers("/dashboard").authenticated()
                     .requestMatchers("/displayMessages/**").hasRole("ADMIN")
                     .requestMatchers("/closeMsg/**").hasRole("ADMIN")
                     .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -34,7 +35,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/assets/**").permitAll()
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/logout").permitAll()
-                    .requestMatchers("/public/**").permitAll())
+                    .requestMatchers("/public/**").permitAll()
+                )
                 .formLogin(loginConfigurer -> loginConfigurer.loginPage("/login")
                         .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll())
                 .logout(logoutConfigurer -> logoutConfigurer.logoutSuccessUrl("/login?logout=true")

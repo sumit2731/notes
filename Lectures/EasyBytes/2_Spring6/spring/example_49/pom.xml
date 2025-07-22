@@ -12,6 +12,7 @@
 	<artifactId>example_49</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>example_49</name>
+	<!--	This is related to packaging-->
 	<packaging>jar</packaging>
 	<description>Eazy School Web Application</description>
 	<properties>

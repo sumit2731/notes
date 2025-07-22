@@ -14,22 +14,18 @@ Form Course -
             b)Why we use it when we use @ComponentScan -
                 a)Manual bean creation: You want fine-grained control over object creation.
                 b)External library integration: Third-party classes don’t have @Component, and you can’t add annotations to them.
-                c)Conditional Bean Creation Complex bean creation logic that depends on conditions.
-                    @Bean
-                    @ConditionalOnProperty(name = "app.feature.enabled", havingValue = "true")
-                    public FeatureService featureService() {
-                        return new FeatureService();
-                    }
-
-                    @Bean
-                    @Profile("production")
-                        public CacheManager cacheManager() {
-                        return new RedisCacheManager();
-                    }
                 d)Configuration Classes can be imported into other configuration classes using @Import.
+            c)It is prefered to have @PropertySource inside @Configuration class, so that properties can be loaded
+                and used in beans defined inside this configuration class.also we can load it conditionally using @Profile.
+            d)Use can use @Import to import other configurations.
         2)@ComponentScan
             @ComponentScan(basePackages = {"com.example.implementation","com.example.services"})
             @ComponentScan(basePackageClasses = {com.example.beans.Vehicle.class,com.example.beans.Person.class})
+        3)@Profile - It can be placed on any bean creation annotation and bean will be registered only when given profile
+            is active.It can be used for -
+                a)Component_ sub types of it.
+                b)@Configuration - configuration will be applied only when this happens.
+                    By combining @Configuration with @PropertySource, we can load properties conditioanlly.
     3)Bean Injection -
         1)@Autowired
         2)@Qualifier - slide 46, specifies the name of bean which should be injected, if more than 1 bean exists for
@@ -184,9 +180,6 @@ Form Course -
 
             This requires AOP-based proxying, so Spring must manage the bean (i.e., it should be annotated with @Component, 
             @Service, etc.)
-
-
-
 
     7)Error handling-
         1)@ControllerAdvice/@RestControllerAdvice(section 13, slide 102) -
@@ -352,7 +345,6 @@ Form Course -
                 .build();
 
     11)Reading Configs -
-        a)@Property
+        a)@Property - lecture 234
         b)@PropertySource - lecture 236
         c)@Configurationproeprties - lecture 236
-    
