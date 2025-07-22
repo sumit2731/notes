@@ -16,11 +16,13 @@ public class ProjectSecurityConfig {
 
         http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**")
                 .ignoringRequestMatchers("/api/**").ignoringRequestMatchers("/data-api/**")
-                .ignoringRequestMatchers("/eazyschool/actuator/**"))
+                        // ignore CSRF for actuator
+                        .ignoringRequestMatchers("/eazyschool/actuator/**"))
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
                     .requestMatchers("/displayMessages/**").hasRole("ADMIN")
                     .requestMatchers("/closeMsg/**").hasRole("ADMIN")
                     .requestMatchers("/admin/**").hasRole("ADMIN")
+                    // Actuator access should be allwoed to admin only
                     .requestMatchers("/eazyschool/actuator/**").hasRole("ADMIN")
                     .requestMatchers("/api/**").authenticated()
                     .requestMatchers("/data-api/**").authenticated()

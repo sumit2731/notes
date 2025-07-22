@@ -1,0 +1,9 @@
+path - / actuator (changed it in application.proeprties)
+
+
+code -
+    example - 50
+    files -
+        POM.xml, new dependency for actuator
+            Allowed access to actuator route to admin
+        Application.properties
