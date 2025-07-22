@@ -1,16 +1,45 @@
-a)System properties -
+a)CommandLine arguments -
+    java -jar app.jar --spring.profiles.active=prod --custom.prop=test
+
+    In SpringBoot - It automatically activates the profile
+    In Spring - This is avalible as SystemProperty and you need to read it using System.getProperty("spring.profiles.active");
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.getEnvironment().setActiveProfiles("dev");
+        context.register(AppConfig.class);
+        context.refresh();
+
+
+
+b)System properties -
     In Java, System Properties are a set of key-value pairs that provide information about the runtime 
         environment, user settings, and configuration of the Java Virtual Machine (JVM).
     set -
-        java -Dapp.name=MyApp -Dlogging.level=DEBUG -jar myapp.jar
-        System.setProperty("my.custom.prop", "someValue");
+        java -Dspring.profiles.active=dev -Dlogging.level=DEBUG -jar myapp.jar
+        System.setProperty("spring.profiles.active", "someValue");
     get - 
-        System.getProperty("my.prop"); 
+        System.getProperty("spring.profiles.active"); 
+
+    Like command line arguments we need to activate the profile manually.
+
+    When running with maven plugin -
+        mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
 
-b_env variables -
+c)_env variables -
     Setting -
-        export MY_ENV=value
+        bash - export SPRING_PROFILES_ACTIVE=dev
+        windows cmd - set SPRING_PROFILES_ACTIVE=dev
         java -jar app.jar
     Reading -
-        System.getenv("MY_ENV");
+        System.getenv("SPRING_PROFILES_ACTIVE=");
+
+    In spring again you need to do profile setting manually.
+
+
+
+
+    Reading them -
+        a)@Value
+        b)@ConfigurationProperties
+        c)Using Environment bean

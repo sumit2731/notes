@@ -132,7 +132,7 @@
     Then we ran(This runs spring boot aplication) -
         mvn spring-boot:run "-Dspring-boot.run.profiles=prod"
 
-241 -Creating Comditional beans based on active profile
+241 -Creating Conditional beans based on active profile(slide 200)
     here we created conditional beans, in non-prod env, we do not want to check for password, we only want to check for 
     email.so wecrateed bean of class which implemmetes AuthenticationProvider conditionally.
 
