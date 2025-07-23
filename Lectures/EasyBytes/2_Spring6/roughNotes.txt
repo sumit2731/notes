@@ -1,9 +1,0 @@
-1)You said that properties loaded with @PropertySource can access these values using:
-
-@Value("${property.key}") and environment.getProperty("property.key")
-
-what about @ConfigurationProperties ?
-
-
-2)why only with @spring not with spring boot?
-

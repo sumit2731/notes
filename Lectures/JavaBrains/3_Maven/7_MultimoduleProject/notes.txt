@@ -3,7 +3,7 @@
 
     first we create a default maven project.after generating it we delete everything except pom.xml.because we do
     not want this project to generate any jar, we want it to act as parent project, where all other projects will reside.
-    we know that by default packaging type is jar, but here we dnr=t want to generate jar. we want to act it as parent.
+    we know that by default packaging type is jar, but here we dnt want to generate jar. we want to act it as parent.
     way to specify this as parent project is by marking the packaging as pom(instead of default jar).
 
     <packaging>pom</packaging>

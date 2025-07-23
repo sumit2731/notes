@@ -1,0 +1,83 @@
+246 - Intro (slide 205,206)
+    slide 206 -
+        Step 1 - in console , answer questions like type of app - java, go,node etc.it will create our env
+            based on our inputs.
+        Step 2 - provide your code.
+        Step 3- web app will be deployed using tools.
+            AWS Cloud Formation - It creates infra based on our commands. we tell it so and so EC2,
+            so and so software, it will install everything.I can create some templates and feed them
+            to it based on my inuput. it will create infra behind the scenes.
+
+            s3 bucket - code will be stored in s3 bucket.
+            cloudwatch - it is for monitoring.
+
+247 - Packaging Spring Boot Application for AWS Deployment
+    Opening a project in workspace -
+        New -> Open Module form existing sources -> select POM.xml
+    Generating jar -
+        1)press control 2 times, select current project from dropdown on right
+        2)run- mvn clean install (mvn clean install -DskipTests)
+        3)you can change name of artifact in POM.xml by using this in build -
+            <finalName>eazyschool-aws-deployment</finalName>
+
+            By defualt name is - ${artifactId}-${version}.
+
+        4)In Target folder you will see jar
+
+    Also we will see how we can avoid, mentioning the database detail in application.properties file.
+248 - Deploying Spring Boot app into AWS Elastic Beanstalk
+    a)create a new Project in Beanstalk -
+        select java, load jar
+    b)Now we need service role for beanstalk and EC2 instance.
+        do next operation in new tab
+        a)create new role for Beanstalk(because it needs to do some operations) -
+            1)go to IAM -> Roles -> Create role
+            2)First we need to create a service account -
+                a)select AWS service
+                b)then select application - Beanstalk
+                c)Create Role - EazySchoolElasticBeantalk
+        b)New create role for Ec2 instance.
+            a)select EC2
+            b)Only select these policies(from docs) -
+                AWSElasticBeanstalkWebTier
+                AWSElasticBeanstalkWorkerTier
+                AWSElasticBeanstalkMulticontainerDocker
+            c)new role is created - EazySchoolEC2RoleForBeanstalk
+
+    c)Now go to tab in setp b and select roles. you will be only able to select role, which for a service,
+        which ia marked for that service.
+    d)some changes in step 4 - regarding number of instances.
+    e)Step5 - add a new env property -
+        SERVER_PORT - 5000
+        This is because load balnacer forwards the traffic to port 5000.you need to start your app
+            at same port.
+        This will overwrite the port.
+
+    After deploying we changed the profile (by changing env properties), by going to -
+        env -> configuration -> edit
+        SPRING_PROFILES_ACTIVE = prod
+        this will automatically restart the server.
+
+249 - Switching DB inside AWS Elastic beanstalk
+    a)First allow only our app to reach to our database -
+        1)Aurora and RDS -> go to your database -> security group (Connectivity and security) 
+        2)now click on your security group.
+        3)Inbound rules. figure1 shows rules for all access.
+        4)we added new rule in CIDr column we selected, security group of our beanstalk.there
+            were 2 , so we selected 2.
+    b)Then overwrite the DB configs by passing ENV variables.
+        spring.datasource.url -> SPRING_DATABASE_URL
+
+        Note- as of now we have mentioned these as plain text but ideally they should be mentioned 
+            by using secret manager in aws.
+
+        Other useful section -
+            a)health
+            b)Monitoring
+            c)alarms
+            d)Changes
+
+250 - Deleting AWS Beanstalk and DB Resources
+    Here first we broke dependency between database and elastic bean env's.
+    we delete the security groups of Beanstalk from inbound rules of security groups of Databse.
+Code - example 52
