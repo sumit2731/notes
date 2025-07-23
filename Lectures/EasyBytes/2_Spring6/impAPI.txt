@@ -1,6 +1,8 @@
 1)context.getBeanNamesForType(Person.class)
 
 
+
+
 Spring -
     a)RequestEntity<Contact> requestEntity -  org.springframework.http.*;
         Syntax -
@@ -32,48 +34,53 @@ Spring -
     d)HttpEntity - org.springframework.http.HttpEntity
         Project 46, used in Resdttemplate to snd a request with headers and body
 
-2)jackson - In spring jackson is default library used for -
-        Serializing Java objects → JSON (sending response)
-        Deserializing JSON → Java objects (parsing request)
+    e)jackson - In spring jackson is default library used for -
+            Serializing Java objects → JSON (sending response)
+            Deserializing JSON → Java objects (parsing request)
 
-        It works through ObjectMapper internally.ObjectMapper is class in jackson package.spring creates the bean of ObjectMapper.
-        Spring Uses MappingJackson2HttpMessageConverter which Which internally uses the ObjectMapper to serialize User into JSON.
+            It works through ObjectMapper internally.ObjectMapper is class in jackson package.spring creates the bean of ObjectMapper.
+            Spring Uses MappingJackson2HttpMessageConverter which Which internally uses the ObjectMapper to serialize User into JSON.
 
-        Flow -
-            Client --> [JSON] --> Spring --> HttpMessageConverter --> ObjectMapper --> Java Object
+            Flow -
+                Client --> [JSON] --> Spring --> HttpMessageConverter --> ObjectMapper --> Java Object
 
-        Steps -
+            Steps -
 
-            Spring sees Content-Type: application/json
-            It looks for a converter that supports it → finds MappingJackson2HttpMessageConverter
-            This converter uses the auto-configured ObjectMapper
-            JSON body is parsed into a User object using Jackson
+                Spring sees Content-Type: application/json
+                It looks for a converter that supports it → finds MappingJackson2HttpMessageConverter
+                This converter uses the auto-configured ObjectMapper
+                JSON body is parsed into a User object using Jackson
 
-        Jackson provides a set of powerful annotations — and Spring fully supports them out of the box. common annotations -
-            Property level -
-                @JsonProperty
-                @JsonIgnore,@JsonIgnoreProperties
-                @JsonInclude(JsonInclude.Include.NON_NULL) - Controls inclusion of fields based on value:, skips non nul.
-                @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") - Formats values like dates, numbers, enums.
-            Constructor / Factory Control - 
-                @JsonCreator - Tells Jackson which constructor or factory method to use for deserialization.
-                @JsonProperty - Used with @JsonCreator to map JSON keys to constructor parameters.
+            Jackson provides a set of powerful annotations — and Spring fully supports them out of the box. common annotations -
+                Property level -
+                    @JsonProperty
+                    @JsonIgnore,@JsonIgnoreProperties
+                    @JsonInclude(JsonInclude.Include.NON_NULL) - Controls inclusion of fields based on value:, skips non nul.
+                    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") - Formats values like dates, numbers, enums.
+                Constructor / Factory Control - 
+                    @JsonCreator - Tells Jackson which constructor or factory method to use for deserialization.
+                    @JsonProperty - Used with @JsonCreator to map JSON keys to constructor parameters.
 
-                    public class User {
-                        private final String name;
+                        public class User {
+                            private final String name;
 
-                        @JsonCreator
-                        public User(@JsonProperty("name") String name) {
-                            this.name = name;
+                            @JsonCreator
+                            public User(@JsonProperty("name") String name) {
+                                this.name = name;
+                            }
                         }
-                    }
-                @JsonSetter/@JsonGetter - Specifies a custom setter method for deserialization.
-            Custom (De)Serializers -
-                a)@JsonSerialize
-                    @JsonSerialize(using = CustomDateSerializer.class)
-                    private LocalDate date;
+                    @JsonSetter/@JsonGetter - Specifies a custom setter method for deserialization.
+                Custom (De)Serializers -
+                    a)@JsonSerialize
+                        @JsonSerialize(using = CustomDateSerializer.class)
+                        private LocalDate date;
 
+Spring Security -
+    Spring’s UserDetailsService returns a UserDetails object that represents the logged-in user.
+    Spring provides a default class: org.springframework.security.core.userdetails.User.
 
+    Default Interface which returns this object - org.springframework.security.core.userdetails.UserDetailsService
+    Implementation of this interface is provided by Spring -   org.springframework.security.provisioning.InMemoryUserDetailsManager
 
 General java -
     a)Optional<Contact> contact - java.util.Optional

@@ -1,0 +1,79 @@
+SpEL - Spring Expression Language. It is a powerful expression language supported by the Spring Framework 
+    to query and manipulate objects(or object graph) at runtime.SpEL expressions are enclosed in -
+    #{ ... }.
+
+    what variables can mean in SpEL -
+        #{isActive ? 'YES' : 'NO'}
+
+        isActive is an expression that evaluates to a boolean.
+
+        Depending on context, Spring will try to resolve isActive as:
+            A method parameter(e.g., in @PreAuthorize)
+            A bean property(e.g., in @Value)
+            A public field or method of another bean (e.g., #{myBean.isActive})
+            A variable set in the SpEL context (in manual usage)
+
+Inside SpEL -
+    System.getProperties('os.name') -> "#{systemProperties['os.name']} // System properties
+    reading config properties - "#{environment['property.name']}" // environment is a bean
+    OS env vars -> '#{systemEnvironment}' // env variable
+    beanName - '#{@beanName}' // In some cases like
+    
+    
+    
+    Places where it us used -
+
+    1)@Value - to inject values into fields, methods, and constructor parameters.
+            @Value("#{myService.someValue}") // inside @Value you can refer to beans without #.
+            private String serviceValue; // Injects value from another bean, here you can refer to beans with @
+
+            @Value("#{T(java.lang.Math).random() * 100}")
+            private double randomValue; // A random number between 0 and 100
+
+            T(java.lang.Math) → references the Math class.
+
+            @Value("#{systemProperties['os.name'].contains('Windows') ? 'windows' : 'unix'}") // reading value from systemProperties and doing conditional logic
+            private String osType;
+
+        Note - Inside @Value you can read config properties by @Value("${property.name}") syntax
+    
+    2)Annotations Like @Preauthrize and @PostAuthorize -
+        
+        @PreAuthorize("hasRole('ADMIN') and #user.username == authentication.name")
+        public void updateUser(User user) {
+            // Method logic
+        }
+
+        breakDown -
+            a)hasRole(...) is a Spring Security built-in SpEL method.This checks if the currently authenticated
+                user has the role ROLE_ADMIN.
+            b)#user.username - This accesses the username property of the user object passed to the method.
+                This is SpEL syntax to access method parameters.In this case, user is the method argument 
+                (User user), and .name accesses the name field (i.e. user.getName()).
+            c)authentication - authentication is a built-in variable in Spring Security’s SpEL context.
+
+
+        @Component("accessEvaluator")
+        public class AccessEvaluator {
+            public boolean hasAccess(String resource) {
+                return "resource-1".equals(resource); // logic
+            }
+        }
+
+        @PreAuthorize("@accessEvaluator.hasAccess(#resourceId)")
+        public void viewResource(String resourceId) {
+            // logic
+        }
+
+        So you can define beans and call them as custom SPEL methods.
+
+
+    3)Config File -
+        no, Spring only supports Property Placeholders (${...}),Resolve from environment or properties.
+        app.discount=#{T(java.lang.Math).random() * 10}
+    
+
+    4)In java Code -
+        ExpressionParser parser = new SpelExpressionParser();
+        Expression expression = parser.parseExpression("'Hello Spring'.concat('!')");
+        String result = expression.getValue(String.class); // Hello Spring!

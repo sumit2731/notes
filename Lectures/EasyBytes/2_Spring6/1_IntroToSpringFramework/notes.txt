@@ -8,9 +8,8 @@
 
     Why spring is successful -
         a)it evolves on day to day basis 
-            It evolves over the period based upon the market trends, like in the initial days.
             It evolves over the period based upon the market trends, like in the initial 
-            days.Spring came up with only spring core and spring MVC pattern to build 
+            days,Spring came up with only spring core and spring MVC pattern to build 
             monolithic applications.Later on when industry is moving towards a microservices 
             cloud native applications.Then spring also started evolving by introducing lot
             of features like Spring Boot, which will make developer life very easy in 
@@ -27,7 +26,7 @@
         like Object Class,Collections,API, JDBC, exception handling.
         b)Java Mobile Edition - For Mobile applications.
         c)Java EE - since this supports web applications development, all the advanced concepts 
-         like Servlets Jsps Ejbs,JMS JPA(which is used for persistent framework) JavaServer Faces,
+         like Servlets Jsps Ejbs,JMS,JPA(which is used for persistent framework) JavaServer Faces,
          which is JSF and all web services related Jax-ws,Jaxb and  WebSockets.So all these 
          advanced concepts are present inside Enterprise Edition, which can be used to build 
          web applications that will accept a request and send a response from an servlet
@@ -47,7 +46,7 @@
         complexities that developer has to handle is made very simple inside spring 
         framework where developer don't have to worry about it.He just had to provide
         database credentials with that spring framework will take care of these.
-        Whereas in Enterprise Edition, all these are the responsibilities of developer.
+        Whereas in Enterprise Edition, all these are were the responsibilities of developer.
 
         In early 2000 people used to suffer a lot in building web applications because
         you have to define many servlet mappings inside your web.xml which make things 
@@ -71,8 +70,7 @@
         Spring Security
         Spring Data
         Spring Boot
-        Spring Cloud - Helps in building microservice that can be deployed on docker
-            and kubernetes.
+        Spring Cloud - Helps in building microservice that can be deployed on docker and kubernetes.
         Spring Batch - Focuses on batches executions.
 
 
@@ -80,12 +78,13 @@
     spring, it is not a single framework.Spring is a version of frameworks where it has 
     more than 50 frameworks covering each scenario of a web development.
 
-    For all these projects, spring core is at the center and this is the base for all
-    the projects available inside the spring framework.
+    For all these projects, spring core is at the center and this is the base for all the projects available 
+    inside the spring framework.
 
 6)IOC and Dependency Injection(slide 11)
-    All projects inside Spring follow principle of "Inversion of Control".Spring core, which is again the base for all the spring
-    projects and spring framework built on core principles called inversion of control and dependency injection.
+    All projects inside Spring follow principle of "Inversion of Control".Spring core, which is again the base
+    for all the spring projects and spring framework is built on core principles called inversion of control 
+    and dependency injection.
     
     IOC is a software design principle followed by other languages also. what is says never ever create the
         objects or the dependencies that you need inside your program directly.Instead, describe the ways 
@@ -101,10 +100,11 @@
     inversion of control.So we can call dependency injection as a design pattern.
     
     Through dependency injection,The responsibility of creating the objects inside any application is shifted
-    from the application or programmer to the any external framework or inside spring we call it as IOC container.
+    from the application or programmer to the any external framework or inside spring we call it as 
+    IOCContainer.
 
-    So why spring adopted dependency injection and inversion control means to achieve loose coupling between the components 
-    that we build or between the classes that we build inside any application.
+    So why spring adopted dependency injection and inversion control means to achieve loose coupling between 
+    the components that we build or between the classes that we build inside any application.
 
 
 7 - demo of IOC and dependency injection
@@ -179,7 +179,7 @@
     Like if you have your configurations inside XML, we have XML style of IOC container.
     Similarly, we have classpath style of IOC container, annotation style of IOC containers.
     difference between bean factory and application context IOC container -
-        BeanFactory is a very basic IOC container.so it can only handle the bean creation, bean maintenance, auto wearing them
+        BeanFactory is a very basic IOC container.so it can only handle the bean creation, bean maintenance, auto wiring them
             and injecting the dependencies based upon dependency injection pattern.
         ApplicationContext is an advanced IOC container, it implements bean factory.On top of that, it provides extra features
             to the developers.
@@ -194,7 +194,7 @@
 
         So if you want to write a very basic spring application where you don't want to use any advanced features of spring 
         framework, then you should go for the BeanFactory implementation.Otherwise I would always recommend you to go with the
-        application context.
+        ApplicationContext.
 
 
     slide 16 -

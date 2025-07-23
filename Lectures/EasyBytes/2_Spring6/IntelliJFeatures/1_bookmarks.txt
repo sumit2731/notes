@@ -12,3 +12,6 @@ b)Seeing Bookmarks -
             b)Drag and Drop is also avalible in Bookmark List, between list or within list.
     2)Line BookMarks (NOt Useful Use First Only)
         a)cmd+ f3 (edit->bookmarks->show bookmarks) - Shows all Line(named) Bookmarks
+
+c)Navigating between bokmarks in a file -
+    cmd +option + (up/down)

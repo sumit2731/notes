@@ -1,0 +1,69 @@
+Spring Boot does this automatically:
+
+    1)Starts with SpringApplication.run(...)
+
+    2)Internally loads:
+
+        Command line args
+
+        SPRING_APPLICATION_JSON
+
+        Env vars
+
+        System properties
+
+        Config files (application.properties, .yml)
+
+        Defaults
+
+    3)Merges all into one ConfigurableEnvironment
+
+    4)Makes it available via:
+        @Value("${...}")
+        Environment.getProperty(...)
+        SpEL: #{environment['...']}
+
+In Spring -
+    1)properties files needs to be loaded manually. using @PropertySource.
+        and then you need to create bean of this type - PropertySourcesPlaceholderConfigurer via static method.
+
+        @Value("${my.prop}")
+        private String myProp;
+
+        @Bean
+        public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+            return new PropertySourcesPlaceholderConfigurer();
+        }
+    
+    2.Spring (Core) by default uses StandardEnvironment, which includes:
+        System properties
+        System environment variables
+
+        But it does not automatically read CLI args, or merge config files unless you do so.
+    
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        
+        // ✅ Get the pre-created Environment
+        ConfigurableEnvironment env = context.getEnvironment();
+
+        // 2. Add system properties (already there by default, but for clarity)
+        environment.getPropertySources().addLast(
+            new PropertiesPropertySource("systemProps", System.getProperties())
+        );
+
+        // 3. Add environment variables (already there by default, but for clarity)
+        environment.getPropertySources().addLast(
+            new SystemEnvironmentPropertySource("envVars", System.getenv())
+        );
+
+        // 4. Add CLI args (simulate CLI arguments as a map)
+        Map<String, Object> cliArgs = Map.of("server.port", "8081");
+        environment.getPropertySources().addFirst(
+            new MapPropertySource("cliArgs", cliArgs)
+        );
+
+        // 6. Register config and refresh
+        context.register(MyAppConfig.class);
+        context.refresh();
+
+    3)For @ConfigurationProperties - not avalaible in spring.

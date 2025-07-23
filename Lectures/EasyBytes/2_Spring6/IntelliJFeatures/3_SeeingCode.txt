@@ -6,4 +6,18 @@
     cmd + shift + (-)/(+)
 
 3)Go Forward/Backward -
-    cmd +shift + ([) or (])
+    cmd +option + left/right
+
+4)Seeing Hierarchy in code (navigate -> appropriate option) -
+    method hierarchy
+    call hierarchy
+    class hierarchy
+
+6)recent locations -
+    cmd + shift + E
+
+7)Jumping to test of class -
+    cmd + shift + t
+
+8)Jump to last place where we changed code - 
+    cmd + shift + backspace (works recursively)

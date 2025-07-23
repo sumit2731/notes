@@ -1,0 +1,1 @@
+Press control 2 times and then select the command you want to run, also select project from workspace

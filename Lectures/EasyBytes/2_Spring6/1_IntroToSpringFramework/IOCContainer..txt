@@ -1,0 +1,35 @@
+The IoC Container in Spring is the core system that:
+    Creates your application’s objects (beans)
+    Injects dependencies (DI)
+    Manages bean lifecycles
+
+In simple terms: It’s the Spring engine that takes your config and builds a working app for you.
+
+
+Types of IOC -
+    ApplicationContext - 	Full-featured container - 	used by Real-world Spring apps (web, boot, AOP, events)
+    BeanFactory - It's the simplest IoC container provided by Spring.used for lazy bean loading	Legacy or 
+        very lightweight apps
+
+        BeanFactory factory = new XmlBeanFactory(new FileSystemResource("beans.xml"));
+        MyService service = factory.getBean("myService", MyService.class);
+
+        Spring loads the bean only when you call getBean(...).
+LifeCyccle of IOC Container -
+    1. You start the app (SpringApplication.run)
+    2. Spring creates an ApplicationContext (IoC container)
+    3. It scans for beans (`@Component`, `@Service`, etc.)
+    4. Creates and wires all beans (IoC + DI)
+    5. You can use these beans anywhere via injection or `getBean()`
+
+
+Extra Feature in ApplicationContext - 
+    Bean Post-Processors
+    Annotation-based Configuration.
+    Environment Abstraction - Allows access to system environment, property files, and profiles via Environment object.
+    Supports Profiles (@Profile)
+    Eager Bean Loading
+    Autowiring of Dependencies
+    Aware Interfaces -  Interfaces like ApplicationContextAware, BeanNameAware are automatically detected
+    Internationalization
+    Event Publishing System

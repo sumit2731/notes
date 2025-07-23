@@ -1,0 +1,2 @@
+Opening a project in workspace -
+        New -> Open Module form existing sources -> select POM.xml

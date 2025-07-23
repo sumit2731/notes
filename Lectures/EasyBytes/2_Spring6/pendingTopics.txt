@@ -1,10 +1,9 @@
+a)7)Filters,Interceptors EventListeners n Spring
+
+
 a)messaging in spring
-2)signifance of these annotations -
-    @Controller
-    @Service
-    @Repository
-3)Loggers in Java
-    Log4J
+
+
 
 4)ProxyProgramming in Java
 
@@ -12,6 +11,4 @@ a)messaging in spring
     like @data from Lombork
     Bean validations (lecture 99)
 
-6)We can have bean of sessionScope,but in server, how is a session defined.
 
-7)Filters,Interceptors EventListeners n Spring
