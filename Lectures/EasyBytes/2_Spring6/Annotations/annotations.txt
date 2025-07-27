@@ -2,64 +2,133 @@ Form Course -
     1)Defining Beans -
         1)@Bean - @Bean annotation lets Spring know that it needs to call this method when it initializes its context and adds the 
             returned object/value to the Spring context/Spring loC Container.Also returned value is converted into bean.
+            Params -
+                a)name, value - string
+                b)initMethod - string
+                c)destroyMethod - string
+                d)autowireCandidate - boolean - whether this bean should be used in autowire.
         3)@Primary - slide 22
         4)@Component - slide 23
-        5)@Controller, @Service,@Repository - slide 24
+        5)@Controller, @Service,@Repository - slide 24.
+            ChatGpt - Special behaviour fo Repository, some error conversion.see notes of section 2
         6)@PostConstruct - slide 27
         7)@PreDestroy -slide 28
-        11)@Lazy - slide 53
-    2)Configurations -
-        1)@Configuration - code 1
-            a)Can Have @Bean Method, so this class is passed as argument to Spring Bean to register beans.
-            b)Why we use it when we use @ComponentScan -
-                a)Manual bean creation: You want fine-grained control over object creation.
-                b)External library integration: Third-party classes don’t have @Component, and you can’t add annotations to them.
-                d)Configuration Classes can be imported into other configuration classes using @Import.
-            c)It is prefered to have @PropertySource inside @Configuration class, so that properties can be loaded
-                and used in beans defined inside this configuration class.also we can load it conditionally using @Profile.
-            d)Use can use @Import to import other configurations.
-        2)@ComponentScan
-            @ComponentScan(basePackages = {"com.example.implementation","com.example.services"})
-            @ComponentScan(basePackageClasses = {com.example.beans.Vehicle.class,com.example.beans.Person.class})
-        3)@Profile - It can be placed on any bean creation annotation and bean will be registered only when given profile
-            is active.It can be used for -
-                a)Component_ sub types of it.
-                b)@Configuration - configuration will be applied only when this happens.
-                    By combining @Configuration with @PropertySource, we can load properties conditioanlly.
-    3)Bean Injection -
-        1)@Autowired
-        2)@Qualifier - slide 46, specifies the name of bean which should be injected, if more than 1 bean exists for
-            given type
-        3)@Value - slide 47
-    4)Bean Scope
+        8)@Lazy - slide 53
+    2)Bean Scope
         1)@Scope(BeanDefinition.SCOPE_PROTOTYPE) - slide 50,90
             @PrototypeScope
             @RequestScope
             @SessionScope
             @ApplicationScope
         2)@Lookup (not covered in course) - when you inject Prototype scoped bean into Singleton scoped bean, you can use @Lookup annotation
-         to get new instance of prototype bean every time you refer to it inside singleton bean.
+            to get new instance of prototype bean every time you refer to it inside singleton bean.section 4.
             
             @Lookup // This method will be overridden by Spring to return a new Task instance
             public abstract Task createTask(); // The return type is the prototype bean
+    3)Configurations -
+        1)@Configuration - code 1
+            a)Can Have @Bean Method, so this class is passed as argument to Spring Bean to register beans.
+            b)Why we use it when we use @ComponentScan -
+                a)Manual bean creation: You want fine-grained control over object creation.
+                b)External library integration: Third-party classes don’t have @Component, and you can’t add annotations to them.
+                c)Configuration Classes can be imported into other configuration classes using @Import.
+            c)It is prefered to have @PropertySource inside @Configuration class, so that properties can be loaded
+                and used in beans defined inside this configuration class.also we can load it conditionally using @Profile.
+            d)Use can use @Import to import other configurations.
+            Parameters -
+                a)proxyBeanMethods - Controls whether the configuration class should be CGLIB-proxied to enforce singleton behavior of @Bean methods.
+                    true(default) - CGLIB proxy is created, allowing @Bean methods to call each other and maintain singleton behavior.
+                    false - No CGLIB proxy is created, so @Bean methods cannot call each other directly.
+                b)Value - inherited from @Component, used to specify the name of the bean.
+                c)enforceUniqueMethods - Ensures that method names in a @Configuration class are unique, especially for methods annotated with @Bean.
+                    Prior to Spring 6.1, it was technically allowed (though dangerous) to define multiple methods with the same name in the same configuration
+                    class or inherited hierarchy.with this value as true Spring will fail fast during startup if it detects any duplicate method names in the
+                    configuration class hierarchy.
+        2)@ComponentScan - If do not specify any class or package,Spring will scan the package where the class is defined and
+            all its sub-packages.
+                basePackages = String[] , Components to scan, {"com.example.services", "com.example.utils"},
+                    @ComponentScan(basePackages = {"com.example.implementation","com.example.services"})
+                basePackageClasses = Class<?>[], Specify classes, and Spring will scan their packages.
+                    @ComponentScan(basePackageClasses = {MyService.class, MyUtil.class})
+                includeFilters = s used to explicitly include certain classes or components in the component scanning 
+                    process—even if they are not picked up by default.Use includeFilters when:
 
+                    You want to include classes not annotated with stereotype annotations.
+                    You want to narrow down scanning to specific classes, patterns, or types.
+                    You are using custom annotations or more control over what gets registered as a Spring bean.
+                    Types of filters - 
+                        Custom annotations - you define custom annotation and whenever that annotation is placed on class, it will be included.
+                        Specific clases - you can tell specific classes to include.
+                        RegEx patterns - mention class names as regular expressions.
+                        Use AspectJ Expression to Match - more advance then above
+                        CustomFilters
+                excludeFilters = Exclude some classes from custom scanning
+                useDefaultFilters - type - boolean,If false, disables the default behavior of picking up @Component,
+                    @Service, etc.Used when you want full manual control using includeFilters.
+                nameGenerator = type - Class<? extends BeanNameGenerator>,Specify a custom way to name beans(By default,Spring 
+                    uses the class name in camelCase).
+                scopeResolver = Class<? extends ScopeMetadataResolver>,Allows you to customize how Spring determines bean scopes.
+                    Rarely used.
+                scopedProxy = You cannot inject a request/session-scoped bean directly into a singleton bean (like a controller
+                    or service) because:Singleton beans are created at startup, but request/session beans are created at runtime
+                    per request/session.
+                    Solution - Use proxy
+                        Instead of injecting the actual request/session bean, Spring injects a proxy object that:
+                            Is created at startup
+                            Internally fetches the correct bean on-demand
+                            Resolves the real scoped bean per request/session
+
+                    The scopedProxy attribute tells Spring how to create that proxy when scanning beans with @ComponentScan
+
+                resourcePattern = Type: String (default = **/*.class),Determines which .class files to scan.You can fine-tune
+                    which files are included.
+                lazyInit = type: boolean (default = false),If true, all beans discovered via this scan will be lazily initialized.
+        3)@Profile - It can be placed on any bean creation annotation and bean will be registered only when given profile
+            is active.It can be used for -
+                a)Component_ sub types of it.
+                b)@Configuration - configuration will be applied only when this happens.
+                    By combining @Configuration with @PropertySource, we can load properties conditioanlly.
+    4)Bean Injection -
+        1)@Autowired - params -
+            a)required-
+                true(default) - The bean must be present in the container. If not found, Spring throws an exception(NoSuchBeanDefinitionException).
+                false	The bean is optional. If no matching bean is found, Spring will inject null.
+            @Autowired(required = false)
+
+        Where It can be used -
+            a)On constructor
+            b)on Setter
+            c)On fields
+            d)On methods - called immediately after ben creation.
+            e)On method parameters- Fine-Grained Control When Mixing Multiple Injection Sources
+                public MyService(@Autowired UserRepository userRepository,@Value("${email.support}") String supportEmail,@Qualifier("smsService") NotificationService notificationService) {}
+        2)@Qualifier - slide 46, specifies the name of bean which should be injected, if more than 1 bean exists for given type.
+            @Autowired
+            public Person(@Qualifier('vehicle2') Vehicle vehicle) {}    
     5)AOP -
-        1)@EnableAspectJAutoProxy - Slide 63
+        1)@EnableAspectJAutoProxy - Enables AOP.Slide 63
         2)@Aspect - Defines a aspect
         3)@Before, @AfterReturning, @AfterThrowing, @After, @Around - - Defines the advise (when aspect will be executed).
             It takes pointcut expression as argument
-        4)@Order
+        4)@Order - Defines the order in which aspect runs if their are multiple aspects.
         5)@PointCut (not covered in course)
         6)Defining annotations - 
             @Retention
             @Target
-
-
     6)MVC -
         1)@SpringBootApplication(exclude = ...) -
             1)@SpringBootConfiguration - @Configuration, @Indexed
             2)@EnableAutoConfiguration(exclude = ...) - Enables auto-configuration of Spring application context.
-            3)@ComponentScan - Scans for components, configurations, and services in the specified package and its sub-packages.
+            3)@ComponentScan - Scans for components,configurations,and services in the specified package and its sub-packages.
+            Parameters -
+                a)exclude - Goes to EnableAutoConfiguration.Exclude specific auto-configuration classes from being applied.
+                    @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+                b)excludeName - Same as exclude, but you provide class names as strings instead of class references.
+                c)scanBasePackages- passed to @ComponentScan as basePackages.
+                d)scanBasePackageClasses - passed to @ComponentScan as basePackageClasses.
+                e)nameGenerator - passed to @Component scan
+                f)proxyBeanMethods - passed to @Configuration
+
         2)@Controller - Defines controller in MVC, this will have method which will executed for incoming requests.
         3)@RequestMapping(value={"", "/", "home"}, method = POST) - method inside Controller.
             @PostMapping(value ="/abc") - shortcut for @RequestMapping(method = POST)

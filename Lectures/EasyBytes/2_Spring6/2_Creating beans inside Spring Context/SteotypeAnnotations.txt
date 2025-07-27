@@ -1,0 +1,45 @@
+@Repository - 
+    1)When using Hibernate, JPA, or JDBC, you often get framework-specific checked exceptions like:
+
+        javax.persistence.PersistenceException
+
+        org.hibernate.HibernateException
+
+        java.sql.SQLException
+
+        These are:
+            Checked exceptions (need to be declared or caught)
+            Not consistent across persistence providers
+            Hard to work with in a clean way
+
+        Spring's Solution:
+            Spring wraps them into its own unchecked exception hierarchy under:
+                org.springframework.dao.DataAccessException
+
+            This allows your code to:
+                Work consistently across different JPA providers
+                Catch specific DB issues without tying your code to Hibernate/JPA APIs
+
+        How does Spring enable this?
+            Spring uses a BeanPostProcessor called: org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor
+
+            When it sees a bean annotated with @Repository, this processor:
+                Wraps it in a proxy
+                Intercepts method calls
+                Catches native exceptions (like PersistenceException)
+                Converts them into DataAccessException subtypes
+
+    2. Spring Data Repository Proxy Mechanism
+        When using Spring Data JPA, you define repositories as interfaces:
+
+        @Repository
+        public interface UserRepository extends JpaRepository<User, Long> {
+            User findByEmail(String email);
+        }
+
+        So Spring Does this -
+
+            Spring creates a proxy implementation at runtime
+            Applies exception translation
+            And auto-wires them as beans
+

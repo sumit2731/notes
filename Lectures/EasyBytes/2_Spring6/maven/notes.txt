@@ -1,0 +1,93 @@
+1_ClassPath -
+    target/classes
+    During build -
+        Maven compiles Java sources from src/main/java to target/classes
+            Maven ignores physical folder structure when compiling
+            Only the package declaration in Java files matters
+            Classes are placed in the classpath according to their package declaration
+        Maven copies resources from src/main/resources to target/classes
+        All dependencies (JARs) are resolved from your local Maven repository
+    In Compiled Applications -
+        The classpath root becomes target/classes
+        All dependency JARs are included in the classpath
+
+2_default location of maven
+
+    default path where maven downloads dependencies -  /Users/sumeet.sood/.m2/repository
+    why this path, because in maven folder, dere is conf/settings.xml. Their under localRepository, default is mentioned -
+        ${user.home}/.m2/repository
+
+3_parent POM is for inheritance
+    In child you define parent like this -
+        <parent>
+            <groupId>com.example</groupId>
+            <artifactId>my-parent-project</artifactId>
+            <version>1.0.0</version>
+        </parent>
+    things inherited -
+        <dependencyManagement>: Version,scope and exclusion info for dependencies (not the dependencies themselves). In child you jus mention group and artifact
+        <pluginManagement>: Child POMs declare the plugin without a version — the version comes from the parent.
+        <properties>: These become available in the child via ${} syntax.
+        <profiles>
+        <build>  -
+            These are inherited -
+                directory
+                finalName
+                defaultGoal
+                filters
+                resources
+                testResources
+            This is not -
+                The <plugins> block is NOT inherited directly, unless it’s inside <pluginManagement>.
+        <reporting> - Reporting configuration is inherited (used by mvn site):
+        <distributionManagement> - Where to deploy built artifacts
+        <repositories>  - This tells Maven where to look for dependencies outside of Maven Central.
+        <pluginRepositories>
+
+    Things not inherited -
+        <dependencies>: Must be explicitly declared in child.
+        <modules>: Not about inheritance — only tells Maven which submodules to build.
+        <parent>: Not recursively inherited (child sees only direct parent)
+
+
+    Order fo search of parent -
+        a)Local file system using <relativePath> (if specified in the child POM).
+        b)Default local file system location: If <relativePath> is not set, Maven looks for ../pom.xml (one directory 
+            up from the child project).
+        c)If not found in the file system,Maven checks your local repository (~/.m2/repository).
+        d)Remote repositories: If still not found,Maven searches remote repositories defined in your settings or POM.
+
+    To view the merged result of inheritance and profiles: mvn help:effective-pom
+
+4_BOM (Bill of Materials) - This for dependency management.
+    In Maven,a BOM (Bill of Materials) is a special type of POM file used to centralize and control versions of dependencies across multiple modules or projects — without 
+    duplicating version declarations everywhere.
+    
+    A BOM is a POM file with <packaging>pom</packaging> that contains only a <dependencyManagement> section.
+    It does not produce any code/artifacts itself.
+    It is imported using a special <scope>import</scope> in the <dependencyManagement> section of another POM.
+
+
+    Ways to use it-
+        a)use BOM directly in POM, see BOM folder for example.
+        b)Define a parent, In parent have a dependencyManagement section -
+            
+
+    Syntax - see folder BOM
+    commands -
+        a)mvn help:effective-pom - View the effective BOM.
+        b)mvn dependency:tree - see transitive BOMs.
+
+
+5)Where version is taken if it is not specified in pom.xml -
+    a)If the version is managed in your POM’s BOM, that version is used.
+    b)If not found in your BOM, Maven checks the parent POM’s dependencyManagement for the version.
+    c)If still not found, Maven checks BOMs imported by your BOM, in order.
+
+
+6)maven profiles
+    a)Define or Override Properties
+    b)include/exclude a dependencies
+    c)plugin configuration
+    d)change resource path
+    e)customize build directory or output

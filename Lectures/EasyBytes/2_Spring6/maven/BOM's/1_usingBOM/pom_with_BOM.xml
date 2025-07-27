@@ -1,0 +1,28 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>my-bom</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <dependencyManagement>
+    
+    <dependencies>
+      
+      <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>my-library</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>my-utils</artifactId>
+        <version>1.2.3</version>
+      </dependency>
+    
+    </dependencies>
+  
+  </dependencyManagement>
+
+</project>

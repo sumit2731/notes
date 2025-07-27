@@ -61,7 +61,13 @@ Types -
                         mysql-connector.jar (user jars).Because these jars were loaded by the Application ClassLoader.
                     c)Oracle's engineers added logic to DriverManager that uses the Thread Context ClassLoader to load 
                         drivers from the user classpath.
-            b) Spring Framework - In Spring Boot we use a custom clasloader to to load your code.
+            b) Spring Framework - Spring using custom class loader because -
+                a)Spring App runs in Servlet container, in order to separate different apps, it uses
+                    custom classLoader to load classes for each app. that way their is no conflict at 
+                    application class loader level, if apps have classes with same name.If spring used forClassName to
+                    load files,request would go to the ApplicationClassLoader, which has no idea about that class.for
+                    this reason spring uses Thread Context ClassLoader to load classes.
+                b)Flat JAR has jars inside jar, default classloader cannot load it.
 
         why was it introduced -
 

@@ -1,5 +1,5 @@
 61- Intro to Web Apps (slide 65)
-    Servlet container is also called Web Container.
+    ServletContainer is also called WebContainer.
 
 62 - Role of Servlets inside web app(slide 66)
     With Spring - we dnt need to create a servlet because spring itself has an servlet called dispatcher servlet.
@@ -19,7 +19,7 @@
 65 - Intro to Spring Boot (slide 69,70)
 
     Before Spring Boot -
-        I need to configure a servlet container(Tomcat,jetty),First, I need to download that server and I need to configure 
+        I need to configure a servlet container(Tomcat,Jetty),First, I need to download that server and I need to configure 
         that inside my eclipse IDE post that I need to establish a link between Tomcat and dispatcher Servlet which means I
         need to deploy my web applications into the Tomcat.And I also need to mention a small configuration inside web.xml
         about dispatcher Servlet.also I need to do certain configurations like what is the port that server has to start,
@@ -31,7 +31,7 @@
 
     Slide 70 -
         Last point on left - 
-            It means different jars may need different versions of same jat leading to dependency erros.
+            It means different jars may need different versions of same jar leading to dependency erros.
 
         Point on right -
             And Spring Boot also provides production ready features like once you deploy a spring boot web application
@@ -42,7 +42,7 @@
 
 67 - Creating a simple web application using Spring Boot
     site - https://start.spring.io/
-    Add Spring Web, as dependency
+    Add Spring Web,As dependency
 
     Extensions for IDE - https://spring.io/tools
 
@@ -55,10 +55,11 @@
 68 - Running simple web application using spring Boot
     We saw that our pom.xml has only 1 dependency, but dependencies folder has many files.
     so we click on artifactId(cmd + click), it opened a different pom.xml file under in /Users/sumeet.sood/.m2/repository.
+    This file is BOM
     so with this single entry, lot of dependencies were downloaded.
 
 
-    @SpringBootApplication - Added on main class of application
+    @SpringBootApplication(see anotations) - Added on main class of application
         @SpringBootConfiguration - @Configuration, @Indexed
         @EnableAutoConfiguration
         @ComponentScan (with some exclude filters)
@@ -66,20 +67,24 @@
     @Controller
         @RequestMapping("/home") - This is the URL that we will be using to access this controller.
 
-    Project 18, 
-    HomeController.java, application.properties,
-        from controller we return string, it knows that it need to find this file in resources/static folder
+    Project 18
+        HomeController.java, application.properties,
+            from controller we return string, it knows that it need to find this file in resources/static folder
+
+        How dependencies are imported -
+            pom.xml -> spring-bot-starter-parent-3.4.2 (parent, has configs also) -> spring-boot-dependencies(parent, this only has dependency-management section)
+            so here we use a parent for both configs and dependency-management
 
 
 71 - Demo of Spring Boot Autoconfigure
     Autoconfiguration - while starting your web application, it will look at what dependencies you have by
         looking at the pom.xml and it will try to create many beans and configurations that you may need, while
         you are developing web applications.
-        How to see autoConfiguration report- debug=true
-            (Conditionas Evaluation Report)4 sections - 
+        How to see autoConfiguration report- In application.properties add - debug=true
+            (Conditional Evaluation Report)4 sections - 
                 a)positive matches - if dependency is found, it will create bean and configuration related to that.
                     this indicates for a particular Configuration or Bean there is positive match identified inside
-                    pom.xml dependencies.
+                    pom.xml dependencies.it basically shows the conditions which were matched.
                 b)negative matches - This section lists all the auto-configuration classes that were NOT applied (skipped) 
                     to your application context. Crucially, it tells you why they were skipped by indicating which @Conditional
                     annotation evaluated to false.
@@ -102,8 +107,8 @@
                         when we exclude it, So this indicates that spring boot framework didn't do any magic around it, like it didn't auto configure
                         it or been creation around it.So it's a developer responsibility right now to create the bean of this class.
 
-                d)Unconditional classes -  these classes and the beans around them are created regardless
-                    of what dependencies that you have defined
+                d)Unconditional classes -  these classes and the beans around them are created regardless of what dependencies that you 
+                    have defined
 
 
     @SpringBootApplication - 
@@ -112,7 +117,7 @@
         @ComponentScan - generally we define package where it needs to scan or classes with stereotype annotations. but if all your
             classes which have annotations are present inside a package or sub package where the main SpringBoot Application class(class
             with @SpringBootApplication) is staying,Then you don't have to mention.if if some class is outisde the package of main class,
-            then yu need to mention.
+            then you need to mention.
 
 
 

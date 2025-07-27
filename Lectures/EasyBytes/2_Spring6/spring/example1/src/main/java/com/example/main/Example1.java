@@ -26,9 +26,9 @@ public class Example1 {
         we are telling to the spring framework, Please consider all the configurations that I have mentioned inside the project
         config class.
 
-        AnnotationConfigApplicationContext is implementation of ApplicationContext. we are using it because we are
-        doing all configurations with help of annotations.if we have done configuration via XML then we need to use different 
-        class.
+        AnnotationConfigApplicationContext is implementation of ApplicationContext. we are using it
+        because we aredoing all configurations with help of annotations.if we have done configuration
+        via XML then we need to use different class.
 
         this line initializes the IOC Container and Context.
         * */

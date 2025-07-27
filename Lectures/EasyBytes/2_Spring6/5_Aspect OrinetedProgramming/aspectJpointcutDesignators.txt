@@ -4,8 +4,8 @@ AspectJ pointcut designators
     2)within(com.example.MySecured) -	All methods within class/package  matched by expression -
         within(com.example..*). this is checked compile time.
         If BaseClass is matched, child class is not, then all methods declared in BaseClass will be intercepted.
-    3)this(com.example.AccountService) - matches join points (like method executions) where the proxy object — the Spring-managed
-        AOP proxy — is an instance of the specified type.
+    3)this(com.example.AccountService) - matches join points (like method executions) where the proxy object — 
+        the Spring-managed AOP proxy — is an instance of the specified type.
     4)target(com.example.PaymentService) -  where the actual object (target) being advised is an instance of
         the specified type, regardless of the proxy type.this is checked runtime.this includes subclasses 
         and implementations

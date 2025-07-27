@@ -1,0 +1,17 @@
+<dependency>
+  <groupId>com.example</groupId>
+  <artifactId>my-library</artifactId>
+</dependency>
+
+
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>my-bom</artifactId>
+      <version>1.0.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>

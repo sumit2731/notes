@@ -8,9 +8,8 @@
 
 
 41_Singleton Design Pattern(slide 50)
-    you will have a same single object instance for each beanfor same data type if we have multiple beans,
-    each bean will have separate instance.
-
+    if you create multiple bens for same type, still you will have different beans.but only one instance of bean
+    will be dere.
 
 42_Race Condition(figure 51)
     So it's our responsibility as a developer, whatever bean that we are choosing as a singleton bean scope,
@@ -63,12 +62,12 @@
     create beans.So please only create beans for Java classes where we have a business logic methods inside it.
 
 
-44- DeepDive of Eager and Lazy instantiation of singleton bean
+44- DeepDive of Eager and Lazy instantiation of singleton bean (slide - 53,54)
     Use it for having logics that are executed very less.
     Saves initialization time.most of time go with eager initialization only.
 
 
-47- DeepDive into prototype beans
+47- DeepDive into prototype beans(slide 55)
     code - 16
 
     Here VehicleService Bean is prototype. we get this bean 2 times. but constructor is called 3 types.
@@ -81,7 +80,7 @@
     this Vehicle bean, you can refer to this VehicleService 1000 times, but you will get only same one instance
     because your parent vehicle is of scope singleton.
 
-    what thsi means -
+    what this means -
         no matter how many times you try to execute the code of VehivleClass inside vehicle, it will be executed 
         on same instance.
 

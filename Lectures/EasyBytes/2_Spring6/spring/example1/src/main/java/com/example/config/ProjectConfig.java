@@ -25,7 +25,6 @@ public class ProjectConfig {
     @Bean annotation, which lets Spring know that it needs to call
      this method when it initializes its context, it converts returned value into
      bean and adds it to the context.
-
      name of bean inside context is name of method
     * */
     @Bean

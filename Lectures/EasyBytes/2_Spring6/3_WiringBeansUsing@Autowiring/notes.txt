@@ -30,7 +30,7 @@
             class for a vehicle, definitely the code will throw null pointer exception.
 
 
-30 - Wiring beans using method call (figure 38)
+30 - Wiring beans using method call (figure 39)
     not recommended in production.The reason is this is very dirty way of mentioning the dependencies to your spring
     framework.So in future, if the dependencies are changing, you need to go to all the places where your person
     object is getting created and you need to change in all those places.
@@ -44,29 +44,26 @@
     vehicle method again.
 
 
-31 - Wiring Beans using method parameters(slide 39)
+31 - Wiring Beans using method parameters(slide 40)
     So while creating a person bean, my spring framework is smart enough to look if there is a bean of vehicle data
     type.If not, it will try to create a bean based upon the configurations that we made, post that it will try to
     autowire the person and vehicle.
-
-    code - Example10
-    file - ProjectConfig.java
-
 
 32,33,34- Writing Beans using @Autowired on class Fields (slides - 41,42,43)
     This is not recommended in production - Using @Autowired on top of a field inside a class.
     Why it is not recommended is for some reason if you want your vehicle object to be a final, like if
     I try to mention the final, definitely your Java will throw an error saying that vehicle might have
-    not initialized.
+    not initialized.But if you dnt want to declare your field as final, then you can use this approach.
 
-    code - Example 11.
-    file - Person.java,Vehicle.java ProjectConfig.java, Example11.java
 
 
 35 - Deep dive of Autowiring inside Spring- theory (slide 44,45,46)
     note Step 1 is removed from Spring 6.1.0 version
 
-    code - example 12
+    Order -
+        a)try to get bean with a specific name()
+        b)use Primary mean
+        c)use qualifier
 
 
 39 - assignment solution
@@ -80,6 +77,9 @@
         We define a class SonySpeakers which implements Speakers interface. We mark that class as Primary bean.
         now Spring will inject SonySpeakers bean into VehicleService class.tmrw if we want to change it, we just
         need to change our Primary bean.
+
+        Also IntelliJ detects it, When you click on "Navigate to AutoWired dependencies", it takes you to write dependency
+        which is injected at run time.
 
         Also we cannot create beans from interface.
     

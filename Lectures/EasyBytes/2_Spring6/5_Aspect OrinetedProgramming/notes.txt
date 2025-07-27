@@ -38,11 +38,12 @@
     This has one line of functional code and majority of Non-functional code related to logging and 
     security.
 
-52-AOP Jargons
+52-AOP Jargons (slide 59,60,61,62)
     JoinPoint - A point during the execution of a program, such as the execution of a method or the 
         handling of an exception. In Spring AOP, a join point always represents a method execution.
-    PointCut - A predicate that matches join points. Advice is associated with a pointcut expression and runs at any join point 
-        matched by the pointcut (for example, the execution of a method with a certain name)
+    PointCut(Where) - A Pointcut is an expression that matches one or more JoinPoints.
+    Advise - defines when to run
+    Weaving
 
 55- Configuring Advices Inside AOP (slide 63)
     Enable AOP programming - @EnableAspectJAutoProxy
@@ -70,6 +71,7 @@
             Sample -
                 Around("execution(* com.example.services.*.*(..))")
             sample Explanation -
+                modifiers-pattern - optional, so we can skip it
                 * - any return type 
                 com.example.services.* - any class within this package
                 .* - '.' is separator , '*' - any method name
@@ -88,7 +90,6 @@
     Code - example 17
     files - 
         LoggerAspect.java, read comments
-
         VehicleCheckAspect
 
 

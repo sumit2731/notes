@@ -41,7 +41,8 @@
     definitely we have to create with the help of new operator post that once my object is converted into a bean, my spring context
     will take care of autowiring, dependency injection, which we are going to discuss in the coming sections.
 
-    But there are many other approaches also to create a bean.And in those approaches we don't even have to use the new operator.
+    But there are many other approaches also to create a bean.And in those approaches we don't even have to use the 
+    new operator.
 
     code - example1.
     file - Vehicle.java, ProjectConfig.java, Example1.java
@@ -59,7 +60,7 @@
 
     @Component is a generic stereotype annotation that we can use on top of any Pojo Java class which will 
     make that pojo Java class as a spring bean because spring IOC container during startup, whenever it sees
-    its annotation, itn will create object by itself rather than looking for a code where we create it with
+    its annotation, it will create object by itself rather than looking for a code where we create it with
     the new operator.
 
     since your spring IOC container can't go and scan all of your packages and thousands and thousands of classes
@@ -80,7 +81,7 @@
 
 20 - Stereotype Annotations In Spring(slide 24)
     These annotations provides the readability to your code.
-    @Repository - All DAO classes (Data Access Objects )
+    @Repository - All DAO classes (Data Access Objects ). se SteotypeAnnotations to know about @Repository. 
 
 
 23- Understanding @PreDestroy Annotation (slide 26,27)
@@ -99,6 +100,9 @@
 
     code - example 6
 
+24 - Creating beans programmatically(slide 28)
+    check API section
+
 25- creating beans using XML (slide 30)
     code - example8.
     See beans.xml file. 
@@ -109,8 +113,25 @@
         would need to specify "config/beans.xml" as the path parameter.
 
 
-27 - Intro to spring Projects (slide - 31-35 )
+27 - Intro to spring Projects (slide - 31-35)
 
+    Spring Cloud - build microservices application with the help of Docker and Kubernetes.So to support that
+        community where if anyone is not building a monolithic application, instead they are building small,
+        small microservices, then Spring Cloud has all the supporting components and the design patterns 
+        implemented inside it to make developer life easy.
+
+    Spring Session - you have intentions to implement session based business logic inside your web applications.
+        So obviously using the session and caching, you can reduce the number of calls that we need to make
+        to a database or to the backend server.
+
+    Spring Integrations -  one application, want to send data to other application using streams or messages.
+        So all those patterns are implemented and provided through spring integration project.
+
+    Spring AMQP - This project is focused for messaging services, especially for asynchronous processing of your data
+        through queues like Rabbitmq, Harnett Queue, Activemq.So if you have intentions to use messaging queues, then
+        definitely spring Amqp is the option that you need to consider.
+
+    Spring for Apache Kafka
 
 
 
