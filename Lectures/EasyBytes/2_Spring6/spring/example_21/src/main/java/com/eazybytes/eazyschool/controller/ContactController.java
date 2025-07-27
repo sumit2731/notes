@@ -29,7 +29,9 @@ public class ContactController {
     public String displayContactPage() {
         return "contact.html";
     }
-
+    /*
+    * Here we map each and every form data manually using @RequestParam
+    * */
     /*@RequestMapping(value = "/saveMsg",method = POST)
     public ModelAndView saveMessage(@RequestParam String name, @RequestParam String mobileNum,
                                     @RequestParam String email, @RequestParam String subject, @RequestParam String message) {
@@ -65,8 +67,7 @@ public class ContactController {
         //some log statements
         contactService.saveMessageDetails(contact);
         /**
-         * We can use this class to send both data and page to user.
-         * here we do not have data.
+         * We can use this class to send both data and page to user here we do not have data.
          *
          * so we include redirect, Dispatcher Servelet tells server to send response to browser
          * with status 302, to redirect user to /contact.
@@ -76,8 +77,8 @@ public class ContactController {
          *    return "redirect:/contact"
          *    return new RedirectView("/contact");
          *
-         *  why we need redirect - because refreshing the browser will resnet the last
-         *  request which is form submission
+         *  why we need redirect - because refreshing the browser will resend the last
+         *  request which is form submission,POST request
          *
          *  How to use ModelAndView -
          *    modelAndView.addObject("product", product);

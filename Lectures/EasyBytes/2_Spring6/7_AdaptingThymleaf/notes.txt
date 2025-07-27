@@ -1,21 +1,33 @@
-75_Building Dynamic Content using thymleaf
+75_Building Dynamic Content using thymleaf (slide 75)
     To Know which dependecies to add we went to start.spring.io
     added 'thymleaf', in dependencies.
-    click on generate
+    click on generate.
 
-    passed data to thymleaf template using Model object
+    Spring Boot autoconfigured bean - SpringResourceTemplateResolver.This basically tells where to find templates.
+    see API section how all this fits into it.
 
+    Passed data to thymleaf template using Model object
+
+    Project 19
+        
+        
 
 77_Intro to Spring Dev Tools (slide 76)
     Only avalaible in Spring Boot
-    All caching is dsiabled by spring Dev Tools
+    All caching is disabled by spring Dev Tools.
+
+    Imp points regarding changes -
+        a)Changes in .class files , that means you need to generate the build manually.
+        b)Change in .properties or .yml	✅. in build
+        c)Changes to build.gradle or pom.xml won’t be seen until you rebuild
+        d)If you package your app as a WAR and deploy to external Tomcat, DevTools won't help
 
 
     Files -
-        Example 19
-        HomeController.java(Model object)
-        application.properties
-        pom.xml
+        pom.xml, added dependency of thyleaf
+        HoMeController.java - how we pass data to model -
+            By accepting a parameter of type Model
+        application.properties - thymleaf related properties
 
 
 81 - DeepDive Of Spring MVC Internal Architecture (slide 77, 78)
@@ -30,7 +42,7 @@
     How Spring MVC works taken MVC into account -
 
     slide 78,79 - 
-        Dispatcher servlet is also called Front Controller. Because this is first controller which receives the request from
+        DispatcherServlet is also called Front Controller. Because this is first controller which receives the request from
         client.Now my Dispatcher Servlet know only which path the user is trying to access, whether it is a /home, /contact, /courses,
         the path can be anything.
 
@@ -38,9 +50,9 @@
             Dispatcher servlet which controller to call for given path.
         Dispatcher - Now Dispatcher calls controller,Controller processes all information and returns what is the view that end user needs
             to see. So controller returns the view name, which is like home.html.
-        View Resolver - dipatcher servlet receives view name like home.html. it talks with view Resolver. it is job of view Resolver
+        View Resolver - dispatcher servlet receives view name like home.html. it talks with view Resolver. it is job of view Resolver
             to ready that data. it takes view name, alomg wth Model, creates a HTML page and return to Dispatcher Servlet.
-            which gives this info to Tomcat server,  in form of servlet response(HTTPServletResponse).Tomacat(Servlet contaner)
+            which gives this info to Tomcat server,  in form of ServeletResponse(HTTPServletResponse).Tomacat(Servlet contaner)
             takes this servlet response and converts it into HTmlResponse.
 
 Changes -
@@ -57,10 +69,13 @@ Changes -
                 template - html files
     Controller -
         HomeController.java -
-            returns a string i.e view na,me without any data
+            returns a string i.e view name without any data
         ContactController.java -
-            Accepts FormInput form UI and redirects the User
+            Accepts FormInput form UI -
+                First each and every form property using @RequestParam 
+                Then we accepted whole objecting using a POJO type
             Calls Service
+            redirects the user to
         HolidaysController.java -
             Returns a View - template and data that needs to be injected in it.
     WebConfig.java -

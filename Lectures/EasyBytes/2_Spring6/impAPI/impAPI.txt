@@ -38,6 +38,41 @@
 
 
 Spring -
+    a)Resolving template, we need to define beans of this type  -
+        SpringResourceTemplateResolver - 
+            Locate templates in the classpath or file system
+            Apply prefix and suffix (e.g., classpath:/templates/, .html)
+            Specify the template mode (HTML, XML, TEXT)
+            Decide if templates should be cached (for performance)
+        SpringTemplateEngine - This is the core Thymeleaf engine that:
+            Parses and processes templates
+            Applies Spring expressions (SpEL), e.g., ${user.name}, @myService.getName()
+            Binds model data into the template
+            Uses the SpringResourceTemplateResolver to fetch templates
+            
+        ViewResolver(ThymeleafViewResolver) - This is a Spring MVC component that maps the logical view name (returned by a controller) 
+            to an actual rendered template using the SpringTemplateEngine.
+
+            Accepts logical view name like "home"
+            Uses SpringTemplateEngine to process home.html
+            Returns rendered HTML to Spring MVC dispatcher
+            Refer slide 78 and lecture 81.
+
+        How they work togather -
+            Spring MVC Controller → "home"
+                ↓
+            ViewResolver (ThymeleafViewResolver)
+                ↓
+            SpringTemplateEngine
+                ↓
+            SpringResourceTemplateResolver
+                ↓
+            Loads: classpath:/templates/home.html
+                ↓
+            Processes template with model data and SpEL
+                ↓
+            Returns rendered HTML
+
     a)RequestEntity<Contact> requestEntity -  org.springframework.http.*;
         Syntax -
             @RestController 

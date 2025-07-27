@@ -142,12 +142,12 @@ Form Course -
                     Default is empty string.
                     If not specified, Spring automatically generates a name based on the handler method.
 
-                    useage -
-                        @Autowired private MvcUriComponentsBuilder mvcUriComponentsBuilder;
+                    useage(this coe generates the URL ofr given controller method) -
                         String url = MvcUriComponentsBuilder
-                            .fromMappingName("getUserById")
-                            .arg(123L)
-                            .build();
+                            .fromMappingName("getUserById") // gets url for controller this this name
+                            .arg(0,123L) // provide argument at index 0
+                            .build() // UriComponents object
+                            .toUriString(); //converts it to a final URL String
 
                 value/path - Defines the URL patterns this mapping handles. These are aliases of each other.
                     @RequestMapping(value = "/users")
@@ -191,6 +191,24 @@ Form Course -
                 required(default: true)
                 defaultValue
             Note - value parameter can be skipped.
+        5)@RequestBody - The @RequestBody annotation in Spring is used to bind the HTTP request body to a method parameter in your controller.
+            used to accept request body in controller method.By default, Spring Boot configures:
+                Jackson (for JSON)
+                JAXB (for XML)
+                Others depending on the content-type
+
+                It uses:
+                    The request's Content-Type header
+                    The presence of a body
+                    The target Java type
+            Params -
+            a)required - 
+                If true(default), the request body must be present. 
+                If false, it can be null.
+                
+
+
+
         5)@PathVariable - slide 84
             Used to accept variable URL
             

@@ -67,7 +67,7 @@
     @Controller
         @RequestMapping("/home") - This is the URL that we will be using to access this controller.
 
-    Project 18
+    Example 18
         HomeController.java, application.properties,
             from controller we return string, it knows that it need to find this file in resources/static folder
 

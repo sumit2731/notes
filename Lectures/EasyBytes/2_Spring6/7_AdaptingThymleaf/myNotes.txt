@@ -1,0 +1,14 @@
+Passing Data to Model -
+    a)Model - 
+        You pass model as parameter to controller
+        Add data to Model using addAttribute method
+        return view name form method
+        Example 19, HomeController
+    
+    b)ModelAndView - 
+        You define return type as ModelAndView
+        create a ModelAndView object in controller
+        add data and view to it using addObject and setViewName methods
+        return that object
+    
+        Example 20, ContactController
