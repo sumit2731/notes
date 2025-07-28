@@ -167,3 +167,5 @@ General java -
         contact.flatMap(c -> Optional.ofNullable(c.getName())).orElse("Unknown");
         contact.orElseGet(() -> new Contact("Default Name", "Default Email"));
         contact.orElseThrow(() -> new ContactNotFoundException("Contact not found"));
+
+    b)AnnotationProcessingTool - see section 8

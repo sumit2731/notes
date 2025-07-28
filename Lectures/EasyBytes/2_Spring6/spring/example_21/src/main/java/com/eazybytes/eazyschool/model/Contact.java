@@ -15,7 +15,9 @@ public class Contact {
 
     private String name;
     private String mobileNum;
-    private String email;
+    private String
+
+            email;
     private String subject;
     private String message;
     //generate getter and setter, along with toString

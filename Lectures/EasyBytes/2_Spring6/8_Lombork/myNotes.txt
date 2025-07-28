@@ -1,0 +1,115 @@
+Lombok is a compile-time annotation processor.
+    When you save or build your code, the Java compiler runs.
+    During this process, Lombok intercepts the compiler via annotation processing 
+        (JSR 269 API).
+    It modifies your Abstract Syntax Tree (AST) in-memory — i.e., it injects things 
+        like getters, setters, constructors, etc., as if you had written them yourself.
+
+So by the time the compiler generates .class files, your Lombok-annotated class has all
+    its methods and fields just like any normal Java class.
+
+
+
+
+Drawbacks -
+    Because it uses internal compiler APIs:
+        Lombok breaks with every major Java release.
+        The Lombok team must constantly patch it for new versions of javac.
+        This is why it’s powerful but fragile.
+
+APT (AnnotationProcessingTool) - 
+    APT is a framework that allows developers to write code that runs during compilation, which can:
+
+        Read annotations from Java source code.
+        Validate them.
+        Generate additional code or resources based on them.
+
+    it's built-in part of the compiler (javac), and annotation processors are registered via the javax.annotation.processing package.
+
+    Purpose -
+        a)Standardize how annotations are processed during compilation.
+        b)Allow developers to hook into the compilation pipeline.
+        c)Generate source code or other resources automatically based on annotations.
+
+    Core Concepts -
+        a)Annotation Processors: Classes that implement the  these interfaces -
+            javax.annotation.processing.Processor
+            
+            Or more commonly:
+            
+            javax.annotation.processing.AbstractProcessor
+
+
+            This processor gets invoked during compilation when annotations it supports are encountered.
+
+            Example - see HelloWorldProcessor.java
+
+        b)Annotation Scanning - When you compile a class, the compiler:
+
+            All processors are loaded via reflection
+        	Each declares supported annotation types
+        	Compiler scans source files for annotations
+        	Compiler invokes only processors that support the annotations found
+        	Each processor gets called with the matched annotations
+        	Rounds continue if new sources are generated
+            
+        c)Round-Based Processing - 
+
+            Annotation processing occurs in rounds:
+
+                Round 1:
+                    Compiler builds an AST.
+                    Processor inspects annotations.
+                    Processor may generate new source files.
+                        Most annotation processors (like MapStruct or Dagger) generate new Java files and leave your original 
+                        classes untouched.But Lombok is different:It modifies your original classes before they’re compiled.
+                        Lombok uses Javac’s internal APIs (specifically com.sun.tools.javac.tree.*) to:
+
+                            Manipulate JCClassDecl, JCMethodDecl, JCVariableDecl — which represent class, method, and field declarations in the AST.
+                            Insert synthetic elements (i.e., not found in the source code).
+                            Bypass the need to generate .java files manually like most annotation processors.
+
+                Round 2:
+                    Compiler compiles the newly generated files.
+                    Processor runs again (if annotations are found).
+                    …until no new source files are created.
+
+        4)Code generate -
+            Annotation processors typically generate:
+
+                .java source files
+                .class files
+                META-INF/services/*
+                Configs, resources, etc.                
+
+        5)Tools for introspection - APT provides utilities to inspect annotated code:
+
+            Elements -	Introspect elements like classes, fields, methods
+            Types -	Deal with type hierarchy.
+            Messager -	Print compiler warnings/errors
+            Filer - 	Create files
+                processingEnv.getFiler().createSourceFile("com.example.GeneratedClass");
+
+            Note - explained in code
+
+        6)registering process -
+            2 ways -
+                a)Using ServiceLoaders(java 6+) -
+                    Create this file - META-INF/services/javax.annotation.processing.Processor
+                    Content of this file - name of your processor class - com.example.MyProcessor
+                b) Java Platform Module System (JPMS) -
+                    module-info.java - 
+                        module my.processor.module {
+                            requires java.compiler;
+                            provides javax.annotation.processing.Processor
+                                with com.example.processor.HelloWorldProcessor;
+                        }
+
+                    If you're compiling with the module path (i.e., using --module-path):
+
+                        javac uses the module system to scan module-info.java
+                        Only modules that provide Processor implementations will be considered
+                        META-INF/services/... is ignored unless modules are automatic or unnamed
+
+
+    Example - see example folder
