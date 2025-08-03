@@ -1,0 +1,20 @@
+a)Having a Interceptor -
+    a)Define a Intercetor, Class that implements HandlerInterceptor. register it as bean by uisng @Component.
+        HandlerInterceptor - Web MVC module and is used to intercept HTTP requests before and after they reach the controller.Think of it as 
+            a filter-like mechanism for Spring MVC, but more tightly integrated with the DispatcherServlet and the Spring MVC lifecycle
+    b)Registering the Interceptor -
+        @Configuration
+        public class WebConfig implements WebMvcConfigurer {
+            @Override
+            public void addInterceptors(InterceptorRegistry registry) {
+                registry.addInterceptor(new LoggingInterceptor())
+                        .addPathPatterns("/api/**") // apply to specific paths
+                        .excludePathPatterns("/api/public/**"); // exclude some paths
+            }
+        }
+    
+
+b)Flow -
+    Client -> DispatcherServlet -> HandlerMapping -> HandlerInterceptor
+    -> Controller -> ViewResolver -> View
+    -> HandlerInterceptor (afterCompletion) -> DispatcherServlet -> Response

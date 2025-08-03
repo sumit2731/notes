@@ -1,0 +1,101 @@
+What Are Filters
+
+    Filters in Spring are based on the Java Servlet API. They are used to:
+        Intercept and process HTTP requests and responses before they reach the DispatcherServlet (i.e., early in the pipeline).
+        Filters are part of the Servlet container, not Spring itself, but Spring provides powerful ways to register, configure, 
+        and order them.
+
+
+Core Interface - javax.servlet.Filter
+
+    see code section
+
+Filter Execution Lifecycle
+    Filters are executed before Spring MVC gets involved.
+
+    Incoming HTTP Request
+        ↓
+    [Filter Chain (Servlet Container)]        ←───── Filter
+            ↓
+    [DispatcherServlet]
+            ↓
+    [HandlerMapping → Controller]             ←───── Interceptor (preHandle)
+            ↓
+    [ViewResolver → View Rendered]            ←───── Interceptor (postHandle / afterCompletion)
+            ↓
+    Outgoing HTTP Response
+
+
+
+Filter Registration in Spring
+    a)Auto-detection with @Component - see Filter.java
+    b)Manual Registration with FilterRegistrationBean - see FilterConfig.java
+    c)@WebFilter + @ServletComponentScan (Servlet-style) (less common, but possible with @WebFilter)
+
+        @WebFilter(urlPatterns = "/*")
+        public class LegacyFilter implements Filter { }
+
+        @SpringBootApplication
+        @ServletComponentScan // Required to enable @WebFilter scanning
+        public class App { }
+
+
+FilterOrdering
+    Filters can be ordered using:
+        1. @Order annotation (e.g., @Order(1))
+        2. Ordered interface (e.g., implements Ordered)
+        3. FilterRegistrationBean.setOrder(int order)
+
+    Lower numbers indicate higher priority (executed earlier).
+
+
+Built In Spring Filters
+    Spring Security uses filters heavily. When spring-boot-starter-security is included, a chain of filters is auto-registered.
+
+    SecurityContextPersistenceFilter	Loads security context
+    UsernamePasswordAuthenticationFilter	Handles form login
+    BasicAuthenticationFilter	Handles HTTP Basic auth
+    ExceptionTranslationFilter	Handles security exceptions
+    FilterSecurityInterceptor	Enforces access control
+
+
+
+Filter vs Interceptor
+    Features 
+
+        Aspect	                            Filter	                            Interceptor
+
+        Scope	                            All requests (static + dynamic)	    Only Spring MVC requests
+        Can Access Controller Details	    ❌ No	                            ✅ Yes (HandlerMethod)
+        Can Modify Response/Request Body	✅ Yes (but hard, need wrappers)	    ❌ Not ideal for body manipulation
+        Has Access to Spring Context	    ❌ No (unless bridged manually)	    ✅ Full access (can inject beans)
+        Supports View Rendering Hooks	    ❌ No	                            ✅ Yes (postHandle, afterCompletion)
+        Handles Static Resources	        ✅ Yes	                            ❌ No (by default)
+        Exception Mapping	                ❌ Needs manual handling	            ✅ Uses Spring exception resolvers
+
+
+
+    Use Filter When -
+        You are building a generic servlet-level mechanism (e.g., compression, logging)
+        You want to apply logic to static resources (.css, .js, etc.)
+        You are modifying request or response body (e.g., GZIP, encryption, caching wrappers)
+        You need to integrate with servlet specs or containers.
+        You are using 3rd-party filters (CORS, logging frameworks).These are often built as filters
+
+
+        Example Use Cases:
+
+            CORS headers
+            Request/response compression
+            Global logging of request size
+            Blocking IPs or request methods
+            Rate limiting per IP address
+
+
+    Use Interceptor When -
+        You want access to controller method information -	Interceptors receive the handler method
+        You need to enforce business-level logic like authZ, tenant checks, etc. -	Operates inside Spring MVC context
+        You want to inject Spring beans easily	- Interceptors are Spring-managed
+        You want to modify model data or view name before rendering -	Use postHandle() or afterCompletion()
+        You need fine-grained path-based matching -	InterceptorRegistry supports it easily
+        You want to apply logic to all Spring MVC REST endpoints	Interceptors target Spring handlers only

@@ -16,3 +16,6 @@
 
 4)find useages -
     RC on symbol -> find useages (option + f7)
+
+5)Show usesage -
+    right click on identifier -> show useage

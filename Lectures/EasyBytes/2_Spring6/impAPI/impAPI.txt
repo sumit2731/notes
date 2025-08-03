@@ -38,6 +38,13 @@
 
 
 Spring -
+    a)Interceptors -
+        Interceptor should implement this interface - HandlerInterceptor
+        Registering class should implement this - WebMvcConfigurer
+
+        see code in important topics, folder 1
+    
+
     a)Resolving template, we need to define beans of this type  -
         SpringResourceTemplateResolver - 
             Locate templates in the classpath or file system
@@ -143,6 +150,8 @@ Spring -
                     a)@JsonSerialize
                         @JsonSerialize(using = CustomDateSerializer.class)
                         private LocalDate date;
+
+    f)
 
 Spring Security -
     Spring’s UserDetailsService returns a UserDetails object that represents the logged-in user.

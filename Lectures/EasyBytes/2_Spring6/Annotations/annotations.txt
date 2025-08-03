@@ -181,6 +181,8 @@ Form Course -
                             Server checks produces parameter against client's Accept header
                             Server checks consumes parameter against client's Content-Type header
                             Server selects best matching format or returns error
+
+                    In our code base we use @Produces annotation
                 
         4)@RequestParam - used to accept queryParam or formData.used in method of Controller.
             @RequestMapping(value = "/saveMsg",method = POST) - slide 83
