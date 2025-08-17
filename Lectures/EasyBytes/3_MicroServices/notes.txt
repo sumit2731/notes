@@ -1,0 +1,38 @@
+3 _Evolution of MicroServices Architecture
+    Types of Monoliths -
+        a)Single-Process Monolith - A single-process monolith is the classic monolithic style — the entire application runs
+            as one operating system process on a single server (or cloned on multiple servers for load balancing).
+        b)Modular Monolith -
+            A modular monolith is a single-deployment application where:
+                The codebase is organized into distinct modules.
+                Each module has a well-defined boundary (API, contracts).
+                Modules can be developed and tested somewhat independently.
+
+            At runtime, everything still runs in one process and one deployment unit.
+        c)Distributed Monolith - A distributed monolith is a system that looks like microservices but isn’t truly independent.
+            It’s made up of multiple services deployed separately but:
+
+                They share the same database schema.
+                They have tight coupling (one service can’t function without others).
+                They must be deployed together because a change in one often breaks the others.
+
+
+    Microservices(slide 12) - Services are modeled around business domain.
+
+    cons -
+        a)security - now instead of method calls you need to make api call.
+        b)InfraOverhead - now you need to monitor all microservices.
+
+
+    Slide 16 - 
+        Why is scalability problem in monolithic?
+        https://www.udemy.com/course/master-microservices-with-spring-docker-kubernetes/learn/lecture/26042764#questions
+
+
+        If your web application is small and your organization is very small and you don't need frequent deployments,then you can
+        always go with monolithic.
+
+
+9_Intro to REST API's & Best Practices (Slide 22)
+    PUT - major update
+    PATCH - Minor update

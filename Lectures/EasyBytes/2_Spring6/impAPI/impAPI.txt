@@ -9,27 +9,29 @@
     1)via context
         context.getBeanNamesForType(Person.class)
         context.getBeanNamesForType(beanName, Person.class)
-        It takes 2 more params -
-            supplier (optional)	Supplier<T>	Custom logic to create the bean instance
-            customizers (optional)	BeanDefinitionCustomizer...	To customize things like scope, lazy, primary, etc.
-            what things can be customeized -
+            It takes 2 more params -
+                supplier (optional)	Supplier<T>	Custom logic to create the bean instance
+                customizers (optional)	BeanDefinitionCustomizer...	To customize things like scope, lazy, primary, etc.
+                what things can be customeized -
 
-            setScope("prototype" or "singleton")
-            setLazyInit(true/false)
-            setPrimary(true/false)
-            setAutowireCandidate(false)
-            Add qualifiers
-            Add descriptions or roles
+                setScope("prototype" or "singleton")
+                setLazyInit(true/false)
+                setPrimary(true/false)
+                setAutowireCandidate(false)
+                Add qualifiers
+                Add descriptions or roles
 
 
-            context.registerBean(
-                MyService.class,
-                () -> new MyServiceImpl("custom"),
-                bd -> {
-                    bd.setScope(ConfigurableBeanFactory.SCOPE_PROTOTYPE);
-                    bd.setLazyInit(true);
-                }
-            );
+                context.registerBean(
+                    MyService.class,
+                    () -> new MyServiceImpl("custom"),
+                    bd -> {
+                        bd.setScope(ConfigurableBeanFactory.SCOPE_PROTOTYPE);
+                        bd.setLazyInit(true);
+                    }
+                );
+        context.getAutowireCapableBeanFactory().autowireBean(mongoService)
+            I created mongoService manually using new, but i want spring to inject autoWired dependencies into this.
 
     2)ObjectProvider - see section 4
 

@@ -7,6 +7,9 @@ b)Copy same line down -
 c)Moving current line up/ down -
     cmd + shift + up/down (Edit → Move Line Up/Down)
 
+d)Getting return type form function -
+    option + enter
+
 Templates(type text and press tab) -
     a)psvm - public static void main
     b)sout - System.out.println()
