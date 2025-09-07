@@ -1,0 +1,109 @@
+102 - Understanding LLM
+    LLM stands for Large Language model.So if you ask any question to these large language models, they
+    give you some output, right, based on how they have been trained.
+
+    A large language model is an artificial intelligence system, trained to understand
+    understand and generate human language.
+
+    These systems are trained on whole internet data.companies scrap the data, get the data,
+    they prepare something known as training data set and then they are training these LLMs.
+
+    So what you can understand is basically the human language is the main thing.Whenever we talk to 
+    systems,we always have to talk in a structured manner.Maybe you have to write a code in C,maybe
+    you have to write a code in C.But using these LLMs, you can actually talk to the machine in a
+    natural language like we humans do.
+
+103 - Deep Dive into GPT architecture
+    See figure 1 
+    
+    Generative - generates new content
+    Pre-Trained - iT is trained on some data
+    Transformer - It is Transformer which is generative in nature. like Sports car. here we have generative
+        transformer.
+
+
+104 - How LLMs work under the hood 
+
+    Transformer are given in "Attention is all you need" white paper.
+    see figure 2,3. GPT just need predicts the next token.
+    and repeats this process again and again, that is why process is very cpu intensive.
+
+
+105 - Fundamentals of tokenization in NLP
+    Tokenization - converting the user text into a number understandable by model is known as tokenization.
+
+106 - Implementing a Custom tokenizer
+    code - 01
+        Steps - 
+            1)create virtual env -
+                python -m venv venv
+            2)activate virtual env - 
+                source venv/bin/activate
+            3)now, inside venv, install the required package -
+                pip install tiktoken
+                tiktoken is python package by openAi
+            4)run -
+                pip freeze > requirements.txt
+
+                This is used in Python projects to generate a list of all installed packages in the current 
+                environment, along with their versions, and save this list to a file named requirements.txt
+
+
+        Then we ran the code in main.py
+
+107 - Transformer Breakthrough
+    figure 4 -
+        In input embeddings,input is converted into vector embeddings.then these vector embeddings go
+        through the process of positional encoding.
+
+        It basically pipes this particular information to the output side of the layer.On the output
+        side also we do kind of same processing and then both of these are piped to something known as
+        linear.liner is your probability distribution.So I told you know that it gives you the probability,
+        it gives you the prediction of next token.So this is basically the linear layer.
+
+
+108 - Vector Embeddings
+     how can you write a code to make the machine understand the meaning of words? This is where vector embeddings
+        come into picture.vector embeddings gives semantic(real word meaning) meaning to tokens.
+
+    then we saw the example of this in 2d word.now definition makes sense -
+
+    Vector embeddings are numerical representations of data points, including text, images and other data types,
+    that capture their meaning and relationshps.
+
+
+109 - Role of positional encoding in transfomers
+    Dog ate cat
+    Cat ate dog
+
+    In both of these vector embeddings are same but meaning is different.this is where positional encoding
+    comes into picture.
+
+
+    So what happens here in this step (figure 5)
+
+    In this particular step we will add that, hey, you are on the 0th position. So some, some information that
+    where on the sentence you lie.So positional encoding basically adds the data about the positions of the tokens,
+    and then the new vector embeddings are used.So this basically ensures the sentence, the characters,the
+    positions of the,vectors are maintained.
+
+110 - Understanding Multi-head attention
+    figure 6 -
+        Before multi attention let me show you a step known as self attention.
+        This is where we actually let the vector embeddings that was generated here to to talk to each other.
+        So what happens in this particular step is that these vector embeddings can talk to each other and can
+        actually manipulate and change their meaning.Why? example -
+            River bank - 
+            ICICI bank -   
+        here position of bank is same in both case, but one is river bank, and other one is actual bank.
+        So self attention mechanism lets the vectors to talk to each other.the vector embeddings of river will 
+        talk to this bank it can change the meaning of the bank.When ICICI will talk to the bank, it can change
+        the meaning of the bank.So you can change the vector embeddings.so this is self attention.
+
+    Multi head attention -
+        So what happens in multi head attention is that we do this process multiple times in parallel.
+        So we have multiple heads, and each head will do the self attention mechanism on the same set of
+        vector embeddings.So this is known as multi head attention.
+
+        Why we do this? because it gives more robustness to the model. It gives more understanding to the model.
+        So this is why multi head attention is used.

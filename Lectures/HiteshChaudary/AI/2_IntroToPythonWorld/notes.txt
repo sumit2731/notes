@@ -1,0 +1,54 @@
+8_Why python
+    figure 1.
+
+11_Get everything in Virtual Env
+    Why we need vEnv it -
+        See figure 2.
+
+    creating virtual env(Way 1, mst common) -
+        a)Navigate to folder -
+            python3 -m venv <venv_name>
+            python3 -m venv venv
+
+            this creates a folder names venv folder.
+        b)activate it -
+            In mac -
+                source .venv/bin/activate (we basically execute he script present in this folder, in same terminal session)
+
+            Now you are not in your computers python, but in venv.
+            in terminal you can see (env) before your username.
+            This is where you can install and bring the third party modules.It will not affect anything that you are Bringing in one.
+
+        c)deactivate it -
+            deactivate
+
+    Installing third party modules(you can be in venv or not) -
+        a)way 1 -
+            pip install <module_name>
+        b)way 2 -
+            mentions all modules in requirements.txt file.
+            Then run -
+                pip install -r requirements.txt
+
+    It is always recommended to always work in venv.
+
+
+12_Organize Python code like a pro
+    see figure 3.
+    normal python files are called modules.
+    folder with __init__.py file is called package.
+    see figure 4.
+    ou cannot access something in someone else house, you need permission for that.
+    this is called namespace and scope.
+
+
+13 - PEP8 and Zen
+    figure 5 -
+        Pep8 is guidelines for writing better code
+        https://peps.python.org/pep-0008/
+    ZEN -
+        simple is better than complex.
+
+        how get it -
+            python3
+            import this

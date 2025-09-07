@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  #This is h2 database details
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    # Default username and password
+    username: sa
+    password: ""
+    # I'm telling to the spring boot framework to enable the h2 console so that I can login into this h2 console
+    # from my browser and I can see all the tables and records that are inserted are created into my internal
+    # h2 database.
+  h2:
+    console:
+      # This shows the h2 console at - http://localhost:8080/h2-console
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      # we are telling to the spring boot framework.If there are no tables created inside my internal h2 database,
+      # please go ahead and create them based upon the SQL instructions that I'm going to provide automatically during
+      #   the startup.these instructions are defined in schema.sql. for data the file is data.sql
+      ddl-auto: update
+    show-sql: true

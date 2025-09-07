@@ -36,3 +36,38 @@
 9_Intro to REST API's & Best Practices (Slide 22)
     PUT - major update
     PATCH - Minor update
+
+14_Configuring H2 DB and YAML properties
+    application.properties -> application.yaml
+
+    read comments in application.yaml
+    h2 database console can be seen at - localhost:8080/h2-console
+
+
+16 - Writing Spring Data JPA Entities & Repositories to interact with Database
+    see these files -
+        AcccountEntity
+        CustomerEntity
+        AccountRepository
+        CustomerRepository
+
+17 - Introduction to DTO (Data Transfer Object pattern) (slide 23)
+    lets say in API we want to return details of both Customer and Account.How do we do that?
+    We use DTO pattern.
+
+    advantages - 
+        serialization - these DTO classes only contains field that they need. In addition they can also contain serialization logic.
+            client may want data in json, xml or yaml format. we can have seriliazy=tion logic only in this layer instead of sprinkling
+            it all over the code.
+
+
+18 - Creating DTO's inside accounts microservice
+    we created -
+        AccountsDto
+        CustomerDto.java
+        ResponseDto.java
+        ErrorDto.java
+
+    Blog - https://martinfowler.com/eaaCatalog/dataTransferObject.html
+    DTO objects are also called value objects or transfer objects.
+    

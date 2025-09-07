@@ -1,0 +1,32 @@
+14_Objects - Mutable and Immutable in python
+    figure 1
+    figure 2 - 
+        to check whether object is mutable or immutable, check with Identity, never check it with value.
+        If the identity is same, that means value didn't got changed.If the identity is different,value got changed.
+    figure -
+        see chapter_1.py and chapter_2.py
+        numbers are immutable, sets are mutable
+
+        object id is linked with memory address. id changes when address changes.
+
+15_Numbers,Booleans and Operators
+    chapter_3 - numbers
+    chapter_4 - boolean and logical operators
+
+
+16_ String - Index , Slice and Encoding
+    Their are lot of string methods and we will learn them on the go.
+    here we want to concentrate on 3 parts shown in figure5.
+    chapter_6.py - string are immutable
+
+17_ Tuples and membership testing
+    tuples are immutable.
+    code - chapter_7.py
+
+18_Basics of List in python
+    Now we start with mutable data structures.
+    Lists are arrays in python word
+    see chapter_8.py
+
+19_Operator overloading and byteArray in python
+    see chapter_8.py
