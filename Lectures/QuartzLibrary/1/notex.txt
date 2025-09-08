@@ -1,0 +1,3 @@
+Job
+    piece of code to be executed independently.You can create a job by implementing job interface
+    and defining execute method in it.
