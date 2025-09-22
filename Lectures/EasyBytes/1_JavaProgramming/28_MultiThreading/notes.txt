@@ -1,0 +1,67 @@
+506 - How a program or software executes inside computer(slide 1,2,3)
+    Thread needs CPU computing power when it needs to execute some instructions.
+    The thread will ask the operating system to give some CPU time of a CPU core, and based upon the time provided by the CPU core to a 
+        specific thread, it is going to execute all the instructions.OS assigns CPU time based on requested time to these tgreads.
+
+
+507 - Parallel vs Current Execution (slide 4, 5)
+    Today's system has multiple cores. miimum 4 , going upto 21.at a time one core can execute one thread.
+
+    Parallel execution - No of threads is equal to number of tasks.
+    Concurrent Exeution - No of threads is greater than cpu cores.so OS allocates small fraction of time of CPU core to each thread.
+
+    In real workdno of therads is far greater than cores. Not all of them are active(need CPU time).
+
+
+508 - How ,ultiple therads improve performance(slide 6,7,8,9)
+    Why CPU creates so much threads, why not creates as many threads as equal to CPU core?
+
+    Threads are only created for CPU bound tasks, I/O bound task.for only I/O bound tasks threads are not created.
+
+    fgure 7 shows only CPU bound tasks, here context switching adds overhead. so for only CPu bound tasks do not create threads.
+    in figure 7 it does'nt make sense to have more threads than CPU core.
+
+    figure 8 - but in real word this is not the case.if you have same no of therads as Core. you will be wasting CPU time as therads do
+    I/O operations.
+
+    figure 9 - In real word creting more threads helps.
+
+    rule of thumb - if you have high I/O tasks, create more therads.
+
+    whenever you are into a scenario where you need to build a program that leverages multiple threads,you don't have to worry much.
+    First, start with the two threads, or three threads or four threads.If you are satisfied with the results, then you should be good.
+    But if you received a feedback for better performance, then obviously you need to increase the number of threads.
+
+
+509,510 -Creating Threads in Java - Part 1,2 (slide 10,11,12,13,14)
+
+    Code - ThreadDemo.java, it uses these classes -
+        HelloThread.java
+        HelloThread1.java
+        Hello.java
+
+    here we created a therad and scheduled its execution using start method. see comments.
+    then we explored all the way to create therads -
+        a)a class that extends class.
+        b)passing lambda to Thread.
+        c)passing a class to lambda that implements Runnable Interface.
+        d)Using Functional refrence instead of lambda in TThread class.
+    Also we saw that outer(or main thread) does not wait for inner thread, their are ways to do that,
+    that we will see later.
+
+
+511 - MultiThreading Deno program (slide15)
+    SumofIntsDemo.java - Proigram without threads
+    SumOfIntsThreadDemo.java, SumThread.java - Same logic as above but with threads
+
+
+512- demo of threads methods (slide 16,17,18)
+    check methods.txt
+    thread.getId(), thread.getName(), thread.setName
+    Thread.currentThread()
+    SleepDemo.java - Thread.sleep()
+
+513 - demo of thread methods
+    thread.join
+    thread.setPriority (getPriority)
+    

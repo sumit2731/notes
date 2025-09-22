@@ -1,0 +1,8 @@
+start
+
+run
+getId
+getName,setname
+Thread.currentThread
+Thread.sleep(int)
+join
