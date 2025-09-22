@@ -1,8 +1,58 @@
-JDK variables -
-    $PATH (till bin)
-    $JAVA_HOME (bin is not included)
+JDK -
+    Installing- 
 
-    java is installed in - default path is - /Library/Java/JavaVirtualMachines
+        Mac Install -
+            a)Install SDK version - Follow page
+            b)Install jdk using sdk man -
+                a)sdk list java - shows the list of options, if we want to install java.
+                    copy the identifuier for version, which you wantt use.
+                    press q to exit list.
+                b)sdk install java <identifier>
+                    sdk install java 17.0.12-oracle
+                c)sdk use java  <version>
+                    sdk use java 17.0.12-oracle
+                    
+                    The default JDK is the version SDKMAN will activate every time you open a new terminal.
+                    Without a default, you’d have to run sdk use java <version> every time you start a new session.
+                    Setting it via sdk default java <version> makes sure tools like IntelliJ, Maven, Gradle pick it up correctly through $JAVA_HOME.
+                c)check version of ja va - java --version
+
+        Windows -
+            a)download jsk installer.
+            b)install it.
+            c)run - java --version
+            d)if last command is not success, adda system variable named JAVA_HOME, value should be folder in which hdk is installed.
+                It should be added automatically, if not add it.
+
+
+    Chnaging jdk version -
+
+        command -
+            a)See all versions - 
+                sdk list java
+                for local versions - In Status column, look for local only
+            b)switch version -
+                this chneages the defult jdk version
+                sdk default java version_name
+            c)checking what JAVA_HOME points to -
+                readlink -f "$JAVA_HOME"
+
+    Env variables -
+        a)JAVA_HOME
+            windows - echo %JAVA_HOME% , echo $env:JAVA_HOME
+            mac - echo $JAVA_HOME
+
+        b)PATH -
+            windows - echo %PATH% , echo $env:PATH
+            mac - echo $PATH
+
+        If you have installed sdk then both these paths will point to symlink - /.sdkman/candidates/java/
+        If you to see where that symlink points -
+            readlink -f ~/.sdkman/candidates/java/current
+
+            or 
+
+            realpath ~/.sdkman/candidates/java/current
 
 Maven Variables -
     $PATH (till bin)
@@ -22,15 +72,7 @@ Managing different versions -
         Local Version names -
             21-eclips_local
             17-oracle_local
-        command -
-            a)See all versions - 
-                sdk list java
-                for local versions - In Status column, look for local only
-            b)switch version -
-                sdk default java version_name
-
-            c)checking what JAVA_HOME points to -
-                readlink -f "$JAVA_HOME"
+        
 
 
 After Chnaging these you also need to chnage at these places -
