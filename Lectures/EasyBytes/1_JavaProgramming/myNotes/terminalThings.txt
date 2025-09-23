@@ -15,7 +15,7 @@ JDK -
                     The default JDK is the version SDKMAN will activate every time you open a new terminal.
                     Without a default, you’d have to run sdk use java <version> every time you start a new session.
                     Setting it via sdk default java <version> makes sure tools like IntelliJ, Maven, Gradle pick it up correctly through $JAVA_HOME.
-                c)check version of ja va - java --version
+                c)check version of java - java --version
 
         Windows -
             a)download jsk installer.
@@ -42,9 +42,15 @@ JDK -
             windows - echo %JAVA_HOME% , echo $env:JAVA_HOME
             mac - echo $JAVA_HOME
 
+            This should point to the root directory of your installed JDK (folder that has bin folder) - 
+                /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+
         b)PATH -
             windows - echo %PATH% , echo $env:PATH
             mac - echo $PATH
+
+            Your PATH should include the bin directory of the JDK (bin is also included) - 
+                /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin:...
 
         If you have installed sdk then both these paths will point to symlink - /.sdkman/candidates/java/
         If you to see where that symlink points -
@@ -54,24 +60,27 @@ JDK -
 
             realpath ~/.sdkman/candidates/java/current
 
-Maven Variables -
-    $PATH (till bin)
-    $MAVEN_HOME (bin is not included)
+    How JAVA path is resolved in mac -
+        When you type java in your terminal, the /usr/bin/java wrapper likely calls /usr/libexec/java_home internally to get the 
+        path to the "best" or currently selected JDK.That means even if path is not set you will be able to use  java comamnd.
 
-    installed path - /Users/sumeet.sood/java/apache-maven-3.9.9
+        default path is - /Library/Java/JavaVirtualMachines
 
-How JAVA path is resolved in mac -
-    When you type java in your terminal, the /usr/bin/java wrapper likely calls /usr/libexec/java_home internally to get the 
-    path to the "best" or currently selected JDK.That means even if path is not set you will be able to use  java comamnd.
+Maven -
+    installation - 
+        install maven.
+    path variables -
+        1)M2_HOME - /Users/sumeet.sood/myStuff/Softwares/apache-maven-3.9.11
+        2)PATH=$M2_HOME/bin:$PATH
 
-    default path is - /Library/Java/JavaVirtualMachines
+    YOu need to set this in 
+
+    Variables -
+        $PATH (till bin)
+        $MAVEN_HOME (bin is not included)
 
 
-Managing different versions -
-    SDK -
-        Local Version names -
-            21-eclips_local
-            17-oracle_local
+
         
 
 
