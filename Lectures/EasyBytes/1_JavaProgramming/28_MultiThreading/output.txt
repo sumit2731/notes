@@ -1,0 +1,3 @@
+System.out.println("Produced: " + 1);
+System.out.println("Consumed: " + 1);
+System.out.println("Produced: " + 2);

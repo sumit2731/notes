@@ -73,11 +73,13 @@ Maven -
         1)M2_HOME - /Users/sumeet.sood/myStuff/Softwares/apache-maven-3.9.11
         2)PATH=$M2_HOME/bin:$PATH
 
-    YOu need to set this in 
+    You need to set this in 
 
     Variables -
-        $PATH (till bin)
         $MAVEN_HOME (bin is not included)
+        $PATH (till bin)
+
+    You need to make sure that Intellij also uses the same maven instead of built in, follow onboarding guide for same.
 
 
 

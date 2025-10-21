@@ -10,9 +10,9 @@ public class Counter {
 
     public  synchronized void incrementSynchronized (){
         count++;
-        /*synchronized (Counter.class){
-            count++;
-        }*/
+//        synchronized (Counter.class){
+//            count++;
+//        }
     }
 
     public int getCount() {

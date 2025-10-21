@@ -1,30 +1,36 @@
-506 - How a program or software executes inside computer(slide 1,2,3)
+508 - How a program or software executes inside computer(slide 1,2,3)
     Thread needs CPU computing power when it needs to execute some instructions.
     The thread will ask the operating system to give some CPU time of a CPU core, and based upon the time provided by the CPU core to a 
-        specific thread, it is going to execute all the instructions.OS assigns CPU time based on requested time to these tgreads.
+        specific thread, it is going to execute all the instructions.OS assigns CPU time based on requested time to these threads.
 
 
-507 - Parallel vs Current Execution (slide 4, 5)
+509 - Parallel vs Current Execution (slide 4, 5)
     Today's system has multiple cores. miimum 4 , going upto 21.at a time one core can execute one thread.
 
-    Parallel execution - No of threads is equal to number of tasks.
+    Parallel execution - No of threads is equal to number of tasks(slide 4).
     Concurrent Exeution - No of threads is greater than cpu cores.so OS allocates small fraction of time of CPU core to each thread.
 
-    In real workdno of therads is far greater than cores. Not all of them are active(need CPU time).
+    In real world of therads is far greater than cores. Not all of them are active(need CPU time).
 
 
-508 - How ,ultiple therads improve performance(slide 6,7,8,9)
+510 - How multiple therads improve performance(slide 6,7,8,9)
+    Different therads requests CPU core time form OS, each thread is given CPU core for some fixed amount of time.
     Why CPU creates so much threads, why not creates as many threads as equal to CPU core?
 
-    Threads are only created for CPU bound tasks, I/O bound task.for only I/O bound tasks threads are not created.
+    Thread has 2 types of tasks - CPU Bound taks and I/O bound tasks.CPU is only needed for CPU bound tasks,CPU will sit idle
+    until I/O bound task is being performed on thread.
 
-    fgure 7 shows only CPU bound tasks, here context switching adds overhead. so for only CPu bound tasks do not create threads.
-    in figure 7 it does'nt make sense to have more threads than CPU core.
+    Slide 6 - explains 2 types of tasks .
+    Slide 7 - for first tasks which CPU bound tasks, we created 12 threads, here creating more therads than number of CPU core does not help,
+        because of our CPU is always busy.so i case of CPU bound tasks , do not create too many threads.
 
-    figure 8 - but in real word this is not the case.if you have same no of therads as Core. you will be wasting CPU time as therads do
-    I/O operations.
 
-    figure 9 - In real word creting more threads helps.
+    sliode 8 - This shows second tasks from slide 6.in real word most of tasks are mix of CPU and IO tasks.Now if you have same no of therads 
+    as Core. you will be wasting CPU time as therads do I/O operations.green block is only time CPU is needed but CPU is occupied during whole
+    execution of thread.
+
+    figure 9 - In real word creting more threads helps.here we dividing tasks into threads, here isntead of waiting, CPU can be allocated to
+    another thread.
 
     rule of thumb - if you have high I/O tasks, create more therads.
 
@@ -33,35 +39,87 @@
     But if you received a feedback for better performance, then obviously you need to increase the number of threads.
 
 
-509,510 -Creating Threads in Java - Part 1,2 (slide 10,11,12,13,14)
+511,512 -Creating Threads in Java - Part 1,2 (slide 12,13,14)
 
-    Code - ThreadDemo.java, it uses these classes -
-        HelloThread.java
-        HelloThread1.java
-        Hello.java
-
+    Code - ThreadDemo.java, 
+    
+        Different ways of starting a thread -
+            1)empty Thread Constructor
+            2)passing a lambda(Runnable Object) to thread -
+                a)Pass a lamda directly
+                b)create a lambda and store it in Runnable instance and then pass that instance to Thread
+                c)define custom class that implements Runnable intreface and then pass instance of that class
+                    Thread(HelloTHread1).
+                d)Pass a refrence to method defined in another class(Hello.java)
+            3)inheriting Thread class(HelloThread)
+    
+    No matter which way you use to create thread,execution steps are same -
+        a)You call start method, which waits for CPU allocation
+        b)CPU is alocated, then run methiod is called automatically.
     here we created a therad and scheduled its execution using start method. see comments.
-    then we explored all the way to create therads -
-        a)a class that extends class.
-        b)passing lambda to Thread.
-        c)passing a class to lambda that implements Runnable Interface.
-        d)Using Functional refrence instead of lambda in TThread class.
     Also we saw that outer(or main thread) does not wait for inner thread, their are ways to do that,
     that we will see later.
 
 
-511 - MultiThreading Deno program (slide15)
+513 - MultiThreading Demo program (slide15)
     SumofIntsDemo.java - Proigram without threads
-    SumOfIntsThreadDemo.java, SumThread.java - Same logic as above but with threads
+    SumOfIntsThreadDemo.java - Same logic as above but with threads
+        Threads are define in SumThread.java
 
 
-512- demo of threads methods (slide 16,17,18)
+514- demo of threads methods (slide 16,17,18)
     check methods.txt
     thread.getId(), thread.getName(), thread.setName
     Thread.currentThread()
     SleepDemo.java - Thread.sleep()
 
-513 - demo of thread methods
+515 - demo of thread methods - join, getPrioty, setpriority (slide - 19,20 )
     thread.join
     thread.setPriority (getPriority)
+
+    code - 
+        JoinExample.java
+        ThreadPriorityExample
+
+
+516,517 - Demo of wait(), notify, notifyAll - Part1,2 (slide 21,22)
+
+    2 threads - Producer and Consumer
+    
+
+    When prodcuer thread is generating the value, consumer threads needs to be in waiting state. Once producer thread generates the value, it needs to notify
+    the consumer thread to consume the value.
+    When cosumer is consuming the data, producer needs to be in waiting state. After Consumer consumes the data then it needs to notify the producer.
+
+    So whenever you want to have a particular thread to wait based upon certain condition, we can use the wait() method.And whenever you are into scenario where
+    you want to notify other waiting thread to continue its execution.In such scenarios, we need to use the notify() method.
+
+    synchronized - So whenever we mark a method with the help of synchronized keyword behind the scenes, the JVM willmake sure at a single point of time, only a
+    single thread is executing these business logic, and all the other threads which are trying to execute the same method, they are going to keep on waiting until
+    the current thread it enters into the wait status.
+
+    wait, notify - Because these methods are in Object, every Java object can be used as a lock and a communication monitor.see objectLockingNotes.
+
+    code - ProducerConsumerExample.java, SharedResource.java
+
+
+518 - Intruduyction to synchronized method and blocks (slide 23,24,25)
+    see objectLocking.txt
+
+519 - Demo of synchronized methods and blocks (slide - 26, 27)
+
+    Code - 
+        UnSynchronization.java
+            If you run it, most of times you never get 2,000. this is because of race coindition
+        Synchronization.java
+            Here we have 2 ways -
+                a)use synchronization block
+                b)use synchronization method
+
+
+520 - Intro to volatil keyword(slide 29)
+
+521 - Demo of Volatile
+    code - VolatileExample.java
+
     

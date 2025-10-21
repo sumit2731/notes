@@ -1,0 +1,6 @@
+Alternatives of block and notify -
+        | Class                                          | Purpose                                                         |
+    | ---------------------------------------------- | --------------------------------------------------------------- |
+    | `java.util.concurrent.locks.Condition`         | Provides `await()` and `signal()` (same semantics but cleaner). |
+    | `BlockingQueue`                                | Handles producer-consumer automatically.                        |
+    | `Semaphore`, `CountDownLatch`, `CyclicBarrier` | Synchronization utilities.                                      |

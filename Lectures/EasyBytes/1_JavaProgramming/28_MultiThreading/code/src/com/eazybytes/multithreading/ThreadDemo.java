@@ -6,6 +6,9 @@ public class ThreadDemo {
         Thread thread = new Thread();
         thread.start();
 
+        /**
+         * Here we are passing the target(Runnable Object) to constructor
+         */
         Thread thread1 = new Thread(() -> System.out.println("Hello from Java Thread"));
         /*
         * By calling start, your thread will enter into the race of getting the CPU time from

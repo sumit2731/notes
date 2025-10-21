@@ -1,0 +1,92 @@
+Monitor Lock
+    A monitor lock is a special mechanism that Java uses to control access to a block of code or an object among multiple threads — 
+    so that only one thread at a time can execute the critical section associated with that object.
+
+    How it works -
+        Every Java object (yes, every Object instance) has an internal monitor that includes:
+        A lock flag — to mark whether it’s locked or not.
+        Information about which thread owns the lock (if any).
+        A wait set — list of threads that are waiting on that object (via wait()).
+        This “monitor” is what makes synchronized blocks possible.
+
+Object’s Monitor
+    An object’s monitor is a synchronization mechanism attached to every Java object, containing:
+        The monitor lock itself (for mutual exclusion),
+        A wait set (list of threads waiting via wait()),
+        And data structures the JVM uses for managing lock ownership.
+
+
+        ┌─────────────────────────────────────┐
+        │         Object's Monitor            │
+        │─────────────────────────────────────│
+        │ Lock Owner: Thread A                │
+        │ Lock State: Locked                  │
+        │ Wait Set: [Thread B, Thread C]      │
+        │ Entry Set: [Thread D ]              │
+        └─────────────────────────────────────┘
+
+    Code example -
+
+        synchronized (obj) {
+            obj.wait();
+        }
+
+        here is what happens -
+
+            Thread T1 enters the synchronized block and owns the monitor of obj.
+            It calls obj.wait().
+            JVM moves T1 to obj’s wait set.
+            T1 releases the monitor lock.
+            Now another thread (say T2) can acquire the lock on obj.
+            When T2 calls obj.notify(), JVM moves one thread (say T1) from the wait set to the entry set.
+            When T2 releases the monitor, T1 can reacquire the lock and continue.
+
+
+Spurious Wake-up - It means that, Even if you never call notify() or notifyAll(), a thread can still wake up from wait().So to ensure correctness, you should always recheck 
+    the waiting condition after wait() returns.
+
+    synchronized (obj) {
+        while (!condition) {
+            obj.wait();
+        }
+        // safe to proceed
+    }
+
+
+synchronized - A synchronized block in Java is a piece of code that allows only one thread at a time to execute it for a given monitor lock (object monitor).
+    Syntax -
+        synchronized (lockObject) {
+            // critical section code
+        }
+        lockObject → any non-null Java object
+    When a thread enters a synchronized block,
+        It must acquire the lock on the specified object (called the monitor lock).
+        While it holds that lock, no other thread can enter any synchronized block or method guarded by the same object.
+        When the thread exits the block (either normally or via exception), the lock is released automatically.
+    How synchronized Works Internally (Step-by-Step)
+        Step 1 — Try to acquire the monitor lock
+            When the JVM encounters a synchronized (obj):
+                It checks whether any other thread currently owns the monitor lock of obj.
+                If no one owns it → the current thread acquires the lock and enters the block.
+                If another thread owns it → the current thread goes into the BLOCKED state and joins the object’s entry set.
+
+        Step 2 — Execute the critical section -
+            Once a thread acquires the lock, it executes the code inside the synchronized block.
+            No other thread can enter any synchronized code guarded by the same object’s monitor.
+            However, other threads can still execute synchronized blocks on different objects.
+
+        Step 3 — Release the monitor lock
+            When the thread exits the synchronized block (even if an exception occurs):
+            The JVM automatically releases the monitor lock.
+            Then another thread (from the entry set) may acquire the lock and enter.
+
+    What Object Can Be Used as a Lock?
+
+    You can use any non-null Java object as a lock.
+    Common choices:
+        this → for synchronizing per-instance behavior.
+        A private final Object lock = new Object(); → best practice (so external code can’t interfere).
+        ClassName.class → for synchronizing static methods or class-wide behavior.
+
+
+

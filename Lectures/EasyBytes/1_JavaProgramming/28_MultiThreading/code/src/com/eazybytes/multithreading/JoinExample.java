@@ -17,6 +17,7 @@ public class JoinExample {
         );
         threadA.start();
         try {
+            //main threads waits until this thread completes the execution
             threadA.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
