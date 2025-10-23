@@ -1,0 +1,13 @@
+Threads
+    Used to crete a thread and execute some logic.It has different types of constructors where you can define the logic that you want to execute.
+ReentrantLock -
+    Alternative of synchronization.Limitaions of synchronization -
+        No way to try for a lock - You can’t check whether the lock is free; you must wait until it’s released.
+        No timeout - You can’t wait for a lock for a certain period and then give up.
+        No interruptibility - A thread waiting for a synchronized lock can’t be interrupted while waiting.
+        No fairness policy - You can’t control which thread gets the lock next.
+            use - 
+                ReentrantLock lock = new ReentrantLock(true);
+        No detailed lock control - The lock is automatically acquired and released; you can’t manage it manually.
+    These limitations are acceptable in many use cases — but when you need more advanced locking control, you use ReentrantLock.
+    ReentrantLock is a class in java.util.concurrent.locks package that provides explicit locking mechanism.

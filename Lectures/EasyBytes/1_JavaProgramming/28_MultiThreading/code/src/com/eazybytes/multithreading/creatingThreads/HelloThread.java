@@ -1,4 +1,4 @@
-package com.eazybytes.multithreading;
+package com.eazybytes.multithreading.creatingThreads;
 
 public class HelloThread extends Thread {
 

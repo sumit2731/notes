@@ -1,4 +1,4 @@
-package com.eazybytes.multithreading;
+package com.eazybytes.multithreading.multiThreadingSum;
 
 public class SumThread extends Thread {
 

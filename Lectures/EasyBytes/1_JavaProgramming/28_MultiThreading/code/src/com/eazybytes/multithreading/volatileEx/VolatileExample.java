@@ -1,4 +1,4 @@
-package com.eazybytes.multithreading;
+package com.eazybytes.multithreading.volatileEx;
 
 public class VolatileExample {
 
@@ -9,6 +9,7 @@ public class VolatileExample {
         Thread stopperThread = new Thread(() -> {
             try {
                 Thread.sleep(3000);
+                System.out.println("Stopping the worker thread");
                 sharedBooleanResource.setStopFlag();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

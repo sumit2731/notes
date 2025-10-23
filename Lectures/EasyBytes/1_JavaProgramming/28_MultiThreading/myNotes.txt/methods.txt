@@ -1,0 +1,49 @@
+Thread
+    start - jvm schedules the thread for exeution i.e thread requests for CPU time and will execution when it gets CPU time.
+    run - In Java, every thread of execution begins with a method called run().In default Thread constructor, run method does
+        not do anything.if yoiu pass it a Runnable object, in run method, run methid of that Runnable objevt is called.
+        if you call run method directly, then your code is executed in same threda only.
+    join - thread which calls this method waits till execution is new thread is completed
+    getId/threadId - returns id of thread, you cannot set id of thread
+    getName,setName
+    Thread.currentThread - returns currently running Thread
+    Thread.sleep(int) - Stops the execution of current thread.
+
+Object -
+    wait - Causes the current thread to wait until it is awakened, typically be being notified or interrupted.
+        overloaded implementations -
+        a)wait(int) - thread will be automatically awaked after this much milliseconds, or it can also be awakened if notify is called beafore time is elapsed
+    notify
+    notifyAll
+Reentrant Lock (Slide 34) - 
+
+        lock - This is very clkose to how synchrionize block behaves.
+            If the lock is free, the thread acquires it immediately.
+            If the lock is held by another thread, your thread waits indefinitely until it becomes free.
+            Even if your thread is interrupted while waiting — it keeps waiting (the interrupt signal is ignored until the lock is obtained).
+        lockInterruptibly() - it lets the waiting thread respond to interruptions while waiting for the lock.o if your thread is waiting for a lock and gets interrupted, it will:
+                Immediately stop waiting,
+                Throw an InterruptedException,
+                And not acquire the lock.
+            This allows you to cleanly exit, roll back, or take alternate action.
+        tryLock(time,timeUnits) - waits given amount of time. then returns true or false.
+        tryLock() - Does not wait, imeediate returns true/false.It is meant to be an immediate, non-blocking attempt. If you can’t get it right now, you do 
+            something else (back off, skip, or try later).This is opportunistic.does not wait in queue.Result: If a thread is polling tryLock() in a loop and 
+            the lock frequently becomes free, it can repeatedly beat already-waiting threads. That’sbarging and can lead to starvation of queued threads.
+        lock.hasQueuedThreads() - tells if their are queued threads.
+        lock() - Locks the lock
+        unlocks() - Unlocks the object. if multiple locks where called, same number of unlocks are needed.
+        isLocked(),
+        isHeldByCurrentThread()
+        getHoldCount()
+
+
+    
+
+    this is used to prevent deadlock.
+
+AbstractQueuedSynchronizer - ReentrantLock is a high-level lock implementation in Java (java.util.concurrent.locks).Internally, it delegates all the heavy 
+    lifting to AbstractQueuedSynchronizer (AQS).AQS is a general-purpose FIFO queue-based synchronization framework used by locks, semaphores, and other
+    synchronizers.So whenever you call lock(), lockInterruptibly(), tryLock(), or tryLock(timeout, unit), AQS is actually doing the work.
+
+    So whenever you call lock(), lockInterruptibly(), tryLock(), or tryLock(timeout, unit), AQS is actually doing the work.

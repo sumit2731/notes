@@ -1,0 +1,30 @@
+1)AtomicLong
+    It provides a long value that can be read and updated atomically — meaning:
+        multiple threads can safely read/write/increment/decrement it without using synchronized blocks or locks.
+
+    Essentially, it’s a thread-safe long counter.
+
+    Why it’s called atomic
+
+        The term atomic means operations happen indivisibly — no thread can observe an intermediate state.
+        For example, a normal long variable like this:
+
+            long count = 0;
+            count++;
+        is not atomic, because count++ is actually three separate steps internally:
+
+            Read the value
+            Increment the value
+            Write it back
+
+        If two threads do this at the same time, one increment can get lost — classic race condition.
+
+        But with AtomicLong:
+
+        counter.incrementAndGet();
+        this increment is performed atomically — the JVM guarantees that no two threads can interleave the operation.
+
+    Methods -
+        get
+        set
+        getAndSet

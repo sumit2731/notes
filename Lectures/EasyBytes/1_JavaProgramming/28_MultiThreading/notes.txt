@@ -122,4 +122,20 @@
 521 - Demo of Volatile
     code - VolatileExample.java
 
+
+522 - Intro to DeadLocks (slides 30,31)
+
+523 - Demo DeadLock and possible fixes (slides - 32,33 ,34)
+
+    slide 33 - lock hierarchy, in your code maintain the lock hierrachy.like in our case lock hierrachy is R1 -> R2
+
+    slide 34 - use High level API's in java.util.concurrent
+        ReentrantLock -
+            lock()
+            tryLock()
+            tryLock(number, unit)
+        see docs ,see tryLock in methods.txt.
+
+    Extra notes - Remember: synchronized (intrinsic locks) has no fairness policy at all; only ReentrantLock(true) does, and even there tryLock() bypasses it.
+
     

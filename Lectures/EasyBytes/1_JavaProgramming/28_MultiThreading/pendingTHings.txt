@@ -4,3 +4,9 @@ Alternatives of block and notify -
     | `java.util.concurrent.locks.Condition`         | Provides `await()` and `signal()` (same semantics but cleaner). |
     | `BlockingQueue`                                | Handles producer-consumer automatically.                        |
     | `Semaphore`, `CountDownLatch`, `CyclicBarrier` | Synchronization utilities.                                      |
+
+2)LockAPI - 
+    ReentrantLock is alternative to synchronized
+    uses above methods like await, signal
+
+3)How can one thread interrupt the other thread

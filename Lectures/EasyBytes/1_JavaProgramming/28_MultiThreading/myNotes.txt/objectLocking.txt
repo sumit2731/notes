@@ -9,7 +9,7 @@ Monitor Lock
         A wait set — list of threads that are waiting on that object (via wait()).
         This “monitor” is what makes synchronized blocks possible.
 
-Object’s Monitor
+Object’s Monitor(Intrinsic Monitor)
     An object’s monitor is a synchronization mechanism attached to every Java object, containing:
         The monitor lock itself (for mutual exclusion),
         A wait set (list of threads waiting via wait()),
@@ -24,6 +24,8 @@ Object’s Monitor
         │ Wait Set: [Thread B, Thread C]      │
         │ Entry Set: [Thread D ]              │
         └─────────────────────────────────────┘
+
+    Note - we also have "Hold Count"
 
     Code example -
 
@@ -52,8 +54,22 @@ Spurious Wake-up - It means that, Even if you never call notify() or notifyAll()
         // safe to proceed
     }
 
+Intrinsic Monitors & Reentrancy
+    Reentramt - A reentrant lock means that a thread can acquire the same lock multiple times without getting blocked by itself.
+    Java’s intrinsic locks are reentrant, meaning:
+
+        If a thread already holds a monitor, it can re-enter any other synchronized block or method guarded by the same monitor without blocking.
+        The JVM maintains a hold count for each monitor per thread.
+
+        First entry → hold count = 1
+        Nested entry on same monitor → hold count increments
+        Exit → hold count decrements
+        When hold count reaches 0 → monitor is released.
+
 
 synchronized - A synchronized block in Java is a piece of code that allows only one thread at a time to execute it for a given monitor lock (object monitor).
+    You can call methods like wait,notify,notifyAll only inside synchonized block because you need access to Object monitor to use these methods and synchonized
+    blocks/methods provides access to object monitor of locking object
     Syntax -
         synchronized (lockObject) {
             // critical section code
@@ -82,11 +98,29 @@ synchronized - A synchronized block in Java is a piece of code that allows only 
 
     What Object Can Be Used as a Lock?
 
-    You can use any non-null Java object as a lock.
-    Common choices:
-        this → for synchronizing per-instance behavior.
-        A private final Object lock = new Object(); → best practice (so external code can’t interfere).
-        ClassName.class → for synchronizing static methods or class-wide behavior.
+        You can use any non-null Java object as a lock.
+        Common choices:
+            this → for synchronizing per-instance behavior.
+            A private final Object lock = new Object(); → best practice (so external code can’t interfere).
+            ClassName.class → for synchronizing static methods or class-wide behavior.
+        If you do not mention lock object, these are used as default lock objects -
+            a)In instance methods of class, current instance(this) is locked object
+            b)Static method: synchronized locks on the Class object.
+
+    Nested Synchronized Locks
+        We can have these, so thread will hold locks on multiple objects at same time.IN case the locking object is same, then we already explained
+            this condition above.If objects are different then thread will hold locks on different object.If you call lock.wait() inside a synchronized(lock)
+            block, the thread releases only that monitor (lock)(most nested one) while waiting. It does not release any other monitors it is holding.
 
 
 
+
+Happens-Before Relationship in Synchronized Blocks
+
+    Exiting a synchronized block on an object establishes a happens-before relationship with any subsequent successful entry 
+        into a synchronized block on the same object by another thread.This ensures:
+
+            All changes made inside the first block are flushed to main memory before the lock is released.
+            When another thread acquires the same lock, it sees those changes.
+
+    Without this guarantee, threads could see stale values due to CPU caches or compiler reordering.

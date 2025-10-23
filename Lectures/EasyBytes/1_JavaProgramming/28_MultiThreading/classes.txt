@@ -1,3 +1,0 @@
-Threads
-    Diffrrent typoe of constructor.takes a object of tyoe Runnable.which run method which will be executed when
-    thread gets CPU time.
