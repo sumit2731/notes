@@ -1,0 +1,26 @@
+Nifty 200 Mommentum 30 Index
+Nifty 500 Value 50 Index - 
+
+
+Time Period - 2006 to 2022
+
+Momentum -
+    return - 18(Lumpsum and SIP)
+
+Value -
+    return - 13.8(Lumpsum and SIP)
+
+50-50 allocation (Figure 2) - 
+    return - 16.2 %
+
+Swicthing(Based on Mommentum)(figure 3,4) - 22.2 %
+    17 years - 4 switches were needed
+    Feb 2008 m -> v
+    Mar 2009 v -> m
+    Mar 2020 m -> v
+    APR 2021 v -> m
+
+Swicthing Based on Nifty 50 PE (Figure 3,4) -
+    return - 15.1%
+
+Nifty 100 Quality 30 Index
