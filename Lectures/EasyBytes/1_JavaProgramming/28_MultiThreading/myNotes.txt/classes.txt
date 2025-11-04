@@ -1,5 +1,22 @@
 Threads
-    Used to crete a thread and execute some logic.It has different types of constructors where you can define the logic that you want to execute.
+    Used to crete a thread and execute some logic.It has different types of constructors where you can define the 
+    logic that you want to execute.methods -
+
+        start - jvm schedules the thread for exeution i.e thread requests for CPU time and will execution when it gets CPU time.
+        run - In Java, every thread of execution begins with a method called run().In default Thread constructor, run method does
+            not do anything.if yoiu pass it a Runnable object, in run method, run methid of that Runnable objevt is called.
+            if you call run method directly, then your code is executed in same thread only.
+        join - thread which calls this method waits till execution of thread on which this method is called
+            finishes the execution.
+        getId/threadId - returns id of thread, you cannot set id of thread(in latest versions getid is deprecated)
+        getName,setName - getter setter for name proeprty on thread.
+        Thread.currentThread - It returns the Thread object which represents current rrunning Thread.You us eit in lamdas,
+            to get thread instance, on which you can get id and name.
+        Thread.sleep(int) - Stops the execution of current thread, for given milliseconds.
+
+Runnaable(Interface) -
+    Thread class accepts lambda which is of this type.methods -
+        run - This is functional method of functional interface 
 ReentrantLock -
     Alternative of synchronization.Limitaions of synchronization -
         No way to try for a lock - You can’t check whether the lock is free; you must wait until it’s released.

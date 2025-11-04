@@ -1,17 +1,23 @@
 Monitor Lock
-    A monitor lock is a special mechanism that Java uses to control access to a block of code or an object among multiple threads — 
-    so that only one thread at a time can execute the critical section associated with that object.
+    A monitor lock is a special mechanism that Java uses to control access to a block of code or an object among multiple threads.
+    so that only one thread at a time can execute the critical section associated with that object.When a thread enters a synchronized
+    block or synchronized method, it must acquire that monitor lock before executing the code.
 
     How it works -
         Every Java object (yes, every Object instance) has an internal monitor that includes:
-        A lock flag — to mark whether it’s locked or not.
-        Information about which thread owns the lock (if any).
-        A wait set — list of threads that are waiting on that object (via wait()).
-        This “monitor” is what makes synchronized blocks possible.
+            A lock flag — To mark whether it’s locked or not.
+            Information about which thread owns the lock (if any).
+            A wait set — list of threads that are waiting on that object (via wait()).
+            This “monitor” is what makes synchronized blocks possible.
 
 Object’s Monitor(Intrinsic Monitor)
     An object’s monitor is a synchronization mechanism attached to every Java object, containing:
-        The monitor lock itself (for mutual exclusion),
+        The monitor lock itself (for mutual exclusion) - defines lock status locked or not.
+        Entry Set - List of threads which are waiting to get lock on object.
+        Wait set - If a thread already owns the lock and calls - 
+            obj.wait();
+            it temporarily releases the monitor and moves to the Wait Set of that object.It will stay there until another thread 
+            calls obj.notify() or obj.notifyAll().
         A wait set (list of threads waiting via wait()),
         And data structures the JVM uses for managing lock ownership.
 
@@ -44,8 +50,8 @@ Object’s Monitor(Intrinsic Monitor)
             When T2 releases the monitor, T1 can reacquire the lock and continue.
 
 
-Spurious Wake-up - It means that, Even if you never call notify() or notifyAll(), a thread can still wake up from wait().So to ensure correctness, you should always recheck 
-    the waiting condition after wait() returns.
+Spurious Wake-up - It means that, Even if you never call notify() or notifyAll(), a thread can still wake up from wait().
+    So to ensure correctness, you should always recheck the waiting condition after wait() returns.
 
     synchronized (obj) {
         while (!condition) {
@@ -100,12 +106,32 @@ synchronized - A synchronized block in Java is a piece of code that allows only 
 
         You can use any non-null Java object as a lock.
         Common choices:
-            this → for synchronizing per-instance behavior.
-            A private final Object lock = new Object(); → best practice (so external code can’t interfere).
-            ClassName.class → for synchronizing static methods or class-wide behavior.
-        If you do not mention lock object, these are used as default lock objects -
-            a)In instance methods of class, current instance(this) is locked object
-            b)Static method: synchronized locks on the Class object.
+            a)using separate object
+                private final Object lock = new Object();
+            b)Using this - also implicit if you you synchronization over method name.
+                public synchronized void method1() {
+                    // synchronized on 'this'
+                }
+                
+                is same as - 
+
+                public void method1() {
+                    synchronized (this) {
+                        // same effect
+                }   }
+
+            c)Using class object
+                public static synchronized void staticMethod() {
+                    // synchronized on Class object of Example
+                }
+
+                is same as -
+
+                public static void staticMethod() {
+                    synchronized (Example.class) {
+                        // critical section
+                    }
+                }
 
     Nested Synchronized Locks
         We can have these, so thread will hold locks on multiple objects at same time.IN case the locking object is same, then we already explained

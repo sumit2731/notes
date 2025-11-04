@@ -1,20 +1,21 @@
 508 - How a program or software executes inside computer(slide 1,2,3)
     Thread needs CPU computing power when it needs to execute some instructions.
-    The thread will ask the operating system to give some CPU time of a CPU core, and based upon the time provided by the CPU core to a 
-        specific thread, it is going to execute all the instructions.OS assigns CPU time based on requested time to these threads.
+    The thread will ask the operating system to give some CPU time of a CPU core, and based upon the time provided by
+    the CPU core to a specific thread, it is going to execute all the instructions.OS assigns CPU time based on
+    requested time to these threads.
 
 
 509 - Parallel vs Current Execution (slide 4, 5)
     Today's system has multiple cores. miimum 4 , going upto 21.at a time one core can execute one thread.
 
     Parallel execution - No of threads is equal to number of tasks(slide 4).
-    Concurrent Exeution - No of threads is greater than cpu cores.so OS allocates small fraction of time of CPU core to each thread.
-
-    In real world of therads is far greater than cores. Not all of them are active(need CPU time).
+    Concurrent Exeution - No of threads is greater than cpu cores.so OS allocates small fraction of time of CPU core
+        to each thread. In real world, no of therads is far greater than cores. Not all of them are active(need CPU
+        time).
 
 
 510 - How multiple therads improve performance(slide 6,7,8,9)
-    Different therads requests CPU core time form OS, each thread is given CPU core for some fixed amount of time.
+    Different threads requests CPU core time form OS, each thread is given CPU core for some fixed amount of time.
     Why CPU creates so much threads, why not creates as many threads as equal to CPU core?
 
     Thread has 2 types of tasks - CPU Bound taks and I/O bound tasks.CPU is only needed for CPU bound tasks,CPU will sit idle
@@ -22,7 +23,7 @@
 
     Slide 6 - explains 2 types of tasks .
     Slide 7 - for first tasks which CPU bound tasks, we created 12 threads, here creating more therads than number of CPU core does not help,
-        because of our CPU is always busy.so i case of CPU bound tasks , do not create too many threads.
+        because of our CPU is always busy.so in case of CPU bound tasks , do not create too many threads.
 
 
     sliode 8 - This shows second tasks from slide 6.in real word most of tasks are mix of CPU and IO tasks.Now if you have same no of therads 
@@ -38,8 +39,8 @@
     First, start with the two threads, or three threads or four threads.If you are satisfied with the results, then you should be good.
     But if you received a feedback for better performance, then obviously you need to increase the number of threads.
 
-
-511,512 -Creating Threads in Java - Part 1,2 (slide 12,13,14)
+--------------------------------- No eed to g through above notes --------------------------------------------------------------------
+511,512 -Creating Threads in Java - Part 1,2 (slide 10,11,12,13,14)
 
     Code - ThreadDemo.java, 
     
@@ -51,7 +52,7 @@
                 c)define custom class that implements Runnable intreface and then pass instance of that class
                     Thread(HelloTHread1).
                 d)Pass a refrence to method defined in another class(Hello.java)
-            3)inheriting Thread class(HelloThread)
+            3)inheriting Thread class(HelloThread), and then calling methods on that class.
     
     No matter which way you use to create thread,execution steps are same -
         a)You call start method, which waits for CPU allocation
@@ -94,7 +95,7 @@
     So whenever you want to have a particular thread to wait based upon certain condition, we can use the wait() method.And whenever you are into scenario where
     you want to notify other waiting thread to continue its execution.In such scenarios, we need to use the notify() method.
 
-    synchronized - So whenever we mark a method with the help of synchronized keyword behind the scenes, the JVM willmake sure at a single point of time, only a
+    synchronized - So whenever we mark a method with the help of synchronized keyword behind the scenes, the JVM will make sure at a single point of time, only a
     single thread is executing these business logic, and all the other threads which are trying to execute the same method, they are going to keep on waiting until
     the current thread it enters into the wait status.
 

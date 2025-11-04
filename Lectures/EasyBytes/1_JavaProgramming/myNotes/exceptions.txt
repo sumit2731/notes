@@ -9,4 +9,4 @@
 
 Threads -
     1)IllegalThreadStateException - when you try to call start on the therad, which is slready started.
-    2)Interrupted Execption - Thrown when we call join,sleep on thread
+    2)Interrupted Execption - Thrown when we call wait, notify on Object
