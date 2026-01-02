@@ -5,10 +5,12 @@ JDK -
             a)Install SDK version - Follow page
             b)Install jdk using sdk man -
                 a)sdk list java - shows the list of options, if we want to install java.
-                    copy the identifuier for version, which you wantt use.
+                    copy the identifier for version, which you want to use.
                     press q to exit list.
                 b)sdk install java <identifier>
                     sdk install java 17.0.12-oracle
+                d)sdk default java <version>
+                    sets the default version.
                 c)sdk use java  <version>
                     sdk use java 17.0.12-oracle
                     
@@ -25,15 +27,15 @@ JDK -
                 It should be added automatically, if not add it.
 
 
-    Chnaging jdk version -
+    Changing jdk version -
 
         command -
             a)See all versions - 
                 sdk list java
                 for local versions - In Status column, look for local only
             b)switch version -
-                this chneages the defult jdk version
-                sdk default java version_name
+                this changes the default jdk version
+                sdk default java <version_name>
             c)checking what JAVA_HOME points to -
                 readlink -f "$JAVA_HOME"
 
@@ -52,7 +54,7 @@ JDK -
             Your PATH should include the bin directory of the JDK (bin is also included) - 
                 /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin:...
 
-        If you have installed sdk then both these paths will point to symlink - /.sdkman/candidates/java/
+        If you have installed sdk then both these paths will point to symlink - /.sdkman/candidates/java/current
         If you to see where that symlink points -
             readlink -f ~/.sdkman/candidates/java/current
 

@@ -1,0 +1,22 @@
+Code - producer-consumer with buffer
+
+Why these methods are deprecated -
+    Stop - No lock is released
+    Suspend - same as wait but lock is not released
+    resume - used to invoke the therad which is in suspended state.
+
+
+Daemon Thread -
+    daemon - something whch is running in async manner.
+    A thread which runs in background and does not prevent the JVM from exiting when the program finishes but the thread is still running.
+    When all non-daemon threads finish, JVM terminates all daemon threads and exits.
+    Example - Garbage Collector, JIT compiler etc.
+    By default, threads are non-daemon.
+    You can set a thread as daemon by calling setDaemon(true) method before starting the thread.
+    You can check if a thread is daemon or not by calling isDaemon() method.
+
+
+    uses -
+        Garbage collector
+        autosave
+        logging

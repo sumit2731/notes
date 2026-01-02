@@ -10,3 +10,25 @@ Alternatives of block and notify -
     uses above methods like await, signal
 
 3)How can one thread interrupt the other thread
+
+
+4)ScheduledExecutorService,ScheduledFuture
+
+ExecutorService,Future,FutureTask, , 
+
+5)Callable
+
+Future
+
+
+Executors
+
+Concurrent package (java.util.concurrent)
+
+Lock, ReentrantLock
+
+Semaphore
+
+ConcurrentHashMap
+
+Atomic classes

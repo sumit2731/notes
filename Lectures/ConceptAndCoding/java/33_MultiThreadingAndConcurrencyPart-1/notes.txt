@@ -1,0 +1,14 @@
+Figure 3 -
+    while executing java code, for each process a separate instnace of jvm created. so we can
+    have multiple jvm instances, all these take memory from total memory allocated to JVM.
+    each process can have multiple threads,figure shows which things are shred between threads
+    and which are not.
+
+
+    Registers - these are physical memory locations that CPU has, its fastest to access. 
+    context switching - when cpu switches from 1 task to another. while switching it saves the register state
+        is safely stored and new thread state is loaded into register. 
+
+
+Multitask - different processes at same time.
+Multi threads - different threads at same time.

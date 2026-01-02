@@ -1,0 +1,32 @@
+why 2 ways of creating threads? because if your are already extending a another class then you creating
+    create thread by implementing the interface.
+
+Generally prefer implementing Runnable interface.
+
+
+Image 5 - 
+    Thread LifeCycle. Once thread os terminated , it will not go back to running state.
+
+    When thread gos to block state? when it needs to perform I/o operation or it is waiting to acquired lock on
+    a object which is held by another thread.At any point of time, you can call stop method and terminate it.
+
+
+    When thread goes to block state, it releases all the monitor locks it holds.
+
+    Stop method is terminated
+
+
+Monitor Lock(Figure 8)
+
+    Every object in java has a monitor lock associated with it.when a thread wants to access a synchronized 
+    method/block, it has to acquire the monitor lock of that object.
+    if some other thread is holding the lock, then the current thread goes to block state until the lock is released.
+    once the lock is released, one of the blocked threads will acquire the lock and enter the synchronized method/block.
+
+    In case of class instance methods that monitor lock is placed on object, through which method is called.
+
+    Also you can create synchronized block inside a method, in that case you can specify the object whose monitor 
+    lock is to be acquired.
+
+
+Code shows short version of Producer Consumer problem.

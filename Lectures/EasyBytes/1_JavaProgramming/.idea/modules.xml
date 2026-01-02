@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/10_inheritanceInJava/10_inheritanceInJava.iml" filepath="$PROJECT_DIR$/10_inheritanceInJava/10_inheritanceInJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11_interfaces/11_interfaces.iml" filepath="$PROJECT_DIR$/11_interfaces/11_interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12_Arrays/12_Arrays.iml" filepath="$PROJECT_DIR$/12_Arrays/12_Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/15_UnmaskingJava'sSuperClass Secrets/15_UnmaskingJava'sSuperClass Secrets.iml" filepath="$PROJECT_DIR$/15_UnmaskingJava'sSuperClass Secrets/15_UnmaskingJava'sSuperClass Secrets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/1_JavaProgramming.iml" filepath="$PROJECT_DIR$/.idea/1_JavaProgramming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/24_FunctionalprogrammingusingLambdaExpressions/24_FunctionalprogrammingusingLambdaExpressions.iml" filepath="$PROJECT_DIR$/24_FunctionalprogrammingusingLambdaExpressions/24_FunctionalprogrammingusingLambdaExpressions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/25_BuildingLambdaExpressionsUsingMethodRefrences/25_BuildingLambdaExpressionsUsingMethodRefrences.iml" filepath="$PROJECT_DIR$/25_BuildingLambdaExpressionsUsingMethodRefrences/25_BuildingLambdaExpressionsUsingMethodRefrences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3_whathappensBehindTheScenes/3_whathappensBehindTheScenes.iml" filepath="$PROJECT_DIR$/3_whathappensBehindTheScenes/3_whathappensBehindTheScenes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5_commentsInJava/5_commentsInJava.iml" filepath="$PROJECT_DIR$/5_commentsInJava/5_commentsInJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6_DeepDiveOnStrings/6_DeepDiveOnStrings.iml" filepath="$PROJECT_DIR$/6_DeepDiveOnStrings/6_DeepDiveOnStrings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/9_PackagesInJava/9_PackagesInJava.iml" filepath="$PROJECT_DIR$/9_PackagesInJava/9_PackagesInJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code/code.iml" filepath="$PROJECT_DIR$/code/code.iml" />
+    </modules>
+  </component>
+</project>

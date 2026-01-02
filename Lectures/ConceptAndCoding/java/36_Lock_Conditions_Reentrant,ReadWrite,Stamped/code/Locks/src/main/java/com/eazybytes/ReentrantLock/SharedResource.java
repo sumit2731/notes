@@ -1,4 +1,4 @@
-package com.eazybytes;
+package com.eazybytes.ReentrantLock;
 
 import java.util.concurrent.locks.ReentrantLock;
 

@@ -1,0 +1,26 @@
+why locking?
+    we can access the code through any object but only 1 thread should be allowed to execute that code.
+    their are 4 types of locks.
+        1. Reentrant Lock
+            see code
+            Why this is called so, because a thread can acquire same lock any no. of times, but it must
+            call unlock same amount of time to unlock it.
+        2. Read Write Lock
+            Shared lock - multiple thread can put shared(read) lock and read data.But if read/shared lock
+                is present, no other thread can put exclusive(write) lock.
+            exclusive lock - This lock can only be taken when their is no other lock(read or write) on this
+            resource.
+
+            when to use -
+                When read is very high as compared to write.
+            
+            see code
+
+            2 implementtaions -
+                1. ReentrantReadWriteLock - non fair lock
+                2. StampedLock - stampedLock.asReadWriteLock()
+                    fair lock
+                    it supports optimistic read lock.
+                    
+        3. Semaphore
+        4. Stamped Lock

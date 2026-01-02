@@ -1,0 +1,29 @@
+Runnable - You can create thread by implementing this interface.
+Thread - This manages the lifecycle of thread. you can create thread by inheriting it.
+    run - this method contains the code that constitutes a new thread.required in Thread and Runnable.
+        When we create the thread by implementing Runnable interface, we call run method of Runnable here,
+        in case  we inherit thread class this function does do anything because it will overriden by child class.
+    start - call this method to start the thread.it internally calls the run method.
+        In run method we execute the .run method of Runnable interface passed to thread constructor.
+    getName() - name of thread
+    join - current thread will wait for given thread to complete execution
+    setPriority
+    setDaemon - sets the thread as daemon thread
+
+    deprecated methods -
+        stop - terminates thread without releasing lock
+        suspend - puts thread in suspended(same as wait state) state without releasing lock
+        resume - used to resume the thread which is in suspended state.
+
+    Static methods-
+        getCurrentThread() - static method, which returns current running thread
+        sleep - takes the thread wait, but does not release the lock.
+
+methods on object -
+    wait - Thread is added to wait state, until thread calls notify r notifyAll on same object.
+        lock is released.
+    notify
+    
+
+Pending -
+    join

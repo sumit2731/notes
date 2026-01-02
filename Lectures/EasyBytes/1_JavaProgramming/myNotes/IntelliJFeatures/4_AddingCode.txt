@@ -13,3 +13,11 @@ d)Getting return type form function -
 Templates(type text and press tab) -
     a)psvm - public static void main
     b)sout - System.out.println()
+
+e)multi-line editing -
+    a)add a multi-line cursor - 
+        option + shift + click
+    b)select next occurrence of word at cursor
+        ctrl + g
+    c)select all occurrences of word at cursor
+        ctrl + cmd + g
